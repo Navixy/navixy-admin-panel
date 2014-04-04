@@ -7,8 +7,9 @@
 Ext.define('NavixyPanel.view.panelUser.authWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.authwindow',
+    requires: ['NavixyPanel.view.widgets.LocaleCombo'],
 
-    width: 300,
+    width: 320,
 
     closable: false,
     draggable: false,
@@ -16,17 +17,6 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
     autoShow: true,
 
     initComponent: function () {
-
-        var localesStore = Ext.create('Ext.data.Store', {
-                fields: ['locale', 'name'],
-                data : [
-                    {"locale" : "en_US", "name" : "English"},
-                    {"locale" : "ru_RU", "name" : "Русский"}
-                ]
-            });
-
-        // TODO: Locale
-//        this.title = "User Login";
 
         this.items = [
             {
@@ -49,30 +39,35 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                 },
                 items: [
                     {
-                        xtype: 'container',
                         role: 'auth-error',
+                        xtype: 'container',
+
                         hidden: true,
                         style: 'color: #f33; font-size: 14px'
                     },
                     {
                         name: 'login',
-                        emptyText: 'Login',
                         xtype: 'textfield',
+
                         minLength: 2,
                         maxLength: 50,
                         vtype: 'alphanum',
                         allowBlank: false,
+
+                        emptyText: _l.auth.login,
                         padding: '20 0 0 0'
                     },
                     {
                         name: 'password',
                         xtype: 'textfield',
-                        emptyText: 'Password',
                         inputType: 'password',
+
                         minLength: 2,
                         maxLength: 50,
                         vtype: 'alphanum',
-                        allowBlank: false
+                        allowBlank: false,
+
+                        emptyText: _l.auth.password
                     },
                     {
                         xtype: 'container',
@@ -82,34 +77,18 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                         },
                         items: [
                             {
+                                role: 'auth-submit',
                                 xtype: 'button',
+
                                 scale: 'medium',
-                                text: 'Login',
-                                flex: 1,
-                                role: 'auth-submit'
+                                text: _l.auth.login_btn,
+                                flex: 1
                             }
                         ]
                     },
                     {
-                        fieldLabel: 'Interface language',
-                        labelAlign: 'top',
                         name: 'locale',
-                        xtype: 'combo',
-                        store: localesStore,
-                        valueField: 'name',
-                        displayField: 'text',
-                        emptyText: localesStore.first().get('name'),
-                        tpl: Ext.create('Ext.XTemplate',
-                            '<tpl for=".">',
-                            '<div class="x-boundlist-item locale {locale}">{name}</div>',
-                            '</tpl>'
-                        ),
-                        // template for the content inside text field
-                        displayTpl: Ext.create('Ext.XTemplate',
-                            '<tpl for=".">',
-                            '{name}',
-                            '</tpl>'
-                        )
+                        xtype: 'localecombo'
                     }
                 ]
             }

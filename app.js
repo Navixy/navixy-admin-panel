@@ -3,15 +3,19 @@ Ext.Loader.setConfig({
     disableCaching: true,
     paths: {
         'Ext.ux': 'ext/src/ux',
-        'Config': 'PConfig.js'
+        'Config': 'PConfig.js',
+        'Locale': 'locale'
     }
 });
 
 Ext.debug = 1;
 
 Ext.require([
-    'Config'
-]);
+    'Config',
+    'Locale.Manager'
+], function () {
+    Locale.Manager.init();
+});
 
 Ext.application({
     name: 'NavixyPanel',

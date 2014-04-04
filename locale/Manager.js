@@ -1,0 +1,197 @@
+Ext.define('Locale.Manager', {
+
+    uses: [
+        'Ext.data.Store'
+    ],
+
+    singleton: true,
+
+    _default: 'ru',
+    _loaded: false,
+    _locale: null,
+    _locales: [
+        { id: 'en_US', name: 'en', text: 'English', alias: ['en', 'en_US', 'English'] },
+        { id: 'ru_RU', name: 'ru', text: 'Русский', alias: ['ru', 'ru_RU', 'Русский'] }
+    ],
+
+    _tpl: 'locale-{locale}',
+    _cookie_name: 'locale',
+
+    init: function () {
+
+        this._loaded = true;
+        this._setLang();
+    },
+
+    setLocale: function (lang) {
+        var me = this,
+            locale = me._checkLang(lang);
+
+        if (locale && locale !== me.getLocale()) {
+            me._pageReload(locale);
+        }
+    },
+
+    updateLocale: function (lang, silent) {
+        var me = this,
+            locale = me._checkLang(lang),
+            old_locale = me._fromCookie();
+
+        if (locale) {
+            me._toCookie(locale);
+            if (!silent && locale !== old_locale) {
+                me._pageReload();
+            }
+        }
+    },
+
+    getAvailable: function (simple) {
+        var locales = this._locales;
+
+        if (simple) {
+            return locales;
+        } else {
+            return new Ext.data.Store({
+                fields: ['name', 'text', 'alias'],
+                data: locales
+            });
+        }
+    },
+
+    getLocale: function () {
+        return this._locale;
+    },
+
+    getLocaleId: function () {
+        var result = this._locale;
+        this.getAvailable().each(function (locale) {
+            if (locale.get('alias').indexOf(result) > -1) {
+                result = locale.get('id');
+                return false;
+            }
+        });
+
+        return result;
+    },
+
+    get: function (key, lang, defaultText) {
+        var me = this,
+            locale = me._checkLang(lang),
+            plural = key.indexOf('p:') === 0,
+            keys = (plural ? key.substr(2) : key).split('.'),
+            k = 0,
+            kNum = keys.length,
+            res;
+
+        if (!me.isLoaded()) {
+            return defaultText;
+        }
+
+        for (; k < kNum ; k++) {
+            key = keys[k];
+
+            if (locale) {
+                locale = locale[key];
+            }
+        }
+
+        res = locale || defaultText;
+
+        if (plural) {
+            return Ext.util.Inflector.pluralize(res);
+        } else {
+            return res;
+        }
+    },
+
+    _clearSearch: function () {
+        var me = this,
+            wl = window.location,
+            path = wl.href.replace(wl.search, ''),
+            params = Ext.urlDecode(wl.search.substring(1));
+
+        delete params[me._cookie_name];
+
+        wl.replace(!Ext.Object.isEmpty(params)
+            ? path += '?' + Ext.urlEncode(params)
+            : path
+        )
+
+    },
+
+    _setLang: function () {
+        var me = this,
+            lang = me._getDefault();
+
+        me._locale = lang;
+        me._getData(lang);
+    },
+
+    _getDefault: function () {
+        return this._fromLocation() || this._fromCookie() || this._default;
+    },
+
+    _getData: function (lang) {
+        var me = this,
+            path = this._tpl.replace('{locale}', lang),
+            cls = 'Locale.' + path,
+            loadCallback = function () {
+                _l = Locale[path];
+                Ext.Array.remove(Ext.Loader.history, cls);
+
+                document.title = _l.wrapper_title;
+            };
+
+
+        try {
+            Ext.require(cls, loadCallback);
+        } catch (e) {
+            Ext.log('cant load locale ' + path)
+        }
+    },
+
+    _fromLocation: function () {
+        var me = this,
+            params = Ext.urlDecode(window.location.search.substring(1)),
+            lang = params[me._cookie_name];
+
+        return me._checkLang(lang);
+    },
+
+    _fromCookie: function () {
+        var me = this,
+            lang = Ext.util.Cookies.get(me._cookie_name);
+
+        return me._checkLang(lang);
+    },
+
+    _toCookie: function (locale) {
+        var me = this;
+
+        Ext.util.Cookies.set(me._cookie_name, locale);
+    },
+
+    _checkLang: function (lang) {
+        var me = this,
+            result = null;
+
+        if (lang) {
+            me.getAvailable().each(function (locale) {
+                if (locale.get('alias').indexOf(lang) > -1) {
+                    result = locale.get('name');
+                    return false;
+                }
+            });
+        }
+
+        return result;
+    },
+
+    _pageReload: function (locale) {
+
+        var me = this,
+            wl = window.location;
+
+        wl.reload();
+    }
+});

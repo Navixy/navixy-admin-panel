@@ -13,8 +13,6 @@ Ext.define('NavixyPanel.controller.Desktop', {
     ],
 
     views: [
-        'panelUser.authWindow',
-
         'controls.Controls',
         'desktop.Desktop'
     ],

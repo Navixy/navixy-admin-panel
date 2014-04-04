@@ -8,6 +8,10 @@ Ext.define('NavixyPanel.controller.Main', {
     extend: 'Ext.app.Controller',
     errorDelay: 50,
 
+    views: [
+        'panelUser.authWindow'
+    ],
+
     requires: [
         'Ext.util.Cookies',
 
@@ -40,10 +44,14 @@ Ext.define('NavixyPanel.controller.Main', {
             },
             'button[role=auth-logout]': {
                 click: this.doLogout
+            },
+            'localecombo': {
+                change: this.changeLocale
             }
         });
     },
 
+    // History
     registerHistory: function () {
         Ext.Navigator.on('change', this.handleHistory, this);
         this.application.on('handlefound', this.onHandlerFound, this);
@@ -61,13 +69,14 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     },
 
+    // Navigation
     checkHandlerLoad: function () {
         this.notFoundHandlerErrorDelay = Ext.defer(this.onHandlerFoundError, this.errorDelay, this);
     },
 
     onHandlerFoundError: function () {
 
-        Ext.MessageBox.alert('Error', 'No page on this path');
+        Ext.MessageBox.alert(_l.error, _l.no_path_found);
         console.log('err');
         //TODO Show 404 or something
     },
@@ -80,6 +89,8 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     },
 
+
+    // Authentication
     checkAuth: function () {
         this[Ext.API.hasAuthKey() ? 'loadPermissions': 'showAuth']();
     },
@@ -97,7 +108,7 @@ Ext.define('NavixyPanel.controller.Main', {
             values = form.getValues();
 
         if (form && form.isValid()) {
-            Ext.getBody().mask('Loading...');
+            Ext.getBody().mask(_l.loading);
             authWindow.hide();
             Ext.API.authUser(this.onUserAuth, this.onUserAuthFailure, values, this);
         }
@@ -121,7 +132,7 @@ Ext.define('NavixyPanel.controller.Main', {
             errBox = form.down('[role=auth-error]');
 
         errBox.show();
-        errBox.update('Authentication error');
+        errBox.update(_l.auth.auth_error);
         form.getForm().reset();
 
         Ext.getBody().unmask();
@@ -166,5 +177,12 @@ Ext.define('NavixyPanel.controller.Main', {
                 window.top.location.href = this.getAppRoot();
             }
         }, 20, this);
-    }
+    },
+
+    // Localization
+
+    changeLocale: function (el, value) {
+
+        Locale.Manager.updateLocale(value);
+    },
 });
