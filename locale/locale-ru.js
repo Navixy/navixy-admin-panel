@@ -10,9 +10,9 @@ Ext.define('Locale.locale-ru', {
     dependencies: [
         'Locale.ext.locale-ru'
     ],
-
     singleton: true,
 
+    panel_title: 'NavixyPanel v2',
     error: 'Ошибка',
     loading: 'Загрузка...',
     auth: {

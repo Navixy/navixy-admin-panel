@@ -10,6 +10,7 @@ Ext.define('Locale.locale-en', {
     ],
     singleton: true,
 
+    panel_title: 'Nyan NavixyPanel',
     error: 'Error',
     loading: 'Loading...',
 

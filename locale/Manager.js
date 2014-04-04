@@ -139,7 +139,7 @@ Ext.define('Locale.Manager', {
                 _l = Locale[path];
                 Ext.Array.remove(Ext.Loader.history, cls);
 
-                document.title = _l.wrapper_title;
+                document.title = _l.panel_title;
             };
 
 
