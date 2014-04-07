@@ -21,16 +21,34 @@ Ext.define('NavixyPanel.controller.Abstract', {
         });
     },
 
-    handle: function (handlers) {
+    waitConnectionReady: function (fn, args, scope) {
+        if (this.application.connectionReady) {
+            fn.apply(scope || this, args);
+        } else {
+            this.application.on('connectionset', Ext.bind(fn, scope || this, args));
+        }
+    },
+
+    handle: function () {
+        this.waitConnectionReady(this.bindHandlers, arguments);
+    },
+
+    bindHandlers: function (handlers) {
         var controls = {};
 
         Ext.iterate(handlers, function (name, eventConfig) {
             var eventName = this.getHandlerEventConfig(name),
+                eventAccess = Ext.checkPermission(this.getModuleName(), eventConfig.access || false),
                 caller, handleCaller, callConfig;
 
             if (eventName && name !== 'scope') {
-                handleCaller = eventConfig.fn || eventConfig;
+
                 callConfig = eventConfig;
+
+                handleCaller = eventAccess
+                    ? eventConfig.fn || eventConfig
+                    : this.handleAccessDenied;
+
                 caller = Ext.bind(this.callHandle, handlers.scope || this, {
                     fn: handleCaller,
                     controllerParent: this,
@@ -88,15 +106,25 @@ Ext.define('NavixyPanel.controller.Abstract', {
             : null;
     },
 
+    handleAccessDenied: function () {
+        this.fireContent({
+            xtype: 'accessdenied'
+        });
+    },
+
     getModuleName: function () {
         var clsName = this.id || this.$className,
             path = clsName.split('.');
 
-        return path.pop();
+        return Ext.String.uncapitalize(path.pop());
     },
 
     registerModule: function () {
-        this.application.fireEvent('registgerModule', {name: this.getModuleName()});
+        this.waitConnectionReady(function () {
+            if (Ext.checkPermission(this.getModuleName())) {
+                this.application.fireEvent('registgermodule', {name: this.getModuleName()});
+            }
+        });
     },
 
     fireContent: function (config) {

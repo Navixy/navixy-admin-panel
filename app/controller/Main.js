@@ -32,9 +32,12 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     ],
 
+    store: ['Permissions'],
+    model: ['Permissions'],
+
     init: function () {
         this.checkAuth();
-
+        this.initOverrides();
         this.control({
             'authwindow form button[role=auth-submit]': {
                 click: this.doAuth
@@ -47,6 +50,45 @@ Ext.define('NavixyPanel.controller.Main', {
             },
             'localecombo': {
                 change: this.changeLocale
+            }
+        });
+    },
+
+    // Overrides
+    initOverrides: function () {
+        Ext.override(Ext, {
+
+            /**
+             * Get access to module, or permission of module
+             * @param sectionId {string} - Module name/id
+             * @param [right] {string} - module permission for check
+             * @returns {boolean}
+             */
+            checkPermission: function (sectionId, right) {
+                var delimiter = ',',
+                    result = false;
+
+                if (Ext.isString(right) && right.indexOf(delimiter) > -1) {
+
+                    var rights = right.split(delimiter);
+
+                    Ext.iterate(rights, function (cRight) {
+                        result = Ext.checkPermission(sectionId, cRight) || result;
+                    }, this);
+
+                } else {
+
+                    var store = Ext.getStore('Permissions'),
+                        section = store && store.getById(sectionId);
+
+                    result = Ext.isString(right)
+                        ? section
+                            ? !!section.get(right)
+                            : false
+                        : !!section;
+                }
+
+                return result;
             }
         });
     },
@@ -142,7 +184,20 @@ Ext.define('NavixyPanel.controller.Main', {
     loadPermissions: function (config) {
 
         if (config) {
-            // TODO Permissions store load;
+            var data = [];
+
+            Ext.iterate(config, function (key, permissions) {
+                if (Ext.isArray(permissions)) {
+                    var section = {id: key};
+                    data.push(section);
+                    Ext.iterate(permissions, function (permission) {
+                        section[permission] = true;
+                    }, this);
+                }
+            }, this);
+
+            this.getStore('Permissions').loadData(data);
+
             this.afterConnectionSet();
         } else {
             Ext.API.loadPermissions(this.loadPermissions, this.onUserAuthFailure, this);
@@ -151,6 +206,12 @@ Ext.define('NavixyPanel.controller.Main', {
 
     afterConnectionSet: function () {
         this.registerHistory();
+
+        if (!Ext.API.fatalError) {
+            this.application.connectionReady = true;
+            this.application.fireEvent('connectionset', this);
+        }
+
         Ext.create('NavixyPanel.view.Viewport');
     },
 
@@ -159,7 +220,6 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     removeAuthKey: function (hash) {
-        console.log('removeAuthKey',Ext.API.authKeyName);
         Ext.util.Cookies.clear(Ext.API.authKeyName);
     },
 
@@ -184,5 +244,5 @@ Ext.define('NavixyPanel.controller.Main', {
     changeLocale: function (el, value) {
 
         Locale.Manager.updateLocale(value);
-    },
+    }
 });

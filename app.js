@@ -23,7 +23,7 @@ Ext.application({
     controllers: [
         'NavixyPanel.controller.Main',
         'NavixyPanel.controller.Desktop',
-        'NavixyPanel.controller.User'
-    ],
-//    autoCreateViewport: true
+        'NavixyPanel.controller.Users'
+    ]
+//    ,autoCreateViewport: true
 });

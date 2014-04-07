@@ -15,6 +15,10 @@ Ext.define('Locale.locale-ru', {
     panel_title: 'NavixyPanel v2',
     error: 'Ошибка',
     loading: 'Загрузка...',
+
+    access_denied: 'ОШИБКА! ОШИБКА! ДОСТУП ЗАПРЕЩЕН',
+    access_denied_tip: 'Вы должны быть уничтожены, выслана бригада роботов&#8209;человекоистребителей',
+
     auth: {
         login: 'Логин или адрес электронной почты',
         password: 'Пароль',

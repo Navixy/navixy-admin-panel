@@ -1,10 +1,10 @@
 /**
- * @class NavixyPanel.controller.User
+ * @class NavixyPanel.controller.Users
  * @extends Ext.app.Controller
  * Description
  */
 
-Ext.define('NavixyPanel.controller.User', {
+Ext.define('NavixyPanel.controller.Users', {
     extend: 'NavixyPanel.controller.Abstract',
     id: 'UserController',
 
@@ -17,8 +17,14 @@ Ext.define('NavixyPanel.controller.User', {
         this.callParent(arguments);
 
         this.handle({
-            'user' : this.handleUser,
-            'user > edit' : this.handleUserEdit
+            'user' : {
+                fn: this.handleUser,
+                access: 'delete'
+            },
+            'user > edit' : {
+                fn: this.handleUserEdit,
+                access: 'update'
+            }
         });
     },
 
@@ -32,5 +38,5 @@ Ext.define('NavixyPanel.controller.User', {
         this.fireContent({
             xtype: 'utest2'
         });
-    },
+    }
 });

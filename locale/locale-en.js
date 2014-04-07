@@ -14,6 +14,9 @@ Ext.define('Locale.locale-en', {
     error: 'Error',
     loading: 'Loading...',
 
+    access_denied: 'ERROR! ERROR! ACCESS DENIED',
+    access_denied_tip: 'You must be destroyed, sent a team of robotic man fighter',
+
     auth: {
         login: 'Login or Email address',
         password: 'Password',
