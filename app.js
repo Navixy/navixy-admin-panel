@@ -12,7 +12,7 @@ Ext.debug = 1;
 
 Ext.require([
     'Config',
-    'Locale.Manager'
+    'Locale.Manager',
 ], function () {
     Locale.Manager.init();
 });

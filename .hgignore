@@ -1,3 +1,4 @@
 syntax: regexp
 .idea/*
 theme/metromorph/*
+app/api/_proxy/*

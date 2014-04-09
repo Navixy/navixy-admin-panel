@@ -4,9 +4,9 @@
  * Description
  */
 
-Ext.define('NavixyPanel.view.controls.Controls', {
+Ext.define('NavixyPanel.view.desktop.Header', {
     extend: 'Ext.Container',
-    alias: 'widget.maincontrols',
+    alias: 'widget.mainheader',
     requires: ['NavixyPanel.view.widgets.LocaleCombo'],
     padding: 10,
     layout: {

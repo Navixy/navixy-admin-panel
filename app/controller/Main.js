@@ -18,7 +18,11 @@ Ext.define('NavixyPanel.controller.Main', {
         'NavixyPanel.api.ApiConnector',
         'NavixyPanel.api.NavixyApi',
 
-        'NavixyPanel.utils.Navigator'
+        'NavixyPanel.utils.Navigator',
+
+        'NavixyPanel.plugins.pagination.Store',
+        'NavixyPanel.plugins.pagination.GridPanel',
+        'NavixyPanel.plugins.pagination.CustomPaging'
     ],
 
     refs: [
@@ -32,12 +36,13 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     ],
 
-    store: ['Permissions'],
-    model: ['Permissions'],
+    stores: ['Permissions', 'Users'],
+    models: ['Permissions', 'User'],
 
     init: function () {
         this.checkAuth();
         this.initOverrides();
+
         this.control({
             'authwindow form button[role=auth-submit]': {
                 click: this.doAuth
@@ -124,6 +129,7 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     onHandlerFound: function (handle) {
+        console.log('onHandlerFound');
         if (
             this.notFoundHandlerErrorDelay
             ) {
@@ -205,18 +211,12 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     afterConnectionSet: function () {
-        this.registerHistory();
-
-        if (!Ext.API.fatalError) {
-            this.application.connectionReady = true;
-            this.application.fireEvent('connectionset', this);
-        }
-
-        Ext.create('NavixyPanel.view.Viewport');
+        this.doMainRequest();
     },
 
     setAuthKey: function (hash) {
         Ext.util.Cookies.set(Ext.API.authKeyName, hash);
+        Ext.API.initAuthKey();
     },
 
     removeAuthKey: function (hash) {
@@ -237,6 +237,52 @@ Ext.define('NavixyPanel.controller.Main', {
                 window.top.location.href = this.getAppRoot();
             }
         }, 20, this);
+    },
+
+    //Main data request
+    doMainRequest: function () {
+        var me = this,
+            calls = ['getUsersList'];
+
+        Ext.getBody().mask(_l.conneting_loader);
+
+        Ext.API.batch(calls, {
+            callback: function (results) {
+
+                Ext.getBody().unmask();
+                me.handleResults(results);
+            },
+
+            failure: function () {
+                Ext.getBody().unmask();
+                Ext.log('request failure');
+            }
+        });
+
+    },
+
+    handleResults: function (results) {
+        Ext.iterate({
+            'getUsersList': 'Users'
+        }, function (action, store) {
+
+            try {
+                var storeInstance = Ext.getStore(store);
+
+                storeInstance.storeLoaded = true;
+                storeInstance.loadData(results[action]);
+            } catch (e) {
+                Ext.log('result handler error', e.stack);
+            }
+        });
+
+        if (!Ext.API.fatalError) {
+            this.application.connectionReady = true;
+            this.application.fireEvent('connectionset', this);
+        }
+
+        this.registerHistory();
+        Ext.create('NavixyPanel.view.Viewport', {renderTo: Ext.getBody()});
     },
 
     // Localization

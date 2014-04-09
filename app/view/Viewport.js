@@ -1,20 +1,62 @@
 Ext.define('NavixyPanel.view.Viewport', {
-    extend: 'Ext.container.Viewport',
+    extend: 'Ext.Container',
     alias: 'widget.mainviewport',
 
-    layout: 'border',
-    items: [
-        {
-            xtype: 'maincontrols',
-            region: 'north'
-        },
-        {
-            xtype: 'maindesktop',
-            region: 'center'
-        }],
+    innerWidth: 1250,
 
-    afterFirstLayout: function () {
-        this.fireEvent('ready', this);
+    layout: {
+        type: 'hbox',
+        align: 'top',
+        pack: 'center'
+    },
+
+    initComponent: function () {
+
+        this.items = [
+            {
+                xtype: 'container',
+                layout: {
+                    type: 'vbox',
+                    align:'stretch'
+                },
+                width: this.innerWidth,
+                items: [
+                    // TODO: Header here
+                    {
+                        xtype: 'mainheader',
+                    },
+                    {
+                        xtype: 'maindesktop',
+                        region: 'center',
+                        flex: 1
+                    },
+                    // TODO: Footer here
+                    {
+                        xtype: 'mainfooter',
+                        height: 200
+                    }
+                ]
+            }
+        ];
+
         this.callParent(arguments);
+    },
+
+    afterFirstLayout: function() {
+        var me = this;
+        this.fireEvent('ready', this);
+
+        me.callParent(arguments);
+
+        this.fireResize();
+
+        setTimeout(function() {
+            Ext.EventManager.onWindowResize(me.fireResize, me);
+        }, 1);
+    },
+
+    fireResize : function(){
+        var bodyWidth = Ext.getBody().getWidth();
+        this.setSize({width: bodyWidth > this.innerWidth ? bodyWidth : this.innerWidth, height: 'auto'});
     }
 });

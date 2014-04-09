@@ -10,9 +10,12 @@ Ext.define('Locale.locale-en', {
     ],
     singleton: true,
 
+    main_copyright: '© 2005-2014 RusLink. All rights reserved.',
+
     panel_title: 'Nyan NavixyPanel',
     error: 'Error',
     loading: 'Loading...',
+    conneting_loader: 'Connecting to server',
 
     access_denied: 'ERROR! ERROR! ACCESS DENIED',
     access_denied_tip: 'You must be destroyed, sent a team of robotic man fighter',
@@ -99,6 +102,39 @@ Ext.define('Locale.locale-en', {
         upload_exeption: 'File upload error',
         no_hash: 'The session key is not found',
         service_not_respond: 'The service is temporarily unavailable'
+    },
+
+    users: {
+        fields: {
+            login: 'Email address',
+            first_name: 'Name',
+            middle_name: 'Patronymic',
+            last_name: 'Surname',
+            activated: 'Activated',
+            legal_type: 'Legal status',
+            tin: 'TIN',
+            legal_name: 'Legal Name',
+            iec: 'IEC',
+            phone: 'Phone number',
+            post_country: 'Country',
+            post_index: 'Zip code',
+            post_region: 'Region',
+            post_city: 'City',
+            post_street_address: 'Street, address',
+            registered_country: 'Registration country',
+            registered_index: 'Registration zip code',
+            registered_region: 'Registration region',
+            registered_city: 'Registration city',
+            registered_street_address: 'Registration address',
+
+            sole_trader: 'Sole trader',
+            legal_entity: 'Legal entity',
+            individual : 'Individual',
+            full_name: 'Full Name',
+            login_short: 'Login',
+            user_id: 'ID'
+        }
     }
+
 })
 ;

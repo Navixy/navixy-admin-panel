@@ -30,5 +30,39 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             root: 'permissions',
             scope: scope
         });
+    },
+
+    getUsersList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'user',
+            root: 'list',
+            scope: scope
+        });
+    },
+
+    updateUser: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'user',
+            root: 'success'
+        });
+    },
+
+    createUser: function (config) {
+
+        config.params = Ext.apply({
+            time_zone: "Europe/Moscow",
+            locale: "ru_RU",
+            password: 'password'
+        }, config.params);
+
+        this.requestWithOptions(config, {
+            action: 'create',
+            handler: 'user',
+            root: 'id'
+        });
     }
 });

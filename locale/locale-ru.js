@@ -12,9 +12,12 @@ Ext.define('Locale.locale-ru', {
     ],
     singleton: true,
 
+    main_copyright: '© 2005-2014 RusLink. All rights reserved.',
+
     panel_title: 'NavixyPanel v2',
     error: 'Ошибка',
     loading: 'Загрузка...',
+    conneting_loader: 'Соединение с сервером',
 
     access_denied: 'ОШИБКА! ОШИБКА! ДОСТУП ЗАПРЕЩЕН',
     access_denied_tip: 'Вы должны быть уничтожены, выслана бригада роботов&#8209;человекоистребителей',
@@ -100,6 +103,38 @@ Ext.define('Locale.locale-ru', {
         upload_exeption: 'Ошибка загрузки файла',
         no_hash: 'Ключ сессии не найден',
         service_not_respond: 'Сервис временно недоступен'
+    },
+
+    users: {
+        fields: {
+            login: 'Адрес электронной почты',
+            first_name: 'Имя',
+            middle_name: 'Отчество',
+            last_name: 'Фамилия',
+            activated: 'Активность',
+            legal_type: 'Юридический статус',
+            tin: 'ИНН',
+            legal_name: 'Юридическое название',
+            iec: 'КПП',
+            phone: 'Телефон',
+            post_country: 'Страна',
+            post_index: 'Почтовый индекс',
+            post_region: 'Регион',
+            post_city: 'Город',
+            post_street_address: 'Улица, дом, квартира...',
+            registered_country: 'Страна регистрации',
+            registered_index: 'Почтовый индекс регистрации',
+            registered_region: 'Регион регистрации',
+            registered_city: 'Город  регистрации',
+            registered_street_address: 'Улица, дом... регистрации',
+
+            sole_trader: 'Физическое лицо',
+            legal_entity: 'Юридическое лицо',
+            individual : 'Индивидуальный предприниматель',
+            full_name: 'Ф. И. О.',
+            login_short: 'Логин',
+            user_id: 'ID',
+        }
     }
 })
 ;

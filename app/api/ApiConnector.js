@@ -178,6 +178,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
             }, requestParams),
 
             scope = config.scope || this;
+
         try {
 
             Ext.Ajax.request({
@@ -195,7 +196,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                         if (successFn) {
 
                             result.success = me.apiProfiles[apiVersion].isSuccess(result);
-                            successFn.call(scope, rootProperty ? result[rootProperty] : result, requestParams);
+                            successFn.call(scope, rootProperty ? result[rootProperty] : result, requestParams, response);
                         }
 
                     } catch (e) {
@@ -226,7 +227,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                         requiredAction.call(scope, response);
                     }
                     if (failureFn) {
-                        failureFn.call(scope, Ext.decode(response.responseText));
+                        failureFn.call(scope, Ext.decode(response.responseText), requestParams, response);
                     } else {
                         Ext.log('request failure', config);
                     }
@@ -243,7 +244,15 @@ Ext.define('NavixyPanel.api.ApiConnector', {
         var argmts = Array.prototype.slice.call(arguments);
 
         return appendArgs instanceof Array ? argmts.concat(appendArgs) : argmts.push(appendArgs);
+    },
+
+    requestWithOptions: function (main, options) {
+        this.sendRequest(Ext.apply({
+            success: main.callback,
+            errorHandler: main.errorHandler,
+            failure: main.failure,
+            scope: main.scope,
+            params: main.params
+        }, options));
     }
-
-
 });
