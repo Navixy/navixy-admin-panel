@@ -9,6 +9,7 @@ Ext.define('NavixyPanel.controller.Main', {
     errorDelay: 50,
 
     views: [
+        'Viewport',
         'panelUser.authWindow'
     ],
 
@@ -129,7 +130,6 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     onHandlerFound: function (handle) {
-        console.log('onHandlerFound');
         if (
             this.notFoundHandlerErrorDelay
             ) {
@@ -248,7 +248,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
         Ext.API.batch(calls, {
             callback: function (results) {
-
+                console.log('doMainRequest');
                 Ext.getBody().unmask();
                 me.handleResults(results);
             },

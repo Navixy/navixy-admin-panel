@@ -24,6 +24,7 @@ Ext.define('NavixyPanel.view.Viewport', {
                     // TODO: Header here
                     {
                         xtype: 'mainheader',
+                        margin: '0 0 10 0'
                     },
                     {
                         xtype: 'maindesktop',

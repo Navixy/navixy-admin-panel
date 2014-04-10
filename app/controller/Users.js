@@ -9,10 +9,8 @@ Ext.define('NavixyPanel.controller.Users', {
     id: 'UserController',
 
     views: [
-        'users.Test',
-        'users.Test2',
-        'NavixyPanel.view.widgets.CustomPaging',
-        'users.UsersList'
+        'users.UsersList',
+        'users.Test'
     ],
 
     refs: [
@@ -38,9 +36,15 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'user > edit' : {
                 fn: this.handleUserEdit,
-                access: 'update'
+                access: 'delete',
+                ignoreMenu: true
             }
         });
+
+        this.menuConfig = {
+            text: _l.users.menu_text,
+            target: 'users'
+        };
     },
 
     handleUser: function () {
@@ -51,7 +55,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserEdit: function () {
         this.fireContent({
-            xtype: 'utest2'
+            xtype: 'utest'
         });
     },
 

@@ -106,6 +106,7 @@ Ext.define('Locale.locale-en', {
 
     users: {
         fields: {
+            menu_text: 'Users',
             login: 'Email address',
             first_name: 'Name',
             middle_name: 'Patronymic',

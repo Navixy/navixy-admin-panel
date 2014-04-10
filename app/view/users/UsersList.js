@@ -6,6 +6,7 @@
 
 Ext.define('NavixyPanel.view.users.UsersList', {
     extend: 'Ext.grid.Panel',
+    requires: ['NavixyPanel.plugins.pagination.CustomPaging'],
     alias: 'widget.userslist',
     viewConfig: {
         autoScroll: false,
@@ -54,7 +55,7 @@ Ext.define('NavixyPanel.view.users.UsersList', {
                 {
                     text: _l.users.fields.full_name,
                     xtype: 'templatecolumn',
-                    tpl: '{first_name} {last_name} {middle_name}',
+                    tpl: '{last_name} {first_name} {middle_name}',
                     flex: 2
                 },
                 {

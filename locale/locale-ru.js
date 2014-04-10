@@ -19,7 +19,7 @@ Ext.define('Locale.locale-ru', {
     loading: 'Загрузка...',
     conneting_loader: 'Соединение с сервером',
 
-    access_denied: 'ОШИБКА! ОШИБКА! ДОСТУП ЗАПРЕЩЕН',
+    access_denied: 'ОЛЯРМ! ГОЛАКТЕКО ОПАСНОСТИ!!!!!!1',
     access_denied_tip: 'Вы должны быть уничтожены, выслана бригада роботов&#8209;человекоистребителей',
 
     auth: {
@@ -106,6 +106,7 @@ Ext.define('Locale.locale-ru', {
     },
 
     users: {
+        menu_text: 'Пользователи',
         fields: {
             login: 'Адрес электронной почты',
             first_name: 'Имя',

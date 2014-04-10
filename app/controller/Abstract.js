@@ -14,7 +14,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
         this.control({
             'mainviewport': {
                 render: {
-                    fn: this.registerModule,
+                    fn: this.registerMenu,
                     single: true
                 }
             }
@@ -26,6 +26,22 @@ Ext.define('NavixyPanel.controller.Abstract', {
             fn.apply(scope || this, args);
         } else {
             this.application.on('connectionset', Ext.bind(fn, scope || this, args));
+        }
+    },
+
+    registerMenu: function (config) {
+        if (Ext.checkPermission(this.getModuleName()) && this.menuConfig && this.menuConfig.target) {
+
+            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
+
+            var menuText = this.menuConfig.text || this.getModuleName(),
+                menuTarget = Ext.Navigator.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+
+            this.application.fireEvent('menuregister', {
+                name: this.getModuleName(),
+                text: menuText,
+                target: menuTarget
+            });
         }
     },
 
@@ -79,7 +95,15 @@ Ext.define('NavixyPanel.controller.Abstract', {
 
         controller.callHandleFound(eventName);
 
+        if (!origin.ignoreMenu) {
+            controller.callHandleMenu();
+        }
+
         callerConfig.fn.apply(this, args);
+    },
+
+    callHandleMenu: function () {
+        this.application.fireEvent('menuselect', this.getModuleName());
     },
 
     callHandleFound: function (eventName) {
@@ -87,6 +111,16 @@ Ext.define('NavixyPanel.controller.Abstract', {
     },
 
     getHandlerEventConfig: function (name) {
+
+        var path = this.getHandlerEventPath(name),
+            config = Ext.Navigator.genEventConfig(path);
+
+        return config && config.name
+            ? config.name
+            : null;
+    },
+
+    getHandlerEventPath: function (name) {
         var eventPath = name.replace(/\s+/g," ").split(this.handleDelimiter),
             path = {},
             config;
@@ -99,11 +133,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
             path.action = eventPath[1];
         }
 
-        config = Ext.Navigator.genEventConfig(path);
-
-        return config && config.name
-            ? config.name
-            : null;
+        return path;
     },
 
     handleAccessDenied: function () {
@@ -119,13 +149,6 @@ Ext.define('NavixyPanel.controller.Abstract', {
         return Ext.String.uncapitalize(path.pop());
     },
 
-    registerModule: function () {
-        this.waitConnectionReady(function () {
-            if (Ext.checkPermission(this.getModuleName())) {
-                this.application.fireEvent('registgermodule', {name: this.getModuleName()});
-            }
-        });
-    },
 
     fireContent: function (config) {
         this.application.fireEvent('contentchange', config);

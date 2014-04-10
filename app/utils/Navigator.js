@@ -60,6 +60,30 @@ Ext.define('NavixyPanel.utils.Navigator', {
             : null;
     },
 
+    makeToken: function (config) {
+        var parts = [];
+
+        if (config.handler) {
+            parts.push(config.handler);
+
+            if (config.params) {
+                Ext.iterate(config.params, function (param) {
+                    if (Ext.isNumeric(param)) {
+                        parts.push(param)
+                    }
+                }, this);
+            }
+
+            if (config.action) {
+                parts.push(config.action);
+            }
+        }
+
+        return parts.length
+            ? parts.join(this.delimiter)
+            : ''
+    },
+
     getEventConfig: function (path) {
         var parts = path || this.getParts(),
             result

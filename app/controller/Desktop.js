@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     views: [
         'desktop.Header',
+        'desktop.menu.MainMenu',
         'desktop.Desktop',
         'desktop.Footer',
         'desktop.AccessDenied'
@@ -27,6 +28,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
         {
             ref: 'controls',
             selector: 'maincontrols'
+        },
+        {
+            ref: 'mainMenu',
+            selector: 'mainmenu'
         }
     ],
 
@@ -35,6 +40,8 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         this.application.on({
             contentchange   : this.showContent,
+            menuregister    : this.addMainMenuItem,
+            menuselect      : this.onMenuSelect,
             scope: this
         });
     },
@@ -58,5 +65,13 @@ Ext.define('NavixyPanel.controller.Desktop', {
             config = Ext.isObject(cmpConfig) ? Ext.apply(cmpConfig, {role: xtype}) : {xtype: xtype, role: xtype};
 
         return cardContainer.add(config);
+    },
+
+    addMainMenuItem: function (requiest) {
+        this.getMainMenu().addSection(requiest);
+    },
+
+    onMenuSelect: function (requiest) {
+        this.getMainMenu().toggleSectionButton(requiest, true, true);
     }
 });
