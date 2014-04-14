@@ -8,6 +8,8 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     extend: 'Ext.Container',
     alias: 'widget.mainmenu',
 
+    cls: 'main-menu',
+
     hidden: true,
 
     layout: {
@@ -15,10 +17,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
         pack: 'start',
         align: 'middle'
     },
-    padding: '5',
-
-    // TODO: Menu styling
-    style: 'background-color: #60626D',
+    padding: '2 2',
 
     initComponent: function () {
 
@@ -35,15 +34,14 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
 
         return {
             xtype: 'button',
-            ui: 'gray',
-            cls: 'item',
+            scale: 'medium',
             textAlign: 'center',
             allowDepress: false,
             toggleGroup: this.id,
             toggleHandler: this.changeTabButtonHandler,
             scope: this,
-            padding: '5 10 5 10',
-            margin: '5'
+            padding: '5 15',
+            margin: '0 1'
         };
     },
 
@@ -70,7 +68,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             target = btn.sectionTarget;
 
         try {
-            this.toggleSectionButton(section, true);
+            this.toggleSectionButton(section, true, false);
             Ext.Navigator.goTo(target);
         } catch (e) {
             Ext.log(e.stack);
@@ -80,7 +78,17 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     toggleSectionButton: function (section, state, silent) {
+        this.down('button[sectionRole!=' + section + ']').toggle(false, silent);
         this.down('button[sectionRole=' + section + ']').toggle(state, silent);
+    },
+
+    forceToggleSectionButton: function (section) {
+        var curBnt = this.down('button[pressed=true]'),
+            curSection = curBnt ? curBnt.sectionTarget : false;
+
+        if (curSection !== section) {
+            this.toggleSectionButton(section, true, true);
+        }
     },
 
     showMenu: function () {

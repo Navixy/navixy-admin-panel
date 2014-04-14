@@ -14,6 +14,8 @@ Ext.define('NavixyPanel.view.widgets.LocaleCombo', {
     displayField: 'text',
     valueField: 'id',
 
+    editable: false,
+
     initComponent: function () {
 
         if (this.fieldLabel !== false) {

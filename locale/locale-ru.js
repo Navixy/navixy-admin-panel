@@ -27,6 +27,7 @@ Ext.define('Locale.locale-ru', {
         password: 'Пароль',
         login_btn: 'Логин',
         locale_title: 'Язык интерфейса',
+        locale_title_short: 'язык',
         auth_error: 'Ошибка авторизации',
         logout: 'Выйти'
     },
@@ -107,6 +108,7 @@ Ext.define('Locale.locale-ru', {
 
     users: {
         menu_text: 'Пользователи',
+        create_btn: 'Новый пользователь',
         fields: {
             login: 'Адрес электронной почты',
             first_name: 'Имя',
@@ -136,6 +138,10 @@ Ext.define('Locale.locale-ru', {
             login_short: 'Логин',
             user_id: 'ID',
         }
+    },
+
+    trackers: {
+        menu_text: 'Трекеры'
     }
 })
 ;

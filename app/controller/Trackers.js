@@ -23,6 +23,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         });
 
         this.menuConfig = {
+            text: _l.trackers.menu_text,
             target: 'trackers'
         };
     },

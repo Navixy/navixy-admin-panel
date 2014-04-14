@@ -95,11 +95,13 @@ Ext.define('NavixyPanel.controller.Abstract', {
 
         controller.callHandleFound(eventName);
 
-        if (!origin.ignoreMenu) {
-            controller.callHandleMenu();
-        }
+        controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
 
         callerConfig.fn.apply(this, args);
+    },
+
+    callUnHandleMenu: function () {
+        this.application.fireEvent('menudeselect', this.getModuleName());
     },
 
     callHandleMenu: function () {

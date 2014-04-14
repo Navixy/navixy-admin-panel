@@ -18,6 +18,8 @@ Ext.define('NavixyPanel.view.users.UsersList', {
         border: 'none'
     },
 
+    ui: 'light',
+
     store: 'Users',
 
     enableColumnHide: false,
@@ -28,34 +30,27 @@ Ext.define('NavixyPanel.view.users.UsersList', {
 
     initComponent: function () {
 
-        this.bbar = {
-            items: [
-                {
-                    xtype: 'tbfill'
-                },
-                {
-                    xtype: 'custompaging',
-                    store: this.store
-                }
-            ]
-        };
+        var userCardTpl = '<a>{last_name} {first_name} {middle_name}</a>';
 
         this.columns = {
             items: [
                 {
-                    xtype: 'templatecolumn',
-                    tpl: 'edit',
-                    width: 60
+                    xtype: 'toolcolumn',
+                    width: 31,
+                    action: 'edit',
+                    tip: 'edit'
                 },
                 {
                     text: _l.users.fields.user_id,
                     dataIndex: 'id',
-                    width: 60,
+                    width: 60
                 },
                 {
                     text: _l.users.fields.full_name,
                     xtype: 'templatecolumn',
-                    tpl: '{last_name} {first_name} {middle_name}',
+                    tpl: userCardTpl,
+                    dataIndex: 'last_name',
+                    sortable: true,
                     flex: 2
                 },
                 {
@@ -79,6 +74,53 @@ Ext.define('NavixyPanel.view.users.UsersList', {
             }
         };
 
+        this.tbar = {
+            padding: '0 0 10 0',
+            border: 0,
+            ui: 'light',
+            items: [
+                {
+                    xtype: 'button',
+                    iconCls: 'add-button',
+                    text: _l.users.create_btn
+                }
+            ]
+        };
+
+        this.bbar = {
+            items: [
+                {
+                    xtype: 'tbfill'
+                },
+                {
+                    xtype: 'container',
+                    html: Ext.getStore(this.store).count()
+                },
+                {
+                    xtype: 'custompaging',
+                    store: this.store
+                }
+            ]
+        };
+
+        this.addListeners();
+
         this.callParent(arguments);
+    },
+
+    addListeners: function () {
+        this.on('cellclick', this.handleCellClick, this);
+    },
+
+    handleCellClick: function (table, td, cellIndex, record) {
+        var tdEl = Ext.get(td),
+            isTool = tdEl.hasCls('tool-column'),
+            isEdit = isTool && tdEl.hasCls('edit');
+
+        if (isEdit) {
+            this.fireEvent('editclick', record);
+        } else {
+            this.fireEvent('actionclick', record);
+        }
     }
 });

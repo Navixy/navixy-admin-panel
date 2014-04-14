@@ -13,29 +13,51 @@ Ext.define('NavixyPanel.view.desktop.Header', {
         align: 'stretch'
     },
 
+    cls: 'main-header',
+
     initComponent: function () {
 
         this.items = [
             {
                 xtype: 'container',
-                padding: '50 10 10 10',
                 layout: {
                     type: 'hbox',
-                    pack: 'end'
+                    pack: 'end',
+                    align: 'middle'
                 },
+
                 items: [
                     {
-                        xtype: 'localecombo',
-                        fieldLabel: false,
-                        margin: '0 10 0 0'
+                        xtype: 'container',
+                        cls: 'header-logo',
+                        width: 150,
+                        height: 30
                     },
                     {
-                        xtype: 'button',
-                        text: _l.auth.logout,
-                        height: 28,
-                        padding: '0 10 0 10',
-                        ui: 'gray',
-                        role: 'auth-logout'
+                        xtype: 'container',
+                        padding: '40 0 10 10',
+                        flex: 1,
+                        layout: {
+                            type: 'hbox',
+                            pack: 'end'
+                        },
+                        items: [
+                            {
+                                xtype: 'localecombo',
+                                ui: 'light',
+                                fieldLabel: false,
+                                width: 90,
+                                margin: '0 10 0 0'
+                            },
+                            {
+                                xtype: 'button',
+                                text: _l.auth.logout,
+                                height: 28,
+                                padding: '0 10 0 10',
+                                ui: 'gray',
+                                role: 'auth-logout'
+                            }
+                        ]
                     }
                 ]
             },

@@ -6,7 +6,7 @@
 Ext.define('NavixyPanel.api.ApiConnector', {
     requires: ['NavixyPanel.store.ErrorsManager'],
     defaultApiProfile: 'japi',
-    authKeyName: 'session_key',
+    authKeyName: 'panel_session_key',
     timeout: 120000,
     fatalError: false,
 

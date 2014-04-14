@@ -248,7 +248,6 @@ Ext.define('NavixyPanel.controller.Main', {
 
         Ext.API.batch(calls, {
             callback: function (results) {
-                console.log('doMainRequest');
                 Ext.getBody().unmask();
                 me.handleResults(results);
             },

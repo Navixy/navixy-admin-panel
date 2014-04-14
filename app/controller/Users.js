@@ -9,7 +9,10 @@ Ext.define('NavixyPanel.controller.Users', {
     id: 'UserController',
 
     views: [
+        'widgets.ToolColumn',
+
         'users.UsersList',
+        'users.UserCreate',
         'users.Test'
     ],
 
@@ -25,7 +28,8 @@ Ext.define('NavixyPanel.controller.Users', {
 
         this.control({
             'userslist': {
-                cellclick: this.handleListAction
+                actionclick: this.handleListAction,
+                editclick: this.handleUserEditAction
             }
         });
 
@@ -34,9 +38,17 @@ Ext.define('NavixyPanel.controller.Users', {
                 fn: this.handleUser,
                 access: 'read'
             },
+            'user' : {
+                fn: this.handleUserCard,
+                access: 'read'
+            },
             'user > edit' : {
                 fn: this.handleUserEdit,
-                access: 'delete',
+                access: 'read'
+            },
+            'user > create' : {
+                fn: this.handleUserCreate,
+                access: 'create',
                 ignoreMenu: true
             }
         });
@@ -55,12 +67,32 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserEdit: function () {
         this.fireContent({
+            xtype: 'utest2'
+        });
+    },
+
+    handleUserCard: function () {
+        this.fireContent({
             xtype: 'utest'
         });
     },
 
+    handleUserCreate: function () {
+        this.fireContent({
+            xtype: 'usercreate'
+        });
+    },
 
-    handleListAction: function () {
-        console.log(arguments);
+
+
+    handleListAction: function (record) {
+        var userId = record.getId();
+        Ext.Navigator.goTo('user/' + userId);
+    },
+
+    handleUserEditAction: function (record) {
+        var userId = record.getId();
+
+        Ext.Navigator.goTo('user/' + userId + '/edit');
     }
 });

@@ -25,6 +25,7 @@ Ext.define('Locale.locale-en', {
         password: 'Password',
         login_btn: 'Login',
         locale_title: 'Interface language',
+        locale_title_short: 'language',
         auth_error: 'Authentication error',
         logout: 'Logout'
     },
@@ -105,6 +106,8 @@ Ext.define('Locale.locale-en', {
     },
 
     users: {
+        menu_text: 'Users',
+        create_btn: 'New user',
         fields: {
             menu_text: 'Users',
             login: 'Email address',

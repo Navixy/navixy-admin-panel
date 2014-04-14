@@ -2,3 +2,6 @@ syntax: regexp
 .idea/*
 theme/metromorph/*
 app/api/_proxy/*
+ext/*
+syntax: glob
+theme/panel_metromorph/.sass-cache/

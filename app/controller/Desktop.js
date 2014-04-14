@@ -42,8 +42,13 @@ Ext.define('NavixyPanel.controller.Desktop', {
             contentchange   : this.showContent,
             menuregister    : this.addMainMenuItem,
             menuselect      : this.onMenuSelect,
+            menudeselect    : this.onMenuDeselect,
             scope: this
         });
+    },
+
+    onMenuDeselect: function () {
+        this.getMainMenu().unToggleAll()
     },
 
     showContent: function (cmpConfig) {
@@ -72,6 +77,6 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onMenuSelect: function (requiest) {
-        this.getMainMenu().toggleSectionButton(requiest, true, true);
+        this.getMainMenu().forceToggleSectionButton(requiest);
     }
 });
