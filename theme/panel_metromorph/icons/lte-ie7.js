@@ -1,0 +1,137 @@
+/* Load this script using conditional IE comments if you need to support IE 7 and IE 6. */
+
+window.onload = function() {
+	function addIcon(el, entity) {
+		var html = el.innerHTML;
+		el.innerHTML = '<span style="font-family: \'metromorph\'">' + entity + '</span>' + html;
+	}
+	var icons = {
+			'icon-link' : '&#xf0c1;',
+			'icon-share-translate' : '&#xe04a;',
+			'icon-cogs' : '&#xf085;',
+			'icon-phone' : '&#xf095;',
+			'icon-megaphone' : '&#xe018;',
+			'icon-geofence' : '&#xe03a;',
+			'icon-schedule' : '&#xe03b;',
+			'icon-pause' : '&#xe03c;',
+			'icon-new-tracker' : '&#xe03d;',
+			'icon-save' : '&#xe03e;',
+			'icon-cancel' : '&#xe03f;',
+			'icon-feedback' : '&#xe040;',
+			'icon-gear' : '&#xe041;',
+			'icon-camera' : '&#xe042;',
+			'icon-feedback2' : '&#xe043;',
+			'icon-help' : '&#xe044;',
+			'icon-battery' : '&#xe045;',
+			'icon-battery-low' : '&#xe046;',
+			'icon-graph' : '&#xe048;',
+			'icon-close-bold' : '&#xe049;',
+			'icon-copy' : '&#xf0c5;',
+			'icon-compass' : '&#xe037;',
+			'icon-gauge' : '&#xe02d;',
+			'icon-bell' : '&#xe02c;',
+			'icon-history' : '&#xe02b;',
+			'icon-bookmark' : '&#xe026;',
+			'icon-info' : '&#xe025;',
+			'icon-earth' : '&#xe022;',
+			'icon-share' : '&#xe021;',
+			'icon-pencil' : '&#xe01e;',
+			'icon-location-2' : '&#xe01b;',
+			'icon-folder-open' : '&#xe017;',
+			'icon-coin' : '&#xe016;',
+			'icon-contract' : '&#xe015;',
+			'icon-expand' : '&#xe014;',
+			'icon-gsm_signal' : '&#xe006;',
+			'icon-globe' : '&#xe007;',
+			'icon-fuel' : '&#xe000;',
+			'icon-traffic' : '&#xe001;',
+			'icon-ruler' : '&#xe002;',
+			'icon-minimap' : '&#xe003;',
+			'icon-last-update' : '&#xe005;',
+			'icon-angle-right' : '&#xe00d;',
+			'icon-close' : '&#xe011;',
+			'icon-zoom-in' : '&#xe01c;',
+			'icon-track' : '&#xe01d;',
+			'icon-zoom-out' : '&#xe019;',
+			'icon-pushpin-up' : '&#xe01f;',
+			'icon-pushpin-down' : '&#xe020;',
+			'icon-satellite' : '&#xe023;',
+			'icon-tiny-add' : '&#xe024;',
+			'icon-right' : '&#xe027;',
+			'icon-left' : '&#xe028;',
+			'icon-top' : '&#xe029;',
+			'icon-down' : '&#xe02a;',
+			'icon-two-rows' : '&#xe02f;',
+			'icon-two-columns' : '&#xe030;',
+			'icon-card' : '&#xe032;',
+			'icon-four-cells' : '&#xe02e;',
+			'icon-sorter-asc' : '&#xe031;',
+			'icon-sorter-group' : '&#xe033;',
+			'icon-sorter-mark' : '&#xe034;',
+			'icon-sorter-status' : '&#xe035;',
+			'icon-remove' : '&#xe036;',
+			'icon-sorter' : '&#xe038;',
+			'icon-groups' : '&#xe004;',
+			'icon-exit' : '&#xe010;',
+			'icon-add' : '&#xe008;',
+			'icon-level' : '&#xe009;',
+			'icon-bars' : '&#xe00a;',
+			'icon-eye-open' : '&#xf06e;',
+			'icon-layout' : '&#xe00b;',
+			'icon-plus' : '&#xe00c;',
+			'icon-location' : '&#xe00e;',
+			'icon-play' : '&#xe00f;',
+			'icon-star' : '&#xe012;',
+			'icon-settings' : '&#xe013;',
+			'icon-angle-left' : '&#xe039;',
+			'icon-user' : '&#xe01a;',
+			'icon-eye-close' : '&#xf070;',
+			'icon-spinner' : '&#xe04c;',
+			'icon-battery-empty' : '&#xe047;',
+			'icon-target' : '&#xe04d;',
+			'icon-eraser' : '&#xf12d;',
+			'icon-coolant_tempreture' : '&#xe04e;',
+			'icon-battery-12v' : '&#xe050;',
+			'icon-events-message' : '&#xe051;',
+			'icon-accelerate' : '&#xe053;',
+			'icon-lightning' : '&#xe054;',
+			'icon-temperature' : '&#xe055;',
+			'icon-sos' : '&#xe056;',
+			'icon-check-engine' : '&#xe04f;',
+			'icon-check-engine-crossed' : '&#xe052;',
+			'icon-speed' : '&#xf017;',
+			'icon-rpm' : '&#xf006;',
+			'icon-statbars' : '&#xe058;',
+			'icon-zone-square' : '&#xe059;',
+			'icon-zone-circle' : '&#xe05a;',
+			'icon-zone-polygon' : '&#xe05b;',
+			'icon-zone-line' : '&#xe05c;',
+			'icon-drag' : '&#xe05d;',
+			'icon-filter' : '&#xe057;',
+			'icon-cogs-2' : '&#xe05e;',
+			'icon-upload' : '&#xe04b;',
+			'icon-google-earth' : '&#xe060;',
+			'icon-add-group' : '&#xe05f;',
+			'icon-event-rules' : '&#xe061;',
+			'icon-gear-crossed' : '&#xe062;',
+			'icon-layers' : '&#xe063;',
+			'icon-download' : '&#xe064;'
+		},
+		els = document.getElementsByTagName('*'),
+		i, attr, c, el;
+	for (i = 0; ; i += 1) {
+		el = els[i];
+		if(!el) {
+			break;
+		}
+		attr = el.getAttribute('data-icon');
+		if (attr) {
+			addIcon(el, attr);
+		}
+		c = el.className;
+		c = c.match(/icon-[^\s'"]+/);
+		if (c && icons[c[0]]) {
+			addIcon(el, icons[c[0]]);
+		}
+	}
+};

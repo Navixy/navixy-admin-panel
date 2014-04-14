@@ -1,0 +1,155 @@
+/*NOTE: sass --watch --compass compass/sass/app.scss:app.css --style compressed*/
+
+/*Variables and mixins*/
+$theme_name: 'metromorph';
+
+$img_dir: $theme_name+'/images';
+$wallpaper_dir: $theme_name+'/wallpapers';
+$global_wallpaper: $wallpaper_dir+'/wp5.jpg';
+$button_font_size: 12px;
+//$font-family: "Segoe UI", Frutiger, "Frutiger Linotype" , "dejavu sans", "helvetica neue", arial;
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,cyrillic);
+//@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,600&subset=latin,cyrillic);
+$font-family: 'Open Sans';
+
+$black: #000;
+$grayDarker: #333;
+$grayDark: #444;
+$gray: #7B7F8B;
+$grayLight: #999;
+$grayer: #c0c0c0;
+$grayLighter: #E0E0E0;
+$lightSmoke: #f0f0f0;
+$white: #fff;
+$ghosty: #F5F5F5;
+
+//  colors
+$blue: #049cdb;
+$blueDark: #0064cd;
+$green: #71B522;
+$red: #9d261d;
+$yellow: #ffc40d;
+$orange: #f89406;
+$pink: #c3325f;
+$purple: #7a43b6;
+
+$headers-color: #444;
+$header-bg-color: #464b4c;
+
+$invalid-color: #FF3333;
+
+//theme options
+$wrapper-control-panel-bg-color: rgba(96, 98, 110, 0.8);
+$wrapper-control-panel-collapsed-bg-color: rgba(0, 0, 0, 0);
+$baseElementColor: #60626D;
+$baseFontColor: #4B4B4B;
+$baseElementFontColor: #aaa;
+$baseElementFontColorActive: #fff;
+$toolbarBg: #E5E5E5;
+$main-color: #27A9E3;
+$normal-color: #555;
+
+@import "icons/iconMoon.scss";
+
+@import "compass";
+@import "libs/glide/glide";
+@import "libs/tour/introjs";
+@import "libs/tour/tour";
+
+@import "control";
+@import "mixins/app";
+@import "mixins/wrapper";
+@import "mixins/base";
+@import "mixins/configuration";
+@import "mixins/online";
+@import "mixins/history";
+@import "mixins/map";
+
+@import "overrides/ext-theme-metromorph-all-debug";
+@import "overrides/ext-cmps/menuitem";
+@import "overrides/ext-cmps/grid";
+@import "overrides/ext-cmps/buttons";
+@import "overrides/ext-cmps/errors";
+@import "overrides/ext-cmps/progressbar";
+@import "overrides/ext-cmps/panel";
+@import "overrides/ext-cmps/spotlight";
+@import "overrides/ext-cmps/datepicker";
+@import "overrides/ext-cmps/accordion";
+@import "overrides/ext-cmps/fields";
+
+@import "components/base/widgets/scrollbars";
+@import "components/base/widgets/buttons";
+@import "components/base/widgets/circlebutton";
+@import "components/base/widgets/quick_messages";
+@import "components/base/widgets/segment_indicator";
+@import "components/base/widgets/picker";
+@import "components/base/widgets/triggerfield";
+@import "components/base/widgets/live-search";
+@import "components/base/widgets/service_notices";
+@import "components/base/widgets/weektime";
+@import "components/base/widgets/searcher";
+@import "components/base/widgets/textfield";
+@import "components/base/widgets/charts";
+@import "components/base/widgets/toggleslide";
+@import "components/base/widgets/progressbar";
+@import "components/base/widgets/mask";
+
+@import "components/base/options-panel";
+@import "components/base/base-components";
+@import "components/base/trackers-list";
+@import "components/base/color-button";
+@import "components/base/info-panel";
+@import "components/base/group-combo";
+
+@import "components/wrapper/desktop";
+@import "components/wrapper/application-menu";
+@import "components/wrapper/application-tools";
+@import "components/wrapper/newapp";
+@import "components/wrapper/short-cut-menu";
+@import "components/wrapper/pager";
+
+@import "components/map/map-panel";
+@import "components/map/map-tools";
+@import "components/map/zones-list";
+@import "components/map/map-leaflet";
+
+@import "components/online/trackers-list";
+@import "components/online/trackers-info-panel";
+
+@import "components/history/history-list";
+@import "components/history/result-list";
+@import "components/history/options-panel";
+@import "components/history/result-info-panel";
+@import "components/history/map-panel";
+
+@import "components/history/tracks/tracks-list";
+@import "components/history/events/events-list";
+@import "components/history/events/events-options";
+@import "components/history/events/events-info-panel";
+
+@import "components/configuration/desktop";
+@import "components/configuration/trackers-list";
+
+@import "components/configuration/portlets/portlet";
+@import "components/configuration/portlets/main";
+@import "components/configuration/portlets/group";
+@import "components/configuration/portlets/tariff";
+@import "components/configuration/portlets/tracking";
+@import "components/configuration/portlets/trusted-numbers";
+@import "components/configuration/portlets/sensors";
+@import "components/configuration/portlets/retranslators";
+
+@import "components/registration/wizard";
+@import "components/user/frame";
+@import "components/user/transactions";
+
+@import "components/rules/rules-panels";
+@import "components/rules/rules-list";
+@import "components/rules/zones-list";
+
+@import "components/mix/trackers-list";
+@import "components/mix/mixed-settings";
+@import "components/mix/options-panel";
+
+@import "components/reports/reports";

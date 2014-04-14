@@ -1,0 +1,52 @@
+.main-color-bg {
+    background-color: $main-color;
+}
+
+.main-color-border-color {
+    border-color: $main-color;
+}
+
+.main-color-font {
+    color: $main-color;
+}
+
+.base-color-bg {
+    background-color: $baseElementColor;
+}
+
+.base-color-bg-important {
+    background-color: $baseElementColor !important;
+}
+
+.base-color-border {
+    border-color: $baseElementColor;
+}
+
+.base-font-color {
+    color: $baseElementFontColor;
+}
+
+.base-font-color-active {
+    color: $baseElementFontColorActive;
+}
+
+.base-font-color-border {
+    border-color: $baseElementFontColor;
+}
+
+.base-font-color-active-border {
+    border-color: $baseElementFontColorActive;
+}
+
+.base-font-color-bg {
+    background-color: $baseElementFontColor;
+}
+
+.base-font-color-active-bg {
+    background-color: $baseElementFontColorActive;
+}
+
+.normal-font-color {
+    color: $normal-color;
+}
+

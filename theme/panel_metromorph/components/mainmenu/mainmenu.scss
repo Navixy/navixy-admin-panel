@@ -1,0 +1,25 @@
+$main-menu-bg-color: $baseElementActiveColor;
+
+$main-menu-btn-bg-color: $main-menu-bg-color;
+$main-menu-btn-pressed-bg-color: $baseElementColor;
+$main-menu-btn-over-bg-color: lighten($main-menu-btn-pressed-bg-color, 10%);
+
+.main-menu {
+
+    background-color: $main-menu-bg-color;
+
+    .x-btn {
+
+        background-color: $main-menu-btn-bg-color;
+        border-color: $main-menu-btn-bg-color;
+
+        &.x-pressed{
+            background-color: $main-menu-btn-pressed-bg-color !important;
+            border-color: $main-menu-btn-pressed-bg-color !important
+        }
+
+        &.x-over{
+            background-color: $main-menu-btn-over-bg-color;
+        }
+    }
+}

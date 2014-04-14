@@ -1,0 +1,60 @@
+/*NOTE: sass --watch --compass compass/sass/app.scss:app.css --style compressed*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,cyrillic);
+
+/*Variables and mixins*/
+$theme_name: 'panel_metromorph';
+
+$img_dir: $theme_name+'/images';
+$button_font_size: 12px;
+
+$font-family: 'Open Sans';
+
+$black: #000;
+$grayDarker: #333;
+$grayDark: #444;
+$gray: #7B7F8B;
+$grayLight: #999;
+$smoke: #AEB0B9;
+$grayer: #c0c0c0;
+$grayLighter: #E0E0E0;
+$lightSmoke: #f0f0f0;
+$white: #fff;
+$ghosty: #F5F5F5;
+
+//  colors
+$blue: #049cdb;
+$blueDark: #0064cd;
+$green: #66C011;
+$red: #9d261d;
+$yellow: #ffc40d;
+$orange: #f89406;
+$pink: #c3325f;
+$purple: #7a43b6;
+$link: #0F5491;
+
+$headers-color: #444;
+$header-bg-color: #464b4c;
+
+$invalid-color: #FF3333;
+$baseElementColor: #60626D;
+$baseElementActiveColor: #9496A1;
+$baseFontColor: #4B4B4B;
+$baseElementFontColor: #aaa;
+$baseElementFontColorActive: #fff;
+$main-color: #27A9E3;
+$normal-color: #555;
+
+@import "icons/iconMoon.scss";
+
+@import "compass";
+
+@import "overrides/ext-theme-metromorph-all-debug";
+@import "overrides/ext-cmps/component";
+@import "overrides/ext-cmps/grid";
+@import "overrides/ext-cmps/panel";
+@import "overrides/ext-cmps/fields";
+
+@import "components/mainmenu/mainmenu";
+@import "components/desktop/header";
+
+@import "components/widgets/buttons";

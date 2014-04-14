@@ -1,0 +1,134 @@
+$defaultSizeFormBtnIcon: 16px;
+
+@mixin glyph-button {
+    left: 2px;
+    color: $white;
+    font-size: $defaultSizeFormBtnIcon;
+}
+
+.x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
+    line-height: $defaultSizeFormBtnIcon + 4;
+    padding-left: $defaultSizeFormBtnIcon + 10;
+}
+
+.x-btn-default-toolbar-medium-icon-text-left .x-btn-icon-el {
+    line-height: $defaultSizeFormBtnIcon + 4;
+}
+
+.add-button {
+    @extend .icon-plus;
+    @include glyph-button;
+}
+
+.add-group-button {
+    @extend .icon-add-group;
+    @include glyph-button;
+}
+
+.edit-button {
+    @extend .icon-pencil;
+    @include glyph-button;
+}
+
+.remove-button {
+    @extend .icon-remove;
+    @include glyph-button;
+}
+
+.link-button {
+    @extend .icon-link;
+    @include glyph-button;
+}
+
+.pause-button {
+    @extend .icon-pause;
+    @include glyph-button;
+}
+
+.play-button {
+    @extend .icon-play;
+    @include glyph-button;
+}
+
+.show-empty-button {
+    @extend .icon-eye-open;
+    @include glyph-button;
+}
+
+.hide-empty-button {
+    @extend .icon-eye-close;
+    @include glyph-button;
+}
+
+.select-all-button {
+    .checkbox {
+        &.x-btn-icon-el {
+            background-position: 0 0;
+        }
+
+        width: 15px !important;
+        height: 15px !important;
+        @extend .x-form-checkbox;
+    }
+
+    &.x-checked {
+        .checkbox {
+            background-position: 0 -15px;
+        }
+    }
+}
+
+.config {
+    font-size: 18px;
+    color: white;
+    border: 1px solid white;
+    padding: 6px;
+    cursor: pointer;
+
+    @include border-radius(100%);
+    @extend .icon-settings;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.copy-tool {
+    @extend .base-font-color-active;
+    @extend .icon-copy;
+    opacity: 0.6;
+}
+
+.x-tool.gear {
+    @extend .base-font-color-active;
+    @extend .icon-cogs;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.x-tool.help-tool {
+    @extend .base-font-color-active;
+    @extend .icon-help;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.x-tool.delete {
+    @extend .base-font-color-active;
+    @extend .icon-remove;
+    font-size: 16px;
+    padding-left: 4px;
+    opacity: 0.6;
+}
+
+.left-button {
+    @extend .base-font-color;
+    @extend .icon-angle-left;
+    font-size: 16px;
+}
+
+.right-button {
+    @extend .base-font-color;
+    @extend .icon-angle-right;
+    font-size: 16px;
+}

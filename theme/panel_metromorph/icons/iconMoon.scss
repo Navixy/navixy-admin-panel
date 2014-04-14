@@ -1,0 +1,370 @@
+@font-face {
+	font-family: 'metromorph';
+	src:url('fonts/metromorph.eot');
+	src: url($theme_name + '/icons/fonts/metromorph.svg#metromorph') format('svg'),
+        url($theme_name + '/icons/fonts/metromorph.eot?#iefix') format('embedded-opentype'),
+        url($theme_name + '/icons/fonts/metromorph.woff') format('woff'),
+        url($theme_name + '/icons/fonts/metromorph.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'metromorph';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-link, .icon-share-translate, .icon-cogs, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .icon-new-tracker, .icon-save, .icon-cancel, .icon-feedback, .icon-gear, .icon-camera, .icon-feedback2, .icon-help, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .icon-angle-right, .icon-close, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .icon-layout, .icon-plus, .icon-location, .icon-play, .icon-star, .icon-settings, .icon-angle-left, .icon-user, .icon-eye-close, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
+	font-family: 'metromorph';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-link:before {
+	content: "\f0c1";
+}
+.icon-share-translate:before {
+	content: "\e04a";
+}
+.icon-cogs:before {
+	content: "\f085";
+}
+.icon-phone:before {
+	content: "\f095";
+}
+.icon-megaphone:before {
+	content: "\e018";
+}
+.icon-geofence:before {
+	content: "\e03a";
+}
+.icon-schedule:before {
+	content: "\e03b";
+}
+.icon-pause:before {
+	content: "\e03c";
+}
+.icon-new-tracker:before {
+	content: "\e03d";
+}
+.icon-save:before {
+	content: "\e03e";
+}
+.icon-cancel:before {
+	content: "\e03f";
+}
+.icon-feedback:before {
+	content: "\e040";
+}
+.icon-gear:before {
+	content: "\e041";
+}
+.icon-camera:before {
+	content: "\e042";
+}
+.icon-feedback2:before {
+	content: "\e043";
+}
+.icon-help:before {
+	content: "\e044";
+}
+.icon-battery:before {
+	content: "\e045";
+}
+.icon-battery-low:before {
+	content: "\e046";
+}
+.icon-graph:before {
+	content: "\e048";
+}
+.icon-close-bold:before {
+	content: "\e049";
+}
+.icon-copy:before {
+	content: "\f0c5";
+}
+.icon-compass:before {
+	content: "\e037";
+}
+.icon-gauge:before {
+	content: "\e02d";
+}
+.icon-bell:before {
+	content: "\e02c";
+}
+.icon-history:before {
+	content: "\e02b";
+}
+.icon-bookmark:before {
+	content: "\e026";
+}
+.icon-info:before {
+	content: "\e025";
+}
+.icon-earth:before {
+	content: "\e022";
+}
+.icon-share:before {
+	content: "\e021";
+}
+.icon-pencil:before {
+	content: "\e01e";
+}
+.icon-location-2:before {
+	content: "\e01b";
+}
+.icon-folder-open:before {
+	content: "\e017";
+}
+.icon-coin:before {
+	content: "\e016";
+}
+.icon-contract:before {
+	content: "\e015";
+}
+.icon-expand:before {
+	content: "\e014";
+}
+.icon-gsm_signal:before {
+	content: "\e006";
+}
+.icon-globe:before {
+	content: "\e007";
+}
+.icon-fuel:before {
+	content: "\e000";
+}
+.icon-traffic:before {
+	content: "\e001";
+}
+.icon-ruler:before {
+	content: "\e002";
+}
+.icon-minimap:before {
+	content: "\e003";
+}
+.icon-last-update:before {
+	content: "\e005";
+}
+.icon-angle-right:before {
+	content: "\e00d";
+}
+.icon-close:before {
+	content: "\e011";
+}
+.icon-zoom-in:before {
+	content: "\e01c";
+}
+.icon-track:before {
+	content: "\e01d";
+}
+.icon-zoom-out:before {
+	content: "\e019";
+}
+.icon-pushpin-up:before {
+	content: "\e01f";
+}
+.icon-pushpin-down:before {
+	content: "\e020";
+}
+.icon-satellite:before {
+	content: "\e023";
+}
+.icon-tiny-add:before {
+	content: "\e024";
+}
+.icon-right:before {
+	content: "\e027";
+}
+.icon-left:before {
+	content: "\e028";
+}
+.icon-top:before {
+	content: "\e029";
+}
+.icon-down:before {
+	content: "\e02a";
+}
+.icon-two-rows:before {
+	content: "\e02f";
+}
+.icon-two-columns:before {
+	content: "\e030";
+}
+.icon-card:before {
+	content: "\e032";
+}
+.icon-four-cells:before {
+	content: "\e02e";
+}
+.icon-sorter-asc:before {
+	content: "\e031";
+}
+.icon-sorter-group:before {
+	content: "\e033";
+}
+.icon-sorter-mark:before {
+	content: "\e034";
+}
+.icon-sorter-status:before {
+	content: "\e035";
+}
+.icon-remove:before {
+	content: "\e036";
+}
+.icon-sorter:before {
+	content: "\e038";
+}
+.icon-groups:before {
+	content: "\e004";
+}
+.icon-exit:before {
+	content: "\e010";
+}
+.icon-add:before {
+	content: "\e008";
+}
+.icon-level:before {
+	content: "\e009";
+}
+.icon-bars:before {
+	content: "\e00a";
+}
+.icon-eye-open:before {
+	content: "\f06e";
+}
+.icon-layout:before {
+	content: "\e00b";
+}
+.icon-plus:before {
+	content: "\e00c";
+}
+.icon-location:before {
+	content: "\e00e";
+}
+.icon-play:before {
+	content: "\e00f";
+}
+.icon-star:before {
+	content: "\e012";
+}
+.icon-settings:before {
+	content: "\e013";
+}
+.icon-angle-left:before {
+	content: "\e039";
+}
+.icon-user:before {
+	content: "\e01a";
+}
+.icon-eye-close:before {
+	content: "\f070";
+}
+.icon-spinner:before {
+	content: "\e04c";
+}
+.icon-battery-empty:before {
+	content: "\e047";
+}
+.icon-target:before {
+	content: "\e04d";
+}
+.icon-eraser:before {
+	content: "\f12d";
+}
+.icon-coolant_tempreture:before {
+	content: "\e04e";
+}
+.icon-battery-12v:before {
+	content: "\e050";
+}
+.icon-events-message:before {
+	content: "\e051";
+}
+.icon-accelerate:before {
+	content: "\e053";
+}
+.icon-lightning:before {
+	content: "\e054";
+}
+.icon-temperature:before {
+	content: "\e055";
+}
+.icon-sos:before {
+	content: "\e056";
+}
+.icon-check-engine:before {
+	content: "\e04f";
+}
+.icon-check-engine-crossed:before {
+	content: "\e052";
+}
+.icon-speed:before {
+	content: "\f017";
+}
+.icon-rpm:before {
+	content: "\f006";
+}
+.icon-statbars:before {
+	content: "\e058";
+}
+.icon-zone-square:before {
+	content: "\e059";
+}
+.icon-zone-circle:before {
+	content: "\e05a";
+}
+.icon-zone-polygon:before {
+	content: "\e05b";
+}
+.icon-zone-line:before {
+	content: "\e05c";
+}
+.icon-drag:before {
+	content: "\e05d";
+}
+.icon-filter:before {
+	content: "\e057";
+}
+.icon-cogs-2:before {
+	content: "\e05e";
+}
+.icon-upload:before {
+	content: "\e04b";
+}
+.icon-google-earth:before {
+	content: "\e060";
+}
+.icon-add-group:before {
+	content: "\e05f";
+}
+.icon-event-rules:before {
+	content: "\e061";
+}
+.icon-gear-crossed:before {
+	content: "\e062";
+}
+.icon-layers:before {
+	content: "\e063";
+}
+.icon-download:before {
+	content: "\e064";
+}
