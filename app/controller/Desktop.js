@@ -48,7 +48,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onMenuDeselect: function () {
-        this.getMainMenu().unToggleAll()
+        this.getMainMenu().unToggleAll();
     },
 
     showContent: function (cmpConfig) {

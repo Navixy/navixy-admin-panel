@@ -14336,7 +14336,7 @@ body.x-nbr .x-btn-plain-toolbar-large {
   padding: 14px 9px 14px 9px; }
 
 /* line 137, ../../packages/ext-theme-neutral/sass/src/panel/Panel.scss */
-.x-panel-header-text-container-light {
+.x-panel-header-text-container-light, .x-panel-body .block_header {
   color: #666666;
   font-size: 13px;
   font-weight: bold;
@@ -22286,6 +22286,29 @@ a {
 .x-tip-body-default {
   padding: 5px 10px; }
 
+.x-form-trigger-input-cell .field-postfix {
+  color: #333333; }
+
+.x-field-light .x-form-trigger-wrap {
+  border: 1px solid silver; }
+.x-field-light .x-form-trigger-wrap-focus .x-form-trigger-wrap {
+  border-color: #27a9e3; }
+.x-field-light .x-form-item-label {
+  font-size: 13px;
+  line-height: 28px;
+  color: #4b4b4b; }
+.x-field-light .x-form-field {
+  border-color: silver; }
+.x-field-light .x-form-focus {
+  border-color: #27a9e3; }
+.x-field-light .x-form-invalid-field {
+  border-color: #ff3333 !important; }
+.x-field-light .x-form-invalid-under {
+  padding: 2px 2px 5px 5px;
+  color: #ff3333;
+  font-size: 11px;
+  line-height: 16px; }
+
 .x-grid .x-column-header-checkbox .x-column-header-text {
   margin: 0; }
 .x-grid .x-column-header-checkbox .x-column-header-inner {
@@ -22315,9 +22338,9 @@ a {
       opacity: 1; }
 
 .x-grid-row .x-grid-cell {
-  border-color: white;
+  border-color: #fdfdfd;
   border-top-color: #f0f0f0;
-  background-color: white;
+  background-color: #fdfdfd;
   font-size: 13px; }
   .x-grid-row .x-grid-cell.tool-column {
     cursor: pointer; }
@@ -22340,29 +22363,31 @@ a {
 
 .x-panel-light {
   background-color: transparent; }
+  .x-panel-light .x-toolbar-footer {
+    background-color: #ebebeb; }
 
 .x-toolbar-light {
   background-color: transparent; }
 
-.x-form-trigger-input-cell .field-postfix {
-  color: #333333; }
+.x-panel-header-light {
+  background-color: #ebebeb; }
 
-.x-field-light .x-form-trigger-wrap {
-  border: 1px solid silver; }
+.x-panel-header-text-container-light, .x-panel-body .block_header {
+  color: #4b4b4b;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+  padding: 0;
+  text-transform: none; }
 
-.main-menu {
-  background-color: #9496a1; }
-  .main-menu .x-btn {
-    background-color: #9496a1;
-    border-color: #9496a1; }
-    .main-menu .x-btn.x-pressed {
-      background-color: #60626d !important;
-      border-color: #60626d !important; }
-    .main-menu .x-btn.x-over {
-      background-color: #787a88; }
-
-.main-header .header-logo {
-  background-image: url("panel_metromorph/images/navixy-logo.png"); }
+.x-panel-body-light {
+  background: transparent;
+  border-color: transparent;
+  color: #4b4b4b;
+  font-size: 13px;
+  font-size: normal;
+  border-width: 1px;
+  border-style: solid; }
 
 .x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
   line-height: 20px;
@@ -22460,3 +22485,23 @@ a {
 
 .right-button {
   font-size: 16px; }
+
+.main-menu {
+  background-color: #9496a1; }
+  .main-menu .x-btn {
+    background-color: #9496a1;
+    border-color: #9496a1; }
+    .main-menu .x-btn.x-pressed {
+      background-color: #60626d !important;
+      border-color: #60626d !important; }
+    .main-menu .x-btn.x-over {
+      background-color: #787a88; }
+
+.main-header .header-logo {
+  background-image: url("panel_metromorph/images/navixy-logo.png"); }
+
+.x-panel-body {
+  background-color: #fdfdfd; }
+  .x-panel-body .block_header {
+    color: #4b4b4b;
+    font-size: 15px; }

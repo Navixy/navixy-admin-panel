@@ -4,7 +4,7 @@
  * Description
  */
 
-Ext.define('NavixyPanel.view.widgets.LocaleCombo', {
+Ext.define('NavixyPanel.view.widgets.fields.LocaleCombo', {
     extend: 'Ext.form.field.ComboBox',
     alias: 'widget.localecombo',
 

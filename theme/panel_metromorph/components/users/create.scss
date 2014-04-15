@@ -1,0 +1,14 @@
+$users-create-panel-bg-color: lighten($baseBackgroundColor, 5%);
+
+$users-create-block-header-font-size: 15px;
+
+.x-panel-body {
+
+    background-color: $users-create-panel-bg-color;
+
+    .block_header {
+        color: $light-panel-text-color;
+        font-size: $users-create-block-header-font-size;
+        @extend .x-panel-header-text-container-light;
+    }
+}

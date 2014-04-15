@@ -7,7 +7,7 @@
 Ext.define('NavixyPanel.view.desktop.Header', {
     extend: 'Ext.Container',
     alias: 'widget.mainheader',
-    requires: ['NavixyPanel.view.widgets.LocaleCombo'],
+    requires: ['NavixyPanel.view.widgets.fields.LocaleCombo'],
     layout: {
         type: 'vbox',
         align: 'stretch'

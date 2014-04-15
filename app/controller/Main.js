@@ -37,7 +37,7 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     ],
 
-    stores: ['Permissions', 'Users'],
+    stores: ['Permissions', 'Users', 'Dealer', 'TimeZones'],
     models: ['Permissions', 'User'],
 
     init: function () {
@@ -242,7 +242,7 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getUsersList'];
+            calls = ['getUsersList', 'getTimeZones', 'getDealerInfo'];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -262,14 +262,17 @@ Ext.define('NavixyPanel.controller.Main', {
 
     handleResults: function (results) {
         Ext.iterate({
-            'getUsersList': 'Users'
+            'getUsersList': 'Users',
+            'getTimeZones': 'TimeZones',
+            'getDealerInfo': 'Dealer'
         }, function (action, store) {
 
             try {
-                var storeInstance = Ext.getStore(store);
+                var storeInstance = Ext.getStore(store),
+                    list = Ext.isArray(results[action]) ? results[action] : [results[action]];
 
                 storeInstance.storeLoaded = true;
-                storeInstance.loadData(results[action]);
+                storeInstance.loadData(list);
             } catch (e) {
                 Ext.log('result handler error', e.stack);
             }

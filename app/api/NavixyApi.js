@@ -32,6 +32,16 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getDealerInfo: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'get_info',
+            handler: 'dealer',
+            scope: scope
+        });
+    },
+
     getUsersList: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,
@@ -52,17 +62,24 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
     createUser: function (config) {
-
-        config.params = Ext.apply({
-            time_zone: "Europe/Moscow",
-            locale: "ru_RU",
-            password: 'password'
-        }, config.params);
-
         this.requestWithOptions(config, {
             action: 'create',
             handler: 'user',
             root: 'id'
         });
-    }
+    },
+
+    getTimeZones: function (callback, failure, scope) {
+
+        this.sendRequest({
+            params: {locale: Locale.Manager.getLocale()},
+            success: callback,
+            failure: failure,
+            action: 'list',
+            root: 'list',
+            handler: 'timezone',
+            api: 'jgapi',
+            scope: scope
+        });
+    },
 });

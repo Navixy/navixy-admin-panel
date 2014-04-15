@@ -32,17 +32,19 @@ $pink: #c3325f;
 $purple: #7a43b6;
 $link: #0F5491;
 
-$headers-color: #444;
 $header-bg-color: #464b4c;
 
 $invalid-color: #FF3333;
-$baseElementColor: #60626D;
 $baseElementActiveColor: #9496A1;
-$baseFontColor: #4B4B4B;
 $baseElementFontColor: #aaa;
 $baseElementFontColorActive: #fff;
 $main-color: #27A9E3;
 $normal-color: #555;
+
+$baseBackgroundColor: $lightSmoke;
+$baseElementColor: #60626D;
+$baseFontColor: #4B4B4B;
+$baseBorderColor: $grayer;
 
 @import "icons/iconMoon.scss";
 
@@ -50,11 +52,13 @@ $normal-color: #555;
 
 @import "overrides/ext-theme-metromorph-all-debug";
 @import "overrides/ext-cmps/component";
+@import "overrides/ext-cmps/fields";
 @import "overrides/ext-cmps/grid";
 @import "overrides/ext-cmps/panel";
-@import "overrides/ext-cmps/fields";
+
+@import "components/widgets/buttons";
 
 @import "components/mainmenu/mainmenu";
 @import "components/desktop/header";
 
-@import "components/widgets/buttons";
+@import "components/users/create";

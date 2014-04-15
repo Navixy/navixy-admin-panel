@@ -28,6 +28,8 @@ Ext.define('NavixyPanel.view.users.UsersList', {
 
     disableSelection: true,
 
+    createBtn: false,
+
     initComponent: function () {
 
         var userCardTpl = '<a>{last_name} {first_name} {middle_name}</a>';
@@ -74,18 +76,21 @@ Ext.define('NavixyPanel.view.users.UsersList', {
             }
         };
 
-        this.tbar = {
-            padding: '0 0 10 0',
-            border: 0,
-            ui: 'light',
-            items: [
-                {
-                    xtype: 'button',
-                    iconCls: 'add-button',
-                    text: _l.users.create_btn
-                }
-            ]
-        };
+        if (this.createBtn) {
+            this.tbar = {
+                padding: '0 0 10 0',
+                border: 0,
+                ui: 'light',
+                items: [
+                    {
+                        xtype: 'button',
+                        iconCls: 'add-button',
+                        role: 'user-create-btn',
+                        text: _l.users.create_btn
+                    }
+                ]
+            };
+        }
 
         this.bbar = {
             items: [

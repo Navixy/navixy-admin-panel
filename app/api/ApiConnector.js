@@ -21,6 +21,13 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                     return res.success;
                 }
             },
+            //TODO: Temporary api profile for timezones geter
+            jgapi: {
+                wrapProperty: false,
+                isSuccess: function (res) {
+                    return res.success;
+                }
+            },
 
             phpapi: {
                 wrapProperty: 'Response',

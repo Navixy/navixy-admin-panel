@@ -91,6 +91,10 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
         }
     },
 
+    unToggleAll: function () {
+        this.down('button').toggle(false, true);
+    },
+
     showMenu: function () {
         this.setVisible(true);
     }

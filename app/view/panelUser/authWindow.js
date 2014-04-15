@@ -7,7 +7,7 @@
 Ext.define('NavixyPanel.view.panelUser.authWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.authwindow',
-    requires: ['NavixyPanel.view.widgets.LocaleCombo'],
+    requires: ['NavixyPanel.view.widgets.fields.LocaleCombo'],
 
     width: 320,
 

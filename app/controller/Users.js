@@ -20,6 +20,10 @@ Ext.define('NavixyPanel.controller.Users', {
         {
             ref: 'usersList',
             selector: 'userslist'
+        },
+        {
+            ref: 'userCreate',
+            selector: 'usercreate'
         }
     ],
 
@@ -30,12 +34,18 @@ Ext.define('NavixyPanel.controller.Users', {
             'userslist': {
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction
+            },
+            'userslist button[role="user-create-btn"]' : {
+                click: this.handleUserCreateAction
+            },
+            'usercreate' : {
+                formsubmit: this.handleUserCreateSubmit
             }
         });
 
         this.handle({
             'users' : {
-                fn: this.handleUser,
+                fn: this.handleUserList,
                 access: 'read'
             },
             'user' : {
@@ -59,9 +69,10 @@ Ext.define('NavixyPanel.controller.Users', {
         };
     },
 
-    handleUser: function () {
+    handleUserList: function () {
         this.fireContent({
-            xtype: 'userslist'
+            xtype: 'userslist',
+            createBtn: Ext.checkPermission(this.getModuleName(), 'create')
         });
     },
 
@@ -94,5 +105,47 @@ Ext.define('NavixyPanel.controller.Users', {
         var userId = record.getId();
 
         Ext.Navigator.goTo('user/' + userId + '/edit');
+    },
+
+    handleUserCreateAction: function () {
+
+        Ext.Navigator.goTo('user/create');
+    },
+
+    handleUserCreateSubmit: function (cmp, formValues) {
+
+        var dealerId = Ext.getStore('Dealer').first().getId(),
+            record = Ext.create('NavixyPanel.model.User', formValues),
+            userData = Ext.apply({}, record.getData());
+
+        delete userData.id; delete userData.dealer_id;
+
+        Ext.API.createUser({
+            params: {
+                user: Ext.encode(userData),
+                locale: formValues.locale || Locale.Manager.getLocaleId(),
+                time_zone: formValues.time_zone,
+                password: formValues.password
+            },
+            callback: function (userId) {
+                this.afterUserCreate(userId, record);
+            },
+            failure: function () {
+                this.afterUserCreateFailure();
+            },
+            scope: this
+        });
+    },
+
+    afterUserCreate: function (userId, record) {
+        record.setId(userId);
+        Ext.getStore('Users').add(record);
+        this.getUserCreate().afterSave();
+
+        Ext.Navigator.goTo('users');
+    },
+
+    afterUserCreateFailure: function () {
+
     }
 });

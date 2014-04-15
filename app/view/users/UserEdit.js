@@ -7,7 +7,6 @@
 Ext.define('NavixyPanel.view.users.UserCreate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     alias: 'widget.usercreate',
-    id: 'UserCreate',
     requires: [
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
         'NavixyPanel.view.widgets.fields.LocaleField',
@@ -29,8 +28,8 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
     getItems: function () {
         var items = this.callParent(arguments);
 
-        if (items[1] && items[1].items && items[1].items[1]) {
-            items[1].items[1].role = 'legal_fields';
+        if (items[2] && items[2].items && items[2].items[2]) {
+            items[2].items[2].role = 'legal_fields';
         }
 
         return items;
@@ -52,7 +51,7 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.users.create_form.main_fields,
-                padding: '10 0 20 0'
+                padding: '10 0'
             },
             {
                 fieldLabel: _l.users.fields.login,
@@ -104,7 +103,6 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 height: 10
             },
             {
-                name: 'legal_type',
                 xtype: 'combobox',
                 fieldLabel: _l.users.fields.legal_type,
                 store: this.legalTypesStore,
@@ -112,11 +110,11 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-//                listeners: {
-//                    change: function() {
-//                        me.changeLegalStatus(this.getValue() === "sole_trader");
-//                    }
-//                }
+                listeners: {
+                    change: function() {
+                        me.changeLegalStatus(this.getValue() === "sole_trader");
+                    }
+                }
             }
         ];
     },
@@ -131,7 +129,7 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.users.create_form.contact_fields,
-                padding: '10 0 20 0'
+                padding: '10 0'
             },
             {
                 fieldLabel: _l.users.fields.first_name,
@@ -158,7 +156,7 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
             {
                 fieldLabel: _l.users.fields.phone,
                 name: 'phone',
-//                plugins: [new NavixyPanel.plugins.InputMask('9 (999) 999-999')],
+                plugins: [new NavixyPanel.plugins.InputMask('9 (999) 999-999')],
                 minLength: 10,
                 maxLength: 15
             },
@@ -205,13 +203,7 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.users.create_form.legal_fields,
-                padding: '10 0 20 0'
-            },
-            {
-                fieldLabel: _l.users.fields.legal_name,
-                name: 'legal_name',
-                minLength: 2,
-                maxLength: 100
+                padding: '10 0'
             },
             {
                 fieldLabel: _l.users.fields.tin,

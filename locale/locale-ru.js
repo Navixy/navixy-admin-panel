@@ -34,6 +34,9 @@ Ext.define('Locale.locale-ru', {
 
     no_path_found: 'Указан неверный адрес',
 
+    clear_form_btn: 'Очистить',
+    save_form_btn: 'Сохранить',
+
     errors: {
         1: 'Ошибка подключения к базе данных (001). Пожалуйста, обратитесь в техподдержку или повторите позднее.',
         2: 'Ошибка системы авторизации (002). Пожалуйста, обратитесь в техподдержку или повторите позднее.',
@@ -109,6 +112,20 @@ Ext.define('Locale.locale-ru', {
     users: {
         menu_text: 'Пользователи',
         create_btn: 'Новый пользователь',
+        create_form: {
+            title: 'Новый пользователь',
+            main_fields: 'Основные данные',
+            contact_fields: 'Контактные данные',
+            address_fields: 'Адрес',
+            legal_fields: 'Информация о юридическом лице',
+            password: 'Пароль',
+            password_repeat: 'Повторите пароль',
+            password_mismatched: 'Пароли не совпадают',
+            language: 'Язык по-умолчанию',
+            time_zone: 'Часовой пояс',
+            save_btn: 'Создать пользователя',
+            clear_btn: 'Очистить форму'
+        },
         fields: {
             login: 'Адрес электронной почты',
             first_name: 'Имя',
@@ -119,7 +136,7 @@ Ext.define('Locale.locale-ru', {
             tin: 'ИНН',
             legal_name: 'Юридическое название',
             iec: 'КПП',
-            phone: 'Телефон',
+            phone: 'Номер телефона',
             post_country: 'Страна',
             post_index: 'Почтовый индекс',
             post_region: 'Регион',
