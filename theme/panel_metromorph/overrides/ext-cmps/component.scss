@@ -1,0 +1,14 @@
+body {
+    background-color: $baseBackgroundColor;
+}
+
+a {
+    color: $link;
+    outline: none medium;
+    text-decoration: none;
+    cursor: pointer !important;
+}
+
+.x-tip-body-default {
+    padding: 5px 10px;
+}

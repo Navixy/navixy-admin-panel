@@ -1,0 +1,73 @@
+.x-panel-header-default {
+
+    .x-panel-header-glyph {
+        font-size: 16px;
+    }
+
+    .x-panel-header-icon {
+        width: 22px;
+        height: 16px;
+    }
+}
+
+.x-window-body.x-window-body-default {
+    @extend .base-color-bg;
+}
+
+.x-window.x-window-default {
+    .x-toolbar-footer {
+        @extend .base-color-bg;
+    }
+
+    @extend .base-color-bg;
+}
+
+.x-form-trigger-wrap {
+    position: relative;
+}
+
+$light-panel-text-color: $baseFontColor;
+
+$light-panel-bg-color: transparent;
+$light-panel-docked-item-bg-color: $light-panel-bg-color;
+
+$light-panel-header-bg-color: darken($baseBackgroundColor, 2%);
+$light-panel-header-color: darken($baseBackgroundColor, 2%);
+
+.x-panel-light {
+    background-color: $light-panel-bg-color;
+
+    .x-toolbar-footer {
+        background-color: $light-panel-header-bg-color;
+    }
+}
+
+
+.x-toolbar-light {
+    background-color: $light-panel-docked-item-bg-color;
+}
+
+
+.x-panel-header-light {
+    background-color: $light-panel-header-bg-color;
+}
+
+.x-panel-header-text-container-light {
+    color: $light-panel-text-color;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22px;
+    padding: 0;
+    text-transform: none;
+}
+
+
+.x-panel-body-light {
+    background: $light-panel-bg-color;
+    border-color: $light-panel-bg-color;
+    color: $light-panel-text-color;
+    font-size: 13px;
+    font-size: normal;
+    border-width: 1px;
+    border-style: solid;
+}

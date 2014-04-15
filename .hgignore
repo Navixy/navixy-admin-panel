@@ -1,5 +1,5 @@
-syntax: regexp
+syntax: glob
 .idea/*
 app/api/_proxy/*
-ext/*
 theme/panel_metromorph/.sass-cache/*
+ext/

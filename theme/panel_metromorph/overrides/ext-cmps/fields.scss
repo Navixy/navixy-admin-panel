@@ -1,0 +1,47 @@
+$light-field-label-color: $baseFontColor;
+$light-field-label-font-size: 13px;
+$light-field-border-color: $baseBorderColor;
+$light-field-focus-border-color: $main-color;
+
+.x-form-trigger-input-cell {
+    .field-postfix {
+        color: $grayDarker;
+    }
+}
+
+.x-field-light {
+
+    .x-form-trigger-wrap {
+        border: 1px solid $light-field-border-color;
+    }
+
+    .x-form-trigger-wrap-focus .x-form-trigger-wrap {
+        border-color: $light-field-focus-border-color;
+    }
+
+    .x-form-item-label {
+        font-size: $light-field-label-font-size;
+        line-height: $light-field-label-font-size + 15;
+        color: $light-field-label-color;
+    }
+
+    .x-form-field {
+        border-color: $light-field-border-color;
+    }
+
+    .x-form-focus {
+        border-color: $light-field-focus-border-color;
+    }
+
+    .x-form-invalid-field {
+        border-color: $invalid-color !important;
+    }
+
+    .x-form-invalid-under {
+        padding: 2px 2px 5px 5px;
+        color: $invalid-color;
+        font-size: $light-field-label-font-size - 2;
+        line-height: $light-field-label-font-size + 3;
+
+    }
+}

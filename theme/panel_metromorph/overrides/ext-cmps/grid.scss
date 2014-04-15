@@ -1,0 +1,108 @@
+$grid-header-bg-color: $baseElementColor;
+$grid-header-over-bg-color: lighten($baseElementColor, 10%);
+$grid-header-sort-bg-color: $baseElementColor;
+$grid-header-padding: 1px 0;
+
+$grid-body-bg-color: $baseBackgroundColor;
+
+$grid-row-over-bg-color: $baseBackgroundColor;
+
+$grid-cell-bg-color: lighten($baseBackgroundColor, 5%);
+$grid-cell-border-color: $grid-row-over-bg-color;
+$grid-cell-inner-padding: 8px 9px;
+$grid-cell-font-size: 13px;
+
+$tool-column-color: lighten($baseFontColor, 40%);
+$tool-column-over-color: lighten($baseFontColor, 10%);
+
+
+
+
+
+
+
+.x-grid {
+    .x-column-header-checkbox .x-column-header-text {
+        margin: 0;
+    }
+
+    .x-column-header-checkbox .x-column-header-inner {
+        padding: 5px 9px 5px 5px !important;
+    }
+
+    .x-column-header {
+        text-shadow: none;
+        font-weight: normal;
+        background-color: $grid-header-bg-color;
+        padding: $grid-header-padding;
+    }
+
+    .x-grid-header-ct {
+        border: none !important;
+    }
+
+    .x-grid-body {
+        border-top: none !important;
+        background-color: $grid-body-bg-color;
+    }
+
+    .x-column-header-over {
+        border-color: $grid-header-over-bg-color !important;
+        background-color: $grid-header-over-bg-color !important;
+    }
+
+    .x-column-header-sort-DESC,
+    .x-column-header-sort-ASC {
+        background-color: $grid-header-sort-bg-color !important;
+    }
+
+    .x-grid-row-over .x-grid-cell {
+        background: $grid-cell-border-color;
+        border-color: $grid-cell-border-color;
+
+        &.tool-column {
+            color: $tool-column-color;
+
+            .x-grid-cell-inner {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.x-grid-row .x-grid-cell {
+    border-color: $grid-cell-bg-color;
+    border-top-color: $grid-cell-border-color;
+    background-color: $grid-cell-bg-color;
+
+    font-size: $grid-cell-font-size;
+
+    &.tool-column {
+
+        cursor: pointer;
+
+        &:hover {
+            color: $tool-column-over-color;
+        }
+
+        .x-grid-cell-inner {
+            opacity: 0;
+        }
+
+        &.edit {
+            .x-grid-cell-inner {
+                @extend .icon-pencil;
+            }
+        }
+
+        &.save {
+            .x-grid-cell-inner {
+                @extend .icon-save;
+            }
+        }
+    }
+}
+
+.x-grid-cell-inner {
+    padding: $grid-cell-inner-padding;
+}
