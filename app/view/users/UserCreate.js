@@ -7,6 +7,7 @@
 Ext.define('NavixyPanel.view.users.UserCreate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     alias: 'widget.usercreate',
+
     requires: [
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
         'NavixyPanel.view.widgets.fields.LocaleField',
@@ -111,11 +112,11 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
-//                ,listeners: {
-//                    change: function() {
-//                        me.changeLegalStatus(this.getValue() === "sole_trader");
-//                    }
-//                }
+                ,listeners: {
+                    change: function() {
+                        me.changeLegalStatus(this.getValue() === "individual");
+                    }
+                }
             }
         ];
     },
@@ -190,13 +191,15 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
             {
                 fieldLabel: _l.users.fields.post_index,
                 name: 'post_index',
-                minLength: 6
+                minLength: 6,
+                vtype: 'numeric'
             }
 
         ];
     },
 
     getSWItems: function () {
+        var me = this;
         return [
             {
                 xtype: 'container',
@@ -215,17 +218,40 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 name: 'tin',
                 minLength: 9,
                 maxLength: 12,
-                vtype: 'alphanum'
+                vtype: 'numeric'
             },
             {
                 fieldLabel: _l.users.fields.iec,
                 name: 'iec',
                 minLength: 4,
-                maxLength: 10
+                maxLength: 10,
+                vtype: 'numeric'
             },
             {
                 xtype: 'container',
                 height: 10
+            },
+            {
+                xtype: 'container',
+                layout: {
+                    type: 'hbox',
+                    puck: 'end'
+                },
+                padding: '11 0 5',
+                items: [
+                    {
+                        xtype: 'container',
+                        flex: 1
+                    },
+                    {
+                        xtype: 'button',
+                        ui: 'gray',
+                        text: _l.users.create_form.copy_address,
+                        handler: function () {
+                            me.copyAddress();
+                        }
+                    }
+                ]
             },
             {
                 fieldLabel: _l.users.fields.registered_country,
@@ -254,7 +280,8 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
             {
                 fieldLabel: _l.users.fields.registered_index,
                 name: 'registered_index',
-                minLength: 6
+                minLength: 6,
+                vtype: 'numeric'
             }
         ];
     },
@@ -273,5 +300,25 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 }
             }, this);
         }
+    },
+
+    copyAddress: function () {
+
+        var fieldsMap = {
+            post_country: 'registered_country',
+            post_index: 'registered_index',
+            post_region: 'registered_region',
+            post_city: 'registered_city',
+            post_street_address: 'registered_street_address'
+        };
+
+        Ext.iterate(fieldsMap, function (fieldFromName, fieldToName) {
+            var fieldFrom = this.down('[name="' + fieldFromName + '"]'),
+                fieldTo = this.down('[name="' + fieldToName + '"]');
+
+            if (fieldFrom && fieldTo) {
+                fieldTo.setValue(fieldFrom.getValue());
+            }
+        }, this);
     }
 });

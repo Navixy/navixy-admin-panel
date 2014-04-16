@@ -32,6 +32,7 @@ Ext.define('Locale.locale-en', {
 
     no_path_found: 'No page on this path',
     phone_invalid_msg: 'Please enter a valid phone number',
+    invalid_numeric_msg: 'Not a valid number',
 
     clear_form_btn: 'Clear',
     save_form_btn: 'Save',
@@ -124,7 +125,8 @@ Ext.define('Locale.locale-en', {
             language: 'Default language',
             time_zone: 'Time Zone',
             save_btn: 'Create User',
-            clear_btn: 'Clear form'
+            clear_btn: 'Clear form',
+            copy_address: 'Copy from address'
         },
         fields: {
             menu_text: 'Users',

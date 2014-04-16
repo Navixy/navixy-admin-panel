@@ -1,42 +1,29 @@
 Ext.define('NavixyPanel.view.Viewport', {
-    extend: 'Ext.Container',
+    extend: 'Ext.container.Viewport',
     alias: 'widget.mainviewport',
-
     innerWidth: 1250,
 
-    layout: {
-        type: 'hbox',
-        align: 'top',
-        pack: 'center'
-    },
-
+    autoScroll: true,
     initComponent: function () {
 
         this.items = [
             {
-                xtype: 'container',
-                layout: {
-                    type: 'vbox',
-                    align:'stretch'
-                },
-                width: this.innerWidth,
-                items: [
-                    // TODO: Header here
-                    {
-                        xtype: 'mainheader',
-                        margin: '0 0 30 0'
-                    },
-                    {
-                        xtype: 'maindesktop',
-                        region: 'center',
-                        flex: 1
-                    },
-                    // TODO: Footer here
-                    {
-                        xtype: 'mainfooter',
-                        height: 200
-                    }
-                ]
+                xtype: 'mainheader',
+                style: 'margin: 0 auto 30px',
+                width: this.innerWidth
+            },
+            {
+                xtype: 'maindesktop',
+                style: 'margin: 0 auto',
+                region: 'center',
+                flex: 1,
+                width: this.innerWidth
+            },
+            {
+                xtype: 'mainfooter',
+                style: 'margin: 0 auto',
+                height: 200,
+                width: this.innerWidth
             }
         ];
 
@@ -44,20 +31,7 @@ Ext.define('NavixyPanel.view.Viewport', {
     },
 
     afterFirstLayout: function() {
-        var me = this;
         this.fireEvent('ready', this);
-
-        me.callParent(arguments);
-
-        this.fireResize();
-
-        setTimeout(function() {
-            Ext.EventManager.onWindowResize(me.fireResize, me);
-        }, 1);
-    },
-
-    fireResize : function(){
-        var bodyWidth = Ext.getBody().getWidth();
-        this.setSize({width: bodyWidth > this.innerWidth ? bodyWidth : this.innerWidth, height: 'auto'});
+        this.callParent(arguments);
     }
 });

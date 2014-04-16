@@ -95,5 +95,4 @@ Ext.application({
         'NavixyPanel.controller.Users',
         'NavixyPanel.controller.Trackers'
     ]
-//    ,autoCreateViewport: true
 });

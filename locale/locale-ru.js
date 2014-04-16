@@ -34,6 +34,7 @@ Ext.define('Locale.locale-ru', {
 
     no_path_found: 'Указан неверный адрес',
     phone_invalid_msg: 'Укажите корректный номер телефона',
+    invalid_numeric_msg: 'Необходимо указать число',
 
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',
@@ -125,7 +126,8 @@ Ext.define('Locale.locale-ru', {
             language: 'Язык по-умолчанию',
             time_zone: 'Часовой пояс',
             save_btn: 'Создать пользователя',
-            clear_btn: 'Очистить форму'
+            clear_btn: 'Очистить форму',
+            copy_address: 'Скопировать из адреса'
         },
         fields: {
             login: 'Адрес электронной почты',

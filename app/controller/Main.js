@@ -110,6 +110,15 @@ Ext.define('NavixyPanel.controller.Main', {
                 return result;
             }
         });
+
+        Ext.apply(Ext.form.field.VTypes, {
+            numeric: function(v) {
+                return Ext.form.VTypes['numericVal'].test(v);
+            },
+            numericText: _l.invalid_numeric_msg,
+            numericMask: /[\-\+0-9.]/,
+            numericVal: /^[-+]?\d*\.?\d*$/i
+        });
     },
 
     // History
