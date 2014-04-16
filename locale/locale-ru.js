@@ -33,6 +33,7 @@ Ext.define('Locale.locale-ru', {
     },
 
     no_path_found: 'Указан неверный адрес',
+    phone_invalid_msg: 'Укажите корректный номер телефона',
 
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',
@@ -153,7 +154,7 @@ Ext.define('Locale.locale-ru', {
             individual : 'Индивидуальный предприниматель',
             full_name: 'Ф. И. О.',
             login_short: 'Логин',
-            user_id: 'ID',
+            user_id: 'ID'
         }
     },
 

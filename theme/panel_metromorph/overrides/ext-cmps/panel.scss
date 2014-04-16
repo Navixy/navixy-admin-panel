@@ -34,6 +34,8 @@ $light-panel-docked-item-bg-color: $light-panel-bg-color;
 $light-panel-header-bg-color: darken($baseBackgroundColor, 2%);
 $light-panel-header-color: darken($baseBackgroundColor, 2%);
 
+$light-panel-body-bg-color: lighten($baseBackgroundColor, 5%);
+
 .x-panel-light {
     background-color: $light-panel-bg-color;
 
@@ -63,8 +65,8 @@ $light-panel-header-color: darken($baseBackgroundColor, 2%);
 
 
 .x-panel-body-light {
-    background: $light-panel-bg-color;
-    border-color: $light-panel-bg-color;
+    background: $light-panel-body-bg-color;
+    border-color: $light-panel-body-bg-color;
     color: $light-panel-text-color;
     font-size: 13px;
     font-size: normal;

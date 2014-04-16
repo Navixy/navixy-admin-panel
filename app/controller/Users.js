@@ -27,6 +27,8 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
+    stores: ['PhoneCodes'],
+
     init: function () {
         this.callParent(arguments);
 

@@ -7,11 +7,10 @@
 Ext.define('NavixyPanel.view.users.UserCreate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     alias: 'widget.usercreate',
-    id: 'UserCreate',
     requires: [
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
         'NavixyPanel.view.widgets.fields.LocaleField',
-        'NavixyPanel.plugins.InputMask'
+        'NavixyPanel.view.widgets.fields.PhoneField'
     ],
 
     getTitle: function () {
@@ -111,8 +110,8 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type',
-//                listeners: {
+                valueField: 'type'
+//                ,listeners: {
 //                    change: function() {
 //                        me.changeLegalStatus(this.getValue() === "sole_trader");
 //                    }
@@ -156,11 +155,9 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 height: 10
             },
             {
-                fieldLabel: _l.users.fields.phone,
                 name: 'phone',
-//                plugins: [new NavixyPanel.plugins.InputMask('9 (999) 999-999')],
-                minLength: 10,
-                maxLength: 15
+                xtype: 'phonefield',
+                fieldLabel: _l.users.fields.phone
             },
             {
                 xtype: 'container',

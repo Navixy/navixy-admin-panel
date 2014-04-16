@@ -31,6 +31,10 @@ Ext.define('Locale.locale-en', {
     },
 
     no_path_found: 'No page on this path',
+    phone_invalid_msg: 'Please enter a valid phone number',
+
+    clear_form_btn: 'Clear',
+    save_form_btn: 'Save',
 
     errors: {
         1: 'Database connection error (001). Please contact support or try again later.',
@@ -108,6 +112,20 @@ Ext.define('Locale.locale-en', {
     users: {
         menu_text: 'Users',
         create_btn: 'New user',
+        create_form: {
+            title: 'New user',
+            main_fields: 'General information',
+            contact_fields: 'Contact details',
+            address_fields: 'Address',
+            legal_fields: 'Legal entity information',
+            password: 'Password',
+            password_repeat: 'Repeat password',
+            password_mismatched: 'Passwords do not match',
+            language: 'Default language',
+            time_zone: 'Time Zone',
+            save_btn: 'Create User',
+            clear_btn: 'Clear form'
+        },
         fields: {
             menu_text: 'Users',
             login: 'Email address',
@@ -138,6 +156,10 @@ Ext.define('Locale.locale-en', {
             login_short: 'Login',
             user_id: 'ID'
         }
+    },
+
+    trackers: {
+        menu_text: 'Trackers'
     }
 
 })

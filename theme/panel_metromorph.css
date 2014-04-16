@@ -14336,7 +14336,7 @@ body.x-nbr .x-btn-plain-toolbar-large {
   padding: 14px 9px 14px 9px; }
 
 /* line 137, ../../packages/ext-theme-neutral/sass/src/panel/Panel.scss */
-.x-panel-header-text-container-light, .x-panel-body .block_header {
+.x-panel-header-text-container-light, .x-panel-body-light .block_header {
   color: #666666;
   font-size: 13px;
   font-weight: bold;
@@ -22372,7 +22372,7 @@ a {
 .x-panel-header-light {
   background-color: #ebebeb; }
 
-.x-panel-header-text-container-light, .x-panel-body .block_header {
+.x-panel-header-text-container-light, .x-panel-body-light .block_header {
   color: #4b4b4b;
   font-size: 16px;
   font-weight: normal;
@@ -22381,8 +22381,8 @@ a {
   text-transform: none; }
 
 .x-panel-body-light {
-  background: transparent;
-  border-color: transparent;
+  background: #fdfdfd;
+  border-color: #fdfdfd;
   color: #4b4b4b;
   font-size: 13px;
   font-size: normal;
@@ -22500,8 +22500,6 @@ a {
 .main-header .header-logo {
   background-image: url("panel_metromorph/images/navixy-logo.png"); }
 
-.x-panel-body {
-  background-color: #fdfdfd; }
-  .x-panel-body .block_header {
-    color: #4b4b4b;
-    font-size: 15px; }
+.x-panel-body-light .block_header {
+  color: #4b4b4b;
+  font-size: 15px; }

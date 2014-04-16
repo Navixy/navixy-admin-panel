@@ -1,10 +1,6 @@
-$users-create-panel-bg-color: lighten($baseBackgroundColor, 5%);
-
 $users-create-block-header-font-size: 15px;
 
-.x-panel-body {
-
-    background-color: $users-create-panel-bg-color;
+.x-panel-body-light {
 
     .block_header {
         color: $light-panel-text-color;

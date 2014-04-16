@@ -62,6 +62,19 @@ Ext.define('NavixyPanel.controller.Main', {
 
     // Overrides
     initOverrides: function () {
+
+        Ext.override(Ext.data.Store, {
+            getData: function () {
+                var result = [];
+
+                this.each(function (record) {
+                    result.push(record.getData());
+                });
+
+                return result;
+            }
+        });
+
         Ext.override(Ext, {
 
             /**
