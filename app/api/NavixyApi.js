@@ -78,7 +78,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'list',
             root: 'list',
             handler: 'timezone',
-            api: 'jgapi',
             scope: scope
         });
     },
