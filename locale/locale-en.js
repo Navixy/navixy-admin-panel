@@ -48,14 +48,7 @@ Ext.define('Locale.locale-en', {
             default_msg: 'Incorrect request parameters. Check the data.',
             title: 'Incorrect parameters:',
             errors: {
-                activation_code: 'Activation code should contain only digits and' +
-                    'from 3 to 20 characters length',
-                iccid: 'ICCID should begin with 89,  contain only digits and have 19 or 20 characters length',
-                apn_password: 'APN password must be specified',
-                apn_user: 'APN username must be specified',
-                apn_name: 'APN name must be specified',
-                trackers: 'Pick at least 1 tracker',
-                'apn_parameters.apn_name': 'Invalid APN'
+                login: 'Must be a valid email address'
             }
         },
 

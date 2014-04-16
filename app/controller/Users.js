@@ -127,12 +127,10 @@ Ext.define('NavixyPanel.controller.Users', {
                 time_zone: formValues.time_zone,
                 password: formValues.password
             },
-            callback: function (userId) {
-                this.afterUserCreate(userId, record);
+            callback: function (response) {
+                this.afterUserCreate(response);
             },
-            failure: function () {
-                this.afterUserCreateFailure();
-            },
+            failure: this.afterUserCreateFailure,
             scope: this
         });
     },
@@ -145,7 +143,12 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.Navigator.goTo('users');
     },
 
-    afterUserCreateFailure: function () {
+    afterUserCreateFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = status.description || false;
 
+        this.getUserCreate().showSubmitErrors(errCode, errors, errDescription);
     }
 });

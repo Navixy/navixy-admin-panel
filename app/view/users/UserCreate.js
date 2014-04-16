@@ -7,7 +7,7 @@
 Ext.define('NavixyPanel.view.users.UserCreate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     alias: 'widget.usercreate',
-
+//    id: 'UserCreate',
     requires: [
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
         'NavixyPanel.view.widgets.fields.LocaleField',
@@ -320,5 +320,39 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
                 fieldTo.setValue(fieldFrom.getValue());
             }
         }, this);
+    },
+
+    showSubmitErrors: function (errCode, errors, errDescription) {
+        var errLocale = _l.errors[errCode] || false,
+            codesMap = {
+                206: 'login'
+            };
+
+        if (errors && Ext.isObject(errLocale) && errLocale.errors ) {
+            Ext.iterate(errors, function(error) {
+                var errText = error.error,
+                    errParameter = error.parameter || '',
+                    field;
+
+                errParameter = errParameter.split(".");
+                errParameter = errParameter[1] || false;
+
+                field = errParameter
+                    ? this.down('[name="' + errParameter + '"]')
+                    : false;
+
+                if (field) {
+                    field.markInvalid(errLocale.errors[errParameter] || errText)
+                }
+            }, this);
+        } else if (codesMap[errCode]) {
+            var errText = errLocale || errDescription,
+                errParameter = codesMap[errCode],
+                field = this.down('[name="' + errParameter + '"]');
+
+            if (field && errText) {
+                field.markInvalid(errLocale || errDescription);
+            }
+        }
     }
 });
