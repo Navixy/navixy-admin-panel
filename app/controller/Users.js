@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
         'users.UsersList',
         'users.UserCreate',
+        'users.UserEdit',
         'users.Test'
     ],
 
@@ -40,6 +41,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'usercreate' : {
                 formsubmit: this.handleUserCreateSubmit
+            },
+            'useredit' : {
+                formsubmit: this.handleUserCreateSubmit
             }
         });
 
@@ -54,7 +58,7 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'user > edit' : {
                 fn: this.handleUserEdit,
-                access: 'read'
+                access: 'update'
             },
             'user > create' : {
                 fn: this.handleUserCreate,
@@ -76,10 +80,18 @@ Ext.define('NavixyPanel.controller.Users', {
         });
     },
 
-    handleUserEdit: function () {
-        this.fireContent({
-            xtype: 'utest2'
-        });
+    handleUserEdit: function (value) {
+        var userId = parseInt(value),
+            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
+
+        if (userRecord) {
+
+            this.fireContent({
+                xtype: 'useredit',
+                rewrite: true,
+                record: userRecord
+            });
+        }
     },
 
     handleUserCard: function () {

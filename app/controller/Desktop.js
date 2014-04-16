@@ -55,11 +55,28 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         var cardContainer = this.getDesktop(),
             xtype = typeof cmpConfig === 'string' ? cmpConfig : cmpConfig.xtype,
-            target = cardContainer.down('container[role=' + xtype + ']') || this.addContent(cmpConfig);
+            rewrite = typeof cmpConfig === 'string' ? false : cmpConfig.rewrite || false,
+            existing = cardContainer.down('container[role=' + xtype + ']') || null,
+            target;
+
+        if (rewrite) {
+            this.removeContent(existing);
+            existing = null;
+        }
+
+        target = existing || this.addContent(cmpConfig);
 
         cardContainer.getLayout().setActiveItem(target);
 
         return target;
+    },
+
+    removeContent: function (cmp) {
+        var cardContainer = this.getDesktop();
+
+        try {
+            cardContainer.remove(cmp, true);
+        } catch(e) {}
     },
 
     addContent: function (cmpConfig) {

@@ -36,6 +36,7 @@ Ext.define('Locale.locale-en', {
 
     clear_form_btn: 'Clear',
     save_form_btn: 'Save',
+    back_form_btn: 'Back',
 
     errors: {
         1: 'Database connection error (001). Please contact support or try again later.',
@@ -120,6 +121,11 @@ Ext.define('Locale.locale-en', {
             save_btn: 'Create User',
             clear_btn: 'Clear form',
             copy_address: 'Copy from address'
+        },
+        edit_form: {
+            title: 'Edit user',
+            save_btn: 'Save changes',
+            return_btn: 'Back'
         },
         fields: {
             menu_text: 'Users',

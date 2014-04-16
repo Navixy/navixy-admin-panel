@@ -14,6 +14,8 @@ Ext.define('NavixyPanel.view.users.UserCreate', {
         'NavixyPanel.view.widgets.fields.PhoneField'
     ],
 
+    backTarget: 'users',
+
     getTitle: function () {
         return _l.users.create_form.title;
     },

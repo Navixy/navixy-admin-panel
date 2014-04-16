@@ -38,6 +38,7 @@ Ext.define('Locale.locale-ru', {
 
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',
+    back_form_btn: 'Назад',
 
     errors: {
         1: 'Ошибка подключения к базе данных (001). Пожалуйста, обратитесь в техподдержку или повторите позднее.',
@@ -121,6 +122,11 @@ Ext.define('Locale.locale-ru', {
             save_btn: 'Создать пользователя',
             clear_btn: 'Очистить форму',
             copy_address: 'Скопировать из адреса'
+        },
+        edit_form: {
+            title: 'Редактирование пользователя',
+            save_btn: 'Сохранить изменения',
+            return_btn: 'Назад'
         },
         fields: {
             login: 'Адрес электронной почты',
