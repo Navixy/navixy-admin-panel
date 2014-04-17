@@ -1,6 +1,6 @@
-$grid-header-bg-color: $baseElementColor;
-$grid-header-over-bg-color: lighten($baseElementColor, 10%);
-$grid-header-sort-bg-color: $baseElementColor;
+$grid-header-bg-color: $baseElementActiveColor;
+$grid-header-over-bg-color: darken($grid-header-bg-color, 10%);
+$grid-header-sort-bg-color: $grid-header-bg-color;
 $grid-header-padding: 1px 0;
 
 $grid-body-bg-color: $baseBackgroundColor;
@@ -14,12 +14,6 @@ $grid-cell-font-size: 13px;
 
 $tool-column-color: lighten($baseFontColor, 40%);
 $tool-column-over-color: lighten($baseFontColor, 10%);
-
-
-
-
-
-
 
 .x-grid {
     .x-column-header-checkbox .x-column-header-text {

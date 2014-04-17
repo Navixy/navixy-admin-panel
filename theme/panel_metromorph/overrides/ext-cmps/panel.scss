@@ -39,8 +39,9 @@ $light-panel-body-bg-color: lighten($baseBackgroundColor, 5%);
 .x-panel-light {
     background-color: $light-panel-bg-color;
 
-    .x-toolbar-footer {
+    .x-toolbar-footer, .x-docked-bottom {
         background-color: $light-panel-header-bg-color;
+        border-color: $light-panel-header-bg-color;
     }
 }
 

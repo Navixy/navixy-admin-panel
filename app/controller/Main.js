@@ -15,15 +15,16 @@ Ext.define('NavixyPanel.controller.Main', {
 
     requires: [
         'Ext.util.Cookies',
+        'NavixyPanel.utils.CTemplate',
 
         'NavixyPanel.api.ApiConnector',
         'NavixyPanel.api.NavixyApi',
 
         'NavixyPanel.utils.Navigator',
 
-        'NavixyPanel.plugins.pagination.Store',
-        'NavixyPanel.plugins.pagination.GridPanel',
-        'NavixyPanel.plugins.pagination.CustomPaging'
+        'NavixyPanel.utils.pagination.Store',
+        'NavixyPanel.utils.pagination.GridPanel',
+        'NavixyPanel.utils.pagination.CustomPaging'
     ],
 
     refs: [
@@ -37,8 +38,8 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     ],
 
-    stores: ['Permissions', 'Users', 'Dealer', 'TimeZones'],
-    models: ['Permissions', 'User'],
+    stores: ['Permissions', 'Users', 'Trackers', 'Dealer', 'TimeZones'],
+    models: ['Permissions', 'User',  'Tracker'],
 
     init: function () {
         this.checkAuth();
@@ -264,7 +265,7 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getUsersList', 'getTimeZones', 'getDealerInfo'];
+            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones'];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -284,9 +285,10 @@ Ext.define('NavixyPanel.controller.Main', {
 
     handleResults: function (results) {
         Ext.iterate({
+            'getDealerInfo': 'Dealer',
             'getUsersList': 'Users',
-            'getTimeZones': 'TimeZones',
-            'getDealerInfo': 'Dealer'
+            'getTrackersList': 'Trackers',
+            'getTimeZones': 'TimeZones'
         }, function (action, store) {
 
             try {

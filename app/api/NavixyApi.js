@@ -69,6 +69,17 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getTrackersList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'tracker',
+            root: 'list',
+            scope: scope
+        });
+    },
+
     getTimeZones: function (callback, failure, scope) {
 
         this.sendRequest({

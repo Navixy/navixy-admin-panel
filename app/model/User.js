@@ -31,31 +31,5 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_region', type: 'string'},
         {name: 'registered_city', type: 'string'},
         {name: 'registered_street_address', type: 'string'}
-    ],
-
-    validations: [
-        {field: 'dealer_id', type: 'present'},
-
-        {field: 'login', type: 'email', min: 2, max: 100},
-        {field: 'first_name', type: 'length', min: 2, max: 100},
-        {field: 'middle_name', type: 'length', min: 2, max: 100},
-        {field: 'last_name', type: 'length', min: 2, max: 100},
-
-        {field: 'legal_type', type: 'inclusion', list: ['legal_entity', 'individual', 'sole_trader']},
-        {field: 'tin', type: 'length', min: 9, max: 12},
-        {field: 'legal_name', type: 'length', min: 2, max: 100},
-        {field: 'iec', type: 'length', min: 4, max: 10},
-
-        {field: 'phone', type: 'length', min: 10, max: 15},
-        {field: 'post_country', type: 'length', min: 2, max: 100},
-        {field: 'post_index', type: 'length', min: 6},
-        {field: 'post_region', type: 'length', min: 2, max: 100},
-        {field: 'post_city', type: 'length', min: 2, max: 100},
-        {field: 'post_street_address', type: 'length', min: 2, max: 100},
-        {field: 'registered_country', type: 'length', min: 2, max: 100},
-        {field: 'registered_index', type: 'length', min: 6},
-        {field: 'registered_region', type: 'length', min: 2, max: 100},
-        {field: 'registered_city', type: 'length', min: 2, max: 100},
-        {field: 'registered_street_address', type: 'length', min: 2, max: 100}
     ]
 });

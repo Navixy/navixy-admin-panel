@@ -39,6 +39,8 @@ Ext.define('Locale.locale-ru', {
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',
     back_form_btn: 'Назад',
+    yes: 'да',
+    no: 'нет',
 
     errors: {
         1: 'Ошибка подключения к базе данных (001). Пожалуйста, обратитесь в техподдержку или повторите позднее.',
@@ -105,9 +107,13 @@ Ext.define('Locale.locale-ru', {
         service_not_respond: 'Сервис временно недоступен'
     },
 
+    list: {
+        edit_tool: 'изменить',
+        create_btn_text: 'Создать'
+    },
+
     users: {
         menu_text: 'Пользователи',
-        create_btn: 'Новый пользователь',
         create_form: {
             title: 'Новый пользователь',
             main_fields: 'Основные данные',
@@ -156,11 +162,19 @@ Ext.define('Locale.locale-ru', {
             full_name: 'Ф. И. О.',
             login_short: 'Логин',
             user_id: 'ID'
+        },
+        list: {
+            create_btn_text: 'Новый пользователь'
         }
     },
 
     trackers: {
-        menu_text: 'Трекеры'
+        menu_text: 'Трекеры',
+        fields: {
+            tracker_id: 'ID',
+            label: 'Навзание',
+            model: 'Модель',
+        }
     }
 })
 ;

@@ -4,9 +4,9 @@
  * Description
  */
 
-Ext.define('NavixyPanel.plugins.pagination.GridPanel', {
+Ext.define('NavixyPanel.utils.pagination.GridPanel', {
     extend: 'Ext.grid.Panel',
-    requires: ['NavixyPanel.plugins.pagination.CustomPaging'],
+    requires: ['NavixyPanel.utils.pagination.CustomPaging'],
     store: null,
 
     initComponent: function () {

@@ -1,20 +1,13 @@
 /**
- * @class User.store.cTimeZones
+ * @class NavixyPanel.utils.pagination.Store
  * @extends Ext.data.Store
  * Description
  */
 
-Ext.define('NavixyPanel.plugins.pagination.Store', {
+Ext.define('NavixyPanel.utils.pagination.Store', {
     extend: 'Ext.data.Store',
     pageSize: 25,
     autoLoad: false,
-    proxy: {
-        type: 'memory',
-        enablePaging: true,
-        reader: {
-            type: 'json'
-        }
-    },
     loaded: false,
 
     listeners: {
@@ -26,6 +19,20 @@ Ext.define('NavixyPanel.plugins.pagination.Store', {
             scope: this,
             single: true
         }
+    },
+
+    externalFiltersMap: null,
+    externalFilters: [],
+
+    constructor: function () {
+        this.proxy =  Ext.create('Ext.data.proxy.Memory', {
+                enablePaging: true,
+                reader: {
+                    type: 'json'
+                }
+            });
+
+        this.callParent(arguments);
     },
 
     loadData: function (data) {
@@ -59,5 +66,21 @@ Ext.define('NavixyPanel.plugins.pagination.Store', {
 
     isLoaded: function () {
         return this.loaded;
+    },
+
+    clearExternalFilters: function (key) {
+
+        console.log(key, value);
+    },
+
+    applyExternalFilter: function (type, value) {
+        var filterField = this.externalFiltersMap[type] || false,
+            filterId;
+
+        if (filterField) {
+            filterId = this.filter(filterField, value);
+        }
+
+        console.log(filterId);
     }
 });

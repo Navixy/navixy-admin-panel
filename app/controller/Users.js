@@ -11,10 +11,10 @@ Ext.define('NavixyPanel.controller.Users', {
     views: [
         'widgets.ToolColumn',
 
-        'users.UsersList',
+        'users.List',
         'users.UserCreate',
         'users.UserEdit',
-        'users.Test'
+        'users.Card'
     ],
 
     refs: [
@@ -40,7 +40,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction
             },
-            'userslist button[role="user-create-btn"]' : {
+            'userslist button[role="create-btn"]' : {
                 click: this.handleUserCreateAction
             },
             'usercreate' : {
@@ -80,7 +80,8 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserList: function () {
         this.fireContent({
             xtype: 'userslist',
-            createBtn: Ext.checkPermission(this.getModuleName(), 'create')
+            createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
+            hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
     },
 
@@ -98,9 +99,15 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     },
 
-    handleUserCard: function () {
+    handleUserCard: function (value) {
+        var userId = parseInt(value),
+            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
+
+        console.log(Ext.getStore('Users').findRecord('id', userId));
         this.fireContent({
-            xtype: 'utest'
+            xtype: 'usercard',
+            rewrite: true,
+            record: userRecord
         });
     },
 

@@ -1,10 +1,17 @@
-Ext.define('NavixyPanel.plugins.pagination.CustomPaging', {
+/**
+ * @class NavixyPanel.utils.pagination.CustomPaging
+ * @extends Ext.toolbar.Paging
+ * Description
+ */
+
+Ext.define('NavixyPanel.utils.pagination.CustomPaging', {
     extend: 'Ext.toolbar.Paging',
     alias: 'widget.custompaging',
     displayInfo: false,
-    ui: 'gray-paging',
+    ui: 'light',
     inputItemWidth: 25,
     defaultButtonUI: 'transparent',
+    border: 0,
 
     // Override items of toolbar
     getPagingItems: function() {

@@ -9,7 +9,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     id: 'TrackersController',
 
     views: [
-        'users.Test2'
+        'trackers.List'
     ],
 
     init: function () {
@@ -30,7 +30,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     handleTrackers: function () {
         this.fireContent({
-            xtype: 'utest2'
+            xtype: 'trackerslist',
+            createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
+            hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
     }
 });

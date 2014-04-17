@@ -22316,7 +22316,7 @@ a {
 .x-grid .x-column-header {
   text-shadow: none;
   font-weight: normal;
-  background-color: #60626d;
+  background-color: #9496a1;
   padding: 1px 0; }
 .x-grid .x-grid-header-ct {
   border: none !important; }
@@ -22324,11 +22324,11 @@ a {
   border-top: none !important;
   background-color: #f0f0f0; }
 .x-grid .x-column-header-over {
-  border-color: #787a88 !important;
-  background-color: #787a88 !important; }
+  border-color: #797b89 !important;
+  background-color: #797b89 !important; }
 .x-grid .x-column-header-sort-DESC,
 .x-grid .x-column-header-sort-ASC {
-  background-color: #60626d !important; }
+  background-color: #9496a1 !important; }
 .x-grid .x-grid-row-over .x-grid-cell {
   background: #f0f0f0;
   border-color: #f0f0f0; }
@@ -22363,8 +22363,9 @@ a {
 
 .x-panel-light {
   background-color: transparent; }
-  .x-panel-light .x-toolbar-footer {
-    background-color: #ebebeb; }
+  .x-panel-light .x-toolbar-footer, .x-panel-light .x-docked-bottom {
+    background-color: #ebebeb;
+    border-color: #ebebeb; }
 
 .x-toolbar-light {
   background-color: transparent; }
