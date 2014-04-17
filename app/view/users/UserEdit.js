@@ -1,11 +1,11 @@
 /**
- * @class NavixyPanel.view.user.USerCreate
- * @extends Ext.Base
+ * @class NavixyPanel.view.user.UserEdit
+ * @extends NavixyPanel.view.users.UserAbstractForm
  * Description
  */
 
 Ext.define('NavixyPanel.view.users.UserEdit', {
-    extend: 'NavixyPanel.view.users.UserCreate',
+    extend: 'NavixyPanel.view.users.UserAbstractForm',
     alias: 'widget.useredit',
     id: 'UserEdit',
 
@@ -33,11 +33,7 @@ Ext.define('NavixyPanel.view.users.UserEdit', {
 
         return [
             config.shift(),
-            {
-                fieldLabel: _l.users.fields.login,
-                name: 'login',
-                disabled: true
-            },
+            config.shift(),
             config.pop()
         ];
     },

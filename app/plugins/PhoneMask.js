@@ -1,5 +1,5 @@
 /**
- * @class NavixyPanel.plugins.InputMask
+ * @class Base.plugins.InputMask
  * @extends Ext.Base
  * Uses http://github.com/RobinHerbots/jquery.inputmask
  */
@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.plugins.PhoneMask', {
                         }
                     },
                     placeholder: this.placeholder,
-                    clearIncomplete: true,
+                    //clearIncomplete: true,
                     showMaskOnHover: false,
                     autoUnmask: true,
                     "oncomplete": function () {

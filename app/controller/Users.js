@@ -25,6 +25,10 @@ Ext.define('NavixyPanel.controller.Users', {
         {
             ref: 'userCreate',
             selector: 'usercreate'
+        },
+        {
+            ref: 'userEdit',
+            selector: 'useredit'
         }
     ],
 
@@ -43,7 +47,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 formsubmit: this.handleUserCreateSubmit
             },
             'useredit' : {
-                formsubmit: this.handleUserCreateSubmit
+                formsubmit: this.handleUserEditSubmit
             }
         });
 
@@ -124,6 +128,7 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.Navigator.goTo('user/create');
     },
 
+    // TODO: Messages on success
     handleUserCreateSubmit: function (cmp, formValues) {
 
         var dealerId = Ext.getStore('Dealer').first().getId(),
@@ -155,6 +160,7 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.Navigator.goTo('users');
     },
 
+
     afterUserCreateFailure: function (response) {
         var status = response.status,
             errors = response.errors || [],
@@ -162,5 +168,37 @@ Ext.define('NavixyPanel.controller.Users', {
             errDescription = status.description || false;
 
         this.getUserCreate().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    handleUserEditSubmit: function (cmp, formValues, record) {
+        var userData = Ext.apply({}, formValues, record.getData());
+
+        Ext.API.updateUser({
+            params: {
+                user: Ext.encode(userData)
+            },
+            callback: function (response) {
+                this.afterUserEdit(response, formValues, record);
+            },
+            failure: this.afterUserEditFailure,
+            scope: this
+        });
+    },
+
+    afterUserEdit: function (success, formValues, record) {
+        if (success) {
+            record.set(formValues);
+            this.getUserEdit().afterSave();
+            Ext.Navigator.goTo('users');
+        }
+    },
+
+    afterUserEditFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = status.description || false;
+
+        this.getUserEdit().showSubmitErrors(errCode, errors, errDescription);
     }
 });
