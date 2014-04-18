@@ -32,38 +32,61 @@ Ext.define('NavixyPanel.view.users.Card', {
                     align: 'stretch'
                 },
                 flex: 1,
-                bodyPadding: 20,
+                bodyPadding: 10,
                 title: this.getPanelTitle(),
                 items: this.getPanelItems()
             },
             {
                 xtype: 'panel',
-//                ui: 'transparent',
-                ui: 'light',
+                ui: 'transparent',
+//                ui: 'light',
 
-                headerPosition: 'top',
-                collapsible: true,
-                collapseDirection: 'left',
+//                headerPosition: 'top',
+//                collapsible: true,
+//                collapseDirection: 'left',
                 // TODO locale
-                title: 'ссылки',
-                width: 200
+//                title: 'ссылки',
+                width: 250,
+                bodyPadding: '10 0 10 30',
+                items: this.getLinks()
+            }
+        ]
+    },
+
+    getLinks: function () {
+        var me = this;
+        return [
+            {
+                xtype: 'button',
+                ui: 'none',
+                text: 'Создать сессию',
+                width: 100,
+                cls: 'link',
+                listeners: {
+                    click: {
+                        fn: me.fireSessionCreate,
+                        scope: me
+                    }
+                }
             }
         ]
     },
 
     getPanelTitle: function () {
-        return 'TEST';
+        return false;
     },
 
     getPanelItems: function () {
         return [
             {
                 xtype: 'container',
+                padding: '10 10 40 10',
                 tpl: this.makeHeaderTpl(),
                 data: this.prepareHeaderData()
             },
             {
                 xtype: 'tabpanel',
+                ui: 'light',
                 border: 0,
                 items: this.getTabPanelItems()
             }
@@ -72,13 +95,6 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     getTabPanelItems: function () {
         return [
-            {
-                // TODO locale
-                xtype: 'userslist',
-                title: 'Cписок пользователей',
-                createBtn: false,
-                hasEdit: Ext.checkPermission('users', 'update')
-            },
             {
                 // TODO locale
                 xtype: 'trackerslist',
@@ -93,23 +109,58 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     makeHeaderTpl: function () {
         return Ext.create('NavixyPanel.utils.CTemplate',
-            '<p class="title">{title:htmlEncode}</p>'
-//            '<tpl if="no_data">',
-//            '<p>{no_data}<p>',
-//            '<tpl else>',
-//            '<tpl for="model">',
-//            '<div class="gray block">{title:htmlEncode}: {model:htmlEncode}</div>',
-//            '</tpl>',
-//            '<tpl for="tariff">',
-//            '<div class="gray block">{title:htmlEncode}: {tariff_name:htmlEncode}</div>',
-//            '</tpl>',
-//            '<tpl for="device_id">',
-//            '<div class="gray block">{title:htmlEncode}: {device_id:htmlEncode}</div>',
-//            '</tpl>',
-//            '<tpl for="blocked">',
-//            '<div class="gray block blocked">{[_l.online.widgets.blocked]}</div>',
-//            '</tpl>',
-//            '</tpl>'
+            '<div class="card-header-inner">',
+                '<div class="title">',
+                    '{title:htmlEncode}',
+                    '<tpl if="title_add">',
+                        '<span class="title-add">{title_add:htmlEncode}</span>',
+                    '</tpl>',
+                '</div>',
+                '<table class="header-table">',
+                    '<tpl for="id">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                    '<tpl for="login">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                    '<tpl for="active">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                    '<tpl for="city">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                    '<tpl for="city_legal">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                    '<tpl for="legal_type">',
+                        '<tr>',
+                            '<td>{title:htmlEncode}</td>',
+                            '<td></td>',
+                            '<td>{value:htmlEncode}</td>',
+                        '</tr>',
+                    '</tpl>',
+                '</table>',
+            '</div>'
         );
     },
 
@@ -122,10 +173,41 @@ Ext.define('NavixyPanel.view.users.Card', {
     },
 
     prepareHeaderData: function () {
-        var recordData = this.getRecordData();
+        var recordData = this.getRecordData(),
+            fio = recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name;
 
         return {
             title: recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
+            title_add: recordData.legal_name && fio,
+            id: {
+                title: _l.users.fields.user_id_exp,
+                value: this.getRecordId()
+            },
+            login: {
+                title: _l.users.fields.login_short,
+                value: recordData.login
+            },
+            active: {
+                title: _l.users.fields.activated_short.title,
+                value: _l.users.fields.activated_short[recordData.active ? 'status_true' : 'status_false']
+            },
+            city: {
+                title: _l.users.fields.post_city,
+                value: recordData.post_city
+            },
+            city_legal: {
+                title: _l.users.fields.registered_city,
+                value: recordData.registered_city
+            },
+            legal_type: {
+                title: _l.users.fields.legal_type,
+                value: _l.users.fields[recordData.legal_type] || ''
+            }
         };
-    }
+    },
+
+    fireSessionCreate: function () {
+        console.log(this.record);
+        this.fireEvent('createsession', this.record);
+    },
 });

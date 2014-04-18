@@ -12,7 +12,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     getTexts: function () {
         return {
-            createBtnText: _l.users.list.create_btn_text
+            emptyData: _l.trackers.list.empty_text
         };
     },
 

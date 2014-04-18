@@ -1,0 +1,45 @@
+$card-header-font-size: 13px;
+$card-header-font-color: $baseFontColor;
+
+$card-header-title-font-size: $card-header-font-size + 2;
+$card-header-title-font-weight: 600;
+
+$card-header-table-font-color: $card-header-font-color;
+$card-header-table-title-font-color: lighten($card-header-table-font-color, 30%);
+
+.card-header-inner {
+    color: $card-header-font-size;
+    font-size: $card-header-font-color;
+
+    .title {
+        font-size: $card-header-title-font-size;
+        font-weight: $card-header-title-font-weight;
+        padding: 0 0 10px 0;
+
+        .title-add {
+            font-weight: normal;
+            margin-left: 15px;
+        }
+    }
+
+    .header-table {
+        td {
+            padding: 3px;
+        }
+
+        td:first-child {
+            color: $card-header-table-title-font-color;
+        }
+
+        td:first-child + td {
+            color: lighten($card-header-table-font-color, 50%);
+            &:after {
+                content: ':';
+            }
+        }
+
+        td:first-child + td + td{
+            padding-left: 15px;
+        }
+    }
+}

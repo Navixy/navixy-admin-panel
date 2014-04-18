@@ -48,6 +48,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'useredit' : {
                 formsubmit: this.handleUserEditSubmit
+            },
+            'usercard' : {
+                createsession: this.handleUserSessionCreate
             }
         });
 
@@ -103,7 +106,6 @@ Ext.define('NavixyPanel.controller.Users', {
         var userId = parseInt(value),
             userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
 
-        console.log(Ext.getStore('Users').findRecord('id', userId));
         this.fireContent({
             xtype: 'usercard',
             rewrite: true,
@@ -135,7 +137,39 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.Navigator.goTo('user/create');
     },
 
-    // TODO: Messages on success
+    handleUserSessionCreate: function (userRecord) {
+        var userId = userRecord && userRecord.getId();
+
+        if (userId) {
+
+            Ext.API.createUserSession({
+                params: {
+                    user_id: userId
+                },
+                callback: this.showUserSessionHash,
+                failure: this.showUserSessionHashFailure
+            });
+        }
+    },
+
+    showUserSessionHash: function (hash) {
+        if (hash) {
+            Ext.MessageBox.show({
+                prompt: true,
+                width: 300,
+                title: _l.users.session_alert.title,
+                buttons: Ext.MessageBox.OK,
+                value: hash
+            });
+        } else {
+            this.showUserSessionHashFailure()
+        }
+    },
+
+    showUserSessionHashFailure: function () {
+        Ext.MessageBox.alert(_l.error, _l.users.session_alert.error);
+    },
+
     handleUserCreateSubmit: function (cmp, formValues) {
 
         var dealerId = Ext.getStore('Dealer').first().getId(),

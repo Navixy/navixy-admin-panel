@@ -22277,7 +22277,7 @@ a.x-monthpicker-item-inner:hover {
 body {
   background-color: #f0f0f0; }
 
-a {
+a, .link {
   color: #0f5491;
   outline: none medium;
   text-decoration: none;
@@ -22336,6 +22336,9 @@ a {
     color: #b1b1b1; }
     .x-grid .x-grid-row-over .x-grid-cell.tool-column .x-grid-cell-inner {
       opacity: 1; }
+.x-grid .x-grid-empty {
+  color: #4b4b4b;
+  font-size: 14px; }
 
 .x-grid-row .x-grid-cell {
   border-color: #fdfdfd;
@@ -22389,6 +22392,16 @@ a {
   font-size: normal;
   border-width: 1px;
   border-style: solid; }
+
+.x-tab-bar-body-light {
+  background-color: #ebebeb; }
+  .x-tab-bar-body-light .x-tab-light {
+    padding: 5px 10px;
+    color: #4b4b4b; }
+  .x-tab-bar-body-light .x-tab-light-active {
+    background-color: #d1d1d1; }
+  .x-tab-bar-body-light .x-tab-light-over {
+    background-color: #dedede; }
 
 .x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
   line-height: 20px;
@@ -22504,3 +22517,24 @@ a {
 .x-panel-body-light .block_header {
   color: #4b4b4b;
   font-size: 15px; }
+
+.card-header-inner {
+  color: 13px;
+  font-size: #4b4b4b; }
+  .card-header-inner .title {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0 0 10px 0; }
+    .card-header-inner .title .title-add {
+      font-weight: normal;
+      margin-left: 15px; }
+  .card-header-inner .header-table td {
+    padding: 3px; }
+  .card-header-inner .header-table td:first-child {
+    color: #989898; }
+  .card-header-inner .header-table td:first-child + td {
+    color: #cbcbcb; }
+    .card-header-inner .header-table td:first-child + td:after {
+      content: ':'; }
+  .card-header-inner .header-table td:first-child + td + td {
+    padding-left: 15px; }

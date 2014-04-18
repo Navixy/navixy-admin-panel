@@ -40,10 +40,13 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         var defaultTexts = {
             editToolTip: _l.list.edit_tool,
             createBtnRole: 'create-btn',
-            createBtnText: _l.list.create_btn_text
+            createBtnText: _l.list.create_btn_text,
+            emptyData: _l.list.empty_text
         };
 
         this.texts = Ext.applyIf(this.getTexts(), defaultTexts);
+
+        this.emptyText = this.texts.emptyData;
 
         this.tbar = this.getTopBar();
 

@@ -80,7 +80,5 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
         if (filterField) {
             filterId = this.filter(filterField, value);
         }
-
-        console.log(filterId);
     }
 });

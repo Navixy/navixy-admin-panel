@@ -15,6 +15,9 @@ $grid-cell-font-size: 13px;
 $tool-column-color: lighten($baseFontColor, 40%);
 $tool-column-over-color: lighten($baseFontColor, 10%);
 
+$grid-cell-empty-color: $baseFontColor;
+$grid-cell-empty-font-size: 14px;
+
 .x-grid {
     .x-column-header-checkbox .x-column-header-text {
         margin: 0;
@@ -61,6 +64,12 @@ $tool-column-over-color: lighten($baseFontColor, 10%);
                 opacity: 1;
             }
         }
+    }
+
+    .x-grid-empty {
+        color: $grid-cell-empty-color;
+        font-size: $grid-cell-empty-font-size;
+
     }
 }
 

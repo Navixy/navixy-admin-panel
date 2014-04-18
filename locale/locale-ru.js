@@ -109,7 +109,8 @@ Ext.define('Locale.locale-ru', {
 
     list: {
         edit_tool: 'изменить',
-        create_btn_text: 'Создать'
+        create_btn_text: 'Создать',
+        empty_text: 'Нет данных'
     },
 
     users: {
@@ -161,10 +162,21 @@ Ext.define('Locale.locale-ru', {
             individual : 'Индивидуальный предприниматель',
             full_name: 'Ф. И. О.',
             login_short: 'Логин',
-            user_id: 'ID'
+            user_id: 'ID',
+            user_id_exp: 'Номер пользователя',
+            activated_short: {
+                title: 'Статус',
+                status_true: 'Активен',
+                status_false: 'Не активен'
+            }
         },
         list: {
-            create_btn_text: 'Новый пользователь'
+            create_btn_text: 'Новый пользователь',
+            empty_text: 'Пользователей не найдено'
+        },
+        session_alert: {
+            error: 'Не удалось создать сессию для пользователя',
+            title: 'Ваш код сессии'
         }
     },
 
@@ -174,6 +186,10 @@ Ext.define('Locale.locale-ru', {
             tracker_id: 'ID',
             label: 'Навзание',
             model: 'Модель',
+        },
+        list: {
+            create_btn_text: 'Новый трекер',
+            empty_text: 'Трекеров не найдено'
         }
     }
 })

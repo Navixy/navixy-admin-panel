@@ -69,6 +69,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    createUserSession: function (config) {
+        this.requestWithOptions(config, {
+            action: 'session/create',
+            handler: 'user',
+            root: 'hash'
+        });
+    },
+
     getTrackersList: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,

@@ -12,7 +12,8 @@ Ext.define('NavixyPanel.view.users.List', {
 
     getTexts: function () {
         return {
-            createBtnText: _l.users.list.create_btn_text
+            createBtnText: _l.users.list.create_btn_text,
+            emptyData: _l.users.list.empty_text
         };
     },
 
