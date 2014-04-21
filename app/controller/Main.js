@@ -73,6 +73,27 @@ Ext.define('NavixyPanel.controller.Main', {
                 });
 
                 return result;
+            },
+            getFilteredData: function (filters) {
+                var result = [];
+
+                if (!filters) {
+
+                    result = this.getData();
+                } else {
+
+                    this.suspendEvents();
+                    this.filter(filters);
+
+                    result = this.getData();
+
+                    Ext.iterate(filters, function(filter) {
+                        this.removeFilter(filter);
+                    }, this);
+
+                    this.resumeEvents();
+                }
+                return result;
             }
         });
 

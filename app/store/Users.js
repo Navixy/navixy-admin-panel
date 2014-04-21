@@ -5,14 +5,13 @@
  */
 
 Ext.define('NavixyPanel.store.Users', {
-    extend: 'NavixyPanel.utils.pagination.Store',
+    extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.User',
     storeId: 'Users',
-    pageSize: 20,
     sorters: [
         {
             property: 'id',
-            direction: 'DESC'
+            direction: 'ASC'
         }
     ]
 });

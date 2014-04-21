@@ -32,8 +32,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     texts: null,
 
-    filterType: null,
-    filterValue: null,
+    filter: null,
 
     initComponent: function () {
 
@@ -47,6 +46,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.texts = Ext.applyIf(this.getTexts(), defaultTexts);
 
         this.emptyText = this.texts.emptyData;
+
+        this.initStore();
 
         this.tbar = this.getTopBar();
 
@@ -62,23 +63,55 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.addListeners();
 
         this.callParent(arguments);
-
-        this.applyFilters();
     },
 
-    applyFilters: function () {
-        var canFilter = typeof this.store.applyExternalFilter === 'function';
+    initStore: function () {
 
-        if (canFilter) {
+        var storeName = Ext.isString(this.store)
+            ? this.store
+            : this.store.self.getName();
 
-//            this.store.clearExternalFilters();
-
-            if (this.filterType
-                && this.filterValue) {
-
-                this.store.applyExternalFilter(this.filterType, this.filterValue);
-            }
+        if (storeName) {
+            this.store = Ext.getStore(storeName).getClone(this.getStoreConfig());
         }
+    },
+
+    getStoreConfig: function () {
+        var config = {};
+
+        if (this.filter) {
+            var root = this.filter.root || 'data',
+                filters = config.parentFilters = [],
+                filterConfig,
+                filtersConfig = !Ext.isArray(config)
+                    ? [config]
+                    : config;
+
+            Ext.iterate(this.filter, function(name, value) {
+                if (name === 'root') {
+                    return true;
+                }
+
+                filterConfig = Ext.isObject(value)
+                    ? value
+                    : {
+                        property: name,
+                        value: value,
+                        root: root
+                    };
+
+                filters.push(
+                    Ext.create('Ext.util.Filter',
+                        Ext.apply(
+                            {},
+                            filterConfig
+                        )
+                    )
+                );
+            }, this);
+        }
+
+        return config;
     },
 
     getTexts: function () {

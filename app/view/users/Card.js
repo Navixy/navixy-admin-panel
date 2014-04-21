@@ -1,6 +1,7 @@
 Ext.define('NavixyPanel.view.users.Card', {
     extend: 'Ext.Container',
     alias: 'widget.usercard',
+    singleCmp: true,
 
     record: null,
     headerTpl: null,
@@ -100,8 +101,9 @@ Ext.define('NavixyPanel.view.users.Card', {
                 xtype: 'trackerslist',
                 title: 'Трекеры пользователя',
                 createBtn: false,
-                filterType: 'user',
-                filterValue: this.getRecordId(),
+                filter: {
+                    user_id: this.getRecordId()
+                },
                 hasEdit: Ext.checkPermission('trackers', 'edit')
             }
         ];

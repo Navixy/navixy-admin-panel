@@ -6,6 +6,7 @@
 
 Ext.define('NavixyPanel.view.components.AbstractForm', {
     extend: 'Ext.form.Panel',
+    singleCmp: true,
 
     layout: {
         type: 'vbox'

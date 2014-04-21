@@ -52,16 +52,16 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     showContent: function (cmpConfig) {
+        cmpConfig = typeof cmpConfig === 'string' ? {xtype: cmpConfig} : cmpConfig;
 
         var cardContainer = this.getDesktop(),
-            xtype = typeof cmpConfig === 'string' ? cmpConfig : cmpConfig.xtype,
-            rewrite = typeof cmpConfig === 'string' ? false : cmpConfig.rewrite || false,
+            xtype = cmpConfig.xtype,
             existing = cardContainer.down('container[role=' + xtype + ']') || null,
+            rewrite = existing && (cmpConfig.singleCmp || existing.singleCmp),
             target;
 
         if (rewrite) {
             this.removeContent(existing);
-            existing = null;
         }
 
         target = existing || this.addContent(cmpConfig);
@@ -82,9 +82,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
     addContent: function (cmpConfig) {
 
         var cardContainer = this.getDesktop(),
-            xtype = typeof cmpConfig === 'string' ? cmpConfig : cmpConfig.xtype,
-            menu_text = Ext.isObject(cmpConfig) ? cmpConfig.name || xtype : xtype,
-            config = Ext.isObject(cmpConfig) ? Ext.apply(cmpConfig, {role: xtype}) : {xtype: xtype, role: xtype};
+            xtype = cmpConfig.xtype,
+            menu_text = cmpConfig.name || xtype,
+            config = Ext.apply(cmpConfig, {role: xtype});
 
         return cardContainer.add(config);
     },

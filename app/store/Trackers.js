@@ -5,18 +5,13 @@
  */
 
 Ext.define('NavixyPanel.store.Trackers', {
-    extend: 'NavixyPanel.utils.pagination.Store',
+    extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.Tracker',
     storeId: 'Trackers',
-    pageSize: 20,
     sorters: [
         {
             property: 'id',
-            direction: 'DESC'
+            direction: 'ASC'
         }
-    ],
-
-    externalFiltersMap: {
-        user: 'user_id'
-    }
+    ]
 });
