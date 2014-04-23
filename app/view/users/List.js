@@ -18,7 +18,8 @@ Ext.define('NavixyPanel.view.users.List', {
     },
 
     getColumnsConfig: function () {
-        var userCardTpl = '<a>{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}</a>';
+        var userCardTpl = '<a>{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode} <tpl if="!activated"><span class="scaled red">{[l.users.fields.activated_short.status_false]}</span></tpl></a>',
+            userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>';
 
         return [
             {
@@ -46,7 +47,10 @@ Ext.define('NavixyPanel.view.users.List', {
             },
             {
                 text: _l.users.fields.post_city,
+                xtype: 'templatecolumn',
+                tpl: userCityTpl,
                 dataIndex: 'post_city',
+                sortable: true,
                 flex: 1
             }
         ];

@@ -1,177 +1,64 @@
 Ext.define('NavixyPanel.view.users.Card', {
-    extend: 'Ext.Container',
+    extend: 'NavixyPanel.view.components.AbstractCard',
     alias: 'widget.usercard',
-    singleCmp: true,
+    stateful: true,
+    stateId: 'userCard',
 
-    record: null,
-    headerTpl: null,
-
-    layout: {
-        type: 'hbox',
-        align: 'stretch'
-    },
-
-    initComponent: function () {
-
-        if (!this.record) {
-            return false;
-        }
-
-        this.items = this.getItems();
-
-        this.callParent(arguments);
-    },
-
-    getItems: function () {
-
-        return [
-            {
-                xtype: 'panel',
-                ui: 'light',
-                layout: {
-                    type: 'vbox',
-                    align: 'stretch'
-                },
-                flex: 1,
-                bodyPadding: 10,
-                title: this.getPanelTitle(),
-                items: this.getPanelItems()
-            },
-            {
-                xtype: 'panel',
-                ui: 'transparent',
-//                ui: 'light',
-
-//                headerPosition: 'top',
-//                collapsible: true,
-//                collapseDirection: 'left',
-                // TODO locale
-//                title: 'ссылки',
-                width: 250,
-                bodyPadding: '10 0 10 30',
-                items: this.getLinks()
-            }
-        ]
-    },
 
     getLinks: function () {
         var me = this;
         return [
             {
-                xtype: 'button',
-                ui: 'none',
-                text: 'Создать сессию',
-                width: 100,
-                cls: 'link',
+                html: '<a>' + _l.users.card.links.user_edit + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireUserEdit,
+                        scope: me
+                    }
+                }
+            },
+            {
+                html: '<a>' + _l.users.card.links.session_text + '</a>',
                 listeners: {
                     click: {
                         fn: me.fireSessionCreate,
                         scope: me
                     }
                 }
+            },
+            {
+                html: '<a>' + _l.users.card.links.transactions + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireTransactionsShow,
+                        scope: me
+                    }
+                }
             }
-        ]
+        ];
     },
 
     getPanelTitle: function () {
         return false;
     },
 
-    getPanelItems: function () {
-        return [
-            {
-                xtype: 'container',
-                padding: '10 10 40 10',
-                tpl: this.makeHeaderTpl(),
-                data: this.prepareHeaderData()
-            },
-            {
-                xtype: 'tabpanel',
-                ui: 'light',
-                border: 0,
-                items: this.getTabPanelItems()
-            }
-        ];
-    },
-
     getTabPanelItems: function () {
         return [
             {
-                // TODO locale
                 xtype: 'trackerslist',
-                title: 'Трекеры пользователя',
+                title: _l.users.card.tab_panel.trackers.title,
                 createBtn: false,
                 filter: {
                     user_id: this.getRecordId()
                 },
                 hasEdit: Ext.checkPermission('trackers', 'edit')
+            },
+            {
+                xtype: 'usertransactions',
+                title: _l.users.card.tab_panel.transactions.title,
+                record: this.record
             }
         ];
-    },
-
-    makeHeaderTpl: function () {
-        return Ext.create('NavixyPanel.utils.CTemplate',
-            '<div class="card-header-inner">',
-                '<div class="title">',
-                    '{title:htmlEncode}',
-                    '<tpl if="title_add">',
-                        '<span class="title-add">{title_add:htmlEncode}</span>',
-                    '</tpl>',
-                '</div>',
-                '<table class="header-table">',
-                    '<tpl for="id">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                    '<tpl for="login">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                    '<tpl for="active">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                    '<tpl for="city">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                    '<tpl for="city_legal">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                    '<tpl for="legal_type">',
-                        '<tr>',
-                            '<td>{title:htmlEncode}</td>',
-                            '<td></td>',
-                            '<td>{value:htmlEncode}</td>',
-                        '</tr>',
-                    '</tpl>',
-                '</table>',
-            '</div>'
-        );
-    },
-
-    getRecordId: function () {
-        return this.record.getId();
-    },
-
-    getRecordData: function () {
-        return this.record.getData();
     },
 
     prepareHeaderData: function () {
@@ -181,35 +68,123 @@ Ext.define('NavixyPanel.view.users.Card', {
         return {
             title: recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
             title_add: recordData.legal_name && fio,
-            id: {
-                title: _l.users.fields.user_id_exp,
-                value: this.getRecordId()
-            },
-            login: {
-                title: _l.users.fields.login_short,
-                value: recordData.login
-            },
-            active: {
-                title: _l.users.fields.activated_short.title,
-                value: _l.users.fields.activated_short[recordData.active ? 'status_true' : 'status_false']
-            },
-            city: {
-                title: _l.users.fields.post_city,
-                value: recordData.post_city
-            },
-            city_legal: {
-                title: _l.users.fields.registered_city,
-                value: recordData.registered_city
-            },
-            legal_type: {
-                title: _l.users.fields.legal_type,
-                value: _l.users.fields[recordData.legal_type] || ''
-            }
+            main_cls: 'card-header-inner',
+            table_cls: 'header-table',
+            fields: [
+                {
+                    title: _l.users.fields.user_id_exp,
+                    value: this.getRecordId()
+                },
+                {
+                    title: _l.users.fields.login_short,
+                    value: recordData.login
+                },
+                {
+                    title: _l.users.fields.activated_short.title,
+                    value: _l.users.fields.activated_short[recordData.activated ? 'status_true' : 'status_false'],
+                    left_td_cls: recordData.activated ? 'status ok' : 'status no'
+                },
+                {
+                    title: _l.users.fields.post_city,
+                    value: recordData.post_city
+                },
+                {
+                    title: _l.users.fields.registered_city,
+                    value: recordData.registered_city
+                },
+                {
+                    title: _l.users.fields.legal_type,
+                    value: _l.users.fields[recordData.legal_type] || ''
+                },
+                {
+                    title: _l.users.fields.phone,
+                    value: recordData.phone
+                }
+            ]
+        };
+    },
+
+    prepareBodyLeftData: function () {
+        var recordData = this.getRecordData();
+
+        return {
+            title: _l.users.create_form.address_fields,
+            main_cls : 'card-body-inner',
+            table_cls: 'body-table',
+            fields: [
+                {
+                    title: _l.users.fields.post_country,
+                    value: recordData.post_country
+                },
+                {
+                    title: _l.users.fields.post_index,
+                    value: recordData.post_index
+                },
+                {
+                    title: _l.users.fields.post_region,
+                    value: recordData.post_region
+                },
+                {
+                    title: _l.users.fields.post_city,
+                    value: recordData.post_city
+                },
+                {
+                    title: _l.users.fields.post_street_address,
+                    value: recordData.post_street_address
+                }
+            ]
+        };
+    },
+
+    prepareBodyRightData: function () {
+        var recordData = this.getRecordData();
+
+        return {
+            title: _l.users.create_form.legal_fields,
+            main_cls : 'card-body-inner',
+            table_cls: 'body-table',
+            fields: [
+                {
+                    title: _l.users.fields.registered_country,
+                    value: recordData.registered_country
+                },
+                {
+                    title: _l.users.fields.registered_index,
+                    value: recordData.registered_index
+                },
+                {
+                    title: _l.users.fields.registered_region,
+                    value: recordData.registered_region
+                },
+                {
+                    title: _l.users.fields.registered_city,
+                    value: recordData.registered_city
+                },
+                {
+                    title: _l.users.fields.registered_street_address,
+                    value: recordData.registered_street_address
+                },
+                {
+                    title: _l.users.fields.tin,
+                    value: recordData.tin
+                },
+                {
+                    title: _l.users.fields.iec,
+                    value: recordData.iec
+                }
+            ]
         };
     },
 
     fireSessionCreate: function () {
-        console.log(this.record);
         this.fireEvent('createsession', this.record);
     },
+
+    fireUserEdit: function () {
+        this.fireEvent('useredit', this.record);
+    },
+
+    fireTransactionsShow: function () {
+        Ext.Nav.shift('user/' + this.record.getId() + '/transactions');
+    }
 });

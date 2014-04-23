@@ -4,7 +4,7 @@
  * Description
  */
 
-Ext.define('NavixyPanel.view.users.UserAbstractForm', {
+Ext.define('NavixyPanel.view.users.AbstractForm', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     requires: [
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',

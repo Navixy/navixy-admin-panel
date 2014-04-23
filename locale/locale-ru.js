@@ -41,6 +41,8 @@ Ext.define('Locale.locale-ru', {
     back_form_btn: 'Назад',
     yes: 'да',
     no: 'нет',
+    show_btn: 'Показать',
+    wrong_period: 'Указан недопустимый период',
 
     errors: {
         1: 'Ошибка подключения к базе данных (001). Пожалуйста, обратитесь в техподдержку или повторите позднее.',
@@ -53,7 +55,7 @@ Ext.define('Locale.locale-ru', {
             default_msg: 'Некорректные праметры запроса. Проверьте ввод.',
             title: 'Некорректные параметры:',
             errors: {
-                login: 'Указан некорректный адрес электронной почты',
+                login: 'Указан некорректный адрес электронной почты'
             }
         },
         11: 'Доступ запрещен',
@@ -107,10 +109,35 @@ Ext.define('Locale.locale-ru', {
         service_not_respond: 'Сервис временно недоступен'
     },
 
+    units_combination: {
+        days: ['дней', 'день', 'дня', 'дня', 'дня', 'дней'],
+        hours: ['часов', 'час' , 'часа', 'часа', 'часа', 'часов'],
+        minutes: ['минут', 'минута', 'минуты', 'минуты', 'минуты', 'минут'],
+        seconds: ['секунд', 'секунда', 'секунды', 'секунды', 'секунды', 'секунд'],
+        everyminutes: ['минут', 'минуту', 'минуты', 'минуты', 'минуты', 'минут'],
+        everyseconds: ['секунд', 'секунду', 'секунды', 'секунды', 'секунды', 'секунд'],
+        meters: ['метров', 'метр', 'метра', 'метра', 'метра', 'метров'],
+        degrees: ['градусов', 'градус', 'градуса', 'градуса', 'градуса', 'градусов'],
+        objects: ['объектов', 'объект', 'объекта', 'объекта', 'объекта', 'объектов']
+    },
+
     list: {
         edit_tool: 'изменить',
         create_btn_text: 'Создать',
         empty_text: 'Нет данных'
+    },
+
+    card: {
+        links: {
+            collapser_tip: 'Скрыть ссылки',
+            collapser_exptip: 'Показать ссылки'
+        },
+        body: {
+            title: 'Дополнительная информация:',
+            exptitle: 'Дополнительная информация <a>(показать)</a>',
+            collapser_tip: 'Скрыть доп. информацию',
+            collapser_exptip: 'Показать доп. информацию'
+        }
     },
 
     users: {
@@ -168,7 +195,8 @@ Ext.define('Locale.locale-ru', {
                 title: 'Статус',
                 status_true: 'Активен',
                 status_false: 'Не активен'
-            }
+            },
+            registered_short: 'юр'
         },
         list: {
             create_btn_text: 'Новый пользователь',
@@ -177,6 +205,44 @@ Ext.define('Locale.locale-ru', {
         session_alert: {
             error: 'Не удалось создать сессию для пользователя',
             title: 'Ваш код сессии'
+        },
+        card: {
+            tab_panel: {
+                trackers: {
+                    title: 'Трекеры пользователя'
+                },
+                transactions: {
+                    title: 'Транзакции'
+                }
+            },
+            links: {
+                session_text : 'Перейти к мониторингу',
+                user_edit: 'Редактировать пользователя',
+                transactions: 'Транзакции'
+            }
+        },
+        transactions: {
+            list: {
+                empty_text: 'Транзакций за выбранный период не найдено',
+                title: 'Транзакции пользователя'
+            },
+            fields: {
+                description: 'Операция',
+                type: 'Тип операции',
+                subtype: 'Подтип',
+                date: 'Дата',
+                amount: 'Сумма',
+                old_balance: 'Было',
+                new_balance: 'Стало',
+                type_set: {
+                    main_charge: 'main_charge',
+                    payment: 'платеж'
+                },
+                subtype_set: {
+                    monthly: 'ежемесячный',
+                    partner: 'от партнера'
+                }
+            }
         }
     },
 
@@ -186,6 +252,22 @@ Ext.define('Locale.locale-ru', {
             tracker_id: 'ID',
             label: 'Навзание',
             model: 'Модель',
+            phone: 'Телефон',
+            device_id: 'Номер устройства',
+            creation_date: 'Дата создания',
+            creation_date_short: 'Создан',
+            connection_status: 'Статус',
+            options: {
+                clone: 'клон',
+                deleted: 'удален',
+                blocked: 'заблокирован'
+            },
+            statuses: {
+                online: 'Online',
+                offline: 'Offline',
+                just_registered: 'Offline',
+                signal_lost: 'No connect'
+            }
         },
         list: {
             create_btn_text: 'Новый трекер',

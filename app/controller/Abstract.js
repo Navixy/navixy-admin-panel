@@ -35,7 +35,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
             this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
 
             var menuText = this.menuConfig.text || this.getModuleName(),
-                menuTarget = Ext.Navigator.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
 
             this.application.fireEvent('menuregister', {
                 name: this.getModuleName(),
@@ -115,7 +115,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
     getHandlerEventConfig: function (name) {
 
         var path = this.getHandlerEventPath(name),
-            config = Ext.Navigator.genEventConfig(path);
+            config = Ext.Nav.genEventConfig(path);
 
         return config && config.name
             ? config.name

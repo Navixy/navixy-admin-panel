@@ -17,8 +17,18 @@ Ext.define('NavixyPanel.view.trackers.List', {
     },
 
     getColumnsConfig: function () {
-        var trackerLabelTpl = '<a>{label:htmlEncode}</a>',
-            trackerModelTpl = '{source.model:htmlEncode}';
+        var trackerLabelTpl = [
+                '<a>{label:htmlEncode}</a>',
+                '<tpl if="clone">',
+                    '<span class="scaled lighten">{[_l.trackers.fields.options.clone]}</span>',
+                '</tpl>',
+                '<tpl if="deleted">',
+                    '<span class="scaled red">{[_l.trackers.fields.options.deleted]}</span>',
+                '</tpl>'
+            ],
+            trackerStatusTpl = [
+                '<span class="{connection_status}">{[_l.trackers.fields.statuses[values.connection_status]]}</span>',
+            ];
 
         return [
             {
@@ -31,14 +41,34 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 xtype: 'templatecolumn',
                 tpl: trackerLabelTpl,
                 dataIndex: 'label',
-                flex: 2
+                flex: 1
+            },
+            {
+                text: _l.trackers.fields.connection_status,
+                xtype: 'templatecolumn',
+                tpl: trackerStatusTpl,
+                dataIndex: 'connection_status',
+                width: 100
             },
             {
                 text: _l.trackers.fields.model,
-                xtype: 'templatecolumn',
-                tpl: trackerModelTpl,
-                dataIndex: 'source.model',
-                flex: 1
+                dataIndex: 'model',
+                width: 120
+            },
+            {
+                text: _l.trackers.fields.device_id,
+                dataIndex: 'device_id',
+                width: 140
+            },
+            {
+                text: _l.trackers.fields.phone,
+                dataIndex: 'phone',
+                width: 140
+            },
+            {
+                text: _l.trackers.fields.creation_date_short,
+                dataIndex: 'creation_date',
+                width: 90
             }
         ];
     }

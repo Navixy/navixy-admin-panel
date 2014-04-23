@@ -10,5 +10,9 @@ Config = {
         authProperty: 'hash',
         appPage: 'main',
         loginPage: 'login'
+    },
+
+    links: {
+        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
     }
 };

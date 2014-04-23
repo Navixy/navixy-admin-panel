@@ -1,11 +1,11 @@
 /**
- * @class NavixyPanel.view.user.UserEdit
- * @extends NavixyPanel.view.users.UserAbstractForm
+ * @class NavixyPanel.view.user.Edit
+ * @extends NavixyPanel.view.users.AbstractForm
  * Description
  */
 
-Ext.define('NavixyPanel.view.users.UserEdit', {
-    extend: 'NavixyPanel.view.users.UserAbstractForm',
+Ext.define('NavixyPanel.view.users.Edit', {
+    extend: 'NavixyPanel.view.users.AbstractForm',
     alias: 'widget.useredit',
     id: 'UserEdit',
 

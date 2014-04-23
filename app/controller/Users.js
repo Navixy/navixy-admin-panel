@@ -11,9 +11,10 @@ Ext.define('NavixyPanel.controller.Users', {
     views: [
         'widgets.ToolColumn',
 
+        'users.TransactionsList',
         'users.List',
-        'users.UserCreate',
-        'users.UserEdit',
+        'users.Create',
+        'users.Edit',
         'users.Card'
     ],
 
@@ -31,6 +32,9 @@ Ext.define('NavixyPanel.controller.Users', {
             selector: 'useredit'
         }
     ],
+
+    stores: ['Users'],
+    models: ['User',  'Transaction'],
 
     init: function () {
         this.callParent(arguments);
@@ -50,7 +54,8 @@ Ext.define('NavixyPanel.controller.Users', {
                 formsubmit: this.handleUserEditSubmit
             },
             'usercard' : {
-                createsession: this.handleUserSessionCreate
+                createsession: this.handleUserSessionCreate,
+                useredit: this.handleUserEditAction
             }
         });
 
@@ -61,6 +66,10 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'user' : {
                 fn: this.handleUserCard,
+                access: 'read'
+            },
+            'user > transactions' : {
+                fn: this.handleUserTransactions,
                 access: 'read'
             },
             'user > edit' : {
@@ -96,7 +105,19 @@ Ext.define('NavixyPanel.controller.Users', {
 
             this.fireContent({
                 xtype: 'useredit',
-                rewrite: true,
+                record: userRecord
+            });
+        }
+    },
+
+    handleUserTransactions: function (value) {
+        var userId = parseInt(value),
+            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
+
+        if (userRecord) {
+
+            this.fireContent({
+                xtype: 'usertransactions',
                 record: userRecord
             });
         }
@@ -123,18 +144,18 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleListAction: function (record) {
         var userId = record.getId();
-        Ext.Navigator.goTo('user/' + userId);
+        Ext.Nav.shift('user/' + userId);
     },
 
     handleUserEditAction: function (record) {
         var userId = record.getId();
 
-        Ext.Navigator.goTo('user/' + userId + '/edit');
+        Ext.Nav.shift('user/' + userId + '/edit');
     },
 
     handleUserCreateAction: function () {
 
-        Ext.Navigator.goTo('user/create');
+        Ext.Nav.shift('user/create');
     },
 
     handleUserSessionCreate: function (userRecord) {
@@ -154,15 +175,9 @@ Ext.define('NavixyPanel.controller.Users', {
 
     showUserSessionHash: function (hash) {
         if (hash) {
-            Ext.MessageBox.show({
-                prompt: true,
-                width: 300,
-                title: _l.users.session_alert.title,
-                buttons: Ext.MessageBox.OK,
-                value: hash
-            });
+            Ext.Nav.openMonitoring(hash);
         } else {
-            this.showUserSessionHashFailure()
+            this.showUserSessionHashFailure();
         }
     },
 
@@ -198,7 +213,7 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.getStore('Users').add(record);
         this.getUserCreate().afterSave();
 
-        Ext.Navigator.goTo('users');
+        Ext.Nav.shift('users');
     },
 
 
@@ -230,7 +245,7 @@ Ext.define('NavixyPanel.controller.Users', {
         if (success) {
             record.set(formValues);
             this.getUserEdit().afterSave();
-            Ext.Navigator.goTo('users');
+            Ext.Nav.shift('users');
         }
     },
 

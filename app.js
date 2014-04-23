@@ -66,6 +66,14 @@ Ext.Class.registerPreprocessor('dependencychecker', function (cls, data, hooks, 
 }, true, 'after', 'loader');
 Ext.Class.getDefaultPreprocessors();
 
+(function () {
+    var stateProvider = Ext.supports.LocalStorage ?
+        new Ext.state.LocalStorageProvider() :
+        new Ext.state.CookieProvider();
+
+    Ext.state.Manager.setProvider(stateProvider);
+})(window);
+
 Ext.Loader.setConfig({
     enabled: true,
     disableCaching: true,

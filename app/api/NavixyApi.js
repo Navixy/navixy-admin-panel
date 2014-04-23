@@ -77,6 +77,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getUserTransactions: function (config) {
+        this.requestWithOptions(config, {
+            action: 'transaction/list',
+            handler: 'user',
+            root: 'list'
+        });
+    },
+
     getTrackersList: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,

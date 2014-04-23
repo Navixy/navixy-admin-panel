@@ -62,6 +62,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         if (rewrite) {
             this.removeContent(existing);
+            existing = null;
         }
 
         target = existing || this.addContent(cmpConfig);

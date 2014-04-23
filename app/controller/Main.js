@@ -64,6 +64,76 @@ Ext.define('NavixyPanel.controller.Main', {
     // Overrides
     initOverrides: function () {
 
+        Ext.override(Ext.Date, {
+            formatISO: function (isoDate, format) {
+                var date = this.tryParse(isoDate);
+
+                return this.format(date, format || (Ext.util.Format.dateFormatFull || 'd.m.Y H:i:s'));
+            },
+
+            tryParse: function (stringDate) {
+                var result = Ext.Date.parse(stringDate, 'Y-m-d H:i:s');
+
+                if (!result) {
+                    Ext.iterate(this.formatFunctions, function (format) {
+                        try {
+                            var tmpResult = this.parse(stringDate, format);
+                            if (tmpResult) {
+                                result = tmpResult;
+                                return false;
+                            }
+                        } catch (e) {
+                            Ext.log(e.stack);
+                        }
+                    }, this);
+                }
+
+                if (!result) {
+                    result = this.toDate(stringDate);
+                }
+
+                return  result;
+            },
+
+            delta: function (date1, date2, format) {
+                date1 = this.tryParse(date1);
+                date2 = this.tryParse(date2);
+
+                var offset = new Date().getTimezoneOffset() * 60000,
+                    dateDelta = new Date(Math.abs(date1 - date2) + offset);
+
+                return format ? this.format(dateDelta, format) : dateDelta;
+
+            },
+
+            formatFunctions: {
+                'hours-minutes': function () {
+                    var hours = this.getHours(),
+                        minutes = this.getMinutes(),
+                        hours_postfix = _l.units_combination.hours[ hours <= 10 || hours > 19 ? hours % 10 : 10] ,
+                        minutes_postfix = _l.units_combination.minutes[ minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
+
+                    return  [hours, hours_postfix, minutes, minutes_postfix].join(' ');
+                }
+            },
+
+            toDate: function (string) {
+                var date = new Date(string);
+
+                try {
+                    if (this.isValid(date)) {
+                        return date;
+                    }
+                    return new Date(string.replace(/(\d+)-(\d+)-(\d+)/, '$2/$3/$1'));
+
+                } catch (e) {
+                    return date;
+                }
+
+            }
+
+        });
+
         Ext.override(Ext.data.Store, {
             getData: function () {
                 var result = [];
@@ -145,7 +215,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
     // History
     registerHistory: function () {
-        Ext.Navigator.on('change', this.handleHistory, this);
+        Ext.Nav.on('change', this.handleHistory, this);
         this.application.on('handlefound', this.onHandlerFound, this);
 
         //TODO Controllers load check;
@@ -153,7 +223,7 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     handleHistory: function () {
-        var eventConfig = Ext.Navigator.getEventConfig();
+        var eventConfig = Ext.Nav.getEventConfig();
 
         if (eventConfig) {
             this.checkHandlerLoad();

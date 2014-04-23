@@ -75,7 +75,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     afterFirstLayout: function () {
 
         if (this.applyRecord && this.record) {
-            this.applyRecordData()
+            this.applyRecordData();
         }
 
         this.callParent(arguments);
@@ -96,6 +96,8 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                 }
             });
         }
+
+        this.getForm().isValid();
     },
 
     getRecordData: function () {
@@ -120,7 +122,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     backFromForm: function () {
         if (this.backTarget) {
-            Ext.Navigator.goTo(this.backTarget);
+            Ext.Nav.shift(this.backTarget);
             this.doHarakiri();
         }
     },
@@ -166,7 +168,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     }
                 ]
             }
-        ]
+        ];
     },
 
     getButtons: function () {

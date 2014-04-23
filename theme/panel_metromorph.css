@@ -22286,6 +22286,9 @@ a, .link {
 .x-tip-body-default {
   padding: 5px 10px; }
 
+.x-datepicker-cell .x-hide-clip {
+  display: none; }
+
 .x-form-trigger-input-cell .field-postfix {
   color: #333333; }
 
@@ -22351,9 +22354,29 @@ a, .link {
       color: #656565; }
     .x-grid-row .x-grid-cell.tool-column .x-grid-cell-inner {
       opacity: 0; }
-
-.x-grid-cell-inner {
-  padding: 8px 9px; }
+  .x-grid-row .x-grid-cell .x-grid-cell-inner {
+    padding: 8px 9px; }
+    .x-grid-row .x-grid-cell .x-grid-cell-inner span {
+      padding-left: 5px; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.scaled {
+        font-size: 11px;
+        text-transform: lowercase; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.red {
+        color: #ff3333; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.blue {
+        color: #0064cd; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.green {
+        color: #66c011; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.lighten {
+        color: #989898; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.online {
+        color: #66c011; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.offline {
+        color: #ff3333; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.just_registered {
+        color: #989898; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.signal_lost {
+        color: #323232; }
 
 .x-panel-header-default .x-panel-header-glyph {
   font-size: 16px; }
@@ -22367,6 +22390,10 @@ a, .link {
 .x-panel-light {
   background-color: transparent; }
   .x-panel-light .x-toolbar-footer, .x-panel-light .x-docked-bottom {
+    background-color: #ebebeb;
+    border-color: #ebebeb; }
+  .x-panel-light .x-toolbar-light-docked-top {
+    color: #4b4b4b;
     background-color: #ebebeb;
     border-color: #ebebeb; }
 
@@ -22518,6 +22545,39 @@ a, .link {
   color: #4b4b4b;
   font-size: 15px; }
 
+.content-table {
+  border-spacing: 0; }
+  .content-table td {
+    padding: 3px; }
+  .content-table td:first-child {
+    color: #989898; }
+  .content-table td:first-child + td {
+    color: #cbcbcb; }
+    .content-table td:first-child + td:after {
+      content: ':'; }
+  .content-table td:first-child + td + td {
+    padding-left: 15px; }
+  .content-table td.status.no {
+    color: #ff3333; }
+
+.content-table.body-table {
+  background-color: #fafafa; }
+  .content-table.body-table td {
+    padding: 5px; }
+  .content-table.body-table td:first-child {
+    color: #989898;
+    width: 50%;
+    text-align: right; }
+  .content-table.body-table td:first-child + td {
+    color: #cbcbcb; }
+    .content-table.body-table td:first-child + td:after {
+      content: ':'; }
+  .content-table.body-table td:first-child + td + td {
+    padding-left: 5px;
+    width: 50%;
+    padding-left: 15px;
+    background-color: whitesmoke; }
+
 .card-header-inner {
   color: 13px;
   font-size: #4b4b4b; }
@@ -22528,13 +22588,32 @@ a, .link {
     .card-header-inner .title .title-add {
       font-weight: normal;
       margin-left: 15px; }
-  .card-header-inner .header-table td {
-    padding: 3px; }
-  .card-header-inner .header-table td:first-child {
-    color: #989898; }
-  .card-header-inner .header-table td:first-child + td {
-    color: #cbcbcb; }
-    .card-header-inner .header-table td:first-child + td:after {
-      content: ':'; }
-  .card-header-inner .header-table td:first-child + td + td {
-    padding-left: 15px; }
+
+.card-body-inner .title {
+  font-size: 14px;
+  padding: 3px 20px 5px; }
+
+.links-panel {
+  background-color: #f3f3f3; }
+
+.body-collapser {
+  font-size: 15px;
+  cursor: pointer;
+  background: url("panel_metromorph/images/tools/collapse.png") no-repeat 15px 55% #fdfdfd; }
+  .body-collapser.active {
+    background-image: url("panel_metromorph/images/tools/expand.png"); }
+
+.links-collapser {
+  position: absolute;
+  padding: 10px !important;
+  width: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  background: url("panel_metromorph/images/tools/arrow-right.png") no-repeat 50% 50% #fdfdfd;
+  opacity: 0.7;
+  cursor: pointer; }
+  .links-collapser:hover {
+    opacity: 1; }
+  .links-collapser.active {
+    background-image: url("panel_metromorph/images/tools/arrow-left.png"); }

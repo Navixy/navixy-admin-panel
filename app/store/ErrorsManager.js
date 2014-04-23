@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
 
     // TODO : Auth form here
     redirectToAuth: function (code) {
-//        Ext.Navigator.goTo(this.loginToken);
+//        Ext.Nav.shift(this.loginToken);
     },
 
     goToStartPage: function () {

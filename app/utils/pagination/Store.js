@@ -26,9 +26,6 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
         }
     },
 
-    externalFiltersMap: null,
-    externalFilters: [],
-
     constructor: function () {
         this.proxy =  Ext.create('Ext.data.proxy.Memory', {
                 enablePaging: true,

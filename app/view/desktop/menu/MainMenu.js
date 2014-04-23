@@ -69,7 +69,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
 
         try {
             this.toggleSectionButton(section, true, false);
-            Ext.Navigator.goTo(target);
+            Ext.Nav.shift(target);
         } catch (e) {
             Ext.log(e.stack);
         }

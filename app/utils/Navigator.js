@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.utils.Navigator', {
-    alternateClassName: 'Ext.Navigator',
+    alternateClassName: 'Ext.Nav',
     requires: ['Ext.util.History'],
     singleton: true,
     delimiter: '/',
@@ -69,7 +69,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
             if (config.params) {
                 Ext.iterate(config.params, function (param) {
                     if (Ext.isNumeric(param)) {
-                        parts.push(param)
+                        parts.push(param);
                     }
                 }, this);
             }
@@ -81,7 +81,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
 
         return parts.length
             ? parts.join(this.delimiter)
-            : ''
+            : '';
     },
 
     getEventConfig: function (path) {
@@ -106,7 +106,16 @@ Ext.define('NavixyPanel.utils.Navigator', {
             : null;
     },
 
-    goTo: function (token) {
+    shift: function (token) {
         Ext.History.add(token);
     },
+
+    openMonitoring: function (hash) {
+        var url = new Ext.Template(Config.links.monUrlTpl).apply({
+                company_url: Ext.getStore('Dealer').first().get('company_url') || 'my.gdemoi.ru',
+                hash: hash || ''
+            });
+
+        window.location = url;
+    }
 });

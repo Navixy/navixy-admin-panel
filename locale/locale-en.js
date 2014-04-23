@@ -37,6 +37,10 @@ Ext.define('Locale.locale-en', {
     clear_form_btn: 'Clear',
     save_form_btn: 'Save',
     back_form_btn: 'Back',
+    yes: 'yes',
+    no: 'no',
+    show_btn: 'Show',
+    wrong_period: 'An invalid period',
 
     errors: {
         1: 'Database connection error (001). Please contact support or try again later.',
@@ -104,6 +108,37 @@ Ext.define('Locale.locale-en', {
         service_not_respond: 'The service is temporarily unavailable'
     },
 
+    units_combination: {
+        days: ['days', 'day', 'days'],
+        hours: ['hours', 'hour', 'hours'],
+        minutes: ['minutes', 'minute', 'minutes'],
+        seconds: ['seconds', 'second', 'seconds'],
+        everyminutes: ['minutes', 'minute', 'minutes'],
+        everyseconds: ['seconds', 'second', 'seconds'],
+        meters: ['meters', 'meter', 'meters'],
+        degrees: ['degrees', 'degree', 'degrees'],
+        objects: ['objects', 'object', 'objects']
+    },
+
+    list: {
+        edit_tool: 'edit',
+        create_btn_text: 'Create',
+        empty_text: 'No data'
+    },
+
+    card: {
+        links: {
+            collapser_tip: 'Hide links',
+            collapser_exptip: 'Show links'
+        },
+        body: {
+            title: 'Additional information:',
+            exptitle: 'Additional information <a>(show)</a>',
+            collapser_tip: 'Hide additional information',
+            collapser_exptip: 'Show additional information'
+        }
+    },
+
     users: {
         menu_text: 'Users',
         create_btn: 'New user',
@@ -155,12 +190,90 @@ Ext.define('Locale.locale-en', {
             individual : 'Individual',
             full_name: 'Full Name',
             login_short: 'Login',
-            user_id: 'ID'
+            user_id: 'ID',
+            user_id_exp: 'User number',
+            activated_short: {
+                title: 'Status',
+                status_true: 'Active',
+                status_false: 'Not active'
+            },
+            registered_short: 'legal'
+        },
+        list: {
+            create_btn_text: 'Create new user',
+            empty_text: 'No users found'
+        },
+        session_alert: {
+            error: 'Cant create user session',
+            title: 'Your sessio code'
+        },
+        card: {
+            tab_panel: {
+                trackers: {
+                    title: 'User trackers'
+                },
+                transactions: {
+                    title: 'Transactions'
+                }
+            },
+            links: {
+                session_text : 'Go to monitoring',
+                user_edit: 'Edit user',
+                transactions: 'Transactions'
+            }
+        },
+        transactions: {
+            list: {
+                empty_text: 'No transactions found',
+                title: 'Transactions for user'
+            },
+            fields: {
+                description: 'Operation',
+                type: 'Operation type',
+                subtype: 'Subtype',
+                date: 'Date',
+                amount: 'Sum',
+                old_balance: 'Old',
+                new_balance: 'New',
+                type_set: {
+                    main_charge: 'main_charge',
+                    payment: 'payment'
+                },
+                subtype_set: {
+                    monthly: 'monthly',
+                    partner: 'partner'
+                }
+            }
         }
     },
 
     trackers: {
-        menu_text: 'Trackers'
+        menu_text: 'Trackers',
+        fields: {
+            tracker_id: 'ID',
+            label: 'Title',
+            model: 'Model',
+            phone: 'Phone',
+            device_id: 'Device id',
+            creation_date: 'Creation date',
+            creation_date_short: 'Created',
+            connection_status: 'Status',
+            options: {
+                clone: 'clone',
+                deleted: 'deleted',
+                blocked: 'blocked'
+            },
+            statuses: {
+                online: 'Online',
+                offline: 'Offline',
+                just_registered: 'Offline',
+                signal_lost: 'No connect'
+            }
+        },
+        list: {
+            create_btn_text: 'Create new tracker',
+            empty_text: 'No tracers found'
+        }
     }
 
 })
