@@ -1,5 +1,6 @@
 body {
     background-color: $baseBackgroundColor;
+    overflow-y: scroll !important;
 }
 
 a, .link {

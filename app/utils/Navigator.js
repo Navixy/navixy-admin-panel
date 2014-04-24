@@ -110,12 +110,16 @@ Ext.define('NavixyPanel.utils.Navigator', {
         Ext.History.add(token);
     },
 
-    openMonitoring: function (hash) {
+    back: function () {
+        Ext.History.back();
+    },
+
+    getMonitoring: function (hash) {
         var url = new Ext.Template(Config.links.monUrlTpl).apply({
                 company_url: Ext.getStore('Dealer').first().get('company_url') || 'my.gdemoi.ru',
                 hash: hash || ''
             });
 
-        window.location = url;
+        return url;
     }
 });

@@ -257,6 +257,11 @@ Ext.define('Locale.locale-ru', {
             creation_date: 'Дата создания',
             creation_date_short: 'Создан',
             connection_status: 'Статус',
+            tracker_id_exp: 'Номер трекера',
+            phone_exp: 'Номер телефона',
+            owner: 'Владелец трекера',
+            deleted: 'Удален',
+            blocked: 'Услуги приостановлены',
             options: {
                 clone: 'клон',
                 deleted: 'удален',
@@ -269,9 +274,20 @@ Ext.define('Locale.locale-ru', {
                 signal_lost: 'No connect'
             }
         },
+        edit_form: {
+            main_fields: 'Основные данные',
+            title: 'Редактирование трекера',
+            save_btn: 'Сохранить изменения',
+            return_btn: 'Назад'
+        },
         list: {
             create_btn_text: 'Новый трекер',
             empty_text: 'Трекеров не найдено'
+        },
+        card: {
+            links: {
+                tracker_edit: 'Редактировать трекер'
+            }
         }
     }
 })

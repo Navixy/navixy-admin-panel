@@ -24,8 +24,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     record: null,
     applyRecord: true,
     backTarget: null,
-
-    destroyOnClose: false,
+    saveTarget: null,
 
     initComponent: function () {
 
@@ -107,24 +106,50 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     afterSave: function () {
         this.getForm().reset();
-        this.doHarakiri();
+        this.backAfterSave();
     },
 
     sendForm: function () {
         var form = this.getForm();
 
         if (form.isValid()) {
-            console.log('formsubmit');
-            this.fireEvent('formsubmit', this, form.getValues(), this.record);
+            this.fireEvent('formsubmit', this, this.getProcessedValues(), this.record);
         }
+    },
+
+    getProcessedValues: function () {
+        var values = this.getValues();
+
+        this.iterateFields(function(field) {
+            if (field.getXType() === 'checkboxfield') {
+                values[field.name] = field.getValue();
+            }
+        });
+
+        return values;
     },
 
 
     backFromForm: function () {
         if (this.backTarget) {
             Ext.Nav.shift(this.backTarget);
-            this.doHarakiri();
+        } else {
+            Ext.Nav.back();
         }
+    },
+
+    backAfterSave: function () {
+        var saveTarget = this.gatSaveTarget();
+
+        if (saveTarget) {
+            Ext.Nav.shift(saveTarget);
+        } else {
+            this.backFromForm();
+        }
+    },
+
+    gatSaveTarget: function () {
+        return this.saveTarget;
     },
 
     getTitle: function () {
@@ -175,7 +200,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
         var saveBtn = this.getSaveBtnTitle(),
             clearBtn = this.getClearBtnTitle(),
-            backBtn = this.backTarget && this.getBackBtnTitle(),
+            backBtn = this.getBackBtnTitle(),
             result = [];
 
         if (saveBtn) {
@@ -205,17 +230,15 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
             );
         }
 
-        if (backBtn) {
-            result.push(
-                {
-                    text: backBtn,
-                    scale: 'medium',
-                    ui: 'gray',
-                    margin: '10 5',
-                    handler: Ext.bind(this.backFromForm, this)
-                }
-            );
-        }
+        result.push(
+            {
+                text: backBtn,
+                scale: 'medium',
+                ui: 'gray',
+                margin: '10 5',
+                handler: Ext.bind(this.backFromForm, this)
+            }
+        );
 
         return result;
     },
@@ -243,20 +266,5 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     iterateFields: function (fn, scope) {
         this.getForm().getFields().each(fn, scope || this);
-    },
-
-
-    // TODO: test this shit
-    doHarakiri: function () {
-        if (this.destroyOnClose) {
-
-            Ext.defer(function () {
-                try {
-                    var parent = this.up();
-
-                    parent.remove(this, true);
-                } catch(e) {}
-            }, 100, this);
-        }
     }
 });

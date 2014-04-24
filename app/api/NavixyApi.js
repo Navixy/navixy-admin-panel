@@ -108,4 +108,20 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             scope: scope
         });
     },
+
+    updateTrackerData: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'tracker/settings',
+            root: 'success'
+        });
+    },
+
+    updateTrackerSource: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'tracker/source',
+            root: 'success'
+        });
+    }
 });

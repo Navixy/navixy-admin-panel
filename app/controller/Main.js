@@ -38,8 +38,8 @@ Ext.define('NavixyPanel.controller.Main', {
         }
     ],
 
-    stores: ['Permissions', 'Users', 'Trackers', 'Dealer', 'TimeZones'],
-    models: ['Permissions', 'User',  'Tracker'],
+    stores: ['Permissions', 'Dealer', 'TimeZones'],
+    models: ['Permissions'],
 
     init: function () {
         this.checkAuth();

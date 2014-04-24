@@ -54,7 +54,6 @@ Ext.define('NavixyPanel.controller.Users', {
                 formsubmit: this.handleUserEditSubmit
             },
             'usercard' : {
-                createsession: this.handleUserSessionCreate,
                 useredit: this.handleUserEditAction
             }
         });
@@ -129,7 +128,6 @@ Ext.define('NavixyPanel.controller.Users', {
 
         this.fireContent({
             xtype: 'usercard',
-            rewrite: true,
             record: userRecord
         });
     },
@@ -156,33 +154,6 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserCreateAction: function () {
 
         Ext.Nav.shift('user/create');
-    },
-
-    handleUserSessionCreate: function (userRecord) {
-        var userId = userRecord && userRecord.getId();
-
-        if (userId) {
-
-            Ext.API.createUserSession({
-                params: {
-                    user_id: userId
-                },
-                callback: this.showUserSessionHash,
-                failure: this.showUserSessionHashFailure
-            });
-        }
-    },
-
-    showUserSessionHash: function (hash) {
-        if (hash) {
-            Ext.Nav.openMonitoring(hash);
-        } else {
-            this.showUserSessionHashFailure();
-        }
-    },
-
-    showUserSessionHashFailure: function () {
-        Ext.MessageBox.alert(_l.error, _l.users.session_alert.error);
     },
 
     handleUserCreateSubmit: function (cmp, formValues) {
@@ -245,7 +216,6 @@ Ext.define('NavixyPanel.controller.Users', {
         if (success) {
             record.set(formValues);
             this.getUserEdit().afterSave();
-            Ext.Nav.shift('users');
         }
     },
 

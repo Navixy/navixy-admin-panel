@@ -1,38 +1,20 @@
 /**
- * @class NavixyPanel.view.user.Edit
+ * @class NavixyPanel.view.trackers.Edit
  * @extends NavixyPanel.view.users.AbstractForm
  * Description
  */
 
-Ext.define('NavixyPanel.view.users.Edit', {
-    extend: 'NavixyPanel.view.users.AbstractForm',
-    alias: 'widget.useredit',
+Ext.define('NavixyPanel.view.trackers.Edit', {
+    extend: 'NavixyPanel.view.trackers.AbstractForm',
+    alias: 'widget.trackeredit',
 
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.users.edit_form.title,
-            ' #{id}: {last_name} {first_name} {middle_name}'
+            _l.trackers.edit_form.title,
+            ' #{id}: {label}'
         );
         return titleTpl.apply(this.getRecordData());
-    },
-
-    getSaveBtnTitle: function () {
-        return _l.users.edit_form.save_btn;
-    },
-
-    getClearBtnTitle: function () {
-        return false;
-    },
-
-    getNWItems: function () {
-        var config = this.callParent(arguments);
-
-        return [
-            config.shift(),
-            config.shift(),
-            config.pop()
-        ];
     },
 
     showSubmitErrors: function (errCode, errors, errDescription) {

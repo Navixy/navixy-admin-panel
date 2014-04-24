@@ -26,8 +26,8 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
 
     getState: function () {
         return {
-            linksCollapsed: !!this.getLinksPanel().getCollapsed(),
-            bodyCollapsed: !!this.getBodyPanel().getCollapsed()
+            linksCollapsed: !!(this.getLinksPanel() && this.getLinksPanel().getCollapsed()),
+            bodyCollapsed: !!(this.getBodyPanel() && this.getBodyPanel().getCollapsed())
         };
     },
 
@@ -212,7 +212,11 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
                         '<tpl if="left_td_cls">',
                             ' class="{left_td_cls}"',
                         '</tpl>',
-                        '>{value:htmlEncode}',
+                        '<tpl if="no_encode">',
+                            '>{value}',
+                        '<tpl else>',
+                            '>{value:htmlEncode}',
+                        '</tpl>',
                     '</td>',
                     '</tr>',
                     '</tpl>',

@@ -177,7 +177,22 @@ Ext.define('NavixyPanel.view.users.Card', {
     },
 
     fireSessionCreate: function () {
-        this.fireEvent('createsession', this.record);
+        var userId = this.record.getId(),
+            win = window.open('', '_blank');
+
+        Ext.API.createUserSession({
+            params: {
+                user_id: userId
+            },
+            callback: function(hash) {
+                win.location = Ext.Nav.getMonitoring(hash);
+            },
+            failure: this.showUserSessionHashFailure
+        });
+    },
+
+    showUserSessionHashFailure: function () {
+        Ext.MessageBox.alert(_l.error, _l.users.session_alert.error);
     },
 
     fireUserEdit: function () {

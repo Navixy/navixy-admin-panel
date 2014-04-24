@@ -1,5 +1,5 @@
 /**
- * @class NavixyPanel.view.user.UserAbstractForm
+ * @class NavixyPanel.view.user.AbstractForm
  * @extends NavixyPanel.view.components.AbstractForm
  * Description
  */
@@ -11,8 +11,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         'NavixyPanel.view.widgets.fields.LocaleField',
         'NavixyPanel.view.widgets.fields.PhoneField'
     ],
-
-    backTarget: 'users',
 
     getTitle: function () {
         return _l.users.create_form.title;

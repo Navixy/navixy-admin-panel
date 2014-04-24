@@ -9,7 +9,7 @@ $light-field-focus-border-color: $main-color;
     }
 }
 
-.x-field-light {
+.x-field-light, .x-field-light.x-item-disabled {
 
     .x-form-trigger-wrap {
         border: 1px solid $light-field-border-color;
@@ -43,5 +43,14 @@ $light-field-focus-border-color: $main-color;
         font-size: $light-field-label-font-size - 2;
         line-height: $light-field-label-font-size + 3;
 
+    }
+
+    &.x-field-light.x-item-disabled {
+        opacity: 1;
+
+        .x-form-text {
+            border: 0;
+            background-color: transparent;
+        }
     }
 }
