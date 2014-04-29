@@ -46,6 +46,7 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 5%);
     .x-toolbar-footer, .x-docked-bottom {
         background-color: $light-panel-header-bg-color;
         border-color: $light-panel-header-bg-color;
+        padding: 3px 2px 2px 2px;
     }
 
     .x-toolbar-light-docked-top {

@@ -6,36 +6,43 @@ Ext.define('NavixyPanel.view.users.Card', {
 
 
     getLinks: function () {
-        var me = this;
-        return [
-            {
-                html: '<a>' + _l.users.card.links.user_edit + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireUserEdit,
-                        scope: me
+        var me = this,
+            result = [
+                {
+                    html: '<a>' + _l.users.card.links.session_text + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireSessionCreate,
+                            scope: me
+                        }
+                    }
+                },
+                {
+                    html: '<a>' + _l.users.card.links.transactions + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTransactionsShow,
+                            scope: me
+                        }
                     }
                 }
-            },
-            {
-                html: '<a>' + _l.users.card.links.session_text + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireSessionCreate,
-                        scope: me
+            ];
+
+        if (Ext.checkPermission('users', 'update')) {
+            result.unshift(
+                {
+                    html: '<a>' + _l.users.card.links.user_edit + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireUserEdit,
+                            scope: me
+                        }
                     }
                 }
-            },
-            {
-                html: '<a>' + _l.users.card.links.transactions + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireTransactionsShow,
-                        scope: me
-                    }
-                }
-            }
-        ];
+            );
+        }
+
+        return result;
     },
 
     getPanelTitle: function () {
@@ -51,7 +58,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 filter: {
                     user_id: this.getRecordId()
                 },
-                hasEdit: Ext.checkPermission('trackers', 'edit')
+                hasEdit: Ext.checkPermission('trackers', 'read')
             },
             {
                 xtype: 'usertransactions',

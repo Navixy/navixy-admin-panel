@@ -5,18 +5,52 @@ Ext.define('NavixyPanel.view.trackers.Card', {
     stateId: 'trackerCard',
 
     getLinks: function () {
-        var me = this;
-        return [
-            {
-                html: '<a>' + _l.trackers.card.links.tracker_edit + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireTrackerEdit,
-                        scope: me
+        var me = this,
+            result = [];
+
+        if (Ext.checkPermission('trackers', 'update')) {
+            result.unshift(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_edit + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerEdit,
+                            scope: me
+                        }
                     }
                 }
-            }
-        ];
+            );
+        }
+
+        if (Ext.checkPermission('trackers', 'create') && !this.getRecordData().clone) {
+            result.push(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_clone_create + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerClone,
+                            scope: me
+                        }
+                    }
+                }
+            )
+        }
+
+        if (Ext.checkPermission('trackers', 'delete') && this.getRecordData().clone) {
+            result.push(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_clone_remove + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerCloneDelete,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
+        return result;
     },
 
     prepareHeaderData: function () {
@@ -25,6 +59,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
         return {
             title: recordData.label,
+            title_add: recordData.clone ? _l.trackers.fields.clone : false,
             main_cls: 'card-header-inner',
             table_cls: 'header-table',
             fields: [
@@ -73,5 +108,13 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     fireTrackerEdit: function () {
         this.fireEvent('trackeredit', this.record);
+    },
+
+    fireTrackerClone: function () {
+        this.fireEvent('trackerclone', this.record);
+    },
+
+    fireTrackerCloneDelete: function () {
+        this.fireEvent('trackerclonedelete', this.record);
     }
 });

@@ -122,4 +122,17 @@ Ext.define('NavixyPanel.model.Tracker', {
 
         return Ext.Object.getSize(result) ? result: null;
     },
+
+    isUserChanged: function () {
+        var changes = this.getChanges(),
+            result = {};
+
+        Ext.iterate(changes, function(fieldName, fieldValue) {
+            if (this.sourceMap[fieldName]) {
+                result[this.sourceMap[fieldName]] = fieldValue;
+            }
+        }, this);
+
+        return Ext.Object.getSize(result) ? result: null;
+    },
 });

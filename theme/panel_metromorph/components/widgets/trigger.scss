@@ -1,0 +1,25 @@
+$triggerIconSize: 12px;
+
+.x-form-trigger-wrap {
+    .list {
+        @extend .icon-sorter-asc;
+        font-size: $triggerIconSize;
+        line-height: $triggerIconSize + 14;
+        color: $triggerIconSize;
+        background: none;
+        height: $triggerIconSize + 14;
+        text-align: center;
+    }
+
+    .x-form-text {
+        padding: 1px 4px 1px 4px !important;
+    }
+
+    .x-form-trigger-wrap-focus {
+        .x-form-trigger.list {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+
+}

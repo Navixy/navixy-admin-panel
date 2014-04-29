@@ -123,5 +123,29 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'tracker/source',
             root: 'success'
         });
+    },
+
+    updateTrackerUser: function (config) {
+        this.requestWithOptions(config, {
+            action: 'move',
+            handler: 'tracker',
+            root: 'success'
+        });
+    },
+
+    createTrackerClone: function (config) {
+        this.requestWithOptions(config, {
+            action: 'clone',
+            handler: 'tracker',
+            root: 'id'
+        });
+    },
+
+    removeTrackerClone: function (config) {
+        this.requestWithOptions(config, {
+            action: 'delete_clone',
+            handler: 'tracker',
+            root: 'success'
+        });
     }
 });

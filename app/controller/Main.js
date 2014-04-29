@@ -203,6 +203,57 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
+        Ext.override(Ext.view.Table, {
+
+            filterViewBy: function (fn) {
+                var me = this,
+                    store = this.getStore(),
+                    notPassed = [];
+
+                store.each(function (rec) {
+
+                    var node = me.getNodeByRecord(rec);
+
+                    if (node) {
+                        var visible = fn(rec, node);
+                        Ext.get(node).setVisibilityMode(Ext.Element.DISPLAY).setVisible(visible);
+
+                        if (!visible) {
+                            notPassed.push(rec);
+                        }
+                    }
+
+                });
+
+                this.filtered = true;
+
+                this.fireEvent('filtered', this, notPassed);
+            },
+
+            clearFilter: function () {
+                if (this.filtered) {
+                    this.filterViewBy(function () {
+                        return true;
+                    });
+                    this.filtered = false;
+                }
+
+                this.fireEvent('filtered', this, []);
+            }
+        });
+
+        Ext.override(Ext.data.Model, {
+            getFieldsString: function (fields, toLover) {
+                var result = [];
+                if (fields && fields.length) {
+                    Ext.iterate(fields, function (fieldName) {
+                        result.push(this.get(fieldName));
+                    }, this);
+                }
+                return toLover ? result.join(' ').toLowerCase() : result.join(' ');
+            }
+        });
+
         Ext.apply(Ext.form.field.VTypes, {
             numeric: function(v) {
                 return Ext.form.VTypes['numericVal'].test(v);

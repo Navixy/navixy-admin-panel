@@ -34,9 +34,13 @@ Ext.define('Locale.locale-en', {
     phone_invalid_msg: 'Please enter a valid phone number',
     invalid_numeric_msg: 'Not a valid number',
 
+    searcher_empty_text: 'Enter search query',
+
     clear_form_btn: 'Clear',
     save_form_btn: 'Save',
     back_form_btn: 'Back',
+    select_form_btn: 'Select',
+    close_form_btn: 'Close',
     yes: 'yes',
     no: 'no',
     show_btn: 'Show',
@@ -105,7 +109,13 @@ Ext.define('Locale.locale-en', {
         242: 'Validation error',
         upload_exeption: 'File upload error',
         no_hash: 'The session key is not found',
-        service_not_respond: 'The service is temporarily unavailable'
+        service_not_respond: 'The service is temporarily unavailable',
+        tracker: {
+            203: 'Tracker has attached rules',
+            246: 'User is incorrect',
+            247: 'Clone already exists',
+            249: 'The operation is available only for the clones'
+        }
     },
 
     units_combination: {
@@ -244,6 +254,11 @@ Ext.define('Locale.locale-en', {
                     partner: 'partner'
                 }
             }
+        },
+        combo_empty: 'Select an user',
+        select_error: 'Tracker or his clone is already bound to selected user',
+        select: {
+            title: 'Select an user'
         }
     },
 
@@ -258,6 +273,13 @@ Ext.define('Locale.locale-en', {
             creation_date: 'Creation date',
             creation_date_short: 'Created',
             connection_status: 'Status',
+            tracker_id_exp: 'Tracker number',
+            phone_exp: 'Phone number',
+            owner: 'Tracker owner',
+            deleted: 'Marked as deleted',
+            blocked: 'Service paused',
+            clone: 'Clone',
+            clone_owner: 'Clone owner',
             options: {
                 clone: 'clone',
                 deleted: 'deleted',
@@ -270,9 +292,29 @@ Ext.define('Locale.locale-en', {
                 signal_lost: 'No connect'
             }
         },
+        edit_form: {
+            main_fields: 'Main information',
+            title: 'Edit tracker',
+            save_btn: 'Save changes',
+            return_btn: 'Back'
+        },
+        clone_form: {
+            title: 'Crate clone of tracker',
+            remove_failure_msg: 'Removing clone failed',
+            failure_msg: 'Creating clone failed',
+            remove_confirm: 'Remove clone'
+        },
         list: {
             create_btn_text: 'Create new tracker',
             empty_text: 'No tracers found'
+        },
+        card: {
+            links: {
+                change_tracker_user: 'Change owner',
+                tracker_edit: 'Edit tracker',
+                tracker_clone_create: 'Create clone of this tracker',
+                tracker_clone_remove: 'Delete this clone'
+            }
         }
     }
 

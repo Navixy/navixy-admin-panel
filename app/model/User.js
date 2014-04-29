@@ -31,5 +31,37 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_region', type: 'string'},
         {name: 'registered_city', type: 'string'},
         {name: 'registered_street_address', type: 'string'}
-    ]
+    ],
+
+    hasTrackerClone: function (sourceId) {
+        var trackers = this.getTrackers(),
+            result = false;
+
+        if (trackers && Ext.isNumber(sourceId)) {
+            Ext.iterate(trackers, function(record) {
+                if (record.get('source_id') === sourceId) {
+                    result = true;
+                    return false;
+                }
+            });
+        }
+
+        return result
+    },
+
+    getTrackers: function () {
+        var trackersStore = Ext.getStore('Trackers'),
+            user_id = this.get('id'),
+            result = [];
+
+        if (trackersStore) {
+            trackersStore.each(function (record) {
+                if (record.get('user_id') == user_id) {
+                    result.push(record);
+                }
+            }, this);
+        }
+
+        return result.length && result;
+    }
 });

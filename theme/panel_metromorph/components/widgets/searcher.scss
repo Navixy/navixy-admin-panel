@@ -1,0 +1,52 @@
+$searcherTriggerIconSize: 12px;
+
+.searcher {
+    .clear {
+        @extend .icon-close;
+        font-size: $searcherTriggerIconSize;
+        line-height: $searcherTriggerIconSize + 14;
+        color: $grayLighter;
+        background: none;
+        height: $searcherTriggerIconSize + 14;
+        text-align: center;
+    }
+
+    .x-form-trigger-wrap-focus {
+        .x-form-trigger.clear {
+            background-color: $blue;
+            color: $white;
+        }
+    }
+
+    .x-form-trigger-input-cell {
+        overflow: hidden;
+    }
+
+    &.dark {
+        .x-form-text {
+            @extend .base-color-bg;
+            color: $white;
+        }
+
+        .x-form-trigger-wrap-focus {
+            .x-form-trigger-wrap {
+                @extend .main-color-border-color;
+            }
+
+            .x-form-trigger.clear {
+                color: $white;
+                @extend .main-color-bg;
+            }
+        }
+
+        .x-form-trigger-wrap {
+            border-color: lighten($baseElementColor, 10%);
+        }
+
+        .x-form-trigger-wrap .x-form-trigger {
+            height: 16px;
+            @extend .base-color-bg;
+            color: $baseElementColor;
+        }
+    }
+}

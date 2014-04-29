@@ -34,6 +34,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     filter: null,
 
+    viewPageSize: null,
+
     initComponent: function () {
 
         var defaultTexts = {
@@ -63,7 +65,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             }
         };
 
-        this.addListeners();
+        this.applyListeners();
 
         this.callParent(arguments);
     },
@@ -112,6 +114,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     )
                 );
             }, this);
+        }
+
+        if (this.viewPageSize) {
+            config.pageSize = this.viewPageSize;
         }
 
         return config;
@@ -173,7 +179,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         };
     },
 
-    addListeners: function () {
+    applyListeners: function () {
         this.on('cellclick', this.handleCellClick, this);
     },
 

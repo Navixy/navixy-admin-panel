@@ -1,5 +1,5 @@
 /**
- * @class ToolColumn
+ * @class NavixyPanel.view.widgets.ToolColumn
  * @extends Ext.Base
  * Description
  */

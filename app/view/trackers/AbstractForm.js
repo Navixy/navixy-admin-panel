@@ -7,6 +7,8 @@
 Ext.define('NavixyPanel.view.trackers.AbstractForm', {
     extend: 'NavixyPanel.view.components.AbstractForm',
 
+    requires: ['NavixyPanel.view.widgets.fields.UserSelect'],
+
     getTitle: function () {
         return _l.trackers.edit_form.title;
     },
@@ -33,6 +35,13 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
 
                 minLength: 1,
                 maxLength: 60
+            },
+            {
+                fieldLabel: _l.trackers.fields.owner,
+                name: 'user_id',
+                xtype: 'userselect',
+                trackerRecord: this.record,
+                hasDefaultValue: true
             },
             {
                 fieldLabel: _l.trackers.fields.deleted,
@@ -77,39 +86,5 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
 
     gatSaveTarget: function () {
         return 'tracker/' + this.record.getId();
-    },
-
-    showSubmitErrors: function (errCode, errors, errDescription) {
-        var errLocale = _l.errors[errCode] || false,
-            codesMap = {
-                206: 'login'
-            };
-
-        if (errors && Ext.isObject(errLocale) && errLocale.errors ) {
-            Ext.iterate(errors, function(error) {
-                var errText = error.error,
-                    errParameter = error.parameter || '',
-                    field;
-
-                errParameter = errParameter.split(".");
-                errParameter = errParameter[1] || false;
-
-                field = errParameter
-                    ? this.down('[name="' + errParameter + '"]')
-                    : false;
-
-                if (field) {
-                    field.markInvalid(errLocale.errors[errParameter] || errText)
-                }
-            }, this);
-        } else if (codesMap[errCode]) {
-            var errText = errLocale || errDescription,
-                errParameter = codesMap[errCode],
-                field = this.down('[name="' + errParameter + '"]');
-
-            if (field && errText) {
-                field.markInvalid(errLocale || errDescription);
-            }
-        }
     }
 });

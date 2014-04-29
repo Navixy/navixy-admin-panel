@@ -36,9 +36,13 @@ Ext.define('Locale.locale-ru', {
     phone_invalid_msg: 'Укажите корректный номер телефона',
     invalid_numeric_msg: 'Необходимо указать число',
 
+    searcher_empty_text: 'Введите текст фильтра',
+
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',
     back_form_btn: 'Назад',
+    select_form_btn: 'Выбрать',
+    close_form_btn: 'Закрыть',
     yes: 'да',
     no: 'нет',
     show_btn: 'Показать',
@@ -106,7 +110,13 @@ Ext.define('Locale.locale-ru', {
         242: 'Ошибка валидации',
         upload_exeption: 'Ошибка загрузки файла',
         no_hash: 'Ключ сессии не найден',
-        service_not_respond: 'Сервис временно недоступен'
+        service_not_respond: 'Сервис временно недоступен',
+        tracker: {
+            203: 'К трекеру привязаны правила',
+            246: 'Пользователь указан неверно',
+            247: 'Клон уже существует',
+            249: 'Операция доступна только для клонов'
+        }
     },
 
     units_combination: {
@@ -243,6 +253,11 @@ Ext.define('Locale.locale-ru', {
                     partner: 'от партнера'
                 }
             }
+        },
+        combo_empty: 'Выберите пользователя',
+        select_error: 'Трекер или его клон уже привязан к выбранному пользователю',
+        select: {
+            title: 'Выберите пользователя'
         }
     },
 
@@ -260,8 +275,10 @@ Ext.define('Locale.locale-ru', {
             tracker_id_exp: 'Номер трекера',
             phone_exp: 'Номер телефона',
             owner: 'Владелец трекера',
-            deleted: 'Удален',
+            deleted: 'Отмечен удаленным',
             blocked: 'Услуги приостановлены',
+            clone: 'Клон',
+            clone_owner: 'Владелец клона',
             options: {
                 clone: 'клон',
                 deleted: 'удален',
@@ -280,13 +297,22 @@ Ext.define('Locale.locale-ru', {
             save_btn: 'Сохранить изменения',
             return_btn: 'Назад'
         },
+        clone_form: {
+            title: 'Клонирование трекера',
+            failure_msg: 'Ошибка создания клона',
+            remove_failure_msg: 'Ошибка удаления клона',
+            remove_confirm: 'Удалить клон'
+        },
         list: {
             create_btn_text: 'Новый трекер',
             empty_text: 'Трекеров не найдено'
         },
         card: {
             links: {
-                tracker_edit: 'Редактировать трекер'
+                change_tracker_user: 'Сменить владельца',
+                tracker_edit: 'Редактировать трекер',
+                tracker_clone_create: 'Клонировать трекер',
+                tracker_clone_remove: 'Удалить этот клон'
             }
         }
     }

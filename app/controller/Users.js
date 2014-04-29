@@ -15,7 +15,8 @@ Ext.define('NavixyPanel.controller.Users', {
         'users.List',
         'users.Create',
         'users.Edit',
-        'users.Card'
+        'users.Card',
+        'users.SelectWindow'
     ],
 
     refs: [

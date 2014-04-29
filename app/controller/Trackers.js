@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     views: [
         'trackers.List',
         'trackers.Card',
+        'trackers.Clone',
         'trackers.Edit'
     ],
 
@@ -40,8 +41,13 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'trackeredit' : {
                 formsubmit: this.handleTrackerEditSubmit
             },
+            'trackerclone' : {
+                formsubmit: this.handleTrackerCloneSubmit
+            },
             'trackercard' : {
-                trackeredit: this.handleTrackerEditAction
+                trackeredit: this.handleTrackerEditAction,
+                trackerclone: this.handleTrackerCloneAction,
+                trackerclonedelete: this.handleTrackerCloneDeleteAction
             }
         });
 
@@ -57,6 +63,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'tracker > edit' : {
                 fn: this.handleTrackerEdit,
                 access: 'update'
+            },
+            'tracker > clone' : {
+                fn: this.handleTrackerClone,
+                access: 'create'
             }
         });
 
@@ -79,7 +89,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     handleTrackers: function () {
         this.fireContent({
             xtype: 'trackerslist',
-            createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
+            createBtn: false,
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
     },
@@ -97,6 +107,19 @@ Ext.define('NavixyPanel.controller.Trackers', {
         }
     },
 
+    handleTrackerClone: function (value) {
+        var trackerId = parseInt(value),
+            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
+
+        if (trackerRecord) {
+
+            this.fireContent({
+                xtype: 'trackerclone',
+                record: trackerRecord
+            });
+        }
+    },
+
 
     handleListAction: function (record) {
         var trackerId = record.getId();
@@ -104,15 +127,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     handleTrackerEditAction: function (record) {
-        var userId = record.getId();
-        Ext.Nav.shift('tracker/' + userId + '/edit');
+        var trackerId = record.getId();
+        Ext.Nav.shift('tracker/' + trackerId + '/edit');
+    },
+
+    handleTrackerCloneAction: function (record) {
+        var trackerId = record.getId();
+        Ext.Nav.shift('tracker/' + trackerId + '/clone');
     },
 
     handleTrackerEditSubmit: function (cmp, formValues, record) {
 
         record.set(formValues);
-
-        console.log(record.getChanges());
 
         var trackerChanges = record.getTrackerChanges(),
             sourceChanges = record.getSourceChanges(),
@@ -126,6 +152,26 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     tracker_id: trackerData.id,
                     label: trackerData.label,
                     deleted: trackerData.deleted
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterTrackerEdit(response, record);
+                    }
+                },
+                failure: function (response) {
+                    --requestsCnt;
+                    this.afterTrackerEditFailure(response, record);
+                },
+                scope: this
+            });
+        }
+
+        if (trackerChanges && trackerChanges.user_id) {
+            requestsCnt++ ;
+            Ext.API.updateTrackerUser({
+                params: {
+                    tracker_id: trackerData.id,
+                    user_id: trackerData.user_id
                 },
                 callback: function (response) {
                     if (--requestsCnt === 0)  {
@@ -178,8 +224,101 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = status.description || false;
+            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getTrackerEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    handleTrackerCloneSubmit: function (cmp, formValues, record) {
+        var trackerData = record.getData();
+
+        if (formValues.label && formValues.user_id && record) {
+            Ext.API.createTrackerClone({
+                params: {
+                    tracker_id: trackerData.id,
+                    label: formValues.label,
+                    user_id: formValues.user_id
+                },
+                callback: function (response) {
+                    this.afterTrackerCloneCreate(response, record, formValues);
+                },
+                failure: function (response) {
+                    Ext.MessageBox.alert(_l.error, _l.trackers.clone_form.failure_msg);
+                },
+                scope: this
+            });
+        }
+    },
+
+    afterTrackerCloneCreate: function (trackerId, record, values) {
+        if (trackerId && values) {
+            var trackerData = Ext.apply(record.getData(), {
+                    label: values.label,
+                    user_id: values.user_id,
+                    id: trackerId,
+                    clone: true,
+                    deleted: false
+                }
+            );
+
+            Ext.getStore('Trackers').add(trackerData);
+
+            if (Ext.checkPermission(this.getModuleName(), 'read')) {
+                this.handleTrackerCard(trackerId);
+            } else {
+                Ext.Nav.shift('/');
+            }
+        }
+    },
+
+    handleTrackerCloneDeleteAction: function (record) {
+        var me = this;
+        if (record) {
+            Ext.MessageBox.show({
+                msg: _l.trackers.clone_form.remove_confirm + ' "' + record.get('label') + '"?',
+                buttons: Ext.MessageBox.YESNO,
+                closable: false,
+                fn: function() {
+                    me.trackerCloneRemove(record);
+                }
+            });
+        }
+    },
+
+    trackerCloneRemove: function (record) {
+        Ext.API.removeTrackerClone({
+            params: {
+                tracker_id: record.get('id'),
+            },
+            callback: function (response) {
+                this.afterTrackerCloneRemove(response, record);
+            },
+            failure: function (response) {
+                this.afterTrackerCloneRemoveFailure(response, record);
+//                Ext.MessageBox.alert(_l.error, _l.trackers.clone_form.remove_failure_msg);
+            },
+            scope: this
+        });
+    },
+
+    afterTrackerCloneRemove: function (response, record) {
+        if (response) {
+            Ext.getStore('Trackers').remove(record);
+
+            if (Ext.checkPermission(this.getModuleName(), 'read')) {
+                this.handleTrackers();
+            } else {
+                Ext.Nav.shift('/');
+            }
+        }
+    },
+
+    afterTrackerCloneRemoveFailure: function (response, record) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+
+        Ext.MessageBox.alert(_l.error, errDescription);
     }
 });
