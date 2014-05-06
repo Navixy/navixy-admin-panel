@@ -51,8 +51,8 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 5%);
 
     .x-toolbar-light-docked-top {
         color: $light-panel-text-color;
-        background-color: $light-panel-header-bg-color;
-        border-color: $light-panel-header-bg-color;
+        background-color: $light-panel-bg-color;
+        border-color: $light-panel-bg-color;
     }
 }
 

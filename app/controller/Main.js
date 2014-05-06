@@ -254,6 +254,55 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
+
+        Ext.override(Ext.util.Format, {
+
+            units: function (value, unit, withValue) {
+                var result;
+
+                if (_l.units_combination[unit]) {
+                    var tmp = value % 100,
+                        index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10,
+                        len = _l.units_combination[unit].length;
+
+                    if (_l.units_combination[unit][index]) {
+                        result = _l.units_combination[unit][index];
+                    } else {
+                        result = _l.units_combination[unit][len - 1];
+                    }
+
+                }
+
+                return result ? withValue ? value + ' ' + result : result : '';
+            },
+
+            unitsDecode: function (value) {
+                var units = this.unitsParse(value),
+                    unitsMap = {
+                        d: 'days',
+                        m: 'months',
+                        y: 'years'
+                    };
+
+                return !!(units.value && units.period) && unitsMap[units.period]
+                    ? Ext.util.Format.units(units.value, unitsMap[units.period], true)
+                    : value;
+            },
+
+            unitsParse: function (value) {
+
+                return value
+                    ? {
+                        value: parseInt(value.substr(0, value.length - 1)),
+                        period: value.substr(value.length - 1, 1)
+                    }
+                    : {
+                        value: null,
+                        period: null
+                    };
+            }
+        });
+
         Ext.apply(Ext.form.field.VTypes, {
             numeric: function(v) {
                 return Ext.form.VTypes['numericVal'].test(v);
@@ -407,7 +456,7 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones'];
+            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults'];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -443,6 +492,39 @@ Ext.define('NavixyPanel.controller.Main', {
                 Ext.log('result handler error', e.stack);
             }
         });
+
+        var tariffsResult = results.getTariffsList,
+            tariffsDefaultsResult = results.getTariffsDefaults;
+
+
+        if (tariffsResult) {
+            var tariffsStore = Ext.getStore('Tariffs'),
+                pricesStore = Ext.getStore('TariffPrices');
+
+            if (tariffsStore && pricesStore) {
+                tariffsStore.storeLoaded = true;
+                tariffsStore.loadData(tariffsResult.list);
+
+                pricesStore.loadData([tariffsResult.wholesale_service_prices]);
+            }
+        }
+
+        if (tariffsDefaultsResult) {
+            var data = Object.getOwnPropertyNames(tariffsDefaultsResult),
+                store = Ext.getStore('TariffDefaults'),
+                list = [];
+
+            Ext.iterate(data, function (name) {
+                if (name !== 'success' && tariffsDefaultsResult[name]) {
+                    list.push(Ext.apply(tariffsDefaultsResult[name], {'id': name}));
+                }
+            });
+
+            if (store) {
+                store.storeLoaded = true;
+                store.loadData(list);
+            }
+        }
 
         if (!Ext.API.fatalError) {
             this.application.connectionReady = true;

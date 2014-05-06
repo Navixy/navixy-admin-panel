@@ -115,6 +115,9 @@ Ext.define('Locale.locale-en', {
             246: 'User is incorrect',
             247: 'Clone already exists',
             249: 'The operation is available only for the clones'
+        },
+        tariff: {
+            244: 'Tariff with the same name already exists'
         }
     },
 
@@ -127,7 +130,9 @@ Ext.define('Locale.locale-en', {
         everyseconds: ['seconds', 'second', 'seconds'],
         meters: ['meters', 'meter', 'meters'],
         degrees: ['degrees', 'degree', 'degrees'],
-        objects: ['objects', 'object', 'objects']
+        objects: ['objects', 'object', 'objects'],
+        years: ['years', 'year', 'years'],
+        months: ['months', 'month', 'months']
     },
 
     list: {
@@ -316,7 +321,64 @@ Ext.define('Locale.locale-en', {
                 tracker_clone_remove: 'Delete this clone'
             }
         }
-    }
+    },
 
+    tariffs: {
+        menu_text: 'Tariffs',
+        create_form: {
+            title: 'Create new tariff',
+            main_fields: 'Main information',
+            save_btn: 'Create tariff',
+            clear_btn: 'Clear form',
+            options_fields: 'Tariff options',
+            prices_fields: 'Tariff prices'
+        },
+        edit_form: {
+            title: 'Edit tariff',
+            save_btn: 'Save changes'
+        },
+        fields: {
+            tariff_id: 'ID',
+            name: 'Label',
+            group_id: 'Group',
+            price: 'Monthly payment',
+            device_limit: 'Limit of devices',
+            device_type: 'Device type',
+            store_period: 'History storage period',
+            active: 'Available for user',
+            has_reports: 'Table reports is available',
+            proportional_charge: 'Subscription fee for the partial month of proportion to the number of days to write off',
+            incoming_sms: 'Incoming SMS',
+            outgoing_sms: 'Outgoing SMS',
+            service_sms: 'Service SMS',
+            phone_call: 'Phone calls',
+            traffic: 'GPRS (for Mb)',
+            default_tariff: 'the default tariff for devices of type «{0}»',
+            default_short: 'default',
+            service_price: 'the amount charged for service usage',
+            group_id_exp: 'Tariff group',
+            active_exp: 'Users can switch to this tariff on his own',
+            device_limit_exp: 'Maximum devices',
+            devices: {
+                tracker: 'Tracker',
+                camera: 'Camera'
+            }
+        },
+        list: {
+            create_btn_text: 'Add new tariff',
+            empty_text: 'Tariffs not found'
+        },
+        card: {
+            links: {
+                make_default: 'Mark as default',
+                tariff_edit: 'Edit tariff'
+            },
+            tab_panel: {
+                trackers: {
+                    title: 'Trackers at this tariff'
+                }
+            }
+        }
+    }
 })
 ;

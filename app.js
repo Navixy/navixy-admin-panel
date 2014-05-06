@@ -101,6 +101,7 @@ Ext.application({
         'NavixyPanel.controller.Main',
         'NavixyPanel.controller.Desktop',
         'NavixyPanel.controller.Users',
-        'NavixyPanel.controller.Trackers'
+        'NavixyPanel.controller.Trackers',
+        'NavixyPanel.controller.Tariffs'
     ]
 });

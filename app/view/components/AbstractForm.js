@@ -28,39 +28,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     initComponent: function () {
 
-        var fieldDefaults = {
-                xtype: 'textfield',
-                labelWidth: 200,
-                width: 450,
-
-                allowBlank: false,
-                msgTarget: 'under',
-
-                labelPad: 10,
-                labelAlign: 'right',
-                labelSeparator: this.fieldRequiredMark ? '' : ':',
-                afterLabelTextTpl: this.fieldRequiredMark ? new Ext.XTemplate('<tpl if="allowBlank === false"><sup>*</sup>:<tpl else>:</tpl>', { disableFormats: true }) : null,
-
-                ui: 'light'
-            },
-            cellDefaults = {
-                xtype: 'container',
-                flex: 1,
-                defaults: fieldDefaults,
-                layout: {
-                    type: 'vbox'
-                }
-            },
-            rowDefaults = {
-                xtype: 'container',
-                layout: {
-                    type: 'hbox',
-                    align: 'stretch'
-                },
-                defaults: cellDefaults
-            };
-
-        this.defaults = rowDefaults;
+        this.defaults = this.getRowDefaults();
 
         this.title = this.getTitle();
 
@@ -69,6 +37,46 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         this.buttons = this.getButtons();
 
         this.callParent(arguments);
+    },
+
+    getRowDefaults: function () {
+        return {
+            xtype: 'container',
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            defaults: this.getCellDefaults()
+        };
+    },
+
+    getCellDefaults: function () {
+        return {
+            xtype: 'container',
+            flex: 1,
+            defaults: this.getFieldDefaults(),
+            layout: {
+                type: 'vbox'
+            }
+        };
+    },
+
+    getFieldDefaults: function () {
+        return {
+            xtype: 'textfield',
+            labelWidth: 200,
+            width: 450,
+
+            allowBlank: false,
+            msgTarget: 'under',
+
+            labelPad: 10,
+            labelAlign: 'right',
+            labelSeparator: this.fieldRequiredMark ? '' : ':',
+            afterLabelTextTpl: this.fieldRequiredMark ? new Ext.XTemplate('<tpl if="allowBlank === false"><sup>*</sup>:<tpl else>:</tpl>', { disableFormats: true }) : null,
+
+            ui: 'light'
+        };
     },
 
     afterFirstLayout: function () {
@@ -90,7 +98,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                 fieldType = field.getXType();
                 fieldValue = recordData[fieldName];
 
-                if (fieldValue) {
+                if (fieldValue !== 'undefined') {
                     field.setValue(fieldValue);
                 }
             });
@@ -104,9 +112,9 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     },
 
 
-    afterSave: function () {
+    afterSave: function (value) {
         this.getForm().reset();
-        this.backAfterSave();
+        this.backAfterSave(value);
     },
 
     sendForm: function () {
@@ -138,8 +146,8 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         }
     },
 
-    backAfterSave: function () {
-        var saveTarget = this.gatSaveTarget();
+    backAfterSave: function (value) {
+        var saveTarget = this.gatSaveTarget(value);
 
         if (saveTarget) {
             Ext.Nav.shift(saveTarget);

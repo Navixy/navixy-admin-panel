@@ -5,6 +5,7 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
 
     record: null,
     headerTpl: null,
+    singleColumnBody: false,
 
     layout: {
         type: 'hbox',
@@ -147,20 +148,27 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
     },
 
     getBodyItemsConfig: function () {
-        return [
+        var cols = [
             {
                 xtype: 'container',
                 flex: 1,
                 tpl: this.makeMainTpl(),
                 data: this.prepareBodyLeftData()
-            },
-            {
-                xtype: 'container',
-                flex: 1,
-                tpl: this.makeMainTpl(),
-                data: this.prepareBodyRightData()
             }
         ];
+
+        if (!this.singleColumnBody) {
+            cols.push(
+                {
+                    xtype: 'container',
+                    flex: 1,
+                    tpl: this.makeMainTpl(),
+                    data: this.prepareBodyRightData()
+                }
+            );
+        }
+
+        return cols;
     },
 
     getBodyCollapserConfig: function () {
@@ -200,25 +208,27 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
                 '</tpl>',
                 '<table class="content-table {table_cls}">',
                     '<tpl for="fields">',
-                    '<tr>',
-                        '<td',
-                            '<tpl if="right_td_cls">',
-                                ' class="{right_td_cls}"',
-                            '</tpl>',
-                            '>{title:htmlEncode}',
-                        '</td>',
-                        '<td></td>',
-                    '<td',
-                        '<tpl if="left_td_cls">',
-                            ' class="{left_td_cls}"',
+                        '<tpl if="(!values.no_empty && !values.value) || values.value">',
+                            '<tr>',
+                                '<td',
+                                    '<tpl if="right_td_cls">',
+                                        ' class="{right_td_cls}"',
+                                    '</tpl>',
+                                    '>{title:htmlEncode}',
+                                '</td>',
+                                '<td></td>',
+                                '<td',
+                                    '<tpl if="left_td_cls">',
+                                        ' class="{left_td_cls}"',
+                                    '</tpl>',
+                                    '<tpl if="no_encode">',
+                                        '>{value}',
+                                    '<tpl else>',
+                                        '>{value:htmlEncode}',
+                                    '</tpl>',
+                                '</td>',
+                            '</tr>',
                         '</tpl>',
-                        '<tpl if="no_encode">',
-                            '>{value}',
-                        '<tpl else>',
-                            '>{value:htmlEncode}',
-                        '</tpl>',
-                    '</td>',
-                    '</tr>',
                     '</tpl>',
                 '</table>',
             '</div>'

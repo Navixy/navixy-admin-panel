@@ -40,6 +40,17 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
             color: $invalid-color
         }
     }
+
+    span.pre_note {
+        width: 60px;
+        display: inline-table;
+    }
+
+    span.note {
+        color: $smoke;
+        cursor: pointer;
+        border-bottom: 1px dashed $smoke;
+    }
 }
 
 .content-table.body-table {
@@ -47,6 +58,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
     td {
         padding: 5px;
+        vertical-align: top;
     }
 
     td:first-child {
@@ -67,6 +79,17 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         width: 50%;
         padding-left: 15px;
         background-color: $card-body-right-td-bg-color;
+    }
+
+    &.single {
+        td:first-child {
+            width: 30%;
+            text-align: right;
+        }
+
+        td:first-child + td + td {
+            width: 70%;
+        }
     }
 }
 

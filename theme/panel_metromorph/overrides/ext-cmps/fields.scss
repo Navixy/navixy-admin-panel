@@ -11,8 +11,20 @@ $light-field-focus-border-color: $main-color;
 
 .x-field-light, .x-field-light.x-item-disabled {
 
+    .x-form-cb-label {
+        padding-left: 10px;
+        color: $light-field-label-color;
+    }
+
     .x-form-trigger-wrap {
         border: 1px solid $light-field-border-color;
+
+    }
+
+    &.second_trigger {
+        .x-form-trigger-wrap {
+            border-left-width: 0px;
+        }
     }
 
     .x-form-trigger-wrap-focus .x-form-trigger-wrap {
@@ -55,6 +67,15 @@ $light-field-focus-border-color: $main-color;
 
         .x-form-cb-wrap {
             opacity: 0.5;
+        }
+
+        .x-form-trigger-wrap {
+            border: 0;
+            background-color: transparent;
+
+            .x-trigger-cell {
+                display: none
+            }
         }
     }
 }

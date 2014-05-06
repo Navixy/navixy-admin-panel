@@ -85,17 +85,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getTrackersList: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
-            action: 'list',
-            handler: 'tracker',
-            root: 'list',
-            scope: scope
-        });
-    },
-
     getTimeZones: function (callback, failure, scope) {
 
         this.sendRequest({
@@ -105,6 +94,17 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'list',
             root: 'list',
             handler: 'timezone',
+            scope: scope
+        });
+    },
+
+    getTrackersList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'tracker',
+            root: 'list',
             scope: scope
         });
     },
@@ -146,6 +146,42 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'delete_clone',
             handler: 'tracker',
             root: 'success'
+        });
+    },
+
+    getTariffsList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'tariff',
+            scope: scope
+        });
+    },
+
+    getTariffsDefaults: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'defaults/read',
+            handler: 'tariff',
+            scope: scope
+        });
+    },
+
+    updateTariffData: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'tariff',
+            root: 'success'
+        });
+    },
+
+    createTariff: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            handler: 'tariff',
+            root: 'id'
         });
     }
 });

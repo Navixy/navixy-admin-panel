@@ -1,6 +1,6 @@
 /**
  * @class NavixyPanel.store.Trackers
- * @extends NavixyPanel.utils.pagination.Store
+ * @extends NavixyPanel.store.Abstract
  * Description
  */
 

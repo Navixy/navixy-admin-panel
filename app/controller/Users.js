@@ -78,8 +78,7 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'user > create' : {
                 fn: this.handleUserCreate,
-                access: 'create',
-                ignoreMenu: true
+                access: 'create'
             }
         });
 
@@ -183,9 +182,7 @@ Ext.define('NavixyPanel.controller.Users', {
     afterUserCreate: function (userId, record) {
         record.setId(userId);
         Ext.getStore('Users').add(record);
-        this.getUserCreate().afterSave();
-
-        Ext.Nav.shift('users');
+        this.getUserCreate().afterSave(userId);
     },
 
 
