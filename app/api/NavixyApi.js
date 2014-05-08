@@ -177,6 +177,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    updateTariffDefaults: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'tariff/defaults',
+            root: 'success'
+        });
+    },
+
     createTariff: function (config) {
         this.requestWithOptions(config, {
             action: 'create',

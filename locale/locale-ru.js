@@ -280,6 +280,7 @@ Ext.define('Locale.locale-ru', {
             tracker_id_exp: 'Номер трекера',
             phone_exp: 'Номер телефона',
             owner: 'Владелец трекера',
+            tariff: 'Тариф трекера',
             deleted: 'Отмечен удаленным',
             blocked: 'Услуги приостановлены',
             clone: 'Клон',
@@ -317,7 +318,9 @@ Ext.define('Locale.locale-ru', {
                 change_tracker_user: 'Сменить владельца',
                 tracker_edit: 'Редактировать трекер',
                 tracker_clone_create: 'Клонировать трекер',
-                tracker_clone_remove: 'Удалить этот клон'
+                tracker_clone_remove: 'Удалить этот клон',
+                tracker_tariff: 'Тариф трекера',
+                tracker_owner: 'Владелец трекера'
             }
         }
     },
@@ -331,6 +334,9 @@ Ext.define('Locale.locale-ru', {
             clear_btn: 'Очистить форму',
             options_fields: 'Свойства тарифного плана',
             prices_fields: 'Цены тарифного плана'
+        },
+        default_form: {
+            title: 'Настройка тарифа по-умолчанию'
         },
         edit_form: {
             title: 'Редактирование тарифа',
@@ -361,7 +367,9 @@ Ext.define('Locale.locale-ru', {
             devices: {
                 tracker: 'Трекер',
                 camera: 'Камера'
-            }
+            },
+            activation_bonus: 'Бонус при активации',
+            free_days: 'Кол-во бесплатных дней'
         },
         list: {
             create_btn_text: 'Добавить тариф',
@@ -369,7 +377,7 @@ Ext.define('Locale.locale-ru', {
         },
         card: {
             links: {
-                make_default: 'Сделать тарифом по&#8209;умолчанию',
+                make_default: 'Назначить тарифом по&#8209;умолчанию',
                 tariff_edit: 'Редактировать тариф'
             },
             tab_panel: {

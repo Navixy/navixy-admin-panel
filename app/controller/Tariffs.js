@@ -12,7 +12,8 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         'tariffs.List',
         'tariffs.Card',
         'tariffs.Create',
-        'tariffs.Edit'
+        'tariffs.Edit',
+        'tariffs.SetDefault'
     ],
 
     refs: [
@@ -23,6 +24,10 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         {
             ref: 'tariffEdit',
             selector: 'tariffedit'
+        },
+        {
+            ref: 'tariffDefault',
+            selector: 'defaulttariff'
         },
         {
             ref: 'tariffCreate',
@@ -38,7 +43,8 @@ Ext.define('NavixyPanel.controller.Tariffs', {
 
         this.control({
             'tariffcard': {
-                tariffedit: this.handleTariffEditAction
+                tariffedit: this.handleTariffEditAction,
+                setdefault: this.onTariffDefault
             },
             'tariffslist': {
                 actionclick: this.handleListAction,
@@ -52,6 +58,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariffedit' : {
                 formsubmit: this.handleTariffEditSubmit
+            },
+            'defaulttariff' : {
+                formsubmit: this.handleTariffDefaultEdit
             }
         });
 
@@ -71,6 +80,10 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             'tariff > create' : {
                 fn: this.handleTariffCreate,
                 access: 'create'
+            },
+            'tariff > default' : {
+                fn: this.handleTariffDefault,
+                access: 'update'
             }
         });
 
@@ -117,10 +130,26 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         });
     },
 
+    handleTariffDefault: function (value) {
+        var tariffId = parseInt(value),
+            tariffRecord = Ext.isNumber(tariffId) && Ext.getStore('Tariffs').getById(tariffId);
+
+        this.fireContent({
+            xtype: 'defaulttariff',
+            record: tariffRecord
+        });
+    },
+
 
     handleTariffCreateAction: function () {
 
         Ext.Nav.shift('tariff/create');
+    },
+
+    onTariffDefault: function (record) {
+        console.log('onTariffDefault');
+        var tariffId = record.getId();
+        Ext.Nav.shift('tariff/' + tariffId + '/default');
     },
 
     handleTariffEditAction: function (record) {
@@ -203,7 +232,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         this.getTariffCreate().afterSave(tariffId);
     },
 
-
     afterTariffCreateFailure: function (response) {
         var status = response.status,
             errors = response.errors || [],
@@ -211,5 +239,62 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getTariffCreate().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    handleTariffDefaultEdit: function (cmp, formValues, record) {
+
+        var device_type = record.get('device_type'),
+            defaultRecord = Ext.getStore('TariffDefaults').findRecord('id', device_type),
+            params = {},
+            trackerDefaults, cameraDefaults;
+
+        if (defaultRecord) {
+            defaultRecord.set(formValues);
+        }
+
+        trackerDefaults = Ext.getStore('TariffDefaults').findRecord('id', 'tracker');
+        cameraDefaults = Ext.getStore('TariffDefaults').findRecord('id', 'camera');
+
+        if (trackerDefaults) {
+            params.tracker = Ext.encode(trackerDefaults.getData());
+        }
+
+        if (cameraDefaults) {
+            params.camera = Ext.encode(cameraDefaults.getData());
+        }
+
+        Ext.API.updateTariffDefaults({
+            params: params,
+            callback: function (response) {
+                this.afterDefaultTariffEdit(response, record);
+            },
+            failure: function (response) {
+                this.afterDefaultTariffEditFailure(response, record);
+            },
+            scope: this
+        });
+    },
+
+
+    afterDefaultTariffEdit: function (success, record, defaultRecord) {
+        if (success) {
+            try {
+                defaultRecord.commit();
+            } catch (e) {}
+
+            this.getTariffDefault().afterSave();
+        } else {
+            defaultRecord.reject(false);
+        }
+    },
+
+    afterDefaultTariffEditFailure: function (response, record) {
+        record.reject(false);
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+
+        this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
     }
 });

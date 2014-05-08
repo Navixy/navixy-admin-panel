@@ -321,6 +321,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     gatSaveTarget: function (value) {
-        return 'user/' + value || this.record.getId();
+        return 'user/' + (value || this.record.getId());
     }
 });

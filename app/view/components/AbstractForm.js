@@ -98,7 +98,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                 fieldType = field.getXType();
                 fieldValue = recordData[fieldName];
 
-                if (fieldValue !== 'undefined') {
+                if (fieldValue !== undefined) {
                     field.setValue(fieldValue);
                 }
             });

@@ -257,6 +257,6 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     },
 
     gatSaveTarget: function (value) {
-        return 'tariff/' + value || this.record.getId();
+        return 'tariff/' + (value || this.record.getId());
     }
 });

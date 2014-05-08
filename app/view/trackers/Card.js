@@ -50,12 +50,41 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
+        if (Ext.checkPermission('users', 'read') && this.record.getParentUserData()) {
+            result.push(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_owner + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerOwner,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
+        if (Ext.checkPermission('tariffs', 'read') && this.record.getParentTariffData()) {
+            result.push(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_tariff + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerTariff,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
         return result;
     },
 
     prepareHeaderData: function () {
         var recordData = this.getRecordData(),
-            userData = this.record.getParentUserData();
+            userData = this.record.getParentUserData(),
+            tariffData = this.record.getParentTariffData();
 
         return {
             title: recordData.label,
@@ -75,6 +104,12 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                     no_encode: true,
                     title: _l.trackers.fields.owner,
                     value: Ext.checkPermission('users', 'read') ? '<a href="#user/' +  userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id
+                },
+                {
+                    no_encode: true,
+                    no_empty: true,
+                    title: _l.trackers.fields.tariff,
+                    value: tariffData && (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' +  tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
                 },
                 {
                     title: _l.trackers.fields.creation_date,
@@ -116,5 +151,13 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     fireTrackerCloneDelete: function () {
         this.fireEvent('trackerclonedelete', this.record);
+    },
+
+    fireTrackerTariff: function () {
+        this.fireEvent('trackertariffshow', this.record);
+    },
+
+    fireTrackerOwner: function () {
+        this.fireEvent('trackerownershow', this.record);
     }
 });

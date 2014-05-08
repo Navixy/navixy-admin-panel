@@ -19,7 +19,7 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
                     html: '<a>' + _l.tariffs.card.links.make_default + '</a>',
                     listeners: {
                         click: {
-                            fn: Ext.emptyFn,
+                            fn: this.fireMakeDefault,
                             scope: me
                         }
                     }
@@ -50,7 +50,6 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
 
     prepareHeaderData: function () {
         var recordData = this.getRecordData(),
-            userData = this.record.getParentUserData(),
             tariffPrices = Ext.getStore('TariffPrices').getPrices();
 
         return {
@@ -149,5 +148,9 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
 
     fireTariffEdit: function () {
         this.fireEvent('tariffedit', this.record);
+    },
+
+    fireMakeDefault: function () {
+        this.fireEvent('setdefault', this.record);
     }
 });

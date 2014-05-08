@@ -47,7 +47,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'trackercard' : {
                 trackeredit: this.handleTrackerEditAction,
                 trackerclone: this.handleTrackerCloneAction,
-                trackerclonedelete: this.handleTrackerCloneDeleteAction
+                trackerclonedelete: this.handleTrackerCloneDeleteAction,
+                trackertariffshow: this.handleTrackerTariffRef,
+                trackerownershow: this.handleTrackerOwnerRef
             }
         });
 
@@ -320,5 +322,21 @@ Ext.define('NavixyPanel.controller.Trackers', {
             errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
 
         Ext.MessageBox.alert(_l.error, errDescription);
+    },
+
+    handleTrackerTariffRef: function (record) {
+        var tariffId = record.get('tariff_id');
+
+        if (tariffId !== null && Ext.checkPermission('tariffs', 'read')) {
+            Ext.Nav.shift('tariff/' + tariffId);
+        }
+    },
+
+    handleTrackerOwnerRef: function (record) {
+        var userId = record.get('user_id');
+
+        if (userId !== null && Ext.checkPermission('users', 'read')) {
+            Ext.Nav.shift('user/' + userId);
+        }
     }
 });

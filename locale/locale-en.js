@@ -281,6 +281,7 @@ Ext.define('Locale.locale-en', {
             tracker_id_exp: 'Tracker number',
             phone_exp: 'Phone number',
             owner: 'Tracker owner',
+            tariff: 'Tracker tariff',
             deleted: 'Marked as deleted',
             blocked: 'Service paused',
             clone: 'Clone',
@@ -318,7 +319,9 @@ Ext.define('Locale.locale-en', {
                 change_tracker_user: 'Change owner',
                 tracker_edit: 'Edit tracker',
                 tracker_clone_create: 'Create clone of this tracker',
-                tracker_clone_remove: 'Delete this clone'
+                tracker_clone_remove: 'Delete this clone',
+                tracker_tariff: 'Tracker tariff',
+                tracker_owner: 'Tracker owner'
             }
         }
     },
@@ -336,6 +339,9 @@ Ext.define('Locale.locale-en', {
         edit_form: {
             title: 'Edit tariff',
             save_btn: 'Save changes'
+        },
+        default_form: {
+            title: 'Default tariff settings'
         },
         fields: {
             tariff_id: 'ID',
@@ -362,7 +368,9 @@ Ext.define('Locale.locale-en', {
             devices: {
                 tracker: 'Tracker',
                 camera: 'Camera'
-            }
+            },
+            activation_bonus: 'Activation bonus',
+            free_days: 'Number of free days'
         },
         list: {
             create_btn_text: 'Add new tariff',

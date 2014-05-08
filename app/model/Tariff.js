@@ -7,7 +7,7 @@
 Ext.define('NavixyPanel.model.Tariff', {
     extend: 'Ext.data.Model',
     fields: [
-//        {name: 'id', type: 'int'},
+        {name: 'id', type: 'int'},
         {name: 'group_id', type: 'int'},
 
         {name: 'price', type: 'int'},
@@ -92,17 +92,8 @@ Ext.define('NavixyPanel.model.Tariff', {
         return value !== '' ? value : this.get('service_prices')[this.pricesMap[field.name]] || 0;
     },
 
-    getParentUserData: function () {
-        var userId = this.get('user_id'),
-            users = Ext.getStore('Users'),
-            userRecord = users && users.getById(userId);
-
-        return userRecord && userRecord.getData();
-    },
-
     set: function () {
         var fields = this.setPrices(arguments);
-        console.log(fields);
         this.callParent([fields]);
     },
 

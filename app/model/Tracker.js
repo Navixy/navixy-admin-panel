@@ -55,6 +55,14 @@ Ext.define('NavixyPanel.model.Tracker', {
         return userRecord && userRecord.getData();
     },
 
+    getParentTariffData: function () {
+        var tariffId = this.get('tariff_id'),
+            tariffs = Ext.getStore('Tariffs'),
+            tariffRecord = tariffs && tariffs.getById(tariffId);
+
+        return tariffRecord && tariffRecord.getData();
+    },
+
     set: function () {
         var fields = this.setSource(arguments);
         this.callParent([fields]);
