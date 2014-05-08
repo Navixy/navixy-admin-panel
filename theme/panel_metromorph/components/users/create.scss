@@ -7,4 +7,11 @@ $users-create-block-header-font-size: 15px;
         font-size: $users-create-block-header-font-size;
         @extend .x-panel-header-text-container-light;
     }
+
+    .block_sup {
+        @extend .x-panel-header-text-container-light;
+        color: $grayLight;
+        font-size: $users-create-block-header-font-size - 3;
+        text-align: right;
+    }
 }

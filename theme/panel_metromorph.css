@@ -14336,7 +14336,7 @@ body.x-nbr .x-btn-plain-toolbar-large {
   padding: 14px 9px 14px 9px; }
 
 /* line 137, ../../packages/ext-theme-neutral/sass/src/panel/Panel.scss */
-.x-panel-header-text-container-light, .x-panel-body-light .block_header {
+.x-panel-header-text-container-light, .x-panel-body-light .block_header, .x-panel-body-light .block_sup {
   color: #666666;
   font-size: 13px;
   font-weight: bold;
@@ -22422,7 +22422,7 @@ a, .link {
 .x-panel-header-light {
   background-color: #ebebeb; }
 
-.x-panel-header-text-container-light, .x-panel-body-light .block_header {
+.x-panel-header-text-container-light, .x-panel-body-light .block_header, .x-panel-body-light .block_sup {
   color: #4b4b4b;
   font-size: 16px;
   font-weight: normal;
@@ -22598,6 +22598,10 @@ a, .link {
 .x-panel-body-light .block_header {
   color: #4b4b4b;
   font-size: 15px; }
+.x-panel-body-light .block_sup {
+  color: #999999;
+  font-size: 12px;
+  text-align: right; }
 
 .content-table {
   border-spacing: 0; }

@@ -46,6 +46,7 @@ Ext.define('Locale.locale-ru', {
     yes: 'да',
     no: 'нет',
     show_btn: 'Показать',
+    required_fields: '* - поля или разделы обязательные для заполнения',
     wrong_period: 'Указан недопустимый период',
 
     errors: {

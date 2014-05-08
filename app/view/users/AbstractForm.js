@@ -49,7 +49,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.users.create_form.main_fields,
+                html: _l.users.create_form.main_fields + "<sup>*</sup>",
                 padding: '10 0 20 0'
             },
             {
@@ -112,7 +112,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 valueField: 'type'
                 ,listeners: {
                     change: function() {
-                        me.changeLegalStatus(this.getValue() === "individual");
+                        me.changeLegalStatus(this.getValue() === "sole_trader");
                     }
                 }
             }
@@ -120,7 +120,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     getNEItems: function () {
-        return [];
+        return [
+            {
+                xtype: 'container',
+                html: _l.required_fields,
+                cls: 'block_sup',
+                padding: '10 20 20 0'
+            }
+        ];
     },
 
     getSEItems: function () {
@@ -285,7 +292,13 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     changeLegalStatus: function (soleStatus) {
-        var legal_container = this.down('[role="legal_fields"]');
+        var legal_container = this.down('[role="legal_fields"]'),
+            ind_fields = [
+                this.down('[name="first_name"]'),
+                this.down('[name="middle_name"]'),
+                this.down('[name="last_name"]'),
+                this.down('[name="phone"]')
+            ];
 
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
@@ -298,6 +311,16 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 }
             }, this);
         }
+
+        Ext.iterate(ind_fields, function (field) {
+            if (!soleStatus) {
+                field.labelSeparator = '*:';
+            } else {
+                field.labelSeparator = ':';
+            }
+
+            field.setFieldLabel(field.getFieldLabel());
+        }, this);
     },
 
     copyAddress: function () {

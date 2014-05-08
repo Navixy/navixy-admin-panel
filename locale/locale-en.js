@@ -45,6 +45,7 @@ Ext.define('Locale.locale-en', {
     no: 'no',
     show_btn: 'Show',
     wrong_period: 'An invalid period',
+    required_fields: '* - required fields or sections',
 
     errors: {
         1: 'Database connection error (001). Please contact support or try again later.',
