@@ -28,8 +28,8 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data : [
-                {type: "tracker", "name": _l.tariffs.fields.devices.tracker},
-                {type: "camera", "name": _l.tariffs.fields.devices.camera}
+                {type: "tracker", "name": _l.devices.tracker},
+                {type: "camera", "name": _l.devices.camera}
             ]
         });
 

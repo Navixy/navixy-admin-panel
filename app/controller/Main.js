@@ -44,6 +44,7 @@ Ext.define('NavixyPanel.controller.Main', {
     init: function () {
         this.checkAuth();
         this.initOverrides();
+        this.initPanelOverrides();
 
         this.control({
             'authwindow form button[role=auth-submit]': {
@@ -257,6 +258,10 @@ Ext.define('NavixyPanel.controller.Main', {
 
         Ext.override(Ext.util.Format, {
 
+            daysEncode: function (value) {
+                return Ext.util.Format.units(value, 'days', true);
+            },
+
             units: function (value, unit, withValue) {
                 var result;
 
@@ -310,6 +315,47 @@ Ext.define('NavixyPanel.controller.Main', {
             numericText: _l.invalid_numeric_msg,
             numericMask: /[\-\+0-9.]/,
             numericVal: /^[-+]?\d*\.?\d*$/i
+        });
+    },
+
+    // Special Overrides
+    initPanelOverrides: function () {
+        Ext.override(Ext.util.Format, {
+
+            //TODO: Cameras and sockets
+            deviceLabelEncode: function (type, id) {
+                var store,
+                    record,
+                    recordData;
+
+                switch (type) {
+                    case 'tracker' :
+                        store = Ext.getStore('Trackers');
+                        record = store && store.findRecord('id', id);
+                        recordData = record && recordData.getData();
+                        break;
+                    case 'camera' :
+                        store = Ext.getStore('Cameras');
+                        break;
+                    case 'socket' :
+                        store = Ext.getStore('Sockets');
+                        break;
+                }
+
+                return recordData
+                    ? recordData.get('label')
+                    : '';
+            },
+
+            deviceEncode: function (type) {
+                return '<span class="' + type + ' device"><span></span>' + _l.devices[type] + '</span>';
+            },
+
+            emptyEncode: function (value) {
+                return !value
+                    ? '<span class="gray nopad">' + value + '</span>'
+                    : value
+            }
         });
     },
 
@@ -456,7 +502,7 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults'];
+            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults', 'getCodesList'];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -479,7 +525,8 @@ Ext.define('NavixyPanel.controller.Main', {
             'getDealerInfo': 'Dealer',
             'getUsersList': 'Users',
             'getTrackersList': 'Trackers',
-            'getTimeZones': 'TimeZones'
+            'getTimeZones': 'TimeZones',
+            'getCodesList': 'ActivationCodes'
         }, function (action, store) {
 
             try {

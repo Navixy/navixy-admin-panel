@@ -54,7 +54,7 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
 
         return {
             title: recordData.name,
-            title_add: this.checkDefault() ? Ext.String.format(_l.tariffs.fields.default_tariff, _l.tariffs.fields.devices[recordData.device_type]) : false,
+            title_add: this.checkDefault() ? Ext.String.format(_l.tariffs.fields.default_tariff, _l.devices[recordData.device_type]) : false,
             main_cls: 'card-header-inner',
             table_cls: 'header-table',
             fields: [

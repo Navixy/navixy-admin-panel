@@ -133,7 +133,8 @@ Ext.define('Locale.locale-en', {
         degrees: ['degrees', 'degree', 'degrees'],
         objects: ['objects', 'object', 'objects'],
         years: ['years', 'year', 'years'],
-        months: ['months', 'month', 'months']
+        months: ['months', 'month', 'months'],
+        codes: ['codes', 'code', 'codes']
     },
 
     list: {
@@ -153,6 +154,11 @@ Ext.define('Locale.locale-en', {
             collapser_tip: 'Hide additional information',
             collapser_exptip: 'Show additional information'
         }
+    },
+
+    devices: {
+        tracker: 'Tracker',
+        camera: 'Camera'
     },
 
     users: {
@@ -366,10 +372,6 @@ Ext.define('Locale.locale-en', {
             group_id_exp: 'Tariff group',
             active_exp: 'Users can switch to this tariff on his own',
             device_limit_exp: 'Maximum devices',
-            devices: {
-                tracker: 'Tracker',
-                camera: 'Camera'
-            },
             activation_bonus: 'Activation bonus',
             free_days: 'Number of free days'
         },
@@ -387,6 +389,47 @@ Ext.define('Locale.locale-en', {
                     title: 'Trackers at this tariff'
                 }
             }
+        },
+        combo_empty: 'Select tariff',
+        select_error: 'This tariff is not available',
+        select: {
+            title: 'Select tariff'
+        }
+    },
+
+    codes: {
+        menu_text: 'Activation codes',
+        fields: {
+            activated: 'status',
+            activation_date: 'Activation date',
+            bonus_amount: 'Bonus',
+            code: 'code',
+            device_id: 'Device ID',
+            device_type: 'Device type',
+            free_days: 'Free days',
+            money_amount: 'Amount',
+            tariff_id: 'Tariff ID',
+            tariff_name: 'Tariff',
+            status: {
+                activated: 'activated',
+                no_activated: 'not activated'
+            }
+        },
+        edit_form: {
+            title: 'Edit activation codes',
+            save_btn: 'Save changes',
+            selected_count: 'Codes selected',
+            device_type: 'Codes selected for devices'
+        },
+        list: {
+            empty_text: 'No activation codes found',
+            create_btn: 'Edit selected',
+            reload_btn: 'Reload',
+            after_edit_success: 'Changes: {0}',
+            after_edit_failure: 'Changed: {0}, {0} change failed',
+            select_req: 'Select codes from list',
+            same_type_req: 'You must specify one device type codes',
+            edited_tip: 'changed'
         }
     }
 })

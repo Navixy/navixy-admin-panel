@@ -30,7 +30,10 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                 '</tpl>'
             ],
             tariffDeviceTpl = [
-                '<span class="{device_type}">{[_l.tariffs.fields.devices[values.device_type]]}</span>'
+                '{device_type:deviceEncode}'
+            ],
+            tariffPriceTpl = [
+                '{price:emptyEncode}'
             ];
 
         return [
@@ -64,6 +67,8 @@ Ext.define('NavixyPanel.view.tariffs.List', {
             },
             {
                 text: _l.tariffs.fields.price,
+                xtype: 'templatecolumn',
+                tpl: tariffPriceTpl,
                 dataIndex: 'price',
                 width: 150
             }

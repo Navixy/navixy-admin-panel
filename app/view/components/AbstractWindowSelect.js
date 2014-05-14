@@ -9,6 +9,7 @@ Ext.define('NavixyPanel.view.components.AbstractWindowSelect', {
     modal: true,
     shadow: false,
     resizable: false,
+    draggable: false,
     layout: 'fit',
     closeOnSelect: true,
 

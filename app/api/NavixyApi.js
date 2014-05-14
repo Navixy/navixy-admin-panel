@@ -191,5 +191,24 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'tariff',
             root: 'id'
         });
+    },
+
+    getCodesList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'dealer/activation_code',
+            root: 'list',
+            scope: scope
+        });
+    },
+
+    updateCodes: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'dealer/activation_code',
+            root: 'count'
+        });
     }
 });

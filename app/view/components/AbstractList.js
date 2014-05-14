@@ -10,7 +10,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     viewConfig: {
         autoScroll: false,
         stripeRows: false,
-        deferEmptyText: false
+        deferEmptyText: false,
+        enableTextSelection: true
     },
 
     bodyStyle: {

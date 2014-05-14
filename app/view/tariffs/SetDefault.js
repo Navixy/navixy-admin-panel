@@ -89,7 +89,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 }
 
                 if (fieldName === 'device_type') {
-                    field.setValue(_l.tariffs.fields.devices[fieldValue]);
+                    field.setValue(_l.devices[fieldValue]);
                 }
             });
         }

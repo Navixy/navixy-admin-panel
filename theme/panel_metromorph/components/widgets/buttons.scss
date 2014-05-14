@@ -30,6 +30,11 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
+.reload-button {
+    @extend .icon-last-update;
+    @include glyph-button;
+}
+
 .remove-button {
     @extend .icon-remove;
     @include glyph-button;

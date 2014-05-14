@@ -26,7 +26,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .icon-camera, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
+.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .icon-camera, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .reload-button, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
   font-family: 'metromorph';
   speak: none;
   font-style: normal;
@@ -75,7 +75,7 @@ you can use the generic selector below, but it's slower:
 .icon-gear:before {
   content: "\e041"; }
 
-.icon-camera:before {
+.icon-camera:before, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span:before {
   content: "\e042"; }
 
 .icon-feedback2:before {
@@ -159,7 +159,7 @@ you can use the generic selector below, but it's slower:
 .icon-minimap:before {
   content: "\e003"; }
 
-.icon-last-update:before {
+.icon-last-update:before, .reload-button:before {
   content: "\e005"; }
 
 .icon-angle-right:before, .right-button:before {
@@ -255,7 +255,7 @@ you can use the generic selector below, but it's slower:
 .icon-plus:before, .add-button:before {
   content: "\e00c"; }
 
-.icon-location:before {
+.icon-location:before, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span:before {
   content: "\e00e"; }
 
 .icon-play:before, .play-button:before {
@@ -365,6 +365,45 @@ you can use the generic selector below, but it's slower:
 
 .icon-download:before {
   content: "\e064"; }
+
+.main-color-bg, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger.clear {
+  background-color: #27a9e3; }
+
+.main-color-border-color, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger-wrap {
+  border-color: #27a9e3; }
+
+.main-color-font {
+  color: #27a9e3; }
+
+.base-color-bg, .x-window-body.x-window-body-default, .x-window.x-window-default .x-toolbar-footer, .x-window.x-window-default, .searcher.dark .x-form-text, .searcher.dark .x-form-trigger-wrap .x-form-trigger {
+  background-color: #60626d; }
+
+.base-color-bg-important {
+  background-color: #60626d !important; }
+
+.base-color-border {
+  border-color: #60626d; }
+
+.base-font-color, .left-button, .right-button {
+  color: #aaaaaa; }
+
+.base-font-color-active, .copy-tool, .x-tool.gear, .x-tool.help-tool, .x-tool.delete {
+  color: white; }
+
+.base-font-color-border {
+  border-color: #aaaaaa; }
+
+.base-font-color-active-border {
+  border-color: white; }
+
+.base-font-color-bg {
+  background-color: #aaaaaa; }
+
+.base-font-color-active-bg {
+  background-color: white; }
+
+.normal-font-color {
+  color: #555555; }
 
 /**
  * @class Global_CSS
@@ -22376,6 +22415,8 @@ a, .link {
     padding: 8px 9px; }
     .x-grid-row .x-grid-cell .x-grid-cell-inner span {
       padding-left: 5px; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.nopad {
+        padding-left: 0; }
       .x-grid-row .x-grid-cell .x-grid-cell-inner span.scaled {
         font-size: 11px;
         text-transform: lowercase; }
@@ -22385,6 +22426,8 @@ a, .link {
         color: #0064cd; }
       .x-grid-row .x-grid-cell .x-grid-cell-inner span.green {
         color: #66c011; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.gray {
+        color: #aeb0b9; }
       .x-grid-row .x-grid-cell .x-grid-cell-inner span.lighten {
         color: #989898; }
       .x-grid-row .x-grid-cell .x-grid-cell-inner span.online {
@@ -22395,6 +22438,20 @@ a, .link {
         color: #989898; }
       .x-grid-row .x-grid-cell .x-grid-cell-inner span.signal_lost {
         color: #323232; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker {
+        color: #8b4f56; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera {
+        color: #4f568b; }
+      .x-grid-row .x-grid-cell .x-grid-cell-inner span.device span {
+        padding-left: 0;
+        padding-right: 5px;
+        font-size: 11px; }
+
+.x-grid-row-selected .x-grid-cell-inner span {
+  color: white !important; }
+
+.x-grid-cell-row-checker .x-grid-cell-inner {
+  padding: 8px 5px !important; }
 
 .x-panel-header-default .x-panel-header-glyph {
   font-size: 16px; }
@@ -22467,6 +22524,11 @@ a, .link {
   font-size: 16px; }
 
 .edit-button {
+  left: 2px;
+  color: white;
+  font-size: 16px; }
+
+.reload-button {
   left: 2px;
   color: white;
   font-size: 16px; }

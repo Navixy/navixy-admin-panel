@@ -11,6 +11,7 @@ $grid-cell-bg-color: lighten($baseBackgroundColor, 5%);
 $grid-cell-border-color: $grid-row-over-bg-color;
 $grid-cell-inner-padding: 8px 9px;
 $grid-cell-font-size: 13px;
+$grid-cell-checker-inner-padding: 8px 5px;
 
 $tool-column-color: lighten($baseFontColor, 40%);
 $tool-column-over-color: lighten($baseFontColor, 10%);
@@ -111,6 +112,10 @@ $grid-cell-empty-font-size: 14px;
         span {
             padding-left: 5px;
 
+            &.nopad {
+                padding-left: 0;
+            }
+
             &.scaled {
                 font-size: $grid-cell-font-size - 2;
                 text-transform: lowercase;
@@ -126,6 +131,10 @@ $grid-cell-empty-font-size: 14px;
 
             &.green {
                 color: $green;
+            }
+
+            &.gray {
+                color: $smoke;
             }
 
             &.lighten {
@@ -147,6 +156,41 @@ $grid-cell-empty-font-size: 14px;
             &.signal_lost {
                 color: darken($baseFontColor, 10%);
             }
+
+            &.device {
+
+                &.tracker {
+                    color: #8b4f56;
+                    span {
+                        @extend .icon-location;
+                    }
+                }
+
+                &.camera {
+                    color: #4f568b;
+                    span {
+                        @extend .icon-camera;
+                    }
+                }
+
+                span {
+                    padding-left: 0;
+                    padding-right: 5px;
+                    font-size: $grid-cell-font-size - 2;
+             }
+            }
         }
+    }
+}
+
+.x-grid-row-selected .x-grid-cell-inner {
+    span {
+        color: $white !important;
+    }
+}
+
+.x-grid-cell-row-checker {
+    .x-grid-cell-inner {
+        padding: $grid-cell-checker-inner-padding !important;
     }
 }
