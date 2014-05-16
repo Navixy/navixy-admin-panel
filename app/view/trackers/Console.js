@@ -21,6 +21,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
     bodyHeight: 500,
     statusWidth: 300,
+    commandMaxLength: 300,
 
     ui: 'light',
     cls: 'console',
@@ -71,11 +72,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
         return new Ext.XTemplate([
             '<div class="{cls}">',
-                '<span class="time',
-                '<tpl if="!showTime">',
-                    ' hidden',
-                '</tpl>',
-                '">{time} </span>',
+                '<span class="time">{time} </span>',
                 '<span class="text">{text}</span>',
             '</div>'
         ]);
@@ -167,6 +164,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                                 xtype: 'textfield',
                                 cls: 'dark-text-field',
                                 emptyText: _l.trackers.console.send_empty,
+                                maxLength: this.commandMaxLength,
                                 height: 30,
                                 flex: 1,
                                 listeners:{
@@ -344,9 +342,10 @@ Ext.define('NavixyPanel.view.trackers.Console', {
     },
 
     sendAction: function () {
-        var command = this.getSendText().getValue();
+        var command = this.getSendText().getValue(),
+            valid = this.getSendText().isValid();
 
-        if (command && this.connection) {
+        if (valid && command && this.connection) {
             this.updateOutput(command);
 
             this.getSendText().setValue('');
