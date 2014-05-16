@@ -138,6 +138,21 @@ Ext.define('Locale.locale-ru', {
         codes: ['кодов', 'код', 'кода', 'кода', 'кода', 'кодов']
     },
 
+    units_short: {
+        kilometer: 'км',
+        meter: 'м',
+        square_kilometer: 'кв. км',
+        square_meter: 'кв. м',
+        ar: 'ар',
+        hectare: 'га',
+        kmh: 'км/ч',
+        hour: 'ч',
+        minute: 'м',
+        second: 'с',
+        litres: 'л',
+        day: 'д'
+    },
+
     list: {
         edit_tool: 'изменить',
         create_btn_text: 'Создать',
@@ -327,8 +342,30 @@ Ext.define('Locale.locale-ru', {
                 tracker_clone_create: 'Клонировать трекер',
                 tracker_clone_remove: 'Удалить этот клон',
                 tracker_tariff: 'Тариф трекера',
-                tracker_owner: 'Владелец трекера'
+                tracker_owner: 'Владелец трекера',
+                tracker_console: 'GPRS-текрминал'
             }
+        },
+        console: {
+            title: 'GPRS-терминал трекера',
+            connect_btn: 'Установить соединение',
+            disconnect_btn: 'Закрыть соединение',
+            auto_scroll: 'Авто-пролистывание',
+            clear: 'Очистить консоль',
+            send_btn: 'Отправить',
+            send_empty: 'Введите команду',
+            loading: 'Подключение к устройству',
+            connect_init: 'Подключение установлено',
+            show_time: 'Время сообщения',
+            show_status: 'Показывать статус',
+            disconnect_msg: 'Соединение разорвано',
+            connect_msg: 'Соединение установлено',
+            error_msg: 'Ошибка подключения к устройству',
+            connection_failure: 'Не удалось подключиться к устройству',
+            close_question: 'Закрыть соединение?',
+            status_title: 'Статус устройства',
+            status_property_title: 'Параметр',
+            status_value_title: 'Значение'
         }
     },
 

@@ -58,7 +58,12 @@ Ext.define('NavixyPanel.controller.Desktop', {
             xtype = cmpConfig.xtype,
             existing = cardContainer.down('container[role=' + xtype + ']') || null,
             rewrite = existing && (cmpConfig.singleCmp || existing.singleCmp),
+            active = cardContainer.getLayout().getActiveItem(),
             target;
+
+        if (active && active.destroyOnLeave) {
+            this.removeContent(active);
+        }
 
         if (rewrite) {
             this.removeContent(existing);

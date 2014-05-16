@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         'trackers.List',
         'trackers.Card',
         'trackers.Clone',
+        'trackers.Console',
         'trackers.Edit'
     ],
 
@@ -49,7 +50,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 trackerclone: this.handleTrackerCloneAction,
                 trackerclonedelete: this.handleTrackerCloneDeleteAction,
                 trackertariffshow: this.handleTrackerTariffRef,
-                trackerownershow: this.handleTrackerOwnerRef
+                trackerownershow: this.handleTrackerOwnerRef,
+                trackerconsole: this.onTrackerConsole
             }
         });
 
@@ -69,6 +71,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'tracker > clone' : {
                 fn: this.handleTrackerClone,
                 access: 'create'
+            },
+            'tracker > console' : {
+                fn: this.handleTrackerConsole,
+                access: 'update'
             }
         });
 
@@ -117,6 +123,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
             this.fireContent({
                 xtype: 'trackerclone',
+                record: trackerRecord
+            });
+        }
+    },
+
+    handleTrackerConsole: function (value) {
+        var trackerId = parseInt(value),
+            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
+
+        if (trackerRecord) {
+            this.fireContent({
+                xtype: 'trackerconsole',
                 record: trackerRecord
             });
         }
@@ -337,6 +355,14 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         if (userId !== null && Ext.checkPermission('users', 'read')) {
             Ext.Nav.shift('user/' + userId);
+        }
+    },
+
+    onTrackerConsole: function (record) {
+        var trackerId = record.get('id');
+
+        if (trackerId !== null) {
+            Ext.Nav.shift('tracker/' + trackerId + '/console');
         }
     }
 });

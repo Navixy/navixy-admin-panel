@@ -22,6 +22,20 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
+        if (Ext.checkPermission('trackers', 'update') && typeof WebSocket !== 'undefined') {
+            result.unshift(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_console + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerConsole,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
         if (Ext.checkPermission('trackers', 'create') && !this.getRecordData().clone) {
             result.push(
                 {
@@ -139,6 +153,10 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 }
             ]
         };
+    },
+
+    fireTrackerConsole: function () {
+        this.fireEvent('trackerconsole', this.record);
     },
 
     fireTrackerEdit: function () {

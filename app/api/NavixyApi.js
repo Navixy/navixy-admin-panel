@@ -149,6 +149,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getTrackerConnect: function (config) {
+        this.requestWithOptions(config, {
+            action: 'connect',
+            handler: 'tracker/console'
+        });
+    },
+
     getTariffsList: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,

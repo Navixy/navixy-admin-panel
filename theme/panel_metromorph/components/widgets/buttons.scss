@@ -20,6 +20,15 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
+.options-button {
+    @extend .icon-gear;
+    @include glyph-button;
+}
+
+.x-btn-arrow-right {
+    display: block;
+}
+
 .add-group-button {
     @extend .icon-add-group;
     @include glyph-button;

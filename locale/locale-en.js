@@ -137,6 +137,21 @@ Ext.define('Locale.locale-en', {
         codes: ['codes', 'code', 'codes']
     },
 
+    units_short: {
+        kilometer: 'km',
+        meter: 'm',
+        square_kilometer: 'sq. km',
+        square_meter: 'sq. m',
+        ar: 'ar',
+        hectare: 'ha',
+        kmh: 'km / h',
+        hour: 'h',
+        minute: 'm',
+        second: 's',
+        litres: 'l',
+        day: 'd'
+    },
+
     list: {
         edit_tool: 'edit',
         create_btn_text: 'Create',
@@ -328,8 +343,30 @@ Ext.define('Locale.locale-en', {
                 tracker_clone_create: 'Create clone of this tracker',
                 tracker_clone_remove: 'Delete this clone',
                 tracker_tariff: 'Tracker tariff',
-                tracker_owner: 'Tracker owner'
+                tracker_owner: 'Tracker owner',
+                tracker_console: 'GPRS-terminal'
             }
+        },
+        console: {
+            title: 'GPRS-terminal for tracker',
+            connect_btn: 'Start connection',
+            disconnect_btn: 'Close connection',
+            auto_scroll: 'Auto-scrolling',
+            clear: 'Clear console',
+            send_btn: 'Send',
+            send_empty: 'Type the command',
+            loading: 'Connecting to a device',
+            connect_init: 'Connection is established',
+            show_time: 'Show message time',
+            show_status: 'Show status',
+            disconnect_msg: 'Connection terminated',
+            connect_msg: 'Connection is established',
+            error_msg: 'Error connecting to device',
+            connection_failure: 'Unable to connect to device',
+            close_question: 'Close connection?',
+            status_title: 'Device status',
+            status_property_title: 'Status',
+            status_value_title: 'Value'
         }
     },
 

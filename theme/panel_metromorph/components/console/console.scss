@@ -1,0 +1,75 @@
+$console-body-background-color: $white;
+$console-body-border-color: $grayer;
+
+$console-income-message-color: $gray;
+$console-outcome-message-color: $baseFontColor;
+$console-system-message-color: $invalid-color;
+
+$console-status-panel-background-color: transparent;
+$console-status-panel-header-font-size: 14px;
+$console-status-panel-header-padding: 7px 10px;
+
+.console {
+    .console-body {
+        border-width: 1px;
+        border-color: $console-body-border-color;
+        border-style: solid;
+
+        background-color: $console-body-background-color;
+
+        overflow: scroll;
+
+        .income {
+            color: $console-income-message-color;
+
+            .text:before {
+                content: '→';
+                font-size: 10px;
+                margin-right: 5px;
+            }
+        }
+
+        .outcome {
+            color: $console-outcome-message-color;
+        }
+
+        .system {
+            color: $console-system-message-color;
+        }
+
+        .time {
+            color: lighten($console-outcome-message-color, 20%);
+            font-size: 10px;
+            margin-right: 5px;
+        }
+    }
+
+    .dark-text-field {
+
+        input {
+            border-color: $console-body-border-color;
+        }
+    }
+
+    .status-panel {
+        background-color: $console-status-panel-background-color;
+
+        .x-panel-header {
+            background-color: $console-status-panel-background-color;
+            padding: $console-status-panel-header-padding;
+
+            .x-header-text {
+                font-size: $console-status-panel-header-font-size;
+            }
+        }
+
+        .x-grid-header-ct {
+            display: none;
+        }
+
+        .x-panel-body {
+            //background-color: $console-status-panel-background-color;
+            background-color: lighten($baseBackgroundColor, 4%);
+        }
+    }
+}

@@ -1,3 +1,4 @@
+@charset "IBM866";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,cyrillic);
 /*NOTE: sass --watch --compass compass/sass/app.scss:app.css --style compressed*/
 /*Variables and mixins*/
@@ -26,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .icon-camera, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .reload-button, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
+.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .options-button, .icon-camera, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .reload-button, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
   font-family: 'metromorph';
   speak: none;
   font-style: normal;
@@ -72,7 +73,7 @@ you can use the generic selector below, but it's slower:
 .icon-feedback:before {
   content: "\e040"; }
 
-.icon-gear:before {
+.icon-gear:before, .options-button:before {
   content: "\e041"; }
 
 .icon-camera:before, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span:before {
@@ -22518,6 +22519,14 @@ a, .link {
   color: white;
   font-size: 16px; }
 
+.options-button {
+  left: 2px;
+  color: white;
+  font-size: 16px; }
+
+.x-btn-arrow-right {
+  display: block; }
+
 .add-group-button {
   left: 2px;
   color: white;
@@ -22750,3 +22759,37 @@ a, .link {
     opacity: 1; }
   .links-collapser.active {
     background-image: url("panel_metromorph/images/tools/arrow-left.png"); }
+
+.console .console-body {
+  border-width: 1px;
+  border-color: silver;
+  border-style: solid;
+  background-color: white;
+  overflow: scroll; }
+  .console .console-body .income {
+    color: #7b7f8b; }
+    .console .console-body .income .text:before {
+      content: '→';
+      font-size: 10px;
+      margin-right: 5px; }
+  .console .console-body .outcome {
+    color: #4b4b4b; }
+  .console .console-body .system {
+    color: #ff3333; }
+  .console .console-body .time {
+    color: #7e7e7e;
+    font-size: 10px;
+    margin-right: 5px; }
+.console .dark-text-field input {
+  border-color: silver; }
+.console .status-panel {
+  background-color: transparent; }
+  .console .status-panel .x-panel-header {
+    background-color: transparent;
+    padding: 7px 10px; }
+    .console .status-panel .x-panel-header .x-header-text {
+      font-size: 14px; }
+  .console .status-panel .x-grid-header-ct {
+    display: none; }
+  .console .status-panel .x-panel-body {
+    background-color: #fafafa; }

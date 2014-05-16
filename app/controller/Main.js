@@ -201,6 +201,12 @@ Ext.define('NavixyPanel.controller.Main', {
                 }
 
                 return result;
+            },
+
+            getFirst: function (query, returnAll) {
+                var result = Ext.ComponentQuery.query(query);
+
+                return returnAll ? result : result[0];
             }
         });
 
