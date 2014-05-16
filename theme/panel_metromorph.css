@@ -22766,8 +22766,8 @@ a, .link {
   border-style: solid;
   background-color: white;
   overflow: scroll; }
-  .console .console-body .income {
-    color: #7b7f8b; }
+  .console .console-body .income .text {
+    font-weight: bold; }
     .console .console-body .income .text:before {
       content: '→';
       font-size: 10px;
@@ -22779,7 +22779,10 @@ a, .link {
   .console .console-body .time {
     color: #7e7e7e;
     font-size: 10px;
-    margin-right: 5px; }
+    margin-right: 5px;
+    display: none; }
+  .console .console-body .show-time .time {
+    display: inline; }
 .console .dark-text-field input {
   border-color: silver; }
 .console .status-panel {

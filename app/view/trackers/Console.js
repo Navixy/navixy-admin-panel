@@ -71,10 +71,12 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
         return new Ext.XTemplate([
             '<div class="{cls}">',
-            '<tpl if="time">',
-                '<span class="time">{time} </span>',
-            '</tpl>',
-            '<span class="text">{text}</span>',
+                '<span class="time',
+                '<tpl if="!showTime">',
+                    ' hidden',
+                '</tpl>',
+                '">{time} </span>',
+                '<span class="text">{text}</span>',
             '</div>'
         ]);
     },
@@ -282,6 +284,14 @@ Ext.define('NavixyPanel.view.trackers.Console', {
     toggleTime: function (cmp, state) {
 
         this.showTime = state;
+
+        var target = this.getConsoleBody();
+
+        if (target) {
+            target.items.each(function (item) {
+                item[this.showTime ? 'addCls' : 'removeCls']('show-time');
+            }, this);
+        }
     },
 
     toggleStatus: function (cmp, state) {
@@ -383,7 +393,6 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
     handleMessage: function (message) {
 
-        console.log('handleMessage', message);
         var messageData = JSON.parse(message.data);
 
         switch (messageData.type) {
@@ -412,25 +421,12 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
         if (Ext.isArray(messageData.data) && this.statusStore) {
             var data = [],
-//                isEmpty = this.statusStore.count(),
                 name, value, record;
 
             Ext.iterate(messageData.data, function (line) {
 
-                name = line[0]; value = line[1];
-
-                switch (name.toLowerCase()) {
-                    case 'time':
-                        value = Ext.Date.format(new Date(value), "d-m-y H:i:s");
-                    break;
-                    case 'speed':
-                        value = value + ' ' + _l.units_short.kmh;
-                    break;
-                    case 'detach button status':
-                        value = _l[value !== '0' ? 'yes': 'no'];
-                    break;
-                }
-
+                name = line[0];
+                value = line[1];
                 record = this.statusStore.findRecord('name', name);
 
                 if (record) {
@@ -459,6 +455,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                 xtype: 'container',
                 tpl: this.lineTpl,
                 padding: '0 0 4 0',
+                cls: this.showTime ? 'show-time' : '',
                 data: {
                     text: Ext.isString(messageData)
                         ? messageData
@@ -466,9 +463,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                     cls:  Ext.isString(messageData)
                         ? 'income'
                         : messageData.type,
-                    time: this.showTime
-                        ? Ext.Date.format(new Date(), '(H:i:s)')
-                        : false
+                    time: Ext.Date.format(new Date(), '(H:i:s)')
                 }
             };
 

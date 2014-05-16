@@ -343,7 +343,7 @@ Ext.define('Locale.locale-ru', {
                 tracker_clone_remove: 'Удалить этот клон',
                 tracker_tariff: 'Тариф трекера',
                 tracker_owner: 'Владелец трекера',
-                tracker_console: 'GPRS-текрминал'
+                tracker_console: 'GPRS-терминал'
             }
         },
         console: {
