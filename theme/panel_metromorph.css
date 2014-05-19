@@ -22665,6 +22665,13 @@ a, .link {
 
 .main-header .header-logo {
   background-image: url("panel_metromorph/images/navixy-logo.png"); }
+.main-header .dealer-info {
+  font-size: 16px;
+  color: #4b4b4b; }
+  .main-header .dealer-info .devices-info {
+    font-size: 12px;
+    color: #8b8b8b;
+    text-align: right; }
 
 .x-panel-body-light .block_header {
   color: #4b4b4b;

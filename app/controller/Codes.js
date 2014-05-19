@@ -57,10 +57,11 @@ Ext.define('NavixyPanel.controller.Codes', {
             target: 'codes'
         };
     },
-
-    getModuleName: function () {
-        return 'activation_code';
-    },
+//
+//    getModuleName: function () {
+//        console.log(this.callParent(arguments));
+//        return 'codes';
+//    },
 
     handleList: function () {
         this.fireContent({

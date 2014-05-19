@@ -1,6 +1,20 @@
+$dealer-info-font-size: 16px;
+$dealer-info-font-color: $baseFontColor;
+
 .main-header {
 
     .header-logo {
         background-image: url($img_dir + '/navixy-logo.png');
+    }
+
+    .dealer-info {
+        font-size: $dealer-info-font-size;
+        color: $dealer-info-font-color;
+
+        .devices-info {
+            font-size: $dealer-info-font-size - 4;
+            color: lighten($dealer-info-font-color, 25%);
+            text-align: right;
+        }
     }
 }

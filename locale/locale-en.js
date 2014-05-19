@@ -134,7 +134,8 @@ Ext.define('Locale.locale-en', {
         objects: ['objects', 'object', 'objects'],
         years: ['years', 'year', 'years'],
         months: ['months', 'month', 'months'],
-        codes: ['codes', 'code', 'codes']
+        codes: ['codes', 'code', 'codes'],
+        devices: ['devices', 'device', 'devices']
     },
 
     units_short: {
@@ -174,6 +175,11 @@ Ext.define('Locale.locale-en', {
     devices: {
         tracker: 'Tracker',
         camera: 'Camera'
+    },
+
+    dealer_info: {
+        first: 'active',
+        last: 'of'
     },
 
     users: {

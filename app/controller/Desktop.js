@@ -61,10 +61,6 @@ Ext.define('NavixyPanel.controller.Desktop', {
             active = cardContainer.getLayout().getActiveItem(),
             target;
 
-        if (active && active.destroyOnLeave) {
-            this.removeContent(active);
-        }
-
         if (rewrite) {
             this.removeContent(existing);
             existing = null;
@@ -72,7 +68,11 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         target = existing || this.addContent(cmpConfig);
 
-        cardContainer.getLayout().setActiveItem(target);
+        target = cardContainer.getLayout().setActiveItem(target);
+
+        if (active && active.destroyOnLeave) {
+            this.removeContent(active);
+        }
 
         return target;
     },

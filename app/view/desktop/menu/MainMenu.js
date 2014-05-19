@@ -87,12 +87,15 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             curSection = curBnt ? curBnt.sectionTarget : false;
 
         if (curSection !== section) {
+            this.unToggleAll();
             this.toggleSectionButton(section, true, true);
         }
     },
 
     unToggleAll: function () {
-        this.down('button').toggle(false, true);
+        Ext.iterate(Ext.ComponentQuery.query(this.getXType() + ' button'), function (button) {
+            button.toggle(false, true);
+        }, this);
     },
 
     showMenu: function () {

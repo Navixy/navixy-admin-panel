@@ -191,7 +191,7 @@ Ext.define('NavixyPanel.controller.Main', {
                 } else {
 
                     var store = Ext.getStore('Permissions'),
-                        section = store && store.getById(sectionId);
+                        section = store && store.getById(store.getAlias(sectionId) || sectionId);
 
                     result = Ext.isString(right)
                         ? section
@@ -266,6 +266,10 @@ Ext.define('NavixyPanel.controller.Main', {
 
             daysEncode: function (value) {
                 return Ext.util.Format.units(value, 'days', true);
+            },
+
+            devicesEncode: function (value) {
+                return Ext.util.Format.units(value, 'devices', true);
             },
 
             units: function (value, unit, withValue) {
