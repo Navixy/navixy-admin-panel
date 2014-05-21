@@ -17,7 +17,8 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.menu.MainMenu',
         'desktop.Desktop',
         'desktop.Footer',
-        'desktop.AccessDenied'
+        'desktop.AccessDenied',
+        'desktop.Search'
     ],
 
     refs: [
@@ -43,7 +44,17 @@ Ext.define('NavixyPanel.controller.Desktop', {
             menuregister    : this.addMainMenuItem,
             menuselect      : this.onMenuSelect,
             menudeselect    : this.onMenuDeselect,
+            index           : this.onIndex,
             scope: this
+        });
+
+        this.control({
+            'mainviewport': {
+                render: {
+                    fn: this.registerSearch,
+                    single: true
+                }
+            }
         });
     },
 
@@ -101,5 +112,23 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     onMenuSelect: function (requiest) {
         this.getMainMenu().forceToggleSectionButton(requiest);
+    },
+
+    onIndex: function () {
+
+
+        this.application.fireEvent('contentchange', {
+            xtype: 'searchform'
+        });
+        this.application.fireEvent('handlefound');
+        this.application.fireEvent('menuselect', 'index');
+    },
+
+    registerSearch: function () {
+        this.addMainMenuItem({
+            name: "index",
+            text: "Главная",
+            target: ""
+        });
     }
 });

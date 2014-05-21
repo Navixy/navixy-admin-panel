@@ -22468,7 +22468,7 @@ a, .link {
   .x-panel-light .x-toolbar-footer, .x-panel-light .x-docked-bottom {
     background-color: #ebebeb;
     border-color: #ebebeb;
-    padding: 3px 2px 2px 2px; }
+    padding: 2px 2px 0px 2px; }
   .x-panel-light .x-toolbar-light-docked-top {
     color: #4b4b4b;
     background-color: transparent;
@@ -22507,9 +22507,11 @@ a, .link {
   .x-tab-bar-body-light .x-tab-light-over {
     background-color: #dedede; }
 
-.x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
-  line-height: 20px;
-  padding-left: 26px; }
+.x-btn-default-toolbar-small-icon-text-left {
+  padding-left: 2px; }
+  .x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
+    line-height: 20px;
+    padding-left: 24px; }
 
 .x-btn-default-toolbar-medium-icon-text-left .x-btn-icon-el {
   line-height: 20px; }
@@ -22638,6 +22640,11 @@ a, .link {
 .searcher.dark .x-form-trigger-wrap .x-form-trigger {
   height: 16px;
   color: #60626d; }
+.searcher.small .clear {
+  line-height: 24px;
+  height: 24px; }
+.searcher.small .x-form-text {
+  height: 24px; }
 
 .x-form-trigger-wrap .list {
   font-size: 12px;
@@ -22664,7 +22671,9 @@ a, .link {
       background-color: #787a88; }
 
 .main-header .header-logo {
-  background-image: url("panel_metromorph/images/navixy-logo.png"); }
+  background-image: url("panel_metromorph/images/navixy-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat; }
 .main-header .dealer-info {
   font-size: 16px;
   color: #4b4b4b; }
@@ -22672,6 +22681,17 @@ a, .link {
     font-size: 12px;
     color: #8b8b8b;
     text-align: right; }
+
+.main-search .search-field input {
+  font-size: 16px;
+  line-height: 22px;
+  padding: 1px 8px; }
+.main-search .search-btn .x-btn-inner {
+  font-size: 16px;
+  line-height: 29px !important; }
+
+.search-title {
+  color: #000000; }
 
 .x-panel-body-light .block_header {
   color: #4b4b4b;

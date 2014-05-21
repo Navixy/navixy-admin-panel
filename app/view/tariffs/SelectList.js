@@ -8,8 +8,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
     extend: 'NavixyPanel.view.tariffs.List',
     requires: ['NavixyPanel.view.widgets.Searcher'],
     alias: 'widget.tariffselectlist',
-    createBtn: false,
-    hasEdit: false,
+    noTBar: true,
     viewPageSize: 10000,
 
     disableSelection: false,

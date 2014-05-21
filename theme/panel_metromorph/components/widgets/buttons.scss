@@ -6,9 +6,12 @@ $defaultSizeFormBtnIcon: 16px;
     font-size: $defaultSizeFormBtnIcon;
 }
 
-.x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
-    line-height: $defaultSizeFormBtnIcon + 4;
-    padding-left: $defaultSizeFormBtnIcon + 10;
+.x-btn-default-toolbar-small-icon-text-left {
+    padding-left: 2px;
+    .x-btn-inner {
+        line-height: $defaultSizeFormBtnIcon + 4;
+        padding-left: $defaultSizeFormBtnIcon + 8;
+    }
 }
 
 .x-btn-default-toolbar-medium-icon-text-left .x-btn-icon-el {

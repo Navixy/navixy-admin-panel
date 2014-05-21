@@ -1,0 +1,24 @@
+$main-search-input-font-size: 16px;
+
+.main-search {
+
+    .search-field {
+
+        input {
+            font-size: $main-search-input-font-size;
+            line-height: $main-search-input-font-size + 6;
+            padding: 1px 8px;
+        }
+    }
+
+    .search-btn {
+        .x-btn-inner {
+            font-size: $main-search-input-font-size;
+            line-height: 29px !important;
+        }
+    }
+}
+
+.search-title {
+    color: #000000;
+}

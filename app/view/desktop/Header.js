@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                     {
                         xtype: 'container',
                         cls: 'dealer-info',
-                        padding: '27 0 0 30',
+                        padding: '28 0 0 29',
                         height: 78,
                         tpl: '{legal_name}<div class="devices-info">{[_l.dealer_info.first]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.dealer_info.last]} {active_limit}</tpl></div>',
                         data: Ext.getStore('Dealer').first().getData()

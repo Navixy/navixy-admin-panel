@@ -32,6 +32,8 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}}
     ],
 
+    fieldForSearch: ['id', 'label', 'source_id', 'device_id', 'model', 'phone', 'connection_status'],
+
     sourceMap: {
         source_id: 'id',
         device_id: 'device_id',

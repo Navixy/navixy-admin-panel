@@ -83,6 +83,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     forceToggleSectionButton: function (section) {
+
         var curBnt = this.down('button[pressed=true]'),
             curSection = curBnt ? curBnt.sectionTarget : false;
 

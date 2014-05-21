@@ -109,7 +109,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
     },
 
     callHandleFound: function (eventName) {
-        this.application.fireEvent('handlefound', eventName);
+        this.application.fireEvent('handlefound');
     },
 
     getHandlerEventConfig: function (name) {
@@ -154,6 +154,6 @@ Ext.define('NavixyPanel.controller.Abstract', {
 
     fireContent: function (config) {
         this.application.fireEvent('contentchange', config);
-    },
+    }
 });
 

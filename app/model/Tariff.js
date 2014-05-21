@@ -30,6 +30,8 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}}
     ],
 
+    fieldForSearch: ['id', 'name'],
+
     pricesMap: {
         incoming_sms: 'incoming_sms',
         outgoing_sms: 'outgoing_sms',

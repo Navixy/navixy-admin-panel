@@ -6,7 +6,12 @@
 
 Ext.define('NavixyPanel.view.components.AbstractList', {
     extend: 'Ext.grid.Panel',
-    requires: ['NavixyPanel.utils.pagination.CustomPaging'],
+    alias: 'widget.abstractlist',
+    requires: [
+        'NavixyPanel.utils.pagination.CustomPaging',
+        'NavixyPanel.utils.pagination.ListFilter',
+        'NavixyPanel.view.widgets.PageSize'
+    ],
     viewConfig: {
         autoScroll: false,
         stripeRows: false,
@@ -30,10 +35,15 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     createBtn: false,
     hasEdit: false,
+    showEmpty: true,
+    searchTitle: null,
+    noTBar: false,
+    hasFilter: true,
 
     texts: null,
 
     filter: null,
+    search: null,
 
     viewPageSize: null,
 
@@ -44,7 +54,12 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             createBtnRole: 'create-btn',
             createBtnText: _l.list.create_btn_text,
             emptyData: _l.list.empty_text,
-            panelTitle: null
+            panelTitle: null,
+
+            searchTitle: this.searchTitle || _l.list.search_title,
+            searchEmptyTitle: _l.list.search_empty_title,
+            searchTitleTpl: _l.list.search_title_tpl,
+            searchEmptyTitleTpl: _l.list.search_empty_title_tpl
         };
 
         this.texts = Ext.applyIf(this.getTexts(), defaultTexts);
@@ -71,6 +86,19 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.callParent(arguments);
     },
 
+    afterRender: function () {
+        this.applyViewToSearcher();
+        this.callParent(arguments);
+    },
+
+    applyViewToSearcher: function () {
+        var filterer = this.down('listfilter');
+
+        if (filterer) {
+            filterer.setView(this.getView());
+        }
+    },
+
     initStore: function () {
 
         var storeName = Ext.isString(this.store)
@@ -85,9 +113,12 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     getStoreConfig: function () {
         var config = {};
 
+        if (this.filter || this.search) {
+            var filters = config.parentFilters = [];
+        }
+
         if (this.filter) {
             var root = this.filter.root || 'data',
-                filters = config.parentFilters = [],
                 filterConfig,
                 filtersConfig = !Ext.isArray(config)
                     ? [config]
@@ -115,6 +146,19 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     )
                 );
             }, this);
+        }
+
+        if (this.search) {
+
+            var searchReq = this.search;
+            filters.push(
+                Ext.create('Ext.util.Filter', {
+                    filterFn: function (record) {
+                        var searchHash = record.fieldForSearch && record.getFieldsString(record.fieldForSearch, false);
+                        return searchHash && searchHash.indexOf(searchReq) >= 0;
+                    }
+                })
+            );
         }
 
         if (this.viewPageSize) {
@@ -151,6 +195,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 padding: '0 0 10 0',
                 border: 0,
                 ui: 'light',
+                height: 36,
                 items: []
             };
 
@@ -163,7 +208,16 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             });
         }
 
-        return barConfig.items.length ? barConfig : false;
+        if (this.hasFilter) {
+            barConfig.items.push('->');
+            barConfig.items.push({
+                xtype: 'listfilter',
+                margin: '0 -2 0 0',
+                width: 200
+            });
+        }
+
+        return !this.noTBar && barConfig;
     },
 
     getBottomBar: function () {
@@ -171,6 +225,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             items: [
                 {
                     xtype: 'tbfill'
+                },
+                {
+                    xtype: 'pagesize'
                 },
                 {
                     xtype: 'custompaging',
@@ -182,6 +239,22 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     applyListeners: function () {
         this.on('cellclick', this.handleCellClick, this);
+        this.on('afterrender', this.applySearchView, this);
+    },
+
+    applySearchView: function () {
+        if (this.search) {
+            var resultsCnt = this.store.tCount(),
+                moduleTitle = Ext.String.format('<span class="search-title">{0}</span>', this.texts.searchTitle);
+
+            this.setTitle(
+                Ext.String.format(resultsCnt ? this.texts.searchTitleTpl: this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
+            );
+
+            if (!this.showEmpty && !resultsCnt) {
+                this.collapse();
+            }
+        }
     },
 
     handleCellClick: function (table, td, cellIndex, record) {

@@ -5,6 +5,8 @@ $dealer-info-font-color: $baseFontColor;
 
     .header-logo {
         background-image: url($img_dir + '/navixy-logo.png');
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     .dealer-info {

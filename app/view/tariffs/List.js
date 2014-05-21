@@ -12,7 +12,9 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 
     viewPageSize: 1000,
 
-    getBottomBar: Ext.emptyFn,
+    getBottomBar: function () {
+        return this.search ? this.callParent(arguments) : false;
+    },
 
     getTexts: function () {
         return {

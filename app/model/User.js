@@ -33,6 +33,8 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_street_address', type: 'string'}
     ],
 
+    fieldForSearch: ['id', 'login', 'last_name', 'first_name', 'middle_name', 'phone', 'post_city'],
+
     hasTrackerClone: function (sourceId) {
         var trackers = this.getTrackers(),
             result = false;
@@ -63,5 +65,9 @@ Ext.define('NavixyPanel.model.User', {
         }
 
         return result.length && result;
+    },
+
+    getSearchHash: function () {
+        return this.getFieldsString(this.fieldForSearch, false);
     }
 });

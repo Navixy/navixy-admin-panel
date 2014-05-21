@@ -113,6 +113,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                     iconCls: 'reload-button',
                     role: this.texts.reloadBtnRole,
                     text: this.texts.reloadBtnText,
+                    margin: '0 -2 0 0',
                     handler: function () {
                         me.fireReloadAction();
                     }

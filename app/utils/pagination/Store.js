@@ -139,5 +139,9 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
     destroyStore: function () {
         this.removeParentListeners();
         this.callParent(arguments);
+    },
+
+    tCount: function () {
+        return this.getProxy().data.length;
     }
 });

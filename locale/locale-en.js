@@ -47,6 +47,8 @@ Ext.define('Locale.locale-en', {
     wrong_period: 'An invalid period',
     required_fields: '* - required fields or sections',
 
+    page_size: 'Page size',
+
     errors: {
         1: 'Database connection error (001). Please contact support or try again later.',
         2: 'Authorization system error (002).  Please contact support or try again later.',
@@ -135,7 +137,8 @@ Ext.define('Locale.locale-en', {
         years: ['years', 'year', 'years'],
         months: ['months', 'month', 'months'],
         codes: ['codes', 'code', 'codes'],
-        devices: ['devices', 'device', 'devices']
+        devices: ['devices', 'device', 'devices'],
+        entries: ['matches', 'match', 'matches']
     },
 
     units_short: {
@@ -153,10 +156,19 @@ Ext.define('Locale.locale-en', {
         day: 'd'
     },
 
+    search: {
+        empty: 'Search by category',
+        btn: 'Find'
+    },
+
     list: {
         edit_tool: 'edit',
         create_btn_text: 'Create',
-        empty_text: 'No data'
+        empty_text: 'No data',
+        search_title_tpl: '{0}: found {1}',
+        search_empty_title_tpl: '{0}: no matches found',
+        search_title: 'Search',
+        search_empty_title: 'No matches found'
     },
 
     card: {

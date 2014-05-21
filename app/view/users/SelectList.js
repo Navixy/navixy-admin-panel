@@ -9,7 +9,7 @@ Ext.define('NavixyPanel.view.users.SelectList', {
     requires: ['NavixyPanel.view.widgets.Searcher'],
     alias: 'widget.usersselectlist',
     createBtn: false,
-    hasEdit: false,
+    noTBar: true,
     viewPageSize: 10000,
 
     disableSelection: false,

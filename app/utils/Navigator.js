@@ -86,11 +86,11 @@ Ext.define('NavixyPanel.utils.Navigator', {
 
     getEventConfig: function (path) {
         var parts = path || this.getParts(),
-            result
-            ;
+            result = {
+                name: 'index'
+            };
 
         if (parts) {
-            result = {};
             result.name = this.eventNameGenerator.apply(parts);
             if (parts.params) {
                 result.params = parts.params;
