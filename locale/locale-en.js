@@ -12,7 +12,7 @@ Ext.define('Locale.locale-en', {
 
     main_copyright: '© 2005-2014 RusLink. All rights reserved.',
 
-    panel_title: 'Nyan NavixyPanel',
+    panel_title: 'NavixyPanel',
     error: 'Error',
     loading: 'Loading...',
     conneting_loader: 'Connecting to server',

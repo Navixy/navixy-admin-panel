@@ -14,7 +14,7 @@ Ext.define('Locale.locale-ru', {
 
     main_copyright: '© 2005-2014 RusLink. All rights reserved.',
 
-    panel_title: 'NavixyPanel v2',
+    panel_title: 'NavixyPanel',
     error: 'Ошибка',
     loading: 'Загрузка...',
     conneting_loader: 'Соединение с сервером',
