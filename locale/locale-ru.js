@@ -195,6 +195,10 @@ Ext.define('Locale.locale-ru', {
         last: 'из'
     },
 
+    index: {
+        menu_text: 'Главная'
+    },
+
     users: {
         menu_text: 'Пользователи',
         create_form: {

@@ -90,7 +90,9 @@ Ext.define('NavixyPanel.utils.pagination.ListFilter', {
 
     changeStoreConfig: function () {
         if (!this.viewDefaultPageSize) {
-            this.getParentBBar().hide();
+            if (this.getParentBBar()) {
+                this.getParentBBar().hide();
+            }
             this.viewDefaultPageSize = this.getInitialPageSize();
             this.viewDefaultPage = this.getInitialPage();
             this.getParentStore().setPageSize(this.viewFilteredPageSize);
@@ -102,7 +104,9 @@ Ext.define('NavixyPanel.utils.pagination.ListFilter', {
         if (this.viewDefaultPageSize) {
             this.getParentStore().setPageSize(this.viewDefaultPageSize);
             this.getParentStore().loadPage(this.viewDefaultPage);
-            this.getParentBBar().show();
+            if (this.getParentBBar()) {
+                this.getParentBBar().show();
+            }
             this.viewDefaultPageSize = null;
         }
     },

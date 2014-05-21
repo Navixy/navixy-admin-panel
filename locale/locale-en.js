@@ -194,6 +194,10 @@ Ext.define('Locale.locale-en', {
         last: 'of'
     },
 
+    index: {
+        menu_text: 'Home'
+    },
+
     users: {
         menu_text: 'Users',
         create_btn: 'New user',

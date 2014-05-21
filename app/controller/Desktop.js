@@ -127,7 +127,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     registerSearch: function () {
         this.addMainMenuItem({
             name: "index",
-            text: "Главная",
+            text: _l.index.menu_text,
             target: ""
         });
     }

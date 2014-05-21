@@ -84,42 +84,46 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     getTopBar: function () {
 
-        var me = this;
+        var me = this,
+            barConfig ={
+                padding: '0 0 10 0',
+                border: 0,
+                ui: 'light',
+                items: [
+                    {
+                        xtype: 'button',
+                        iconCls: 'edit-button',
+                        disabled: true,
+                        role: this.texts.createBtnRole,
+                        text: this.texts.createBtnText,
+                        handler: function () {
+                            me.fireEditAction();
+                        }
+                    },
+                    {
+                        xtype: 'container',
+                        role: 'edit-btn-tip',
+                        margin: '0 0 0 20',
+                        html: _l.codes.list.select_req
+                    },
+                    '->',
+                    {
+//                        xtype: 'button',
+//                        iconCls: 'reload-button',
+//                        role: this.texts.reloadBtnRole,
+//                        text: this.texts.reloadBtnText,
+//                        margin: '0 -2 0 0',
+//                        handler: function () {
+//                            me.fireReloadAction();
+//                        }
+                        xtype: 'listfilter',
+                        margin: '0 -2 0 0',
+                        width: 200
+                    }
+                ]
+            };
 
-        return {
-            padding: '0 0 10 0',
-            border: 0,
-            ui: 'light',
-            items: [
-                {
-                    xtype: 'button',
-                    iconCls: 'edit-button',
-                    disabled: true,
-                    role: this.texts.createBtnRole,
-                    text: this.texts.createBtnText,
-                    handler: function () {
-                        me.fireEditAction();
-                    }
-                },
-                {
-                    xtype: 'container',
-                    role: 'edit-btn-tip',
-                    margin: '0 0 0 20',
-                    html: _l.codes.list.select_req
-                },
-                '->',
-                {
-                    xtype: 'button',
-                    iconCls: 'reload-button',
-                    role: this.texts.reloadBtnRole,
-                    text: this.texts.reloadBtnText,
-                    margin: '0 -2 0 0',
-                    handler: function () {
-                        me.fireReloadAction();
-                    }
-                }
-            ]
-        };
+        return !this.noTBar && barConfig;
     },
 
     getEditBnt: function () {

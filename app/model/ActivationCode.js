@@ -52,5 +52,7 @@ Ext.define('NavixyPanel.model.ActivationCode', {
             type: 'boolean',
             defaultValue: false
         }
-    ]
+    ],
+
+    fieldForSearch: ['code', 'tariff_id', 'activation_date', 'device_id']
 });
