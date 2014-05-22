@@ -15,6 +15,8 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
     parentFilters: null,
     parentListeners: null,
 
+    filterCount: null,
+
     listeners: {
         refresh: {
             fn: function (store) {
@@ -166,6 +168,7 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
                     this.removeFilter(filter);
                 }
             }, this);
+            this.load();
         });
     },
 
@@ -175,8 +178,22 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
         this.suspendEvents();
         this.setPageSize(10000000);
         fn.call(this);
+        this.updateFilteredCount();
         this.setPageSize(pageSize);
         this.resumeEvents();
         this.load();
     },
+
+    updateFilteredCount: function () {
+        var curCount = this.count(),
+            totalCount = this.tCount();
+
+        this.filterCount = curCount === totalCount
+            ? null
+            : curCount;
+    },
+
+    fCount: function () {
+        return this.filterCount;
+    }
 });

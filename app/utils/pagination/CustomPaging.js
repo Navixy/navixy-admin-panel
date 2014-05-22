@@ -82,5 +82,20 @@ Ext.define('NavixyPanel.utils.pagination.CustomPaging', {
                 handler: me.moveLast,
                 scope: me
             }];
+    },
+
+    getPageData : function(){
+        var store = this.store,
+            filteredCount = store.fCount();
+            totalCount = filteredCount ? Math.min(store.getTotalCount(), filteredCount) : store.getTotalCount();
+
+        return {
+            total : totalCount,
+            currentPage : store.currentPage,
+            pageCount: Math.ceil(totalCount / store.pageSize),
+            fromRecord: ((store.currentPage - 1) * store.pageSize) + 1,
+            toRecord: Math.min(store.currentPage * store.pageSize, totalCount)
+
+        };
     }
 });
