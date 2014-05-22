@@ -186,7 +186,8 @@ Ext.define('Locale.locale-en', {
 
     devices: {
         tracker: 'Tracker',
-        camera: 'Camera'
+        camera: 'Camera',
+        socket: 'Socket'
     },
 
     dealer_info: {
@@ -488,7 +489,15 @@ Ext.define('Locale.locale-en', {
             after_edit_failure: 'Changed: {0}, {0} change failed',
             select_req: 'Select codes from list',
             same_type_req: 'You must specify one device type codes',
-            edited_tip: 'changed'
+            edited_tip: 'changed',
+            filters: {
+                activated: 'Activated',
+                no_activated: 'Not activated',
+                trackers: 'Trackers',
+                cameras: 'Cameras',
+                sockets: 'Sockets',
+                toggle_all: 'Show all'
+            }
         }
     }
 })

@@ -143,5 +143,40 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
 
     tCount: function () {
         return this.getProxy().data.length;
-    }
+    },
+
+    addOptFilter: function (field, value) {
+        var filter = Ext.create('Ext.util.Filter',
+                {
+                    property: field,
+                    value: value,
+                    root: 'data'
+                }
+            );
+
+        this.applyToProxy(function () {
+            this.filter(filter);
+        });
+    },
+
+    removeOptFilter: function (field, value) {
+        this.applyToProxy(function () {
+            this.filters.each(function(filter) {
+                if (filter.property === field && filter.value.toString() === value.toString()) {
+                    this.removeFilter(filter);
+                }
+            }, this);
+        });
+    },
+
+    applyToProxy: function (fn) {
+        var pageSize = this.pageSize;
+
+        this.suspendEvents();
+        this.setPageSize(10000000);
+        fn.call(this);
+        this.setPageSize(pageSize);
+        this.resumeEvents();
+        this.load();
+    },
 });

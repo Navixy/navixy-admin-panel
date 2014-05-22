@@ -78,8 +78,14 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     toggleSectionButton: function (section, state, silent) {
-        this.down('button[sectionRole!=' + section + ']').toggle(false, silent);
-        this.down('button[sectionRole=' + section + ']').toggle(state, silent);
+        var unToggle = this.down('button[sectionRole!=' + section + ']'),
+            toggle = this.down('button[sectionRole=' + section + ']');
+        if (unToggle) {
+            unToggle.toggle(false, silent);
+        }
+        if (toggle) {
+            toggle.toggle(state, silent);
+        }
     },
 
     forceToggleSectionButton: function (section) {

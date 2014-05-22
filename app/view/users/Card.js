@@ -54,7 +54,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             {
                 xtype: 'trackerslist',
                 title: _l.users.card.tab_panel.trackers.title,
-                createBtn: false,
+                noTBar: true,
                 filter: {
                     user_id: this.getRecordId()
                 },
@@ -62,6 +62,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             },
             {
                 xtype: 'usertransactions',
+                noTBar: true,
                 title: _l.users.card.tab_panel.transactions.title,
                 record: this.record
             }

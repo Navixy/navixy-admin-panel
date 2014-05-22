@@ -187,7 +187,8 @@ Ext.define('Locale.locale-ru', {
 
     devices: {
         tracker: 'Трекер',
-        camera: 'Камера'
+        camera: 'Камера',
+        socket: 'Розетка'
     },
 
     dealer_info: {
@@ -487,7 +488,15 @@ Ext.define('Locale.locale-ru', {
             after_edit_failure: 'Изменено: {0}, {0} изменить не удалось',
             select_req: 'Выберите коды из списка',
             same_type_req: 'Необходимо указать коды одного типа устройств',
-            edited_tip: 'изменен'
+            edited_tip: 'изменен',
+            filters: {
+                activated: 'Активирован',
+                no_activated: 'Не активирован',
+                trackers: 'Трекеры',
+                cameras: 'Камеры',
+                sockets: 'Розетки',
+                toggle_all: 'Показать все'
+            }
         }
     }
 })

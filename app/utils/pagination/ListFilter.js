@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.utils.pagination.ListFilter', {
     alias: 'widget.listfilter',
     ui: 'toolbar-trigger',
     cls: 'small',
+    changeDelay: 300,
 
     viewDefaultPageSize: null,
     viewDefaultPage: null,

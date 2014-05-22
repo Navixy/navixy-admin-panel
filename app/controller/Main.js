@@ -145,6 +145,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
                 return result;
             },
+
             getFilteredData: function (filters) {
                 var result = [];
 

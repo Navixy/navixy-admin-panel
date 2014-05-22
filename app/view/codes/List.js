@@ -10,11 +10,9 @@ Ext.define('NavixyPanel.view.codes.List', {
     alias: 'widget.codeslist',
     store: 'ActivationCodes',
 
-    viewPageSize: 1000,
+    viewPageSize: 50,
 
     disableSelection: false,
-
-    getBottomBar: Ext.emptyFn,
 
     applyListeners: function () {
         this.on('beforeselect', this.handleCellSelect, this);
@@ -24,7 +22,7 @@ Ext.define('NavixyPanel.view.codes.List', {
     },
 
     handleCellSelect: function (grid, record, index, eOpts) {
-        return !record.get('activated')
+        return !record.get('activated');
     },
 
     afterCellSelect: function (grid, records, eOpts) {
@@ -107,6 +105,44 @@ Ext.define('NavixyPanel.view.codes.List', {
                         html: _l.codes.list.select_req
                     },
                     '->',
+                    {
+
+                        role: 'options-btn',
+                        iconCls: 'options-button',
+                        margin: '0 10 0 0',
+                        xtype: 'button',
+                        menu: [
+                            {
+                                text: _l.codes.list.filters.activated,
+                                checked: true,
+                                checkHandler: Ext.bind(this.toggleActiveFilter, this)
+                            },
+                            {
+                                text: _l.codes.list.filters.no_activated,
+                                checked: true,
+                                checkHandler: Ext.bind(this.toggleNoActiveFilter, this)
+                            },
+                            {
+                                text: _l.codes.list.filters.trackers,
+                                checked: true,
+                                checkHandler: Ext.bind(this.toggleTrackersFilter, this)
+                            },
+                            {
+                                text: _l.codes.list.filters.cameras,
+                                checked: true,
+                                checkHandler: Ext.bind(this.toggleCamerasFilter, this)
+                            },
+                            {
+                                text: _l.codes.list.filters.sockets,
+                                checked: true,
+                                checkHandler: Ext.bind(this.toggleSocketsFilter, this)
+                            },
+                            {
+                                text: _l.codes.list.filters.toggle_all,
+                                handler: Ext.bind(this.toggleAllFilters, this)
+                            }
+                        ]
+                    },
                     {
 //                        xtype: 'button',
 //                        iconCls: 'reload-button',
@@ -286,9 +322,47 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     tariffRenderer: function (value) {
         var tariffStore = Ext.getStore('Tariffs'),
-            tariff = tariffStore && tariffStore.findRecord("id", value),
+            tariff = tariffStore && tariffStore.getById(value),
             tariffName = tariff && tariff.get('name');
 
         return tariffName || value;
+    },
+
+    toggleActiveFilter: function (cmp, state) {
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', true);
+    },
+
+    toggleNoActiveFilter: function (cmp, state) {
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', false);
+    },
+
+    toggleTrackersFilter: function (cmp, state) {
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('device_type', /[^tracker]/);
+    },
+
+    toggleCamerasFilter: function (cmp, state) {
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('device_type', /[^camera]/);
+    },
+
+    toggleSocketsFilter: function (cmp, state) {
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('device_type', /[^socket]/);
+    },
+
+    toggleAllFilters: function (cmp, state) {
+        var menu = cmp.up();
+
+        menu.items.each(function (item) {
+            if (item.getXType() === 'menucheckitem') {
+                item.setChecked(true);
+            }
+        });
+    },
+
+    addOptFilter: function (field, value) {
+        this.store.addOptFilter(field, value);
+    },
+
+    removeOptFilter: function (field, value) {
+        this.store.removeOptFilter(field, value);
     }
 });

@@ -137,7 +137,7 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
             {
                 xtype: 'trackerslist',
                 title: _l.tariffs.card.tab_panel.trackers.title,
-                createBtn: false,
+                noTBar: true,
                 filter: {
                     tariff_id: this.getRecordId()
                 },

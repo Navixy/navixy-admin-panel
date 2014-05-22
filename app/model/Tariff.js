@@ -71,6 +71,23 @@ Ext.define('NavixyPanel.model.Tariff', {
             'phone_call',
             'service_sms',
             'traffic'
+        ],
+        'socket' : [
+            'id',
+            'group_id',
+            'price',
+            'device_limit',
+            'name',
+            'device_type',
+            'store_period',
+            'active',
+            'has_reports',
+            'proportional_charge',
+            'incoming_sms',
+            'outgoing_sms',
+            'phone_call',
+            'service_sms',
+            'traffic'
         ]
     },
 

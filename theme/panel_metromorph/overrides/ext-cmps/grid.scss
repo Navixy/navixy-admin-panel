@@ -173,6 +173,13 @@ $grid-cell-empty-font-size: 14px;
                     }
                 }
 
+                &.socket {
+                    color: #528b4f;
+                    span {
+                        @extend .icon-lightning;
+                    }
+                }
+
                 span {
                     padding-left: 0;
                     padding-right: 5px;
