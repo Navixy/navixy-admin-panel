@@ -14,13 +14,13 @@ Ext.define('NavixyPanel.view.desktop.AccessDenied', {
             {
                 xtype: 'container',
                 padding: '50 50 0 50',
-                style: 'font-size: 40px; color: #f44; text-align: center',
+                style: 'font-size: 20px; text-align: center',
                 html: _l.access_denied
             },
             {
                 xtype: 'container',
                 padding: '5 50 0 50',
-                style: 'font-size: 20px; color: #eee; text-align: center',
+                style: 'font-size: 12px; text-align: center',
                 html: _l.access_denied_tip
             }
         ];

@@ -329,11 +329,11 @@ Ext.define('NavixyPanel.view.codes.List', {
     },
 
     toggleActiveFilter: function (cmp, state) {
-        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', true);
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', false);
     },
 
     toggleNoActiveFilter: function (cmp, state) {
-        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', false);
+        this[!state ? 'addOptFilter' : 'removeOptFilter']('activated', true);
     },
 
     toggleTrackersFilter: function (cmp, state) {

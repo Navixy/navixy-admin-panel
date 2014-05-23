@@ -217,5 +217,43 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/activation_code',
             root: 'count'
         });
+    },
+
+    getSettingsService: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'dealer/settings/service',
+            root: 'value',
+            scope: scope
+        });
+    },
+
+    getSettingsNotification : function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'dealer/settings/notification',
+            root: 'value',
+            scope: scope
+        });
+    },
+
+    updateSettingsSerivce: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'dealer/settings/service',
+            root: 'success'
+        });
+    },
+
+    updateSettingsNotification: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'dealer/settings/notification',
+            root: 'success'
+        });
     }
 });

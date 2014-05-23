@@ -221,7 +221,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = status.description || false;
+            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getUserEdit().showSubmitErrors(errCode, errors, errDescription);
     }

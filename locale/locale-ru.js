@@ -19,8 +19,8 @@ Ext.define('Locale.locale-ru', {
     loading: 'Загрузка...',
     conneting_loader: 'Соединение с сервером',
 
-    access_denied: 'ОЛЯРМ! ГОЛАКТЕКО ОПАСНОСТИ!!!!!!1',
-    access_denied_tip: 'Вы должны быть уничтожены, выслана бригада роботов&#8209;человекоистребителей',
+    access_denied: 'Доступ запрещен',
+    access_denied_tip: 'у вас нет парв для доступа к запрашиваемой странице',
 
     auth: {
         login: 'Логин или адрес электронной почты',
@@ -62,7 +62,8 @@ Ext.define('Locale.locale-ru', {
             default_msg: 'Некорректные праметры запроса. Проверьте ввод.',
             title: 'Некорректные параметры:',
             errors: {
-                login: 'Указан некорректный адрес электронной почты'
+                login: 'Указан некорректный адрес электронной почты',
+                domain: 'Некорректное доменное имя'
             }
         },
         11: 'Доступ запрещен',
@@ -189,6 +190,29 @@ Ext.define('Locale.locale-ru', {
         tracker: 'Трекер',
         camera: 'Камера',
         socket: 'Розетка'
+    },
+
+    currency: {
+        rub: 'Российский рубль',
+        usd: 'Доллар США',
+        kzt: 'Казахстанский тенге',
+        byr: 'Белорусский рубль'
+    },
+
+    maps: {
+        roadmap: 'Google дорожная карта',
+        satellite: 'Google спутник',
+        hybrid: 'Google гибрид',
+        yandex: 'Карты Яндекс',
+        yandexpublic: 'Народная карта Яндекс',
+        cdcom: 'Карты ПроГород',
+        osm: 'OpenStreet Maps',
+        osmmapnik: 'OpenStreet Maps 2',
+        wikimapia: 'Wikimapia',
+        navitel: 'Карты Navitel',
+        doublegis: 'Карты DoubleGis',
+        ovi: 'Карты OVI',
+        mailru: 'Карты Mail.ru'
     },
 
     dealer_info: {
@@ -497,6 +521,41 @@ Ext.define('Locale.locale-ru', {
                 sockets: 'Розетки',
                 toggle_all: 'Показать все'
             }
+        }
+    },
+
+    settings: {
+        menu_text: 'Настройки',
+        fields: {
+            service_title: "Название сервиса",
+            locale: "Язык интерфейса мониторинга",
+            demo_login: "Demo пользователь",
+            demo_password: "Demo пароль",
+            maps_title: 'Доступные карты',
+            maps_default: {
+                type: 'Карта по умолчанию',
+                location_lat: 'Широта по умолчанию',
+                location_lng: 'Долгота по умолчанию',
+                zoom: 'Масшатб по умолчанию'
+            },
+            google_client_id: "Client ID для карт google",
+            currency: "Валюта",
+            payment_link: "Адрес оплаты",
+            domain: "Доменное имя",
+            email_from: "Email отправителя",
+            email_footer: "Email подпись",
+            sms_originator: "Оригинатор SMS уведомлений",
+            caller_id: "Оригинатор голосовых увед."
+        },
+        edit_form: {
+            title: 'Настройки Paas',
+            save_btn: 'Сохранить',
+            save_msg: 'Настройки сохранены успешно',
+            main_fields: 'Основные настройки',
+            map_fields: 'Настройки карты',
+            demo_fields: 'Демонстрационный вход',
+            permission_fields: 'Настройки уведомлений',
+            domain_sup: '* - для доменов вида *{0} работает ограничение доступных типов карт'
         }
     }
 })

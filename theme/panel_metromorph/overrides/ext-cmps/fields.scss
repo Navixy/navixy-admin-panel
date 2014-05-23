@@ -9,7 +9,7 @@ $light-field-focus-border-color: $main-color;
     }
 }
 
-.x-field-light, .x-field-light.x-item-disabled {
+.x-field-light, .x-field-light.x-item-disabled, .x-container-light {
 
     .x-form-cb-label {
         padding-left: 10px;
@@ -77,5 +77,13 @@ $light-field-focus-border-color: $main-color;
                 display: none
             }
         }
+    }
+}
+
+.x-form-checkboxgroup.x-item-disabled {
+    opacity: 1;
+
+    .x-form-item-body {
+        opacity: 0.7;
     }
 }

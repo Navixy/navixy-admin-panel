@@ -181,6 +181,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
 
         try {
 
+
             Ext.Ajax.request({
                 url: apiUrl,
 

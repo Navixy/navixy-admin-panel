@@ -103,6 +103,7 @@ Ext.application({
         'NavixyPanel.controller.Users',
         'NavixyPanel.controller.Trackers',
         'NavixyPanel.controller.Tariffs',
-        'NavixyPanel.controller.Codes'
+        'NavixyPanel.controller.Codes',
+        'NavixyPanel.controller.Settings'
     ]
 });

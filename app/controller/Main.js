@@ -192,13 +192,31 @@ Ext.define('NavixyPanel.controller.Main', {
                 } else {
 
                     var store = Ext.getStore('Permissions'),
-                        section = store && store.getById(store.getAlias(sectionId) || sectionId);
+                        name = store.getAlias(sectionId) || sectionId,
+                        names = name.split(','),
+                        section = null;
 
-                    result = Ext.isString(right)
-                        ? section
-                            ? !!section.get(right)
-                            : false
-                        : !!section;
+                    if (names.length > 1) {
+                        Ext.iterate(names, function (name) {
+                            section = store && store.getById(name);
+                            result = Ext.isString(right)
+                                ? section
+                                    ? !!section.get(right)
+                                    : false
+                                : !!section;
+                            if (result) {
+                                return false;
+                            }
+                        }, this);
+
+                    } else {
+                        section = store && store.getById(name);
+                        result = Ext.isString(right)
+                            ? section
+                                ? !!section.get(right)
+                                : false
+                            : !!section;
+                    }
                 }
 
                 return result;
@@ -513,7 +531,7 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults', 'getCodesList'];
+            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults', 'getCodesList', 'getSettingsService', 'getSettingsNotification'];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -537,7 +555,9 @@ Ext.define('NavixyPanel.controller.Main', {
             'getUsersList': 'Users',
             'getTrackersList': 'Trackers',
             'getTimeZones': 'TimeZones',
-            'getCodesList': 'ActivationCodes'
+            'getCodesList': 'ActivationCodes',
+            'getSettingsService': 'Settings',
+            'getSettingsNotification': 'Settings'
         }, function (action, store) {
 
             try {
@@ -581,6 +601,33 @@ Ext.define('NavixyPanel.controller.Main', {
             if (store) {
                 store.storeLoaded = true;
                 store.loadData(list);
+            }
+        }
+
+        var settingsService = results.getSettingsService,
+            settingsNotification = results.getSettingsNotification;
+
+        if (settingsService) {
+            var settingsStore = Ext.getStore('Settings'),
+                settingsRecord = settingsStore.first();
+
+            if (settingsRecord) {
+                settingsRecord.set(settingsService);
+            } else {
+                settingsStore.storeLoaded = true;
+                settingsStore.loadData(settingsService);
+            }
+        }
+
+        if (settingsNotification) {
+            var settingsStore = Ext.getStore('Settings'),
+                settingsRecord = settingsStore.first();
+
+            if (settingsRecord) {
+                settingsRecord.set(settingsNotification);
+            } else {
+                settingsStore.storeLoaded = true;
+                settingsStore.loadData(settingsNotification);
             }
         }
 

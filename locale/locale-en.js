@@ -17,8 +17,8 @@ Ext.define('Locale.locale-en', {
     loading: 'Loading...',
     conneting_loader: 'Connecting to server',
 
-    access_denied: 'ERROR! ERROR! ACCESS DENIED',
-    access_denied_tip: 'You must be destroyed, sent a team of robotic man fighter',
+    access_denied: 'Access denied',
+    access_denied_tip: 'you do not have permission to access requested page',
 
     auth: {
         login: 'Login or Email address',
@@ -60,7 +60,8 @@ Ext.define('Locale.locale-en', {
             default_msg: 'Incorrect request parameters. Check the data.',
             title: 'Incorrect parameters:',
             errors: {
-                login: 'Must be a valid email address'
+                login: 'Must be a valid email address',
+                domain: 'Incorrect domain name'
             }
         },
 
@@ -188,6 +189,29 @@ Ext.define('Locale.locale-en', {
         tracker: 'Tracker',
         camera: 'Camera',
         socket: 'Socket'
+    },
+
+    currency: {
+        rub: 'Russian Rouble',
+        usd: 'U.S. Dollar',
+        kzt: 'Kazakhstan Tenge',
+        byr: 'Belarusian Ruble',
+    },
+
+    maps: {
+        roadmap: 'Google дорожная карта',
+        satellite: 'Google спутник',
+        hybrid: 'Google гибрид',
+        yandex: 'Yandes Maps',
+        yandexpublic: 'Uandex Narod Map',
+        cdcom: 'ProGorod Maps',
+        osm: 'OpenStreet Maps',
+        osmmapnik: 'OpenStreet Maps 2',
+        wikimapia: 'Wikimapia',
+        navitel: 'Navitel Maps',
+        doublegis: 'DoubleGis Maps',
+        ovi: 'OVI Maps',
+        mailru: 'Mail.ru Maps'
     },
 
     dealer_info: {
@@ -498,6 +522,41 @@ Ext.define('Locale.locale-en', {
                 sockets: 'Sockets',
                 toggle_all: 'Show all'
             }
+        }
+    },
+
+    settings: {
+        menu_text: 'Settings',
+        fields: {
+            service_title: "Service title",
+            locale: "Monitoring Language",
+            demo_login: "Demo user",
+            demo_password: "Demo password",
+            maps_title: 'Available maps',
+            maps_default: {
+                type: 'Default map',
+                location_lat: 'Latitude default',
+                location_lng: 'Longitude default',
+                zoom: 'Default zoom'
+            },
+            google_client_id: "Client ID for google maps",
+            currency: "Currency",
+            payment_link: "Payment link",
+            domain: "Domain",
+            email_from: "Sender Email",
+            email_footer: "Email footer",
+            sms_originator: "SMS originator",
+            caller_id: "Voice notice originator"
+        },
+        edit_form: {
+            title: 'Paas Settings',
+            save_btn: 'Save',
+            save_msg: 'Settings saved successfully',
+            main_fields: 'Basic Settings',
+            map_fields: 'Maps settings',
+            demo_fields: 'Demo login',
+            permission_fields: 'Notification dettings',
+            domain_sup: '* - for domains like *{0} available map types limited'
         }
     }
 })

@@ -16,5 +16,6 @@ Config = {
         monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
     },
 
-    terminalHost: 'ws://api.test.gdemoi.ru:8383/'
+    terminalHost: 'ws://api.test.gdemoi.ru:8383/',
+    paas_domain: '.navixy.ru'
 };

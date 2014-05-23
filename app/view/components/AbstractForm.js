@@ -129,7 +129,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         var values = this.getValues();
 
         this.iterateFields(function(field) {
-            if (field.getXType() === 'checkboxfield') {
+            if (field.getXType() === 'checkboxgroup') {
                 values[field.name] = field.getValue();
             }
         });
@@ -137,6 +137,9 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         return values;
     },
 
+    doFormReset: function () {
+        this.getForm().reset();
+    },
 
     backFromForm: function () {
         if (this.backTarget) {
@@ -231,22 +234,22 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     scale: 'medium',
                     ui: 'gray',
                     margin: '10 5',
-                    handler: function() {
-                        this.up('form').getForm().reset();
-                    }
+                    handler: Ext.bind(this.doFormReset, this)
                 }
             );
         }
 
-        result.push(
-            {
-                text: backBtn,
-                scale: 'medium',
-                ui: 'gray',
-                margin: '10 5',
-                handler: Ext.bind(this.backFromForm, this)
-            }
-        );
+        if (backBtn) {
+            result.push(
+                {
+                    text: backBtn,
+                    scale: 'medium',
+                    ui: 'gray',
+                    margin: '10 5',
+                    handler: Ext.bind(this.backFromForm, this)
+                }
+            );
+        }
 
         return result;
     },
@@ -289,14 +292,14 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     field;
 
                 errParameter = errParameter.split(".");
-                errParameter = errParameter[1] || false;
+                errParameter = errParameter[1] || errParameter[0] || false;
 
                 field = errParameter
                     ? this.down('[name="' + errParameter + '"]')
                     : false;
 
                 if (field) {
-                    field.markInvalid(errLocale.errors[errParameter] || errText)
+                    field.markInvalid(errLocale.errors[errParameter] || errText);
                 }
             }, this);
 

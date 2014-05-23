@@ -144,5 +144,5 @@ Ext.define('NavixyPanel.model.Tracker', {
         }, this);
 
         return Ext.Object.getSize(result) ? result: null;
-    },
+    }
 });
