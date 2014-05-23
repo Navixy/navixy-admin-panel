@@ -1,4 +1,4 @@
-/**
+ /**
  * @class NavixyPanel.utils.pagination.ListFilter
  * @extends NavixyPanel.view.widgets.Searcher
  * Description
@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.utils.pagination.ListFilter', {
     ui: 'toolbar-trigger',
     cls: 'small',
     changeDelay: 300,
+    enterMode: true,
 
     viewDefaultPageSize: null,
     viewDefaultPage: null,
