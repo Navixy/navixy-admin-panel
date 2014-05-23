@@ -146,8 +146,6 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }, this);
 
-        data.email_footer = data.email_footer.replace("\n", "\/n");
-
         return data;
     }
 });
