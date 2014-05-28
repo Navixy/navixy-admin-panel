@@ -129,7 +129,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         var values = this.getValues();
 
         this.iterateFields(function(field) {
-            if (field.getXType() === 'checkboxgroup') {
+            if (field.is('checkboxfield, checkbox')) {
                 values[field.name] = field.getValue();
             }
         });
@@ -311,6 +311,13 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
             if (field && errText) {
                 field.markInvalid(errLocale || errDescription);
             }
+        } else {
+            Ext.MessageBox.show({
+                title: _l.error + ' #' + errCode,
+                msg: errDescription,
+                closable: false,
+                buttons: Ext.MessageBox.OK
+            });
         }
     }
 });

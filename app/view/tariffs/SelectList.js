@@ -10,6 +10,12 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
     alias: 'widget.tariffselectlist',
     noTBar: true,
     viewPageSize: 10000,
+    viewConfig: {
+        autoScroll: false,
+        stripeRows: false,
+        deferEmptyText: false,
+        enableTextSelection: false
+    },
 
     disableSelection: false,
 
@@ -27,7 +33,8 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
 
         this.on({
             select: this.onRecordSelect,
-            deselect: this.onRecordDeSelect
+            deselect: this.onRecordDeSelect,
+            celldblclick: this.submitValue
         }, this);
     },
 

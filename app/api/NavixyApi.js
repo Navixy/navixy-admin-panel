@@ -133,6 +133,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    updateTrackerTariff: function (config) {
+        this.requestWithOptions(config, {
+            action: 'change',
+            handler: 'tracker/tariff',
+            root: 'success'
+        });
+    },
+
     createTrackerClone: function (config) {
         this.requestWithOptions(config, {
             action: 'clone',

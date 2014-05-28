@@ -116,6 +116,10 @@ Ext.define('Locale.locale-en', {
         service_not_respond: 'The service is temporarily unavailable',
         tracker: {
             203: 'Tracker has attached rules',
+            237: 'Invalid tariff',
+            238: 'Changing tariff is not allowed',
+            239: 'New tariff doesn\'t exist',
+            250: 'Not allowed for deleted devices',
             246: 'User is incorrect',
             247: 'Clone already exists',
             249: 'The operation is available only for the clones'
@@ -379,6 +383,14 @@ Ext.define('Locale.locale-en', {
             failure_msg: 'Creating clone failed',
             remove_confirm: 'Remove clone'
         },
+        tariff_form: {
+            title: 'Change tariff plan for tracker',
+            save_btn: 'Save changes',
+            repay: 'Repay remainder of current tariff payment',
+            charge: 'Charge payment for new tariff',
+            charge_sup: 'only for the tariff plans with monthly payment',
+            tariff_invalid: 'must be different from current'
+        },
         list: {
             create_btn_text: 'Create new tracker',
             empty_text: 'No tracers found'
@@ -387,6 +399,7 @@ Ext.define('Locale.locale-en', {
             links: {
                 change_tracker_user: 'Change owner',
                 tracker_edit: 'Edit tracker',
+                tracker_tariff_edit: 'Change tariff',
                 tracker_clone_create: 'Create clone of this tracker',
                 tracker_clone_remove: 'Delete this clone',
                 tracker_tariff: 'Tracker tariff',

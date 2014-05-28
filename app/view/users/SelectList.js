@@ -11,6 +11,12 @@ Ext.define('NavixyPanel.view.users.SelectList', {
     createBtn: false,
     noTBar: true,
     viewPageSize: 10000,
+    viewConfig: {
+        autoScroll: false,
+        stripeRows: false,
+        deferEmptyText: false,
+        enableTextSelection: false
+    },
 
     disableSelection: false,
 

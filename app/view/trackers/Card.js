@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                         }
                     }
                 }
-            )
+            );
         }
 
         if (Ext.checkPermission('trackers', 'delete') && this.getRecordData().clone) {
@@ -63,6 +63,27 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 }
             );
         }
+
+        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && !this.getRecordData().clone && !this.getRecordData().deleted) {
+            result.push(
+                {
+                    html: '<a>' + _l.trackers.card.links.tracker_tariff_edit + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerTariffEdit,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
+        result.push(
+            {
+                xtype: 'container',
+                height: 10
+            }
+        );
 
         if (Ext.checkPermission('users', 'read') && this.record.getParentUserData()) {
             result.push(
@@ -161,6 +182,10 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     fireTrackerEdit: function () {
         this.fireEvent('trackeredit', this.record);
+    },
+
+    fireTrackerTariffEdit: function () {
+        this.fireEvent('trackertariffedit', this.record);
     },
 
     fireTrackerClone: function () {

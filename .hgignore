@@ -3,3 +3,5 @@ syntax: glob
 app/api/_proxy/*
 theme/panel_metromorph/.sass-cache/*
 ext/
+build
+node_modules

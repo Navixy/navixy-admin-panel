@@ -365,10 +365,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     applyRights: function () {
         var rights = this.rights,
-            ignoredXTypes = 'container button toolbar header component';
+            ignoredXTypes = 'container,button,toolbar,header,component';
 
         Ext.iterate(this.getServiceFields(), function (field) {
-            if (ignoredXTypes.indexOf(field.getXType()) < 0) {
+            if (!field.is(ignoredXTypes)) {
                 field[!rights.serviceRead ? 'hide' : 'show']();
                 field.setDisabled(!rights.serviceEdit);
             }
@@ -379,16 +379,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }, this);
 
         Ext.iterate(this.getPermissionFields(), function (field) {
-            if (ignoredXTypes.indexOf(field.getXType()) < 0) {
+            if (!field.is(ignoredXTypes)) {
                 field.setDisabled(!rights.notificationEdit);
             }
             field[!rights.notificationRead ? 'hide' : 'show']();
         }, this);
     }
-
-//
-//    getSWItems: function () {
-//        var me = this;
-//        return [];
-//    }
 });

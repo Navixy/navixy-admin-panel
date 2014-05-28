@@ -13,13 +13,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
         'trackers.Card',
         'trackers.Clone',
         'trackers.Console',
-        'trackers.Edit'
+        'trackers.Edit',
+        'trackers.Tariff'
     ],
 
     refs: [
         {
             ref: 'trackersList',
             selector: 'trackerslist'
+        },
+        {
+            ref: 'trackerTariff',
+            selector: 'trackertariff'
         },
         {
             ref: 'trackerEdit',
@@ -42,6 +47,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'trackeredit' : {
                 formsubmit: this.handleTrackerEditSubmit
             },
+            'trackertariff' : {
+                formsubmit: this.handleTrackerTariffSubmit
+            },
             'trackerclone' : {
                 formsubmit: this.handleTrackerCloneSubmit
             },
@@ -51,6 +59,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 trackerclonedelete: this.handleTrackerCloneDeleteAction,
                 trackertariffshow: this.handleTrackerTariffRef,
                 trackerownershow: this.handleTrackerOwnerRef,
+                trackertariffedit: this.onTrackerTariffEditAction,
                 trackerconsole: this.onTrackerConsole
             }
         });
@@ -74,6 +83,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             'tracker > console' : {
                 fn: this.handleTrackerConsole,
+                access: 'update'
+            },
+            'tracker > tariff' : {
+                fn: this.handleTrackerTariffEdit,
                 access: 'update'
             }
         });
@@ -115,6 +128,33 @@ Ext.define('NavixyPanel.controller.Trackers', {
         }
     },
 
+    handleTrackerTariffEdit: function (value) {
+//        var trackerId = parseInt(value),
+//            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId),
+//            trackerData = trackerRecord.getData();
+//        if (trackerRecord && !trackerData.clone && !trackerData.deleted) {
+//
+//            this.fireContent({
+//                xtype: 'trackertariff',
+//                record: trackerRecord
+//            });
+//        } else {
+//            this.fireContent({
+//                xtype: 'accessdenied'
+//            });
+//        }
+        var trackerId = parseInt(value),
+            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
+
+        if (trackerRecord) {
+
+            this.fireContent({
+                xtype: 'trackertariff',
+                record: trackerRecord
+            });
+        }
+    },
+
     handleTrackerClone: function (value) {
         var trackerId = parseInt(value),
             trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
@@ -149,6 +189,11 @@ Ext.define('NavixyPanel.controller.Trackers', {
     handleTrackerEditAction: function (record) {
         var trackerId = record.getId();
         Ext.Nav.shift('tracker/' + trackerId + '/edit');
+    },
+
+    onTrackerTariffEditAction: function (record) {
+        var trackerId = record.getId();
+        Ext.Nav.shift('tracker/' + trackerId + '/tariff');
     },
 
     handleTrackerCloneAction: function (record) {
@@ -341,6 +386,56 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         Ext.MessageBox.alert(_l.error, errDescription);
     },
+
+    handleTrackerTariffSubmit: function (cmp, formValues, record) {
+
+        record.set({tariff_id: formValues.tariff_id});
+
+        var trackerChanges = record.getTrackerChanges(),
+            trackerData = record.getData(),
+            requestsCnt = 0;
+
+        Ext.API.updateTrackerTariff({
+            params: {
+                tracker_id: trackerData.id,
+                tariff_id: trackerData.tariff_id,
+                charge: formValues.charge,
+                repay: formValues.repay
+            },
+            callback: function (response) {
+                this.afterTrackerTariffEdit(response, record);
+            },
+            failure: function (response) {
+                this.afterTrackerTariffEditFailure(response, record);
+            },
+            scope: this
+        });
+    },
+
+
+    afterTrackerTariffEdit: function (success, record) {
+        if (success) {
+            try {
+                record.commit();
+            } catch (e) {}
+
+            this.getTrackerTariff().afterSave();
+        } else {
+            record.reject(false);
+        }
+    },
+
+    afterTrackerTariffEditFailure: function (response, record) {
+        record.reject(false);
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+
+        console.log(errCode, errors, errDescription);
+        this.getTrackerTariff().showSubmitErrors(errCode, errors, errDescription);
+    },
+
 
     handleTrackerTariffRef: function (record) {
         var tariffId = record.get('tariff_id');
