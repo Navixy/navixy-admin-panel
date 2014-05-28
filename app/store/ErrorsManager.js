@@ -7,6 +7,7 @@
 Ext.define('NavixyPanel.store.ErrorsManager', {
     extend: 'Ext.data.Store',
     loginToken: 'login',
+    storeId: 'ErrorsManager',
     fields: [
         {
             name: 'codes'
@@ -59,21 +60,35 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
         return this.getAppRoot() + '../' + this.startPage;
     },
 
-    // TODO : Auth form here
     redirectToAuth: function (code) {
-//        Ext.Nav.shift(this.loginToken);
+        if (!Ext.util.Cookies.get('debug') && Ext.API.hasAuthKey()) {
+            Ext.Msg.show({
+                msg: _l.errors[code],
+                buttons: Ext.Msg.OK,
+                wait: true,
+                fn: this.goToStartPage,
+                scope: this,
+                waitConfig: {
+                    interval: 500,
+                    duration: 3000,
+                    increment: 6,
+                    text: _l.auth.reloading_soon,
+                    scope: this,
+                    fn: this.goToStartPage
+                }
+            });
+        }
+
+        //retrun fatal error
+        return this.errorStatuses.FATAL_ERROR;
     },
 
-    goToStartPage: function () {
+    goToStartPage: function (code) {
         if (this.authKeyName) {
             Ext.util.Cookies.clear(this.authKeyName);
         }
 
-        try {
-            window.top.location.href(this.getStartPageUrl());
-        } catch (e) {
-            window.top.location.href = this.getStartPageUrl();
-        }
+        location.reload();
     },
 
     getAppRoot: function () {

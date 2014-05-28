@@ -27,6 +27,7 @@ Ext.define('Locale.locale-en', {
         locale_title: 'Interface language',
         locale_title_short: 'language',
         auth_error: 'Authentication error',
+        reloading_soon: 'Reloading',
         logout: 'Logout'
     },
 
@@ -199,7 +200,7 @@ Ext.define('Locale.locale-en', {
         rub: 'Russian Rouble',
         usd: 'U.S. Dollar',
         kzt: 'Kazakhstan Tenge',
-        byr: 'Belarusian Ruble',
+        byr: 'Belarusian Ruble'
     },
 
     maps: {

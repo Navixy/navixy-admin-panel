@@ -468,9 +468,7 @@ Ext.define('NavixyPanel.controller.Main', {
         var form = this.getAuthForm(),
             errBox = form.down('[role=auth-error]');
 
-        errBox.show();
-        errBox.update(_l.auth.auth_error);
-        form.getForm().reset();
+        this.getAuthWindow().showError(_l.auth.auth_error);
 
         Ext.getBody().unmask();
         this.getAuthWindow().show();

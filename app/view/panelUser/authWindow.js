@@ -15,6 +15,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
     draggable: false,
     shadow: false,
     autoShow: true,
+    errMsg: null,
 
     initComponent: function () {
 
@@ -95,5 +96,21 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
         ];
 
         this.callParent(arguments);
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+
+        if (this.errMsg) {
+            this.showError(this.errMsg);
+        }
+    },
+
+    showError: function (errMsg) {
+        var errBox = this.down('[role=auth-error]');
+
+        errBox.show();
+        errBox.update(errMsg);
+        this.down('form').getForm().reset();
     }
 });

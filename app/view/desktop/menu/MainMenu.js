@@ -39,6 +39,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             allowDepress: false,
             toggleGroup: this.id,
             toggleHandler: this.changeTabButtonHandler,
+            handler: this.changeTabButtonHandler,
             scope: this,
             padding: '5 15',
             margin: '0 1'

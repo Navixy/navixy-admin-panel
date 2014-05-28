@@ -29,6 +29,7 @@ Ext.define('Locale.locale-ru', {
         locale_title: 'Язык интерфейса',
         locale_title_short: 'язык',
         auth_error: 'Ошибка авторизации',
+        reloading_soon: 'Перезагрузка',
         logout: 'Выйти'
     },
 
@@ -186,7 +187,7 @@ Ext.define('Locale.locale-ru', {
             title: 'Дополнительная информация:',
             exptitle: 'Дополнительная информация <a>(показать)</a>',
             collapser_tip: 'Скрыть доп. информацию',
-            collapser_exptip: 'Показать доп. информацию',
+            collapser_exptip: 'Показать доп. информацию'
         }
     },
 
