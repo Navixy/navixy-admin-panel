@@ -35,7 +35,8 @@ Ext.define('NavixyPanel.controller.Users', {
     ],
 
     stores: ['Users'],
-    models: ['User',  'Transaction'],
+    models: ['User', 'Transaction'],
+    waitStores: ['Users'],
 
     init: function () {
         this.callParent(arguments);
@@ -66,7 +67,8 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'user' : {
                 fn: this.handleUserCard,
-                access: 'read'
+                access: 'read',
+                waitStores: ['Trackers']
             },
             'user > transactions' : {
                 fn: this.handleUserTransactions,

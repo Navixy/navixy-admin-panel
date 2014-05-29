@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .options-button, .icon-camera, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .reload-button, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.socket span, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
+.icon-link, .link-button, .icon-share-translate, .icon-cogs, .x-tool.gear, .icon-phone, .icon-megaphone, .icon-geofence, .icon-schedule, .icon-pause, .pause-button, .icon-new-tracker, .icon-save, .x-grid-row .x-grid-cell.tool-column.save .x-grid-cell-inner, .icon-cancel, .icon-feedback, .icon-gear, .options-button, .icon-camera, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.camera span, .icon-feedback2, .icon-help, .x-tool.help-tool, .icon-battery, .icon-battery-low, .icon-graph, .icon-close-bold, .icon-copy, .copy-tool, .icon-compass, .icon-gauge, .icon-bell, .icon-history, .icon-bookmark, .icon-info, .icon-earth, .icon-share, .icon-pencil, .x-grid-row .x-grid-cell.tool-column.edit .x-grid-cell-inner, .edit-button, .icon-location-2, .icon-folder-open, .icon-coin, .icon-contract, .icon-expand, .icon-gsm_signal, .icon-globe, .icon-fuel, .icon-traffic, .icon-ruler, .icon-minimap, .icon-last-update, .reload-button, .icon-angle-right, .right-button, .icon-close, .searcher .clear, .search-field .clear, .icon-zoom-in, .icon-track, .icon-zoom-out, .icon-pushpin-up, .icon-pushpin-down, .icon-satellite, .icon-tiny-add, .icon-right, .icon-left, .icon-top, .icon-down, .icon-two-rows, .icon-two-columns, .icon-card, .icon-four-cells, .icon-sorter-asc, .x-form-trigger-wrap .list, .icon-sorter-group, .icon-sorter-mark, .icon-sorter-status, .icon-remove, .remove-button, .x-tool.delete, .icon-sorter, .icon-groups, .icon-exit, .icon-add, .icon-level, .icon-bars, .icon-eye-open, .show-empty-button, .icon-layout, .icon-plus, .add-button, .icon-location, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.tracker span, .icon-play, .play-button, .icon-star, .icon-settings, .config, .icon-angle-left, .left-button, .icon-user, .icon-eye-close, .hide-empty-button, .icon-spinner, .searcher .search, .search-field .search, .icon-battery-empty, .icon-target, .icon-eraser, .icon-coolant_tempreture, .icon-battery-12v, .icon-events-message, .icon-accelerate, .icon-lightning, .x-grid-row .x-grid-cell .x-grid-cell-inner span.device.socket span, .icon-temperature, .icon-sos, .icon-check-engine, .icon-check-engine-crossed, .icon-speed, .icon-rpm, .icon-statbars, .icon-zone-square, .icon-zone-circle, .icon-zone-polygon, .icon-zone-line, .icon-drag, .icon-filter, .icon-cogs-2, .icon-upload, .icon-google-earth, .icon-add-group, .add-group-button, .icon-event-rules, .icon-gear-crossed, .icon-layers, .icon-download {
   font-family: 'metromorph';
   speak: none;
   font-style: normal;
@@ -166,7 +166,7 @@ you can use the generic selector below, but it's slower:
 .icon-angle-right:before, .right-button:before {
   content: "\e00d"; }
 
-.icon-close:before, .searcher .clear:before {
+.icon-close:before, .searcher .clear:before, .search-field .clear:before {
   content: "\e011"; }
 
 .icon-zoom-in:before {
@@ -277,7 +277,7 @@ you can use the generic selector below, but it's slower:
 .icon-eye-close:before, .hide-empty-button:before {
   content: "\f070"; }
 
-.icon-spinner:before {
+.icon-spinner:before, .searcher .search:before, .search-field .search:before {
   content: "\e04c"; }
 
 .icon-battery-empty:before {
@@ -367,16 +367,16 @@ you can use the generic selector below, but it's slower:
 .icon-download:before {
   content: "\e064"; }
 
-.main-color-bg, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger.clear {
+.main-color-bg, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger.clear, .search-field.dark .x-form-trigger-wrap-focus .x-form-trigger.clear {
   background-color: #27a9e3; }
 
-.main-color-border-color, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger-wrap {
+.main-color-border-color, .searcher.dark .x-form-trigger-wrap-focus .x-form-trigger-wrap, .search-field.dark .x-form-trigger-wrap-focus .x-form-trigger-wrap {
   border-color: #27a9e3; }
 
 .main-color-font {
   color: #27a9e3; }
 
-.base-color-bg, .x-window-body.x-window-body-default, .x-window.x-window-default .x-toolbar-footer, .x-window.x-window-default, .searcher.dark .x-form-text, .searcher.dark .x-form-trigger-wrap .x-form-trigger {
+.base-color-bg, .x-window-body.x-window-body-default, .x-window.x-window-default .x-toolbar-footer, .x-window.x-window-default, .searcher.dark .x-form-text, .search-field.dark .x-form-text, .searcher.dark .x-form-trigger-wrap .x-form-trigger, .search-field.dark .x-form-trigger-wrap .x-form-trigger {
   background-color: #60626d; }
 
 .base-color-bg-important {
@@ -22626,31 +22626,54 @@ a, .link {
 .right-button {
   font-size: 16px; }
 
-.searcher .clear {
+.search-field.x-field-toolbar-trigger .x-form-trigger-wrap {
+  border-color: #f0f0f0; }
+.search-field.x-field-toolbar-trigger .x-form-text {
+  background-color: #f0f0f0; }
+.search-field.x-field-toolbar-trigger .x-form-trigger {
+  background-color: #f0f0f0; }
+.search-field.x-field-toolbar-trigger .x-form-trigger-wrap-focus .x-form-trigger-wrap {
+  border-color: #27a9e3; }
+.search-field.x-field-toolbar-trigger .x-form-trigger-wrap-focus .x-form-trigger.search {
+  background-color: transparent; }
+.search-field.x-field-toolbar-trigger .x-form-trigger-wrap-focus .x-form-text {
+  background-color: #ffffff !important; }
+
+.searcher .clear, .searcher .search, .search-field .clear, .search-field .search {
   font-size: 12px;
   line-height: 26px;
   color: #e0e0e0;
   background: none;
   height: 26px;
   text-align: center; }
-.searcher .x-form-trigger-wrap-focus .x-form-trigger.clear {
+.searcher .search, .search-field .search {
+  padding: 0 !important;
+  color: #9496a1 !important; }
+.searcher .search:hover, .search-field .search:hover {
+  color: #4b4b4b !important; }
+.searcher .x-form-trigger-wrap-focus .x-form-trigger.clear, .search-field .x-form-trigger-wrap-focus .x-form-trigger.clear {
   background-color: #049cdb;
   color: white; }
-.searcher .x-form-trigger-input-cell {
+.searcher .x-form-trigger-wrap-focus .x-form-trigger.search, .search-field .x-form-trigger-wrap-focus .x-form-trigger.search {
+  background-color: transparent; }
+.searcher .x-form-trigger-input-cell, .search-field .x-form-trigger-input-cell {
   overflow: hidden; }
-.searcher.dark .x-form-text {
+.searcher.dark .x-form-text, .search-field.dark .x-form-text {
   color: white; }
-.searcher.dark .x-form-trigger-wrap-focus .x-form-trigger.clear {
+.searcher.dark .x-form-trigger-wrap-focus .x-form-trigger.clear, .search-field.dark .x-form-trigger-wrap-focus .x-form-trigger.clear {
   color: white; }
-.searcher.dark .x-form-trigger-wrap {
+.searcher.dark .x-form-trigger-wrap, .search-field.dark .x-form-trigger-wrap {
   border-color: #787a88; }
-.searcher.dark .x-form-trigger-wrap .x-form-trigger {
+.searcher.dark .x-form-trigger-wrap .x-form-trigger, .search-field.dark .x-form-trigger-wrap .x-form-trigger {
   height: 16px;
   color: #60626d; }
-.searcher.small .clear {
+.searcher.small .clear, .search-field.small .clear {
   line-height: 24px;
   height: 24px; }
-.searcher.small .x-form-text {
+.searcher.small .search, .search-field.small .search {
+  line-height: 24px;
+  height: 24px; }
+.searcher.small .x-form-text, .search-field.small .x-form-text {
   height: 24px; }
 
 .x-form-trigger-wrap .list {

@@ -57,10 +57,10 @@ module.exports = function (grunt) {
                 dest: buildDesinationFilePath
             };
 
-            uglifyBuildConfig[appName] = {
-                src: buildDesinationFilePath,
-                dest: buildDesinationFilePath
-            };
+//            uglifyBuildConfig[appName] = {
+//                src: buildDesinationFilePath,
+//                dest: buildDesinationFilePath
+//            };
 
             if (copyFiles && copyFiles.length) {
                 var files = [];
@@ -86,8 +86,8 @@ module.exports = function (grunt) {
 
             if (!noSencha) {
                 taskSequence.push('sencha-build:' + appName,
-                    'concat:' + appName,
-                    'uglify:' + appName
+                    'concat:' + appName
+//                    'uglify:' + appName
                 );
             }
 
@@ -96,7 +96,7 @@ module.exports = function (grunt) {
             var appBuildConfig = {pkg: grunt.file.readJSON('package.json'),
                 'sencha-build': senchaBuildConfig,
                 'concat': concatBuildConfig,
-                'uglify': uglifyBuildConfig,
+//                'uglify': uglifyBuildConfig,
                 'copy': copyBuildConfig
             };
 

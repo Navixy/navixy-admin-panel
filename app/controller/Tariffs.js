@@ -37,6 +37,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
 
     stores: ['Tariffs', 'TariffPrices', 'TariffDefaults'],
     models: ['Tariff'],
+    waitStores: ['Tariffs'],
 
     init: function () {
         this.callParent(arguments);

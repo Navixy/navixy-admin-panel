@@ -78,6 +78,45 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
 
         return [
             {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.tariffs.create_form.options_fields,
+                padding: '10 0 20 0'
+            },
+            {
+                fieldLabel: _l.tariffs.fields.group_id_exp,
+                name: 'group_id',
+                labelAlign: 'left',
+                width: 400,
+                labelWidth: 220,
+                minLength: 1,
+                maxLength: 6,
+                vtype: 'numeric',
+                value: 0
+            },
+            {
+                fieldLabel: _l.tariffs.fields.device_limit_exp,
+                name: 'device_limit',
+                allowBlank: true,
+                labelAlign: 'left',
+                width: 400,
+                labelWidth: 220,
+                minLength: 1,
+                maxLength: 6,
+                vtype: 'numeric',
+                value: 0
+            },
+            {
+                fieldLabel: _l.tariffs.fields.store_period,
+                fname: 'store_period',
+                allowBlank: true,
+                xtype: 'periodfield',
+                role: 'store_period',
+                ui: 'light',
+                width: 400,
+                labelWidth: 225
+            },
+            {
                 boxLabel: _l.tariffs.fields.proportional_charge,
                 name: 'proportional_charge',
                 labelWidth: 'auto',
@@ -211,6 +250,8 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 this.down('[name="device_limit"]'),
                 this.down('[role="store_period"]')
             ];
+
+        console.log(trackerFields);
 
         Ext.iterate(trackerFields, function (field) {
             field[type ? 'hide' : 'show']();

@@ -26,6 +26,7 @@ Ext.define('NavixyPanel.controller.Codes', {
 
     stores: ['ActivationCodes'],
     models: ['ActivationCode'],
+    waitStores: ['ActivationCodes'],
 
     init: function () {
         this.callParent(arguments);

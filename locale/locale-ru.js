@@ -38,6 +38,8 @@ Ext.define('Locale.locale-ru', {
     invalid_numeric_msg: 'Необходимо указать число',
 
     searcher_empty_text: 'Введите текст фильтра',
+    search_empty_text: 'Введите текст поиска',
+    searchTitle: 'Поиск по разделам',
 
     clear_form_btn: 'Очистить',
     save_form_btn: 'Сохранить',

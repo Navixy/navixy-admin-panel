@@ -34,6 +34,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     stores: ['Trackers'],
     models: ['Tracker'],
+    waitStores: ['Trackers'],
 
     init: function () {
         this.callParent(arguments);
@@ -71,15 +72,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             'tracker' : {
                 fn: this.handleTrackerCard,
-                access: 'read'
+                access: 'read',
+                waitStores: ['Users', 'Tariffs']
             },
             'tracker > edit' : {
                 fn: this.handleTrackerEdit,
-                access: 'update'
+                access: 'update',
+                waitStores: ['Users']
             },
             'tracker > clone' : {
                 fn: this.handleTrackerClone,
-                access: 'create'
+                access: 'create',
+                waitStores: ['Users']
             },
             'tracker > console' : {
                 fn: this.handleTrackerConsole,
@@ -87,7 +91,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             'tracker > tariff' : {
                 fn: this.handleTrackerTariffEdit,
-                access: 'update'
+                access: 'update',
+                waitStores: ['Tariffs']
             }
         });
 
@@ -129,20 +134,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     handleTrackerTariffEdit: function (value) {
-//        var trackerId = parseInt(value),
-//            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId),
-//            trackerData = trackerRecord.getData();
-//        if (trackerRecord && !trackerData.clone && !trackerData.deleted) {
-//
-//            this.fireContent({
-//                xtype: 'trackertariff',
-//                record: trackerRecord
-//            });
-//        } else {
-//            this.fireContent({
-//                xtype: 'accessdenied'
-//            });
-//        }
         var trackerId = parseInt(value),
             trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
 

@@ -154,8 +154,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             filters.push(
                 Ext.create('Ext.util.Filter', {
                     filterFn: function (record) {
-                        var searchHash = record.fieldForSearch && record.getFieldsString(record.fieldForSearch, false);
-                        return searchHash && searchHash.indexOf(searchReq) >= 0;
+                        var searchHash = record.fieldForSearch && record.getFieldsString(record.fieldForSearch, true);
+                        return searchHash && searchHash.indexOf(searchReq.toLowerCase()) >= 0;
                     }
                 })
             );

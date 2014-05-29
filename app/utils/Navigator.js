@@ -15,6 +15,8 @@ Ext.define('NavixyPanel.utils.Navigator', {
         observable: 'Ext.util.Observable'
     },
 
+    noActionMap: ['search'],
+
     constructor: function (config) {
         this.mixins.observable.constructor.call(this, config);
         this.eventNameGenerator = new Ext.XTemplate(this.eventNameTpl);
@@ -36,7 +38,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
             ? parts.shift()
             : null;
 
-        action = parts.length
+        action = !Ext.Array.contains(this.noActionMap, handler) && parts.length
             ? parts.pop()
             : null;
 
@@ -121,5 +123,9 @@ Ext.define('NavixyPanel.utils.Navigator', {
             });
 
         return url;
+    },
+
+    getSearch: function (searchString) {
+        return Ext.String.format('search/{0}', searchString);
     }
 });

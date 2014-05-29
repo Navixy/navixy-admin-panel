@@ -8,6 +8,7 @@ Ext.define('NavixyPanel.store.ActivationCodes', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.ActivationCode',
     storeId: 'ActivationCodes',
+    apiCall: 'getCodesList',
     sorters: [
         {
             property: 'activated',

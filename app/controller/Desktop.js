@@ -40,11 +40,12 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.callParent(arguments);
 
         this.application.on({
-            contentchange   : this.showContent,
-            menuregister    : this.addMainMenuItem,
-            menuselect      : this.onMenuSelect,
-            menudeselect    : this.onMenuDeselect,
-            index           : this.onIndex,
+            contentchange       : this.showContent,
+            menuregister        : this.addMainMenuItem,
+            menuselect          : this.onMenuSelect,
+            menudeselect        : this.onMenuDeselect,
+            'section-search'    : this.onSearch,
+            index               : this.onIndex,
             scope: this
         });
 
@@ -63,6 +64,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     showContent: function (cmpConfig) {
+
         cmpConfig = typeof cmpConfig === 'string' ? {xtype: cmpConfig} : cmpConfig;
 
         var cardContainer = this.getDesktop(),
@@ -80,6 +82,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
         target = existing || this.addContent(cmpConfig);
 
         target = cardContainer.getLayout().setActiveItem(target);
+
+        if (existing && Ext.isFunction(existing.updateConfig)) {
+            existing.updateConfig(cmpConfig);
+        }
 
         if (active && active.destroyOnLeave) {
             this.removeContent(active);
@@ -114,14 +120,25 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.getMainMenu().forceToggleSectionButton(requiest);
     },
 
+    onSearch: function (searchString) {
+        this.application.fireEvent('handlefound');
+        this.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function() {
+            this.application.fireEvent('contentchange', {
+                xtype: 'searchform',
+                searchStr: searchString
+            });
+        }, this);
+    },
+
     onIndex: function () {
 
-
-        this.application.fireEvent('contentchange', {
-            xtype: 'searchform'
-        });
         this.application.fireEvent('handlefound');
         this.application.fireEvent('menuselect', 'index');
+        this.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function() {
+            this.application.fireEvent('contentchange', {
+                xtype: 'searchform'
+            });
+        }, this);
     },
 
     registerSearch: function () {

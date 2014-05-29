@@ -1,13 +1,13 @@
 /**
  * @class NavixyPanel.store.TariffDefaults
- * @extends Ext.data.Store
+ * @extends NavixyPanel.store.Abstract
  * Description
  */
 
 Ext.define('NavixyPanel.store.TariffDefaults', {
-    extend: 'Ext.data.Store',
+    extend: 'NavixyPanel.store.Abstract',
     storeId: 'TariffDefaults',
-
+    apiCall: 'getTariffsDefaults',
     fields: [
         {
             name: 'tariff_id',
@@ -26,6 +26,26 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
             type: 'string'
         }
     ],
+
+    requireAPISuccess: function (results, callName, done, callback, scope) {
+
+        var data = Object.getOwnPropertyNames(results),
+            list = [];
+
+        Ext.iterate(data, function (name) {
+            if (name !== 'success' && results[name]) {
+                list.push(Ext.apply(results[name], {'id': name}));
+            }
+        });
+
+        this.loadData(list);
+        if (this.loaded = done) {
+            this.fireEvent('apisuccess', this);
+            if (Ext.isFunction(callback)) {
+                callback.call(scope);
+            }
+        }
+    },
 
     getDeviceDefaults: function (type) {
         var device = this.findRecord('id', type),

@@ -54,7 +54,7 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     defaultMapLocationConverter: function (field, value) {
-        return value !== '' ? value : this.get('default_map').location[this.defaultMapLocationMap[field.name]] || 0;
+        return value !== '' ? value : this.get('default_map').location && this.get('default_map').location[this.defaultMapLocationMap[field.name]] || 0;
     },
 
     set: function () {
@@ -73,20 +73,40 @@ Ext.define('NavixyPanel.model.Settings', {
         var default_map = Ext.apply({}, this.get('default_map')),
             modified = false;
 
-        Ext.iterate(fieldsObj, function (fieldName, fieldValue) {
-            if (this.defaultMapMap[fieldName]) {
-                default_map[this.defaultMapMap[fieldName]] = fieldValue;
-                modified = true;
-            }
-            if (this.defaultMapLocationMap[fieldName]) {
-                default_map.location[this.defaultMapLocationMap[fieldName]] = fieldValue;
-                modified = true;
-            }
-        }, this);
+        if (fieldsObj.default_map) {
+            fieldsObj = Ext.apply(fieldsObj, {
+                map_type: '',
+                map_zoom: '',
+                map_location_lat: '',
+                map_location_lng: ''
+            });
+        } else {
+            Ext.iterate(fieldsObj, function (fieldName, fieldValue) {
+                if (this.defaultMapMap[fieldName]) {
+                    default_map[this.defaultMapMap[fieldName]] = fieldValue;
+                    modified = true;
+                }
+                if (this.defaultMapLocationMap[fieldName]) {
+                    default_map.location[this.defaultMapLocationMap[fieldName]] = fieldValue;
+                    modified = true;
+                }
+            }, this);
 
-        fieldsObj.default_map = default_map;
+            fieldsObj.default_map = default_map;
+        }
 
         return fieldsObj;
+    },
+
+    getClearMapDefaults: function () {
+        var result = {};
+        Ext.iterate(this.defaultMapMap, function(fieldName, mapName) {
+            result[fieldName] = '';
+        }, this);
+        Ext.iterate(this.defaultMapLocationMap, function(fieldName, mapName) {
+            result[fieldName] = '';
+        }, this);
+        return result;
     },
 
     getServiceChanges: function () {

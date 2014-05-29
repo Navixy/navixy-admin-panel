@@ -21,6 +21,7 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     stores: ['Settings'],
     models: ['Settings'],
+    waitStores: ['Settings'],
 
     init: function () {
         this.callParent(arguments);

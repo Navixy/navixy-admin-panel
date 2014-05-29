@@ -6,11 +6,12 @@
 
 Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     extend: 'Ext.Container',
+    requires: ['NavixyPanel.view.widgets.SearchField'],
     alias: 'widget.mainmenu',
 
     cls: 'main-menu',
 
-    hidden: true,
+    hasSearch: true,
 
     layout: {
         type: 'hbox',
@@ -23,9 +24,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
 
         this.addEvents('tabchanged');
 
-        this.defaults = this.getDefaults();
-
-        this.on('add', this.showMenu, this);
+        this.items = this.getItems();
 
         this.callParent(arguments);
     },
@@ -46,6 +45,75 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
         };
     },
 
+    getItems: function () {
+
+        return [
+            {
+                xtype: 'container',
+                role: 'menu-box',
+                layout: {
+                    type: 'hbox',
+                    pack: 'start',
+                    align: 'middle'
+                },
+                flex: 1,
+                hidden: true,
+                defaults: this.getDefaults(),
+                listeners: {
+                    add: {
+                        fn: this.showMenu,
+                        scope: this
+                    }
+                }
+            },
+            {
+                xtype: 'container',
+                role: 'search-box',
+                layout: {
+                    type: 'hbox',
+                    pack: 'start',
+                    align: 'middle'
+                },
+                items: this.getSearcher()
+            }
+        ];
+    },
+
+    getMenuBox: function () {
+        return this.down('[role="menu-box"]');
+    },
+
+    getSearchBox: function () {
+        return this.down('[role="menu-box"]');
+    },
+
+    getSearcher: function () {
+        return this.hasSearch
+            ? [
+                {
+                    xtype: 'searchfield',
+                    margin: '0 5 0 0',
+                    listeners: {
+                        'search': {
+                            fn: this.fireSearch,
+                            scope: this
+                        }
+                    }
+                }
+            ]
+            : false;
+    },
+
+    fireSearch: function (searchString) {
+
+        try {
+            this.unToggleAll();
+            Ext.Nav.shift(Ext.Nav.getSearch(searchString));
+        } catch (e) {
+            Ext.log(e.stack);
+        }
+    },
+
     addSection: function (sectionConfig) {
 
         var config = {
@@ -54,7 +122,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             sectionTarget: sectionConfig.target
         };
 
-        this.add(config);
+        this.getMenuBox().add(config);
     },
 
     changeTabButtonHandler: function (btn, pressed) {
@@ -107,6 +175,6 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     showMenu: function () {
-        this.setVisible(true);
+        this.getMenuBox().setVisible(true);
     }
 });

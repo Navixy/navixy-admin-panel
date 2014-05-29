@@ -529,7 +529,17 @@ Ext.define('NavixyPanel.controller.Main', {
     //Main data request
     doMainRequest: function () {
         var me = this,
-            calls = ['getDealerInfo', 'getUsersList', 'getTrackersList', 'getTimeZones', 'getTariffsList', 'getTariffsDefaults', 'getCodesList', 'getSettingsService', 'getSettingsNotification'];
+            calls = [
+                'getDealerInfo',
+//                'getUsersList',
+//                'getTrackersList',
+                'getTimeZones',
+//                'getTariffsList',
+//                'getTariffsDefaults',
+//                'getCodesList',
+//                'getSettingsService',
+//                'getSettingsNotification'
+            ];
 
         Ext.getBody().mask(_l.conneting_loader);
 
@@ -550,10 +560,10 @@ Ext.define('NavixyPanel.controller.Main', {
     handleResults: function (results) {
         Ext.iterate({
             'getDealerInfo': 'Dealer',
-            'getUsersList': 'Users',
-            'getTrackersList': 'Trackers',
+//            'getUsersList': 'Users',
+//            'getTrackersList': 'Trackers',
             'getTimeZones': 'TimeZones',
-            'getCodesList': 'ActivationCodes',
+//            'getCodesList': 'ActivationCodes',
             'getSettingsService': 'Settings',
             'getSettingsNotification': 'Settings'
         }, function (action, store) {
@@ -569,38 +579,37 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
-        var tariffsResult = results.getTariffsList,
-            tariffsDefaultsResult = results.getTariffsDefaults;
+//        var tariffsResult = results.getTariffsList,
+//            tariffsDefaultsResult = results.getTariffsDefaults;
+//
+//        if (tariffsResult) {
+//            var tariffsStore = Ext.getStore('Tariffs'),
+//                pricesStore = Ext.getStore('TariffPrices');
+//
+//            if (tariffsStore && pricesStore) {
+//                tariffsStore.storeLoaded = true;
+//                tariffsStore.loadData(tariffsResult.list);
+//
+//                pricesStore.loadData([tariffsResult.wholesale_service_prices]);
+//            }
+//        }
 
-
-        if (tariffsResult) {
-            var tariffsStore = Ext.getStore('Tariffs'),
-                pricesStore = Ext.getStore('TariffPrices');
-
-            if (tariffsStore && pricesStore) {
-                tariffsStore.storeLoaded = true;
-                tariffsStore.loadData(tariffsResult.list);
-
-                pricesStore.loadData([tariffsResult.wholesale_service_prices]);
-            }
-        }
-
-        if (tariffsDefaultsResult) {
-            var data = Object.getOwnPropertyNames(tariffsDefaultsResult),
-                store = Ext.getStore('TariffDefaults'),
-                list = [];
-
-            Ext.iterate(data, function (name) {
-                if (name !== 'success' && tariffsDefaultsResult[name]) {
-                    list.push(Ext.apply(tariffsDefaultsResult[name], {'id': name}));
-                }
-            });
-
-            if (store) {
-                store.storeLoaded = true;
-                store.loadData(list);
-            }
-        }
+//        if (tariffsDefaultsResult) {
+//            var data = Object.getOwnPropertyNames(tariffsDefaultsResult),
+//                store = Ext.getStore('TariffDefaults'),
+//                list = [];
+//
+//            Ext.iterate(data, function (name) {
+//                if (name !== 'success' && tariffsDefaultsResult[name]) {
+//                    list.push(Ext.apply(tariffsDefaultsResult[name], {'id': name}));
+//                }
+//            });
+//
+//            if (store) {
+//                store.storeLoaded = true;
+//                store.loadData(list);
+//            }
+//        }
 
         var settingsService = results.getSettingsService,
             settingsNotification = results.getSettingsNotification;

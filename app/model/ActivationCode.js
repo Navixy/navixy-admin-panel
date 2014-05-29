@@ -7,6 +7,7 @@
 Ext.define('NavixyPanel.model.ActivationCode', {
     extend: 'Ext.data.Model',
     idProperty: 'code',
+    apiCall: 'getCodesList',
     fields: [
         {
             name: 'code',

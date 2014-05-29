@@ -10,6 +10,7 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching: true,
     paths: {
+        'Dev': 'dev',
         'Ext.ux': 'ext/src/ux',
         'Config': 'PConfig.js',
         'Locale': 'locale',
@@ -20,10 +21,11 @@ Ext.Loader.setConfig({
 Ext.debug = 1;
 
 Ext.require([
-    'Config',
+    'Dev.ConfigManager',
     'Locale.Manager'
 ], function () {
     Locale.Manager.init();
+    Dev.ConfigManager.init();
 });
 
 Ext.application({

@@ -7,6 +7,7 @@
 Ext.define('NavixyPanel.controller.Abstract', {
     extend: 'Ext.app.Controller',
     handleDelimiter: ' > ',
+    waitStores: null,
 
     init: function () {
         this.callParent(arguments);
@@ -26,6 +27,37 @@ Ext.define('NavixyPanel.controller.Abstract', {
             fn.apply(scope || this, args);
         } else {
             this.application.on('connectionset', Ext.bind(fn, scope || this, args));
+        }
+    },
+
+    waitStoresReady: function (stores, callback, scope) {
+        var loadNeeded = 0,
+            noLoad = false;
+
+        Ext.getBody().mask(_l.loading);
+        Ext.iterate(stores, function (storeName) {
+            var store = Ext.getStore(storeName);
+
+            if (!store.isLoaded()) {
+                loadNeeded++;
+
+                store.on('apisuccess', function () {
+                    if (--loadNeeded === 0){
+                        callback.call(scope);
+                        Ext.getBody().unmask();
+                    }
+
+                }, this, {single: true});
+
+                store.APILoad();
+            } else {
+                noLoad = true;
+            }
+        }, this);
+
+        if (noLoad) {
+            Ext.getBody().unmask();
+            callback.call(scope);
         }
     },
 
@@ -85,19 +117,26 @@ Ext.define('NavixyPanel.controller.Abstract', {
     },
 
     callHandle: function (args, origin, callerConfig) {
-
         var controller = callerConfig.controllerParent,
-            eventName = callerConfig.eventName;
+            eventName = callerConfig.eventName,
+            waitStores = Ext.Array.merge(controller.waitStores || [], origin.waitStores || []),
+            handleCall;
 
         if (args && !Ext.isArray(args)) {
             args = [args];
         }
 
         controller.callHandleFound(eventName);
+        handleCall = function () {
+            controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
+            callerConfig.fn.apply(this, args);
+        };
 
-        controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
-
-        callerConfig.fn.apply(this, args);
+        if (waitStores.length) {
+            this.waitStoresReady(waitStores, handleCall, this);
+        } else {
+            handleCall.call(this);
+        }
     },
 
     callUnHandleMenu: function () {

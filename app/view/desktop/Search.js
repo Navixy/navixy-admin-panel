@@ -25,6 +25,8 @@ Ext.define('NavixyPanel.view.desktop.Search', {
         'tariffs': 'tariffslist'
     },
 
+    searchStr: null,
+
     initComponent: function () {
 
         this.items = [
@@ -32,7 +34,28 @@ Ext.define('NavixyPanel.view.desktop.Search', {
             this.getSearchResultsConfig()
         ];
 
+        this.title = _l.searchTitle
+
         this.callParent(arguments);
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+        this.searchByConfig();
+    },
+
+    searchByConfig: function () {
+        if (this.searchStr) {
+            this.getSearchField().setValue(this.searchStr);
+            this.searchAction();
+        }
+    },
+
+    updateConfig: function (config) {
+        if (config && config.searchStr) {
+            this.searchStr = config.searchStr;
+            this.searchByConfig();
+        }
     },
 
     getSearchFieldConfig: function () {
@@ -77,7 +100,6 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                     cls: 'search-btn',
                     height: 33,
 
-//                    scale: 'large',
                     margin: '0 0 0 10',
                     text: _l.search.btn,
                     handler: Ext.bind(this.searchAction, this)

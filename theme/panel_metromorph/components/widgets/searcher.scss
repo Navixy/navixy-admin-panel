@@ -1,8 +1,33 @@
 $searcherTriggerIconSize: 12px;
 
-.searcher {
-    .clear {
-        @extend .icon-close;
+.search-field.x-field-toolbar-trigger {
+    //background-color: red;
+    .x-form-trigger-wrap {
+        border-color: $baseBackgroundColor;
+    }
+    .x-form-text {
+        background-color: $baseBackgroundColor;
+    }
+    .x-form-trigger {
+        background-color: $baseBackgroundColor;
+    }
+    .x-form-trigger-wrap-focus {
+
+        .x-form-trigger-wrap {
+            border-color: $main-color;
+        }
+        .x-form-trigger.search {
+            background-color: transparent;
+        }
+        .x-form-text {
+            background-color: #ffffff !important;
+        }
+    }
+}
+
+.searcher, .search-field {
+
+    .clear, .search {
         font-size: $searcherTriggerIconSize;
         line-height: $searcherTriggerIconSize + 14;
         color: $grayLighter;
@@ -11,10 +36,27 @@ $searcherTriggerIconSize: 12px;
         text-align: center;
     }
 
+    .clear {
+        @extend .icon-close;
+    }
+
+    .search {
+        padding: 0 !important;
+        color: $baseElementActiveColor !important;
+        @extend .icon-spinner;
+    }
+
+    .search:hover {
+        color: $baseFontColor !important;
+    }
+
     .x-form-trigger-wrap-focus {
         .x-form-trigger.clear {
             background-color: $blue;
             color: $white;
+        }
+        .x-form-trigger.search {
+            background-color: transparent;
         }
     }
 
@@ -52,6 +94,11 @@ $searcherTriggerIconSize: 12px;
 
     &.small {
         .clear {
+            line-height: $searcherTriggerIconSize + 12;
+            height: $searcherTriggerIconSize + 12;
+        }
+
+        .search {
             line-height: $searcherTriggerIconSize + 12;
             height: $searcherTriggerIconSize + 12;
         }
