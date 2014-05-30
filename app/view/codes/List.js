@@ -114,6 +114,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                         menu: [
                             {
                                 text: _l.codes.list.filters.activated,
+                                role: 'activated-filter',
                                 checked: true,
                                 checkHandler: Ext.bind(this.toggleActiveFilter, this)
                             },
@@ -364,5 +365,11 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     removeOptFilter: function (field, value) {
         this.store.removeOptFilter(field, value);
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+        this.toggleActiveFilter(null, false);
+        this.down('[role="activated-filter"]').setChecked(false);
     }
 });

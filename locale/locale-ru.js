@@ -22,6 +22,9 @@ Ext.define('Locale.locale-ru', {
     access_denied: 'Доступ запрещен',
     access_denied_tip: 'у вас нет парв для доступа к запрашиваемой странице',
 
+    index_title: 'Добро пожаловть в панель управления',
+    index_tip: '',
+
     auth: {
         login: 'Логин или адрес электронной почты',
         password: 'Пароль',

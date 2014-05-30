@@ -30,37 +30,6 @@ Ext.define('NavixyPanel.controller.Abstract', {
         }
     },
 
-    waitStoresReady: function (stores, callback, scope) {
-        var loadNeeded = 0,
-            noLoad = false;
-
-        Ext.getBody().mask(_l.loading);
-        Ext.iterate(stores, function (storeName) {
-            var store = Ext.getStore(storeName);
-
-            if (!store.isLoaded()) {
-                loadNeeded++;
-
-                store.on('apisuccess', function () {
-                    if (--loadNeeded === 0){
-                        callback.call(scope);
-                        Ext.getBody().unmask();
-                    }
-
-                }, this, {single: true});
-
-                store.APILoad();
-            } else {
-                noLoad = true;
-            }
-        }, this);
-
-        if (noLoad) {
-            Ext.getBody().unmask();
-            callback.call(scope);
-        }
-    },
-
     registerMenu: function (config) {
         if (Ext.checkPermission(this.getModuleName()) && this.menuConfig && this.menuConfig.target) {
 
@@ -133,7 +102,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
         };
 
         if (waitStores.length) {
-            this.waitStoresReady(waitStores, handleCall, this);
+            Ext.waitStoresReady(waitStores, handleCall, this);
         } else {
             handleCall.call(this);
         }

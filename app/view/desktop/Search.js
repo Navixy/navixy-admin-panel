@@ -139,7 +139,6 @@ Ext.define('NavixyPanel.view.desktop.Search', {
     },
 
     searchAction: function () {
-
         var searchReq = this.getSearchValue(),
             widgetConfig = {
                 search: searchReq,
@@ -152,22 +151,24 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                 noTBar: true
             };
 
-        if (searchReq.length) {
-            this.clearResults();
-            Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
-                if (Ext.checkPermission(moduleName, 'read')) {
-                    this.getResultsContainer().add(Ext.widget(
-                        moduleWidget,
-                        Ext.apply(
-                            {
-                                searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.list.search_title_tpl, _l[moduleName].menu_text, '{0}')
-                            },
-                            widgetConfig)
+        Ext.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function () {
+            if (searchReq.length) {
+                this.clearResults();
+                Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
+                    if (Ext.checkPermission(moduleName, 'read')) {
+                        this.getResultsContainer().add(Ext.widget(
+                            moduleWidget,
+                            Ext.apply(
+                                {
+                                    searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.list.search_title_tpl, _l[moduleName].menu_text, '{0}')
+                                },
+                                widgetConfig)
                         )
-                    );
-                }
-            }, this);
-        }
+                        );
+                    }
+                }, this);
+            }
+        }, this);
     },
 
     clearResults: function () {

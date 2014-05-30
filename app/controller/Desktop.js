@@ -134,11 +134,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         this.application.fireEvent('handlefound');
         this.application.fireEvent('menuselect', 'index');
-        this.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function() {
-            this.application.fireEvent('contentchange', {
-                xtype: 'searchform'
-            });
-        }, this);
+        this.application.fireEvent('contentchange', {
+            xtype: 'searchform'
+        });
     },
 
     registerSearch: function () {

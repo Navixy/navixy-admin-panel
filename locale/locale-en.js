@@ -20,6 +20,9 @@ Ext.define('Locale.locale-en', {
     access_denied: 'Access denied',
     access_denied_tip: 'you do not have permission to access requested page',
 
+    index_title: 'Welcome to Control Panel',
+    index_tip: '',
+
     auth: {
         login: 'Login or Email address',
         password: 'Password',
@@ -36,6 +39,8 @@ Ext.define('Locale.locale-en', {
     invalid_numeric_msg: 'Not a valid number',
 
     searcher_empty_text: 'Enter search query',
+    search_empty_text: 'Enter search query',
+    searchTitle: 'Search by category',
 
     clear_form_btn: 'Clear',
     save_form_btn: 'Save',

@@ -386,6 +386,39 @@ Ext.define('NavixyPanel.controller.Main', {
                     : value
             }
         });
+        Ext.override(Ext, {
+
+            waitStoresReady: function (stores, callback, scope) {
+                var loadNeeded = 0,
+                    noLoad = false;
+
+                Ext.getBody().mask(_l.loading);
+                Ext.iterate(stores, function (storeName) {
+                    var store = Ext.getStore(storeName);
+
+                    if (!store.isLoaded()) {
+                        loadNeeded++;
+
+                        store.on('apisuccess', function () {
+                            if (--loadNeeded === 0){
+                                callback.call(scope);
+                                Ext.getBody().unmask();
+                            }
+
+                        }, this, {single: true});
+
+                        store.APILoad();
+                    } else {
+                        noLoad = true;
+                    }
+                }, scope);
+
+                if (noLoad) {
+                    Ext.getBody().unmask();
+                    callback.call(scope);
+                }
+            }
+        });
     },
 
     // History
@@ -531,14 +564,7 @@ Ext.define('NavixyPanel.controller.Main', {
         var me = this,
             calls = [
                 'getDealerInfo',
-//                'getUsersList',
-//                'getTrackersList',
-                'getTimeZones',
-//                'getTariffsList',
-//                'getTariffsDefaults',
-//                'getCodesList',
-//                'getSettingsService',
-//                'getSettingsNotification'
+                'getTimeZones'
             ];
 
         Ext.getBody().mask(_l.conneting_loader);
@@ -560,12 +586,7 @@ Ext.define('NavixyPanel.controller.Main', {
     handleResults: function (results) {
         Ext.iterate({
             'getDealerInfo': 'Dealer',
-//            'getUsersList': 'Users',
-//            'getTrackersList': 'Trackers',
             'getTimeZones': 'TimeZones',
-//            'getCodesList': 'ActivationCodes',
-            'getSettingsService': 'Settings',
-            'getSettingsNotification': 'Settings'
         }, function (action, store) {
 
             try {
@@ -578,65 +599,6 @@ Ext.define('NavixyPanel.controller.Main', {
                 Ext.log('result handler error', e.stack);
             }
         });
-
-//        var tariffsResult = results.getTariffsList,
-//            tariffsDefaultsResult = results.getTariffsDefaults;
-//
-//        if (tariffsResult) {
-//            var tariffsStore = Ext.getStore('Tariffs'),
-//                pricesStore = Ext.getStore('TariffPrices');
-//
-//            if (tariffsStore && pricesStore) {
-//                tariffsStore.storeLoaded = true;
-//                tariffsStore.loadData(tariffsResult.list);
-//
-//                pricesStore.loadData([tariffsResult.wholesale_service_prices]);
-//            }
-//        }
-
-//        if (tariffsDefaultsResult) {
-//            var data = Object.getOwnPropertyNames(tariffsDefaultsResult),
-//                store = Ext.getStore('TariffDefaults'),
-//                list = [];
-//
-//            Ext.iterate(data, function (name) {
-//                if (name !== 'success' && tariffsDefaultsResult[name]) {
-//                    list.push(Ext.apply(tariffsDefaultsResult[name], {'id': name}));
-//                }
-//            });
-//
-//            if (store) {
-//                store.storeLoaded = true;
-//                store.loadData(list);
-//            }
-//        }
-
-        var settingsService = results.getSettingsService,
-            settingsNotification = results.getSettingsNotification;
-
-        if (settingsService) {
-            var settingsStore = Ext.getStore('Settings'),
-                settingsRecord = settingsStore.first();
-
-            if (settingsRecord) {
-                settingsRecord.set(settingsService);
-            } else {
-                settingsStore.storeLoaded = true;
-                settingsStore.loadData(settingsService);
-            }
-        }
-
-        if (settingsNotification) {
-            var settingsStore = Ext.getStore('Settings'),
-                settingsRecord = settingsStore.first();
-
-            if (settingsRecord) {
-                settingsRecord.set(settingsNotification);
-            } else {
-                settingsStore.storeLoaded = true;
-                settingsStore.loadData(settingsNotification);
-            }
-        }
 
         if (!Ext.API.fatalError) {
             this.application.connectionReady = true;
