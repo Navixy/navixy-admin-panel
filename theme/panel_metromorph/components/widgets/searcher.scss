@@ -43,7 +43,7 @@ $searcherTriggerIconSize: 12px;
     .search {
         padding: 0 !important;
         color: $baseElementActiveColor !important;
-        @extend .icon-spinner;
+        @extend .icon-search;
     }
 
     .search:hover {

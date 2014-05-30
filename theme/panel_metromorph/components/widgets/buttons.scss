@@ -32,11 +32,6 @@ $defaultSizeFormBtnIcon: 16px;
     display: block;
 }
 
-.add-group-button {
-    @extend .icon-add-group;
-    @include glyph-button;
-}
-
 .edit-button {
     @extend .icon-pencil;
     @include glyph-button;
@@ -52,28 +47,8 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
-.link-button {
-    @extend .icon-link;
-    @include glyph-button;
-}
-
-.pause-button {
-    @extend .icon-pause;
-    @include glyph-button;
-}
-
-.play-button {
-    @extend .icon-play;
-    @include glyph-button;
-}
-
 .show-empty-button {
     @extend .icon-eye-open;
-    @include glyph-button;
-}
-
-.hide-empty-button {
-    @extend .icon-eye-close;
     @include glyph-button;
 }
 
@@ -95,25 +70,8 @@ $defaultSizeFormBtnIcon: 16px;
     }
 }
 
-.config {
-    font-size: 18px;
-    color: white;
-    border: 1px solid white;
-    padding: 6px;
-    cursor: pointer;
-
-    @include border-radius(100%);
-    @extend .icon-settings;
-}
-
 .transparent {
     background-color: transparent;
-}
-
-.copy-tool {
-    @extend .base-font-color-active;
-    @extend .icon-copy;
-    opacity: 0.6;
 }
 
 .x-tool.gear {
@@ -136,16 +94,4 @@ $defaultSizeFormBtnIcon: 16px;
     font-size: 16px;
     padding-left: 4px;
     opacity: 0.6;
-}
-
-.left-button {
-    @extend .base-font-color;
-    @extend .icon-angle-left;
-    font-size: 16px;
-}
-
-.right-button {
-    @extend .base-font-color;
-    @extend .icon-angle-right;
-    font-size: 16px;
 }
