@@ -50,7 +50,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                         name: 'login',
                         xtype: 'textfield',
 
-                        minLength: 2,
+                        minLength: 1,
                         maxLength: 50,
                         vtype: 'alphanum',
                         allowBlank: false,

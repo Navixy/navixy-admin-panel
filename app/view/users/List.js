@@ -19,7 +19,9 @@ Ext.define('NavixyPanel.view.users.List', {
 
     getColumnsConfig: function () {
         var userCardTpl = '<a>{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode} <tpl if="!activated"><span class="scaled red">{[l.users.fields.activated_short.status_false]}</span></tpl></a>',
-            userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>';
+            userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>',
+            balanceTpl = '{balance:balanceEncode}',
+            bonusTpl = '{bonus:emptyEncode}';
 
         return [
             {
@@ -34,6 +36,20 @@ Ext.define('NavixyPanel.view.users.List', {
                 dataIndex: 'last_name',
                 sortable: true,
                 flex: 2
+            },
+            {
+                text: _l.users.fields.balance,
+                xtype: 'templatecolumn',
+                tpl: balanceTpl,
+                dataIndex: 'balance',
+                width: 80
+            },
+            {
+                text: _l.users.fields.bonus,
+                xtype: 'templatecolumn',
+                tpl: bonusTpl,
+                dataIndex: 'bonus',
+                width: 80
             },
             {
                 text: _l.users.fields.login_short,

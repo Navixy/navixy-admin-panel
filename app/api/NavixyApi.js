@@ -61,6 +61,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    addUserTransaction: function (config) {
+        this.requestWithOptions(config, {
+            action: 'change_balance',
+            handler: 'user/transaction',
+            root: 'success'
+        });
+    },
+
     createUser: function (config) {
         this.requestWithOptions(config, {
             action: 'create',

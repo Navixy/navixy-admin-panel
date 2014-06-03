@@ -39,6 +39,7 @@ Ext.define('Locale.locale-ru', {
     no_path_found: 'Указан неверный адрес',
     phone_invalid_msg: 'Укажите корректный номер телефона',
     invalid_numeric_msg: 'Необходимо указать число',
+    invalid_amount_msg: 'Необходимо указать сумму<br>(два знака после точки)',
 
     searcher_empty_text: 'Введите текст фильтра',
     search_empty_text: 'Введите текст поиска',
@@ -118,6 +119,7 @@ Ext.define('Locale.locale-ru', {
         238: 'Переход на данный тариф запрещен',
         240: 'С момента предыдущей смены тарифа прошло сликом мало времени',
         242: 'Ошибка валидации',
+        251: 'Недостаточно средств',
         upload_exeption: 'Ошибка загрузки файла',
         no_hash: 'Ключ сессии не найден',
         service_not_respond: 'Сервис временно недоступен',
@@ -258,6 +260,8 @@ Ext.define('Locale.locale-ru', {
         },
         fields: {
             login: 'Адрес электронной почты',
+            balance: 'Баланс',
+            bonus: 'Бонус',
             first_name: 'Имя',
             middle_name: 'Отчество',
             last_name: 'Фамилия',
@@ -312,7 +316,8 @@ Ext.define('Locale.locale-ru', {
             links: {
                 session_text : 'Перейти к мониторингу',
                 user_edit: 'Редактировать пользователя',
-                transactions: 'Транзакции'
+                transactions: 'Транзакции',
+                create_transaction: 'Изменить баланс'
             }
         },
         transactions: {
@@ -337,6 +342,13 @@ Ext.define('Locale.locale-ru', {
                     partner: 'от партнера'
                 }
             }
+        },
+        transaction_add: {
+            title: 'Изменение баланса (добавление транзакции) пользователя',
+            description: 'Описание транзакции',
+            balance: 'Изменение баланса',
+            bonus: 'Изменение бонуса',
+            value_sup: '* - сумма на которую изменится текущее значение, может быть отрицательным'
         },
         combo_empty: 'Выберите пользователя',
         select_error: 'Трекер или его клон уже привязан к выбранному пользователю',

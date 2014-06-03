@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.controller.Users', {
         'widgets.ToolColumn',
 
         'users.TransactionsList',
+        'users.TransactionAdd',
         'users.List',
         'users.Create',
         'users.Edit',
@@ -31,6 +32,10 @@ Ext.define('NavixyPanel.controller.Users', {
         {
             ref: 'userEdit',
             selector: 'useredit'
+        },
+        {
+            ref: 'transactionAdd',
+            selector: 'usertransactionadd'
         }
     ],
 
@@ -54,6 +59,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'useredit' : {
                 formsubmit: this.handleUserEditSubmit
+            },
+            'usertransactionadd' : {
+                formsubmit: this.handleUserTransactionAddSubmit
             },
             'usercard' : {
                 useredit: this.handleUserEditAction
@@ -81,6 +89,10 @@ Ext.define('NavixyPanel.controller.Users', {
             'user > create' : {
                 fn: this.handleUserCreate,
                 access: 'create'
+            },
+            'user > transaction_add' : {
+                fn: this.handleUserTransactionAdd,
+                access: 'update'
             }
         });
 
@@ -119,6 +131,19 @@ Ext.define('NavixyPanel.controller.Users', {
 
             this.fireContent({
                 xtype: 'usertransactions',
+                record: userRecord
+            });
+        }
+    },
+
+    handleUserTransactionAdd: function (value) {
+        var userId = parseInt(value),
+            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
+
+        if (userRecord) {
+
+            this.fireContent({
+                xtype: 'usertransactionadd',
                 record: userRecord
             });
         }
@@ -223,8 +248,80 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.errors[errCode] || status.description || false;
 
         this.getUserEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    handleUserTransactionAddSubmit: function (cmp, formValues, record) {
+        var userData = record.getData(),
+            balance = parseFloat(formValues.balance_dif),
+            bonus = parseFloat(formValues.bonus_dif),
+            requestsCnt = 0;
+
+        if (balance) {
+            requestsCnt++;
+            Ext.API.addUserTransaction({
+                params: {
+                    user_id: userData.id,
+                    amount: balance,
+                    type: 'balance',
+                    text: formValues.text
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterUserTransactionAdd(response, formValues, record);
+                    }
+                },
+                failure: function (response) {
+                    --requestsCnt;
+                    this.afterUserTransactionAddFailure(response, formValues, record);
+                },
+                scope: this
+            });
+        }
+
+        if (bonus) {
+            requestsCnt++;
+            Ext.API.addUserTransaction({
+                params: {
+                    user_id: userData.id,
+                    amount: bonus,
+                    type: 'bonus',
+                    text: formValues.text
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterUserTransactionAdd(response, formValues, record);
+                    }
+                },
+                failure: function (response) {
+                    --requestsCnt;
+                    this.afterUserTransactionAddFailure(response, formValues, record);
+                },
+                scope: this
+            });
+        }
+
+    },
+
+    afterUserTransactionAdd: function (success, formValues, record) {
+        if (success) {
+            var recordData = record.getData();
+            record.set({
+                balance: recordData.balance + parseFloat(formValues.balance_dif),
+                bonus: recordData.bonus + parseFloat(formValues.bonus_dif)
+            });
+            this.getTransactionAdd().afterSave();
+        }
+    },
+
+    afterUserTransactionAddFailure: function (response, formValues, record) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors[errCode] || status.description || false;
+
+        this.getTransactionAdd().showSubmitErrors(errCode, errors, errDescription);
     }
 });

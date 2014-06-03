@@ -345,6 +345,16 @@ Ext.define('NavixyPanel.controller.Main', {
             numericMask: /[\-\+0-9.]/,
             numericVal: /^[-+]?\d*\.?\d*$/i
         });
+
+
+        Ext.apply(Ext.form.field.VTypes, {
+            amount: function(v) {
+                return Ext.form.VTypes['amountVal'].test(v);
+            },
+            amountText: _l.invalid_amount_msg,
+            amountMask: /[\-\+0-9.]/,
+            amountVal: /^[-+]?\d*\.?\d{0,2}$/i
+        });
     },
 
     // Special Overrides
@@ -381,9 +391,19 @@ Ext.define('NavixyPanel.controller.Main', {
             },
 
             emptyEncode: function (value) {
+
                 return !value
                     ? '<span class="gray nopad">' + value + '</span>'
                     : value
+            },
+
+            balanceEncode: function (value) {
+
+                return !value
+                    ? '<span class="gray nopad">' + value + '</span>'
+                    : value > 0
+                        ? value
+                        : '<span class="red nopad">' + value + '</span>'
             }
         });
         Ext.override(Ext, {

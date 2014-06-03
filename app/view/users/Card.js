@@ -28,6 +28,27 @@ Ext.define('NavixyPanel.view.users.Card', {
                 }
             ];
 
+        result.unshift(
+            {
+                xtype: 'container',
+                height: 10
+            }
+        );
+
+        if (Ext.checkPermission('users', 'update') && Ext.checkPermission('transactions', 'create')) {
+            result.unshift(
+                {
+                    html: '<a>' + _l.users.card.links.create_transaction + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireUserCrateTransaction,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
         if (Ext.checkPermission('users', 'update')) {
             result.unshift(
                 {
@@ -91,6 +112,14 @@ Ext.define('NavixyPanel.view.users.Card', {
                     title: _l.users.fields.activated_short.title,
                     value: _l.users.fields.activated_short[recordData.activated ? 'status_true' : 'status_false'],
                     left_td_cls: recordData.activated ? 'status ok' : 'status no'
+                },
+                {
+                    title: _l.users.fields.balance,
+                    value: recordData.balance
+                },
+                {
+                    title: _l.users.fields.bonus,
+                    value: recordData.bonus
                 },
                 {
                     title: _l.users.fields.post_city,
@@ -209,5 +238,9 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     fireTransactionsShow: function () {
         Ext.Nav.shift('user/' + this.record.getId() + '/transactions');
+    },
+
+    fireUserCrateTransaction: function () {
+        Ext.Nav.shift('user/' + this.record.getId() + '/transaction_add');
     }
 });

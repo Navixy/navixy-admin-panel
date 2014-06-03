@@ -37,6 +37,7 @@ Ext.define('Locale.locale-en', {
     no_path_found: 'No page on this path',
     phone_invalid_msg: 'Please enter a valid phone number',
     invalid_numeric_msg: 'Not a valid number',
+    invalid_amount_msg: 'Not a valid number<br>(2 digits after decimal mark)',
 
     searcher_empty_text: 'Enter search query',
     search_empty_text: 'Enter search query',
@@ -257,8 +258,9 @@ Ext.define('Locale.locale-en', {
             return_btn: 'Back'
         },
         fields: {
-            menu_text: 'Users',
             login: 'Email address',
+            balance: 'Balance',
+            bonus: 'Bonus',
             first_name: 'Name',
             middle_name: 'Patronymic',
             last_name: 'Surname',
@@ -313,7 +315,8 @@ Ext.define('Locale.locale-en', {
             links: {
                 session_text : 'Go to monitoring',
                 user_edit: 'Edit user',
-                transactions: 'Transactions'
+                transactions: 'Transactions',
+                create_transaction: 'Change balance'
             }
         },
         transactions: {
@@ -338,6 +341,13 @@ Ext.define('Locale.locale-en', {
                     partner: 'partner'
                 }
             }
+        },
+        transaction_add: {
+            title: 'Changing balance (adding transaction) of users',
+            description: 'Transaction description',
+            balance: 'Balance changes',
+            bonus: 'Bonus changes',
+            value_sup: '* - amount of which will change the current value, can be negative'
         },
         combo_empty: 'Select an user',
         select_error: 'Tracker or his clone is already bound to selected user',

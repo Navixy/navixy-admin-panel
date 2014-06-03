@@ -8,6 +8,8 @@ Ext.define('NavixyPanel.model.User', {
     extend: 'Ext.data.Model',
     fields: [
         {name: 'dealer_id', type: 'int'},
+        {name: 'balance', type: 'float'},
+        {name: 'bonus', type: 'float'},
 
         {name: 'login', type: 'string'},
         {name: 'first_name', type: 'string'},
