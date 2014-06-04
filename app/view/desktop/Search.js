@@ -116,7 +116,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
             layout: {
                 type: 'vbox',
                 align: 'stretch'
-            },
+            }
         };
     },
 

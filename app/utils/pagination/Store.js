@@ -16,6 +16,7 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
     parentListeners: null,
 
     filterCount: null,
+    searchFilter: null,
 
     listeners: {
         refresh: {
@@ -168,6 +169,28 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
                     this.removeFilter(filter);
                 }
             }, this);
+            this.load();
+        });
+    },
+
+    addSearchFilter: function (searchReq) {
+
+        this.applyToProxy(function () {
+            if (this.searchFilter) {
+                this.removeFilter(this.searchFilter);
+            }
+            this.searchFilter = Ext.create('Ext.util.Filter', {
+                filterFn: function (record) {
+                    return record.searchTest(searchReq);
+                }
+            });
+            this.filter(this.searchFilter);
+        });
+    },
+
+    removeSearchFilter: function () {
+        this.applyToProxy(function () {
+            this.removeFilter(this.searchFilter);
             this.load();
         });
     },

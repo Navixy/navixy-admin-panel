@@ -9,8 +9,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     alias: 'widget.abstractlist',
     requires: [
         'NavixyPanel.utils.pagination.CustomPaging',
-        'NavixyPanel.utils.pagination.ListFilter',
-        'NavixyPanel.view.widgets.PageSize'
+//        'NavixyPanel.utils.pagination.ListFilter',
+        'NavixyPanel.view.widgets.PageSize',
+        'NavixyPanel.view.widgets.ListFilter'
     ],
     viewConfig: {
         autoScroll: false,
@@ -86,18 +87,18 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.callParent(arguments);
     },
 
-    afterRender: function () {
-        this.applyViewToSearcher();
-        this.callParent(arguments);
-    },
-
-    applyViewToSearcher: function () {
-        var filterer = this.down('listfilter');
-
-        if (filterer) {
-            filterer.setView(this.getView());
-        }
-    },
+//    afterRender: function () {
+//        this.applyViewToSearcher();
+//        this.callParent(arguments);
+//    },
+//
+//    applyViewToSearcher: function () {
+//        var filterer = this.down('listfilter');
+//
+//        if (filterer) {
+//            filterer.setView(this.getView());
+//        }
+//    },
 
     initStore: function () {
 
@@ -154,8 +155,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             filters.push(
                 Ext.create('Ext.util.Filter', {
                     filterFn: function (record) {
-                        var searchHash = record.fieldForSearch && record.getFieldsString(record.fieldForSearch, true);
-                        return searchHash && searchHash.indexOf(searchReq.toLowerCase()) >= 0;
+                        return record.searchTest(searchReq);
                     }
                 })
             );
@@ -213,7 +213,12 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             barConfig.items.push({
                 xtype: 'listfilter',
                 margin: '0 -2 0 0',
-                width: 200
+                width: 200,
+                listeners: {
+                    filter: this.applyListFilter,
+                    clear: this.removeListFilter,
+                    scope: this
+                }
             });
         }
 
@@ -267,5 +272,17 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         } else {
             this.fireEvent('actionclick', record);
         }
+    },
+
+    applyListFilter: function (filterValue) {
+        if (filterValue) {
+            this.store.addSearchFilter(filterValue);
+        } else {
+            this.removeListFilter();
+        }
+    },
+
+    removeListFilter: function () {
+        this.store.removeSearchFilter();
     }
 });

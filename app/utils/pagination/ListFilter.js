@@ -21,6 +21,7 @@ Ext.define('NavixyPanel.utils.pagination.ListFilter', {
         this.callParent(arguments);
         this.onClear();
     },
+
     setView: function (view, searchFields) {
         this.callParent(arguments);
         this.searchFields = this.getModelSearchFields() || searchFields ;

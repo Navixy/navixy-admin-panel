@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.view.codes.List', {
     alias: 'widget.codeslist',
     store: 'ActivationCodes',
 
-    viewPageSize: 50,
+    viewPageSize: 20,
 
     disableSelection: false,
 
@@ -83,7 +83,7 @@ Ext.define('NavixyPanel.view.codes.List', {
     getTopBar: function () {
 
         var me = this,
-            barConfig ={
+            barConfig = {
                 padding: '0 0 10 0',
                 border: 0,
                 ui: 'light',
@@ -155,7 +155,12 @@ Ext.define('NavixyPanel.view.codes.List', {
 //                        }
                         xtype: 'listfilter',
                         margin: '0 -2 0 0',
-                        width: 200
+                        width: 200,
+                        listeners: {
+                            filter: this.applyListFilter,
+                            clear: this.removeListFilter,
+                            scope: this
+                        }
                     }
                 ]
             };

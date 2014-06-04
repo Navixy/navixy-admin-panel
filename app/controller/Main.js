@@ -269,6 +269,18 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.override(Ext.data.Model, {
+
+//            searchIndex: null,
+//            fieldForSearch: null,
+//
+//            buildSearchIndex: function () {
+//                this.searchIndex = this.fieldForSearch && this.getFieldsString(this.fieldForSearch, true);
+//            },
+
+            searchTest: function (searchReq) {
+                return this.searchIndex && this.searchIndex.indexOf(searchReq.toLowerCase()) >= 0;
+            },
+
             getFieldsString: function (fields, toLover) {
                 var result = [];
                 if (fields && fields.length) {
@@ -277,7 +289,16 @@ Ext.define('NavixyPanel.controller.Main', {
                     }, this);
                 }
                 return toLover ? result.join(' ').toLowerCase() : result.join(' ');
-            }
+            },
+
+//            init: function () {
+//                this.buildSearchIndex();
+//            },
+//
+//            set: function () {
+//                this.callParent(arguments);
+//                this.buildSearchIndex();
+//            }
         });
 
 
