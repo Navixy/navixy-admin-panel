@@ -73,25 +73,30 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'tracker' : {
                 fn: this.handleTrackerCard,
                 access: 'read',
+                getRecord: true,
                 waitStores: ['Users', 'Tariffs']
             },
             'tracker > edit' : {
                 fn: this.handleTrackerEdit,
                 access: 'update',
+                getRecord: true,
                 waitStores: ['Users']
             },
             'tracker > clone' : {
                 fn: this.handleTrackerClone,
                 access: 'create',
+                getRecord: true,
                 waitStores: ['Users']
             },
             'tracker > console' : {
                 fn: this.handleTrackerConsole,
+                getRecord: true,
                 access: 'update'
             },
             'tracker > tariff' : {
                 fn: this.handleTrackerTariffEdit,
                 access: 'update',
+                getRecord: true,
                 waitStores: ['Tariffs']
             }
         });
@@ -102,10 +107,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         };
     },
 
-    handleTrackerCard: function (value) {
-        var trackerId = parseInt(value),
-            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
-
+    handleTrackerCard: function (trackerRecord) {
         this.fireContent({
             xtype: 'trackercard',
             record: trackerRecord
@@ -120,55 +122,32 @@ Ext.define('NavixyPanel.controller.Trackers', {
         });
     },
 
-    handleTrackerEdit: function (value) {
-        var trackerId = parseInt(value),
-            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
-
-        if (trackerRecord) {
-
-            this.fireContent({
-                xtype: 'trackeredit',
-                record: trackerRecord
-            });
-        }
+    handleTrackerEdit: function (trackerRecord) {
+        this.fireContent({
+            xtype: 'trackeredit',
+            record: trackerRecord
+        });
     },
 
-    handleTrackerTariffEdit: function (value) {
-        var trackerId = parseInt(value),
-            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
-
-        if (trackerRecord) {
-
-            this.fireContent({
-                xtype: 'trackertariff',
-                record: trackerRecord
-            });
-        }
+    handleTrackerTariffEdit: function (trackerRecord) {
+        this.fireContent({
+            xtype: 'trackertariff',
+            record: trackerRecord
+        });
     },
 
-    handleTrackerClone: function (value) {
-        var trackerId = parseInt(value),
-            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
-
-        if (trackerRecord) {
-
-            this.fireContent({
-                xtype: 'trackerclone',
-                record: trackerRecord
-            });
-        }
+    handleTrackerClone: function (trackerRecord) {
+        this.fireContent({
+            xtype: 'trackerclone',
+            record: trackerRecord
+        });
     },
 
-    handleTrackerConsole: function (value) {
-        var trackerId = parseInt(value),
-            trackerRecord = Ext.isNumber(trackerId) && Ext.getStore('Trackers').getById(trackerId);
-
-        if (trackerRecord) {
-            this.fireContent({
-                xtype: 'trackerconsole',
-                record: trackerRecord
-            });
-        }
+    handleTrackerConsole: function (trackerRecord) {
+        this.fireContent({
+            xtype: 'trackerconsole',
+            record: trackerRecord
+        });
     },
 
 

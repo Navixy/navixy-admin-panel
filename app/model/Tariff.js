@@ -27,7 +27,9 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'outgoing_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'phone_call', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'service_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}}
+        {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
+
+        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
     ],
 
     fieldForSearch: ['id', 'name'],

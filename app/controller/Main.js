@@ -170,58 +170,6 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.override(Ext, {
-
-            /**
-             * Get access to module, or permission of module
-             * @param sectionId {string} - Module name/id
-             * @param [right] {string} - module permission for check
-             * @returns {boolean}
-             */
-            checkPermission: function (sectionId, right) {
-                var delimiter = ',',
-                    result = false;
-
-                if (Ext.isString(right) && right.indexOf(delimiter) > -1) {
-
-                    var rights = right.split(delimiter);
-
-                    Ext.iterate(rights, function (cRight) {
-                        result = Ext.checkPermission(sectionId, cRight) || result;
-                    }, this);
-
-                } else {
-
-                    var store = Ext.getStore('Permissions'),
-                        name = store.getAlias(sectionId) || sectionId,
-                        names = name.split(','),
-                        section = null;
-
-                    if (names.length > 1) {
-                        Ext.iterate(names, function (name) {
-                            section = store && store.getById(name);
-                            result = Ext.isString(right)
-                                ? section
-                                    ? !!section.get(right)
-                                    : false
-                                : !!section;
-                            if (result) {
-                                return false;
-                            }
-                        }, this);
-
-                    } else {
-                        section = store && store.getById(name);
-                        result = Ext.isString(right)
-                            ? section
-                                ? !!section.get(right)
-                                : false
-                            : !!section;
-                    }
-                }
-
-                return result;
-            },
-
             getFirst: function (query, returnAll) {
                 var result = Ext.ComponentQuery.query(query);
 
@@ -268,48 +216,11 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
-        Ext.override(Ext.data.Model, {
-
-//            searchIndex: null,
-//            fieldForSearch: null,
-//
-//            buildSearchIndex: function () {
-//                this.searchIndex = this.fieldForSearch && this.getFieldsString(this.fieldForSearch, true);
-//            },
-
-            searchTest: function (searchReq) {
-                return this.searchIndex && this.searchIndex.indexOf(searchReq.toLowerCase()) >= 0;
-            },
-
-            getFieldsString: function (fields, toLover) {
-                var result = [];
-                if (fields && fields.length) {
-                    Ext.iterate(fields, function (fieldName) {
-                        result.push(this.get(fieldName));
-                    }, this);
-                }
-                return toLover ? result.join(' ').toLowerCase() : result.join(' ');
-            },
-
-//            init: function () {
-//                this.buildSearchIndex();
-//            },
-//
-//            set: function () {
-//                this.callParent(arguments);
-//                this.buildSearchIndex();
-//            }
-        });
-
 
         Ext.override(Ext.util.Format, {
 
             daysEncode: function (value) {
                 return Ext.util.Format.units(value, 'days', true);
-            },
-
-            devicesEncode: function (value) {
-                return Ext.util.Format.units(value, 'devices', true);
             },
 
             units: function (value, unit, withValue) {
@@ -380,6 +291,134 @@ Ext.define('NavixyPanel.controller.Main', {
 
     // Special Overrides
     initPanelOverrides: function () {
+
+        Ext.override(Ext, {
+
+            /**
+             * Get access to module, or permission of module
+             * @param sectionId {string} - Module name/id
+             * @param [right] {string} - module permission for check
+             * @returns {boolean}
+             */
+            checkPermission: function (sectionId, right) {
+                var delimiter = ',',
+                    result = false;
+
+                if (Ext.isString(right) && right.indexOf(delimiter) > -1) {
+
+                    var rights = right.split(delimiter);
+
+                    Ext.iterate(rights, function (cRight) {
+                        result = Ext.checkPermission(sectionId, cRight) || result;
+                    }, this);
+
+                } else {
+
+                    var store = Ext.getStore('Permissions'),
+                        name = store.getAlias(sectionId) || sectionId,
+                        names = name.split(','),
+                        section = null;
+
+                    if (names.length > 1) {
+                        Ext.iterate(names, function (name) {
+                            section = store && store.getById(name);
+                            result = Ext.isString(right)
+                                ? section
+                                ? !!section.get(right)
+                                : false
+                                : !!section;
+                            if (result) {
+                                return false;
+                            }
+                        }, this);
+
+                    } else {
+                        section = store && store.getById(name);
+                        result = Ext.isString(right)
+                            ? section
+                            ? !!section.get(right)
+                            : false
+                            : !!section;
+                    }
+                }
+
+                return result;
+            },
+
+            waitStoresReady: function (stores, callback, scope) {
+                var loadNeeded = 0,
+                    noLoad = 0;
+
+                Ext.getBody().mask(_l.loading);
+                Ext.iterate(stores, function (storeName) {
+                    var store = Ext.getStore(storeName);
+
+                    if (!store.isLoaded()) {
+                        loadNeeded++;
+
+                        store.on('apisuccess', function () {
+                            if (--loadNeeded === 0){
+                                callback.call(scope);
+                                Ext.getBody().unmask();
+                            }
+
+                        }, this, {single: true});
+
+                        store.APILoad();
+                    } else {
+                        noLoad++;
+                    }
+                }, scope);
+
+                if (noLoad === stores.length) {
+                    Ext.getBody().unmask();
+                    callback.call(scope);
+                }
+            },
+
+            waitStoresSearch: function (searchReq, stores, callback, scope) {
+                var loadNeeded = 0;
+
+                Ext.getBody().mask(_l.loading);
+                Ext.iterate(stores, function (storeName) {
+                    var store = Ext.getStore(storeName);
+
+                    loadNeeded++;
+
+                    store.on('apisearchsuccess', function () {
+                        if (--loadNeeded === 0){
+                            callback.call(scope);
+                            Ext.getBody().unmask();
+                        }
+
+                    }, this, {single: true});
+
+                    store.APISearch(searchReq);
+                }, scope);
+            }
+        });
+
+        Ext.override(Ext.data.Model, {
+
+            buildSearchIndex: function () {
+                return this.fieldForSearch && this.getFieldsString(this.fieldForSearch, true);
+            },
+
+            searchTest: function (searchReq) {
+                return this.get('searchIndex') && this.get('searchIndex').indexOf(searchReq.toLowerCase()) >= 0;
+            },
+
+            getFieldsString: function (fields, toLover) {
+                var result = [];
+                if (fields && fields.length) {
+                    Ext.iterate(fields, function (fieldName) {
+                        result.push(this.get(fieldName));
+                    }, this);
+                }
+                return toLover ? result.join(' ').toLowerCase() : result.join(' ');
+            }
+        });
+
         Ext.override(Ext.util.Format, {
 
             //TODO: Cameras and sockets
@@ -407,6 +446,10 @@ Ext.define('NavixyPanel.controller.Main', {
                     : '';
             },
 
+            devicesEncode: function (value) {
+                return Ext.util.Format.units(value, 'devices', true);
+            },
+
             deviceEncode: function (type) {
                 return '<span class="' + type + ' device"><span></span>' + _l.devices[type] + '</span>';
             },
@@ -425,39 +468,6 @@ Ext.define('NavixyPanel.controller.Main', {
                     : value > 0
                         ? value
                         : '<span class="red nopad">' + value + '</span>'
-            }
-        });
-        Ext.override(Ext, {
-
-            waitStoresReady: function (stores, callback, scope) {
-                var loadNeeded = 0,
-                    noLoad = false;
-
-                Ext.getBody().mask(_l.loading);
-                Ext.iterate(stores, function (storeName) {
-                    var store = Ext.getStore(storeName);
-
-                    if (!store.isLoaded()) {
-                        loadNeeded++;
-
-                        store.on('apisuccess', function () {
-                            if (--loadNeeded === 0){
-                                callback.call(scope);
-                                Ext.getBody().unmask();
-                            }
-
-                        }, this, {single: true});
-
-                        store.APILoad();
-                    } else {
-                        noLoad = true;
-                    }
-                }, scope);
-
-                if (noLoad) {
-                    Ext.getBody().unmask();
-                    callback.call(scope);
-                }
             }
         });
     },

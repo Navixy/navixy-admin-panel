@@ -76,18 +76,22 @@ Ext.define('NavixyPanel.controller.Users', {
             'user' : {
                 fn: this.handleUserCard,
                 access: 'read',
+                getRecord: true,
                 waitStores: ['Trackers']
             },
             'user > transactions' : {
                 fn: this.handleUserTransactions,
+                getRecord: true,
                 access: 'read'
             },
             'user > edit' : {
                 fn: this.handleUserEdit,
+                getRecord: true,
                 access: 'update'
             },
             'user > create' : {
                 fn: this.handleUserCreate,
+                getRecord: true,
                 access: 'create'
             },
             'user > transaction_add' : {
@@ -110,17 +114,11 @@ Ext.define('NavixyPanel.controller.Users', {
         });
     },
 
-    handleUserEdit: function (value) {
-        var userId = parseInt(value),
-            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
-
-        if (userRecord) {
-
-            this.fireContent({
-                xtype: 'useredit',
-                record: userRecord
-            });
-        }
+    handleUserEdit: function (userRecord) {
+        this.fireContent({
+            xtype: 'useredit',
+            record: userRecord
+        });
     },
 
     handleUserTransactions: function (value) {
@@ -149,10 +147,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     },
 
-    handleUserCard: function (value) {
-        var userId = parseInt(value),
-            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
-
+    handleUserCard: function (userRecord) {
         this.fireContent({
             xtype: 'usercard',
             record: userRecord

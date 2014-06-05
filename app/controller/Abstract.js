@@ -47,6 +47,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
     },
 
     handle: function () {
+        // Wait application permissions load
         this.waitConnectionReady(this.bindHandlers, arguments);
     },
 
@@ -54,18 +55,20 @@ Ext.define('NavixyPanel.controller.Abstract', {
         var controls = {};
 
         Ext.iterate(handlers, function (name, eventConfig) {
-            var eventName = this.getHandlerEventConfig(name),
-                eventAccess = Ext.checkPermission(this.getModuleName(), eventConfig.access || false),
+            var eventName = this.getHandlerEventConfig(name), // Get event navigation key
+                eventAccess = Ext.checkPermission(this.getModuleName(), eventConfig.access || false), // Check user permissions for handle access
                 caller, handleCaller, callConfig;
 
             if (eventName && name !== 'scope') {
 
                 callConfig = eventConfig;
 
+                // Set callback to access denied error, if permission not granted
                 handleCaller = eventAccess
                     ? eventConfig.fn || eventConfig
                     : this.handleAccessDenied;
 
+                // Make config object for handle caller
                 caller = Ext.bind(this.callHandle, handlers.scope || this, {
                     fn: handleCaller,
                     controllerParent: this,
@@ -78,10 +81,12 @@ Ext.define('NavixyPanel.controller.Abstract', {
                     callConfig = caller;
                 }
 
+                // Add config to controls events set
                 controls[eventName] = callConfig;//Ext.bind(this.callHandle, this, eventConfig, true);
             }
         }, this);
 
+        // Register module on application global events
         this.application.on(controls);
     },
 
@@ -89,15 +94,31 @@ Ext.define('NavixyPanel.controller.Abstract', {
         var controller = callerConfig.controllerParent,
             eventName = callerConfig.eventName,
             waitStores = Ext.Array.merge(controller.waitStores || [], origin.waitStores || []),
+            mainStore,  record,
             handleCall;
 
         if (args && !Ext.isArray(args)) {
             args = [args];
+
+            // Check record in store search result
+            mainStore = origin.getRecord && waitStores && Ext.getStore(waitStores[0]);
+            if (mainStore && mainStore.onSearch && !origin.noSearch) {
+                record = mainStore.findRecord('id', args[0]);
+                if (record) {
+                    waitStores.shift();
+                }
+            }
         }
 
         controller.callHandleFound(eventName);
         handleCall = function () {
             controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
+
+            // Get record for result
+            if (origin.getRecord) {
+                args[0] = record || Ext.getStore(waitStores[0]).findRecord('id', args[0]);
+            }
+
             callerConfig.fn.apply(this, args);
         };
 

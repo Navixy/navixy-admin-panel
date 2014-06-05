@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
             this.getSearchResultsConfig()
         ];
 
-        this.title = _l.searchTitle
+        this.title = _l.searchTitle;
 
         this.callParent(arguments);
     },
@@ -141,7 +141,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
     searchAction: function () {
         var searchReq = this.getSearchValue(),
             widgetConfig = {
-                search: searchReq,
+                storeSearch: true,
                 viewPageSize: 5,
                 flex: 1,
                 margin: '30 0 0 0',
@@ -151,8 +151,8 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                 noTBar: true
             };
 
-        Ext.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function () {
-            if (searchReq.length) {
+        if (searchReq.length) {
+            Ext.waitStoresSearch(searchReq, ['Users', 'Trackers', 'Tariffs'], function () {
                 this.clearResults();
                 Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
                     if (Ext.checkPermission(moduleName, 'read')) {
@@ -167,8 +167,8 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                         );
                     }
                 }, this);
-            }
-        }, this);
+            }, this);
+        }
     },
 
     clearResults: function () {

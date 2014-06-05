@@ -9,7 +9,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     alias: 'widget.abstractlist',
     requires: [
         'NavixyPanel.utils.pagination.CustomPaging',
-//        'NavixyPanel.utils.pagination.ListFilter',
         'NavixyPanel.view.widgets.PageSize',
         'NavixyPanel.view.widgets.ListFilter'
     ],
@@ -45,6 +44,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     filter: null,
     search: null,
+    storeSearch: false,
 
     viewPageSize: null,
 
@@ -87,19 +87,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.callParent(arguments);
     },
 
-//    afterRender: function () {
-//        this.applyViewToSearcher();
-//        this.callParent(arguments);
-//    },
-//
-//    applyViewToSearcher: function () {
-//        var filterer = this.down('listfilter');
-//
-//        if (filterer) {
-//            filterer.setView(this.getView());
-//        }
-//    },
-
     initStore: function () {
 
         var storeName = Ext.isString(this.store)
@@ -112,7 +99,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     },
 
     getStoreConfig: function () {
-        var config = {};
+        var config = {
+                onlySearch: this.storeSearch
+            };
 
         if (this.filter || this.search) {
             var filters = config.parentFilters = [];
@@ -248,7 +237,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     },
 
     applySearchView: function () {
-        if (this.search) {
+        if (this.search || this.storeSearch) {
             var resultsCnt = this.store.tCount(),
                 moduleTitle = Ext.String.format('<span class="search-title">{0}</span>', this.texts.searchTitle);
 

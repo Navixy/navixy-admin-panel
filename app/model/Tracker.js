@@ -17,10 +17,7 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'clone', type: 'boolean'},
         {name: 'deleted', type: 'boolean'},
         {name: 'source', type: 'auto'},
-        {name: 'creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value) {
-                return Ext.Date.formatISO(value, "Y-m-d");
-            }
-        },
+        {name: 'creation_date', type: 'string'},
 
         {name: 'source_id', type: 'int', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'device_id', type: 'int', convert: function (value, record) {return record.sourceConverter(this, value);}},
@@ -29,7 +26,9 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'phone', type: 'string', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'blocked', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'connection_status', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
-        {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}}
+        {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}},
+
+        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
     ],
 
     fieldForSearch: ['id', 'label', 'source_id', 'device_id', 'model', 'phone', 'connection_status'],

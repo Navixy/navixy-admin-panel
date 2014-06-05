@@ -39,10 +39,7 @@ Ext.define('NavixyPanel.model.ActivationCode', {
         },
         {
             name: 'activation_date',
-            type: 'date',
-            convert: function (value, record) {
-                return Ext.Date.formatISO(record.get('timestamp'), "Y-m-d H:i:s");
-            }
+            type: 'string'
         },
         {
             name: 'device_id',
@@ -52,7 +49,9 @@ Ext.define('NavixyPanel.model.ActivationCode', {
             name: 'edited',
             type: 'boolean',
             defaultValue: false
-        }
+        },
+
+        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
     ],
 
     fieldForSearch: ['code', 'tariff_id', 'activation_date', 'device_id']

@@ -32,7 +32,9 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_index', type: 'string'},
         {name: 'registered_region', type: 'string'},
         {name: 'registered_city', type: 'string'},
-        {name: 'registered_street_address', type: 'string'}
+        {name: 'registered_street_address', type: 'string'},
+
+        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
     ],
 
     fieldForSearch: ['id', 'login', 'last_name', 'first_name', 'middle_name', 'phone', 'post_city'],

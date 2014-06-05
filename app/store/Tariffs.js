@@ -20,8 +20,7 @@ Ext.define('NavixyPanel.store.Tariffs', {
         }
     ],
 
-    requireAPISuccess: function (results, callName, done) {
-
+    requireAPISuccess: function (results, callName, done, callback, scope) {
         var pricesStore = Ext.getStore('TariffPrices');
 
         if (pricesStore) {
@@ -31,6 +30,25 @@ Ext.define('NavixyPanel.store.Tariffs', {
         this.loadData(results.list);
         if (this.loaded = done) {
             this.fireEvent('apisuccess', this);
+            if (Ext.isFunction(callback)) {
+                callback.call(scope);
+            }
+        }
+    },
+
+    requireAPISearchSuccess: function (results, callName, done, callback, scope) {
+        var pricesStore = Ext.getStore('TariffPrices');
+
+        if (pricesStore) {
+            pricesStore.loadData([results.wholesale_service_prices]);
+        }
+
+        var list = Ext.isArray(results) ? results : [results];
+
+        this.searchResult = results.list;
+        this.loadData(results.list);
+        if (this.onSearch = done) {
+            this.fireEvent('apisearchsuccess', this);
             if (Ext.isFunction(callback)) {
                 callback.call(scope);
             }

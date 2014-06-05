@@ -42,14 +42,22 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getUsersList: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+//    getUsersList: function (callback, failure, scope) {
+//        this.sendRequest({
+//            success: callback,
+//            failure: failure,
+//            action: 'list',
+//            handler: 'user',
+//            root: 'list',
+//            scope: scope
+//        });
+//    },
+
+    getUsersList: function (config) {
+        this.requestWithOptions(config, {
             action: 'list',
             handler: 'user',
-            root: 'list',
-            scope: scope
+            root: 'list'
         });
     },
 
@@ -106,14 +114,11 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getTrackersList: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+    getTrackersList: function (config) {
+        this.requestWithOptions(config, {
             action: 'list',
             handler: 'tracker',
-            root: 'list',
-            scope: scope
+            root: 'list'
         });
     },
 
@@ -172,13 +177,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getTariffsList: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+    getTariffsList: function (config) {
+        this.requestWithOptions(config, {
             action: 'list',
-            handler: 'tariff',
-            scope: scope
+            handler: 'tariff'
         });
     },
 
@@ -216,14 +218,11 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getCodesList: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+    getCodesList: function (config) {
+        this.requestWithOptions(config, {
             action: 'list',
             handler: 'dealer/activation_code',
-            root: 'list',
-            scope: scope
+            root: 'list'
         });
     },
 
@@ -235,25 +234,19 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getSettingsService: function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+    getSettingsService: function (config) {
+        this.requestWithOptions(config, {
             action: 'read',
             handler: 'dealer/settings/service',
-            root: 'value',
-            scope: scope
+            root: 'value'
         });
     },
 
-    getSettingsNotification : function (callback, failure, scope) {
-        this.sendRequest({
-            success: callback,
-            failure: failure,
+    getSettingsNotification : function (config) {
+        this.requestWithOptions(config, {
             action: 'read',
             handler: 'dealer/settings/notification',
-            root: 'value',
-            scope: scope
+            root: 'value'
         });
     },
 

@@ -34,7 +34,8 @@ Ext.define('NavixyPanel.controller.Codes', {
         this.control({
             'codeslist' : {
                 editcodes: this.handleEdit,
-                reload: this.doReload
+                reload: this.doReload,
+                waitStores: ['Tariffs']
             },
             'codesedit' : {
                 formsubmit: this.onEditSubmit,

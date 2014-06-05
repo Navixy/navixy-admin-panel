@@ -17,6 +17,7 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
 
     filterCount: null,
     searchFilter: null,
+    onlySearch: false,
 
     listeners: {
         refresh: {
@@ -43,13 +44,16 @@ Ext.define('NavixyPanel.utils.pagination.Store', {
 
     cloneParent: function () {
         if (this.parentStore) {
-            var parentData = this.parentStore.getFilteredData(this.parentFilters);
-            this.loadData(parentData);
+            this.loadData(
+                this.onlySearch
+                    ? this.parentStore.getSearchData()
+                    : this.parentStore.getFilteredData(this.parentFilters)
+            );
         }
     },
 
     applyParentListeners: function () {
-        if (this.parentStore) {
+        if (this.parentStore && !this.onlySearch) {
             this.removeParentListeners();
             this.parentListeners = this.parentStore.on({
                 add: this.onParentRecordAdd,
