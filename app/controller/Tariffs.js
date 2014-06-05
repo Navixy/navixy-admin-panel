@@ -72,10 +72,12 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff' : {
                 fn: this.handleTariffCard,
+                getRecord: true,
                 access: 'read'
             },
             'tariff > edit' : {
                 fn: this.handleTariffEdit,
+                getRecord: true,
                 access: 'update'
             },
             'tariff > create' : {
@@ -84,6 +86,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff > default' : {
                 fn: this.handleTariffDefault,
+                getRecord: true,
                 access: 'update'
             }
         });
@@ -102,27 +105,18 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         });
     },
 
-    handleTariffCard: function (value) {
-        var tariffId = parseInt(value),
-            tariffRecord = Ext.isNumber(tariffId) && Ext.getStore('Tariffs').getById(tariffId);
-
+    handleTariffCard: function (tariffRecord) {
         this.fireContent({
             xtype: 'tariffcard',
             record: tariffRecord
         });
     },
 
-    handleTariffEdit: function (value) {
-        var tariffId = parseInt(value),
-            tariffRecord = Ext.isNumber(tariffId) && Ext.getStore('Tariffs').getById(tariffId);
-
-        if (tariffRecord) {
-
-            this.fireContent({
-                xtype: 'tariffedit',
-                record: tariffRecord
-            });
-        }
+    handleTariffEdit: function (tariffRecord) {
+        this.fireContent({
+            xtype: 'tariffedit',
+            record: tariffRecord
+        });
     },
 
     handleTariffCreate: function () {
@@ -131,10 +125,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         });
     },
 
-    handleTariffDefault: function (value) {
-        var tariffId = parseInt(value),
-            tariffRecord = Ext.isNumber(tariffId) && Ext.getStore('Tariffs').getById(tariffId);
-
+    handleTariffDefault: function (tariffRecord) {
         this.fireContent({
             xtype: 'defaulttariff',
             record: tariffRecord

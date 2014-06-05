@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.store.Settings', {
     apiCall: 'getSettingsService,getSettingsNotification',
 
     requireAPISuccess: function (results, callName, done, callback, scope) {
+        console.log(results);
         var settingsRecord = this.first();
 
         if (settingsRecord) {
