@@ -22059,6 +22059,14 @@ a, .link {
 .x-datepicker-cell .x-hide-clip {
   display: none; }
 
+.x-datepicker .x-datepicker-inner {
+  border-width: 0 1px;
+  border-color: #818491;
+  border-style: solid; }
+.x-datepicker .x-datepicker-inner thead tr:first-child th:last-child,
+.x-datepicker .x-datepicker-inner thead tr:first-child th:first-child {
+  width: 31px; }
+
 .x-form-trigger-input-cell .field-postfix {
   color: #333333; }
 
@@ -22237,11 +22245,12 @@ a, .link {
   background-color: #ebebeb; }
   .x-tab-bar-body-light .x-tab-light {
     padding: 5px 10px;
-    color: #4b4b4b; }
+    color: #4b4b4b;
+    background-color: #d6d6d6; }
   .x-tab-bar-body-light .x-tab-light-active {
-    background-color: #d1d1d1; }
+    background-color: #cccccc; }
   .x-tab-bar-body-light .x-tab-light-over {
-    background-color: #dedede; }
+    background-color: #e1e1e1; }
 
 .x-btn-default-toolbar-small-icon-text-left {
   padding-left: 2px; }

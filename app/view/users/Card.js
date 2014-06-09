@@ -16,15 +16,6 @@ Ext.define('NavixyPanel.view.users.Card', {
                             scope: me
                         }
                     }
-                },
-                {
-                    html: '<a>' + _l.users.card.links.transactions + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.fireTransactionsShow,
-                            scope: me
-                        }
-                    }
                 }
             ];
 

@@ -17,3 +17,16 @@ a, .link {
 .x-datepicker-cell .x-hide-clip {
     display: none;
 }
+
+.x-datepicker {
+    .x-datepicker-inner {
+        border-width: 0 1px;
+        border-color: #818491;
+        border-style: solid;
+    }
+
+    .x-datepicker-inner thead tr:first-child th:last-child,
+    .x-datepicker-inner thead tr:first-child th:first-child {
+        width: 31px
+    }
+}

@@ -37,8 +37,9 @@ $light-panel-header-color: darken($baseBackgroundColor, 2%);
 $light-panel-body-bg-color: lighten($baseBackgroundColor, 5%);
 
 $light-panel-tab-padding: 5px 10px;
-$light-panel-tab-active-bg-color: darken($light-panel-header-bg-color, 10%);
-$light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 5%);
+$light-panel-tab-bg-color: darken($light-panel-header-bg-color, 8%);
+$light-panel-tab-active-bg-color: darken($light-panel-header-bg-color, 12%);
+$light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 4%);
 
 .x-panel-light {
     background-color: $light-panel-bg-color;
@@ -93,6 +94,7 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 5%);
 
         padding: $light-panel-tab-padding;
         color: $light-panel-text-color;
+        background-color: $light-panel-tab-bg-color;
     }
 
     .x-tab-light-active {
