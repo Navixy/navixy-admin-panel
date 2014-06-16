@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     stores: ['Trackers'],
     models: ['Tracker'],
-    waitStores: ['Trackers'],
+    mainStore: 'Trackers',
 
     init: function () {
         this.callParent(arguments);
@@ -73,31 +73,31 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'tracker' : {
                 fn: this.handleTrackerCard,
                 access: 'read',
-                getRecord: true,
-                waitStores: ['Users', 'Tariffs']
+                loadRecord: true
             },
             'tracker > edit' : {
                 fn: this.handleTrackerEdit,
                 access: 'update',
-                getRecord: true,
-                waitStores: ['Users']
+                loadRecord: true,
+                loadAssociations: ['Users']
             },
             'tracker > clone' : {
                 fn: this.handleTrackerClone,
                 access: 'create',
-                getRecord: true,
-                waitStores: ['Users']
+                loadRecord: true,
+                loadAssociations: ['Users']
             },
             'tracker > console' : {
                 fn: this.handleTrackerConsole,
-                getRecord: true,
-                access: 'update'
+                loadRecord: true,
+                access: 'update',
+                loadAssociations: false
             },
             'tracker > tariff' : {
                 fn: this.handleTrackerTariffEdit,
                 access: 'update',
-                getRecord: true,
-                waitStores: ['Tariffs']
+                loadRecord: true,
+                loadAssociations: ['Tariffs']
             }
         });
 

@@ -8,8 +8,6 @@ Ext.define('NavixyPanel.view.tariffs.SelectWindow', {
     extend: 'NavixyPanel.view.components.AbstractWindowSelect',
     requires: ['NavixyPanel.view.tariffs.SelectList'],
     alias: 'widget.tariffselectwindow',
-    height: '70%',
-    width: '50%',
 
     deviceType: null,
 

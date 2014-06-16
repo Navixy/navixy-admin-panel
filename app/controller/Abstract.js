@@ -93,37 +93,33 @@ Ext.define('NavixyPanel.controller.Abstract', {
     callHandle: function (args, origin, callerConfig) {
         var controller = callerConfig.controllerParent,
             eventName = callerConfig.eventName,
-            waitStores = Ext.Array.merge(controller.waitStores || [], origin.waitStores || []),
-            mainStore,  record,
+            mainStore,  recordId,
             handleCall;
 
         if (args && !Ext.isArray(args)) {
             args = [args];
 
-            // Check record in store search result
-            mainStore = origin.getRecord && waitStores && Ext.getStore(waitStores[0]);
-            if (mainStore && mainStore.onSearch && !origin.noSearch) {
-                record = mainStore.findRecord('id', args[0]);
-                if (record) {
-                    waitStores.shift();
-                }
-            }
+            recordId = origin.loadRecord && args[0];
         }
 
-        controller.callHandleFound(eventName);
         handleCall = function () {
-            controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
 
+            controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
             // Get record for result
-            if (origin.getRecord) {
-                args[0] = record || Ext.getStore(waitStores[0]).findRecord('id', args[0]);
+            if (origin.loadRecord && arguments[0].isModel) {
+                if (!Ext.isArray(args)) {
+                    args = [];
+                }
+                args[0] = arguments[0];
             }
 
             callerConfig.fn.apply(this, args);
         };
 
-        if (waitStores.length) {
-            Ext.waitStoresReady(waitStores, handleCall, this);
+        controller.callHandleFound(eventName);
+
+        if (origin.loadRecord && controller.mainStore) {
+            Ext.waitRecordReady(recordId, controller.mainStore, handleCall, this, origin.loadAssociations);
         } else {
             handleCall.call(this);
         }

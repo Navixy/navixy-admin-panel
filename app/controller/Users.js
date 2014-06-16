@@ -41,7 +41,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     stores: ['Users'],
     models: ['User', 'Transaction'],
-    waitStores: ['Users'],
+    mainStore: 'Users',
 
     init: function () {
         this.callParent(arguments);
@@ -76,26 +76,25 @@ Ext.define('NavixyPanel.controller.Users', {
             'user' : {
                 fn: this.handleUserCard,
                 access: 'read',
-                getRecord: true,
-                waitStores: ['Trackers']
+                loadRecord: true
             },
             'user > transactions' : {
                 fn: this.handleUserTransactions,
-                getRecord: true,
+                loadRecord: true,
                 access: 'read'
             },
             'user > edit' : {
                 fn: this.handleUserEdit,
-                getRecord: true,
+                loadRecord: true,
                 access: 'update'
             },
             'user > create' : {
                 fn: this.handleUserCreate,
-                getRecord: true,
                 access: 'create'
             },
             'user > transaction_add' : {
                 fn: this.handleUserTransactionAdd,
+                loadRecord: true,
                 access: 'update'
             }
         });
@@ -121,30 +120,18 @@ Ext.define('NavixyPanel.controller.Users', {
         });
     },
 
-    handleUserTransactions: function (value) {
-        var userId = parseInt(value),
-            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
-
-        if (userRecord) {
-
-            this.fireContent({
-                xtype: 'usertransactions',
-                record: userRecord
-            });
-        }
+    handleUserTransactions: function (userRecord) {
+        this.fireContent({
+            xtype: 'usertransactions',
+            record: userRecord
+        });
     },
 
-    handleUserTransactionAdd: function (value) {
-        var userId = parseInt(value),
-            userRecord = Ext.isNumber(userId) && Ext.getStore('Users').getById(userId);
-
-        if (userRecord) {
-
-            this.fireContent({
-                xtype: 'usertransactionadd',
-                record: userRecord
-            });
-        }
+    handleUserTransactionAdd: function (userRecord) {
+        this.fireContent({
+            xtype: 'usertransactionadd',
+            record: userRecord
+        });
     },
 
     handleUserCard: function (userRecord) {

@@ -1,11 +1,11 @@
 /**
  * @class NavixyPanel.model.Tracker
- * @extends Ext.data.Model
+ * @extends NavixyPanel.model.Abstract
  * Description
  */
 
 Ext.define('NavixyPanel.model.Tracker', {
-    extend: 'Ext.data.Model',
+    extend: 'NavixyPanel.model.Abstract',
     fields: [
         {name: 'id', type: 'int'},
         {name: 'group_id', type: 'int'},
@@ -26,12 +26,8 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'phone', type: 'string', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'blocked', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'connection_status', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
-        {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}},
-
-        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
+        {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}}
     ],
-
-    fieldForSearch: ['id', 'label', 'source_id', 'device_id', 'model', 'phone', 'connection_status'],
 
     sourceMap: {
         source_id: 'id',
@@ -42,6 +38,11 @@ Ext.define('NavixyPanel.model.Tracker', {
         blocked: 'blocked',
         connection_status: 'connection_status',
         source_creation_date: 'creation_date'
+    },
+
+    associationsMap: {
+        'user_id': 'Users',
+        'tariff_id': 'Tariffs'
     },
 
     sourceConverter: function (field, value) {

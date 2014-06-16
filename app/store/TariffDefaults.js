@@ -7,7 +7,10 @@
 Ext.define('NavixyPanel.store.TariffDefaults', {
     extend: 'NavixyPanel.store.Abstract',
     storeId: 'TariffDefaults',
-    apiCall: 'getTariffsDefaults',
+    api: {
+        read: 'getTariffsDefaults'
+    },
+    autoLoad: true,
     fields: [
         {
             name: 'tariff_id',
@@ -27,24 +30,23 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
         }
     ],
 
-    requireAPISuccess: function (results, callName, done, callback, scope) {
+    getProxyEncoder: function () {
+        var me = this;
 
-        var data = Object.getOwnPropertyNames(results),
-            list = [];
+        return function(results) {
 
-        Ext.iterate(data, function (name) {
-            if (name !== 'success' && results[name]) {
-                list.push(Ext.apply(results[name], {'id': name}));
-            }
-        });
+            var data = Object.getOwnPropertyNames(results),
+                list = [];
 
-        this.loadData(list);
-        if (this.loaded = done) {
-            this.fireEvent('apisuccess', this);
-            if (Ext.isFunction(callback)) {
-                callback.call(scope);
-            }
-        }
+            Ext.iterate(data, function (name) {
+                if (name !== 'success' && results[name]) {
+                    list.push(Ext.apply(results[name], {'id': name}));
+                }
+            });
+
+            results.list = list;
+            return results;
+        };
     },
 
     getDeviceDefaults: function (type) {

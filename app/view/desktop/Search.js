@@ -141,6 +141,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
     searchAction: function () {
         var searchReq = this.getSearchValue(),
             widgetConfig = {
+                collapsed: true,
                 storeSearch: true,
                 viewPageSize: 5,
                 flex: 1,
@@ -148,25 +149,27 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                 title: 'test',
                 ui: 'light',
                 showEmpty: false,
-                noTBar: true
+                noTBar: true,
+                filter: {
+                    '_all': searchReq
+                }
             };
 
         if (searchReq.length) {
-            Ext.waitStoresSearch(searchReq, ['Users', 'Trackers', 'Tariffs'], function () {
-                this.clearResults();
-                Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
-                    if (Ext.checkPermission(moduleName, 'read')) {
-                        this.getResultsContainer().add(Ext.widget(
-                            moduleWidget,
-                            Ext.apply(
-                                {
-                                    searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.list.search_title_tpl, _l[moduleName].menu_text, '{0}')
-                                },
-                                widgetConfig)
-                        )
-                        );
-                    }
-                }, this);
+            this.clearResults();
+            Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
+
+                if (Ext.checkPermission(moduleName, 'read')) {
+                    this.getResultsContainer().add(Ext.widget(
+                        moduleWidget,
+                        Ext.apply(
+                            {
+                                searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.list.search_title_tpl, _l[moduleName].menu_text, '{0}')
+                            },
+                            widgetConfig)
+                    )
+                    );
+                }
             }, this);
         }
     },

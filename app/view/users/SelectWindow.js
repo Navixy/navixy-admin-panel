@@ -8,8 +8,6 @@ Ext.define('NavixyPanel.view.users.SelectWindow', {
     extend: 'NavixyPanel.view.components.AbstractWindowSelect',
     requires: ['NavixyPanel.view.users.SelectList'],
     alias: 'widget.userselectwindow',
-    height: '70%',
-    width: '50%',
 
     getItems: function () {
         return [

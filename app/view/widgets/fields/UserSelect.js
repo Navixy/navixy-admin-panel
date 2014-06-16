@@ -18,6 +18,7 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
     store: 'Users',
     record: null,
     trackerRecord: null,
+    selectRecord: null,
     defaultValue: null,
 
     valueField: 'id',
@@ -33,8 +34,6 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
     initComponent: function () {
 
         this.emptyText = _l.users.combo_empty;
-
-        this.initStore();
 
         this.callParent(arguments);
     },
@@ -57,22 +56,15 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
         this.showSelectWindow();
     },
 
-    initStore: function () {
-
-        var storeName = Ext.isString(this.store)
-            ? this.store
-            : this.store.self.getName();
-
-        if (storeName) {
-            this.store = Ext.getStore(storeName);
-        }
+    getRecord: function () {
+        return this.selectRecord || (this.trackerRecord && this.trackerRecord.getUsersRecord && this.trackerRecord.getUsersRecord());
     },
 
     setValue: function (value) {
         var text,
             isAvailable = Ext.isArray(value) && Ext.isObject(value[0])
-            ? true
-            : this.store.findRecord(this.valueField, value);
+                ? true
+                : this.getRecord();
 
         if (isAvailable) {
             this.record = isAvailable;
@@ -90,21 +82,10 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
         return this.record ? this.record.get(this.valueField): '';
     },
 
-    validator: function (value) {
-        var result = true;
-
-        if (this.trackerRecord && this.record
-            && this.defaultValue !== value
-            && this.record.hasTrackerClone(this.trackerRecord.get('source_id'))) {
-            result = _l.users.select_error;
-        }
-
-        return result;
-    },
-
     onSelect: function (record) {
         if (record) {
-            this.setValue(record.get(this.valueField));
+            this.selectRecord = record;
+            this.setValue();
             this.closeWindow();
         }
     },

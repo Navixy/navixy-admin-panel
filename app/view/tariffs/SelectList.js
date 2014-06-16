@@ -6,10 +6,10 @@
 
 Ext.define('NavixyPanel.view.tariffs.SelectList', {
     extend: 'NavixyPanel.view.tariffs.List',
-    requires: ['NavixyPanel.view.widgets.Searcher'],
     alias: 'widget.tariffselectlist',
     noTBar: true,
-    viewPageSize: 10000,
+    showBBar: true,
+    viewPageSize: 20,
     viewConfig: {
         autoScroll: false,
         stripeRows: false,
@@ -20,13 +20,6 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
     disableSelection: false,
 
     handleCellClick: Ext.emptyFn,
-
-    searchFields: ['id', 'name'],
-
-    afterRender: function () {
-        this.applyViewToSearcher();
-        this.callParent(arguments);
-    },
 
     applyListeners: function () {
         this.callParent(arguments);
@@ -39,41 +32,48 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
     },
 
     getBottomBar: function () {
-        return [
-            {
-                xtype: 'searcher',
-                searchFields: this.searchFields,
-                width: 200
-            },
-            '->',
-            {
-                xtype: 'container',
-                width: 10
-            },
-            {
-                xtype: 'button',
-                role: 'select-btn',
-                disabled: true,
-                text: this.texts.selectBtn,
-                height: 28,
-                handler: Ext.bind(this.submitValue, this)
-            },
-            {
-                xtype: 'button',
-                ui: 'gray',
-                text: _l.close_form_btn,
-                height: 28,
-                handler: Ext.bind(this.fireClose, this)
-            }
-        ];
+        var config = this.callParent(arguments);
+
+        config.items = Ext.Array.merge(
+            [
+                {
+                    xtype: 'navixylistfilter',
+                    margin: '0 -2 0 0',
+                    width: 200,
+                    listeners: {
+                        filter: this.applyListFilter,
+                        clear: this.removeListFilter,
+                        scope: this
+                    }
+                },
+                {
+                    xtype: 'container',
+                    width: 10
+                },
+                {
+                    xtype: 'button',
+                    role: 'select-btn',
+                    disabled: true,
+                    text: this.texts.selectBtn,
+                    height: 28,
+                    handler: Ext.bind(this.submitValue, this)
+                },
+                {
+                    xtype: 'button',
+                    ui: 'gray',
+                    text: _l.close_form_btn,
+                    height: 28,
+                    handler: Ext.bind(this.fireClose, this)
+                }
+            ],
+            config.items
+        );
+
+        return config
     },
 
     getSelectBtn: function () {
         return this.down('[role="select-btn"]') || null;
-    },
-
-    applyViewToSearcher: function () {
-        this.down('searcher').setView(this.getView(), this.searchFields);
     },
 
     onRecordSelect: function (grid, record) {
@@ -114,11 +114,5 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
 
         texts.selectBtn = _l.select_form_btn;
         return texts;
-    },
-
-    getColumnsConfig: function () {
-        var columns = this.callParent(arguments);
-        columns.splice(2,1);
-        return columns;
     }
 });

@@ -37,7 +37,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
 
     stores: ['Tariffs', 'TariffPrices', 'TariffDefaults'],
     models: ['Tariff'],
-    waitStores: ['Tariffs'],
+    mainStore: 'Tariffs',
 
     init: function () {
         this.callParent(arguments);
@@ -72,12 +72,12 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff' : {
                 fn: this.handleTariffCard,
-                getRecord: true,
+                loadRecord: true,
                 access: 'read'
             },
             'tariff > edit' : {
                 fn: this.handleTariffEdit,
-                getRecord: true,
+                loadRecord: true,
                 access: 'update'
             },
             'tariff > create' : {
@@ -86,7 +86,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff > default' : {
                 fn: this.handleTariffDefault,
-                getRecord: true,
+                loadRecord: true,
                 access: 'update'
             }
         });
@@ -95,6 +95,25 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             text: _l.tariffs.menu_text,
             target: 'tariffs'
         };
+    },
+
+    // TODO: dirty hack
+    waitTariffPrices: function (callback, scope) {
+        var me = this,
+            pricesStore = Ext.getStore('TariffPrices');
+
+        if (pricesStore && pricesStore.count()) {
+            callback.call(scope || me);
+        } else {
+            Ext.getStore('Tariffs').getClone({
+                pageSize: 1,
+                listeners: {
+                    load: function() {
+                        callback.call(scope || me);
+                    }
+                }
+            });
+        }
     },
 
     handleTariffs: function () {
@@ -106,29 +125,37 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     },
 
     handleTariffCard: function (tariffRecord) {
-        this.fireContent({
-            xtype: 'tariffcard',
-            record: tariffRecord
+        this.waitTariffPrices(function () {
+            this.fireContent({
+                xtype: 'tariffcard',
+                record: tariffRecord
+            });
         });
     },
 
     handleTariffEdit: function (tariffRecord) {
-        this.fireContent({
-            xtype: 'tariffedit',
-            record: tariffRecord
+        this.waitTariffPrices(function () {
+            this.fireContent({
+                xtype: 'tariffedit',
+                record: tariffRecord
+            });
         });
     },
 
     handleTariffCreate: function () {
-        this.fireContent({
-            xtype: 'tariffcreate'
+        this.waitTariffPrices(function () {
+            this.fireContent({
+                xtype: 'tariffcreate'
+            });
         });
     },
 
     handleTariffDefault: function (tariffRecord) {
-        this.fireContent({
-            xtype: 'defaulttariff',
-            record: tariffRecord
+        this.waitTariffPrices(function () {
+            this.fireContent({
+                xtype: 'defaulttariff',
+                record: tariffRecord
+            });
         });
     },
 

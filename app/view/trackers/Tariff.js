@@ -68,6 +68,7 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 name: 'tariff_id',
                 xtype: 'tariffselect',
                 deviceType: 'tracker',
+                trackerRecord: this.record,
                 validator: function(value) {
                     var currentTariffId = me.getRecordData().tariff_id
                     return currentTariffId === value

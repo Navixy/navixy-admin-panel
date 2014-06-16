@@ -6,7 +6,6 @@
 
 Ext.define('NavixyPanel.view.users.TransactionAdd', {
     extend: 'NavixyPanel.view.components.AbstractForm',
-    requires: ['NavixyPanel.view.widgets.fields.TariffSelect'],
     alias: 'widget.usertransactionadd',
 
     getTitle: function () {

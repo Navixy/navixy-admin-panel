@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.model.User', {
-    extend: 'Ext.data.Model',
+    extend: 'NavixyPanel.model.Abstract',
     fields: [
         {name: 'dealer_id', type: 'int'},
         {name: 'balance', type: 'float'},
@@ -33,11 +33,7 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_region', type: 'string'},
         {name: 'registered_city', type: 'string'},
         {name: 'registered_street_address', type: 'string'},
-
-        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
     ],
-
-    fieldForSearch: ['id', 'login', 'last_name', 'first_name', 'middle_name', 'phone', 'post_city'],
 
     hasTrackerClone: function (sourceId) {
         var trackers = this.getTrackers(),
@@ -69,9 +65,5 @@ Ext.define('NavixyPanel.model.User', {
         }
 
         return result.length && result;
-    },
-
-    getSearchHash: function () {
-        return this.getFieldsString(this.fieldForSearch, false);
     }
 });

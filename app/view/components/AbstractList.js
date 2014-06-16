@@ -8,9 +8,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.abstractlist',
     requires: [
-        'NavixyPanel.utils.pagination.CustomPaging',
-        'NavixyPanel.view.widgets.PageSize',
-        'NavixyPanel.view.widgets.ListFilter'
+        'NavixyPanel.utils.store.NavixyPaging',
+        'NavixyPanel.utils.store.NavixyListFilter'
     ],
     viewConfig: {
         autoScroll: false,
@@ -104,7 +103,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             };
 
         if (this.filter || this.search) {
-            var filters = config.parentFilters = [];
+            var filters = config.filters = [];
         }
 
         if (this.filter) {
@@ -138,18 +137,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             }, this);
         }
 
-        if (this.search) {
-
-            var searchReq = this.search;
-            filters.push(
-                Ext.create('Ext.util.Filter', {
-                    filterFn: function (record) {
-                        return record.searchTest(searchReq);
-                    }
-                })
-            );
-        }
-
         if (this.viewPageSize) {
             config.pageSize = this.viewPageSize;
         }
@@ -181,12 +168,12 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     getTopBar: function () {
 
         var barConfig = {
-                padding: '0 0 10 0',
-                border: 0,
-                ui: 'light',
-                height: 36,
-                items: []
-            };
+            padding: '0 0 10 0',
+            border: 0,
+            ui: 'light',
+            height: 36,
+            items: []
+        };
 
         if (this.createBtn) {
             barConfig.items.push({
@@ -200,7 +187,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         if (this.hasFilter) {
             barConfig.items.push('->');
             barConfig.items.push({
-                xtype: 'listfilter',
+                xtype: 'navixylistfilter',
                 margin: '0 -2 0 0',
                 width: 200,
                 listeners: {
@@ -221,10 +208,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'pagesize'
-                },
-                {
-                    xtype: 'custompaging',
+                    xtype: 'navixypaging',
                     store: this.store
                 }
             ]
@@ -238,16 +222,18 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     applySearchView: function () {
         if (this.search || this.storeSearch) {
-            var resultsCnt = this.store.tCount(),
-                moduleTitle = Ext.String.format('<span class="search-title">{0}</span>', this.texts.searchTitle);
+            this.store.on('load', function () {
+                var resultsCnt = this.store.getTotalCount(),
+                    moduleTitle = Ext.String.format('<span class="search-title">{0}</span>', this.texts.searchTitle);
 
-            this.setTitle(
-                Ext.String.format(resultsCnt ? this.texts.searchTitleTpl: this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
-            );
+                this.setTitle(
+                    Ext.String.format(resultsCnt ? this.texts.searchTitleTpl: this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
+                );
 
-            if (!this.showEmpty && !resultsCnt) {
-                this.collapse();
+            if (resultsCnt) {
+                this.expand(false);
             }
+            }, this, {single: true});
         }
     },
 

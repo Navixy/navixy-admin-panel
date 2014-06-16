@@ -8,7 +8,10 @@ Ext.define('NavixyPanel.store.Tariffs', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.Tariff',
     storeId: 'Tariffs',
-    apiCall: 'getTariffsList',
+    api: {
+        read: 'getTariffsList',
+        record: 'getTariff'
+    },
     sorters: [
         {
             property: 'device_type',
@@ -20,38 +23,16 @@ Ext.define('NavixyPanel.store.Tariffs', {
         }
     ],
 
-    requireAPISuccess: function (results, callName, done, callback, scope) {
-        var pricesStore = Ext.getStore('TariffPrices');
+    getProxyEncoder: function () {
+        var me = this;
 
-        if (pricesStore) {
-            pricesStore.loadData([results.wholesale_service_prices]);
-        }
-
-        this.loadData(results.list);
-        if (this.loaded = done) {
-            this.fireEvent('apisuccess', this);
-            if (Ext.isFunction(callback)) {
-                callback.call(scope);
+        return function(results) {
+            var pricesStore = Ext.getStore('TariffPrices');
+            if (pricesStore) {
+                pricesStore.loadData([results.wholesale_service_prices]);
             }
-        }
-    },
 
-    requireAPISearchSuccess: function (results, callName, done, callback, scope) {
-        var pricesStore = Ext.getStore('TariffPrices');
-
-        if (pricesStore) {
-            pricesStore.loadData([results.wholesale_service_prices]);
-        }
-
-        var list = Ext.isArray(results) ? results : [results];
-
-        this.searchResult = results.list;
-        this.loadData(results.list);
-        if (this.onSearch = done) {
-            this.fireEvent('apisearchsuccess', this);
-            if (Ext.isFunction(callback)) {
-                callback.call(scope);
-            }
-        }
+            return results;
+        };
     }
 });

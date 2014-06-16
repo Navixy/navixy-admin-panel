@@ -6,7 +6,6 @@
 
 Ext.define('NavixyPanel.view.trackers.List', {
     extend: 'NavixyPanel.view.components.AbstractList',
-
     alias: 'widget.trackerslist',
     store: 'Trackers',
 
@@ -47,7 +46,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 text: _l.trackers.fields.connection_status,
                 xtype: 'templatecolumn',
                 tpl: trackerStatusTpl,
-                dataIndex: 'connection_status',
+                dataIndex: 'status',
                 width: 100
             },
             {

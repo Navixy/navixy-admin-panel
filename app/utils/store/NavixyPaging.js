@@ -1,12 +1,15 @@
 /**
- * @class NavixyPanel.utils.pagination.CustomPaging
+ * @class NavixyPanel.utils.store.NavixyPaging
  * @extends Ext.toolbar.Paging
  * Description
  */
 
-Ext.define('NavixyPanel.utils.pagination.CustomPaging', {
+Ext.define('NavixyPanel.utils.store.NavixyPaging', {
     extend: 'Ext.toolbar.Paging',
-    alias: 'widget.custompaging',
+    alias: 'widget.navixypaging',
+    requires: [
+        'NavixyPanel.utils.store.NavixyPageSize',
+    ],
     displayInfo: false,
     ui: 'light',
     inputItemWidth: 25,
@@ -18,6 +21,8 @@ Ext.define('NavixyPanel.utils.pagination.CustomPaging', {
         var me = this;
 
         return [{
+            xtype: 'navixypagesize'
+        },{
             itemId: 'first',
             tooltip: me.firstText,
             overflowText: me.firstText,
@@ -81,21 +86,15 @@ Ext.define('NavixyPanel.utils.pagination.CustomPaging', {
                 disabled: true,
                 handler: me.moveLast,
                 scope: me
+            },
+            {
+                itemId: 'refresh',
+                tooltip: me.refreshText,
+                overflowText: me.refreshText,
+                iconCls: Ext.baseCSSPrefix + 'tbar-loading',
+                handler: me.doRefresh,
+                margin: '0 0 0 5',
+                scope: me
             }];
-    },
-
-    getPageData : function(){
-        var store = this.store,
-            filteredCount = store.fCount();
-            totalCount = filteredCount ? Math.min(store.getTotalCount(), filteredCount) : store.getTotalCount();
-
-        return {
-            total : totalCount,
-            currentPage : store.currentPage,
-            pageCount: Math.ceil(totalCount / store.pageSize),
-            fromRecord: ((store.currentPage - 1) * store.pageSize) + 1,
-            toRecord: Math.min(store.currentPage * store.pageSize, totalCount)
-
-        };
     }
 });

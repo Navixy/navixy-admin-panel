@@ -42,22 +42,38 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-//    getUsersList: function (callback, failure, scope) {
-//        this.sendRequest({
-//            success: callback,
-//            failure: failure,
-//            action: 'list',
-//            handler: 'user',
-//            root: 'list',
-//            scope: scope
-//        });
-//    },
+    getTimeZones: function (callback, failure, scope) {
+
+        this.sendRequest({
+            params: {locale: Locale.Manager.getLocale()},
+            success: callback,
+            failure: failure,
+            action: 'list',
+            root: 'list',
+            handler: 'timezone',
+            scope: scope
+        });
+    },
+
 
     getUsersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
+            handler: 'user'
+        });
+    },
+
+    getUser: function (userId, callback, failure, scope) {
+        this.sendRequest({
+            params: {
+                user_id: userId
+            },
+            success: callback,
+            failure: failure,
+            action: 'read',
             handler: 'user',
-            root: 'list'
+            root: 'value',
+            scope: scope
         });
     },
 
@@ -101,24 +117,25 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getTimeZones: function (callback, failure, scope) {
-
-        this.sendRequest({
-            params: {locale: Locale.Manager.getLocale()},
-            success: callback,
-            failure: failure,
-            action: 'list',
-            root: 'list',
-            handler: 'timezone',
-            scope: scope
-        });
-    },
 
     getTrackersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
+            handler: 'tracker'
+        });
+    },
+
+    getTracker: function (trackerId, callback, failure, scope) {
+        this.sendRequest({
+            params: {
+                tracker_id: trackerId
+            },
+            success: callback,
+            failure: failure,
+            action: 'read',
             handler: 'tracker',
-            root: 'list'
+            root: 'value',
+            scope: scope
         });
     },
 
@@ -177,6 +194,8 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+
+
     getTariffsList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
@@ -184,13 +203,24 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getTariffsDefaults: function (callback, failure, scope) {
+    getTariff: function (tariffId, callback, failure, scope) {
         this.sendRequest({
+            params: {
+                tariff_id: tariffId
+            },
             success: callback,
             failure: failure,
-            action: 'defaults/read',
+            action: 'read',
             handler: 'tariff',
+            root: 'value',
             scope: scope
+        });
+    },
+
+    getTariffsDefaults: function (config) {
+        this.requestWithOptions(config, {
+            action: 'defaults/read',
+            handler: 'tariff'
         });
     },
 
@@ -218,11 +248,12 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+
+
     getCodesList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
-            handler: 'dealer/activation_code',
-            root: 'list'
+            handler: 'dealer/activation_code'
         });
     },
 
@@ -234,13 +265,25 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getSettingsService: function (config) {
-        this.requestWithOptions(config, {
+
+    getSettingsService: function (emptyVal, callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
             action: 'read',
             handler: 'dealer/settings/service',
-            root: 'value'
+            root: 'value',
+            scope: scope
         });
     },
+
+//    getSettingsService: function (config) {
+//        this.requestWithOptions(config, {
+//            action: 'read',
+//            handler: 'dealer/settings/service',
+//            root: 'value'
+//        });
+//    },
 
     getSettingsNotification : function (config) {
         this.requestWithOptions(config, {

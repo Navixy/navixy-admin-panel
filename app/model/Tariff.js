@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.model.Tariff', {
-    extend: 'Ext.data.Model',
+    extend: 'NavixyPanel.model.Abstract',
     fields: [
         {name: 'id', type: 'int'},
         {name: 'group_id', type: 'int'},
@@ -27,12 +27,8 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'outgoing_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'phone_call', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'service_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-
-        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
+        {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}}
     ],
-
-    fieldForSearch: ['id', 'name'],
 
     pricesMap: {
         incoming_sms: 'incoming_sms',

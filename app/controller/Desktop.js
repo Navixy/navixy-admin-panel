@@ -122,12 +122,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     onSearch: function (searchString) {
         this.application.fireEvent('handlefound');
-        Ext.waitStoresReady(['Users', 'Trackers', 'Tariffs'], function() {
-            this.application.fireEvent('contentchange', {
-                xtype: 'searchform',
-                searchStr: searchString
-            });
-        }, this);
+        this.application.fireEvent('contentchange', {
+            xtype: 'searchform',
+            searchStr: searchString
+        });
     },
 
     onIndex: function () {

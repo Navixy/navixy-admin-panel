@@ -20,11 +20,7 @@ Ext.define('NavixyPanel.controller.Main', {
         'NavixyPanel.api.ApiConnector',
         'NavixyPanel.api.NavixyApi',
 
-        'NavixyPanel.utils.Navigator',
-
-        'NavixyPanel.utils.pagination.Store',
-        'NavixyPanel.utils.pagination.GridPanel',
-        'NavixyPanel.utils.pagination.CustomPaging'
+        'NavixyPanel.utils.Navigator'
     ],
 
     refs: [
@@ -177,46 +173,6 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
-        Ext.override(Ext.view.Table, {
-
-            filterViewBy: function (fn) {
-                var me = this,
-                    store = this.getStore(),
-                    notPassed = [];
-
-                store.each(function (rec) {
-
-                    var node = me.getNodeByRecord(rec);
-
-                    if (node) {
-                        var visible = fn(rec, node);
-                        Ext.get(node).setVisibilityMode(Ext.Element.DISPLAY).setVisible(visible);
-
-                        if (!visible) {
-                            notPassed.push(rec);
-                        }
-                    }
-
-                });
-
-                this.filtered = true;
-
-                this.fireEvent('filtered', this, notPassed);
-            },
-
-            clearFilter: function () {
-                if (this.filtered) {
-                    this.filterViewBy(function () {
-                        return true;
-                    });
-                    this.filtered = false;
-                }
-
-                this.fireEvent('filtered', this, []);
-            }
-        });
-
-
         Ext.override(Ext.util.Format, {
 
             daysEncode: function (value) {
@@ -266,6 +222,18 @@ Ext.define('NavixyPanel.controller.Main', {
                         value: null,
                         period: null
                     };
+            }
+        });
+
+
+        // Fix view mask shadow layout
+        Ext.override(Ext.LoadMask, {
+            onHide: function() {
+                this.callParent();
+                if (this.maskEl) {
+                    this.maskEl.remove();
+                    this.maskEl = null;
+                }
             }
         });
 
@@ -345,77 +313,18 @@ Ext.define('NavixyPanel.controller.Main', {
                 return result;
             },
 
-            waitStoresReady: function (stores, callback, scope) {
-                var loadNeeded = 0,
-                    noLoad = 0;
-
-                Ext.getBody().mask(_l.loading);
-                Ext.iterate(stores, function (storeName) {
-                    var store = Ext.getStore(storeName);
-
-                    if (!store.isLoaded()) {
-                        loadNeeded++;
-
-                        store.on('apisuccess', function () {
-                            if (--loadNeeded === 0){
-                                callback.call(scope);
-                                Ext.getBody().unmask();
-                            }
-
-                        }, this, {single: true});
-
-                        store.APILoad();
-                    } else {
-                        noLoad++;
-                    }
-                }, scope);
-
-                if (noLoad === stores.length) {
+            waitRecordReady: function (recordId, storeName, callback, scope, loadAssociations) {
+                var store = Ext.getStore(storeName);
+                if (store && store.loadRecord) {
+                    Ext.getBody().mask(_l.loading);
+                    store.loadRecord(recordId, function() {
+                        Ext.getBody().unmask();
+                        callback.apply(scope, arguments);
+                    }, scope, loadAssociations);
+                } else {
                     Ext.getBody().unmask();
                     callback.call(scope);
                 }
-            },
-
-            waitStoresSearch: function (searchReq, stores, callback, scope) {
-                var loadNeeded = 0;
-
-                Ext.getBody().mask(_l.loading);
-                Ext.iterate(stores, function (storeName) {
-                    var store = Ext.getStore(storeName);
-
-                    loadNeeded++;
-
-                    store.on('apisearchsuccess', function () {
-                        if (--loadNeeded === 0){
-                            callback.call(scope);
-                            Ext.getBody().unmask();
-                        }
-
-                    }, this, {single: true});
-
-                    store.APISearch(searchReq);
-                }, scope);
-            }
-        });
-
-        Ext.override(Ext.data.Model, {
-
-            buildSearchIndex: function () {
-                return this.fieldForSearch && this.getFieldsString(this.fieldForSearch, true);
-            },
-
-            searchTest: function (searchReq) {
-                return this.get('searchIndex') && this.get('searchIndex').indexOf(searchReq.toLowerCase()) >= 0;
-            },
-
-            getFieldsString: function (fields, toLover) {
-                var result = [];
-                if (fields && fields.length) {
-                    Ext.iterate(fields, function (fieldName) {
-                        result.push(this.get(fieldName));
-                    }, this);
-                }
-                return toLover ? result.join(' ').toLowerCase() : result.join(' ');
             }
         });
 

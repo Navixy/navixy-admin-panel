@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.model.Settings', {
-    extend: 'Ext.data.Model',
+    extend: 'NavixyPanel.model.Abstract',
     idProperty: 'id',
     fields: [
         {name: 'service_title', type: 'string'},

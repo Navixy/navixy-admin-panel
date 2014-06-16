@@ -8,7 +8,10 @@ Ext.define('NavixyPanel.store.Users', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.User',
     storeId: 'Users',
-    apiCall: 'getUsersList',
+    api: {
+        read: 'getUsersList',
+        record: 'getUser'
+    },
     sorters: [
         {
             property: 'id',

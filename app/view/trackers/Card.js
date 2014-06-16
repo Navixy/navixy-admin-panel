@@ -118,8 +118,8 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     prepareHeaderData: function () {
         var recordData = this.getRecordData(),
-            userData = this.record.getParentUserData(),
-            tariffData = this.record.getParentTariffData();
+            userData = this.record.getUsersData(),
+            tariffData = this.record.getTariffsData();
 
         return {
             title: recordData.label,

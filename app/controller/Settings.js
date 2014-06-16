@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     stores: ['Settings'],
     models: ['Settings'],
-    waitStores: ['Settings'],
+    mainStore: 'Settings',
 
     init: function () {
         this.callParent(arguments);
@@ -35,6 +35,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.handle({
             'settings' : {
                 fn: this.handleEdit,
+                loadRecord: true,
                 access: 'read'
             }
         });
@@ -45,10 +46,10 @@ Ext.define('NavixyPanel.controller.Settings', {
         };
     },
 
-    handleEdit: function () {
+    handleEdit: function (settingsRecord) {
         this.fireContent({
             xtype: 'settingsedit',
-            record: Ext.getStore('Settings').first(),
+            record: settingsRecord,
             rights: {
                 serviceRead : Ext.checkPermission('service_settings', 'read'),
                 serviceEdit : Ext.checkPermission('service_settings', 'update'),

@@ -105,45 +105,45 @@ Ext.define('NavixyPanel.view.codes.List', {
                         html: _l.codes.list.select_req
                     },
                     '->',
-                    {
-
-                        role: 'options-btn',
-                        iconCls: 'options-button',
-                        margin: '0 10 0 0',
-                        xtype: 'button',
-                        menu: [
-                            {
-                                text: _l.codes.list.filters.activated,
-                                role: 'activated-filter',
-                                checked: true,
-                                checkHandler: Ext.bind(this.toggleActiveFilter, this)
-                            },
-                            {
-                                text: _l.codes.list.filters.no_activated,
-                                checked: true,
-                                checkHandler: Ext.bind(this.toggleNoActiveFilter, this)
-                            },
-                            {
-                                text: _l.codes.list.filters.trackers,
-                                checked: true,
-                                checkHandler: Ext.bind(this.toggleTrackersFilter, this)
-                            },
-                            {
-                                text: _l.codes.list.filters.cameras,
-                                checked: true,
-                                checkHandler: Ext.bind(this.toggleCamerasFilter, this)
-                            },
-                            {
-                                text: _l.codes.list.filters.sockets,
-                                checked: true,
-                                checkHandler: Ext.bind(this.toggleSocketsFilter, this)
-                            },
-                            {
-                                text: _l.codes.list.filters.toggle_all,
-                                handler: Ext.bind(this.toggleAllFilters, this)
-                            }
-                        ]
-                    },
+//                    {
+//
+//                        role: 'options-btn',
+//                        iconCls: 'options-button',
+//                        margin: '0 10 0 0',
+//                        xtype: 'button',
+//                        menu: [
+//                            {
+//                                text: _l.codes.list.filters.activated,
+//                                role: 'activated-filter',
+//                                checked: true,
+//                                checkHandler: Ext.bind(this.toggleActiveFilter, this)
+//                            },
+//                            {
+//                                text: _l.codes.list.filters.no_activated,
+//                                checked: true,
+//                                checkHandler: Ext.bind(this.toggleNoActiveFilter, this)
+//                            },
+//                            {
+//                                text: _l.codes.list.filters.trackers,
+//                                checked: true,
+//                                checkHandler: Ext.bind(this.toggleTrackersFilter, this)
+//                            },
+//                            {
+//                                text: _l.codes.list.filters.cameras,
+//                                checked: true,
+//                                checkHandler: Ext.bind(this.toggleCamerasFilter, this)
+//                            },
+//                            {
+//                                text: _l.codes.list.filters.sockets,
+//                                checked: true,
+//                                checkHandler: Ext.bind(this.toggleSocketsFilter, this)
+//                            },
+//                            {
+//                                text: _l.codes.list.filters.toggle_all,
+//                                handler: Ext.bind(this.toggleAllFilters, this)
+//                            }
+//                        ]
+//                    },
                     {
 //                        xtype: 'button',
 //                        iconCls: 'reload-button',
@@ -153,7 +153,7 @@ Ext.define('NavixyPanel.view.codes.List', {
 //                        handler: function () {
 //                            me.fireReloadAction();
 //                        }
-                        xtype: 'listfilter',
+                        xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',
                         width: 200,
                         listeners: {
@@ -291,8 +291,7 @@ Ext.define('NavixyPanel.view.codes.List', {
             },
             {
                 text: _l.codes.fields.tariff_name,
-                renderer: this.tariffRenderer,
-                dataIndex: 'tariff_id',
+                dataIndex: 'tariff_name',
                 flex: 1
             },
             {
@@ -324,14 +323,6 @@ Ext.define('NavixyPanel.view.codes.List', {
                 width: 155
             }
         ];
-    },
-
-    tariffRenderer: function (value) {
-        var tariffStore = Ext.getStore('Tariffs'),
-            tariff = tariffStore && tariffStore.getById(value),
-            tariffName = tariff && tariff.get('name');
-
-        return tariffName || value;
     },
 
     toggleActiveFilter: function (cmp, state) {
@@ -372,9 +363,9 @@ Ext.define('NavixyPanel.view.codes.List', {
         this.store.removeOptFilter(field, value);
     },
 
-    afterRender: function () {
-        this.callParent(arguments);
-        this.toggleActiveFilter(null, false);
-        this.down('[role="activated-filter"]').setChecked(false);
-    }
+//    afterRender: function () {
+//        this.callParent(arguments);
+//        this.toggleActiveFilter(null, false);
+//        this.down('[role="activated-filter"]').setChecked(false);
+//    }
 });

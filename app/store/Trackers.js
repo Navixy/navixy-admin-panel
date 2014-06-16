@@ -8,7 +8,10 @@ Ext.define('NavixyPanel.store.Trackers', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.Tracker',
     storeId: 'Trackers',
-    apiCall: 'getTrackersList',
+    api: {
+        read: 'getTrackersList',
+        record: 'getTracker'
+    },
     sorters: [
         {
             property: 'id',

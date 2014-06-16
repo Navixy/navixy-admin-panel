@@ -12,6 +12,9 @@ Ext.define('NavixyPanel.view.components.AbstractWindowSelect', {
     draggable: false,
     layout: 'fit',
     closeOnSelect: true,
+    height: '75%',
+    width: 1250,
+    margin: '0 0 0 -8',
 
     initComponent: function () {
 
@@ -39,6 +42,7 @@ Ext.define('NavixyPanel.view.components.AbstractWindowSelect', {
     },
 
     submitSelect: function (record) {
+
         if (record) {
             this.fireEvent('select', record);
         }

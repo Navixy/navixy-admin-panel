@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.model.ActivationCode', {
-    extend: 'Ext.data.Model',
+    extend: 'NavixyPanel.model.Abstract',
     idProperty: 'code',
     apiCall: 'getCodesList',
     fields: [
@@ -16,6 +16,10 @@ Ext.define('NavixyPanel.model.ActivationCode', {
         {
             name: 'tariff_id',
             type: 'int'
+        },
+        {
+            name: 'tariff_name',
+            type: 'string'
         },
         {
             name: 'bonus_amount',
@@ -49,10 +53,6 @@ Ext.define('NavixyPanel.model.ActivationCode', {
             name: 'edited',
             type: 'boolean',
             defaultValue: false
-        },
-
-        {name: 'searchIndex', convert: function (value, record) {return record.buildSearchIndex();}}
-    ],
-
-    fieldForSearch: ['code', 'tariff_id', 'activation_date', 'device_id']
+        }
+    ]
 });

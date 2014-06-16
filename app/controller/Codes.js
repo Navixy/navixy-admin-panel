@@ -96,7 +96,7 @@ Ext.define('NavixyPanel.controller.Codes', {
     afterEdit: function (count, records) {
         if (count) {
             this.getCodesEdit().afterSave();
-            this.doReload();
+            this.getCodesList().store.load();
             this.getCodesList().afterEdit(records.length, count);
         }
     },
@@ -108,13 +108,5 @@ Ext.define('NavixyPanel.controller.Codes', {
             errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getCodesEdit().showSubmitErrors(errCode, errors, errDescription);
-    },
-
-    doReload: function () {
-        Ext.API.getCodesList(this.applyReload, this.applyReload, this);
-    },
-
-    applyReload: function (list) {
-        Ext.getStore('ActivationCodes').updateData(list);
     }
 });
