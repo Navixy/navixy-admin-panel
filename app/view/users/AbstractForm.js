@@ -142,19 +142,22 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.users.fields.first_name,
                 name: 'first_name',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.middle_name,
                 name: 'middle_name',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.last_name,
                 name: 'last_name',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 xtype: 'container',
@@ -163,7 +166,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 name: 'phone',
                 xtype: 'phonefield',
-                fieldLabel: _l.users.fields.phone
+                fieldLabel: _l.users.fields.phone,
+                allowBlank: true
             },
             {
                 xtype: 'container',
@@ -173,31 +177,36 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.users.fields.post_country,
                 name: 'post_country',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.post_region,
                 name: 'post_region',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.post_city,
                 name: 'post_city',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.post_street_address,
                 name: 'post_street_address',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.post_index,
                 name: 'post_index',
                 minLength: 6,
-                vtype: 'numeric'
+                vtype: 'numeric',
+                allowBlank: true
             }
 
         ];
@@ -210,27 +219,31 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.users.create_form.legal_fields,
-                padding: '10 0 20 0'
+                padding: '10 0 20 0',
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.legal_name,
                 name: 'legal_name',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.tin,
                 name: 'tin',
                 minLength: 9,
                 maxLength: 12,
-                vtype: 'numeric'
+                vtype: 'numeric',
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.iec,
                 name: 'iec',
                 minLength: 4,
                 maxLength: 10,
-                vtype: 'numeric'
+                vtype: 'numeric',
+                allowBlank: true
             },
             {
                 xtype: 'container',
@@ -262,31 +275,36 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.users.fields.registered_country,
                 name: 'registered_country',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.registered_region,
                 name: 'registered_region',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.registered_city,
                 name: 'registered_city',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.registered_street_address,
                 name: 'registered_street_address',
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.users.fields.registered_index,
                 name: 'registered_index',
                 minLength: 6,
-                vtype: 'numeric'
+                vtype: 'numeric',
+                allowBlank: true
             }
         ];
     },

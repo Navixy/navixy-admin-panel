@@ -21,13 +21,15 @@ Ext.define('NavixyPanel.view.widgets.fields.PhoneField', {
 
     // removing mask form value
     getRawValue: function () {
-        return parseInt(this.callParent(arguments).replace(/\D+/g,""));
+        var value = this.callParent(arguments);
+        return Ext.isEmpty(value) ? value : value.replace(/\D+/g,"");
     },
 
     validator: function (value) {
         var strValue = value.toString(),
-            valueLen = strValue.length;
+            valueLen = Ext.isEmpty(value) ? 0 : strValue.length;
 
+        console.log((valueLen >= this.minLength && valueLen <= this.maxLength) || (this.allowBlank && !valueLen) || _l.phone_invalid_msg);
         return (valueLen >= this.minLength && valueLen <= this.maxLength) || (this.allowBlank && !valueLen) || _l.phone_invalid_msg;
     }
 });
