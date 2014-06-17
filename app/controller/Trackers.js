@@ -402,7 +402,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
             errCode = status.code,
             errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
 
-        console.log(errCode, errors, errDescription);
         this.getTrackerTariff().showSubmitErrors(errCode, errors, errDescription);
     },
 

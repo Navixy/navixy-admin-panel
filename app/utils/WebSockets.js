@@ -34,16 +34,13 @@ Ext.define('NavixyPanel.utils.WebSockets',{
     },
 
     onOpen: function() {
-        console.log('onOpen');
     },
 
     onMessage : function(msg) {
-        console.log('onMessage', arguments);
     },
 
     onClose: function(msg) {
         this.connection = null;
-        console.log('onClose');
     },
 
     onError: function(e) {

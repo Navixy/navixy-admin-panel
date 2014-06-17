@@ -166,7 +166,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     },
 
     onTariffDefault: function (record) {
-        console.log('onTariffDefault');
         var tariffId = record.getId();
         Ext.Nav.shift('tariff/' + tariffId + '/default');
     },

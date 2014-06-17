@@ -266,7 +266,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
 
-    getSettingsService: function (emptyVal, callback, failure, scope) {
+    getSettingsService: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,
             failure: failure,
@@ -285,11 +285,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 //        });
 //    },
 
-    getSettingsNotification : function (config) {
-        this.requestWithOptions(config, {
+    getSettingsNotification : function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
             action: 'read',
             handler: 'dealer/settings/notification',
-            root: 'value'
+            root: 'value',
+            scope: scope
         });
     },
 

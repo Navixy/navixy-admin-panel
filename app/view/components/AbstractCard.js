@@ -173,7 +173,7 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
 
     getBodyCollapserConfig: function () {
         var me = this;
-        //TODO locale
+
         return {
             role: 'body-collapser',
             xtype: 'clickable',
@@ -185,8 +185,8 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
             collapsedHtml: _l.card.body.title,
             expandedHtml: _l.card.body.exptitle,
 
-            tip: 'Скрыть доп. информацию',
-            expTip: 'Показать доп. информацию',
+            tip: _l.card.body.collapser_tip,
+            expTip: _l.card.body.collapser_exptip,
 
             listeners: {
                 click: me.handBodyCollapseTool,

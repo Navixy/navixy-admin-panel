@@ -251,8 +251,6 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 this.down('[role="store_period"]')
             ];
 
-        console.log(trackerFields);
-
         Ext.iterate(trackerFields, function (field) {
             field[type ? 'hide' : 'show']();
         }, this);

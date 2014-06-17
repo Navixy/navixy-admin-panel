@@ -10,26 +10,32 @@ Ext.define('NavixyPanel.store.Settings', {
     storeId: 'Settings',
 //    apiCall: 'getSettingsService,getSettingsNotification',
     api: {
-        record: 'getSettingsService'
+        record: [
+            'getSettingsService',
+            'getSettingsNotification'
+            ]
+    },
+
+    loadRecord: function (recordId, callback, scope, loadAssociations, failure) {
+        if (this.api.record) {
+            var loadCallback = this.createLoadCallback(callback, scope, false);
+            Ext.API.batch(this.api.record, {
+                callback: loadCallback,
+                failure: loadCallback
+            });
+        } else {
+            callback.call(scope);
+        }
+    },
+
+    createLoadCallback: function (fn, scope) {
+        var me = this;
+
+        return function(batchResult) {
+            fn.call(scope, me.model
+                ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification))
+                : batchResult
+            );
+        };
     }
-
-    // TODO: 'getSettingsNotification' api call2
-
-//    requireAPISuccess: function (results, callName, done, callback, scope) {
-//        console.log(results);
-//        var settingsRecord = this.first();
-//
-//        if (settingsRecord) {
-//            settingsRecord.set(results);
-//        } else {
-//            this.loadData([results]);
-//        }
-//
-//        if (this.loaded = done) {
-//            this.fireEvent('apisuccess', this);
-//            if (Ext.isFunction(callback)) {
-//                callback.call(scope);
-//            }
-//        }
-//    }
 });

@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
 
     initStore: function () {
 
-        this.store = Ext.create('NavixyPanel.utils.pagination.Store', {
+        this.store = Ext.create('Ext.data.Store', {
             model: 'NavixyPanel.model.Transaction',
             sorters: [
                 {
