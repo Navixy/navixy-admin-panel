@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
     api: {
         read: 'getTariffsDefaults'
     },
-    autoLoad: true,
+    autoLoad: false,
     fields: [
         {
             name: 'tariff_id',

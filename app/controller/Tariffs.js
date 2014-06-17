@@ -95,6 +95,10 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             text: _l.tariffs.menu_text,
             target: 'tariffs'
         };
+
+        this.waitConnectionReady(function() {
+            Ext.getStore('TariffDefaults').load();
+        });
     },
 
     // TODO: dirty hack
