@@ -248,7 +248,7 @@ Ext.define('Locale.locale-ru', {
             password: 'Пароль',
             password_repeat: 'Повторите пароль',
             password_mismatched: 'Пароли не совпадают',
-            language: 'Язык по-умолчанию',
+            language: 'Язык по умолчанию',
             time_zone: 'Часовой пояс',
             save_btn: 'Создать пользователя',
             clear_btn: 'Очистить форму',
@@ -459,7 +459,7 @@ Ext.define('Locale.locale-ru', {
             prices_fields: 'Цены тарифного плана'
         },
         default_form: {
-            title: 'Настройка тарифа по-умолчанию'
+            title: 'Настройка тарифа по умолчанию'
         },
         edit_form: {
             title: 'Редактирование тарифа',
@@ -481,8 +481,8 @@ Ext.define('Locale.locale-ru', {
             service_sms: 'Служебные SMS',
             phone_call: 'Голосовые уведомления',
             traffic: 'GPRS (за Мб)',
-            default_tariff: 'тариф по-умолчанию для устройств типа «{0}»',
-            default_short: 'по-умолчанию',
+            default_tariff: 'тариф по умолчанию для устройств типа «{0}»',
+            default_short: 'по умолчанию',
             service_price: 'сумма взимаемая за пользованием сервисом',
             group_id_exp: 'Группа тарифного плана',
             active_exp: 'Пользователи могут переходить на данный тарифный план самостоятельно',
@@ -568,7 +568,7 @@ Ext.define('Locale.locale-ru', {
                 type: 'Карта по умолчанию',
                 location_lat: 'Широта по умолчанию',
                 location_lng: 'Долгота по умолчанию',
-                zoom: 'Масшатб по умолчанию'
+                zoom: 'Масштаб по умолчанию'
             },
             google_client_id: "Client ID для карт google",
             currency: "Валюта",
