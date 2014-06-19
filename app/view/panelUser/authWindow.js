@@ -18,6 +18,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
     errMsg: null,
 
     initComponent: function () {
+        var hasOld = !!Config.oldVersionURL;
 
         this.items = [
             {
@@ -74,7 +75,8 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                         xtype: 'container',
                         padding: '5 0 20 0',
                         layout: {
-                            type: 'fit'
+                            type: 'vbox',
+                            align: 'stretch',
                         },
                         items: [
                             {
@@ -84,6 +86,16 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                                 scale: 'medium',
                                 text: _l.auth.login_btn,
                                 flex: 1
+                            },
+                            {
+                                xtype: 'button',
+                                text: _l.old_version,
+                                scale: 'medium',
+                                margin: '10 0 0 0',
+                                flex: 1,
+                                hidden: !hasOld,
+                                ui: 'gray',
+                                role: 'old-version'
                             }
                         ]
                     },

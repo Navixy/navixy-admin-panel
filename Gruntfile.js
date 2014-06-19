@@ -23,6 +23,8 @@ module.exports = function (grunt) {
                         'PConfig.js',
                         'locale/locale-en.js',
                         'locale/locale-ru.js',
+                        'locale/ext/locale-en.js',
+                        'locale/ext/locale-ru.js',
                         'locale/ext/*',
                         'libs/jquery/*',
                         'libs/inputmask/*',
