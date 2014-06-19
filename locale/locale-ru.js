@@ -30,11 +30,12 @@ Ext.define('Locale.locale-ru', {
         login: 'Логин или адрес электронной почты',
         password: 'Пароль',
         login_btn: 'Логин',
-        locale_title: 'Язык интерфейса',
+        locale_title: 'Язык интерфейса / Interface language',
         locale_title_short: 'язык',
         auth_error: 'Ошибка авторизации',
         reloading_soon: 'Перезагрузка',
-        logout: 'Выйти'
+        logout: 'Выйти',
+        title: 'Панель администратора'
     },
 
     no_path_found: 'Указан неверный адрес',

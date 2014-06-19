@@ -30,3 +30,25 @@ a, .link {
         width: 31px
     }
 }
+
+.beta-ribon {
+
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 62px;
+    height: 62px;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-image: none;
+
+    background-size: cover;
+    background-image: url(#{$img_dir}/util/beta_ribon.png);
+}
+
+.auth-header {
+    background-color: $baseBackgroundColor !important;
+    font-size: 20px;
+    text-align: center;
+}

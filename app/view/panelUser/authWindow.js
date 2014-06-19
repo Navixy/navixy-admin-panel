@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
 
     closable: false,
     draggable: false,
+    resizable: false,
     shadow: false,
     autoShow: true,
     errMsg: null,
@@ -20,6 +21,12 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
     initComponent: function () {
         var hasOld = !!Config.oldVersionURL;
 
+        this.header = {
+            title: _l.auth.title,
+            ui: 'light',
+            cls: 'auth-header',
+            height: 60
+        };
         this.items = [
             {
                 xtype: 'form',
@@ -116,6 +123,9 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
         if (this.errMsg) {
             this.showError(this.errMsg);
         }
+
+        console.log(Ext.DomHelper.append(this.getEl(), {tag: 'div', id: 'beta-ribon', html: '', cls: 'beta-ribon'}, true));
+//        this.getEl().appendChild('<div class="beta-ribon"></div>');
     },
 
     showError: function (errMsg) {

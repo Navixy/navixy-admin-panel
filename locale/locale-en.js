@@ -28,11 +28,12 @@ Ext.define('Locale.locale-en', {
         login: 'Login or Email address',
         password: 'Password',
         login_btn: 'Login',
-        locale_title: 'Interface language',
+        locale_title: 'Interface language / Язык интерфейса',
         locale_title_short: 'language',
         auth_error: 'Authentication error',
         reloading_soon: 'Reloading',
-        logout: 'Logout'
+        logout: 'Logout',
+        title: 'Admin panel'
     },
 
     no_path_found: 'No page on this path',
