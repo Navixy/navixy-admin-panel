@@ -24,6 +24,7 @@ Ext.define('Locale.locale-ru', {
 
     index_title: 'Добро пожаловть в панель управления',
     index_tip: '',
+    old_version: 'Старая версия',
 
     auth: {
         login: 'Логин или адрес электронной почты',
@@ -228,7 +229,7 @@ Ext.define('Locale.locale-ru', {
     },
 
     dealer_info: {
-        first: 'активно',
+        first: 'вcего',
         last: 'из'
     },
 

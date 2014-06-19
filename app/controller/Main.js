@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.controller.Main', {
     extend: 'Ext.app.Controller',
-    errorDelay: 50,
+    errorDelay: 100,
 
     views: [
         'Viewport',
@@ -51,6 +51,9 @@ Ext.define('NavixyPanel.controller.Main', {
             },
             'button[role=auth-logout]': {
                 click: this.doLogout
+            },
+            'button[role=old-version]': {
+                click: this.doOldVersion,
             },
             'localecombo': {
                 change: this.changeLocale
@@ -574,5 +577,11 @@ Ext.define('NavixyPanel.controller.Main', {
     changeLocale: function (el, value) {
 
         Locale.Manager.updateLocale(value);
-    }
+    },
+
+    doOldVersion: function () {
+        if (Config.oldVersionURL) {
+            document.location = Config.oldVersionURL
+        }
+    },
 });

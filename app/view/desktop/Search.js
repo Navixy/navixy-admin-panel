@@ -143,7 +143,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
             widgetConfig = {
                 collapsed: true,
                 storeSearch: true,
-                viewPageSize: 5,
+                viewPageSize: 10,
                 flex: 1,
                 margin: '30 0 0 0',
                 title: 'test',

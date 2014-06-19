@@ -189,8 +189,6 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     afterUserCreate: function (userId, record) {
-        record.setId(userId);
-        Ext.getStore('Users').add(record);
         this.getUserCreate().afterSave(userId);
     },
 

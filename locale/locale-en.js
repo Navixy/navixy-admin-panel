@@ -22,6 +22,7 @@ Ext.define('Locale.locale-en', {
 
     index_title: 'Welcome to Control Panel',
     index_tip: '',
+    old_version: 'Old version',
 
     auth: {
         login: 'Login or Email address',
@@ -226,7 +227,7 @@ Ext.define('Locale.locale-en', {
     },
 
     dealer_info: {
-        first: 'active',
+        first: 'total',
         last: 'of'
     },
 

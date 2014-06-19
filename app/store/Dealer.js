@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "title",
         "legal_name",
         "active_amount",
-        "active_limit"
+        "active_limit",
+        "locale"
     ]
 });

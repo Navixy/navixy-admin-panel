@@ -16,6 +16,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
     cls: 'main-header',
 
     initComponent: function () {
+        var hasOld = !!Config.oldVersionURL;
 
         this.items = [
             {
@@ -56,6 +57,16 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                 fieldLabel: false,
                                 width: 90,
                                 margin: '0 10 0 0'
+                            },
+                            {
+                                xtype: 'button',
+                                text: _l.old_version,
+                                height: 28,
+                                padding: '0 10 0 10',
+                                margin: '0 10 0 0',
+                                hidden: !hasOld,
+                                ui: 'gray',
+                                role: 'old-version'
                             },
                             {
                                 xtype: 'button',

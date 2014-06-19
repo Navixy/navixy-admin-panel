@@ -49,7 +49,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.users.create_form.main_fields + "<sup>*</sup>",
+                html: _l.users.create_form.main_fields,
                 padding: '10 0 20 0'
             },
             {
@@ -139,22 +139,24 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 padding: '10 0 20 0'
             },
             {
+                fieldLabel: _l.users.fields.last_name,
+                name: 'last_name',
+                minLength: 2,
+                maxLength: 100,
+                labelSeparator: '*:',
+                allowBlank: false
+            },
+            {
                 fieldLabel: _l.users.fields.first_name,
                 name: 'first_name',
                 minLength: 2,
                 maxLength: 100,
-                allowBlank: true
+                labelSeparator: '*:',
+                allowBlank: false
             },
             {
                 fieldLabel: _l.users.fields.middle_name,
                 name: 'middle_name',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
-            },
-            {
-                fieldLabel: _l.users.fields.last_name,
-                name: 'last_name',
                 minLength: 2,
                 maxLength: 100,
                 allowBlank: true
@@ -176,37 +178,32 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.users.fields.post_country,
                 name: 'post_country',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.post_region,
                 name: 'post_region',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.post_city,
                 name: 'post_city',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.post_street_address,
                 name: 'post_street_address',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.post_index,
                 name: 'post_index',
-                minLength: 6,
-                vtype: 'numeric',
-                allowBlank: true
+                minLength: 1,
+                vtype: 'numeric'
             }
 
         ];
@@ -225,25 +222,22 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.users.fields.legal_name,
                 name: 'legal_name',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.tin,
                 name: 'tin',
-                minLength: 9,
+                minLength: 1,
                 maxLength: 12,
-                vtype: 'numeric',
-                allowBlank: true
+                vtype: 'numeric'
             },
             {
                 fieldLabel: _l.users.fields.iec,
                 name: 'iec',
-                minLength: 4,
+                minLength: 1,
                 maxLength: 10,
-                vtype: 'numeric',
-                allowBlank: true
+                vtype: 'numeric'
             },
             {
                 xtype: 'container',
@@ -274,35 +268,31 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.users.fields.registered_country,
                 name: 'registered_country',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.registered_region,
                 name: 'registered_region',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.registered_city,
                 name: 'registered_city',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.registered_street_address,
                 name: 'registered_street_address',
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true
+                minLength: 1,
+                maxLength: 100
             },
             {
                 fieldLabel: _l.users.fields.registered_index,
                 name: 'registered_index',
-                minLength: 6,
+                minLength: 1,
                 vtype: 'numeric',
                 allowBlank: true
             }
@@ -312,29 +302,39 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     changeLegalStatus: function (soleStatus) {
         var legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
-                this.down('[name="first_name"]'),
-                this.down('[name="middle_name"]'),
-                this.down('[name="last_name"]'),
-                this.down('[name="phone"]')
+//                this.down('[name="first_name"]'),
+//                this.down('[name="last_name"]'),
+                this.down('[name="post_city"]'),
+                this.down('[name="post_country"]'),
+                this.down('[name="post_region"]'),
+                this.down('[name="post_street_address"]'),
+                this.down('[name="post_index"]')
             ];
 
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function(item) {
                 if (Ext.isString(item.name)) {
+
                     item.allowBlank = soleStatus;
                     if (soleStatus) {
                         item.validate();
+                        item.labelSeparator = ':';
+                    } else {
+                        item.labelSeparator = '*:';
                     }
+                    item.setFieldLabel(item.getFieldLabel());
                 }
             }, this);
         }
 
         Ext.iterate(ind_fields, function (field) {
-            if (!soleStatus) {
-                field.labelSeparator = '*:';
-            } else {
+            field.allowBlank = soleStatus;
+            if (soleStatus) {
+                field.validate();
                 field.labelSeparator = ':';
+            } else {
+                field.labelSeparator = '*:';
             }
 
             field.setFieldLabel(field.getFieldLabel());

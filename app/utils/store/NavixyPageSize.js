@@ -57,7 +57,7 @@ Ext.define('NavixyPanel.utils.store.NavixyPageSize', {
     applyPageSize: function () {
         var value = this.getValue();
         this.getParentStore().setPageSize(value, true);
-        this.getParent().doRefresh();
+        this.getParentStore().loadPage(1);
     },
 
     getParent: function () {

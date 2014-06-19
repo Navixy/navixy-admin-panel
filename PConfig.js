@@ -13,9 +13,10 @@ Config = {
     },
 
     links: {
-        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
+        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
     },
 
     terminalHost: 'ws://api.test.gdemoi.ru:8383/',
-    paas_domain: '.navixy.ru'
+    paas_domain: '.navixy.ru',
+    oldVersionURL: 'http://panel2.navixy.com/'
 };
