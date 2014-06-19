@@ -5,3 +5,5 @@ theme/panel_metromorph/.sass-cache/*
 ext/
 build
 node_modules
+rsync-deploy.js
+theme/metromorph.css

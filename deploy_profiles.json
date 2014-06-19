@@ -2,5 +2,9 @@
     "test": {
         "host": "test.gdemoi.ru",
         "remotePath": "/var/www/panel-v2.test.gdemoi.ru/"
+    } ,
+    "battle": {
+        "host": "172.16.0.54",
+        "remotePath": "/var/www/panel2.navixy.com/"
     }
 }
