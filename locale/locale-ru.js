@@ -576,7 +576,7 @@ Ext.define('Locale.locale-ru', {
                 zoom: 'Масштаб по умолчанию'
             },
             google_client_id: "Client ID для карт google",
-            currency: "Валюта",
+            currency: "Валюта расчетов с пользователями",
             payment_link: "URL промо сайта",
             domain: "Доменное имя",
             email_from: "Email отправителя",

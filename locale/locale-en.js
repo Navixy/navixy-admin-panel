@@ -575,7 +575,7 @@ Ext.define('Locale.locale-en', {
                 zoom: 'Default zoom'
             },
             google_client_id: "Client ID for google maps",
-            currency: "Currency",
+            currency: "Currency for billing users",
             payment_link: "Promo website URL",
             domain: "Domain",
             email_from: "Sender Email",

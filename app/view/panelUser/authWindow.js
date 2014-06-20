@@ -124,9 +124,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
         if (this.errMsg) {
             this.showError(this.errMsg);
         }
-
-        console.log(Ext.DomHelper.append(this.getEl(), {tag: 'div', id: 'beta-ribon', html: '', cls: 'beta-ribon'}, true));
-//        this.getEl().appendChild('<div class="beta-ribon"></div>');
+        Ext.DomHelper.append(this.getEl(), {tag: 'div', id: 'beta-ribon', html: '', cls: 'beta-ribon'}, true)
     },
 
     showError: function (errMsg) {
@@ -134,6 +132,6 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
 
         errBox.show();
         errBox.update(errMsg);
-        this.down('form').getForm().reset();
+        this.down('[name="password"]').setValue('');
     }
 });

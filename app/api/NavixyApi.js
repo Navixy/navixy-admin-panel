@@ -277,14 +277,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-//    getSettingsService: function (config) {
-//        this.requestWithOptions(config, {
-//            action: 'read',
-//            handler: 'dealer/settings/service',
-//            root: 'value'
-//        });
-//    },
-
     getSettingsNotification : function (callback, failure, scope) {
         this.sendRequest({
             success: callback,
