@@ -46,7 +46,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                 callback: this.showCornerMessage
             },
             {
-                codes: [2, 3, 4, 11, 12, 103, 'no_hash'],
+                codes: [2, 3, 4, 11, 103, 'no_hash'],
                 callback: this.redirectToAuth
             },
             {
