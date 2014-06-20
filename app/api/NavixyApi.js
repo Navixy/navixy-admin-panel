@@ -314,7 +314,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     updateSettingsPassword: function (config) {
         this.requestWithOptions(config, {
-            action: 'set',
+            action: 'update',
             handler: 'dealer/password',
             root: 'success'
         });
