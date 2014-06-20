@@ -118,7 +118,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
 
     getMonitoring: function (hash) {
         var url = new Ext.Template(Config.links.monUrlTpl).apply({
-                company_url: Ext.getStore('Dealer').first().get('company_url') || 'my.gdemoi.ru',
+                company_url: Ext.getStore('Dealer').first().get('domain') || 'my.gdemoi.ru',
                 hash: hash || ''
             });
 

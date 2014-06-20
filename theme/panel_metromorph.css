@@ -22069,8 +22069,8 @@ a, .link {
 
 .beta-ribon {
   position: absolute;
-  right: 0;
-  top: 60px;
+  right: -1px;
+  top: 59px;
   width: 62px;
   height: 62px;
   z-index: 100;
@@ -22079,6 +22079,9 @@ a, .link {
   background-image: none;
   background-size: cover;
   background-image: url(panel_metromorph/images/util/beta_ribon.png); }
+
+.auth-window {
+  overflow: visible; }
 
 .auth-header {
   background-color: #f0f0f0 !important;
@@ -22256,7 +22259,7 @@ a, .link {
   color: #4b4b4b;
   font-size: 13px;
   font-size: normal;
-  border-width: 1px;
+  border-width: 0px;
   border-style: solid; }
 
 .x-tab-bar-body-light {
@@ -22269,6 +22272,20 @@ a, .link {
     background-color: #cccccc; }
   .x-tab-bar-body-light .x-tab-light-over {
     background-color: #e1e1e1; }
+
+.x-panel-light.header-tabs .x-tab-bar-body-light {
+  border-top: 1px solid #e3e3e3 !important;
+  background-color: #fafafa; }
+  .x-panel-light.header-tabs .x-tab-bar-body-light .x-tab-light {
+    line-height: 22px;
+    padding: 7px 15px;
+    color: #4b4b4b;
+    background-color: #fafafa; }
+  .x-panel-light.header-tabs .x-tab-bar-body-light .x-tab-light-active {
+    background-color: #ededed !important;
+    font-size: 16px; }
+  .x-panel-light.header-tabs .x-tab-bar-body-light .x-tab-light-over {
+    background-color: whitesmoke; }
 
 .x-btn-default-toolbar-small-icon-text-left {
   padding-left: 2px; }

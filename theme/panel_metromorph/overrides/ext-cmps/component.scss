@@ -34,8 +34,8 @@ a, .link {
 .beta-ribon {
 
     position: absolute;
-    right: 0;
-    top: 60px;
+    right: -1px;
+    top: 59px;
     width: 62px;
     height: 62px;
     z-index: 100;
@@ -45,6 +45,10 @@ a, .link {
 
     background-size: cover;
     background-image: url(#{$img_dir}/util/beta_ribon.png);
+}
+
+.auth-window {
+    overflow: visible;
 }
 
 .auth-header {

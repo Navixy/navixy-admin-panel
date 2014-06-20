@@ -83,7 +83,7 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 4%);
     color: $light-panel-text-color;
     font-size: 13px;
     font-size: normal;
-    border-width: 1px;
+    border-width: 0px;
     border-style: solid;
 }
 
@@ -103,5 +103,34 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 4%);
 
     .x-tab-light-over {
         background-color: $light-panel-tab-over-bg-color;
+    }
+}
+
+$light-panel-header-tab-padding: 7px 15px;
+$light-panel-header-tab-bg-color: lighten($light-panel-header-bg-color, 6%);
+$light-panel-header-tab-active-bg-color: lighten($light-panel-header-bg-color, 1%);
+$light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%);
+
+.x-panel-light.header-tabs {
+
+    .x-tab-bar-body-light {
+        border-top: 1px solid darken($light-panel-header-bg-color, 3%) !important;
+        background-color: $light-panel-header-tab-bg-color;
+
+        .x-tab-light {
+            line-height: 22px;
+            padding: $light-panel-header-tab-padding;
+            color: $light-panel-text-color;
+            background-color: $light-panel-header-tab-bg-color;
+        }
+
+        .x-tab-light-active {
+            background-color: $light-panel-header-tab-active-bg-color !important;
+            font-size: 16px;
+        }
+
+        .x-tab-light-over {
+            background-color: $light-panel-header-tab-over-bg-color;
+        }
     }
 }

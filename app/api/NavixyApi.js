@@ -310,5 +310,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/settings/notification',
             root: 'success'
         });
+    },
+
+    updateSettingsPassword: function (config) {
+        this.requestWithOptions(config, {
+            action: 'set',
+            handler: 'dealer/password',
+            root: 'success'
+        });
     }
 });

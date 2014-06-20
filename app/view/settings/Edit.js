@@ -14,6 +14,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     default_paas_domain: '.navixy.ru',
     singleCmp: false,
     rights: null,
+    bodyPadding: '0 0 60 0',
+    formRowPadding: '50 0 0 0',
 
     initComponent: function () {
 
@@ -157,17 +159,93 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return values;
     },
 
-    getNWItems: function () {
-        var me = this;
+    getCellDefaults: function () {
+        return {
+            xtype: 'container',
+            flex: 1,
+            defaults: this.getFieldDefaults(),
+            padding: '40 20 0 25',
+            layout: {
+                type: 'vbox'
+            }
+        };
+    },
 
+    getItems: function () {
         return [
             {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.main_fields,
-                padding: '10 0 20 0',
-                role: 'service-field'
-            },
+                xtype:'tabpanel',
+                plain: true,
+                activeTab: 0,
+                border: 0,
+                width: '100%',
+                ui: 'light',
+                cls: 'header-tabs',
+                defaults: this.getRowDefaults(),
+                items: [
+                    {
+                        title: _l.settings.edit_form.domain_fields,
+                        items: [
+                            {
+                                items: this.getDomainItems()
+                            }
+                        ]
+                    },
+                    {
+                        title: _l.settings.edit_form.regional_fields,
+                        items: [
+                            {
+                                items: this.getRegionalItems()
+                            }
+                        ]
+                    },
+                    {
+                        title: _l.settings.edit_form.maps_fields,
+                        items: [
+                            {
+                                items: this.getMapsItems()
+                            },
+                            {
+                                padding: this.formRowPadding,
+                                items: this.getMapsHint()
+                            }
+                        ]
+                    },
+                    {
+                        title: _l.settings.edit_form.demo_fields,
+                        items: [
+                            {
+                                items: this.getDemoItems()
+                            },
+                            {
+                                padding: this.formRowPadding,
+                                items: this.getDemoHint()
+                            }
+                        ]
+                    },
+                    {
+                        title: _l.settings.edit_form.notifications_fields,
+                        items: [
+                            {
+                                items: this.getNotificationsItems()
+                            }
+                        ]
+                    },
+                    {
+                        title: _l.settings.edit_form.password_fields,
+                        items: [
+                            {
+                                items: this.getPasswordItems()
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+    },
+
+    getDomainItems: function () {
+        return [
             {
                 name: 'service_title',
                 fieldLabel: _l.settings.fields.service_title,
@@ -194,6 +272,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 maxLength: 100
             },
             {
+                xtype: 'container',
+                html: Ext.String.format(_l.settings.edit_form.domain_sup, Config.paas_domain || this.default_paas_domain),
+                cls: 'block_sup',
+                padding: '10 0 0 170',
+                role: 'service-field'
+            }
+        ]
+    },
+
+    getRegionalItems: function () {
+        return [
+            {
                 name: 'locale',
                 xtype: 'localefield',
                 fieldLabel: _l.settings.fields.locale
@@ -207,84 +297,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
-            },
-            {
-                xtype: 'container',
-                html: Ext.String.format(_l.settings.edit_form.domain_sup, Config.paas_domain || this.default_paas_domain),
-                cls: 'block_sup',
-                padding: '10 0 0 170',
-                role: 'service-field'
-            },
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.permission_fields,
-                padding: '30 0 20 0',
-                role: 'permission-field'
-            },
-            {
-                name: 'email_from',
-                fieldLabel: _l.settings.fields.email_from,
-
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field'
-            },
-            {
-                name: 'email_footer',
-                xtype: 'textarea',
-                fieldLabel: _l.settings.fields.email_footer,
-
-                maxLength: 600,
-                role: 'permission-field'
-            },
-            {
-                name: 'sms_originator',
-                fieldLabel: _l.settings.fields.sms_originator,
-
-                maxLength: 20,
-                role: 'permission-field'
-            },
-            {
-                name: 'caller_id',
-                fieldLabel: _l.settings.fields.caller_id,
-
-                maxLength: 20,
-                role: 'permission-field'
             }
-        ];
+        ]
     },
 
-    getNEItems: function () {
-        var me = this;
+    getMapsItems: function () {
         return [
             {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.demo_fields,
-                padding: '10 0 20 0',
-                role: 'service-field'
-            },
-            {
-                name: 'demo_login',
-                fieldLabel: _l.settings.fields.demo_login,
-
-                minLength: 2,
-                maxLength: 100
-            },
-            {
-                name: 'demo_password',
-                fieldLabel: _l.settings.fields.demo_password,
-
-                minLength: 2,
-                maxLength: 100
-            },
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.map_fields,
-                padding: '30 0 20 0',
-                role: 'service-field'
+                xtype: 'checkboxgroup',
+                fieldLabel: _l.settings.fields.maps_title,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 10 0',
+                ui: 'light',
+                items: this.getMapsList()
             },
             {
                 name: 'map_type',
@@ -323,14 +349,113 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                 minLength: 2,
                 maxLength: 100
+            }
+        ];
+    },
+
+    getMapsHint: function () {
+        return [
+            {
+                xtype: 'container',
+                html: _l.settings.edit_form.maps_hint
+            }
+        ];
+    },
+
+    getDemoItems: function () {
+        return [
+            {
+                name: 'demo_login',
+                fieldLabel: _l.settings.fields.demo_login,
+
+                minLength: 2,
+                maxLength: 100
             },
             {
-                xtype: 'checkboxgroup',
-                fieldLabel: _l.settings.fields.maps_title,
-                columns: 1,
-                vertical: true,
-                ui: 'light',
-                items: this.getMapsList()
+                name: 'demo_password',
+                fieldLabel: _l.settings.fields.demo_password,
+
+                minLength: 2,
+                maxLength: 100
+            }
+        ];
+    },
+
+    getDemoHint: function () {
+        return [
+            {
+                xtype: 'container',
+                html: _l.settings.edit_form.demo_hint
+            }
+        ];
+    },
+
+    getNotificationsItems: function () {
+        return [
+            {
+                name: 'email_from',
+                fieldLabel: _l.settings.fields.email_from,
+
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            },
+            {
+                name: 'email_footer',
+                xtype: 'textarea',
+                fieldLabel: _l.settings.fields.email_footer,
+
+                maxLength: 600,
+                role: 'permission-field'
+            },
+            {
+                name: 'sms_originator',
+                fieldLabel: _l.settings.fields.sms_originator,
+
+                maxLength: 20,
+                role: 'permission-field'
+            },
+            {
+                name: 'caller_id',
+                fieldLabel: _l.settings.fields.caller_id,
+
+                maxLength: 20,
+                role: 'permission-field'
+            }
+        ];
+    },
+
+    getPasswordItems: function () {
+        var me = this;
+
+        return [
+            {
+                fieldLabel: _l.settings.fields.password,
+                name: 'new_password',
+                inputType: 'password',
+
+                minLength: 6,
+                maxLength: 20
+            },
+            {
+                fieldLabel: _l.settings.fields.password_repeat,
+                inputType: 'password',
+
+                minLength: 6,
+                maxLength: 20,
+
+                validator: function(value) {
+                    var pass_val = me.down('*[name=new_password]').getValue();
+                    return value === pass_val || _l.settings.fields.password_mismatched;
+                }
+            },
+            {
+                fieldLabel: _l.settings.fields.password_old,
+                name: 'old_password',
+                inputType: 'password',
+
+                minLength: 6,
+                maxLength: 20
             }
         ];
     },

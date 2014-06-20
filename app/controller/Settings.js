@@ -68,6 +68,25 @@ Ext.define('NavixyPanel.controller.Settings', {
             settingsData = record.getData(),
             requestsCnt = 0;
 
+        if (formValues.new_password && formValues.old_password) {
+            requestsCnt++ ;
+            Ext.API.updateSettingsPassword({
+                params: {
+                    old_password: formValues.old_password,
+                    new_password: formValues.new_password
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterSettingsEdit(response, record);
+                    }
+                },
+                failure: function (response) {
+                    this.afterSettingsEditFailure(response, record);
+                },
+                scope: this
+            });
+        }
+
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {
             requestsCnt++ ;
             Ext.API.updateSettingsSerivce({
@@ -103,6 +122,8 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     afterSettingsEdit: function (success, record) {
         if (success) {
+
+            Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
             try {
                 record.commit();
             } catch (e) {}
@@ -118,8 +139,17 @@ Ext.define('NavixyPanel.controller.Settings', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    updateDealerInfo: function (data) {
+        var store = Ext.getStore('Dealer'),
+            dealer = store && store.first();
+
+        if (dealer) {
+            dealer.set(data);
+        }
     }
 });

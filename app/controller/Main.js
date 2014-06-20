@@ -549,7 +549,7 @@ Ext.define('NavixyPanel.controller.Main', {
     handleResults: function (results) {
         Ext.iterate({
             'getDealerInfo': 'Dealer',
-            'getTimeZones': 'TimeZones',
+            'getTimeZones': 'TimeZones'
         }, function (action, store) {
 
             try {

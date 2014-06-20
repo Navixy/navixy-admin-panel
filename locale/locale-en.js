@@ -135,6 +135,10 @@ Ext.define('Locale.locale-en', {
         },
         tariff: {
             244: 'Tariff with the same name already exists'
+        },
+        settings: {
+            225: 'New password must be different',
+            248: 'Wrong password'
         }
     },
 
@@ -572,12 +576,17 @@ Ext.define('Locale.locale-en', {
             },
             google_client_id: "Client ID for google maps",
             currency: "Currency",
-            payment_link: "Payment link",
+            payment_link: "Promo website URL",
             domain: "Domain",
             email_from: "Sender Email",
             email_footer: "Email footer",
             sms_originator: "SMS originator",
-            caller_id: "Voice notice originator"
+            caller_id: "Voice notice originator",
+
+            password: 'New password',
+            password_repeat: 'Repeat new password',
+            password_old: 'Current password',
+            password_mismatched: 'Passwords do not match'
         },
         edit_form: {
             title: 'Paas Settings',
@@ -585,9 +594,18 @@ Ext.define('Locale.locale-en', {
             save_msg: 'Settings saved successfully',
             main_fields: 'Basic Settings',
             map_fields: 'Maps settings',
-            demo_fields: 'Demo login',
             permission_fields: 'Notification dettings',
-            domain_sup: '* - for domains like *{0} available map types limited'
+            domain_sup: '* - for domains like *{0} available map types limited',
+
+            domain_fields: 'Domain',
+            regional_fields: 'Regional settings',
+            maps_fields: 'Maps',
+            demo_fields: 'Demo user',
+            notifications_fields: 'Notifications',
+            password_fields: 'Change password',
+
+            maps_hint: 'Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.',
+            demo_hint: 'Choose user account which will be used for demo purposes and available on login page (optional)'
         }
     }
 })

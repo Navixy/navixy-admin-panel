@@ -128,7 +128,7 @@ Ext.define('Locale.Manager', {
     },
 
     _getDefault: function () {
-        return this._fromLocation() || this._fromCookie() || this._default;
+        return this._fromLocation() || this._fromCookie() || this._fromBrowser() || this._default;
     },
 
     _getData: function (lang) {
@@ -164,6 +164,24 @@ Ext.define('Locale.Manager', {
 
         return me._checkLang(lang);
     },
+
+    _fromBrowser: function () {
+
+        function androidLocale() {
+            var androidAgent = navigator.userAgent.match(/Android \d+(?:\.\d+){1,2}; [a-z]{2}-[a-z]{2}/),
+                localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false,
+                androidLocale = localeMath ? localeMath[0] || false : false;
+
+            return androidLocale;
+        }
+
+        var BrowserLocalesRu = ['ru', 'ru-RU', 'ru-ru'],
+            browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false,
+            defaultLocale = (browserLocale && BrowserLocalesRu.join(' ').indexOf(browserLocale) > -1) ? "ru" : "en";
+
+        return defaultLocale;
+    },
+
 
     _toCookie: function (locale) {
         var me = this;
