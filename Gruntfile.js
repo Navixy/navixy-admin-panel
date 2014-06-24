@@ -20,6 +20,7 @@ module.exports = function (grunt) {
                             from: 'productionFiles/index.html',
                             to: 'index.html'
                         },
+                        'VERSION',
                         'PConfig.js',
                         'PConfig.example.js',
                         'locale/locale-en.js',

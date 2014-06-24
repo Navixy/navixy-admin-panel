@@ -1,27 +1,27 @@
 {
-    "name": "NavixyPanel",
-    "version": "1.0.0",
-    "readme": "Navixy New Panel",
-    "peerDependencies": {
-        "grunt": "~0.4.0"
-    },
-    "repository": {
-        "type": "mercurial",
-        "url": "http://hg.test.gdemoi.ru/panel-v2/"
-    },
-    "keywords": [
-        "gruntplugin"
-    ],
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-contrib-uglify": "~0.2.2",
-        "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-copy": "~0.4.1",
-        "grunt-contrib-requirejs": "~0.4.1",
-        "grunt-contrib-rename": "0.0.2",
-        "grunt-contrib-clean": "~0.4.1",
-        "grunt-lib-phantomjs": "0.4.0",
-        "grunt-hg-release": "~0.1.1",
-        "grunt-file-creator": "~0.1.1"
-    }
+  "name": "NavixyPanel",
+  "version": "1.1.0",
+  "readme": "Navixy New Panel",
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "repository": {
+    "type": "mercurial",
+    "url": "http://hg.test.gdemoi.ru/panel-v2/"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-rename": "0.0.2",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-lib-phantomjs": "0.4.0",
+    "grunt-hg-release": "~0.1.1",
+    "grunt-file-creator": "~0.1.1"
+  }
 }
