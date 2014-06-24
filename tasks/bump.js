@@ -26,7 +26,8 @@ module.exports = function (grunt) {
                             sys.print('stderr: ' + stderr);
                             var packageJSONFile = grunt.file.readJSON('package.json'),
                                 version = packageJSONFile.version,
-                                msg = [new Date().toISOString(), stdout.substr(0, stdout.length - 2), 'pro-ui realese',
+                                msg = [new Date().toISOString(), stdout.substr(0, stdout.length - 2),
+                                       packageJSONFile.name, 'realese',
                                        version].join(' ');
 
                             fs.writeSync(fd, msg);
@@ -41,7 +42,6 @@ module.exports = function (grunt) {
         grunt.loadNpmTasks('grunt-hg-release');
         grunt.loadNpmTasks('grunt-file-creator');
         grunt.task.run([hgRelaseTaskname, 'file-creator:basic']);
-        console.log('sss');
     });
 
 };
