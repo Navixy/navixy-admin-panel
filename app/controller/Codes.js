@@ -10,7 +10,8 @@ Ext.define('NavixyPanel.controller.Codes', {
 
     views: [
         'codes.List',
-        'codes.Edit'
+        'codes.Edit',
+        'codes.Create'
     ],
 
     refs: [
@@ -21,6 +22,10 @@ Ext.define('NavixyPanel.controller.Codes', {
         {
             ref: 'codesEdit',
             selector: 'codesedit'
+        },
+        {
+            ref: 'codesCreate',
+            selector: 'codescreate'
         }
     ],
 
@@ -34,11 +39,16 @@ Ext.define('NavixyPanel.controller.Codes', {
         this.control({
             'codeslist' : {
                 editcodes: this.handleEdit,
+                createcodes: this.handleCreate,
                 reload: this.doReload,
                 waitStores: ['Tariffs']
             },
             'codesedit' : {
                 formsubmit: this.onEditSubmit,
+                back: this.handleList
+            },
+            'codescreate' : {
+                formsubmit: this.onCreateSubmit,
                 back: this.handleList
             }
         });
@@ -47,6 +57,10 @@ Ext.define('NavixyPanel.controller.Codes', {
             'codes' : {
                 fn: this.handleList,
                 access: 'read'
+            },
+            'codes > add' : {
+                fn: this.handleCreate,
+                access: 'read,create'
             },
             'codes > edit' : {
                 fn: this.handleEdit,
@@ -63,8 +77,14 @@ Ext.define('NavixyPanel.controller.Codes', {
     handleList: function () {
         this.fireContent({
             xtype: 'codeslist',
-            createBtn: false,
+            createBtn: true,
             hasEdit: false
+        });
+    },
+
+    handleCreate: function () {
+        this.fireContent({
+            xtype: 'codescreate'
         });
     },
 
@@ -108,5 +128,38 @@ Ext.define('NavixyPanel.controller.Codes', {
             errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
 
         this.getCodesEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    onCreateSubmit: function (cmp, formValues) {
+
+        var params = Ext.apply({}, formValues);
+
+        Ext.API.createCodes({
+            params: params,
+            callback: function (response) {
+                this.afterCreate(response);
+            },
+            failure: function (response) {
+                this.afterCreateFailure(response);
+            },
+            scope: this
+        });
+    },
+
+    afterCreate: function (count) {
+        if (count) {
+            this.getCodesCreate().afterSave();
+            this.getCodesList().store.load();
+            this.getCodesList().afterEdit(false, count);
+        }
+    },
+
+    afterCreateFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+
+        this.getCodesCreate().showSubmitErrors(errCode, errors, errDescription);
     }
 });

@@ -64,9 +64,11 @@ Ext.define('NavixyPanel.view.codes.List', {
             this.getSelectionModel().deselectAll();
         }
 
-        btnTip.update(assigned !== succesed
-            ? Ext.String.format(_l.codes.list.after_edit_failure, succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
-            : Ext.String.format(_l.codes.list.after_edit_success, Ext.util.Format.units(succesed, 'codes', true))
+        btnTip.update(!assigned
+            ? Ext.String.format(_l.codes.list.after_create_success, Ext.util.Format.units(succesed, 'codes', true))
+            : assigned !== succesed
+                ? Ext.String.format(_l.codes.list.after_edit_failure, succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
+                : Ext.String.format(_l.codes.list.after_edit_success, Ext.util.Format.units(succesed, 'codes', true))
         );
     },
 
@@ -74,6 +76,8 @@ Ext.define('NavixyPanel.view.codes.List', {
         return {
             emptyData: _l.codes.list.empty_text,
             editBtnRole: 'edit-button',
+            editBtnText: _l.codes.list.edit_btn,
+            createBtnRole: 'create-button',
             createBtnText: _l.codes.list.create_btn,
             reloadBtnRole: 'reload-button',
             reloadBtnText: _l.codes.list.reload_btn
@@ -90,10 +94,21 @@ Ext.define('NavixyPanel.view.codes.List', {
                 items: [
                     {
                         xtype: 'button',
-                        iconCls: 'edit-button',
-                        disabled: true,
+                        iconCls: 'add-button',
+                        hidden: !this.createBtn || !Ext.checkPermission('codes', 'read,create'),
                         role: this.texts.createBtnRole,
                         text: this.texts.createBtnText,
+                        handler: function () {
+                            me.fireCreateAction();
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        iconCls: 'edit-button',
+                        margin: '0 0 0 10',
+                        disabled: true,
+                        role: this.texts.editBtnRole,
+                        text: this.texts.editBtnText,
                         handler: function () {
                             me.fireEditAction();
                         }
@@ -105,54 +120,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                         html: _l.codes.list.select_req
                     },
                     '->',
-//                    {
-//
-//                        role: 'options-btn',
-//                        iconCls: 'options-button',
-//                        margin: '0 10 0 0',
-//                        xtype: 'button',
-//                        menu: [
-//                            {
-//                                text: _l.codes.list.filters.activated,
-//                                role: 'activated-filter',
-//                                checked: true,
-//                                checkHandler: Ext.bind(this.toggleActiveFilter, this)
-//                            },
-//                            {
-//                                text: _l.codes.list.filters.no_activated,
-//                                checked: true,
-//                                checkHandler: Ext.bind(this.toggleNoActiveFilter, this)
-//                            },
-//                            {
-//                                text: _l.codes.list.filters.trackers,
-//                                checked: true,
-//                                checkHandler: Ext.bind(this.toggleTrackersFilter, this)
-//                            },
-//                            {
-//                                text: _l.codes.list.filters.cameras,
-//                                checked: true,
-//                                checkHandler: Ext.bind(this.toggleCamerasFilter, this)
-//                            },
-//                            {
-//                                text: _l.codes.list.filters.sockets,
-//                                checked: true,
-//                                checkHandler: Ext.bind(this.toggleSocketsFilter, this)
-//                            },
-//                            {
-//                                text: _l.codes.list.filters.toggle_all,
-//                                handler: Ext.bind(this.toggleAllFilters, this)
-//                            }
-//                        ]
-//                    },
                     {
-//                        xtype: 'button',
-//                        iconCls: 'reload-button',
-//                        role: this.texts.reloadBtnRole,
-//                        text: this.texts.reloadBtnText,
-//                        margin: '0 -2 0 0',
-//                        handler: function () {
-//                            me.fireReloadAction();
-//                        }
                         xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',
                         width: 200,
@@ -169,7 +137,7 @@ Ext.define('NavixyPanel.view.codes.List', {
     },
 
     getEditBnt: function () {
-        return this.down('[role="' + this.texts.createBtnRole + '"]');
+        return this.down('[role="' + this.texts.editBtnRole + '"]');
     },
 
     getReloadBnt: function () {
@@ -178,6 +146,10 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     getEditBntTip: function () {
         return this.down('[role="edit-btn-tip"]');
+    },
+
+    fireCreateAction: function () {
+        this.fireEvent('createcodes');
     },
 
     fireEditAction: function () {
