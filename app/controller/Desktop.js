@@ -18,7 +18,8 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.Desktop',
         'desktop.Footer',
         'desktop.AccessDenied',
-        'desktop.Search'
+        'desktop.Search',
+        'desktop.Index'
     ],
 
     refs: [
@@ -121,19 +122,22 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onSearch: function (searchString) {
-        this.application.fireEvent('handlefound');
-        this.application.fireEvent('contentchange', {
-            xtype: 'searchform',
-            searchStr: searchString
-        });
+        if (Ext.checkPermissons(['users', 'trackers', 'tariffs'])) {
+            this.application.fireEvent('handlefound');
+            this.application.fireEvent('contentchange', {
+                xtype: 'searchform',
+                searchStr: searchString
+            });
+        }
     },
 
     onIndex: function () {
 
         this.application.fireEvent('handlefound');
         this.application.fireEvent('menuselect', 'index');
+
         this.application.fireEvent('contentchange', {
-            xtype: 'searchform'
+            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs']) ? 'searchform' : 'indexpage'
         });
     },
 

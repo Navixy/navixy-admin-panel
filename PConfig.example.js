@@ -18,5 +18,6 @@ Config = {
 
     terminalHost: 'ws://api.test.gdemoi.ru:8383/',
     paas_domain: '.navixy.ru',
-    oldVersionURL: 'http://panel2.navixy.com/'
+    oldVersionURL: 'http://panel2.navixy.com/',
+    optDeliveryLink: 'http://api.test.gdemoi.ru/'
 };

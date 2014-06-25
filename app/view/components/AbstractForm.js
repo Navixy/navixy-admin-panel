@@ -1,5 +1,5 @@
 /**
- * @class NavixyPanel.view.user.USerCreate
+ * @class NavixyPanel.view.components.AbstractForm
  * @extends Ext.Base
  * Description
  */

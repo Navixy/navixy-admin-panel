@@ -97,7 +97,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         };
 
         this.waitConnectionReady(function() {
-            Ext.getStore('TariffDefaults').load();
+            if (Ext.checkPermission(this.getModuleName())) {
+                Ext.getStore('TariffDefaults').load();
+            }
         });
     },
 

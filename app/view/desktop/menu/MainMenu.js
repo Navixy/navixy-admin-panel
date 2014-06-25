@@ -46,8 +46,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     getItems: function () {
-
-        return [
+        var result = [
             {
                 xtype: 'container',
                 role: 'menu-box',
@@ -65,18 +64,25 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
                         scope: this
                     }
                 }
-            },
-            {
-                xtype: 'container',
-                role: 'search-box',
-                layout: {
-                    type: 'hbox',
-                    pack: 'start',
-                    align: 'middle'
-                },
-                items: this.getSearcher()
             }
         ];
+
+        if (Ext.checkPermissons(['users', 'trackers', 'tariffs'])) {
+            result.push(
+                {
+                    xtype: 'container',
+                    role: 'search-box',
+                    layout: {
+                        type: 'hbox',
+                        pack: 'start',
+                        align: 'middle'
+                    },
+                    items: this.getSearcher()
+                }
+            );
+        }
+
+        return result;
     },
 
     getMenuBox: function () {

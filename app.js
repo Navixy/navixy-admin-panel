@@ -38,6 +38,7 @@ Ext.application({
         'NavixyPanel.controller.Trackers',
         'NavixyPanel.controller.Tariffs',
         'NavixyPanel.controller.Codes',
-        'NavixyPanel.controller.Settings'
+        'NavixyPanel.controller.Settings',
+        'NavixyPanel.controller.Accounting'
     ]
 });

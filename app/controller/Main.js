@@ -143,28 +143,6 @@ Ext.define('NavixyPanel.controller.Main', {
                 });
 
                 return result;
-            },
-
-            getFilteredData: function (filters) {
-                var result = [];
-
-                if (!filters) {
-
-                    result = this.getData();
-                } else {
-
-                    this.suspendEvents();
-                    this.filter(filters);
-
-                    result = this.getData();
-
-                    Ext.iterate(filters, function(filter) {
-                        this.removeFilter(filter);
-                    }, this);
-
-                    this.resumeEvents();
-                }
-                return result;
             }
         });
 
@@ -173,6 +151,34 @@ Ext.define('NavixyPanel.controller.Main', {
                 var result = Ext.ComponentQuery.query(query);
 
                 return returnAll ? result : result[0];
+            }
+        });
+
+
+        Ext.override(Ext.picker.Month, {
+            initCls: function() {
+
+                var me = this,
+                    baseCls = me.single ? 'x-monthpicker-single' : me.baseCls,
+                    cls = [ baseCls, me.getComponentLayout().targetCls ];
+
+                //<deprecated since=0.99>
+                if (Ext.isDefined(me.cmpCls)) {
+                    if (Ext.isDefined(Ext.global.console)) {
+                        Ext.global.console.warn('Ext.Component: cmpCls has been deprecated. Please use componentCls.');
+                    }
+                    me.componentCls = me.cmpCls;
+                    delete me.cmpCls;
+                }
+                //</deprecated>
+
+                if (me.componentCls) {
+                    cls.push(me.componentCls);
+                } else {
+                    me.componentCls = baseCls;
+                }
+
+                return cls;
             }
         });
 
@@ -312,6 +318,17 @@ Ext.define('NavixyPanel.controller.Main', {
                             : !!section;
                     }
                 }
+
+                return result;
+            },
+
+            checkPermissons: function (sections) {
+                var result = false;
+                Ext.iterate(sections, function (sectionName) {
+                    if (Ext.checkPermission(sectionName)) {
+                        result = true;
+                    }
+                }, this);
 
                 return result;
             },

@@ -35,6 +35,11 @@ Ext.define('NavixyPanel.model.Permissions', {
             name: 'delete',
             type: 'boolean',
             defaultValue: false
+        },
+        {
+            name: 'generate',
+            type: 'boolean',
+            defaultValue: false
         }
     ]
 });

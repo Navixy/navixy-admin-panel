@@ -265,6 +265,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    createCodes: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            handler: 'dealer/activation_code',
+            root: 'count'
+        });
+    },
+
 
     getSettingsService: function (callback, failure, scope) {
         this.sendRequest({
@@ -310,5 +318,35 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/password',
             root: 'success'
         });
+    },
+
+    get1cDownloadLink: function (config) {
+        var apiLink = this.getRequestUrl({
+                handler: 'accounting',
+                action: 'export'
+            }),
+            hash = this.authKey;
+
+        return apiLink + '/?hash=' + hash +
+            '&' + Ext.urlEncode(config.params);
+
+    },
+
+    doExportDelivery: function (date) {
+        if (Ext.isDate(date) && Config.optDeliveryLink) {
+
+            Ext.Ajax.request({
+                url: Config.optDeliveryLink,
+
+                timeout: this.timeout,
+                params: {
+                    wallet: 'st',
+                    date: Ext.Date.format(date, 'Y-m')
+                },
+                success: Ext.emptyFn,
+                failure: Ext.emptyFn
+            });
+
+        }
     }
 });

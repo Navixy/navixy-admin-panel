@@ -540,10 +540,17 @@ Ext.define('Locale.locale-en', {
             selected_count: 'Codes selected',
             device_type: 'Codes selected for devices'
         },
+        create_form: {
+            title: 'Create activation codes',
+            save_btn: 'Create codes',
+            new_codes_count: 'Amount of new codes'
+        },
         list: {
             empty_text: 'No activation codes found',
-            create_btn: 'Edit selected',
+            create_btn: 'Create new',
+            edit_btn: 'Edit selected',
             reload_btn: 'Reload',
+            after_create_success: 'Created: {0}',
             after_edit_success: 'Changes: {0}',
             after_edit_failure: 'Changed: {0}, {0} change failed',
             select_req: 'Select codes from list',
@@ -606,6 +613,26 @@ Ext.define('Locale.locale-en', {
 
             maps_hint: 'Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.',
             demo_hint: 'Choose user account which will be used for demo purposes and available on login page (optional)'
+        }
+    },
+
+    accounting: {
+        menu_text: 'Accounting',
+        report_msg: {
+            title: 'Confirm email-newsletter',
+            text: 'Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?'
+        },
+        form: {
+            title: 'Data exporting',
+            export1c: {
+                tab_title: '«1C:Enterprise»',
+                save_btn: 'Get 1C data file',
+                report_btn: 'Submit deeds by email',
+                fields: {
+                    month: 'Select a month',
+                    last_act: 'Last deed number'
+                }
+            }
         }
     }
 })

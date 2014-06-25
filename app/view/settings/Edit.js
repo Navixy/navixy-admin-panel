@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.view.settings.Edit', {
-    extend: 'NavixyPanel.view.components.AbstractForm',
+    extend: 'NavixyPanel.view.components.AbstractTabForm',
     alias: 'widget.settingsedit',
     requires: [
         'NavixyPanel.view.widgets.fields.LocaleField'
@@ -171,77 +171,65 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         };
     },
 
-    getItems: function () {
+    getTabs: function () {
         return [
             {
-                xtype:'tabpanel',
-                plain: true,
-                activeTab: 0,
-                border: 0,
-                width: '100%',
-                ui: 'light',
-                cls: 'header-tabs',
-                defaults: this.getRowDefaults(),
+                title: _l.settings.edit_form.domain_fields,
                 items: [
                     {
-                        title: _l.settings.edit_form.domain_fields,
-                        items: [
-                            {
-                                items: this.getDomainItems()
-                            }
-                        ]
+                        items: this.getDomainItems()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.regional_fields,
+                items: [
+                    {
+                        items: this.getRegionalItems()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.maps_fields,
+                items: [
+                    {
+                        items: this.getMapsItems()
                     },
                     {
-                        title: _l.settings.edit_form.regional_fields,
-                        items: [
-                            {
-                                items: this.getRegionalItems()
-                            }
-                        ]
+                        padding: this.formRowPadding,
+                        items: this.getMapsHint()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.demo_fields,
+                items: [
+                    {
+                        items: this.getDemoItems()
                     },
                     {
-                        title: _l.settings.edit_form.maps_fields,
-                        items: [
-                            {
-                                items: this.getMapsItems()
-                            },
-                            {
-                                padding: this.formRowPadding,
-                                items: this.getMapsHint()
-                            }
-                        ]
-                    },
+                        padding: this.formRowPadding,
+                        items: this.getDemoHint()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.notifications_fields,
+                items: [
                     {
-                        title: _l.settings.edit_form.demo_fields,
-                        items: [
-                            {
-                                items: this.getDemoItems()
-                            },
-                            {
-                                padding: this.formRowPadding,
-                                items: this.getDemoHint()
-                            }
-                        ]
-                    },
+                        items: this.getNotificationsItems()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.password_fields,
+                items: [
                     {
-                        title: _l.settings.edit_form.notifications_fields,
-                        items: [
-                            {
-                                items: this.getNotificationsItems()
-                            }
-                        ]
-                    },
-                    {
-                        title: _l.settings.edit_form.password_fields,
-                        items: [
-                            {
-                                items: this.getPasswordItems()
-                            }
-                        ]
+                        items: this.getPasswordItems()
                     }
                 ]
             }
-        ];
+        ]
     },
 
     getDomainItems: function () {
