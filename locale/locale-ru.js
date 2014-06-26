@@ -288,9 +288,9 @@ Ext.define('Locale.locale-ru', {
             registered_city: 'Город  регистрации',
             registered_street_address: 'Улица, дом... регистрации',
 
-            sole_trader: 'Физическое лицо',
+            sole_trader: 'Индивидуальный предприниматель',
             legal_entity: 'Юридическое лицо',
-            individual : 'Индивидуальный предприниматель',
+            individual : 'Физическое лицо',
             full_name: 'Ф. И. О.',
             login_short: 'Логин',
             user_id: 'ID',

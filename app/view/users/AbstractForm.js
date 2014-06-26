@@ -39,9 +39,9 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         this.legalTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data : [
-                {type: "sole_trader", "name": _l.users.fields.sole_trader},
+                {type: "individual", "name": _l.users.fields.individual},
                 {type: "legal_entity", "name": _l.users.fields.legal_entity},
-                {type: "individual", "name": _l.users.fields.individual}
+                {type: "sole_trader", "name": _l.users.fields.sole_trader}
             ]
         });
 
@@ -112,7 +112,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 valueField: 'type'
                 ,listeners: {
                     change: function() {
-                        me.changeLegalStatus(this.getValue() === "sole_trader");
+                        me.changeLegalStatus(this.getValue() === "individual");
                     }
                 }
             }
