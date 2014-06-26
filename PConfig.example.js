@@ -1,7 +1,7 @@
 Config = {
     apiProfiles: {
         japi: {
-            apiRoot: 'http://api.test.gdemoi.ru/panel',
+            apiRoot: 'http://api.domain.com/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
         }
     },
@@ -16,8 +16,7 @@ Config = {
         monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
     },
 
-    terminalHost: 'ws://api.test.gdemoi.ru:8383/',
-    paas_domain: '.navixy.ru',
-    oldVersionURL: 'http://panel2.navixy.com/',
-    optDeliveryLink: 'http://api.test.gdemoi.ru/'
+    terminalHost: 'ws://api.domain.com:8383/',
+    paas_domain: '.domain.com',
+    optDeliveryLink: 'http://api.domain.com/'
 };
