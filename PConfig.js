@@ -32,6 +32,13 @@ Config = {
 
             ga('create', 'UA-36561636-4', 'navixy.com');
             ga('send', 'pageview');
+
+            if (Ext && Ext.History) {
+                Ext.History.on('change', function (hash) {
+                    ga('send', 'pageview', hash);
+                    yaCounter25349690.hit(window.location.href)
+                });
+            }
         }
     }
 };

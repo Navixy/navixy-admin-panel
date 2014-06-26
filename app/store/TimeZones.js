@@ -9,6 +9,13 @@ Ext.define('NavixyPanel.store.TimeZones', {
     fields: ['zone_id', 'description', 'base_offset', 'dst_offset', 'country_code'],
     storeId: 'TimeZones',
 
+    sorters: [
+        {
+            property: 'base_offset',
+            direction: 'ASC'
+        }
+    ],
+
     loaded: false,
 
     listeners: {
