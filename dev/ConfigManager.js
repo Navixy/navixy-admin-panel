@@ -26,6 +26,16 @@ Ext.define('Dev.ConfigManager', {
         return null;
     },
 
+    _maybeExecuteConfigCustomCode: function () {
+        if (Config.custom_code) {
+            try {
+                Config.custom_code();
+            } catch (e) {
+                Ext.logger(e.stack);
+            }
+        }
+    },
+
     _getData: function (lang) {
         var me = this,
 
@@ -34,10 +44,11 @@ Ext.define('Dev.ConfigManager', {
                 me._loaded = true;
                 me._config = Config;
                 Ext.Array.remove(Ext.Loader.history, cls);
+                me._maybeExecuteConfigCustomCode();
             };
 
         try {
-            Ext.require(cls, loadCallback);
+            Ext.require(cls, loadCallback, this);
         } catch (e) {
             Ext.log('cant load main config');
         }
