@@ -301,6 +301,7 @@ Ext.define('NavixyPanel.store.PhoneCodes', {
         { "mask": "+260-##-###-####", "cc": "ZM", "name_en": "Zambia", "desc_en": "", "name_ru": "Замбия", "desc_ru": "" },
         { "mask": "+263-#-######", "cc": "ZW", "name_en": "Zimbabwe", "desc_en": "", "name_ru": "Зимбабве", "desc_ru": "" },
         { "mask": "+1(###)###-####", "cc": ["US", "CA"], "name_en": "USA and Canada", "desc_en": "", "name_ru": "США и Канада", "desc_ru": "" },
-        { "mask": "+8(###)###-###", "cc": [], "name_en": "", "desc_en": "", "name_ru": "", "desc_ru": "" }
+        { "mask": "+8(###)###-###", "cc": [], "name_en": "", "desc_en": "", "name_ru": "", "desc_ru": "" },
+        { "mask": "+353(###)###-####", "cc": "IE", "name_en": "Ireland", "desc_en": "", "name_ru": "Ирландия", "desc_ru": "" }
     ]
 });
