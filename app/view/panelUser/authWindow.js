@@ -124,7 +124,6 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
         if (this.errMsg) {
             this.showError(this.errMsg);
         }
-        Ext.DomHelper.append(this.getEl(), {tag: 'div', id: 'beta-ribon', html: '', cls: 'beta-ribon'}, true)
     },
 
     showError: function (errMsg) {

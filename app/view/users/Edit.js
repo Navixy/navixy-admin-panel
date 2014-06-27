@@ -31,6 +31,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
         return [
             config.shift(),
             config.shift(),
+            config[2],
             config.pop()
         ];
     }

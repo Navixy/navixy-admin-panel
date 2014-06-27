@@ -272,6 +272,7 @@ Ext.define('Locale.locale-ru', {
             middle_name: 'Отчество',
             last_name: 'Фамилия',
             activated: 'Активность',
+            activated_t: 'Пользователь активен',
             legal_type: 'Юридический статус',
             tin: 'ИНН',
             legal_name: 'Юридическое название',
