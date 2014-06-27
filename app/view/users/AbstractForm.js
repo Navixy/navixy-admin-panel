@@ -86,7 +86,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'checkbox',
                 fieldLabel: _l.users.fields.activated_t,
-                name: 'activated'
+                name: 'activated',
+                checked: true
             },
             {
                 xtype: 'container',
