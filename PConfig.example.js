@@ -18,5 +18,7 @@ Config = {
 
     terminalHost: 'ws://api.domain.com:8383/',
     paas_domain: '.domain.com',
-    optDeliveryLink: 'http://api.domain.com/'
+
+    optUrl: 'http://opt.domain.com/',
+    hasOptDelivery: false
 };

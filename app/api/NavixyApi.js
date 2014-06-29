@@ -333,15 +333,15 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
     doExportDelivery: function (date) {
-        if (Ext.isDate(date) && Config.optDeliveryLink) {
+        if (Ext.isDate(date) && Config.optUrl && Config.hasOptDelivery) {
 
             Ext.Ajax.request({
-                url: Config.optDeliveryLink,
+                url: Config.optUrl + 'orders/send_acts',
 
                 timeout: this.timeout,
                 params: {
                     wallet: 'st',
-                    date: Ext.Date.format(date, 'Y-m')
+                    todate: Ext.Date.format(date, 'Y-m')
                 },
                 success: Ext.emptyFn,
                 failure: Ext.emptyFn

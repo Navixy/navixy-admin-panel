@@ -19,7 +19,9 @@ Config = {
     terminalHost: 'ws://api.test.gdemoi.ru:8383/',
     paas_domain: '.navixy.ru',
     oldVersionURL: 'http://panel2.navixy.com/',
-    optDeliveryLink: 'http://api.test.gdemoi.ru/',
+
+    optUrl: 'http://opt.test.gdemoi.ru/',
+    hasOptDelivery: true,
 
     custom_code: function(){
         if(window.location.host === 'panel.navixy.com'){

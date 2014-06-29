@@ -80,17 +80,8 @@ Ext.define('NavixyPanel.controller.Accounting', {
     },
 
     sendClientsReport: function (values) {
-        Ext.API.doExportDelivery(values.date);
         if (values.date) {
-            var link = Ext.API.get1cClientsReportLink({
-                params: {
-                    todate: values.date
-                }
-            });
-
-            Ext.Ajax.request({
-                url: link
-            });
+            Ext.API.doExportDelivery(values.date);
         }
     }
 });

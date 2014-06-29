@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
             );
         }
 
-        if (reportBtn && Config.optDeliveryLink) {
+        if (reportBtn && Config.optUrl && Config.hasOptDelivery) {
             result.push(
                 {
                     text: reportBtn,
