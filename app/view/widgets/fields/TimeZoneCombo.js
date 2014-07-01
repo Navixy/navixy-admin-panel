@@ -12,13 +12,11 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
 
     applyValueMethod: 'select',
     queryMode: 'local',
-    editable: false,
 
     store: 'TimeZones',
-
     displayField: 'description',
     valueField: 'zone_id',
-
+    forceSelection: true,
     tpl: Ext.create('Ext.XTemplate',
         '<tpl for=".">',
         '<div class="x-boundlist-item">{description} {[this.getOffsetStr(values.base_offset)]}</div>',
@@ -42,7 +40,6 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
             }
         }
     ),
-
 
     initComponent: function () {
         if (this.store) {
