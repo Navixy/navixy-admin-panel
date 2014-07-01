@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         this.currencyStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : [
+            data: [
                 {type: "RUB", "name": _l.currency.rub},
                 {type: "USD", "name": _l.currency.usd},
                 {type: "KZT", "name": _l.currency.kzt},
@@ -31,7 +31,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         this.mapsStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'free'],
-            data : [
+            data: [
                 {type: "roadmap", "name": _l.maps.roadmap},
                 {type: "satellite", "name": _l.maps.satellite},
                 {type: "hybrid", "name": _l.maps.hybrid},
@@ -150,7 +150,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getProcessedValues: function () {
         var values = this.getValues();
 
-        this.iterateFields(function(field) {
+        this.iterateFields(function (field) {
             if (field.isDisabled()) {
                 delete values[field.name];
             }
@@ -432,7 +432,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 6,
                 maxLength: 20,
 
-                validator: function(value) {
+                validator: function (value) {
                     var pass_val = me.down('*[name=new_password]').getValue();
                     return value === pass_val || _l.settings.fields.password_mismatched;
                 }
@@ -440,10 +440,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 fieldLabel: _l.settings.fields.password_old,
                 name: 'old_password',
-                inputType: 'password',
-
-                minLength: 6,
-                maxLength: 20
+                inputType: 'password'
             }
         ];
     },
@@ -488,7 +485,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }, this);
 
         Ext.iterate(this.getServiceComponents(), function (field) {
-                field[!rights.serviceRead ? 'hide' : 'show']();
+            field[!rights.serviceRead ? 'hide' : 'show']();
         }, this);
 
         Ext.iterate(this.getPermissionFields(), function (field) {
