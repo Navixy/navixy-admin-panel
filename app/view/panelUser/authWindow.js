@@ -74,7 +74,6 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
 
                         minLength: 2,
                         maxLength: 50,
-                        vtype: 'alphanum',
                         allowBlank: false,
 
                         emptyText: _l.auth.password

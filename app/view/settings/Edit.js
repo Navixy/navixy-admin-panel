@@ -433,7 +433,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 maxLength: 20,
 
                 validator: function (value) {
-                    var pass_val = me.down('*[name=new_password]').getValue();
+                    var pass_val = me.down('textfield[name=new_password]').getValue();
                     return value === pass_val || _l.settings.fields.password_mismatched;
                 }
             },
