@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 xtype: 'templatecolumn',
                 tpl: trackerStatusTpl,
                 dataIndex: 'status',
-                width: 100
+                width: 140
             },
             {
                 text: _l.trackers.fields.model,

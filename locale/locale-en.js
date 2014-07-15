@@ -389,10 +389,11 @@ Ext.define('Locale.locale-en', {
                 blocked: 'blocked'
             },
             statuses: {
-                online: 'Online',
+                active: 'Online',
+                signal_lost: 'Connection lost',
                 offline: 'Offline',
-                just_registered: 'Offline',
-                signal_lost: 'No connect'
+                just_registered: 'Just registered',
+                idle: 'GPS not updated'
             }
         },
         edit_form: {

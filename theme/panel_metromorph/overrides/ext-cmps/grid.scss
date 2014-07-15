@@ -170,6 +170,10 @@ $grid-cell-empty-font-size: 14px;
             }
 
             &.signal_lost {
+                color: lighten($baseFontColor, 30%);
+            }
+
+            &.idle {
                 color: darken($baseFontColor, 10%);
             }
 

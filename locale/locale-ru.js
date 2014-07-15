@@ -390,10 +390,11 @@ Ext.define('Locale.locale-ru', {
                 blocked: 'заблокирован'
             },
             statuses: {
-                online: 'Online',
-                offline: 'Offline',
-                just_registered: 'Offline',
-                signal_lost: 'No connect'
+                active: 'Наблюдается',
+                signal_lost: 'Связь потеряна',
+                offline: 'Оффлайн',
+                just_registered: "Не активинован",
+                idle: 'GPS не обновлен'
             }
         },
         edit_form: {
