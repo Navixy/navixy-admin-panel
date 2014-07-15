@@ -112,6 +112,22 @@ $grid-cell-empty-font-size: 14px;
         span {
             padding-left: 5px;
 
+            &.icon {
+                margin-right: 5px;
+                font-size: 10px;
+                color: $smoke;
+
+                &.sole_trader {
+                    @extend .icon-sole-trader;
+                }
+                &.individual {
+                    @extend .icon-user;
+                }
+                &.legal_entity {
+                    @extend .icon-legal-entity;
+                }
+            }
+
             &.nopad {
                 padding-left: 0;
             }

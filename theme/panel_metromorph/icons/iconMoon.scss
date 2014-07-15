@@ -10,7 +10,7 @@
 }
 
 [class^="icon-"], [class*=" icon-"],
-    .icon-close, .icon-search, .icon-cogs, .icon-save, .icon-cancel, .icon-gear, .icon-camera, .icon-help, .icon-bell, .icon-pencil, .icon-location-2, .icon-coin, .icon-globe, .icon-last-update, .icon-sorter-asc, .icon-sorter-group, .icon-remove, .icon-eye-open, .icon-plus, .icon-location, .icon-user, .icon-lightning, .icon-light, .icon-close2
+    .icon-close, .icon-search, .icon-cogs, .icon-save, .icon-cancel, .icon-gear, .icon-camera, .icon-help, .icon-bell, .icon-pencil, .icon-location-2, .icon-coin, .icon-globe, .icon-last-update, .icon-sorter-asc, .icon-sorter-group, .icon-remove, .icon-eye-open, .icon-plus, .icon-location, .icon-user, .icon-legal-entity, .icon-sole-trader, .icon-lightning, .icon-light, .icon-close2
     {
 	font-family: 'panel_metromorph';
 	speak: none;
@@ -87,6 +87,12 @@
 }
 .icon-user:before {
 	content: "\e01a";
+}
+.icon-sole-trader:before {
+    content: "\e602";
+}
+.icon-legal-entity:before {
+    content: "\e603";
 }
 .icon-lightning:before {
 	content: "\e054";

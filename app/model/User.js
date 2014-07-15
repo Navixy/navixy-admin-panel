@@ -33,6 +33,7 @@ Ext.define('NavixyPanel.model.User', {
         {name: 'registered_region', type: 'string'},
         {name: 'registered_city', type: 'string'},
         {name: 'registered_street_address', type: 'string'},
+        {name: 'creation_date', type: 'string'}
     ],
 
     hasTrackerClone: function (sourceId) {

@@ -264,6 +264,7 @@ Ext.define('Locale.locale-en', {
             return_btn: 'Back'
         },
         fields: {
+            creation_date: 'Creation date',
             login: 'Email address',
             balance: 'Balance',
             bonus: 'Bonus',

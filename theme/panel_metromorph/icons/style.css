@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'panel_metromorph';
-	src:url('fonts/panel_metromorph.eot?-qows8w');
-	src:url('fonts/panel_metromorph.eot?#iefix-qows8w') format('embedded-opentype'),
-		url('fonts/panel_metromorph.woff?-qows8w') format('woff'),
-		url('fonts/panel_metromorph.ttf?-qows8w') format('truetype'),
-		url('fonts/panel_metromorph.svg?-qows8w#panel_metromorph') format('svg');
+	src:url('fonts/panel_metromorph.eot?-ulluou');
+	src:url('fonts/panel_metromorph.eot?#iefix-ulluou') format('embedded-opentype'),
+		url('fonts/panel_metromorph.woff?-ulluou') format('woff'),
+		url('fonts/panel_metromorph.ttf?-ulluou') format('truetype'),
+		url('fonts/panel_metromorph.svg?-ulluou#panel_metromorph') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -85,6 +85,12 @@
 }
 .icon-user:before {
 	content: "\e01a";
+}
+.icon-sole-trader:before {
+	content: "\e602";
+}
+.icon-legal-entity:before {
+	content: "\e603";
 }
 .icon-lightning:before {
 	content: "\e054";

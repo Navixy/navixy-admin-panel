@@ -18,10 +18,27 @@ Ext.define('NavixyPanel.view.users.List', {
     },
 
     getColumnsConfig: function () {
-        var userCardTpl = '<a>{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode} <tpl if="!activated"><span class="scaled red">{[l.users.fields.activated_short.status_false]}</span></tpl></a>',
+        var userCardTpl = [
+                '<span class="icon {legal_type}"></span>',
+                    '<a>',
+                        '<tpl if="legal_name && legal_type == \'legal_entity\'">',
+                            '{legal_name:htmlEncode}',
+                        '<tpl else>',
+                            '{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}',
+                        '</tpl>',
+                    '</a>',
+                '<tpl if="!activated"><span class="scaled red">{[_l.users.fields.activated_short.status_false]}</span></tpl></a>'
+            ],
             userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>',
             balanceTpl = '{balance:balanceEncode}',
-            bonusTpl = '{bonus:emptyEncode}';
+            bonusTpl = '{bonus:emptyEncode}',
+            statusTpl = [
+                '<tpl if="activated">',
+                '{[_l.users.fields.activated_short.status_true]}',
+                '<tpl else>',
+                '<span class="gray nopad">{[_l.users.fields.activated_short.status_false]}</span>',
+                '</tpl>'
+            ];
 
         return [
             {

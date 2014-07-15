@@ -13,7 +13,7 @@
 				]
 			},
 			"properties": {
-				"order": 27,
+				"order": 29,
 				"id": 105,
 				"prevSize": 32,
 				"code": 58881,
@@ -34,7 +34,7 @@
 				"grid": 0
 			},
 			"properties": {
-				"order": 28,
+				"order": 30,
 				"id": 0,
 				"prevSize": 32,
 				"code": 58880,
@@ -58,7 +58,7 @@
 			},
 			"properties": {
 				"id": 4,
-				"order": 29,
+				"order": 31,
 				"prevSize": 32,
 				"code": 61573,
 				"name": "cogs",
@@ -80,7 +80,7 @@
 			},
 			"properties": {
 				"id": 11,
-				"order": 30,
+				"order": 32,
 				"prevSize": 32,
 				"code": 57406,
 				"name": "save",
@@ -102,7 +102,7 @@
 			},
 			"properties": {
 				"id": 12,
-				"order": 31,
+				"order": 33,
 				"prevSize": 32,
 				"code": 57407,
 				"name": "cancel",
@@ -124,7 +124,7 @@
 			},
 			"properties": {
 				"id": 14,
-				"order": 32,
+				"order": 34,
 				"prevSize": 32,
 				"code": 57409,
 				"name": "gear",
@@ -146,7 +146,7 @@
 			},
 			"properties": {
 				"id": 15,
-				"order": 33,
+				"order": 35,
 				"prevSize": 32,
 				"code": 57410,
 				"name": "camera",
@@ -168,7 +168,7 @@
 			},
 			"properties": {
 				"id": 17,
-				"order": 34,
+				"order": 36,
 				"prevSize": 32,
 				"code": 57412,
 				"name": "help",
@@ -190,7 +190,7 @@
 			},
 			"properties": {
 				"id": 25,
-				"order": 35,
+				"order": 37,
 				"prevSize": 32,
 				"code": 57388,
 				"name": "bell",
@@ -212,7 +212,7 @@
 			},
 			"properties": {
 				"id": 31,
-				"order": 36,
+				"order": 38,
 				"prevSize": 32,
 				"code": 57374,
 				"name": "pencil",
@@ -234,7 +234,7 @@
 			},
 			"properties": {
 				"id": 32,
-				"order": 37,
+				"order": 39,
 				"prevSize": 32,
 				"code": 57371,
 				"name": "location-2",
@@ -256,7 +256,7 @@
 			},
 			"properties": {
 				"id": 34,
-				"order": 38,
+				"order": 40,
 				"prevSize": 32,
 				"code": 57366,
 				"name": "coin",
@@ -278,7 +278,7 @@
 			},
 			"properties": {
 				"id": 38,
-				"order": 39,
+				"order": 41,
 				"prevSize": 32,
 				"code": 57351,
 				"name": "globe",
@@ -300,7 +300,7 @@
 			},
 			"properties": {
 				"id": 43,
-				"order": 40,
+				"order": 42,
 				"prevSize": 32,
 				"code": 57349,
 				"name": "last-update",
@@ -322,7 +322,7 @@
 			},
 			"properties": {
 				"id": 61,
-				"order": 41,
+				"order": 43,
 				"prevSize": 32,
 				"code": 57393,
 				"name": "sorter-asc",
@@ -344,7 +344,7 @@
 			},
 			"properties": {
 				"id": 62,
-				"order": 42,
+				"order": 44,
 				"prevSize": 32,
 				"code": 57395,
 				"name": "sorter-group",
@@ -366,7 +366,7 @@
 			},
 			"properties": {
 				"id": 65,
-				"order": 43,
+				"order": 45,
 				"prevSize": 32,
 				"code": 57398,
 				"name": "remove",
@@ -388,7 +388,7 @@
 			},
 			"properties": {
 				"id": 72,
-				"order": 44,
+				"order": 46,
 				"prevSize": 32,
 				"code": 61550,
 				"name": "eye-open",
@@ -410,7 +410,7 @@
 			},
 			"properties": {
 				"id": 74,
-				"order": 45,
+				"order": 47,
 				"prevSize": 32,
 				"code": 57356,
 				"name": "plus",
@@ -432,7 +432,7 @@
 			},
 			"properties": {
 				"id": 75,
-				"order": 46,
+				"order": 48,
 				"prevSize": 32,
 				"code": 57358,
 				"name": "location",
@@ -454,7 +454,7 @@
 			},
 			"properties": {
 				"id": 80,
-				"order": 47,
+				"order": 49,
 				"prevSize": 32,
 				"code": 57370,
 				"name": "user",
@@ -462,6 +462,48 @@
 			},
 			"setIdx": 0,
 			"iconIdx": 20
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 962.56c0 0-1.997-193.894-13.875-213.965-17.664-29.952-58.675-50.483-134.861-82.33-75.93-31.744-100.25-58.573-100.25-115.866 0-34.458 23.194-23.194 33.382-86.221 4.198-26.163 24.678-0.461 28.621-60.109 0-23.808-11.162-29.747-11.162-29.747s5.632-35.226 7.885-62.31c2.765-33.792-17.050-120.986-122.47-120.986s-125.133 87.245-122.419 120.986c2.202 27.085 7.834 62.31 7.834 62.31s-11.162 5.939-11.162 29.747c3.942 59.699 24.422 33.997 28.672 60.109 10.138 63.027 33.331 51.763 33.331 86.221 0 38.963-11.264 63.846-42.342 85.709 165.888 83.046 188.16 99.994 188.16 174.234v152.218h230.656zM523.469 695.040c-101.325-42.291-133.632-78.029-133.632-154.47 0-45.875 30.925-30.925 44.493-114.995 5.581-34.867 32.973-0.563 38.144-80.128 0-31.744-14.899-39.629-14.899-39.629s7.578-46.95 10.547-83.098c3.686-44.954-22.733-161.28-163.277-161.28s-166.912 116.275-163.226 161.28c2.97 36.147 10.496 83.098 10.496 83.098s-14.848 7.885-14.848 39.629c5.274 79.616 32.563 45.312 38.195 80.128 13.568 84.070 44.493 69.069 44.493 114.995 0 76.442-32.41 112.179-133.632 154.47-30.874 12.902-86.323 32.922-86.323 80.947v186.573h711.373c0 0 0-110.336 0-139.827 0-43.878-86.374-85.197-187.904-127.693z"
+				],
+				"grid": 0,
+				"tags": [
+					"sole-trader"
+				]
+			},
+			"properties": {
+				"order": 50,
+				"id": 106,
+				"prevSize": 32,
+				"code": 58882,
+				"name": "sole-trader",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 21
+		},
+		{
+			"icon": {
+				"paths": [
+					"M961.024 527.36l-410.816-411.2c-20.992-21.824-55.36-21.824-76.352 0l-410.88 411.2c-21.056 21.76-13.216 39.616 17.408 39.616h85.664v315.808c0 22.784 0.96 41.408 42.176 41.408h199.424v-316.832h208.64v316.832h209.344c31.424 0 32.32-18.592 32.32-41.408v-315.808h85.6c30.56 0 38.464-17.824 17.472-39.616z"
+				],
+				"grid": 0,
+				"tags": [
+					"legal-entity"
+				]
+			},
+			"properties": {
+				"order": 51,
+				"id": 108,
+				"prevSize": 32,
+				"code": 58883,
+				"name": "legal-entity",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 22
 		},
 		{
 			"icon": {
@@ -476,14 +518,14 @@
 			},
 			"properties": {
 				"id": 90,
-				"order": 48,
+				"order": 52,
 				"prevSize": 32,
 				"code": 57428,
 				"name": "lightning",
 				"ligatures": ""
 			},
 			"setIdx": 0,
-			"iconIdx": 21
+			"iconIdx": 23
 		},
 		{
 			"icon": {
@@ -498,14 +540,14 @@
 			},
 			"properties": {
 				"id": 104,
-				"order": 49,
+				"order": 53,
 				"prevSize": 32,
 				"code": 57438,
 				"name": "light",
 				"ligatures": ""
 			},
 			"setIdx": 0,
-			"iconIdx": 22
+			"iconIdx": 24
 		},
 		{
 			"icon": {
@@ -520,14 +562,14 @@
 			},
 			"properties": {
 				"id": 45,
-				"order": 24,
+				"order": 54,
 				"prevSize": 32,
 				"code": 57361,
 				"name": "close2",
 				"ligatures": ""
 			},
-			"setIdx": 1,
-			"iconIdx": 104
+			"setIdx": 0,
+			"iconIdx": 25
 		}
 	],
 	"height": 1024,

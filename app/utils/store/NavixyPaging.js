@@ -12,7 +12,7 @@ Ext.define('NavixyPanel.utils.store.NavixyPaging', {
     ],
     displayInfo: false,
     ui: 'light',
-    inputItemWidth: 25,
+    inputItemWidth: 32,
     defaultButtonUI: 'transparent',
     border: 0,
 

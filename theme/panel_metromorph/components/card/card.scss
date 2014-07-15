@@ -107,6 +107,22 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
             margin-left: 15px;
         }
     }
+
+    span.icon {
+        margin-right: 5px;
+        font-size: 10px;
+        color: $smoke;
+
+        &.sole_trader {
+            @extend .icon-sole-trader;
+        }
+        &.individual {
+            @extend .icon-user;
+        }
+        &.legal_entity {
+            @extend .icon-legal-entity;
+        }
+    }
 }
 
 .card-body-inner {

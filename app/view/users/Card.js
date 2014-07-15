@@ -122,7 +122,12 @@ Ext.define('NavixyPanel.view.users.Card', {
                 },
                 {
                     title: _l.users.fields.legal_type,
-                    value: _l.users.fields[recordData.legal_type] || ''
+                    value: '<span class="icon ' + recordData.legal_type + '"></span>' + _l.users.fields[recordData.legal_type] || '',
+                    no_encode: true
+                },
+                {
+                    title: _l.users.fields.creation_date,
+                    value: Ext.Date.formatISO(recordData.creation_date, "d-m-Y")
                 },
                 {
                     title: _l.users.fields.phone,
