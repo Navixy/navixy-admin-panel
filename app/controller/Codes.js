@@ -40,7 +40,6 @@ Ext.define('NavixyPanel.controller.Codes', {
             'codeslist' : {
                 editcodes: this.handleEdit,
                 createcodes: this.handleCreate,
-                reload: this.doReload,
                 waitStores: ['Tariffs']
             },
             'codesedit' : {

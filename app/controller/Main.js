@@ -337,10 +337,19 @@ Ext.define('NavixyPanel.controller.Main', {
                 var store = Ext.getStore(storeName);
                 if (store && store.loadRecord) {
                     Ext.getBody().mask(_l.loading);
-                    store.loadRecord(recordId, function() {
-                        Ext.getBody().unmask();
-                        callback.apply(scope, arguments);
-                    }, scope, loadAssociations);
+                    store.loadRecord(
+                        recordId,
+                        function() {
+                            Ext.getBody().unmask();
+                            callback.apply(scope, arguments);
+                        },
+                        scope,
+                        loadAssociations,
+                        function () {
+                            Ext.getBody().unmask();
+                            callback.apply(scope, [false]);
+                        }
+                    );
                 } else {
                     Ext.getBody().unmask();
                     callback.call(scope);

@@ -85,6 +85,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             }
         );
 
+        // TODO: fix links
         if (Ext.checkPermission('users', 'read') && this.record.getParentUserData()) {
             result.push(
                 {

@@ -134,3 +134,19 @@ $light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%)
         }
     }
 }
+
+.grid-field {
+    .label {
+
+    }
+
+    .label-tip {
+        text-align: right;
+        color: $gray;
+        font-size: 10px;
+    }
+
+    .x-grid-body {
+        border: 1px solid $baseBackgroundColor;
+    }
+}

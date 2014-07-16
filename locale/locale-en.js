@@ -155,6 +155,7 @@ Ext.define('Locale.locale-en', {
         years: ['years', 'year', 'years'],
         months: ['months', 'month', 'months'],
         codes: ['codes', 'code', 'codes'],
+        trackers: ['trackers', 'tracker', 'trackers'],
         devices: ['devices', 'device', 'devices'],
         entries: ['matches', 'match', 'matches']
     },
@@ -381,6 +382,7 @@ Ext.define('Locale.locale-en', {
             tariff: 'Tracker tariff',
             deleted: 'Marked as deleted',
             blocked: 'Service paused',
+            user_id: 'User ID',
             clone: 'Clone',
             clone_owner: 'Clone owner',
             options: {
@@ -408,6 +410,17 @@ Ext.define('Locale.locale-en', {
             failure_msg: 'Creating clone failed',
             remove_confirm: 'Remove clone'
         },
+        group_clone_form: {
+            title: 'Cloning group of trackers',
+            save_btn: 'Clone',
+            grid_clone_label: 'Clones will be added',
+            grid_clone_tip: 'You can change the label of the clone by double clicking on it in the list',
+        },
+        group_owner_form: {
+            title: 'Changing owner for group of trackers',
+            save_btn: 'Changing owner',
+            grid_clone_label: 'Trackers will be changed'
+        },
         tariff_form: {
             title: 'Change tariff plan for tracker',
             save_btn: 'Save changes',
@@ -418,7 +431,16 @@ Ext.define('Locale.locale-en', {
         },
         list: {
             create_btn_text: 'Create new tracker',
-            empty_text: 'No tracers found'
+            owner_btn: 'Change owner',
+            clone_btn: 'Clone',
+            edit_btn: 'Edit selected',
+            empty_text: 'No tracers found',
+            after_clone_success: 'Cloned: {0}',
+            after_clone_failure: 'Cloned: {0}, {1} clone failed',
+            after_owner_success: 'Changed: {0}',
+            after_owner_failure: 'Changed: {0}, {1} change failed',
+            select_req: 'Select trackers from list',
+            select_clone_req: 'Clones selected, group operations can be performed'
         },
         card: {
             links: {
@@ -555,7 +577,7 @@ Ext.define('Locale.locale-en', {
             reload_btn: 'Reload',
             after_create_success: 'Created: {0}',
             after_edit_success: 'Changes: {0}',
-            after_edit_failure: 'Changed: {0}, {0} change failed',
+            after_edit_failure: 'Changed: {0}, {1} change failed',
             select_req: 'Select codes from list',
             same_type_req: 'You must specify one device type codes',
             edited_tip: 'changed',

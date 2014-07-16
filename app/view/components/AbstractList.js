@@ -38,6 +38,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     searchTitle: null,
     noTBar: false,
     hasFilter: true,
+    hasSelection: false,
 
     texts: null,
 
@@ -81,9 +82,63 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             }
         };
 
+        this.addSelection();
+
         this.applyListeners();
 
         this.callParent(arguments);
+    },
+
+    addSelection: function () {
+        if (this.hasSelection) {
+            this.disableSelection = false;
+
+            this.selModel = Ext.create('Ext.selection.CheckboxModel', {
+                checkOnly: true,
+                injectCheckbox: this.hasEdit ? 1: 0,
+
+                renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
+                    var baseCSSPrefix = Ext.baseCSSPrefix;
+                    metaData.tdCls = baseCSSPrefix + 'grid-cell-special ' + baseCSSPrefix + 'grid-cell-row-checker';
+                    return !record.get('activated') ? '<div class="' + baseCSSPrefix + 'grid-row-checker">&#160;</div>' : '';
+                },
+
+                updateHeaderState: function () {
+                    // check to see if all records are selected
+
+                    var me = this,
+                        store = me.store,
+                        storeCount = store.getCount(),
+                        views = me.views,
+                        hdSelectStatus = false,
+                        selectedCount = 0,
+                        selected, len, i;
+
+                    store.each(function (record) {
+                        if (record.get('activated')) {
+                            --storeCount;
+                        }
+                    }, this);
+
+                    if (!store.buffered && storeCount > 0) {
+                        selected = me.selected;
+                        hdSelectStatus = true;
+
+                        for (i = 0, len = selected.getCount(); i < len; ++i) {
+                            if (!me.storeHasSelected(selected.getAt(i))) {
+                                break;
+                            }
+                            ++selectedCount;
+                        }
+                        hdSelectStatus = storeCount === selectedCount;
+                    }
+
+                    if (views && views.length) {
+                        me.toggleUiHeader(hdSelectStatus);
+                    }
+                }
+            });
+        }
     },
 
     initStore: function () {
@@ -99,8 +154,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     getStoreConfig: function () {
         var config = {
-                onlySearch: this.storeSearch
-            };
+            onlySearch: this.storeSearch
+        };
 
         if (this.filter || this.search) {
             var filters = config.filters = [];
@@ -121,10 +176,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 filterConfig = Ext.isObject(value)
                     ? value
                     : {
-                        property: name,
-                        value: value,
-                        root: root
-                    };
+                    property: name,
+                    value: value,
+                    root: root
+                };
 
                 filters.push(
                     Ext.create('Ext.util.Filter',
@@ -155,13 +210,13 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     getToolsColumns: function () {
         return this.hasEdit
             ? [
-                {
-                    xtype: 'toolcolumn',
-                    width: 31,
-                    action: 'edit',
-                    tip: this.texts.editToolTip
-                }
-            ]
+            {
+                xtype: 'toolcolumn',
+                width: 31,
+                action: 'edit',
+                tip: this.texts.editToolTip
+            }
+        ]
             : [];
     },
 
@@ -218,7 +273,15 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     applyListeners: function () {
         this.on('cellclick', this.handleCellClick, this);
         this.on('afterrender', this.applySearchView, this);
+
+        if (this.hasSelection) {
+            this.on('beforeselect', this.handleCellSelect, this);
+            this.on('selectionchange', this.afterCellSelect, this);
+        }
     },
+
+    handleCellSelect: Ext.emptyFn,
+    afterCellSelect: Ext.emptyFn,
 
     applySearchView: function () {
         if (this.search || this.storeSearch) {
@@ -230,9 +293,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     Ext.String.format(resultsCnt ? this.texts.searchTitleTpl: this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
                 );
 
-            if (resultsCnt) {
-                this.expand(false);
-            }
+                if (resultsCnt) {
+                    this.expand(false);
+                }
             }, this, {single: true});
         }
     },
@@ -240,9 +303,12 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     handleCellClick: function (table, td, cellIndex, record) {
         var tdEl = Ext.get(td),
             isTool = tdEl.hasCls('tool-column'),
-            isEdit = isTool && tdEl.hasCls('edit');
+            isEdit = isTool && tdEl.hasCls('edit'),
+            isCheckbox = tdEl.down('.x-grid-row-checker');
 
-        if (isEdit) {
+        if (isCheckbox) {
+            this.fireEvent('checkboxclick', record);
+        } else if (isEdit) {
             this.fireEvent('editclick', record);
         } else {
             this.fireEvent('actionclick', record);

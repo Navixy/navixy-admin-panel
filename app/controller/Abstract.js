@@ -104,6 +104,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
 
         handleCall = function () {
 
+            // TODO: CallHandle delay for loaded record
             controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
             // Get record for result
             if (origin.loadRecord && arguments[0].isModel) {

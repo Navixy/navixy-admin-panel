@@ -12,7 +12,7 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     viewPageSize: 20,
 
-    disableSelection: false,
+    hasSelection: true,
 
     applyListeners: function () {
         this.on('beforeselect', this.handleCellSelect, this);
@@ -171,51 +171,6 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     getColumnsConfig: function () {
 
-        this.selModel = Ext.create('Ext.selection.CheckboxModel', {
-            checkOnly: true,
-
-            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                var baseCSSPrefix = Ext.baseCSSPrefix;
-                metaData.tdCls = baseCSSPrefix + 'grid-cell-special ' + baseCSSPrefix + 'grid-cell-row-checker';
-                return !record.get('activated') ? '<div class="' + baseCSSPrefix + 'grid-row-checker">&#160;</div>' : '';
-            },
-
-            updateHeaderState: function() {
-                // check to see if all records are selected
-
-                var me = this,
-                    store = me.store,
-                    storeCount = store.getCount(),
-                    views = me.views,
-                    hdSelectStatus = false,
-                    selectedCount = 0,
-                    selected, len, i;
-
-                store.each(function (record) {
-                    if (record.get('activated')) {
-                        --storeCount;
-                    }
-                }, this);
-
-                if (!store.buffered && storeCount > 0) {
-                    selected = me.selected;
-                    hdSelectStatus = true;
-
-                    for (i = 0, len = selected.getCount(); i < len; ++i) {
-                        if (!me.storeHasSelected(selected.getAt(i))) {
-                            break;
-                        }
-                        ++selectedCount;
-                    }
-                    hdSelectStatus = storeCount === selectedCount;
-                }
-
-                if (views && views.length) {
-                    me.toggleUiHeader(hdSelectStatus);
-                }
-            }
-        });
-
         var codeTpl = [
                 '{code}',
                 '<tpl if="edited">',
@@ -333,11 +288,5 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     removeOptFilter: function (field, value) {
         this.store.removeOptFilter(field, value);
-    },
-
-//    afterRender: function () {
-//        this.callParent(arguments);
-//        this.toggleActiveFilter(null, false);
-//        this.down('[role="activated-filter"]').setChecked(false);
-//    }
+    }
 });

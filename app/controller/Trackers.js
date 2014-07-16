@@ -14,7 +14,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
         'trackers.Clone',
         'trackers.Console',
         'trackers.Edit',
-        'trackers.Tariff'
+        'trackers.Tariff',
+        'trackers.GroupClone',
+        'trackers.GroupOwner'
     ],
 
     refs: [
@@ -29,6 +31,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
         {
             ref: 'trackerEdit',
             selector: 'trackeredit'
+        },
+        {
+            ref: 'trackerClone',
+            selector: 'trackerclone'
+        },
+        {
+            ref: 'trackerGroupClone',
+            selector: 'trackersgroupclone'
+        },
+        {
+            ref: 'trackerGroupOwner',
+            selector: 'trackersgroupowner'
         }
     ],
 
@@ -43,7 +57,17 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.control({
             'trackerslist': {
                 actionclick: this.handleListAction,
-                editclick: this.handleTrackerEditAction
+                editclick: this.handleTrackerEditAction,
+                clonetrackers: this.handleGroupClone,
+                ownertrackers: this.handleGroupOwner
+            },
+            'trackersgroupclone' : {
+                formsubmit: this.onGroupCloneSubmit,
+                back: this.handleTrackers
+            },
+            'trackersgroupowner' : {
+                formsubmit: this.onGroupOwnerSubmit,
+                back: this.handleTrackers
             },
             'trackeredit' : {
                 formsubmit: this.handleTrackerEditSubmit
@@ -118,6 +142,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.fireContent({
             xtype: 'trackerslist',
             createBtn: false,
+            hasSelection: true,
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
     },
@@ -147,6 +172,20 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.fireContent({
             xtype: 'trackerconsole',
             record: trackerRecord
+        });
+    },
+
+    handleGroupClone: function (records) {
+        this.fireContent({
+            xtype: 'trackersgroupclone',
+            record: records || false
+        });
+    },
+
+    handleGroupOwner: function (records) {
+        this.fireContent({
+            xtype: 'trackersgroupowner',
+            record: records || false
         });
     },
 
@@ -287,22 +326,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     afterTrackerCloneCreate: function (trackerId, record, values) {
         if (trackerId && values) {
-            var trackerData = Ext.apply(record.getData(), {
-                    label: values.label,
-                    user_id: values.user_id,
-                    id: trackerId,
-                    clone: true,
-                    deleted: false
-                }
-            );
-
-            Ext.getStore('Trackers').add(trackerData);
-
-            if (Ext.checkPermission(this.getModuleName(), 'read')) {
-                this.handleTrackerCard(trackerId);
-            } else {
-                Ext.Nav.shift('/');
-            }
+            this.getTrackerClone().afterSave();
+            this.getTrackersList().store.load();
         }
     },
 
@@ -337,8 +362,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     afterTrackerCloneRemove: function (response, record) {
+        console.log(response);
         if (response) {
-            Ext.getStore('Trackers').remove(record);
+            this.getTrackersList().store.load();
 
             if (Ext.checkPermission(this.getModuleName(), 'read')) {
                 this.handleTrackers();
@@ -428,5 +454,70 @@ Ext.define('NavixyPanel.controller.Trackers', {
         if (trackerId !== null) {
             Ext.Nav.shift('tracker/' + trackerId + '/console');
         }
+    },
+
+    onGroupCloneSubmit: function (cmp, formValues, recordsData) {
+        var requestsCnt = recordsData.length,
+            errCnt = 0;
+
+        Ext.iterate(recordsData, function (record) {
+            Ext.API.createTrackerClone({
+                params: {
+                    tracker_id: record.id,
+                    label: record.label,
+                    user_id: formValues.user_id
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterGroupCloneSubmit(recordsData.length - errCnt, recordsData.length, response);
+                    }
+                },
+                failure: function (response) {
+                    errCnt++;
+                    if (--requestsCnt === 0)  {
+                        this.afterGroupCloneSubmit(recordsData.length - errCnt, recordsData.length, response);
+                    }
+                },
+                scope: this
+            });
+        }, this)
+    },
+
+    afterGroupCloneSubmit: function (successCount, assigned, response) {
+        this.getTrackerGroupClone().afterSave();
+        this.getTrackersList().store.load();
+        this.getTrackersList().afterClone(assigned, successCount);
+    },
+
+    onGroupOwnerSubmit: function (cmp, formValues, recordsData) {
+        var requestsCnt = recordsData.length,
+            errCnt = 0;
+
+        Ext.iterate(recordsData, function (record) {
+            Ext.API.updateTrackerUser({
+                params: {
+                    tracker_id: record.id,
+                    user_id: formValues.user_id
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0)  {
+                        this.afterGroupOwnerSubmit(recordsData.length - errCnt, recordsData.length, response);
+                    }
+                },
+                failure: function (response) {
+                    errCnt++;
+                    if (--requestsCnt === 0)  {
+                        this.afterGroupOwnerSubmit(recordsData.length - errCnt, recordsData.length, response);
+                    }
+                },
+                scope: this
+            });
+        }, this)
+    },
+
+    afterGroupOwnerSubmit: function (successCount, assigned, response) {
+        this.getTrackerGroupOwner().afterSave();
+        this.getTrackersList().store.load();
+        this.getTrackersList().afterOwner(assigned, successCount);
     }
 });
