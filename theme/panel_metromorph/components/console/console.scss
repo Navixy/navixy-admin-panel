@@ -32,6 +32,18 @@ $console-status-panel-header-padding: 7px 10px;
             }
         }
 
+        .income_rep {
+            color: $console-income-message-color;
+            .text {
+
+                &:before {
+                    content: '✔';
+                    font-size: 10px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
         .outcome {
             color: $console-outcome-message-color;
         }

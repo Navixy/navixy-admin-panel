@@ -150,11 +150,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getProcessedValues: function () {
         var values = this.getValues();
 
-        this.iterateFields(function (field) {
-            if (field.isDisabled()) {
-                delete values[field.name];
-            }
-        });
+        if (this.isPassTab()) {
+            values = {
+                old_password: values.old_password,
+                new_password: values.new_password
+            };
+        } else {
+            this.iterateFields(function (field) {
+                if (field.isDisabled()) {
+                    delete values[field.name];
+                }
+            });
+        }
 
         return values;
     },
@@ -223,9 +230,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 title: _l.settings.edit_form.password_fields,
+                role: 'pass_tab',
                 items: [
                     {
                         items: this.getPasswordItems()
+                    },
+                    {
+                        padding: this.formRowPadding,
+                        items: this.getPassHint()
                     }
                 ]
             }
@@ -413,6 +425,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ];
     },
 
+    getPassHint: function () {
+        return [
+            {
+                xtype: 'container',
+                html: _l.settings.edit_form.pass_hint
+            }
+        ];
+    },
+
+
     getPasswordItems: function () {
         var me = this;
 
@@ -460,6 +482,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return result;
     },
+
+    isPassTab: function () {
+        var tab = this.down('tabpanel').getActiveTab(),
+            role = tab && tab.role;
+
+        return role === 'pass_tab'
+    },
+
 
     getServiceFields: function () {
         return this.query('[role!="permission-field"]');

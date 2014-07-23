@@ -12,7 +12,7 @@ Ext.define('NavixyPanel.view.components.AbstractTabForm', {
     getItems: function () {
         return [
             {
-                xtype:'tabpanel',
+                xtype: 'tabpanel',
                 plain: true,
                 activeTab: 0,
                 border: 0,

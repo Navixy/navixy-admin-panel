@@ -33,6 +33,8 @@ Ext.define('NavixyPanel.view.trackers.Console', {
         align: 'stretch'
     },
 
+    lastIncomeMsg: null,
+
     initComponent: function () {
 
         this.title = this.getTitle();
@@ -341,6 +343,12 @@ Ext.define('NavixyPanel.view.trackers.Console', {
         this.clearConnection();
     },
 
+    afterDisconnect: function () {
+        this.getConnectBtn().show();
+        this.getDisconnectBtn().hide();
+    },
+
+
     sendAction: function () {
         var command = this.getSendText().getValue(),
             valid = this.getSendText().isValid();
@@ -410,6 +418,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
     handleClose: function () {
         this.updateSystem(_l.trackers.console.disconnect_msg);
+        this.afterDisconnect();
     },
 
     handleError: function (error) {
@@ -449,22 +458,36 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
     updateOutput: function (messageData) {
 
+        console.log(messageData, Ext.isString(messageData)
+            ? 'income'
+            : messageData.type);
+
         var target = this.getConsoleBody(),
+            text = Ext.isString(messageData)
+                ? messageData
+                : messageData.msg,
             containerConfig = {
                 xtype: 'container',
                 tpl: this.lineTpl,
                 padding: '0 0 4 0',
                 cls: this.showTime ? 'show-time' : '',
                 data: {
-                    text: Ext.isString(messageData)
-                        ? messageData
-                        : messageData.msg,
+                    text: text,
                     cls:  Ext.isString(messageData)
                         ? 'income'
                         : messageData.type,
                     time: Ext.Date.format(new Date(), '(H:i:s)')
                 }
             };
+
+        if (this.lastIncomeMsg && !Ext.isString(messageData) && text.indexOf(this.lastIncomeMsg) > -1) {
+            containerConfig.data.cls = 'income_rep';
+            this.lastIncomeMsg = null;
+        }
+
+        if (Ext.isString(messageData)) {
+            this.lastIncomeMsg = messageData;
+        }
 
         if (target) {
             target.add(containerConfig);
