@@ -32,6 +32,13 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 {type: "camera", "name": _l.devices.camera}
             ]
         });
+        this.tariffTypesStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data : [
+                {type: "monthly", "name": _l.tariffs.types.monthly},
+                {type: "daily", "name": _l.tariffs.types.daily}
+            ]
+        });
 
         return [
             {
@@ -67,6 +74,22 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 listeners: {
                     change: function() {
                         me.changeDeviceType(this.getValue() !== "tracker");
+                    }
+                }
+            },
+            {
+                // TODO: Tariff_type name api value
+                name: 'tariff_type',
+                xtype: 'combobox',
+                fieldLabel: _l.tariffs.fields.tariff_type,
+                store: this.tariffTypesStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                listeners: {
+                    change: function() {
+                        me.changePaymentType(this.getValue() !== "monthly");
                     }
                 }
             }
@@ -249,6 +272,16 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 this.down('[name="has_reports"]'),
                 this.down('[name="device_limit"]'),
                 this.down('[role="store_period"]')
+            ];
+
+        Ext.iterate(trackerFields, function (field) {
+            field[type ? 'hide' : 'show']();
+        }, this);
+    },
+
+    changePaymentType: function (type) {
+        var trackerFields = [
+                this.down('[name="proportional_charge"]')
             ];
 
         Ext.iterate(trackerFields, function (field) {

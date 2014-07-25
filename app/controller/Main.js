@@ -392,6 +392,10 @@ Ext.define('NavixyPanel.controller.Main', {
                 return '<span class="' + type + ' device"><span></span>' + _l.devices[type] + '</span>';
             },
 
+            tariffEncode: function (type) {
+                return '<span class="' + type + ' device"><span></span>' + _l.tariffs.types[type] + '</span>';
+            },
+
             emptyEncode: function (value) {
 
                 return !value

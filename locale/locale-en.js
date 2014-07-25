@@ -517,7 +517,8 @@ Ext.define('Locale.locale-en', {
             active_exp: 'Users can switch to this tariff on his own',
             device_limit_exp: 'Maximum devices',
             activation_bonus: 'Activation bonus',
-            free_days: 'Number of free days'
+            free_days: 'Number of free days',
+            tariff_type: 'Payment type'
         },
         list: {
             create_btn_text: 'Add new tariff',
@@ -538,6 +539,10 @@ Ext.define('Locale.locale-en', {
         select_error: 'This tariff is not available',
         select: {
             title: 'Select tariff'
+        },
+        types: {
+            daily: 'Daily',
+            monthly: 'Monthly'
         }
     },
 
