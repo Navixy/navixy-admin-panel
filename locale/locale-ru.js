@@ -596,6 +596,7 @@ Ext.define('Locale.locale-ru', {
         menu_text: 'Настройки',
         fields: {
             service_title: "Название сервиса",
+            page_title: "Заголовок страниц",
             locale: "Язык интерфейса мониторинга",
             demo_login: "Demo пользователь",
             demo_password: "Demo пароль",
@@ -607,7 +608,7 @@ Ext.define('Locale.locale-ru', {
                 zoom: 'Масштаб по умолчанию'
             },
             google_client_id: "Client ID для карт google",
-            currency: "Валюта расчетов с пользователями",
+            currency: "Валюта расчетов",
             payment_link: "URL промо сайта",
             domain: "Доменное имя",
             email_from: "Email отправителя",
@@ -618,7 +619,11 @@ Ext.define('Locale.locale-ru', {
             password: 'Новый пароль',
             password_repeat: 'Повторите новый пароль',
             password_old: 'Текущий пароль',
-            password_mismatched: 'Пароли не совпадают'
+            password_mismatched: 'Пароли не совпадают',
+
+            footer_email: 'E-mail компании',
+            footer_site: 'Ссылка «О компании»',
+            footer_text: 'Текст внизу страницы'
         },
         edit_form: {
             title: 'Настройки Paas',
@@ -628,6 +633,21 @@ Ext.define('Locale.locale-ru', {
             map_fields: 'Настройки карты',
             permission_fields: 'Настройки уведомлений',
             domain_sup: '* - для доменов вида *{0} работает ограничение доступных типов карт',
+
+            text_custom_fields: 'Кастомизация текстов',
+            imgs_custom_fields: 'Кастомизация изображений',
+
+            main_texts_title: 'Основные тексты',
+            footer_texts_title: 'Тесты в подвале страницы авторизации',
+
+            logo_title: 'Основной логотип',
+            favicon_title: 'Основной favicon',
+
+            login_wallpaper_title: 'Фон окна авторизации',
+            wrapper_wallpaper_title: 'Фон окна сервиса',
+
+            upload_btn: 'Загрузить',
+            update_btn: 'Изменить',
 
             domain_fields: 'Домен',
             regional_fields: 'Региональные настройки',
@@ -639,6 +659,19 @@ Ext.define('Locale.locale-ru', {
 
             maps_hint: 'Пожалуйста выберите карты, которые будут доступны для пользователей вашего сервиса. Список карт, доступных отдельным пользователям, может быть дополнительно ограничен настройками их тарифных планов.<br><br>Использование выбранных картографических сервисов должно производиться вами в соответствии с условиями соглашений с их правооблодателями. Компания NAVIXY не несет ответственности за нарушения условий лицензий на сервисы WEB-картографии вами или вашими конечными пользователями.',
             demo_hint: 'Определите аккаунт, который будет использоваться в качестве демонстрационного и доступен на странице входа (опционально)'
+        },
+        upload_form: {
+            save_btn: 'Загрузить',
+            cancel_btn: 'Отмена',
+            upload_btn: 'Обзор',
+            title: 'Загрузка изображения. {0}',
+            titles: {
+                logo: 'Основной логотип',
+                favicon: 'Основной favicon',
+                login_wallpaper: 'Фон окна авторизации',
+                wrapper_wallpaper: 'Фон окна сервиса'
+            },
+            img_title: 'Изображение формата {0} (максимальный размер {1} мб)'
         }
     },
 

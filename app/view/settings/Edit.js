@@ -8,7 +8,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     extend: 'NavixyPanel.view.components.AbstractTabForm',
     alias: 'widget.settingsedit',
     requires: [
-        'NavixyPanel.view.widgets.fields.LocaleField'
+        'NavixyPanel.view.widgets.fields.LocaleField',
+        'NavixyPanel.view.settings.UploadWindow'
     ],
 
     default_paas_domain: '.navixy.ru',
@@ -189,6 +190,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
+                title: _l.settings.edit_form.text_custom_fields,
+                items: [
+                    {
+                        items: this.getTextCustom()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.imgs_custom_fields,
+                items: [
+                    {
+                        items: this.getImgsCustomLeft()
+                    },
+                    {
+                        items: this.getImgsCustomRight()
+                    }
+                ]
+            },
+            {
                 title: _l.settings.edit_form.regional_fields,
                 items: [
                     {
@@ -247,13 +267,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getDomainItems: function () {
         return [
             {
-                name: 'service_title',
-                fieldLabel: _l.settings.fields.service_title,
-
-                minLength: 2,
-                maxLength: 100
-            },
-            {
                 name: 'domain',
                 fieldLabel: _l.settings.fields.domain + '<sup>*</sup>',
 
@@ -280,6 +293,158 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
         ]
     },
+
+    getTextCustom: function () {
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.main_texts_title,
+                padding: '10 0 20 0'
+            },
+            {
+                name: 'service_title',
+                fieldLabel: _l.settings.fields.service_title,
+
+                minLength: 2,
+                maxLength: 100,
+
+                value: '<Service name>'
+            },
+            {
+                name: 'page_title',
+                fieldLabel: _l.settings.fields.page_title,
+
+                minLength: 2,
+                maxLength: 100,
+
+                value: '<Page title>'
+            },
+            {
+                xtype: 'container',
+                height: 10
+            },
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.footer_texts_title,
+                padding: '10 0 20 0'
+            },
+            {
+                name: 'footer_email',
+                fieldLabel: _l.settings.fields.footer_email,
+
+                minLength: 2,
+                maxLength: 100,
+                allowBlank: true,
+
+                value: '<email@company.com>'
+            },
+            {
+                name: 'footer_site',
+                fieldLabel: _l.settings.fields.footer_site,
+
+                minLength: 2,
+                maxLength: 100,
+
+                value: '<www.company.com>'
+            },
+            {
+                name: 'footer_text',
+                xtype: 'textarea',
+                fieldLabel: _l.settings.fields.footer_text,
+
+                maxLength: 128,
+
+                value: '<FooterText Lorem ipsum...>'
+            }
+        ]
+    },
+
+    getImgsCustomLeft: function () {
+
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.logo_title,
+                padding: '10 0 10 0'
+            },
+            this.getImgButtonConfig('logo'),
+            this.getImgConfig('logo', {src: 'http://www.sencha.com/img/20110215-feat-html5.png'}),
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.favicon_title,
+                padding: '30 0 10 0'
+            },
+            this.getImgButtonConfig('favicon'),
+            this.getImgConfig('favicon', {maxWidth: 16, src: 'favicon.ico'})
+        ]
+    },
+
+    getImgsCustomRight: function () {
+
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.login_wallpaper_title,
+                padding: '10 0 10 0'
+            },
+            this.getImgButtonConfig('login_wallpaper'),
+            this.getImgConfig('login_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/monitoring-new.jpg'}),
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.wrapper_wallpaper_title,
+                padding: '30 0 10 0'
+            },
+            this.getImgButtonConfig('wrapper_wallpaper'),
+            this.getImgConfig('wrapper_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/surveillance.jpg'})
+        ]
+    },
+
+    getImgConfig: function (type, config) {
+        var value = this.getRecordData()[type],
+            role = type + '_img';
+
+        return !value
+        ? Ext.apply({
+                xtype: 'image',
+                role: role,
+                src: value,
+                maxWidth: 450,
+                listeners: {
+                    render: function(img) {
+                        img.getEl().on('load', function() {
+                            img.ownerCt.doLayout();
+                        });
+                    }
+                }
+            },
+        config || {})
+        : null
+    },
+
+    getImgButtonConfig: function (type) {
+        var role = type + '_upload_btn',
+            text = this.getRecordData()[type] ? _l.settings.edit_form.update_btn : _l.settings.edit_form.upload_btn;
+
+        return {
+            role: role,
+            xtype: 'button',
+            text: text,
+            margin: '0 0 10 0',
+            ui: 'default',
+            scale: 'medium',
+            width: 140,
+            handler: function () {
+                Ext.widget('uploadwindow', {fileType: type});
+            }
+        }
+    },
+
 
     getRegionalItems: function () {
         return [

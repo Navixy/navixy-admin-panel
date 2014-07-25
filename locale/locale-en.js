@@ -629,6 +629,9 @@ Ext.define('Locale.locale-en', {
             permission_fields: 'Notification dettings',
             domain_sup: '* - for domains like *{0} available map types limited',
 
+            text_custom_fields: 'Texts customization',
+            imgs_custom_fields: 'Images customization',
+
             domain_fields: 'Domain',
             regional_fields: 'Regional settings',
             maps_fields: 'Maps',
