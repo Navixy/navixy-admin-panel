@@ -131,7 +131,8 @@ Ext.define('Locale.locale-en', {
             250: 'Not allowed for deleted devices',
             246: 'User is incorrect',
             247: 'Clone already exists',
-            249: 'The operation is available only for the clones'
+            249: 'The operation is available only for the clones',
+            253: 'The operation can not be performed, the tracker has clones<br>Clones ID: {0}'
         },
         tariff: {
             244: 'Tariff with the same name already exists'
@@ -451,7 +452,8 @@ Ext.define('Locale.locale-en', {
                 tracker_clone_remove: 'Delete this clone',
                 tracker_tariff: 'Tracker tariff',
                 tracker_owner: 'Tracker owner',
-                tracker_console: 'GPRS-terminal'
+                tracker_console: 'GPRS-terminal',
+                tracker_corrupt: 'Cancel registration'
             }
         },
         console: {
@@ -601,6 +603,7 @@ Ext.define('Locale.locale-en', {
         menu_text: 'Settings',
         fields: {
             service_title: "Service title",
+            page_title: "Page title",
             locale: "Monitoring Language",
             demo_login: "Demo user",
             demo_password: "Demo password",
@@ -612,7 +615,7 @@ Ext.define('Locale.locale-en', {
                 zoom: 'Default zoom'
             },
             google_client_id: "Client ID for google maps",
-            currency: "Currency for billing users",
+            currency: "Currency for users",
             payment_link: "Promo website URL",
             domain: "Domain",
             email_from: "Sender Email",
@@ -623,7 +626,11 @@ Ext.define('Locale.locale-en', {
             password: 'New password',
             password_repeat: 'Repeat new password',
             password_old: 'Current password',
-            password_mismatched: 'Passwords do not match'
+            password_mismatched: 'Passwords do not match',
+
+            footer_email: 'Company E-mail',
+            footer_site: '«About Us» Link',
+            footer_text: 'The text at the bottom of page'
         },
         edit_form: {
             title: 'Paas Settings',
@@ -634,8 +641,21 @@ Ext.define('Locale.locale-en', {
             permission_fields: 'Notification dettings',
             domain_sup: '* - for domains like *{0} available map types limited',
 
-            text_custom_fields: 'Texts customization',
-            imgs_custom_fields: 'Images customization',
+            custom_fields: 'Customization',
+
+            main_texts_title: 'Main texts',
+            footer_texts_title: 'Text in the basement of the login page',
+
+            logo_title: 'Main logo',
+            favicon_title: 'The main favicon',
+
+            login_wallpaper_title: 'Authorization page background',
+            wrapper_wallpaper_title: 'Services page background',
+
+            upload_btn: 'Upload',
+            update_btn: 'Change',
+
+            upload_loading: 'Upload Image',
 
             domain_fields: 'Domain',
             regional_fields: 'Regional settings',

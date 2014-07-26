@@ -86,7 +86,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         );
 
         // TODO: fix links
-        if (Ext.checkPermission('users', 'read') && this.record.getParentUserData()) {
+        if (Ext.checkPermission('users', 'read') && this.record.getUsersData()) {
             result.push(
                 {
                     html: '<a>' + _l.trackers.card.links.tracker_owner + '</a>',
@@ -100,13 +100,36 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('tariffs', 'read') && this.record.getParentTariffData()) {
+        if (Ext.checkPermission('tariffs', 'read') && this.record.getTariffsData()) {
             result.push(
                 {
                     html: '<a>' + _l.trackers.card.links.tracker_tariff + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerTariff,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
+
+        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone) {
+
+            result.push(
+                {
+                    xtype: 'container',
+                    height: 10
+                }
+            );
+
+            result.push(
+                {
+                    html: '<a style="color: red">' + _l.trackers.card.links.tracker_corrupt + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireTrackerCorrupt,
                             scope: me
                         }
                     }
@@ -203,5 +226,31 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     fireTrackerOwner: function () {
         this.fireEvent('trackerownershow', this.record);
+    },
+
+    fireTrackerCorrupt: function () {
+        Ext.MessageBox.show({
+            title: _l.trackers.corrupt.alert.title,
+            msg: _l.trackers.corrupt.alert.text,
+            width: 500,
+            buttons: Ext.MessageBox.OKCANCEL,
+            icon: Ext.MessageBox.WARNING,
+            fn: Ext.bind(this.sendTrackerCorrupt, this)
+        });
+    },
+
+    sendTrackerCorrupt: function () {
+        Ext.API.setTrackerCorrupt({
+            params: {
+                user_id: this.record.getId()
+            },
+            callback: function () {
+                this.fireEvent('trackerremoved', this.record);
+            },
+            failure: function () {
+                this.fireEvent('trackerremovefailure', this.record, arguments);
+            },
+            scope: this
+        });
     }
 });

@@ -85,7 +85,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 trackertariffshow: this.handleTrackerTariffRef,
                 trackerownershow: this.handleTrackerOwnerRef,
                 trackertariffedit: this.onTrackerTariffEditAction,
-                trackerconsole: this.onTrackerConsole
+                trackerconsole: this.onTrackerConsole,
+                trackerremoved: this.onTrackerRemove,
+                trackerremovefailure: this.onTrackerRemoveFailure
             }
         });
 
@@ -455,6 +457,32 @@ Ext.define('NavixyPanel.controller.Trackers', {
             Ext.Nav.shift('tracker/' + trackerId + '/console');
         }
     },
+
+    onTrackerRemove: function (trackerRecord) {
+
+        Ext.Msg.show({
+            msg: Ext.String.format(_l.tracker.corrupt.success_msg, trackerRecord.get('label')),
+            buttons: Ext.Msg.OK
+        });
+        Ext.Nav.shift('trackers');
+        this.getTrackersList().store.load();
+    },
+
+    onTrackerRemoveFailure: function (trackerRecord, response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+
+        Ext.Msg.show({
+            title: _l.error,
+            msg: errCode === 253 && response.list
+                ? Ext.String.format(errDescription, response.list.join(', '))
+                : errDescription,
+            buttons: Ext.Msg.OK
+        });
+    },
+
 
     onGroupCloneSubmit: function (cmp, formValues, recordsData) {
         var requestsCnt = recordsData.length,

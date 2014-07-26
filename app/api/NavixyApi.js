@@ -194,6 +194,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    setTrackerCorrupt: function (config) {
+        this.requestWithOptions(config, {
+            action: 'corrupt',
+            handler: 'tracker'
+        });
+    },
+
 
 
     getTariffsList: function (config) {

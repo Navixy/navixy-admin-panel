@@ -54,7 +54,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
             {
                 text: _l.settings.upload_form.save_btn,
                 action: "upload_file",
-                disabled: true,
+                formBind: true,
                 handler: this.fireUploadFile,
                 scope: this
             },
@@ -109,5 +109,48 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         ];
 
         this.callParent(arguments);
+    },
+
+    getForm: function () {
+        return this.down("container[role=form]").getForm();
+    },
+
+
+    fireUploadFile: function () {
+        var waitMsg = _l.settings.edit_form.upload_loading,
+            form = this.getForm();
+
+        if (form.isValid()) {
+            this.afterFileUpdate(this.fileType, true);
+
+            // TODO: w8 api
+//            Ext.API.uploadSettingsImage(
+//                form,
+//                {
+//                    waitMsg: waitMsg,
+//                    scope: this,
+//                    success: function (result) {
+//                        this.afterFileUpdate(this.fileType, result.success);
+//                    },
+//                    failure: this.afterFileUpdateFailure
+//                }
+//            );
+        }
+    },
+
+    //TODO: apply new api result
+    afterFileUpdate: function (type, success) {
+
+        if (success) {
+            Ext.getStore('Settings').loadRecord(null, function (settingsRecord) {
+                this.fireEvent('fileupload', type, settingsRecord);
+                this.close();
+            }, this);
+        }
+    },
+
+    //TODO: apply api errors results
+    afterFileUpdateFailure: function () {
+        return null;
     }
 });

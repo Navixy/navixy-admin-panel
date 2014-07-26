@@ -168,3 +168,15 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         background-image: url($img_dir + '/tools/arrow-left.png');
     }
 }
+
+.form-img {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    color: $grayLight;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $main-color;
+    }
+}

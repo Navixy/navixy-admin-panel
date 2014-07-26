@@ -190,15 +190,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
-                title: _l.settings.edit_form.text_custom_fields,
-                items: [
-                    {
-                        items: this.getTextCustom()
-                    }
-                ]
-            },
-            {
-                title: _l.settings.edit_form.imgs_custom_fields,
+                title: _l.settings.edit_form.custom_fields,
                 items: [
                     {
                         items: this.getImgsCustomLeft()
@@ -294,13 +286,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ]
     },
 
-    getTextCustom: function () {
+    getImgsCustomLeft: function () {
+
         return [
             {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.settings.edit_form.main_texts_title,
-                padding: '10 0 20 0'
+                padding: '0 0 20 0'
             },
             {
                 name: 'service_title',
@@ -361,36 +354,30 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ]
     },
 
-    getImgsCustomLeft: function () {
-
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.logo_title,
-                padding: '10 0 10 0'
-            },
-            this.getImgButtonConfig('logo'),
-            this.getImgConfig('logo', {src: 'http://www.sencha.com/img/20110215-feat-html5.png'}),
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.favicon_title,
-                padding: '30 0 10 0'
-            },
-            this.getImgButtonConfig('favicon'),
-            this.getImgConfig('favicon', {maxWidth: 16, src: 'favicon.ico'})
-        ]
-    },
-
     getImgsCustomRight: function () {
 
         return [
             {
                 xtype: 'container',
                 cls: 'block_header',
+                html: _l.settings.edit_form.favicon_title,
+                padding: '0 0 10 0'
+            },
+            this.getImgButtonConfig('favicon'),
+            this.getImgConfig('favicon', {maxWidth: 28, src: 'favicon.ico'}),
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.settings.edit_form.logo_title,
+                padding: '20 0 10 0'
+            },
+            this.getImgButtonConfig('logo'),
+            this.getImgConfig('logo', {src: 'http://www.sencha.com/img/20110215-feat-html5.png'}),
+            {
+                xtype: 'container',
+                cls: 'block_header',
                 html: _l.settings.edit_form.login_wallpaper_title,
-                padding: '10 0 10 0'
+                padding: '20 0 10 0'
             },
             this.getImgButtonConfig('login_wallpaper'),
             this.getImgConfig('login_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/monitoring-new.jpg'}),
@@ -398,7 +385,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'container',
                 cls: 'block_header',
                 html: _l.settings.edit_form.wrapper_wallpaper_title,
-                padding: '30 0 10 0'
+                padding: '20 0 10 0'
             },
             this.getImgButtonConfig('wrapper_wallpaper'),
             this.getImgConfig('wrapper_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/surveillance.jpg'})
@@ -414,11 +401,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'image',
                 role: role,
                 src: value,
-                maxWidth: 450,
+                cls: 'form-img',
+                maxWidth: 350,
                 listeners: {
                     render: function(img) {
                         img.getEl().on('load', function() {
                             img.ownerCt.doLayout();
+                        });
+                        img.getEl().on('click', function() {
+                            window.open(value, '_blank');
                         });
                     }
                 }
@@ -428,7 +419,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getImgButtonConfig: function (type) {
-        var role = type + '_upload_btn',
+        var me = this,
+            role = type + '_upload_btn',
             text = this.getRecordData()[type] ? _l.settings.edit_form.update_btn : _l.settings.edit_form.upload_btn;
 
         return {
@@ -440,8 +432,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             scale: 'medium',
             width: 140,
             handler: function () {
-                Ext.widget('uploadwindow', {fileType: type});
+                Ext.widget('uploadwindow', {
+                    fileType: type,
+                    listeners: {
+                        fileupload: me.afterUpload,
+                        scope: me
+                    }
+                });
             }
+        }
+    },
+
+    afterUpload: function (type, record) {
+        // TODO: w8 api imgages fields names
+        var imgContainer = this.down('[role="' + type+ '_img"]'),
+            newSrc = record.get(type);
+
+        if (imgContainer && newSrc) {
+            imgContainer.setSrc(newSrc);
         }
     },
 
