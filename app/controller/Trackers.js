@@ -459,9 +459,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     onTrackerRemove: function (trackerRecord) {
-
         Ext.Msg.show({
-            msg: Ext.String.format(_l.tracker.corrupt.success_msg, trackerRecord.get('label')),
+            msg: Ext.String.format(_l.trackers.corrupt.success_msg, trackerRecord.get('label')),
             buttons: Ext.Msg.OK
         });
         Ext.Nav.shift('trackers');
@@ -469,6 +468,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     onTrackerRemoveFailure: function (trackerRecord, response) {
+
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,

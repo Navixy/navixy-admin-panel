@@ -115,7 +115,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         }
 
 
-        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone) {
+        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone && !this.getRecordData().deleted) {
 
             result.push(
                 {
@@ -242,13 +242,13 @@ Ext.define('NavixyPanel.view.trackers.Card', {
     sendTrackerCorrupt: function () {
         Ext.API.setTrackerCorrupt({
             params: {
-                user_id: this.record.getId()
+                tracker_id: this.record.getId()
             },
             callback: function () {
                 this.fireEvent('trackerremoved', this.record);
             },
             failure: function () {
-                this.fireEvent('trackerremovefailure', this.record, arguments);
+                this.fireEvent('trackerremovefailure', this.record, arguments[0]);
             },
             scope: this
         });
