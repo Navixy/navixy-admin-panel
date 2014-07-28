@@ -76,22 +76,23 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                         me.changeDeviceType(this.getValue() !== "tracker");
                     }
                 }
-            },
-            {
-                // TODO: Tariff_type name api value
-                name: 'tariff_type',
-                xtype: 'combobox',
-                fieldLabel: _l.tariffs.fields.tariff_type,
-                store: this.tariffTypesStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                listeners: {
-                    change: function() {
-                        me.changePaymentType(this.getValue() !== "monthly");
-                    }
-                }
+// TODO: Unlock by API
+//            },
+//            {
+//                // TODO: Tariff_type name api value
+//                name: 'tariff_type',
+//                xtype: 'combobox',
+//                fieldLabel: _l.tariffs.fields.tariff_type,
+//                store: this.tariffTypesStore,
+//                editable: false,
+//                queryMode: 'local',
+//                displayField: 'name',
+//                valueField: 'type',
+//                listeners: {
+//                    change: function() {
+//                        me.changePaymentType(this.getValue() !== "monthly");
+//                    }
+//                }
             }
         ];
     },

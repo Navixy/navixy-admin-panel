@@ -189,17 +189,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            {
-                title: _l.settings.edit_form.custom_fields,
-                items: [
-                    {
-                        items: this.getImgsCustomLeft()
-                    },
-                    {
-                        items: this.getImgsCustomRight()
-                    }
-                ]
-            },
+            // TODO: Unlock by API
+//            {
+//                title: _l.settings.edit_form.custom_fields,
+//                items: [
+//                    {
+//                        items: this.getImgsCustomLeft()
+//                    },
+//                    {
+//                        items: this.getImgsCustomRight()
+//                    }
+//                ]
+//            },
             {
                 title: _l.settings.edit_form.regional_fields,
                 items: [
