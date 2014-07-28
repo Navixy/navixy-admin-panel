@@ -476,6 +476,13 @@ Ext.define('Locale.locale-en', {
             status_title: 'Device status',
             status_property_title: 'Status',
             status_value_title: 'Value'
+        },
+        corrupt: {
+            alert: {
+                title: 'Remove tracker registration?',
+                text: 'The device will be permanently deleted from the database, all the data - not available!<br><br>You sure you want remove registration?'
+            },
+            success_msg: 'Device {0} successfully removed'
         }
     },
 
