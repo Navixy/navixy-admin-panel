@@ -241,19 +241,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            {
-                title: _l.settings.edit_form.password_fields,
-                role: 'pass_tab',
-                items: [
-                    {
-                        items: this.getPasswordItems()
-                    },
-                    {
-                        padding: this.formRowPadding,
-                        items: this.getPassHint()
-                    }
-                ]
-            }
+            Ext.checkPermission('password', 'update')
+                ? {
+                    title: _l.settings.edit_form.password_fields,
+                    role: 'pass_tab',
+                    items: [
+                        {
+                            items: this.getPasswordItems()
+                        },
+                        {
+                            padding: this.formRowPadding,
+                            items: this.getPassHint()
+                        }
+                    ]
+                }
+                : null
         ]
     },
 
