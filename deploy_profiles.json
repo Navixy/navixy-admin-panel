@@ -7,6 +7,12 @@
         "host": "test.gdemoi.ru",
         "remotePath": "/home/dist/simple/panel-v2/"
     },
+
+    "nfs": {
+        "host": "172.16.0.77",
+        "remotePath": "/sd/nfs/hosting/panel.navixy.com/"
+    },
+
     "battle": {
         "host": "172.16.0.54",
         "remotePath": "/var/www/panel.navixy.com/"
