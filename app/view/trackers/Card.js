@@ -115,7 +115,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         }
 
 
-        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone && !this.getRecordData().deleted) {
+        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone) {
 
             result.push(
                 {
