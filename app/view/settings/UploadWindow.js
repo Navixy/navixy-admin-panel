@@ -38,7 +38,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
             format: 'PNG, JPG',
             accept: 'image/jpeg, image/png'
         },
-        wrapper_wallpaper: {
+        desktop_wallpaper: {
             format: 'PNG, JPG',
             accept: 'image/jpeg, image/png'
         }
@@ -69,6 +69,23 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
             fileAccept = this.typesMap[this.fileType].accept;
 
         this.items = [
+            {
+                xtype: "container",
+                role: "upload-errors",
+                layout: {
+                    type: "vbox",
+                    align: "stretch"
+                },
+                hidden: true,
+                items: [
+                    {
+                        xtype: "component",
+                        baseCls: "red-text",
+                        role: "error-text",
+                        margin: "0 0 3 0"
+                    }
+                ]
+            },
             {
                 xtype: "form",
                 role: "form",
@@ -115,32 +132,33 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         return this.down("container[role=form]").getForm();
     },
 
+    getErrorsContainer: function () {
+        return this.down("container[role=upload-errors]");
+    },
+
 
     fireUploadFile: function () {
         var waitMsg = _l.settings.edit_form.upload_loading,
             form = this.getForm();
 
         if (form.isValid()) {
-            this.afterFileUpdate(this.fileType, true);
-
-            // TODO: w8 api
-//            Ext.API.uploadSettingsImage(
-//                form,
-//                {
-//                    waitMsg: waitMsg,
-//                    scope: this,
-//                    success: function (result) {
-//                        this.afterFileUpdate(this.fileType, result.success);
-//                    },
-//                    failure: this.afterFileUpdateFailure
-//                }
-//            );
+            Ext.API.uploadSettingsImage(
+                form,
+                {
+                    waitMsg: waitMsg,
+                    scope: this,
+                    success: function (a, actions) {
+                        this.afterFileUpdate(this.fileType, actions.result.success);
+                    },
+                    failure: function (a, actions) {
+                        this.afterFileUpdateFailure(this.fileType, actions.result);
+                    }
+                }
+            );
         }
     },
-
-    //TODO: apply new api result
+    // TODO fix update after api ready
     afterFileUpdate: function (type, success) {
-
         if (success) {
             Ext.getStore('Settings').loadRecord(null, function (settingsRecord) {
                 this.fireEvent('fileupload', type, settingsRecord);
@@ -149,8 +167,21 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         }
     },
 
-    //TODO: apply api errors results
-    afterFileUpdateFailure: function () {
-        return null;
+    afterFileUpdateFailure: function (type, response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
+
+        this.down("container[role=form]").down("filefield").fileInputEl.set({
+            accept: this.typesMap[this.fileType].accept
+        });
+
+        this.showUploadError(errDescription);
+    },
+
+    showUploadError: function (errDescription) {
+        this.getErrorsContainer().show();
+        this.getErrorsContainer().down("component[role=error-text]").update(_l.settings.upload_form.error_text + (errDescription  ? ": " + errDescription : ""));
     }
 });

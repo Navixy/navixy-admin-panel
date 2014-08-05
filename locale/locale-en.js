@@ -120,6 +120,8 @@ Ext.define('Locale.locale-en', {
         238: 'Changing tariff is not allowed',
         240: 'Not allowed to change tariff too frequently',
         242: 'Validation error',
+        251: 'Insufficient funds',
+        254: 'Cannot save file',
         upload_exeption: 'File upload error',
         no_hash: 'The session key is not found',
         service_not_respond: 'The service is temporarily unavailable',
@@ -653,11 +655,11 @@ Ext.define('Locale.locale-en', {
             main_texts_title: 'Main texts',
             footer_texts_title: 'Text in the basement of the login page',
 
-            logo_title: 'Main logo',
-            favicon_title: 'The main favicon',
+            logo_title: 'Logo',
+            favicon_title: 'Favicon',
 
             login_wallpaper_title: 'Authorization page background',
-            wrapper_wallpaper_title: 'Services page background',
+            desktop_wallpaper_title: 'Services page background',
 
             upload_btn: 'Upload',
             update_btn: 'Change',
@@ -674,6 +676,20 @@ Ext.define('Locale.locale-en', {
 
             maps_hint: 'Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.',
             demo_hint: 'Choose user account which will be used for demo purposes and available on login page (optional)'
+        },
+        upload_form: {
+            save_btn: 'Upload',
+            cancel_btn: 'Cancel',
+            upload_btn: 'View',
+            title: 'Upload image. {0}',
+            titles: {
+                logo: 'Logo',
+                favicon: 'Favicon',
+                login_wallpaper: 'Login page wallpaper',
+                desktop_wallpaper: 'Service page wallpaper'
+            },
+            img_title: 'The image format {0} (the maximum size of {1} MB)',
+            error_text: 'Failed to load image'
         }
     },
 

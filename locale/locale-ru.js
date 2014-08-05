@@ -122,6 +122,7 @@ Ext.define('Locale.locale-ru', {
         240: 'С момента предыдущей смены тарифа прошло сликом мало времени',
         242: 'Ошибка валидации',
         251: 'Недостаточно средств',
+        254: 'Не удалось сохранить файл',
         upload_exeption: 'Ошибка загрузки файла',
         no_hash: 'Ключ сессии не найден',
         service_not_respond: 'Сервис временно недоступен',
@@ -653,11 +654,11 @@ Ext.define('Locale.locale-ru', {
             main_texts_title: 'Основные тексты',
             footer_texts_title: 'Тесты в подвале страницы авторизации',
 
-            logo_title: 'Основной логотип',
-            favicon_title: 'Основной favicon',
+            logo_title: 'Логотип',
+            favicon_title: 'Favicon',
 
             login_wallpaper_title: 'Фон окна авторизации',
-            wrapper_wallpaper_title: 'Фон окна сервиса',
+            desktop_wallpaper_title: 'Фон окна сервиса',
 
             upload_btn: 'Загрузить',
             update_btn: 'Изменить',
@@ -684,9 +685,10 @@ Ext.define('Locale.locale-ru', {
                 logo: 'Основной логотип',
                 favicon: 'Основной favicon',
                 login_wallpaper: 'Фон окна авторизации',
-                wrapper_wallpaper: 'Фон окна сервиса'
+                desktop_wallpaper: 'Фон окна сервиса'
             },
-            img_title: 'Изображение формата {0} (максимальный размер {1} мб)'
+            img_title: 'Изображение формата {0} (максимальный размер {1} мб)',
+            error_text: 'Не удалось загрузить изображение'
         }
     },
 

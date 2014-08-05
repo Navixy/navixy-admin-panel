@@ -63,7 +63,7 @@ Ext.define('NavixyPanel.store.Abstract', {
             config,
             {
                 autoLoad: true,
-                storeId: this.storeId + 'test'
+                storeId: this.storeId + Ext.id()
             }
         ));
     },

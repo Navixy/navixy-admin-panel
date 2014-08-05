@@ -10,6 +10,45 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     alternateClassName: 'Ext.API',
     singleton: true,
 
+    uploadFile: function (form, config) {
+        var url = this.getRequestUrl({
+            action: config.action,
+            handler: config.handler
+        }), params = Ext.apply({
+            hash: this.authKey,
+            redirect_target: this.getUploadHandlerUrl()
+        }, config.params || {});
+
+        form.submit({
+            url: url,
+            waitMsg: config.waitMsg,
+            scope: config.scope,
+            params: params,
+
+            success: config.success || Ext.emptyFn,
+            failure: Ext.bind(function (form, action) {
+                try {
+                    var errorCode = action.result.status.code;
+                    if (config.failure) {
+                        config.failure.call(config.scope || this, form, action);
+                    }
+                    this.errorsManager.fireError(errorCode, params, action.response.responseText);
+                } catch (e) {
+                    this.errorsManager.fireError('upload_exeption');
+                    console.log(e.stack);
+                }
+            }, this)
+        });
+    },
+
+    getUploadHandlerUrl: function () {
+        var location = window.location.href.split('/');
+        location.pop();
+
+        location.push(Ext.Loader.getPath('Dev') + '/uploadHandler.html');
+        return location.join('/');
+    },
+
     authUser: function (callback, failure, params, scope) {
         this.sendRequest({
             params: Ext.apply({}, params),
@@ -325,6 +364,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/password',
             root: 'success'
         });
+    },
+
+    uploadSettingsImage: function (form, config) {
+        this.uploadFile(form, Ext.apply({
+            action: 'upload',
+            handler: 'dealer/settings/image',
+        }, config));
     },
 
     get1cDownloadLink: function (config) {

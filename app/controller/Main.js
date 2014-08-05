@@ -64,6 +64,23 @@ Ext.define('NavixyPanel.controller.Main', {
     // Overrides
     initOverrides: function () {
 
+        Ext.override(Ext.data.Connection, {
+            onUploadComplete: function (frame, options) {
+                try {
+                    var result = frame.contentWindow.location.search.substr(1);
+                    result = Ext.urlDecode(result);
+
+                    var doc = frame.contentWindow.document || frame.contentDocument || window.frames[frame.id].document;
+                    if (result.response) {
+                        doc.write(result.response);
+                    }
+                } catch (e) {
+                    Ext.logger(e.stack);
+                }
+                return this.callParent(arguments);
+            }
+        });
+
         Ext.override(Ext.Date, {
             formatISO: function (isoDate, format) {
                 var date = this.tryParse(isoDate);
@@ -286,7 +303,7 @@ Ext.define('NavixyPanel.controller.Main', {
                     var rights = right.split(delimiter);
 
                     Ext.iterate(rights, function (cRight) {
-                        result = Ext.checkPermission(sectionId, cRight) || result;
+                        return result = Ext.checkPermission(sectionId, cRight);
                     }, this);
 
                 } else {

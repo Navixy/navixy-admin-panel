@@ -189,7 +189,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            // TODO: Unlock by API
+            // TODO: Open after all api ready
 //            {
 //                title: _l.settings.edit_form.custom_fields,
 //                items: [
@@ -201,14 +201,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 //                    }
 //                ]
 //            },
-            {
-                title: _l.settings.edit_form.regional_fields,
-                items: [
-                    {
-                        items: this.getRegionalItems()
-                    }
-                ]
-            },
+//            {
+//                title: _l.settings.edit_form.regional_fields,
+//                items: [
+//                    {
+//                        items: this.getRegionalItems()
+//                    }
+//                ]
+//            },
             {
                 title: _l.settings.edit_form.maps_fields,
                 items: [
@@ -387,11 +387,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.settings.edit_form.wrapper_wallpaper_title,
+                html: _l.settings.edit_form.desktop_wallpaper_title,
                 padding: '20 0 10 0'
             },
-            this.getImgButtonConfig('wrapper_wallpaper'),
-            this.getImgConfig('wrapper_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/surveillance.jpg'})
+            this.getImgButtonConfig('desktop_wallpaper'),
+            this.getImgConfig('desktop_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/surveillance.jpg'})
         ]
     },
 
