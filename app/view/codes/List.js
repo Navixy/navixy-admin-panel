@@ -86,6 +86,8 @@ Ext.define('NavixyPanel.view.codes.List', {
 
     getTopBar: function () {
 
+        var canCreate = Ext.checkPermission('codes', 'read,create');
+
         var me = this,
             barConfig = {
                 padding: '0 0 10 0',
@@ -95,7 +97,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                     {
                         xtype: 'button',
                         iconCls: 'add-button',
-                        hidden: !this.createBtn || !Ext.checkPermission('codes', 'read,create'),
+                        hidden: !this.createBtn || !canCreate,
                         role: this.texts.createBtnRole,
                         text: this.texts.createBtnText,
                         handler: function () {
@@ -105,7 +107,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                     {
                         xtype: 'button',
                         iconCls: 'edit-button',
-                        margin: '0 0 0 10',
+                        margin: canCreate ? '0 0 0 10' : 0,
                         disabled: true,
                         role: this.texts.editBtnRole,
                         text: this.texts.editBtnText,
