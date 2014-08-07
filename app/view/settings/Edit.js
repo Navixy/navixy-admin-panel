@@ -33,9 +33,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.mapsStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'free'],
             data: [
-                {type: "roadmap", "name": _l.maps.roadmap},
-                {type: "satellite", "name": _l.maps.satellite},
-                {type: "hybrid", "name": _l.maps.hybrid},
+                {type: "roadmap", "name": _l.maps.roadmap, free: true},
+                {type: "satellite", "name": _l.maps.satellite, free: true},
+                {type: "hybrid", "name": _l.maps.hybrid, free: true},
                 {type: "yandex", "name": _l.maps.yandex},
                 {type: "yandexpublic", "name": _l.maps.yandexpublic, free: true},
                 {type: "osm", "name": _l.maps.osm, free: true},
