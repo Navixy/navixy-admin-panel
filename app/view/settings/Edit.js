@@ -107,7 +107,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     updateFreeMaps: function () {
         var isFree = this.checkFreeDomain();
 
-        this[this.checkFreeDomain() ? 'setFreeMaps' : 'unSetFreeMaps']();
+        this[isFree ? 'setFreeMaps' : 'unSetFreeMaps']();
     },
 
     setFreeMaps: function () {
@@ -243,18 +243,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                    title: _l.settings.edit_form.password_fields,
-                    role: 'pass_tab',
-                    items: [
-                        {
-                            items: this.getPasswordItems()
-                        },
-                        {
-                            padding: this.formRowPadding,
-                            items: this.getPassHint()
-                        }
-                    ]
-                }
+                title: _l.settings.edit_form.password_fields,
+                role: 'pass_tab',
+                items: [
+                    {
+                        items: this.getPasswordItems()
+                    },
+                    {
+                        padding: this.formRowPadding,
+                        items: this.getPassHint()
+                    }
+                ]
+            }
                 : null
         ]
     },
@@ -400,25 +400,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             role = type + '_img';
 
         return !value
-        ? Ext.apply({
+            ? Ext.apply({
                 xtype: 'image',
                 role: role,
                 src: value,
                 cls: 'form-img',
                 maxWidth: 350,
                 listeners: {
-                    render: function(img) {
-                        img.getEl().on('load', function() {
+                    render: function (img) {
+                        img.getEl().on('load', function () {
                             img.ownerCt.doLayout();
                         });
-                        img.getEl().on('click', function() {
+                        img.getEl().on('click', function () {
                             window.open(value, '_blank');
                         });
                     }
                 }
             },
-        config || {})
-        : null
+                config || {})
+            : null
     },
 
     getImgButtonConfig: function (type) {
@@ -448,14 +448,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     afterUpload: function (type, record) {
         // TODO: w8 api imgages fields names
-        var imgContainer = this.down('[role="' + type+ '_img"]'),
+        var imgContainer = this.down('[role="' + type + '_img"]'),
             newSrc = record.get(type);
 
         if (imgContainer && newSrc) {
             imgContainer.setSrc(newSrc);
         }
     },
-
 
     getRegionalItems: function () {
         return [
@@ -610,7 +609,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ];
     },
 
-
     getPasswordItems: function () {
         var me = this;
 
@@ -665,7 +663,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return role === 'pass_tab'
     },
-
 
     getServiceFields: function () {
         return this.query('[role!="permission-field"]');
