@@ -180,6 +180,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getTabs: function () {
+
         return [
             {
                 title: _l.settings.edit_form.domain_fields,
@@ -190,25 +191,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             // TODO: Open after all api ready
-//            {
-//                title: _l.settings.edit_form.custom_fields,
-//                items: [
-//                    {
-//                        items: this.getImgsCustomLeft()
-//                    },
-//                    {
-//                        items: this.getImgsCustomRight()
-//                    }
-//                ]
-//            },
-//            {
-//                title: _l.settings.edit_form.regional_fields,
-//                items: [
-//                    {
-//                        items: this.getRegionalItems()
-//                    }
-//                ]
-//            },
+            {
+                title: _l.settings.edit_form.custom_fields,
+                items: [
+                    {
+                        items: this.getImgsCustomLeft()
+                    },
+                    {
+                        items: this.getImgsCustomRight()
+                    }
+                ]
+            },
+            {
+                title: _l.settings.edit_form.regional_fields,
+                items: [
+                    {
+                        items: this.getRegionalItems()
+                    }
+                ]
+            },
             {
                 title: _l.settings.edit_form.maps_fields,
                 items: [
@@ -308,49 +309,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 value: '<Service name>'
             },
             {
-                name: 'page_title',
-                fieldLabel: _l.settings.fields.page_title,
-
-                minLength: 2,
-                maxLength: 100,
-
-                value: '<Page title>'
-            },
-            {
-                xtype: 'container',
-                height: 10
-            },
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.footer_texts_title,
-                padding: '10 0 20 0'
-            },
-            {
-                name: 'footer_email',
-                fieldLabel: _l.settings.fields.footer_email,
-
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true,
-
-                value: '<email@company.com>'
-            },
-            {
-                name: 'footer_site',
-                fieldLabel: _l.settings.fields.footer_site,
-
-                minLength: 2,
-                maxLength: 100,
-
-                value: '<www.company.com>'
-            },
-            {
-                name: 'footer_text',
+                name: 'login_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.settings.fields.footer_text,
 
-                maxLength: 128,
+                maxLength: 256,
 
                 value: '<FooterText Lorem ipsum...>'
             }
@@ -367,7 +330,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 padding: '0 0 10 0'
             },
             this.getImgButtonConfig('favicon'),
-            this.getImgConfig('favicon', {maxWidth: 28, src: 'favicon.ico'}),
+            this.getImgConfig('favicon', {maxWidth: 28}),
             {
                 xtype: 'container',
                 cls: 'block_header',
@@ -375,7 +338,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('logo'),
-            this.getImgConfig('logo', {src: 'http://www.sencha.com/img/20110215-feat-html5.png'}),
+            this.getImgConfig('logo'),
             {
                 xtype: 'container',
                 cls: 'block_header',
@@ -383,20 +346,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('login_wallpaper'),
-            this.getImgConfig('login_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/monitoring-new.jpg'}),
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.settings.edit_form.desktop_wallpaper_title,
-                padding: '20 0 10 0'
-            },
-            this.getImgButtonConfig('desktop_wallpaper'),
-            this.getImgConfig('desktop_wallpaper', {src: 'http://my.gdemoi.ru/login/theme/metromorph/images/surveillance.jpg'})
+            this.getImgConfig('login_wallpaper')
         ]
     },
 
     getImgConfig: function (type, config) {
-        var value = this.getRecordData()[type],
+        var value = this.getImgUrl(type),
             role = type + '_img';
 
         return !value
@@ -411,8 +366,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         img.getEl().on('load', function () {
                             img.ownerCt.doLayout();
                         });
-                        img.getEl().on('click', function () {
-                            window.open(value, '_blank');
+                        img.getEl().on('click', function (e, node) {
+                            window.open(Ext.get(node).getAttribute('src'), '_blank');
                         });
                     }
                 }
@@ -420,6 +375,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 config || {})
             : null
     },
+
+    getImgUrl: function (type) {
+        var value = this.getRecordData()[type],
+            isUrl = new RegExp('http://|https://', 'i').test(value);
+
+        return isUrl
+            ? value
+            : Ext.API.getApiUrl({action: value})
+    },
+
 
     getImgButtonConfig: function (type) {
         var me = this,
@@ -449,7 +414,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     afterUpload: function (type, record) {
         // TODO: w8 api imgages fields names
         var imgContainer = this.down('[role="' + type + '_img"]'),
-            newSrc = record.get(type);
+            newSrc = this.getImgUrl(type);
 
         if (imgContainer && newSrc) {
             imgContainer.setSrc(newSrc);

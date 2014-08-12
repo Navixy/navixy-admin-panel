@@ -638,7 +638,7 @@ Ext.define('Locale.locale-ru', {
 
             footer_email: 'E-mail компании',
             footer_site: 'Ссылка «О компании»',
-            footer_text: 'Текст внизу страницы'
+            footer_text: 'Подвал страницы авторизации'
         },
         edit_form: {
             title: 'Настройки Paas',
@@ -651,7 +651,7 @@ Ext.define('Locale.locale-ru', {
 
             custom_fields: 'Кастомизация',
 
-            main_texts_title: 'Основные тексты',
+            main_texts_title: 'Кастомизация текстов',
             footer_texts_title: 'Тесты в подвале страницы авторизации',
 
             logo_title: 'Логотип',

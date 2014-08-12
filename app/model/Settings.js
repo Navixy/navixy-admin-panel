@@ -24,7 +24,12 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'email_from', type: 'string'},
         {name: 'email_footer', type: 'string'},
         {name: 'sms_originator', type: 'string'},
-        {name: 'caller_id', type: 'init'},
+
+        {name: 'favicon', type: 'string'},
+        {name: 'logo', type: 'string'},
+        {name: 'login_wallpaper', type: 'string'},
+
+        {name: 'login_footer', type: 'string'},
 
         {name: 'map_type', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
         {name: 'map_zoom', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
