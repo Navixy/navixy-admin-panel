@@ -24,6 +24,7 @@ module.exports = function (grunt) {
                         'PConfig.js',
                         'PConfig.example.js',
                         'locale/locale-en.js',
+                        'locale/locale-es.js',
                         'locale/locale-ru.js',
                         'locale/ext/locale-en.js',
                         'locale/ext/locale-ru.js',

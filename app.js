@@ -1,7 +1,7 @@
 (function () {
     var stateProvider = Ext.supports.LocalStorage ?
-        new Ext.state.LocalStorageProvider() :
-        new Ext.state.CookieProvider();
+                        new Ext.state.LocalStorageProvider() :
+                        new Ext.state.CookieProvider();
 
     Ext.state.Manager.setProvider(stateProvider);
 })(window);
