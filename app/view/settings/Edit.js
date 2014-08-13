@@ -376,8 +376,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             : null
     },
 
-    getImgUrl: function (type) {
-        var value = this.getRecordData()[type],
+    getImgUrl: function (type, record) {
+        var data = record
+                ? record.getData()
+                : this.getRecordData(),
+            value = data[type],
             isUrl = new RegExp('http://|https://', 'i').test(value),
             aCache = "?" + new Date().getTime();
 
@@ -414,7 +417,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     afterUpload: function (type, record) {
         var imgContainer = this.down('[role="' + type + '_img"]'),
-            newSrc = this.getImgUrl(type);
+            newSrc = this.getImgUrl(type, record);
 
         if (imgContainer && newSrc) {
             imgContainer.setSrc(newSrc);
