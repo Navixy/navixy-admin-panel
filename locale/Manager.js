@@ -11,7 +11,8 @@ Ext.define('Locale.Manager', {
     _locale: null,
     _locales: [
         { id: 'en_US', name: 'en', text: 'English', alias: ['en', 'en_US', 'English'] },
-        { id: 'ru_RU', name: 'ru', text: 'Русский', alias: ['ru', 'ru_RU', 'Русский'] }
+        { id: 'ru_RU', name: 'ru', text: 'Русский', alias: ['ru', 'ru_RU', 'Русский'] },
+        { id: 'es_ES', name: 'es', text: 'Español', alias: ['es', 'es_ES', 'Español'] }
     ],
 
     _tpl: 'locale-{locale}',
@@ -113,8 +114,8 @@ Ext.define('Locale.Manager', {
         delete params[me._cookie_name];
 
         wl.replace(!Ext.Object.isEmpty(params)
-            ? path += '?' + Ext.urlEncode(params)
-            : path
+                ? path += '?' + Ext.urlEncode(params)
+                : path
         )
 
     },
@@ -141,7 +142,6 @@ Ext.define('Locale.Manager', {
 
                 document.title = _l.panel_title;
             };
-
 
         try {
             Ext.require(cls, loadCallback);
@@ -181,7 +181,6 @@ Ext.define('Locale.Manager', {
 
         return defaultLocale;
     },
-
 
     _toCookie: function (locale) {
         var me = this;

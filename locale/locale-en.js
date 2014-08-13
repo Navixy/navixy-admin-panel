@@ -417,7 +417,7 @@ Ext.define('Locale.locale-en', {
             title: 'Cloning group of trackers',
             save_btn: 'Clone',
             grid_clone_label: 'Clones will be added',
-            grid_clone_tip: 'You can change the label of the clone by double clicking on it in the list',
+            grid_clone_tip: 'You can change the label of the clone by double clicking on it in the list'
         },
         group_owner_form: {
             title: 'Changing owner for group of trackers',
