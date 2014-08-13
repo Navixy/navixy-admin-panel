@@ -16,7 +16,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
     cls: 'main-header',
 
     initComponent: function () {
-        var hasOld = !!Config.oldVersionURL;
+        var hasOld = false;
 
         this.items = [
             {
