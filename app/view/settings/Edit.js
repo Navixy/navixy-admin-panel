@@ -354,7 +354,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var value = this.getImgUrl(type),
             role = type + '_img';
 
-        return !value
+        return value
             ? Ext.apply({
                 xtype: 'image',
                 role: role,
@@ -378,11 +378,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getImgUrl: function (type) {
         var value = this.getRecordData()[type],
-            isUrl = new RegExp('http://|https://', 'i').test(value);
+            isUrl = new RegExp('http://|https://', 'i').test(value),
+            aCache = "?" + new Date().getTime();
 
         return isUrl
-            ? value
-            : Ext.API.getApiUrl({action: value})
+            ? value + aCache
+            : Config.imagesHost && Config.imagesHost + value + aCache
     },
 
 
@@ -412,7 +413,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     afterUpload: function (type, record) {
-        // TODO: w8 api imgages fields names
         var imgContainer = this.down('[role="' + type + '_img"]'),
             newSrc = this.getImgUrl(type);
 
