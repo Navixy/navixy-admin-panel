@@ -311,9 +311,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'login_footer',
                 xtype: 'textarea',
+                labelAlign: 'top',
+                height: 180,
                 fieldLabel: _l.settings.fields.footer_text,
 
-                maxLength: 256,
+                maxLength: 512,
 
                 value: '<FooterText Lorem ipsum...>'
             }

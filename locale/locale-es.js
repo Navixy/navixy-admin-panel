@@ -595,25 +595,61 @@ Ext.define('Locale.locale-es', {
             password_repeat: 'Repita el nuevo password',
             password_old: 'Current password',
             password_mismatched: 'Passwords no coincide',
-            edit_form: {
-                title: 'iPaas Settngs',
-                save_btn: 'guardar',
-                save_msg: 'Configuracion guardada con exito',
-                main_fields: 'Ajustes Basicos',
-                map_fields: 'Ajustes de mapas',
-                permission_fields: 'Ajustes de notificaciones',
-                domain_sup: '* - para dominios como *{0} tipos de mapas disponibles limitados',
 
-                domain_fields: 'Dominio',
-                regional_fields: 'Ajuste regional',
-                maps_fields: 'Mapas',
-                demo_fields: 'Usuario demo',
-                notifications_fields: 'Notificacioness',
-                password_fields: 'Cambiar password',
+            footer_text: 'El texto en la parte inferior de la página'
+        },
+        edit_form: {
+            title: 'iPaas Settngs',
+            save_btn: 'guardar',
+            save_msg: 'Configuracion guardada con exito',
+            main_fields: 'Ajustes Basicos',
+            map_fields: 'Ajustes de mapas',
+            permission_fields: 'Ajustes de notificaciones',
+            domain_sup: '* - para dominios como *{0} tipos de mapas disponibles limitados',
 
-                maps_hint: 'Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.',
-                demo_hint: 'Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)'
-            }
+            custom_fields: 'Personalización',
+
+            main_texts_title: 'Principales textos',
+            footer_texts_title: 'Texto en el sótano de la página de inicio de sesión',
+
+            logo_title: 'Logo',
+            favicon_title: 'Favicon',
+
+            login_wallpaper_title: 'La página de Autorización de fondo',
+            desktop_wallpaper_title: 'Servicios de la página de fondo',
+
+            upload_btn: 'Subir',
+            update_btn: 'Change',
+
+            upload_loading: 'Subir imagen',
+            domain_fields: 'Dominio',
+            regional_fields: 'Ajuste regional',
+            maps_fields: 'Mapas',
+            demo_fields: 'Usuario demo',
+            notifications_fields: 'Notificacioness',
+            password_fields: 'Cambiar password',
+
+            maps_hint: 'Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.',
+            demo_hint: 'Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)'
+        },
+        upload_form: {
+            save_btn: 'Subir',
+            cancel_btn: 'Cancelar',
+            upload_btn: 'View',
+            title: 'Subir imagen. {0}',
+            titles: {
+                logo: 'Logo',
+                favicon: 'Favicon',
+                login_wallpaper: 'Página de registro de papel tapiz',
+                desktop_wallpaper: 'Service page wallpaper'
+            },
+            tips: {
+                logo: 'Recomendado para cargar la imagen de orientación horizontal con un fondo transparente y una anchura no inferior a 200 puntos.',
+                favicon: 'Recomendado para cargar la imagen con un fondo transparente y una resolución mínima de 32x32 píxeles.',
+                login_wallpaper: 'Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG.'
+            },
+            img_title: 'El formato de imagen {0} (el tamaño máximo de {1} MB)',
+            error_text: 'Error al cargar la imagen'
         }
     },
 

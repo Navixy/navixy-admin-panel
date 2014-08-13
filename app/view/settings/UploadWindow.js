@@ -100,6 +100,13 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         value: this.fileType
                     },
                     {
+                        xtype: "component",
+                        baseCls: "gray-text",
+                        role: "error-text",
+                        html: _l.settings.upload_form.tips[this.fileType],
+                        margin: "0 0 3 0"
+                    },
+                    {
                         xtype: "filefield",
                         name: "file",
                         allowBlank: false,
@@ -112,6 +119,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         },
                         listeners: {
                             afterrender: function(field) {
+                                console.log('afterrender');
                                 field.fileInputEl.set({
                                     accept: fileAccept
                                 });

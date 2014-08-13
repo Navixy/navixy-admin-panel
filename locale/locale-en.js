@@ -642,7 +642,7 @@ Ext.define('Locale.locale-en', {
             footer_text: 'The text at the bottom of page'
         },
         edit_form: {
-            title: 'Paas Settings',
+            title: 'Service Settings',
             save_btn: 'Save',
             save_msg: 'Settings saved successfully',
             main_fields: 'Basic Settings',
@@ -687,6 +687,11 @@ Ext.define('Locale.locale-en', {
                 favicon: 'Favicon',
                 login_wallpaper: 'Login page wallpaper',
                 desktop_wallpaper: 'Service page wallpaper'
+            },
+            tips: {
+                logo: 'Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.',
+                favicon: 'Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.',
+                login_wallpaper: 'Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG.'
             },
             img_title: 'The image format {0} (the maximum size of {1} MB)',
             error_text: 'Failed to load image'
