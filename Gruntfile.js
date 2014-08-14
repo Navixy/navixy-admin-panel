@@ -29,6 +29,7 @@ module.exports = function (grunt) {
                         'locale/ext/locale-en.js',
                         'locale/ext/locale-ru.js',
                         'locale/ext/*',
+                        'dev/uploadHandler.html',
                         'libs/jquery/*',
                         'libs/inputmask/*',
                         'libs/momentjs/*',
