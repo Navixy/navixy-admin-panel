@@ -396,36 +396,102 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getImgButtonConfig: function (type) {
         var me = this,
             role = type + '_upload_btn',
-            text = this.getRecordData()[type] ? _l.settings.edit_form.update_btn : _l.settings.edit_form.upload_btn;
+            text = this.getRecordData()[type] ? _l.settings.edit_form.update_btn : _l.settings.edit_form.upload_btn,
+            delRole = type + '_delete_btn',
+            hidden = !this.getRecordData()[type];
 
-        return {
-            role: role,
-            xtype: 'button',
-            text: text,
-            margin: '0 0 10 0',
-            ui: 'default',
-            scale: 'medium',
-            width: 140,
-            handler: function () {
-                Ext.widget('uploadwindow', {
-                    fileType: type,
-                    listeners: {
-                        fileupload: me.afterUpload,
-                        scope: me
+        return Ext.checkPermission('service_settings', 'update')
+            ? {
+                xtype: 'container',
+                layout: 'hbox',
+                items: [
+                    {
+                        role: role,
+                        xtype: 'button',
+                        text: text,
+                        margin: '0 0 10 0',
+                        ui: 'default',
+                        scale: 'medium',
+                        width: 140,
+                        handler: function () {
+                            Ext.widget('uploadwindow', {
+                                fileType: type,
+                                listeners: {
+                                    fileupload: me.afterUpload,
+                                    scope: me
+                                }
+                            });
+                        }
+                    },
+                    {
+                        role: delRole,
+                        xtype: 'button',
+                        text: _l.settings.edit_form.remove_btn,
+                        margin: '0 0 10 10',
+                        hidden: hidden,
+                        ui: 'gray',
+                        scale: 'medium',
+                        width: 140,
+                        handler: function () {
+                            me.removeImgCall(type);
+                        }
                     }
-                });
+                ]
             }
-        }
+            : null
     },
+
+    removeImgCall: function (type) {
+
+        Ext.API.removeSettingsPassword({
+            params: {
+                type: type
+            },
+            callback: function () {
+                this.afterRemove(type);
+            },
+            failure: function (response) {
+                this.afterRemove(response);
+            },
+            scope: this
+        })
+    },
+
 
     afterUpload: function (type, record) {
         var imgContainer = this.down('[role="' + type + '_img"]'),
+            removeBtn = this.down('[role="' + type + '_delete_btn"]'),
             newSrc = this.getImgUrl(type, record);
 
-        if (imgContainer && newSrc) {
+        if (imgContainer && removeBtn && newSrc) {
             imgContainer.show();
+            removeBtn.show();
             imgContainer.setSrc(newSrc);
         }
+    },
+
+    afterRemove: function (type) {
+        var imgContainer = this.down('[role="' + type + '_img"]'),
+            removeBtn = this.down('[role="' + type + '_delete_btn"]');
+
+        if (imgContainer && removeBtn) {
+            imgContainer.hide();
+            removeBtn.hide();
+        }
+    },
+
+    afterRemoveFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
+
+        Ext.MessageBox.show({
+            title: _l.error + ' #' + errCode,
+            msg: errDescription,
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
     },
 
     getRegionalItems: function () {

@@ -373,6 +373,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }, config));
     },
 
+    removeSettingsPassword: function (config) {
+        this.requestWithOptions(config, {
+            action: 'delete',
+            handler: 'dealer/settings/image',
+            root: 'success'
+        });
+    },
+
     get1cDownloadLink: function (config) {
         var apiLink = this.getRequestUrl({
                 handler: 'accounting',

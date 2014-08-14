@@ -663,6 +663,7 @@ Ext.define('Locale.locale-en', {
 
             upload_btn: 'Upload',
             update_btn: 'Change',
+            remove_btn: 'Remove',
 
             upload_loading: 'Upload Image',
 

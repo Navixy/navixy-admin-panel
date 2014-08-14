@@ -662,6 +662,7 @@ Ext.define('Locale.locale-ru', {
 
             upload_btn: 'Загрузить',
             update_btn: 'Изменить',
+            remove_btn: 'Удалить',
 
             upload_loading: 'Загрузка изображения',
 

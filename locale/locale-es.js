@@ -620,6 +620,7 @@ Ext.define('Locale.locale-es', {
 
             upload_btn: 'Subir',
             update_btn: 'Change',
+            remove_btn: 'Eliminar',
 
             upload_loading: 'Subir imagen',
             domain_fields: 'Dominio',
