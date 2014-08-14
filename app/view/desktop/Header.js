@@ -16,7 +16,12 @@ Ext.define('NavixyPanel.view.desktop.Header', {
     cls: 'main-header',
 
     initComponent: function () {
-        var hasOld = false;
+        var hasOld = false,
+            dealerStore = Ext.getStore('Dealer'),
+            headerLogo = dealerStore.getLogo(),
+            pageFavicon = dealerStore.getFavicon();
+
+        Ext.setPageFavicon(pageFavicon);
 
         this.items = [
             {
@@ -32,7 +37,12 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         xtype: 'container',
                         cls: 'header-logo',
                         width: 150,
-                        height: 30
+                        height: 30,
+                        style: headerLogo
+                            ?
+                                'background-image:url(' + headerLogo + ')'
+
+                            : {}
                     },
                     {
                         xtype: 'container',
@@ -40,7 +50,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         padding: '28 0 0 29',
                         height: 78,
                         tpl: '<tpl if="legal_name">{legal_name}<div class="devices-info">{[_l.dealer_info.first]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.dealer_info.last]} {active_limit}</tpl></div></tpl>',
-                        data: Ext.getStore('Dealer').first().getData()
+                        data: dealerStore.first().getData()
                     },
                     {
                         xtype: 'container',

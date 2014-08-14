@@ -371,6 +371,25 @@ Ext.define('NavixyPanel.controller.Main', {
                     Ext.getBody().unmask();
                     callback.call(scope);
                 }
+            },
+
+            setPageFavicon: function (favicon_url) {
+
+                if (!favicon_url) {
+                    return false
+                }
+
+                var oldIcons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]'),
+                    i, newIcon;
+
+                for (i = 0 ; i < oldIcons.length ; i++) {
+                    oldIcons[i].parentNode.removeChild(oldIcons[i]);
+                }
+
+                newIcon = document.createElement("link");
+                newIcon.setAttribute("rel", "icon");
+                newIcon.setAttribute("href", favicon_url);
+                document.querySelector("head").appendChild(newIcon);
             }
         });
 

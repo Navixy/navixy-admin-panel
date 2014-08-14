@@ -119,7 +119,6 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         },
                         listeners: {
                             afterrender: function(field) {
-                                console.log('afterrender');
                                 field.fileInputEl.set({
                                     accept: fileAccept
                                 });

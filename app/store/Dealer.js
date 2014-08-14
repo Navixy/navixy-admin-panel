@@ -16,6 +16,26 @@ Ext.define('NavixyPanel.store.Dealer', {
         "active_amount",
         "active_limit",
         "locale",
-        "domain"
-    ]
+        "domain",
+        "favicon",
+        "logo"
+    ],
+
+    getImgUrl: function (field) {
+        var record = this.first(),
+            value = record.get(field),
+            isUrl = new RegExp('http://|https://', 'i').test(value);
+
+        return isUrl
+            ? value
+            : Config.imagesHost && Config.imagesHost + value
+    },
+
+    getLogo: function () {
+        return this.getImgUrl('logo') || false;
+    },
+
+    getFavicon: function () {
+        return this.getImgUrl('favicon') || false;
+    }
 });
