@@ -26,9 +26,11 @@ Ext.define('NavixyPanel.store.Dealer', {
             value = record.get(field),
             isUrl = new RegExp('http://|https://', 'i').test(value);
 
-        return isUrl
-            ? value
-            : Config.imagesHost && Config.imagesHost + value
+        return value
+            ? isUrl
+                ? value
+                : Config.imagesHost && Config.imagesHost + value
+            : null
     },
 
     getLogo: function () {
