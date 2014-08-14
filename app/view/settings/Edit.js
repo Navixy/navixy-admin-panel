@@ -356,10 +356,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var value = this.getImgUrl(type),
             role = type + '_img';
 
-        return value
-            ? Ext.apply({
+        return Ext.apply({
                 xtype: 'image',
                 role: role,
+                hidden: !value,
                 src: value,
                 cls: 'form-img',
                 maxWidth: 350,
@@ -375,7 +375,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
                 config || {})
-            : null
     },
 
     getImgUrl: function (type, record) {
@@ -386,9 +385,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             isUrl = new RegExp('http://|https://', 'i').test(value),
             aCache = "?" + new Date().getTime();
 
-        return isUrl
-            ? value + aCache
-            : Config.imagesHost && Config.imagesHost + value + aCache
+        return value
+            ? isUrl
+                ? value + aCache
+                : Config.imagesHost && Config.imagesHost + value + aCache
+            : null
     },
 
 
@@ -422,6 +423,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             newSrc = this.getImgUrl(type, record);
 
         if (imgContainer && newSrc) {
+            imgContainer.show();
             imgContainer.setSrc(newSrc);
         }
     },
