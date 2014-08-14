@@ -157,13 +157,13 @@ Ext.define('NavixyPanel.api.ApiConnector', {
         });
     },
 
-    getApiUrl: function (config) {
+    getGlobalApiUrl: function (config) {
         var apiProfiles = this.apiProfiles,
             api = config.api || this.defaultApiProfile,
             apiUrlTpl = apiProfiles[api].apiUrlTpl,
             apiRoot = apiProfiles[api].apiRoot;
 
-        return new Ext.Template('{apiRoot}/{action}').apply({
+        return new Ext.Template('{apiRoot}/../{action}').apply({
             apiRoot: apiRoot,
             action: config.action
         });

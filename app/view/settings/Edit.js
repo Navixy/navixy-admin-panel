@@ -388,7 +388,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return value
             ? isUrl
                 ? value + aCache
-                : Config.imagesHost && Config.imagesHost + value + aCache
+                : [Ext.API.getGlobalApiUrl({action: value}), aCache].join('')
             : null
     },
 

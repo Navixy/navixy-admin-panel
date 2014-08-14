@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         return value
             ? isUrl
                 ? value
-                : Config.imagesHost && Config.imagesHost + value
+                : Ext.API.getGlobalApiUrl({action: value})
             : null
     },
 

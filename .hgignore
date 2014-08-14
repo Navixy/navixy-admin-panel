@@ -7,4 +7,3 @@ build
 node_modules
 rsync-deploy.js
 theme/metromorph.css
-PConfig.js
