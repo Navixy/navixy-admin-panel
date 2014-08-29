@@ -32,7 +32,11 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
     },
 
     getProcessedValues: function () {
-        return this.getValues();
+        var result = this.getValues();
+        if (result.type === "") {
+            delete result.type;
+        }
+        return result;
     },
 
     getTitle: function () {
@@ -68,7 +72,6 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
 
         Ext.suspendLayouts();
         invalid = me.getForm().getFields().filterBy(function(field) {
-            console.log(field);
             return !field.validate();
         });
 
