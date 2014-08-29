@@ -20,7 +20,9 @@ Ext.define('NavixyPanel.view.widgets.fields.LocaleCombo', {
 
         if (this.fieldLabel !== false) {
             this.fieldLabel = _l.get('auth.locale_title');
+            this.labelStyle = 'white-space: nowrap';
         }
+
         this.store = Locale.Manager.getAvailable();
 
         this.emptyText = Locale.Manager.getAvailable().findRecord('id', Locale.Manager.getLocaleId()).get('text');

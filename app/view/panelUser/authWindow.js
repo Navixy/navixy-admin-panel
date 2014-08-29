@@ -20,7 +20,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
     errMsg: null,
 
     initComponent: function () {
-        var hasOld = !!Config.oldVersionURL;
+        var hasOld = false;//!!Config.oldVersionURL;
 
         this.header = {
             title: _l.get('auth.title'),
