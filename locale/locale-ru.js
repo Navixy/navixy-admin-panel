@@ -720,7 +720,17 @@ Ext.define('Locale.locale-ru', {
                 tab_title: 'Платежи',
                 save_btn: 'Получить выгрузку',
                 fields: {
-                    date: 'Временной промежуток'
+                    date: 'Временной промежуток',
+                    type: 'Платежная система'
+                },
+                ps: {
+                    default: 'Все перечисленные',
+                    cyberplat: 'CyberPlat',
+                    deltapay: 'DeltaPay',
+                    mobile: 'Mobile',
+                    mobimoney: 'Mobi.Money',
+                    rbkmoney: 'RBK Money',
+                    webmoney: 'WebMoney'
                 }
             }
         }

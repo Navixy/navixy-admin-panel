@@ -676,7 +676,17 @@ Ext.define('Locale.locale-es', {
                 tab_title: 'Pagos',
                 save_btn: 'Get 1C data file',
                 fields: {
-                    date: 'Intervalo de tiempo'
+                    date: 'Intervalo de tiempo',
+                    type: 'Sistema de pago'
+                },
+                ps: {
+                    default: 'Todo lo anterior',
+                    cyberplat: 'CyberPlat',
+                    deltapay: 'DeltaPay',
+                    mobile: 'Mobile',
+                    mobimoney: 'Mobi.Money',
+                    rbkmoney: 'RBK Money',
+                    webmoney: 'WebMoney'
                 }
             }
         }

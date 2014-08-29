@@ -11,6 +11,30 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
     ],
     alias: 'widget.paymentst1c',
 
+    typesStore: null,
+
+    initComponent: function () {
+
+        this.typesStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name', 'free'],
+            data: [
+                {type: "", "name": _l.get('accounting.form.payments.ps.default')},
+                {type: "cyberplat", "name": _l.get('accounting.form.payments.ps.cyberplat')},
+                {type: "deltapay", "name": _l.get('accounting.form.payments.ps.deltapay')},
+                {type: "mobile", "name": _l.get('accounting.form.payments.ps.mobile')},
+                {type: "mobimoney", "name": _l.get('accounting.form.payments.ps.mobimoney')},
+                {type: "rbkmoney", "name": _l.get('accounting.form.payments.ps.rbkmoney')},
+                {type: "webmoney", "name": _l.get('accounting.form.payments.ps.webmoney')},
+            ]
+        });
+
+        this.callParent(arguments);
+    },
+
+    getProcessedValues: function () {
+        return this.getValues();
+    },
+
     getTitle: function () {
         return false;
     },
@@ -72,6 +96,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
 
     getNWItems: function () {
         var me = this;
+
         return [
             {
                 xtype: 'container',
@@ -108,7 +133,33 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                         format: 'Y-m-d'
                     }
                 ]
+            },
+            {
+                xtype: 'radiogroup',
+                fieldLabel: _l.get('accounting.form.payments.fields.type'),
+                columns: 1,
+                vertical: true,
+                margin: '0 0 10 0',
+                ui: 'light',
+                items: this.getTypesList()
             }
         ];
+    },
+
+
+    getTypesList: function () {
+
+        var result = [];
+
+        this.typesStore.each(function (typeRecord, index) {
+            result.push({
+                checked: index === 0,
+                boxLabel: typeRecord.get('name'),
+                name: 'type',
+                inputValue: typeRecord.get('type')
+            });
+        }, this);
+
+        return result;
     }
 });
