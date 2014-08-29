@@ -28,13 +28,21 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
     getTabs: function () {
         return [
             {
+                title: _l.accounting.form.payments.tab_title,
+                items: [
+                    {
+                        xtype: 'paymentst1c'
+                    }
+                ]
+            },
+            {
                 title: _l.accounting.form.export1c.tab_title,
                 items: [
                     {
                         xtype: 'export1c'
                     }
                 ]
-            }
+            },
         ];
     }
 });

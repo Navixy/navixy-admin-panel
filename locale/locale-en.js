@@ -706,14 +706,21 @@ Ext.define('Locale.locale-en', {
             text: 'Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?'
         },
         form: {
-            title: 'Data exporting',
+            title: '«1C:Enterprise» Data exporting',
             export1c: {
-                tab_title: '«1C:Enterprise»',
+                tab_title: 'Accounting',
                 save_btn: 'Get 1C data file',
                 report_btn: 'Submit deeds by email',
                 fields: {
                     month: 'Select a month',
                     last_act: 'Last deed number'
+                }
+            },
+            payments: {
+                tab_title: 'Payments',
+                save_btn: 'Get 1C data file',
+                fields: {
+                    date: 'Time interval'
                 }
             }
         }

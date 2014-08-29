@@ -409,5 +409,24 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             });
 
         }
+    },
+
+    get1cPaymentDownloadLink: function (config) {
+        var apiLink = this.getRequestUrl({
+                handler: 'payments',
+                action: 'export'
+            }),
+            hash = this.authKey;
+
+        return apiLink + '/?hash=' + hash +
+            '&' + Ext.urlEncode(config.params);
+
+    },
+
+    doPaymentExport: function (config) {
+        this.requestWithOptions(config, {
+            action: 'export',
+            handler: 'payments'
+        });
     }
 });

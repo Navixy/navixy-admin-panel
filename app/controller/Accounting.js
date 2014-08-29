@@ -10,19 +10,20 @@ Ext.define('NavixyPanel.controller.Accounting', {
 
     views: [
         'accounting.Export1c',
+        'accounting.Payments1c',
         'accounting.Accounting'
     ],
 
     refs: [
         {
+            ref: 'Payments1c',
+            selector: 'paymentst1c'
+        },
+        {
             ref: 'Export1c',
             selector: 'export1c'
         }
     ],
-
-//    stores: ['Settings'],
-//    models: ['Settings'],
-//    mainStore: 'Settings',
 
     init: function () {
         this.callParent(arguments);
@@ -31,6 +32,9 @@ Ext.define('NavixyPanel.controller.Accounting', {
             'export1c' : {
                 formsubmit: this.onExport1cSubmit,
                 reportsubmit: this.onExport1cReport
+            },
+            'paymentst1c' : {
+                formsubmit: this.onPayments1cSubmit,
             }
         });
 
@@ -83,5 +87,39 @@ Ext.define('NavixyPanel.controller.Accounting', {
         if (values.date) {
             Ext.API.doExportDelivery(values.date);
         }
+    },
+
+    onPayments2cSubmit: function (form, formValues) {
+        Ext.API.doPaymentExport({
+            params: formValues,
+            callback: this.afterPaymentExport,
+            failure: this.afterPaymentExportFailure,
+            scope: this
+        });
+    },
+
+    onPayments1cSubmit: function (form, formValues) {
+        this.openPaymentsExport(Ext.API.get1cPaymentDownloadLink({
+            params: formValues
+        }), formValues);
+    },
+
+    openPaymentsExport: function (link, values) {
+        var aEl = document.createElement("a"),
+            fileName = Ext.String.format('navixy.1c.export.{0}.{1}.xml', values.from, values.to);
+
+        aEl.download = fileName;
+        aEl.href = link;
+        aEl.click();
+    },
+
+    afterPaymentExportFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+
+        this.getPayments1c().showSubmitErrors(errCode, errors, errDescription);
     }
+
 });

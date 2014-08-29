@@ -661,14 +661,21 @@ Ext.define('Locale.locale-es', {
             text: 'Alerte a los clientes acerca de la exportación de datos a 1C para <b>{0}</b>.<br>Y¿Seguro que quieres hacer <a> correo-informativo</b>?'
         },
         form: {
-            title: 'Datos exportados',
+            title: '«1C:Empresa» Datos exportados',
             export1c: {
-                tab_title: '«1C:Empresa»',
+                tab_title: 'Contabilidad',
                 save_btn: 'Conseguir archivo de datos 1C',
                 report_btn: 'Presentar hechos por correo electrónico',
                 fields: {
                     month: 'Seleccione un mes',
                     last_act: 'Ultimo numero escrito'
+                }
+            },
+            payments: {
+                tab_title: 'Pagos',
+                save_btn: 'Get 1C data file',
+                fields: {
+                    date: 'Intervalo de tiempo'
                 }
             }
         }
