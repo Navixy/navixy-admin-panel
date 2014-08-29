@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
                 {
                     xtype: 'button',
                     ui: 'gray',
-                    text: _l.close_form_btn,
+                    text: _l.get('close_form_btn'),
                     height: 28,
                     handler: Ext.bind(this.fireClose, this)
                 }
@@ -112,7 +112,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
     getTexts: function () {
         var texts = this.callParent(arguments);
 
-        texts.selectBtn = _l.select_form_btn;
+        texts.selectBtn = _l.get('select_form_btn');
         return texts;
     }
 });

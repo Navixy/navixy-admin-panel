@@ -20,7 +20,7 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
             {
                 xtype: 'container',
                 padding: 20,
-                html: _l.main_copyright
+                html: _l.get('main_copyright')
             }
         ];
 

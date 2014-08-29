@@ -11,18 +11,18 @@ Ext.define('NavixyPanel.view.trackers.GroupClone', {
     hasGridEdit: true,
 
     getTitle: function () {
-        return _l.trackers.group_clone_form.title;
+        return _l.get('trackers.group_clone_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.trackers.group_clone_form.save_btn;
+        return _l.get('trackers.group_clone_form.save_btn');
     },
 
     getGridLabelTip: function () {
-        return _l.trackers.group_clone_form.grid_clone_tip;
+        return _l.get('trackers.group_clone_form.grid_clone_tip');
     },
 
     getGridLabel: function () {
-        return _l.trackers.group_clone_form.grid_clone_label;
+        return _l.get('trackers.group_clone_form.grid_clone_label');
     }
 });

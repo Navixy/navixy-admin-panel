@@ -23,29 +23,29 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.currencyStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data: [
-                {type: "RUB", "name": _l.currency.rub},
-                {type: "USD", "name": _l.currency.usd},
-                {type: "KZT", "name": _l.currency.kzt},
-                {type: "BYR", "name": _l.currency.byr}
+                {type: "RUB", "name": _l.get('currency.rub')},
+                {type: "USD", "name": _l.get('currency.usd')},
+                {type: "KZT", "name": _l.get('currency.kzt')},
+                {type: "BYR", "name": _l.get('currency.byr')}
             ]
         });
 
         this.mapsStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'free'],
             data: [
-                {type: "roadmap", "name": _l.maps.roadmap, free: true},
-                {type: "satellite", "name": _l.maps.satellite, free: true},
-                {type: "hybrid", "name": _l.maps.hybrid, free: true},
-                {type: "yandex", "name": _l.maps.yandex},
-                {type: "yandexpublic", "name": _l.maps.yandexpublic, free: true},
-                {type: "osm", "name": _l.maps.osm, free: true},
-                {type: "osmmapnik", "name": _l.maps.osmmapnik, free: true},
-                {type: "wikimapia", "name": _l.maps.wikimapia, free: true},
-                {type: "cdcom", "name": _l.maps.cdcom},
-                {type: "navitel", "name": _l.maps.navitel},
-                {type: "doublegis", "name": _l.maps.doublegis},
-                {type: "ovi", "name": _l.maps.ovi},
-                {type: "mailru", "name": _l.maps.mailru}
+                {type: "roadmap", "name": _l.get('maps.roadmap'), free: true},
+                {type: "satellite", "name": _l.get('maps.satellite'), free: true},
+                {type: "hybrid", "name": _l.get('maps.hybrid'), free: true},
+                {type: "yandex", "name": _l.get('maps.yandex')},
+                {type: "yandexpublic", "name": _l.get('maps.yandexpublic'), free: true},
+                {type: "osm", "name": _l.get('maps.osm'), free: true},
+                {type: "osmmapnik", "name": _l.get('maps.osmmapnik'), free: true},
+                {type: "wikimapia", "name": _l.get('maps.wikimapia'), free: true},
+                {type: "cdcom", "name": _l.get('maps.cdcom')},
+                {type: "navitel", "name": _l.get('maps.navitel')},
+                {type: "doublegis", "name": _l.get('maps.doublegis')},
+                {type: "ovi", "name": _l.get('maps.ovi')},
+                {type: "mailru", "name": _l.get('maps.mailru')}
             ]
         });
 
@@ -58,15 +58,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getTitle: function () {
-        return _l.settings.edit_form.title;
+        return _l.get('settings.edit_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.settings.edit_form.save_btn;
+        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('settings.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {
-        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.clear_form_btn;
+        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('clear_form_btn');
     },
 
     getBackBtnTitle: function () {
@@ -142,7 +142,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.applyRecordData();
 
         Ext.MessageBox.show({
-            msg: _l.settings.edit_form.save_msg,
+            msg: _l.get('settings.edit_form.save_msg'),
             closable: false,
             buttons: Ext.MessageBox.OK
         });
@@ -183,7 +183,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return [
             {
-                title: _l.settings.edit_form.domain_fields,
+                title: _l.get('settings.edit_form.domain_fields'),
                 items: [
                     {
                         items: this.getDomainItems()
@@ -192,7 +192,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             // TODO: Open after all api ready
             {
-                title: _l.settings.edit_form.custom_fields,
+                title: _l.get('settings.edit_form.custom_fields'),
                 items: [
                     {
                         items: this.getImgsCustomLeft()
@@ -203,7 +203,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
-                title: _l.settings.edit_form.regional_fields,
+                title: _l.get('settings.edit_form.regional_fields'),
                 items: [
                     {
                         items: this.getRegionalItems()
@@ -211,7 +211,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
-                title: _l.settings.edit_form.maps_fields,
+                title: _l.get('settings.edit_form.maps_fields'),
                 items: [
                     {
                         items: this.getMapsItems()
@@ -223,7 +223,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
-                title: _l.settings.edit_form.demo_fields,
+                title: _l.get('settings.edit_form.demo_fields'),
                 items: [
                     {
                         items: this.getDemoItems()
@@ -235,7 +235,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
-                title: _l.settings.edit_form.notifications_fields,
+                title: _l.get('settings.edit_form.notifications_fields'),
                 items: [
                     {
                         items: this.getNotificationsItems()
@@ -244,7 +244,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                title: _l.settings.edit_form.password_fields,
+                title: _l.get('settings.edit_form.password_fields'),
                 role: 'pass_tab',
                 items: [
                     {
@@ -264,7 +264,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 name: 'domain',
-                fieldLabel: _l.settings.fields.domain + '<sup>*</sup>',
+                fieldLabel: _l.get('settings.fields.domain') + '<sup>*</sup>',
 
                 minLength: 2,
                 maxLength: 100,
@@ -275,14 +275,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'payment_link',
-                fieldLabel: _l.settings.fields.payment_link,
+                fieldLabel: _l.get('settings.fields.payment_link'),
 
                 minLength: 2,
                 maxLength: 100
             },
             {
                 xtype: 'container',
-                html: Ext.String.format(_l.settings.edit_form.domain_sup, Config.paas_domain || this.default_paas_domain),
+                html: Ext.String.format(_l.get('settings.edit_form.domain_sup'), Config.paas_domain || this.default_paas_domain),
                 cls: 'block_sup',
                 padding: '10 0 0 170',
                 role: 'service-field'
@@ -296,12 +296,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.settings.edit_form.main_texts_title,
+                html: _l.get('settings.edit_form.main_texts_title'),
                 padding: '0 0 20 0'
             },
             {
                 name: 'service_title',
-                fieldLabel: _l.settings.fields.service_title,
+                fieldLabel: _l.get('settings.fields.service_title'),
 
                 minLength: 2,
                 maxLength: 100,
@@ -313,7 +313,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'textarea',
                 labelAlign: 'top',
                 height: 180,
-                fieldLabel: _l.settings.fields.footer_text,
+                fieldLabel: _l.get('settings.fields.footer_text'),
 
                 maxLength: 512,
 
@@ -328,7 +328,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.settings.edit_form.favicon_title,
+                html: _l.get('settings.edit_form.favicon_title'),
                 padding: '0 0 10 0'
             },
             this.getImgButtonConfig('favicon'),
@@ -336,7 +336,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.settings.edit_form.logo_title,
+                html: _l.get('settings.edit_form.logo_title'),
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('logo'),
@@ -344,7 +344,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.settings.edit_form.login_wallpaper_title,
+                html: _l.get('settings.edit_form.login_wallpaper_title'),
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('login_wallpaper'),
@@ -396,7 +396,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getImgButtonConfig: function (type) {
         var me = this,
             role = type + '_upload_btn',
-            text = this.getRecordData()[type] ? _l.settings.edit_form.update_btn : _l.settings.edit_form.upload_btn,
+            text = this.getRecordData()[type] ? _l.get('settings.edit_form.update_btn') : _l.get('settings.edit_form.upload_btn'),
             delRole = type + '_delete_btn',
             hidden = !this.getRecordData()[type];
 
@@ -426,7 +426,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     {
                         role: delRole,
                         xtype: 'button',
-                        text: _l.settings.edit_form.remove_btn,
+                        text: _l.get('settings.edit_form.remove_btn'),
                         margin: '0 0 10 10',
                         hidden: hidden,
                         ui: 'gray',
@@ -484,10 +484,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         Ext.MessageBox.show({
-            title: _l.error + ' #' + errCode,
+            title: _l.get('error') + ' #' + errCode,
             msg: errDescription,
             closable: false,
             buttons: Ext.MessageBox.OK
@@ -499,12 +499,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'locale',
                 xtype: 'localefield',
-                fieldLabel: _l.settings.fields.locale
+                fieldLabel: _l.get('settings.fields.locale')
             },
             {
                 name: 'currency',
                 xtype: 'combobox',
-                fieldLabel: _l.settings.fields.currency,
+                fieldLabel: _l.get('settings.fields.currency'),
                 store: this.currencyStore,
                 editable: false,
                 queryMode: 'local',
@@ -518,7 +518,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'checkboxgroup',
-                fieldLabel: _l.settings.fields.maps_title,
+                fieldLabel: _l.get('settings.fields.maps_title'),
                 columns: 1,
                 vertical: true,
                 margin: '0 0 10 0',
@@ -528,7 +528,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'map_type',
                 xtype: 'combobox',
-                fieldLabel: _l.settings.fields.maps_default.type,
+                fieldLabel: _l.get('settings.fields.maps_default.type'),
                 store: this.mapsStore,
                 editable: false,
                 queryMode: 'local',
@@ -537,28 +537,28 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'map_zoom',
-                fieldLabel: _l.settings.fields.maps_default.zoom,
+                fieldLabel: _l.get('settings.fields.maps_default.zoom'),
                 xtype: 'numberfield',
                 maxValue: 17,
                 minValue: 1
             },
             {
                 name: 'map_location_lat',
-                fieldLabel: _l.settings.fields.maps_default.location_lat,
+                fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
 
                 minLength: 2,
                 maxLength: 100
             },
             {
                 name: 'map_location_lng',
-                fieldLabel: _l.settings.fields.maps_default.location_lng,
+                fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
 
                 minLength: 2,
                 maxLength: 100
             },
             {
                 name: 'google_client_id',
-                fieldLabel: _l.settings.fields.google_client_id,
+                fieldLabel: _l.get('settings.fields.google_client_id'),
 
                 minLength: 2,
                 maxLength: 100
@@ -570,7 +570,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'container',
-                html: _l.settings.edit_form.maps_hint
+                html: _l.get('settings.edit_form.maps_hint')
             }
         ];
     },
@@ -579,14 +579,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 name: 'demo_login',
-                fieldLabel: _l.settings.fields.demo_login,
+                fieldLabel: _l.get('settings.fields.demo_login'),
 
                 minLength: 2,
                 maxLength: 100
             },
             {
                 name: 'demo_password',
-                fieldLabel: _l.settings.fields.demo_password,
+                fieldLabel: _l.get('settings.fields.demo_password'),
 
                 minLength: 2,
                 maxLength: 100
@@ -598,7 +598,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'container',
-                html: _l.settings.edit_form.demo_hint
+                html: _l.get('settings.edit_form.demo_hint')
             }
         ];
     },
@@ -607,7 +607,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 name: 'email_from',
-                fieldLabel: _l.settings.fields.email_from,
+                fieldLabel: _l.get('settings.fields.email_from'),
 
                 minLength: 2,
                 maxLength: 100,
@@ -616,21 +616,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'email_footer',
                 xtype: 'textarea',
-                fieldLabel: _l.settings.fields.email_footer,
+                fieldLabel: _l.get('settings.fields.email_footer'),
 
                 maxLength: 600,
                 role: 'permission-field'
             },
             {
                 name: 'sms_originator',
-                fieldLabel: _l.settings.fields.sms_originator,
+                fieldLabel: _l.get('settings.fields.sms_originator'),
 
                 maxLength: 20,
                 role: 'permission-field'
             },
             {
                 name: 'caller_id',
-                fieldLabel: _l.settings.fields.caller_id,
+                fieldLabel: _l.get('settings.fields.caller_id'),
 
                 maxLength: 20,
                 role: 'permission-field'
@@ -642,7 +642,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'container',
-                html: _l.settings.edit_form.pass_hint
+                html: _l.get('settings.edit_form.pass_hint')
             }
         ];
     },
@@ -652,7 +652,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return [
             {
-                fieldLabel: _l.settings.fields.password,
+                fieldLabel: _l.get('settings.fields.password'),
                 name: 'new_password',
                 inputType: 'password',
 
@@ -660,7 +660,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 maxLength: 20
             },
             {
-                fieldLabel: _l.settings.fields.password_repeat,
+                fieldLabel: _l.get('settings.fields.password_repeat'),
                 inputType: 'password',
 
                 minLength: 6,
@@ -668,11 +668,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                 validator: function (value) {
                     var pass_val = me.down('textfield[name=new_password]').getValue();
-                    return value === pass_val || _l.settings.fields.password_mismatched;
+                    return value === pass_val || _l.get('settings.fields.password_mismatched');
                 }
             },
             {
-                fieldLabel: _l.settings.fields.password_old,
+                fieldLabel: _l.get('settings.fields.password_old'),
                 name: 'old_password',
                 inputType: 'password'
             }

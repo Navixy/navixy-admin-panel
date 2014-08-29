@@ -49,7 +49,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         cls: 'dealer-info',
                         padding: '28 0 0 29',
                         height: 78,
-                        tpl: '<tpl if="legal_name">{legal_name}<div class="devices-info">{[_l.dealer_info.first]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.dealer_info.last]} {active_limit}</tpl></div></tpl>',
+                        tpl: '<tpl if="legal_name">{legal_name}<div class="devices-info">{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.get("dealer_info.last")]} {active_limit}</tpl></div></tpl>',
                         data: dealerStore.first().getData()
                     },
                     {
@@ -70,7 +70,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                             },
                             {
                                 xtype: 'button',
-                                text: _l.old_version,
+                                text: _l.get('old_version'),
                                 height: 28,
                                 padding: '0 10 0 10',
                                 margin: '0 10 0 0',
@@ -80,7 +80,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                             },
                             {
                                 xtype: 'button',
-                                text: _l.auth.logout,
+                                text: _l.get('auth.logout'),
                                 height: 28,
                                 padding: '0 10 0 10',
                                 ui: 'gray',

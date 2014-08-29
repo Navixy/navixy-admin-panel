@@ -13,11 +13,11 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     getTexts: function () {
         return {
-            emptyData: _l.trackers.list.empty_text,
+            emptyData: _l.get('trackers.list.empty_text'),
             cloneBtnRole: 'clone-button',
-            cloneBtnText: _l.trackers.list.clone_btn,
+            cloneBtnText: _l.get('trackers.list.clone_btn'),
             ownerBtnRole: 'owner-button',
-            ownerBtnText: _l.trackers.list.owner_btn
+            ownerBtnText: _l.get('trackers.list.owner_btn')
         };
     },
 
@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
         var cloneCmp = this.getCloneBnt(),
             ownerCmp = this.getOwnerBnt(),
             btnTip = this.getEditBntTip(),
-            text = _l.trackers.list.select_req,
+            text = _l.get('trackers.list.select_req'),
             canClone = true;
 
         Ext.iterate(records, function (record) {
@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
         if (records.length && !canClone) {
             ownerCmp.disable();
             cloneCmp.disable();
-            btnTip.update(_l.trackers.list.select_clone_req);
+            btnTip.update(_l.get('trackers.list.select_clone_req'));
         }
 
         if (records.length && canClone) {
@@ -94,7 +94,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 xtype: 'container',
                 role: 'edit-btn-tip',
                 margin: '0 0 0 20',
-                html: _l.trackers.list.select_req
+                html: _l.get('trackers.list.select_req')
             });
 
             if (canClone) {
@@ -133,53 +133,53 @@ Ext.define('NavixyPanel.view.trackers.List', {
         var trackerLabelTpl = [
                 '<a>{label:htmlEncode}</a>',
                 '<tpl if="clone">',
-                '<span class="scaled lighten">{[_l.trackers.fields.options.clone]}</span>',
+                '<span class="scaled lighten">{[_l.get("trackers.fields.options.clone")]}</span>',
                 '</tpl>',
                 '<tpl if="deleted">',
-                '<span class="scaled red">{[_l.trackers.fields.options.deleted]}</span>',
+                '<span class="scaled red">{[_l.get("trackers.fields.options.deleted")]}</span>',
                 '</tpl>'
             ],
             trackerStatusTpl = [
-                '<span class="{connection_status}">{[_l.trackers.fields.statuses[values.connection_status]]}</span>',
+                '<span class="{connection_status}">{[_l.get("trackers.fields.statuses")[values.connection_status]]}</span>',
             ];
 
         return [
             {
-                text: _l.trackers.fields.tracker_id,
+                text: _l.get('trackers.fields.tracker_id'),
                 dataIndex: 'id',
                 width: 60
             },
             {
-                text: _l.trackers.fields.label,
+                text: _l.get('trackers.fields.label'),
                 xtype: 'templatecolumn',
                 tpl: trackerLabelTpl,
                 dataIndex: 'label',
                 flex: 1
             },
             {
-                text: _l.trackers.fields.connection_status,
+                text: _l.get('trackers.fields.connection_status'),
                 xtype: 'templatecolumn',
                 tpl: trackerStatusTpl,
                 dataIndex: 'status',
                 width: 140
             },
             {
-                text: _l.trackers.fields.model,
+                text: _l.get('trackers.fields.model'),
                 dataIndex: 'model',
                 width: 120
             },
             {
-                text: _l.trackers.fields.device_id,
+                text: _l.get('trackers.fields.device_id'),
                 dataIndex: 'device_id',
                 width: 140
             },
             {
-                text: _l.trackers.fields.phone,
+                text: _l.get('trackers.fields.phone'),
                 dataIndex: 'phone',
                 width: 140
             },
             {
-                text: _l.trackers.fields.creation_date_short,
+                text: _l.get('trackers.fields.creation_date_short'),
                 dataIndex: 'creation_date',
                 width: 90
             }
@@ -194,10 +194,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
         }
 
         btnTip.update(!assigned
-                ? Ext.String.format(_l.trackers.list.after_clone_success, Ext.util.Format.units(succesed, 'trackers', true))
+                ? Ext.String.format(_l.get('trackers.list.after_clone_success'), Ext.util.Format.units(succesed, 'trackers', true))
                 : assigned !== succesed
-                    ? Ext.String.format(_l.trackers.list.after_clone_failure, succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
-                    : Ext.String.format(_l.trackers.list.after_clone_success, Ext.util.Format.units(succesed, 'trackers', true))
+                    ? Ext.String.format(_l.get('trackers.list.after_clone_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
+                    : Ext.String.format(_l.get('trackers.list.after_clone_success'), Ext.util.Format.units(succesed, 'trackers', true))
         );
     },
 
@@ -209,10 +209,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
         }
 
         btnTip.update(!assigned
-                ? Ext.String.format(_l.trackers.list.after_owner_success, Ext.util.Format.units(succesed, 'trackers', true))
+                ? Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
                 : assigned !== succesed
-                    ? Ext.String.format(_l.trackers.list.after_owner_failure, succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
-                    : Ext.String.format(_l.trackers.list.after_owner_success, Ext.util.Format.units(succesed, 'trackers', true))
+                    ? Ext.String.format(_l.get('trackers.list.after_owner_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
+                    : Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
         );
     }
 });

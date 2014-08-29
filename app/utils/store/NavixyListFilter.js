@@ -19,7 +19,7 @@ Ext.define('NavixyPanel.utils.store.NavixyListFilter', {
     cls: 'small',
 
     initComponent: function () {
-        this.emptyText = _l.searcher_empty_text || 'Enter search query';
+        this.emptyText = _l.get('searcher_empty_text') || 'Enter search query';
         this.callParent(arguments);
     },
 

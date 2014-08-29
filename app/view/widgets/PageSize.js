@@ -25,7 +25,7 @@ Ext.define('NavixyPanel.view.widgets.PageSize', {
 
     initComponent: function () {
 
-        this.fieldLabel = _l.page_size;
+        this.fieldLabel = _l.get('page_size');
 
         this.store = new Ext.data.ArrayStore({
             fields: ['id'],

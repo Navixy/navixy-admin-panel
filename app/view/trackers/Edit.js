@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.trackers.Edit', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.trackers.edit_form.title,
+            _l.get('trackers.edit_form.title'),
             ' #{id}: {label}'
         );
         return titleTpl.apply(this.getRecordData());

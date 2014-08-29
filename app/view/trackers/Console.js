@@ -63,7 +63,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.trackers.console.title,
+            _l.get('trackers.console.title'),
             ' #{id}: {label}'
         );
 
@@ -101,14 +101,14 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                             {
                                 role: 'connect-btn',
                                 xtype: 'button',
-                                text: _l.trackers.console.connect_btn,
+                                text: _l.get('trackers.console.connect_btn'),
                                 handler: Ext.bind(this.connectAction, this)
                             },
                             {
                                 role: 'disconnect-btn',
                                 xtype: 'button',
                                 hidden: true,
-                                text: _l.trackers.console.disconnect_btn,
+                                text: _l.get('trackers.console.disconnect_btn'),
                                 handler: Ext.bind(this.disconnectAction, this)
                             },
                             {
@@ -120,22 +120,22 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                                 xtype: 'button',
                                 menu: [
                                     {
-                                        text: _l.trackers.console.auto_scroll,
+                                        text: _l.get('trackers.console.auto_scroll'),
                                         checked: true,
                                         checkHandler: Ext.bind(this.toggleAutoScroll, this)
                                     },
                                     {
-                                        text: _l.trackers.console.show_time,
+                                        text: _l.get('trackers.console.show_time'),
                                         checked: true,
                                         checkHandler: Ext.bind(this.toggleTime, this)
                                     },
                                     {
-                                        text: _l.trackers.console.show_status,
+                                        text: _l.get('trackers.console.show_status'),
                                         checked: true,
                                         checkHandler: Ext.bind(this.toggleStatus, this)
                                     },
                                     {
-                                        text: _l.trackers.console.clear,
+                                        text: _l.get('trackers.console.clear'),
                                         handler: Ext.bind(this.clearAction, this)
                                     }
                                 ]
@@ -165,7 +165,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                                 role: 'send-text',
                                 xtype: 'textfield',
                                 cls: 'dark-text-field',
-                                emptyText: _l.trackers.console.send_empty,
+                                emptyText: _l.get('trackers.console.send_empty'),
                                 maxLength: this.commandMaxLength,
                                 height: 30,
                                 flex: 1,
@@ -188,7 +188,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                                 xtype: 'button',
                                 margin: '0 0 0 10',
                                 scale: 'medium',
-                                text: _l.trackers.console.send_btn,
+                                text: _l.get('trackers.console.send_btn'),
                                 handler: Ext.bind(this.sendAction, this)
                             }
                         ]
@@ -200,7 +200,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                 xtype: 'gridpanel',
                 cls: 'status-panel',
                 ui: 'light',
-                title: _l.trackers.console.status_title,
+                title: _l.get('trackers.console.status_title'),
 
                 margin: '0 0 0 10',
                 width: this.statusWidth,
@@ -222,12 +222,12 @@ Ext.define('NavixyPanel.view.trackers.Console', {
                 store: this.statusStore,
                 columns: [
                     {
-                        header: _l.trackers.console.status_property_title,
+                        header: _l.get('trackers.console.status_property_title'),
                         flex: 1,
                         dataIndex: 'name'
                     },
                     {
-                        header: _l.trackers.console.status_value_title,
+                        header: _l.get('trackers.console.status_value_title'),
                         flex: 1,
                         dataIndex: 'value'
                     }
@@ -316,7 +316,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
             scope: this
         });
 
-        this.getEl().mask(_l.trackers.console.loading);
+        this.getEl().mask(_l.get('trackers.console.loading'));
     },
 
     afterConnect: function (responce) {
@@ -329,7 +329,7 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
             this.initSocket(responce);
         } else {
-            this.updateSystem(_l.trackers.console.connection_failure);
+            this.updateSystem(_l.get('trackers.console.connection_failure'));
         }
 
         this.getEl().unmask();
@@ -413,16 +413,16 @@ Ext.define('NavixyPanel.view.trackers.Console', {
     },
 
     handleOpen: function () {
-        this.updateSystem(_l.trackers.console.connect_msg);
+        this.updateSystem(_l.get('trackers.console.connect_msg'));
     },
 
     handleClose: function () {
-        this.updateSystem(_l.trackers.console.disconnect_msg);
+        this.updateSystem(_l.get('trackers.console.disconnect_msg'));
         this.afterDisconnect();
     },
 
     handleError: function (error) {
-        this.updateSystem(_l.trackers.console.error_msg);
+        this.updateSystem(_l.get('trackers.console.error_msg'));
     },
 
     updateStatus: function (messageData) {

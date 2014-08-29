@@ -63,7 +63,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
     redirectToAuth: function (code) {
         if (!Ext.util.Cookies.get('debug') && Ext.API.hasAuthKey()) {
             Ext.Msg.show({
-                msg: _l.errors[code],
+                msg: _l.get('errors')[code],
                 buttons: Ext.Msg.OK,
                 wait: true,
                 fn: this.goToStartPage,
@@ -72,7 +72,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                     interval: 500,
                     duration: 3000,
                     increment: 6,
-                    text: _l.auth.reloading_soon,
+                    text: _l.get('auth.reloading_soon'),
                     scope: this,
                     fn: this.goToStartPage
                 }
@@ -128,7 +128,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
     },
 
     showInvalidParameterMsg: function (code, parameters, response) {
-        var localeErrorPart = _l.errors[code],
+        var localeErrorPart = _l.get('errors')[code],
             msg = [],
             needToShow = false;
 
@@ -140,7 +140,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
         }, this);
 
         Ext.Notice.msg({title: needToShow ? localeErrorPart.title : null,
-            msg: needToShow ? msg.join('') : _l.errors[code].default_msg });
+            msg: needToShow ? msg.join('') : _l.get('errors')[code].default_msg });
     },
 
     showCornerMessage: function (code, requestConfig) {
@@ -153,8 +153,8 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
         }
 
         var message = {
-            title: _l.error_occured,
-            msg: [trackerLabel ? trackerLabel + ': ' : '', _l.errors[code]].join('')
+            title: _l.get('error_occured'),
+            msg: [trackerLabel ? trackerLabel + ': ' : '', _l.get('errors')[code]].join('')
         };
 
         Ext.Notice.msg(message);

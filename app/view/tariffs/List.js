@@ -19,8 +19,8 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 
     getTexts: function () {
         return {
-            createBtnText: _l.tariffs.list.create_btn_text,
-            emptyData: _l.tariffs.list.empty_text
+            createBtnText: _l.get('tariffs.list.create_btn_text'),
+            emptyData: _l.get('tariffs.list.empty_text')
         };
     },
 
@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.tariffs.List', {
             tariffLabelTpl = [
                 '<a>{name:htmlEncode}</a>',
                 '<tpl if="isDefault">',
-                    '<span class="scaled lighten">{[_l.tariffs.fields.default_short]}</span>',
+                    '<span class="scaled lighten">{[_l.get("tariffs.fields.default_short")]}</span>',
                 '</tpl>'
             ],
             tariffDeviceTpl = [
@@ -44,12 +44,12 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 
         return [
             {
-                text: _l.tariffs.fields.tariff_id,
+                text: _l.get('tariffs.fields.tariff_id'),
                 dataIndex: 'id',
                 width: 60
             },
             {
-                text: _l.tariffs.fields.name,
+                text: _l.get('tariffs.fields.name'),
                 xtype: 'templatecolumn',
                 tpl: tariffLabelTpl,
                 dataIndex: 'name',
@@ -63,26 +63,26 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 // TODO: Unlock by API
 // TODO: Tariff_type name api value
 //            {
-//                text: _l.tariffs.fields.tariff_type,
+//                text: _l.get('tariffs.fields.tariff_type'),
 //                xtype: 'templatecolumn',
 //                tpl: tariffTypeTpl,
 //                dataIndex: 'tariff_type',
 //                width: 180
 //            },
             {
-                text: _l.tariffs.fields.device_type,
+                text: _l.get('tariffs.fields.device_type'),
                 xtype: 'templatecolumn',
                 tpl: tariffDeviceTpl,
                 dataIndex: 'device_type',
                 width: 120
             },
             {
-                text: _l.tariffs.fields.group_id,
+                text: _l.get('tariffs.fields.group_id'),
                 dataIndex: 'group_id',
                 width: 100
             },
             {
-                text: _l.tariffs.fields.price,
+                text: _l.get('tariffs.fields.price'),
                 xtype: 'templatecolumn',
                 tpl: tariffPriceTpl,
                 dataIndex: 'price',

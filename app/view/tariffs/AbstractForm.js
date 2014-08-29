@@ -12,15 +12,15 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     ],
 
     getTitle: function () {
-        return _l.tariffs.create_form.title;
+        return _l.get('tariffs.create_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.tariffs.create_form.save_btn;
+        return _l.get('tariffs.create_form.save_btn');
     },
 
     getClearBtnTitle: function () {
-        return _l.tariffs.create_form.clear_btn;
+        return _l.get('tariffs.create_form.clear_btn');
     },
 
     getNWItems: function () {
@@ -28,15 +28,15 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data : [
-                {type: "tracker", "name": _l.devices.tracker},
-                {type: "camera", "name": _l.devices.camera}
+                {type: "tracker", "name": _l.get('devices.tracker')},
+                {type: "camera", "name": _l.get('devices.camera')}
             ]
         });
         this.tariffTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data : [
-                {type: "monthly", "name": _l.tariffs.types.monthly},
-                {type: "daily", "name": _l.tariffs.types.daily}
+                {type: "monthly", "name": _l.get('tariffs.types.monthly')},
+                {type: "daily", "name": _l.get('tariffs.types.daily')}
             ]
         });
 
@@ -46,14 +46,14 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 height: 20
             },
             {
-                fieldLabel: _l.tariffs.fields.name,
+                fieldLabel: _l.get('tariffs.fields.name'),
                 name: 'name',
 
                 minLength: 2,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.tariffs.fields.price,
+                fieldLabel: _l.get('tariffs.fields.price'),
                 name: 'price',
 
                 minLength: 1,
@@ -65,7 +65,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
             {
                 name: 'device_type',
                 xtype: 'combobox',
-                fieldLabel: _l.tariffs.fields.device_type,
+                fieldLabel: _l.get('tariffs.fields.device_type'),
                 store: this.deviceTypesStore,
                 editable: false,
                 queryMode: 'local',
@@ -82,7 +82,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
 //                // TODO: Tariff_type name api value
 //                name: 'tariff_type',
 //                xtype: 'combobox',
-//                fieldLabel: _l.tariffs.fields.tariff_type,
+//                fieldLabel: _l.get('tariffs.fields.tariff_type'),
 //                store: this.tariffTypesStore,
 //                editable: false,
 //                queryMode: 'local',
@@ -104,11 +104,11 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.tariffs.create_form.options_fields,
+                html: _l.get('tariffs.create_form.options_fields'),
                 padding: '10 0 20 0'
             },
             {
-                fieldLabel: _l.tariffs.fields.group_id_exp,
+                fieldLabel: _l.get('tariffs.fields.group_id_exp'),
                 name: 'group_id',
                 labelAlign: 'left',
                 width: 400,
@@ -119,7 +119,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 value: 0
             },
             {
-                fieldLabel: _l.tariffs.fields.device_limit_exp,
+                fieldLabel: _l.get('tariffs.fields.device_limit_exp'),
                 name: 'device_limit',
                 allowBlank: true,
                 labelAlign: 'left',
@@ -131,7 +131,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 value: 0
             },
             {
-                fieldLabel: _l.tariffs.fields.store_period,
+                fieldLabel: _l.get('tariffs.fields.store_period'),
                 fname: 'store_period',
                 allowBlank: true,
                 xtype: 'periodfield',
@@ -141,21 +141,21 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 labelWidth: 225
             },
             {
-                boxLabel: _l.tariffs.fields.proportional_charge,
+                boxLabel: _l.get('tariffs.fields.proportional_charge'),
                 name: 'proportional_charge',
                 labelWidth: 'auto',
                 width: 'auto',
                 xtype: 'checkbox'
             },
             {
-                boxLabel: _l.tariffs.fields.active_exp,
+                boxLabel: _l.get('tariffs.fields.active_exp'),
                 name: 'active',
                 labelWidth: 'auto',
                 width: 'auto',
                 xtype: 'checkbox'
             },
             {
-                boxLabel: _l.tariffs.fields.has_reports,
+                boxLabel: _l.get('tariffs.fields.has_reports'),
                 name: 'has_reports',
                 allowBlank: true,
                 labelWidth: 'auto',
@@ -184,7 +184,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 style: {
                     'text-align': 'right'
                 },
-                tip: _l.tariffs.fields.service_price
+                tip: _l.get('tariffs.fields.service_price')
             },
             tariffPrices = Ext.getStore('TariffPrices').getPrices();
 
@@ -192,7 +192,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.tariffs.create_form.prices_fields,
+                html: _l.get('tariffs.create_form.prices_fields'),
                 padding: '10 0 20 0'
             },
             {
@@ -201,7 +201,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.tariffs.fields.outgoing_sms,
+                        fieldLabel: _l.get('tariffs.fields.outgoing_sms'),
                         name: 'outgoing_sms'
                     }, numericDefaults),
                     Ext.apply({
@@ -215,7 +215,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.tariffs.fields.incoming_sms,
+                        fieldLabel: _l.get('tariffs.fields.incoming_sms'),
                         name: 'incoming_sms'
                     }, numericDefaults),
                     Ext.apply({
@@ -229,7 +229,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.tariffs.fields.service_sms,
+                        fieldLabel: _l.get('tariffs.fields.service_sms'),
                         name: 'service_sms'
                     }, numericDefaults),
                     Ext.apply({
@@ -243,7 +243,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.tariffs.fields.phone_call,
+                        fieldLabel: _l.get('tariffs.fields.phone_call'),
                         name: 'phone_call'
                     }, numericDefaults),
                     Ext.apply({
@@ -257,7 +257,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.tariffs.fields.traffic,
+                        fieldLabel: _l.get('tariffs.fields.traffic'),
                         name: 'traffic'
                     }, numericDefaults),
                     Ext.apply({

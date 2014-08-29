@@ -41,7 +41,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         });
 
         this.menuConfig = {
-            text: _l.settings.menu_text,
+            text: _l.get('settings.menu_text'),
             target: 'settings'
         };
     },
@@ -139,7 +139,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
     },

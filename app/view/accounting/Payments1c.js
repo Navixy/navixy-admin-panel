@@ -16,7 +16,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
     },
 
     getSaveBtnTitle: function () {
-        return _l.accounting.form.payments.save_btn;
+        return _l.get('accounting.form.payments.save_btn');
     },
 
     getButtons: function () {
@@ -79,7 +79,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                 margin: '30 0 10 0',
                 items: [
                     {
-                        html: _l.accounting.form.payments.fields.date + ':',
+                        html: _l.get('accounting.form.payments.fields.date') + ':',
                         xtype: 'container',
                         width: 200,
                         margin: '0 10 0 0',

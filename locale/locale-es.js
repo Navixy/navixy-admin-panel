@@ -5,6 +5,7 @@
  */
 
 Ext.define('Locale.locale-es', {
+    extend: 'Locale.AbstractLocale',
     dependencies: [
         'Locale.ext.locale-en'
     ],

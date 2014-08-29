@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectWindow', {
 
     getTexts: function () {
         return  {
-            windowTitle: _l.tariffs.select.title
+            windowTitle: _l.get('tariffs.select.title')
         };
     }
 });

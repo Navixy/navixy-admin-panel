@@ -11,14 +11,14 @@ Ext.define('NavixyPanel.view.users.Edit', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.users.edit_form.title,
+            _l.get('users.edit_form.title'),
             ' #{id}: {last_name} {first_name} {middle_name}'
         );
         return titleTpl.apply(this.getRecordData());
     },
 
     getSaveBtnTitle: function () {
-        return _l.users.edit_form.save_btn;
+        return _l.get('users.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {

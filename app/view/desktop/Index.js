@@ -15,13 +15,13 @@ Ext.define('NavixyPanel.view.desktop.Index', {
                 xtype: 'container',
                 padding: '50 50 0 50',
                 style: 'font-size: 20px; text-align: center',
-                html: _l.index_title
+                html: _l.get('index_title')
             },
             {
                 xtype: 'container',
                 padding: '5 50 0 50',
                 style: 'font-size: 12px; text-align: center',
-                html: _l.index_tip
+                html: _l.get('index_tip')
             }
         ];
 

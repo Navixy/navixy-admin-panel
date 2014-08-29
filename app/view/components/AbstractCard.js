@@ -91,8 +91,8 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
             cls: 'links-collapser',
             height: 0,
             width: 0,
-            tip: _l.card.links.collapser_tip,
-            expTip: _l.card.links.collapser_exptip,
+            tip: _l.get('card.links.collapser_tip'),
+            expTip: _l.get('card.links.collapser_exptip'),
             listeners: {
                 click: me.handleLinksCollapseTool,
                 scope: me
@@ -180,13 +180,13 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
             cls: 'body-collapser',
             padding: '5 0 5 30',
 
-            html: _l.card.body.title,
+            html: _l.get('card.body.title'),
 
-            collapsedHtml: _l.card.body.title,
-            expandedHtml: _l.card.body.exptitle,
+            collapsedHtml: _l.get('card.body.title'),
+            expandedHtml: _l.get('card.body.exptitle'),
 
-            tip: _l.card.body.collapser_tip,
-            expTip: _l.card.body.collapser_exptip,
+            tip: _l.get('card.body.collapser_tip'),
+            expTip: _l.get('card.body.collapser_exptip'),
 
             listeners: {
                 click: me.handBodyCollapseTool,

@@ -10,11 +10,11 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
     requires: ['NavixyPanel.view.widgets.fields.UserSelect'],
 
     getTitle: function () {
-        return _l.trackers.edit_form.title;
+        return _l.get('trackers.edit_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.trackers.edit_form.save_btn;
+        return _l.get('trackers.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -30,26 +30,26 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
                 height: 20
             },
             {
-                fieldLabel: _l.trackers.fields.label,
+                fieldLabel: _l.get('trackers.fields.label'),
                 name: 'label',
 
                 minLength: 1,
                 maxLength: 60
             },
             {
-                fieldLabel: _l.trackers.fields.owner,
+                fieldLabel: _l.get('trackers.fields.owner'),
                 name: 'user_id',
                 xtype: 'userselect',
                 trackerRecord: this.record,
                 hasDefaultValue: true
             },
             {
-                fieldLabel: _l.trackers.fields.deleted,
+                fieldLabel: _l.get('trackers.fields.deleted'),
                 name: 'deleted',
                 xtype: 'checkbox'
             },
             {
-                fieldLabel: _l.trackers.fields.blocked,
+                fieldLabel: _l.get('trackers.fields.blocked'),
                 name: 'blocked',
                 xtype: 'checkbox'
             },
@@ -58,22 +58,22 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
                 height: 10
             },
             {
-                fieldLabel: _l.trackers.fields.creation_date,
+                fieldLabel: _l.get('trackers.fields.creation_date'),
                 name: 'creation_date',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.model,
+                fieldLabel: _l.get('trackers.fields.model'),
                 name: 'model',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.device_id,
+                fieldLabel: _l.get('trackers.fields.device_id'),
                 name: 'device_id',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.phone_exp,
+                fieldLabel: _l.get('trackers.fields.phone_exp'),
                 name: 'phone',
                 disabled: true
             }

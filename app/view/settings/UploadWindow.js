@@ -47,19 +47,19 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
     initComponent: function() {
         this.constrainTo = Ext.getBody();
 
-        this.title = Ext.String.format(_l.settings.upload_form.title, _l.settings.upload_form.titles[this.fileType]);
+        this.title = Ext.String.format(_l.get('settings.upload_form.title'), _l.get('settings.upload_form.titles')[this.fileType]);
         this.defaultHeight = this.height;
 
         this.buttons = [
             {
-                text: _l.settings.upload_form.save_btn,
+                text: _l.get('settings.upload_form.save_btn'),
                 action: "upload_file",
                 formBind: true,
                 handler: this.fireUploadFile,
                 scope: this
             },
             {
-                text: _l.settings.upload_form.cancel_btn,
+                text: _l.get('settings.upload_form.cancel_btn'),
                 handler: this.close,
                 scope: this
             }
@@ -103,17 +103,17 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         xtype: "component",
                         baseCls: "gray-text",
                         role: "error-text",
-                        html: _l.settings.upload_form.tips[this.fileType],
+                        html: _l.get('settings.upload_form.tips')[this.fileType],
                         margin: "0 0 3 0"
                     },
                     {
                         xtype: "filefield",
                         name: "file",
                         allowBlank: false,
-                        fieldLabel: Ext.String.format(_l.settings.upload_form.img_title, fileFormat, Config.uploadLimit || 10),
+                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 10),
                         msgTarget: "under",
                         labelAlign: "top",
-                        buttonText: _l.settings.upload_form.upload_btn,
+                        buttonText: _l.get('settings.upload_form.upload_btn'),
                         buttonConfig: {
                             padding: "3 10 3 10"
                         },
@@ -145,7 +145,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
 
 
     fireUploadFile: function () {
-        var waitMsg = _l.settings.edit_form.upload_loading,
+        var waitMsg = _l.get('settings.edit_form.upload_loading'),
             form = this.getForm();
 
         if (form.isValid()) {
@@ -178,7 +178,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.settings[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.down("container[role=form]").down("filefield").fileInputEl.set({
             accept: this.typesMap[this.fileType].accept
@@ -189,6 +189,6 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
 
     showUploadError: function (errDescription) {
         this.getErrorsContainer().show();
-        this.getErrorsContainer().down("component[role=error-text]").update(_l.settings.upload_form.error_text + (errDescription  ? ": " + errDescription : ""));
+        this.getErrorsContainer().down("component[role=error-text]").update(_l.get('settings.upload_form.error_text') + (errDescription  ? ": " + errDescription : ""));
     }
 });

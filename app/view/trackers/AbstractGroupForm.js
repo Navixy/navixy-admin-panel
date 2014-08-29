@@ -84,12 +84,12 @@ Ext.define('NavixyPanel.view.trackers.AbstractGroupForm', {
 
             columns: [
                 {
-                    text: _l.trackers.fields.tracker_id,
+                    text: _l.get('trackers.fields.tracker_id'),
                     dataIndex: 'id',
                     width: 60
                 },
                 {
-                    header: _l.trackers.fields.label,
+                    header: _l.get('trackers.fields.label'),
                     dataIndex: 'label',
                     flex: 1,
                     field: {
@@ -97,12 +97,12 @@ Ext.define('NavixyPanel.view.trackers.AbstractGroupForm', {
                     }
                 },
                 {
-                    text: _l.trackers.fields.user_id,
+                    text: _l.get('trackers.fields.user_id'),
                     dataIndex: 'user_id',
                     width: 120
                 },
                 {
-                    text: _l.trackers.fields.model,
+                    text: _l.get('trackers.fields.model'),
                     dataIndex: 'model',
                     width: 120
                 }
@@ -138,7 +138,7 @@ Ext.define('NavixyPanel.view.trackers.AbstractGroupForm', {
                 height: 20
             },
             {
-                fieldLabel: _l.trackers.fields.owner,
+                fieldLabel: _l.get('trackers.fields.owner'),
                 name: 'user_id',
                 xtype: 'userselect',
                 hasDefaultValue: false

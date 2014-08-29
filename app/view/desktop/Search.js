@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
             this.getSearchResultsConfig()
         ];
 
-        this.title = _l.searchTitle;
+        this.title = _l.get('searchTitle');
 
         this.callParent(arguments);
     },
@@ -76,7 +76,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                     ui: 'light',
                     cls: 'search-field',
 
-                    emptyText: _l.search.empty,
+                    emptyText: _l.get('search.empty'),
 
                     flex: 1,
 
@@ -101,7 +101,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                     height: 33,
 
                     margin: '0 0 0 10',
-                    text: _l.search.btn,
+                    text: _l.get('search.btn'),
                     handler: Ext.bind(this.searchAction, this)
                 }
             ]
@@ -164,7 +164,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                         moduleWidget,
                         Ext.apply(
                             {
-                                searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.list.search_title_tpl, _l[moduleName].menu_text, '{0}')
+                                searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.get('list.search_title_tpl'), _l[moduleName].menu_text, '{0}')
                             },
                             widgetConfig)
                     )

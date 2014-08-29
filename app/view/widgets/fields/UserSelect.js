@@ -33,7 +33,7 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
 
     initComponent: function () {
 
-        this.emptyText = _l.users.combo_empty;
+        this.emptyText = _l.get('users.combo_empty');
 
         this.callParent(arguments);
     },

@@ -11,14 +11,14 @@ Ext.define('NavixyPanel.view.users.TransactionAdd', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.users.transaction_add.title,
+            _l.get('users.transaction_add.title'),
             ' #{id}: {last_name} {first_name} {middle_name}'
         );
         return titleTpl.apply(this.getRecordData());
     },
 
     getSaveBtnTitle: function () {
-        return _l.users.edit_form.save_btn;
+        return _l.get('users.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -34,39 +34,39 @@ Ext.define('NavixyPanel.view.users.TransactionAdd', {
                 height: 20
             },
             {
-                fieldLabel: _l.users.fields.user_id,
+                fieldLabel: _l.get('users.fields.user_id'),
                 name: 'id',
                 disabled: true
             },
             {
-                fieldLabel: _l.users.fields.login,
+                fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
                 disabled: true
             },
             {
-                fieldLabel: _l.users.fields.balance,
+                fieldLabel: _l.get('users.fields.balance'),
                 name: 'balance',
                 disabled: true
             },
             {
-                fieldLabel: _l.users.fields.bonus,
+                fieldLabel: _l.get('users.fields.bonus'),
                 name: 'bonus',
                 disabled: true
             },
             {
-                fieldLabel: _l.users.transaction_add.description,
+                fieldLabel: _l.get('users.transaction_add.description'),
                 allowBlank: false,
                 name: 'text'
             },
             {
-                fieldLabel: _l.users.transaction_add.balance + '<sup>*</sup>',
+                fieldLabel: _l.get('users.transaction_add.balance') + '<sup>*</sup>',
                 name: 'balance_dif',
                 allowBlank: true,
                 value: 0,
                 vtype: 'amount'
             },
             {
-                fieldLabel: _l.users.transaction_add.bonus + '<sup>*</sup>',
+                fieldLabel: _l.get('users.transaction_add.bonus') + '<sup>*</sup>',
                 name: 'bonus_dif',
                 allowBlank: true,
                 value: 0,
@@ -74,7 +74,7 @@ Ext.define('NavixyPanel.view.users.TransactionAdd', {
             },
             {
                 xtype: 'container',
-                html: _l.users.transaction_add.value_sup,
+                html: _l.get('users.transaction_add.value_sup'),
                 cls: 'block_sup',
                 padding: '10 0 0 160'
             }

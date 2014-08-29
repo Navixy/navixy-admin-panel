@@ -14,7 +14,7 @@ Ext.define('NavixyPanel.view.widgets.SearchField', {
     width: 200,
 
     initComponent: function () {
-        this.emptyText = _l.search_empty_text || 'Enter search query';
+        this.emptyText = _l.get('search_empty_text') || 'Enter search query';
         this.callParent(arguments);
     },
 

@@ -10,11 +10,11 @@ Ext.define('NavixyPanel.view.codes.Create', {
 
 
     getTitle: function () {
-        return _l.codes.create_form.title;
+        return _l.get('codes.create_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.codes.create_form.save_btn;
+        return _l.get('codes.create_form.save_btn');
     },
 
     getNWItems: function () {
@@ -26,7 +26,7 @@ Ext.define('NavixyPanel.view.codes.Create', {
                 height: 20
             },
             {
-                fieldLabel: _l.codes.create_form.new_codes_count,
+                fieldLabel: _l.get('codes.create_form.new_codes_count'),
                 name: 'count',
 
                 minLength: 1,
@@ -35,7 +35,7 @@ Ext.define('NavixyPanel.view.codes.Create', {
                 value: 0
             },
             {
-                fieldLabel: _l.codes.fields.bonus_amount,
+                fieldLabel: _l.get('codes.fields.bonus_amount'),
                 name: 'bonus_amount',
 
                 minLength: 1,
@@ -48,7 +48,7 @@ Ext.define('NavixyPanel.view.codes.Create', {
                 name: 'codes'
             },
             {
-                fieldLabel: _l.codes.fields.free_days,
+                fieldLabel: _l.get('codes.fields.free_days'),
                 name: 'free_days',
 
                 maxLength: 6,
@@ -56,7 +56,7 @@ Ext.define('NavixyPanel.view.codes.Create', {
                 value: 0
             },
             {
-                fieldLabel: _l.codes.fields.tariff_name,
+                fieldLabel: _l.get('codes.fields.tariff_name'),
                 name: 'tariff_id',
                 xtype: 'tariffselect',
                 deviceType: this.getDevice()

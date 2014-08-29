@@ -92,7 +92,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         });
 
         this.menuConfig = {
-            text: _l.tariffs.menu_text,
+            text: _l.get('tariffs.menu_text'),
             target: 'tariffs'
         };
 
@@ -223,7 +223,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -260,7 +260,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTariffCreate().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -317,7 +317,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
     }

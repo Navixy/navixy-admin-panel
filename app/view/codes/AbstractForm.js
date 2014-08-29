@@ -10,11 +10,11 @@ Ext.define('NavixyPanel.view.codes.AbstractForm', {
     requires: ['NavixyPanel.view.widgets.fields.TariffSelect'],
 
     getTitle: function () {
-        return _l.codes.edit_form.title;
+        return _l.get('codes.edit_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.codes.edit_form.save_btn;
+        return _l.get('codes.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -39,17 +39,17 @@ Ext.define('NavixyPanel.view.codes.AbstractForm', {
                 height: 20
             },
             {
-                fieldLabel: _l.codes.edit_form.selected_count,
+                fieldLabel: _l.get('codes.edit_form.selected_count'),
                 name: 'count',
                 disabled: true
             },
             {
-                fieldLabel: _l.codes.edit_form.device_type,
+                fieldLabel: _l.get('codes.edit_form.device_type'),
                 name: 'device_type',
                 disabled: true
             },
             {
-                fieldLabel: _l.codes.fields.bonus_amount,
+                fieldLabel: _l.get('codes.fields.bonus_amount'),
                 name: 'bonus_amount',
 
                 minLength: 1,
@@ -62,7 +62,7 @@ Ext.define('NavixyPanel.view.codes.AbstractForm', {
                 name: 'codes'
             },
             {
-                fieldLabel: _l.codes.fields.free_days,
+                fieldLabel: _l.get('codes.fields.free_days'),
                 name: 'free_days',
 
                 maxLength: 6,
@@ -70,7 +70,7 @@ Ext.define('NavixyPanel.view.codes.AbstractForm', {
                 value: 0
             },
             {
-                fieldLabel: _l.codes.fields.tariff_name,
+                fieldLabel: _l.get('codes.fields.tariff_name'),
                 name: 'tariff_id',
                 xtype: 'tariffselect',
                 deviceType: this.getDevice()
@@ -124,7 +124,7 @@ Ext.define('NavixyPanel.view.codes.AbstractForm', {
         if (codesData) {
             codesField.setValue(codesData.join(","));
             countField.setValue(codesData.length);
-            deviceField.setValue(_l.devices[codesType]);
+            deviceField.setValue(_l.get('devices')[codesType]);
         }
 
         this.getForm().isValid();

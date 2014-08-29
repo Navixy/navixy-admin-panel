@@ -23,7 +23,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
         var hasOld = !!Config.oldVersionURL;
 
         this.header = {
-            title: _l.auth.title,
+            title: _l.get('auth.title'),
             ui: 'light',
             cls: 'auth-header',
             height: 60
@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                         vtype: 'alphanum',
                         allowBlank: false,
 
-                        emptyText: _l.auth.login,
+                        emptyText: _l.get('auth.login'),
                         padding: '20 0 0 0'
                     },
                     {
@@ -76,7 +76,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                         maxLength: 50,
                         allowBlank: false,
 
-                        emptyText: _l.auth.password
+                        emptyText: _l.get('auth.password')
                     },
                     {
                         xtype: 'container',
@@ -91,12 +91,12 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                                 xtype: 'button',
 
                                 scale: 'medium',
-                                text: _l.auth.login_btn,
+                                text: _l.get('auth.login_btn'),
                                 flex: 1
                             },
                             {
                                 xtype: 'button',
-                                text: _l.old_version,
+                                text: _l.get('old_version'),
                                 scale: 'medium',
                                 margin: '10 0 0 0',
                                 flex: 1,

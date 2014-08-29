@@ -19,7 +19,7 @@ Ext.define('NavixyPanel.view.widgets.fields.LocaleCombo', {
     initComponent: function () {
 
         if (this.fieldLabel !== false) {
-            this.fieldLabel = _l.auth.locale_title;
+            this.fieldLabel = _l.get('auth.locale_title');
         }
         this.store = Locale.Manager.getAvailable();
 

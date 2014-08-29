@@ -127,8 +127,8 @@ Ext.define('NavixyPanel.controller.Main', {
                 'hours-minutes': function () {
                     var hours = this.getHours(),
                         minutes = this.getMinutes(),
-                        hours_postfix = _l.units_combination.hours[ hours <= 10 || hours > 19 ? hours % 10 : 10] ,
-                        minutes_postfix = _l.units_combination.minutes[ minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
+                        hours_postfix = _l.get('units_combination.hours')[ hours <= 10 || hours > 19 ? hours % 10 : 10] ,
+                        minutes_postfix = _l.get('units_combination.minutes')[ minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
 
                     return  [hours, hours_postfix, minutes, minutes_postfix].join(' ');
                 }
@@ -208,15 +208,15 @@ Ext.define('NavixyPanel.controller.Main', {
             units: function (value, unit, withValue) {
                 var result;
 
-                if (_l.units_combination[unit]) {
+                if (_l.get('units_combination')[unit]) {
                     var tmp = value % 100,
                         index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10,
-                        len = _l.units_combination[unit].length;
+                        len = _l.get('units_combination')[unit].length;
 
-                    if (_l.units_combination[unit][index]) {
-                        result = _l.units_combination[unit][index];
+                    if (_l.get('units_combination')[unit][index]) {
+                        result = _l.get('units_combination')[unit][index];
                     } else {
-                        result = _l.units_combination[unit][len - 1];
+                        result = _l.get('units_combination')[unit][len - 1];
                     }
 
                 }
@@ -267,7 +267,7 @@ Ext.define('NavixyPanel.controller.Main', {
             numeric: function(v) {
                 return Ext.form.VTypes['numericVal'].test(v);
             },
-            numericText: _l.invalid_numeric_msg,
+            numericText: _l.get('invalid_numeric_msg'),
             numericMask: /[\-\+0-9.]/,
             numericVal: /^[-+]?\d*\.?\d*$/i
         });
@@ -277,7 +277,7 @@ Ext.define('NavixyPanel.controller.Main', {
             amount: function(v) {
                 return Ext.form.VTypes['amountVal'].test(v);
             },
-            amountText: _l.invalid_amount_msg,
+            amountText: _l.get('invalid_amount_msg'),
             amountMask: /[\-\+0-9.]/,
             amountVal: /^[-+]?\d*\.?\d{0,2}$/i
         });
@@ -353,7 +353,7 @@ Ext.define('NavixyPanel.controller.Main', {
             waitRecordReady: function (recordId, storeName, callback, scope, loadAssociations) {
                 var store = Ext.getStore(storeName);
                 if (store && store.loadRecord) {
-                    Ext.getBody().mask(_l.loading);
+                    Ext.getBody().mask(_l.get('loading'));
                     store.loadRecord(
                         recordId,
                         function() {
@@ -425,11 +425,11 @@ Ext.define('NavixyPanel.controller.Main', {
             },
 
             deviceEncode: function (type) {
-                return '<span class="' + type + ' device"><span></span>' + _l.devices[type] + '</span>';
+                return '<span class="' + type + ' device"><span></span>' + _l.get('devices')[type] + '</span>';
             },
 
             tariffEncode: function (type) {
-                return '<span class="' + type + ' device"><span></span>' + _l.tariffs.types[type] + '</span>';
+                return '<span class="' + type + ' device"><span></span>' + _l.get('tariffs.types')[type] + '</span>';
             },
 
             emptyEncode: function (value) {
@@ -475,7 +475,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
     onHandlerFoundError: function () {
 
-        Ext.MessageBox.alert(_l.error, _l.no_path_found);
+        Ext.MessageBox.alert(_l.get('error'), _l.get('no_path_found'));
         console.log('err');
         //TODO Show 404 or something
     },
@@ -507,7 +507,7 @@ Ext.define('NavixyPanel.controller.Main', {
             values = form.getValues();
 
         if (form && form.isValid()) {
-            Ext.getBody().mask(_l.loading);
+            Ext.getBody().mask(_l.get('loading'));
             authWindow.hide();
             Ext.API.authUser(this.onUserAuth, this.onUserAuthFailure, values, this);
         }
@@ -530,7 +530,7 @@ Ext.define('NavixyPanel.controller.Main', {
         var form = this.getAuthForm(),
             errBox = form.down('[role=auth-error]');
 
-        this.getAuthWindow().showError(_l.auth.auth_error);
+        this.getAuthWindow().showError(_l.get('auth.auth_error'));
 
         Ext.getBody().unmask();
         this.getAuthWindow().show();
@@ -596,7 +596,7 @@ Ext.define('NavixyPanel.controller.Main', {
                 'getTimeZones'
             ];
 
-        Ext.getBody().mask(_l.conneting_loader);
+        Ext.getBody().mask(_l.get('conneting_loader'));
 
         Ext.API.batch(calls, {
             callback: function (results) {

@@ -30,7 +30,7 @@ Ext.define('NavixyPanel.view.codes.List', {
             btnTip = this.getEditBntTip(),
             lastType = records[0] ? records[0].get('device_type') : false,
             canEdit = !!lastType,
-            text = _l.codes.list.select_req;
+            text = _l.get('codes.list.select_req');
 
         Ext.iterate(records, function (record) {
             if (record.get('device_type') !== lastType) {
@@ -43,12 +43,12 @@ Ext.define('NavixyPanel.view.codes.List', {
 
         if (!canEdit) {
             btnCmp.disable();
-            btnTip.update(_l.codes.list.same_type_req);
+            btnTip.update(_l.get('codes.list.same_type_req'));
         }
 
         if (!lastType) {
             btnCmp.disable();
-            btnTip.update(_l.codes.list.select_req);
+            btnTip.update(_l.get('codes.list.select_req'));
         }
 
         if (canEdit) {
@@ -65,22 +65,22 @@ Ext.define('NavixyPanel.view.codes.List', {
         }
 
         btnTip.update(!assigned
-            ? Ext.String.format(_l.codes.list.after_create_success, Ext.util.Format.units(succesed, 'codes', true))
+            ? Ext.String.format(_l.get('codes.list.after_create_success'), Ext.util.Format.units(succesed, 'codes', true))
             : assigned !== succesed
-                ? Ext.String.format(_l.codes.list.after_edit_failure, succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
-                : Ext.String.format(_l.codes.list.after_edit_success, Ext.util.Format.units(succesed, 'codes', true))
+                ? Ext.String.format(_l.get('codes.list.after_edit_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
+                : Ext.String.format(_l.get('codes.list.after_edit_success'), Ext.util.Format.units(succesed, 'codes', true))
         );
     },
 
     getTexts: function () {
         return {
-            emptyData: _l.codes.list.empty_text,
+            emptyData: _l.get('codes.list.empty_text'),
             editBtnRole: 'edit-button',
-            editBtnText: _l.codes.list.edit_btn,
+            editBtnText: _l.get('codes.list.edit_btn'),
             createBtnRole: 'create-button',
-            createBtnText: _l.codes.list.create_btn,
+            createBtnText: _l.get('codes.list.create_btn'),
             reloadBtnRole: 'reload-button',
-            reloadBtnText: _l.codes.list.reload_btn
+            reloadBtnText: _l.get('codes.list.reload_btn')
         };
     },
 
@@ -119,7 +119,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                         xtype: 'container',
                         role: 'edit-btn-tip',
                         margin: '0 0 0 20',
-                        html: _l.codes.list.select_req
+                        html: _l.get('codes.list.select_req')
                     },
                     '->',
                     {
@@ -176,7 +176,7 @@ Ext.define('NavixyPanel.view.codes.List', {
         var codeTpl = [
                 '{code}',
                 '<tpl if="edited">',
-                    '<span class="red">{[_l.codes.list.edited_tip]}</span>',
+                    '<span class="red">{[_l.get("codes.list.edited_tip")]}</span>',
                 '</tpl>'
             ],
             codeDeviceTpl = [
@@ -192,60 +192,60 @@ Ext.define('NavixyPanel.view.codes.List', {
                 '<tpl if="free_days">',
                     '{free_days:daysEncode}',
                 '<tpl else>',
-                    '<span class="gray nopad">{[_l.no]}</span>',
+                    '<span class="gray nopad">{[_l.get("no")]}</span>',
                 '</tpl>'
             ],
             codeStatusDaysTpl = [
                 '<tpl if="activated">',
-                    '<span class="red nopad">{[_l.codes.fields.status.activated]}</span> <a>{[Ext.util.Format.deviceLabelEncode(values.device_type, values.device_id)]}</a>',
+                    '<span class="red nopad">{[_l.get("codes.fields.status.activated")]}</span> <a>{[Ext.util.Format.deviceLabelEncode(values.device_type, values.device_id)]}</a>',
                 '<tpl else>',
-                    '<span class="gray nopad">{[_l.codes.fields.status.no_activated]}</span>',
+                    '<span class="gray nopad">{[_l.get("codes.fields.status.no_activated")]}</span>',
                 '</tpl>'
             ];
 
         return [
             {
-                text: _l.codes.fields.code,
+                text: _l.get('codes.fields.code'),
                 dataIndex: 'code',
                 xtype: 'templatecolumn',
                 tpl: codeTpl,
                 flex: 1
             },
             {
-                text: _l.codes.fields.activated,
+                text: _l.get('codes.fields.activated'),
                 dataIndex: 'activated',
                 xtype: 'templatecolumn',
                 tpl: codeStatusDaysTpl,
                 flex: 1
             },
             {
-                text: _l.codes.fields.tariff_name,
+                text: _l.get('codes.fields.tariff_name'),
                 dataIndex: 'tariff_name',
                 flex: 1
             },
             {
-                text: _l.codes.fields.device_type,
+                text: _l.get('codes.fields.device_type'),
                 xtype: 'templatecolumn',
                 tpl: codeDeviceTpl,
                 dataIndex: 'device_type',
                 width: 120
             },
             {
-                text: _l.codes.fields.money_amount,
+                text: _l.get('codes.fields.money_amount'),
                 xtype: 'templatecolumn',
                 tpl: codeAmountTpl,
                 dataIndex: 'money_amount',
                 width: 60
             },
             {
-                text: _l.codes.fields.bonus_amount,
+                text: _l.get('codes.fields.bonus_amount'),
                 xtype: 'templatecolumn',
                 tpl: codeBonusTpl,
                 dataIndex: 'bonus_amount',
                 width: 60
             },
             {
-                text: _l.codes.fields.free_days,
+                text: _l.get('codes.fields.free_days'),
                 xtype: 'templatecolumn',
                 tpl: codeFreeDaysTpl,
                 dataIndex: 'free_days',

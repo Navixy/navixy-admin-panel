@@ -68,7 +68,7 @@ Ext.define('NavixyPanel.controller.Codes', {
         });
 
         this.menuConfig = {
-            text: _l.codes.menu_text,
+            text: _l.get('codes.menu_text'),
             target: 'codes'
         };
     },
@@ -124,7 +124,7 @@ Ext.define('NavixyPanel.controller.Codes', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getCodesEdit().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -157,7 +157,7 @@ Ext.define('NavixyPanel.controller.Codes', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getCodesCreate().showSubmitErrors(errCode, errors, errDescription);
     }

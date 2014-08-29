@@ -168,15 +168,15 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     },
 
     getSaveBtnTitle: function () {
-        return _l.save_form_btn;
+        return _l.get('save_form_btn');
     },
 
     getClearBtnTitle: function () {
-        return _l.clear_form_btn;
+        return _l.get('clear_form_btn');
     },
 
     getBackBtnTitle: function () {
-        return _l.back_form_btn;
+        return _l.get('back_form_btn');
     },
 
     getItems: function () {
@@ -280,7 +280,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     },
 
     showSubmitErrors: function (errCode, errors, errDescription) {
-        var errLocale = _l.errors[errCode] || false,
+        var errLocale = _l.get('errors')[errCode] || false,
             codesMap = {
                 206: 'login'
             };
@@ -313,7 +313,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
             }
         } else {
             Ext.MessageBox.show({
-                title: _l.error + ' #' + errCode,
+                title: _l.get('error') + ' #' + errCode,
                 msg: errDescription,
                 closable: false,
                 buttons: Ext.MessageBox.OK

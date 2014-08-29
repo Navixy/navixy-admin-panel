@@ -12,8 +12,8 @@ Ext.define('NavixyPanel.view.users.List', {
 
     getTexts: function () {
         return {
-            createBtnText: _l.users.list.create_btn_text,
-            emptyData: _l.users.list.empty_text
+            createBtnText: _l.get('users.list.create_btn_text'),
+            emptyData: _l.get('users.list.empty_text')
         };
     },
 
@@ -27,27 +27,27 @@ Ext.define('NavixyPanel.view.users.List', {
                             '{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}',
                         '</tpl>',
                     '</a>',
-                '<tpl if="!activated"><span class="scaled red">{[_l.users.fields.activated_short.status_false]}</span></tpl></a>'
+                '<tpl if="!activated"><span class="scaled red">{[_l.get("users.fields.activated_short.status_false")]}</span></tpl></a>'
             ],
             userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>',
             balanceTpl = '{balance:balanceEncode}',
             bonusTpl = '{bonus:emptyEncode}',
             statusTpl = [
                 '<tpl if="activated">',
-                '{[_l.users.fields.activated_short.status_true]}',
+                '{[_l.get("users.fields.activated_short.status_true")]}',
                 '<tpl else>',
-                '<span class="gray nopad">{[_l.users.fields.activated_short.status_false]}</span>',
+                '<span class="gray nopad">{[_l.get("users.fields.activated_short.status_false")]}</span>',
                 '</tpl>'
             ];
 
         return [
             {
-                text: _l.users.fields.user_id,
+                text: _l.get('users.fields.user_id'),
                 dataIndex: 'id',
                 width: 60
             },
             {
-                text: _l.users.fields.full_name,
+                text: _l.get('users.fields.full_name'),
                 xtype: 'templatecolumn',
                 tpl: userCardTpl,
                 dataIndex: 'last_name',
@@ -55,31 +55,31 @@ Ext.define('NavixyPanel.view.users.List', {
                 flex: 2
             },
             {
-                text: _l.users.fields.balance,
+                text: _l.get('users.fields.balance'),
                 xtype: 'templatecolumn',
                 tpl: balanceTpl,
                 dataIndex: 'balance',
                 width: 80
             },
             {
-                text: _l.users.fields.bonus,
+                text: _l.get('users.fields.bonus'),
                 xtype: 'templatecolumn',
                 tpl: bonusTpl,
                 dataIndex: 'bonus',
                 width: 80
             },
             {
-                text: _l.users.fields.login_short,
+                text: _l.get('users.fields.login_short'),
                 dataIndex: 'login',
                 flex: 1
             },
             {
-                text: _l.users.fields.phone,
+                text: _l.get('users.fields.phone'),
                 dataIndex: 'phone',
                 flex: 1
             },
             {
-                text: _l.users.fields.post_city,
+                text: _l.get('users.fields.post_city'),
                 xtype: 'templatecolumn',
                 tpl: userCityTpl,
                 dataIndex: 'post_city',

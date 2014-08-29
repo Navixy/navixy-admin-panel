@@ -9,11 +9,11 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
     alias: 'widget.defaulttariff',
 
     getTitle: function () {
-        return _l.tariffs.default_form.title;
+        return _l.get('tariffs.default_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.tariffs.edit_form.save_btn;
+        return _l.get('tariffs.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -32,22 +32,22 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 height: 20
             },
             {
-                fieldLabel: _l.tariffs.fields.tariff_id,
+                fieldLabel: _l.get('tariffs.fields.tariff_id'),
                 name: 'id',
                 disabled: true
             },
             {
-                fieldLabel: _l.tariffs.fields.name,
+                fieldLabel: _l.get('tariffs.fields.name'),
                 name: 'name',
                 disabled: true
             },
             {
-                fieldLabel: _l.tariffs.fields.device_type,
+                fieldLabel: _l.get('tariffs.fields.device_type'),
                 name: 'device_type',
                 disabled: true
             },
             {
-                fieldLabel: _l.tariffs.fields.activation_bonus,
+                fieldLabel: _l.get('tariffs.fields.activation_bonus'),
                 name: 'activation_bonus',
 
                 minLength: 1,
@@ -57,7 +57,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 value: defaultData.activation_bonus || 0
             },
             {
-                fieldLabel: _l.tariffs.fields.free_days,
+                fieldLabel: _l.get('tariffs.fields.free_days'),
                 name: 'free_days',
 
                 minLength: 1,
@@ -89,7 +89,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 }
 
                 if (fieldName === 'device_type') {
-                    field.setValue(_l.devices[fieldValue]);
+                    field.setValue(_l.get('devices')[fieldValue]);
                 }
             });
         }

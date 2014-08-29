@@ -13,15 +13,15 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     ],
 
     getTitle: function () {
-        return _l.users.create_form.title;
+        return _l.get('users.create_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.users.create_form.save_btn;
+        return _l.get('users.create_form.save_btn');
     },
 
     getClearBtnTitle: function () {
-        return _l.users.create_form.clear_btn;
+        return _l.get('users.create_form.clear_btn');
     },
 
     getItems: function () {
@@ -39,9 +39,9 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         this.legalTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
             data : [
-                {type: "individual", "name": _l.users.fields.individual},
-                {type: "legal_entity", "name": _l.users.fields.legal_entity},
-                {type: "sole_trader", "name": _l.users.fields.sole_trader}
+                {type: "individual", "name": _l.get('users.fields.individual')},
+                {type: "legal_entity", "name": _l.get('users.fields.legal_entity')},
+                {type: "sole_trader", "name": _l.get('users.fields.sole_trader')}
             ]
         });
 
@@ -49,11 +49,11 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.users.create_form.main_fields,
+                html: _l.get('users.create_form.main_fields'),
                 padding: '10 0 20 0'
             },
             {
-                fieldLabel: _l.users.fields.login,
+                fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
 
                 vtype: 'email',
@@ -63,7 +63,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 validateOnChange: false
             },
             {
-                fieldLabel: _l.users.create_form.password,
+                fieldLabel: _l.get('users.create_form.password'),
                 name: 'password',
                 inputType: 'password',
 
@@ -71,7 +71,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 maxLength: 20
             },
             {
-                fieldLabel: _l.users.create_form.password_repeat,
+                fieldLabel: _l.get('users.create_form.password_repeat'),
                 inputType: 'password',
                 allowBlank: false,
 
@@ -80,12 +80,12 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
                 validator: function(value) {
                     var pass_val = me.down('*[name=password]').getValue();
-                    return value === pass_val || _l.users.create_form.password_mismatched;
+                    return value === pass_val || _l.get('users.create_form.password_mismatched');
                 }
             },
             {
                 xtype: 'checkbox',
-                fieldLabel: _l.users.fields.activated_t,
+                fieldLabel: _l.get('users.fields.activated_t'),
                 name: 'activated',
                 checked: true
             },
@@ -95,12 +95,12 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             },
             {
                 xtype: 'localefield',
-                fieldLabel: _l.users.create_form.language,
+                fieldLabel: _l.get('users.create_form.language'),
                 name: 'locale'
             },
             {
                 xtype: 'timezoneselect',
-                fieldLabel: _l.users.create_form.time_zone,
+                fieldLabel: _l.get('users.create_form.time_zone'),
                 name: 'time_zone'
             },
             {
@@ -110,7 +110,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 name: 'legal_type',
                 xtype: 'combobox',
-                fieldLabel: _l.users.fields.legal_type,
+                fieldLabel: _l.get('users.fields.legal_type'),
                 store: this.legalTypesStore,
                 editable: false,
                 queryMode: 'local',
@@ -129,7 +129,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         return [
             {
                 xtype: 'container',
-                html: _l.required_fields,
+                html: _l.get('required_fields'),
                 cls: 'block_sup',
                 padding: '10 20 20 0'
             }
@@ -141,11 +141,11 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.users.create_form.contact_fields,
+                html: _l.get('users.create_form.contact_fields'),
                 padding: '10 0 20 0'
             },
             {
-                fieldLabel: _l.users.fields.last_name,
+                fieldLabel: _l.get('users.fields.last_name'),
                 name: 'last_name',
                 minLength: 2,
                 maxLength: 100,
@@ -153,7 +153,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 allowBlank: false
             },
             {
-                fieldLabel: _l.users.fields.first_name,
+                fieldLabel: _l.get('users.fields.first_name'),
                 name: 'first_name',
                 minLength: 2,
                 maxLength: 100,
@@ -161,7 +161,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 allowBlank: false
             },
             {
-                fieldLabel: _l.users.fields.middle_name,
+                fieldLabel: _l.get('users.fields.middle_name'),
                 name: 'middle_name',
                 minLength: 2,
                 maxLength: 100,
@@ -174,7 +174,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 name: 'phone',
                 xtype: 'phonefield',
-                fieldLabel: _l.users.fields.phone,
+                fieldLabel: _l.get('users.fields.phone'),
                 allowBlank: true
             },
             {
@@ -182,31 +182,31 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 height: 10
             },
             {
-                fieldLabel: _l.users.fields.post_country,
+                fieldLabel: _l.get('users.fields.post_country'),
                 name: 'post_country',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.post_region,
+                fieldLabel: _l.get('users.fields.post_region'),
                 name: 'post_region',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.post_city,
+                fieldLabel: _l.get('users.fields.post_city'),
                 name: 'post_city',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.post_street_address,
+                fieldLabel: _l.get('users.fields.post_street_address'),
                 name: 'post_street_address',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.post_index,
+                fieldLabel: _l.get('users.fields.post_index'),
                 name: 'post_index',
                 minLength: 1,
                 vtype: 'numeric'
@@ -221,25 +221,25 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.users.create_form.legal_fields,
+                html: _l.get('users.create_form.legal_fields'),
                 padding: '10 0 20 0',
                 allowBlank: true
             },
             {
-                fieldLabel: _l.users.fields.legal_name,
+                fieldLabel: _l.get('users.fields.legal_name'),
                 name: 'legal_name',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.tin,
+                fieldLabel: _l.get('users.fields.tin'),
                 name: 'tin',
                 minLength: 1,
                 maxLength: 12,
                 vtype: 'numeric'
             },
             {
-                fieldLabel: _l.users.fields.iec,
+                fieldLabel: _l.get('users.fields.iec'),
                 name: 'iec',
                 minLength: 1,
                 maxLength: 10,
@@ -264,7 +264,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     {
                         xtype: 'button',
                         ui: 'gray',
-                        text: _l.users.create_form.copy_address,
+                        text: _l.get('users.create_form.copy_address'),
                         handler: function () {
                             me.copyAddress();
                         }
@@ -272,31 +272,31 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 ]
             },
             {
-                fieldLabel: _l.users.fields.registered_country,
+                fieldLabel: _l.get('users.fields.registered_country'),
                 name: 'registered_country',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.registered_region,
+                fieldLabel: _l.get('users.fields.registered_region'),
                 name: 'registered_region',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.registered_city,
+                fieldLabel: _l.get('users.fields.registered_city'),
                 name: 'registered_city',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.registered_street_address,
+                fieldLabel: _l.get('users.fields.registered_street_address'),
                 name: 'registered_street_address',
                 minLength: 1,
                 maxLength: 100
             },
             {
-                fieldLabel: _l.users.fields.registered_index,
+                fieldLabel: _l.get('users.fields.registered_index'),
                 name: 'registered_index',
                 minLength: 1,
                 vtype: 'numeric',

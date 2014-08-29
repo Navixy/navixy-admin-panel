@@ -12,14 +12,14 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.trackers.tariff_form.title,
+            _l.get('trackers.tariff_form.title'),
             ' #{id}: {label}'
         );
         return titleTpl.apply(this.getRecordData());
     },
 
     getSaveBtnTitle: function () {
-        return _l.trackers.tariff_form.save_btn;
+        return _l.get('trackers.tariff_form.save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -35,27 +35,27 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 height: 20
             },
             {
-                fieldLabel: _l.trackers.fields.label,
+                fieldLabel: _l.get('trackers.fields.label'),
                 name: 'label',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.creation_date,
+                fieldLabel: _l.get('trackers.fields.creation_date'),
                 name: 'creation_date',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.model,
+                fieldLabel: _l.get('trackers.fields.model'),
                 name: 'model',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.device_id,
+                fieldLabel: _l.get('trackers.fields.device_id'),
                 name: 'device_id',
                 disabled: true
             },
             {
-                fieldLabel: _l.trackers.fields.phone_exp,
+                fieldLabel: _l.get('trackers.fields.phone_exp'),
                 name: 'phone',
                 disabled: true
             },
@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 height: 10
             },
             {
-                fieldLabel: _l.trackers.fields.tariff,
+                fieldLabel: _l.get('trackers.fields.tariff'),
                 name: 'tariff_id',
                 xtype: 'tariffselect',
                 deviceType: 'tracker',
@@ -72,12 +72,12 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 validator: function(value) {
                     var currentTariffId = me.getRecordData().tariff_id
                     return currentTariffId === value
-                        ? _l.trackers.tariff_form.tariff_invalid
+                        ? _l.get('trackers.tariff_form.tariff_invalid')
                         : true;
                 }
             },
             {
-                boxLabel: _l.trackers.tariff_form.repay,
+                boxLabel: _l.get('trackers.tariff_form.repay'),
                 name: 'repay',
                 xtype: 'checkbox',
                 labelWidth: 'auto',
@@ -85,7 +85,7 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 margin: '0 0 0 180'
             },
             {
-                boxLabel: _l.trackers.tariff_form.charge,
+                boxLabel: _l.get('trackers.tariff_form.charge'),
                 name: 'charge',
                 xtype: 'checkbox',
                 labelWidth: 'auto',
@@ -94,7 +94,7 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
             },
             {
                 xtype: 'container',
-                html: _l.trackers.tariff_form.charge_sup,
+                html: _l.get('trackers.tariff_form.charge_sup'),
                 cls: 'block_sup',
                 padding: '0 0 0 210'
             }

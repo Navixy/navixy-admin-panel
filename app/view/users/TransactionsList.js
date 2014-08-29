@@ -17,12 +17,12 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     getTexts: function () {
         var userData = this.record.getData(),
             title = userData
-                ? _l.users.transactions.list.title + ' &nbsp; #' + userData.id + ' ' + userData.first_name + ' ' + userData.middle_name + ' ' + userData.last_name
+                ? _l.get('users.transactions.list.title') + ' &nbsp; #' + userData.id + ' ' + userData.first_name + ' ' + userData.middle_name + ' ' + userData.last_name
                 : null;
 
         return {
-            emptyData: _l.users.transactions.list.empty_text,
-            badRequest: _l.wrong_period,
+            emptyData: _l.get('users.transactions.list.empty_text'),
+            badRequest: _l.get('wrong_period'),
             panelTitle: title
         };
     },
@@ -42,17 +42,17 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     },
 
     getColumnsConfig: function () {
-        var typeTpl = '{[_l.users.transactions.fields.type_set[values.type] || values.type]}',
-            subtypeTpl = '{[_l.users.transactions.fields.subtype_set[values.subtype] || values.subtype]}';
+        var typeTpl = '{[_l.get("users.transactions.fields.type_set")[values.type] || values.type]}',
+            subtypeTpl = '{[_l.get("users.transactions.fields.subtype_set")[values.subtype] || values.subtype]}';
 
         return [
             {
-                text: _l.users.transactions.fields.description,
+                text: _l.get('users.transactions.fields.description'),
                 dataIndex: 'description',
                 flex: 1
             },
             {
-                text: _l.users.transactions.fields.type,
+                text: _l.get('users.transactions.fields.type'),
                 dataIndex: 'type',
                 xtype: 'templatecolumn',
                 tpl: typeTpl,
@@ -60,7 +60,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 width: 120
             },
             {
-                text: _l.users.transactions.fields.subtype,
+                text: _l.get('users.transactions.fields.subtype'),
                 dataIndex: 'subtype',
                 xtype: 'templatecolumn',
                 tpl: subtypeTpl,
@@ -68,22 +68,22 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 width: 120
             },
             {
-                text: _l.users.transactions.fields.date,
+                text: _l.get('users.transactions.fields.date'),
                 dataIndex: 'date',
                 width: 90
             },
             {
-                text: _l.users.transactions.fields.amount,
+                text: _l.get('users.transactions.fields.amount'),
                 dataIndex: 'amount',
                 width: 70
             },
             {
-                text: _l.users.transactions.fields.old_balance,
+                text: _l.get('users.transactions.fields.old_balance'),
                 dataIndex: 'old_balance',
                 width: 70
             },
             {
-                text: _l.users.transactions.fields.new_balance,
+                text: _l.get('users.transactions.fields.new_balance'),
                 dataIndex: 'new_balance',
                 width: 70
             }
@@ -129,7 +129,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 {
                     xtype: 'button',
                     height: 28,
-                    text: _l.show_btn,
+                    text: _l.get('show_btn'),
                     margins: '0 0 0 10',
                     role: 'period-show',
                     listeners: {

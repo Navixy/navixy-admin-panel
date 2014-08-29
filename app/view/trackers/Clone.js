@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.trackers.Clone', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.trackers.clone_form.title,
+            _l.get('trackers.clone_form.title'),
             ' #{id}: {label}'
         );
         return titleTpl.apply(this.getRecordData());
@@ -22,7 +22,7 @@ Ext.define('NavixyPanel.view.trackers.Clone', {
         var items = this.callParent(arguments);
 
         items[4].disabled = true;
-        items[2].fieldLabel = _l.trackers.fields.clone_owner;
+        items[2].fieldLabel = _l.get('trackers.fields.clone_owner');
         items[2].hasDefaultValue = false;
 
         delete items[3];

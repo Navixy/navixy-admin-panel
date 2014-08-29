@@ -9,11 +9,11 @@ Ext.define('NavixyPanel.view.trackers.GroupOwner', {
     alias: 'widget.trackersgroupowner',
 
     getTitle: function () {
-        return _l.trackers.group_owner_form.title;
+        return _l.get('trackers.group_owner_form.title');
     },
 
     getSaveBtnTitle: function () {
-        return _l.trackers.group_owner_form.save_btn;
+        return _l.get('trackers.group_owner_form.save_btn');
     },
 
     getGridLabelTip: function () {
@@ -21,6 +21,6 @@ Ext.define('NavixyPanel.view.trackers.GroupOwner', {
     },
 
     getGridLabel: function () {
-        return _l.trackers.group_owner_form.grid_clone_label;
+        return _l.get('trackers.group_owner_form.grid_clone_label');
     }
 });

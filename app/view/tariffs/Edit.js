@@ -11,14 +11,14 @@ Ext.define('NavixyPanel.view.tariffs.Edit', {
     getTitle: function () {
 
         var titleTpl = new Ext.XTemplate(
-            _l.tariffs.edit_form.title,
+            _l.get('tariffs.edit_form.title'),
             ' #{id}: {name}'
         );
         return titleTpl.apply(this.getRecordData());
     },
 
     getSaveBtnTitle: function () {
-        return _l.tariffs.edit_form.save_btn;
+        return _l.get('tariffs.edit_form.save_btn');
     },
 
     getClearBtnTitle: function () {

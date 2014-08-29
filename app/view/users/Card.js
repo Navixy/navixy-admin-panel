@@ -9,7 +9,7 @@ Ext.define('NavixyPanel.view.users.Card', {
         var me = this,
             result = [
                 {
-                    html: '<a>' + _l.users.card.links.session_text + '</a>',
+                    html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireSessionCreate,
@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.users.Card', {
         if (Ext.checkPermission('users', 'update') && Ext.checkPermission('transactions', 'create')) {
             result.unshift(
                 {
-                    html: '<a>' + _l.users.card.links.create_transaction + '</a>',
+                    html: '<a>' + _l.get('users.card.links.create_transaction') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireUserCrateTransaction,
@@ -43,7 +43,7 @@ Ext.define('NavixyPanel.view.users.Card', {
         if (Ext.checkPermission('users', 'update')) {
             result.unshift(
                 {
-                    html: '<a>' + _l.users.card.links.user_edit + '</a>',
+                    html: '<a>' + _l.get('users.card.links.user_edit') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireUserEdit,
@@ -65,7 +65,7 @@ Ext.define('NavixyPanel.view.users.Card', {
         return [
             {
                 xtype: 'trackerslist',
-                title: _l.users.card.tab_panel.trackers.title,
+                title: _l.get('users.card.tab_panel.trackers.title'),
                 noTBar: true,
                 filter: {
                     user_id: this.getRecordId()
@@ -75,7 +75,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             {
                 xtype: 'usertransactions',
                 noTBar: true,
-                title: _l.users.card.tab_panel.transactions.title,
+                title: _l.get('users.card.tab_panel.transactions.title'),
                 record: this.record
             }
         ];
@@ -92,45 +92,45 @@ Ext.define('NavixyPanel.view.users.Card', {
             table_cls: 'header-table',
             fields: [
                 {
-                    title: _l.users.fields.user_id_exp,
+                    title: _l.get('users.fields.user_id_exp'),
                     value: this.getRecordId()
                 },
                 {
-                    title: _l.users.fields.login_short,
+                    title: _l.get('users.fields.login_short'),
                     value: recordData.login
                 },
                 {
-                    title: _l.users.fields.activated_short.title,
-                    value: _l.users.fields.activated_short[recordData.activated ? 'status_true' : 'status_false'],
+                    title: _l.get('users.fields.activated_short.title'),
+                    value: _l.get('users.fields.activated_short')[recordData.activated ? 'status_true' : 'status_false'],
                     left_td_cls: recordData.activated ? 'status ok' : 'status no'
                 },
                 {
-                    title: _l.users.fields.balance,
+                    title: _l.get('users.fields.balance'),
                     value: recordData.balance
                 },
                 {
-                    title: _l.users.fields.bonus,
+                    title: _l.get('users.fields.bonus'),
                     value: recordData.bonus
                 },
                 {
-                    title: _l.users.fields.post_city,
+                    title: _l.get('users.fields.post_city'),
                     value: recordData.post_city
                 },
                 {
-                    title: _l.users.fields.registered_city,
+                    title: _l.get('users.fields.registered_city'),
                     value: recordData.registered_city
                 },
                 {
-                    title: _l.users.fields.legal_type,
-                    value: '<span class="icon ' + recordData.legal_type + '"></span>' + _l.users.fields[recordData.legal_type] || '',
+                    title: _l.get('users.fields.legal_type'),
+                    value: '<span class="icon ' + recordData.legal_type + '"></span>' + _l.get('users.fields')[recordData.legal_type] || '',
                     no_encode: true
                 },
                 {
-                    title: _l.users.fields.creation_date,
+                    title: _l.get('users.fields.creation_date'),
                     value: Ext.Date.formatISO(recordData.creation_date, "d-m-Y")
                 },
                 {
-                    title: _l.users.fields.phone,
+                    title: _l.get('users.fields.phone'),
                     value: recordData.phone
                 }
             ]
@@ -141,28 +141,28 @@ Ext.define('NavixyPanel.view.users.Card', {
         var recordData = this.getRecordData();
 
         return {
-            title: _l.users.create_form.address_fields,
+            title: _l.get('users.create_form.address_fields'),
             main_cls : 'card-body-inner',
             table_cls: 'body-table',
             fields: [
                 {
-                    title: _l.users.fields.post_country,
+                    title: _l.get('users.fields.post_country'),
                     value: recordData.post_country
                 },
                 {
-                    title: _l.users.fields.post_index,
+                    title: _l.get('users.fields.post_index'),
                     value: recordData.post_index
                 },
                 {
-                    title: _l.users.fields.post_region,
+                    title: _l.get('users.fields.post_region'),
                     value: recordData.post_region
                 },
                 {
-                    title: _l.users.fields.post_city,
+                    title: _l.get('users.fields.post_city'),
                     value: recordData.post_city
                 },
                 {
-                    title: _l.users.fields.post_street_address,
+                    title: _l.get('users.fields.post_street_address'),
                     value: recordData.post_street_address
                 }
             ]
@@ -173,36 +173,36 @@ Ext.define('NavixyPanel.view.users.Card', {
         var recordData = this.getRecordData();
 
         return {
-            title: _l.users.create_form.legal_fields,
+            title: _l.get('users.create_form.legal_fields'),
             main_cls : 'card-body-inner',
             table_cls: 'body-table',
             fields: [
                 {
-                    title: _l.users.fields.registered_country,
+                    title: _l.get('users.fields.registered_country'),
                     value: recordData.registered_country
                 },
                 {
-                    title: _l.users.fields.registered_index,
+                    title: _l.get('users.fields.registered_index'),
                     value: recordData.registered_index
                 },
                 {
-                    title: _l.users.fields.registered_region,
+                    title: _l.get('users.fields.registered_region'),
                     value: recordData.registered_region
                 },
                 {
-                    title: _l.users.fields.registered_city,
+                    title: _l.get('users.fields.registered_city'),
                     value: recordData.registered_city
                 },
                 {
-                    title: _l.users.fields.registered_street_address,
+                    title: _l.get('users.fields.registered_street_address'),
                     value: recordData.registered_street_address
                 },
                 {
-                    title: _l.users.fields.tin,
+                    title: _l.get('users.fields.tin'),
                     value: recordData.tin
                 },
                 {
-                    title: _l.users.fields.iec,
+                    title: _l.get('users.fields.iec'),
                     value: recordData.iec
                 }
             ]
@@ -225,7 +225,7 @@ Ext.define('NavixyPanel.view.users.Card', {
     },
 
     showUserSessionHashFailure: function () {
-        Ext.MessageBox.alert(_l.error, _l.users.session_alert.error);
+        Ext.MessageBox.alert(_l.get('error'), _l.get('users.session_alert.error'));
     },
 
     fireUserEdit: function () {

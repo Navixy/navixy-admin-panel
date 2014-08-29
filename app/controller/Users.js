@@ -100,7 +100,7 @@ Ext.define('NavixyPanel.controller.Users', {
         });
 
         this.menuConfig = {
-            text: _l.users.menu_text,
+            text: _l.get('users.menu_text'),
             target: 'users'
         };
     },
@@ -228,7 +228,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors')[errCode] || status.description || false;
 
         this.getUserEdit().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -300,7 +300,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors')[errCode] || status.description || false;
 
         this.getTransactionAdd().showSubmitErrors(errCode, errors, errDescription);
     }

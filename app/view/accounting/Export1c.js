@@ -16,11 +16,11 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
     },
 
     getSaveBtnTitle: function () {
-        return _l.accounting.form.export1c.save_btn;
+        return _l.get('accounting.form.export1c.save_btn');
     },
 
     getReportBtnTitle: function () {
-        return _l.accounting.form.export1c.report_btn;
+        return _l.get('accounting.form.export1c.report_btn');
     },
 
     getButtons: function () {
@@ -96,7 +96,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
         return [
             {
                 margin: '30 0 10 0',
-                fieldLabel: _l.accounting.form.export1c.fields.last_act,
+                fieldLabel: _l.get('accounting.form.export1c.fields.last_act'),
                 name: 'last_act_id',
 
                 vtype: 'numeric',
@@ -104,7 +104,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 maxLength: 20
             },
             {
-                fieldLabel: _l.accounting.form.export1c.fields.month,
+                fieldLabel: _l.get('accounting.form.export1c.fields.month'),
                 xtype: 'monthfield',
                 name: 'date',
                 format: 'F, Y'

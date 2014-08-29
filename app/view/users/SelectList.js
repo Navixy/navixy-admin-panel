@@ -59,7 +59,7 @@ Ext.define('NavixyPanel.view.users.SelectList', {
                 {
                     xtype: 'button',
                     ui: 'gray',
-                    text: _l.close_form_btn,
+                    text: _l.get('close_form_btn'),
                     height: 28,
                     handler: Ext.bind(this.fireClose, this)
                 }
@@ -110,7 +110,7 @@ Ext.define('NavixyPanel.view.users.SelectList', {
     getTexts: function () {
         var texts = this.callParent(arguments);
 
-        texts.selectBtn = _l.select_form_btn;
+        texts.selectBtn = _l.get('select_form_btn');
         return texts;
     },
 
@@ -120,12 +120,12 @@ Ext.define('NavixyPanel.view.users.SelectList', {
 
         return [
             {
-                text: _l.users.fields.user_id,
+                text: _l.get('users.fields.user_id'),
                 dataIndex: 'id',
                 width: 60
             },
             {
-                text: _l.users.fields.full_name,
+                text: _l.get('users.fields.full_name'),
                 xtype: 'templatecolumn',
                 tpl: userCardTpl,
                 dataIndex: 'last_name',
@@ -133,17 +133,17 @@ Ext.define('NavixyPanel.view.users.SelectList', {
                 flex: 2
             },
             {
-                text: _l.users.fields.login_short,
+                text: _l.get('users.fields.login_short'),
                 dataIndex: 'login',
                 flex: 1
             },
             {
-                text: _l.users.fields.phone,
+                text: _l.get('users.fields.phone'),
                 dataIndex: 'phone',
                 flex: 1
             },
             {
-                text: _l.users.fields.post_city,
+                text: _l.get('users.fields.post_city'),
                 xtype: 'templatecolumn',
                 tpl: userCityTpl,
                 dataIndex: 'post_city',

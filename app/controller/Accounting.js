@@ -46,7 +46,7 @@ Ext.define('NavixyPanel.controller.Accounting', {
         });
 
         this.menuConfig = {
-            text: _l.accounting.menu_text,
+            text: _l.get('accounting.menu_text'),
             target: 'accounting'
         };
     },
@@ -74,8 +74,8 @@ Ext.define('NavixyPanel.controller.Accounting', {
 
     onExport1cReport: function (form, formValues) {
         Ext.MessageBox.show({
-            title: _l.accounting.report_msg.title,
-            msg: Ext.String.format(_l.accounting.report_msg.text, Ext.Date.format(formValues.date, 'F Y')),
+            title: _l.get('accounting.report_msg.title'),
+            msg: Ext.String.format(_l.get('accounting.report_msg.text'), Ext.Date.format(formValues.date, 'F Y')),
             width: 600,
             buttons: Ext.MessageBox.OKCANCEL,
             icon: Ext.MessageBox.QUESTION,
@@ -117,7 +117,7 @@ Ext.define('NavixyPanel.controller.Accounting', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tariff[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getPayments1c().showSubmitErrors(errCode, errors, errDescription);
     }

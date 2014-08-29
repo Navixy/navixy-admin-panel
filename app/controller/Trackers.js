@@ -128,7 +128,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         });
 
         this.menuConfig = {
-            text: _l.trackers.menu_text,
+            text: _l.get('trackers.menu_text'),
             target: 'trackers'
         };
     },
@@ -300,7 +300,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTrackerEdit().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -319,7 +319,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     this.afterTrackerCloneCreate(response, record, formValues);
                 },
                 failure: function (response) {
-                    Ext.MessageBox.alert(_l.error, _l.trackers.clone_form.failure_msg);
+                    Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.failure_msg'));
                 },
                 scope: this
             });
@@ -337,7 +337,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var me = this;
         if (record) {
             Ext.MessageBox.show({
-                msg: _l.trackers.clone_form.remove_confirm + ' "' + record.get('label') + '"?',
+                msg: _l.get('trackers.clone_form.remove_confirm') + ' "' + record.get('label') + '"?',
                 buttons: Ext.MessageBox.YESNO,
                 closable: false,
                 fn: function() {
@@ -357,7 +357,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             failure: function (response) {
                 this.afterTrackerCloneRemoveFailure(response, record);
-//                Ext.MessageBox.alert(_l.error, _l.trackers.clone_form.remove_failure_msg);
+//                Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.remove_failure_msg'));
             },
             scope: this
         });
@@ -380,9 +380,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        Ext.MessageBox.alert(_l.error, errDescription);
+        Ext.MessageBox.alert(_l.get('error'), errDescription);
     },
 
     handleTrackerTariffSubmit: function (cmp, formValues, record) {
@@ -428,7 +428,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTrackerTariff().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -460,7 +460,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     onTrackerRemove: function (trackerRecord) {
         Ext.Msg.show({
-            msg: Ext.String.format(_l.trackers.corrupt.success_msg, trackerRecord.get('label')),
+            msg: Ext.String.format(_l.get('trackers.corrupt.success_msg'), trackerRecord.get('label')),
             buttons: Ext.Msg.OK
         });
         Ext.Nav.shift('trackers');
@@ -472,10 +472,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.errors.tracker[errCode] || _l.errors[errCode] || status.description || false;
+            errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         Ext.Msg.show({
-            title: _l.error,
+            title: _l.get('error'),
             msg: errCode === 253 && response.list
                 ? Ext.String.format(errDescription, response.list.join(', '))
                 : errDescription,

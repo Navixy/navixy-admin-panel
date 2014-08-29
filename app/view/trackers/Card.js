@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('trackers', 'update')) {
             result.unshift(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_edit + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_edit') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerEdit,
@@ -25,7 +25,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('trackers', 'update') && typeof WebSocket !== 'undefined') {
             result.unshift(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_console + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_console') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerConsole,
@@ -39,7 +39,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('trackers', 'create') && !this.getRecordData().clone) {
             result.push(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_clone_create + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_clone_create') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerClone,
@@ -53,7 +53,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('trackers', 'delete') && this.getRecordData().clone) {
             result.push(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_clone_remove + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_clone_remove') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerCloneDelete,
@@ -67,7 +67,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && !this.getRecordData().clone && !this.getRecordData().deleted) {
             result.push(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_tariff_edit + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_tariff_edit') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerTariffEdit,
@@ -89,7 +89,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('users', 'read') && this.record.getUsersData()) {
             result.push(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_owner + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_owner') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerOwner,
@@ -103,7 +103,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         if (Ext.checkPermission('tariffs', 'read') && this.record.getTariffsData()) {
             result.push(
                 {
-                    html: '<a>' + _l.trackers.card.links.tracker_tariff + '</a>',
+                    html: '<a>' + _l.get('trackers.card.links.tracker_tariff') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerTariff,
@@ -126,7 +126,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
             result.push(
                 {
-                    html: '<a style="color: red">' + _l.trackers.card.links.tracker_corrupt + '</a>',
+                    html: '<a style="color: red">' + _l.get('trackers.card.links.tracker_corrupt') + '</a>',
                     listeners: {
                         click: {
                             fn: me.fireTrackerCorrupt,
@@ -147,52 +147,52 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
         return {
             title: recordData.label,
-            title_add: recordData.clone ? _l.trackers.fields.clone : false,
+            title_add: recordData.clone ? _l.get('trackers.fields.clone') : false,
             main_cls: 'card-header-inner',
             table_cls: 'header-table',
             fields: [
                 {
-                    title: _l.trackers.fields.tracker_id_exp,
+                    title: _l.get('trackers.fields.tracker_id_exp'),
                     value: this.getRecordId()
                 },
                 {
-                    title: _l.trackers.fields.label,
+                    title: _l.get('trackers.fields.label'),
                     value: recordData.label
                 },
                 {
                     no_encode: true,
-                    title: _l.trackers.fields.owner,
+                    title: _l.get('trackers.fields.owner'),
                     value: Ext.checkPermission('users', 'read') ? '<a href="#user/' +  userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id
                 },
                 {
                     no_encode: true,
                     no_empty: true,
-                    title: _l.trackers.fields.tariff,
+                    title: _l.get('trackers.fields.tariff'),
                     value: tariffData && (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' +  tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
                 },
                 {
-                    title: _l.trackers.fields.creation_date,
+                    title: _l.get('trackers.fields.creation_date'),
                     value: Ext.Date.formatISO(recordData.creation_date, "d-m-Y")
                 },
                 {
-                    title: _l.trackers.fields.model,
+                    title: _l.get('trackers.fields.model'),
                     value: recordData.model
                 },
                 {
-                    title: _l.trackers.fields.device_id,
+                    title: _l.get('trackers.fields.device_id'),
                     value: recordData.device_id
                 },
                 {
-                    title: _l.trackers.fields.phone_exp,
+                    title: _l.get('trackers.fields.phone_exp'),
                     value: recordData.phone
                 },
                 {
-                    title: _l.trackers.fields.deleted,
+                    title: _l.get('trackers.fields.deleted'),
                     value: _l[recordData.deleted ? 'yes' : 'no'],
                     left_td_cls: !recordData.deleted ? 'status ok' : 'status no'
                 },
                 {
-                    title: _l.trackers.fields.blocked,
+                    title: _l.get('trackers.fields.blocked'),
                     value: _l[recordData.blocked ? 'yes' : 'no'],
                     left_td_cls: !recordData.blocked ? 'status ok' : 'status no'
                 }
@@ -230,8 +230,8 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     fireTrackerCorrupt: function () {
         Ext.MessageBox.show({
-            title: _l.trackers.corrupt.alert.title,
-            msg: _l.trackers.corrupt.alert.text,
+            title: _l.get('trackers.corrupt.alert.title'),
+            msg: _l.get('trackers.corrupt.alert.text'),
             width: 500,
             buttons: Ext.MessageBox.OKCANCEL,
             icon: Ext.MessageBox.WARNING,

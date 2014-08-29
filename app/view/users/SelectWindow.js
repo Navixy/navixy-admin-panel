@@ -24,7 +24,7 @@ Ext.define('NavixyPanel.view.users.SelectWindow', {
 
     getTexts: function () {
         return  {
-            windowTitle: _l.users.select.title
+            windowTitle: _l.get('users.select.title')
         };
     }
 });

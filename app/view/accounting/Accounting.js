@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
     bodyPadding: '0',
 
     getTitle: function () {
-        return _l.accounting.form.title;
+        return _l.get('accounting.form.title');
     },
 
     getSaveBtnTitle: function () {
@@ -28,7 +28,7 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
     getTabs: function () {
         return [
             {
-                title: _l.accounting.form.payments.tab_title,
+                title: _l.get('accounting.form.payments.tab_title'),
                 items: [
                     {
                         xtype: 'paymentst1c'
@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
                 ]
             },
             {
-                title: _l.accounting.form.export1c.tab_title,
+                title: _l.get('accounting.form.export1c.tab_title'),
                 items: [
                     {
                         xtype: 'export1c'
