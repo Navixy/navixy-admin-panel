@@ -138,31 +138,18 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                 ]
             },
             {
-                xtype: 'radiogroup',
-                fieldLabel: _l.get('accounting.form.payments.fields.type'),
-                columns: 1,
-                vertical: true,
-                margin: '0 0 10 0',
-                ui: 'light',
-                items: this.getTypesList()
-            }
-        ];
-    },
-
-
-    getTypesList: function () {
-
-        var result = [];
-
-        this.typesStore.each(function (typeRecord, index) {
-            result.push({
-                checked: index === 0,
-                boxLabel: typeRecord.get('name'),
                 name: 'type',
-                inputValue: typeRecord.get('type')
-            });
-        }, this);
+                xtype: 'combobox',
+                width: 477,
+                fieldLabel: _l.get('accounting.form.payments.fields.type'),
+                store: this.typesStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: ""
+            }
 
-        return result;
+        ];
     }
 });

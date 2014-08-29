@@ -724,7 +724,7 @@ Ext.define('Locale.locale-ru', {
                     type: 'Платежная система'
                 },
                 ps: {
-                    default: 'Все перечисленные',
+                    default: 'Все доступные',
                     cyberplat: 'CyberPlat',
                     deltapay: 'DeltaPay',
                     mobile: 'Mobile',
