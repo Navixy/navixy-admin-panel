@@ -494,7 +494,8 @@ Ext.define('Locale.locale-es', {
             active_exp: 'Los usuarios puede cambiar esta tarifa por su cuenta',
             device_limit_exp: 'Dispositivos maximos',
             activation_bonus: 'Activation bonus',
-            free_days: 'Numero de dias libres'
+            free_days: 'Numero de dias libres',
+            tariff_type: 'Tipo de pago de amortización'
         },
         list: {
             create_btn_text: 'Agregar una nueva tarifa',
@@ -515,6 +516,10 @@ Ext.define('Locale.locale-es', {
         select_error: 'Esta tarifa no esta disponible',
         select: {
             title: 'Seleccione tarifa'
+        },
+        types: {
+            activeday: 'Para débito diario',
+            monthly: 'Débito mensual'
         }
     },
 

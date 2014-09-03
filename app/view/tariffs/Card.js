@@ -86,12 +86,11 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
                     title: _l.get('tariffs.fields.traffic'),
                     value: '<span class="pre_note">' + recordData.traffic + '</span> <span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + tariffPrices.traffic + '</span>',
                     no_encode: true
-// TODO: Unlock by API
-//                },
-//                {
-//                    title: _l.get('tariffs.fields.tariff_type'),
-//                    value: _l.get('tariffs.types')[recordData.tariff_type || 'monthly'], // TODO: Tariff_type name api value
-//                    no_encode: true
+                },
+                {
+                    title: _l.get('tariffs.fields.tariff_type'),
+                    value: _l.get('tariffs.types')[recordData.type || 'monthly'],
+                    no_encode: true
                 }
             ]
         };

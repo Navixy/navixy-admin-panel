@@ -39,7 +39,7 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                 '{price:emptyEncode}'
             ],
             tariffTypeTpl = [
-                '{tariff_type:tariffEncode}'
+                '{type:tariffEncode}'
             ];
 
         return [
@@ -59,16 +59,13 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                 },
                 flex: 1
             },
-
-// TODO: Unlock by API
-// TODO: Tariff_type name api value
-//            {
-//                text: _l.get('tariffs.fields.tariff_type'),
-//                xtype: 'templatecolumn',
-//                tpl: tariffTypeTpl,
-//                dataIndex: 'tariff_type',
-//                width: 180
-//            },
+            {
+                text: _l.get('tariffs.fields.tariff_type'),
+                xtype: 'templatecolumn',
+                tpl: tariffTypeTpl,
+                dataIndex: 'type',
+                width: 180
+            },
             {
                 text: _l.get('tariffs.fields.device_type'),
                 xtype: 'templatecolumn',

@@ -553,7 +553,7 @@ Ext.define('Locale.locale-en', {
             title: 'Select tariff'
         },
         types: {
-            daily: 'Daily',
+            activeday: 'Daily',
             monthly: 'Monthly'
         }
     },

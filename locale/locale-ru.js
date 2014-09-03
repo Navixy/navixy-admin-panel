@@ -552,7 +552,7 @@ Ext.define('Locale.locale-ru', {
             title: 'Выберите тарифный план'
         },
         types: {
-            daily: 'Посуточное списание',
+            activeday: 'Посуточное списание',
             monthly: 'Помесячное списание'
         }
     },

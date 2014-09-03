@@ -16,7 +16,7 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'name', type: 'string'},
         {name: 'device_type', type: 'string'},
         {name: 'store_period', type: 'string'},
-        {name: 'tariff_type', type: 'string', defaultValue: 'monthly'}, // TODO: Tariff_type name api value
+        {name: 'type', type: 'string', defaultValue: 'monthly'},
 
         {name: 'active', type: 'boolean'},
         {name: 'has_reports', type: 'boolean'},
@@ -47,6 +47,7 @@ Ext.define('NavixyPanel.model.Tariff', {
             'device_limit',
             'name',
             'device_type',
+            'type',
             'store_period',
             'active',
             'has_reports',
@@ -63,6 +64,7 @@ Ext.define('NavixyPanel.model.Tariff', {
             'price',
             'name',
             'device_type',
+            'type',
             'active',
             'proportional_charge',
             'incoming_sms',
@@ -78,6 +80,7 @@ Ext.define('NavixyPanel.model.Tariff', {
             'device_limit',
             'name',
             'device_type',
+            'type',
             'store_period',
             'active',
             'has_reports',
