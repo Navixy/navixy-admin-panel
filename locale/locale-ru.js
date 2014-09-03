@@ -529,7 +529,8 @@ Ext.define('Locale.locale-ru', {
             device_limit_exp: 'Максимум устройств в кабинете',
             activation_bonus: 'Бонус при активации',
             free_days: 'Кол-во бесплатных дней',
-            tariff_type: 'Тип списания оплаты'
+            tariff_type: 'Тип списания оплаты',
+            tariff_type_short: 'Оплата'
         },
         list: {
             create_btn_text: 'Добавить тариф',
@@ -552,8 +553,12 @@ Ext.define('Locale.locale-ru', {
             title: 'Выберите тарифный план'
         },
         types: {
-            activeday: 'Посуточное списание',
-            monthly: 'Помесячное списание'
+            activeday: 'Посуточно',
+            monthly: 'Помесячно'
+        },
+        price_type: {
+            monthly: 'Месячный платеж',
+            activeday: 'Суточный платиеж'
         }
     },
 

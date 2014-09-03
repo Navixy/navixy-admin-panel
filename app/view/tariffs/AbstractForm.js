@@ -53,7 +53,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 maxLength: 100
             },
             {
-                fieldLabel: _l.get('tariffs.fields.price'),
+                fieldLabel: _l.get('tariffs.price_type')[this.getRecordData().type || "monthly"],
                 name: 'price',
 
                 minLength: 1,
@@ -68,6 +68,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 fieldLabel: _l.get('tariffs.fields.device_type'),
                 store: this.deviceTypesStore,
                 editable: false,
+                disabled: true,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
@@ -78,12 +79,13 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 }
             },
             {
-                // TODO: Tariff_type name api value
                 name: 'type',
                 xtype: 'combobox',
                 fieldLabel: _l.get('tariffs.fields.tariff_type'),
                 store: this.tariffTypesStore,
                 editable: false,
+                disabled: true,
+                hidden: this.getRecordData().device_type !== "tracker",
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',

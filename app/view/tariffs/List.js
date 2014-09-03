@@ -60,11 +60,11 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                 flex: 1
             },
             {
-                text: _l.get('tariffs.fields.tariff_type'),
+                text: _l.get('tariffs.fields.tariff_type_short'),
                 xtype: 'templatecolumn',
                 tpl: tariffTypeTpl,
                 dataIndex: 'type',
-                width: 180
+                width: 100
             },
             {
                 text: _l.get('tariffs.fields.device_type'),

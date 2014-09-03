@@ -59,7 +59,7 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
             table_cls: 'header-table',
             fields: [
                 {
-                    title: _l.get('tariffs.fields.price'),
+                    title: _l.get('tariffs.price_type')[recordData.type || "monthly"],
                     value: recordData.price
                 },
                 {

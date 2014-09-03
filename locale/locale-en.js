@@ -530,7 +530,8 @@ Ext.define('Locale.locale-en', {
             device_limit_exp: 'Maximum devices',
             activation_bonus: 'Activation bonus',
             free_days: 'Number of free days',
-            tariff_type: 'Payment type'
+            tariff_type: 'Payment type',
+            tariff_type_short: 'Payment'
         },
         list: {
             create_btn_text: 'Add new tariff',
@@ -555,6 +556,10 @@ Ext.define('Locale.locale-en', {
         types: {
             activeday: 'Daily',
             monthly: 'Monthly'
+        },
+        price_type: {
+            monthly: 'Daily payment',
+            activeday: 'Monthly payment'
         }
     },
 
