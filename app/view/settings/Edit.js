@@ -463,6 +463,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             removeBtn = this.down('[role="' + type + '_delete_btn"]'),
             newSrc = this.getImgUrl(type, record);
 
+        this.record.set(type, record.get(type));
+
         if (imgContainer && removeBtn && newSrc) {
             imgContainer.show();
             removeBtn.show();
