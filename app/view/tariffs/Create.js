@@ -38,16 +38,6 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
                 maxLength: 100
             },
             {
-                fieldLabel: _l.get('tariffs.price_type.monthly'),
-                name: 'price',
-
-                minLength: 1,
-                maxLength: 6,
-                vtype: 'numeric',
-
-                value: 0
-            },
-            {
                 name: 'device_type',
                 xtype: 'combobox',
                 fieldLabel: _l.get('tariffs.fields.device_type'),
@@ -77,6 +67,17 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
                         me.changePaymentType(this.getValue() !== "monthly");
                     }
                 }
+            },
+            {
+                fieldLabel: _l.get('tariffs.price_type.monthly'),
+                name: 'price',
+
+                minLength: 1,
+                maxLength: 6,
+                vtype: 'numeric',
+
+                hidden: true,
+                value: 0
             }
         ];
     },
@@ -87,7 +88,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
             this.down('[name="device_limit"]'),
             this.down('[name="type"]'),
             this.down('[role="store_period"]')
-        ];
+            ];
 
         Ext.iterate(trackerFields, function (field) {
             field[type ? 'hide' : 'show']();
@@ -109,5 +110,6 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
         }, this);
 
         price_field.setFieldLabel(_l.get('tariffs.price_type')[type ? 'activeday': "monthly"]);
-    },
+        price_field.show();
+    }
 });

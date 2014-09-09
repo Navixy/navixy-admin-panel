@@ -531,7 +531,7 @@ Ext.define('Locale.locale-ru', {
             device_limit_exp: 'Максимум устройств в кабинете',
             activation_bonus: 'Бонус при активации',
             free_days: 'Кол-во бесплатных дней',
-            tariff_type: 'Тип списания оплаты',
+            tariff_type: 'Биллинговый период',
             tariff_type_short: 'Оплата'
         },
         list: {

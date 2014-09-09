@@ -547,21 +547,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'map_location_lat',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
-
+                allowBlank: false,
                 minLength: 2,
                 maxLength: 100
             },
             {
                 name: 'map_location_lng',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
-
+                allowBlank: false,
                 minLength: 2,
                 maxLength: 100
             },
             {
                 name: 'google_client_id',
                 fieldLabel: _l.get('settings.fields.google_client_id'),
-
+                allowBlank: false,
                 minLength: 2,
                 maxLength: 100
             }

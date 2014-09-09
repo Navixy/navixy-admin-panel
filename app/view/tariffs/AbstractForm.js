@@ -53,16 +53,6 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 maxLength: 100
             },
             {
-                fieldLabel: _l.get('tariffs.price_type')[this.getRecordData().type || "monthly"],
-                name: 'price',
-
-                minLength: 1,
-                maxLength: 6,
-                vtype: 'numeric',
-
-                value: 0
-            },
-            {
                 name: 'device_type',
                 xtype: 'combobox',
                 fieldLabel: _l.get('tariffs.fields.device_type'),
@@ -94,6 +84,16 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                         me.changePaymentType(this.getValue() !== "monthly");
                     }
                 }
+            },
+            {
+                fieldLabel: _l.get('tariffs.price_type')[this.getRecordData().type || "monthly"],
+                name: 'price',
+
+                minLength: 1,
+                maxLength: 6,
+                vtype: 'numeric',
+
+                value: 0
             }
         ];
     },

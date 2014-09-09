@@ -497,7 +497,7 @@ Ext.define('Locale.locale-es', {
             device_limit_exp: 'Dispositivos maximos',
             activation_bonus: 'Activation bonus',
             free_days: 'Numero de dias libres',
-            tariff_type: 'Tipo de pago de amortización',
+            tariff_type: 'Ciclo de facturación',
             tariff_type_short: 'Pago'
         },
         list: {
@@ -525,8 +525,8 @@ Ext.define('Locale.locale-es', {
             monthly: 'Mensual'
         },
         price_type: {
-            monthly: 'Pago diario',
-            activeday: 'Cuota mensual'
+            monthly: 'Cuota mensual',
+            activeday: 'Tarifa diaria'
         }
     },
 
