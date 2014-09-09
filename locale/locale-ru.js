@@ -59,6 +59,8 @@ Ext.define('Locale.locale-ru', {
     required_fields: '* - поля или разделы обязательные для заполнения',
     wrong_period: 'Указан недопустимый период',
 
+    invalid_tab: 'Неверно заполненные поля',
+
     page_size: 'Размер страницы',
 
     errors: {

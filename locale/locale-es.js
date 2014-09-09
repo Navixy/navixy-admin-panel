@@ -57,6 +57,8 @@ Ext.define('Locale.locale-es', {
     wrong_period: 'Un período inválido',
     required_fields: '* - campos o secciones requeridas',
 
+    invalid_tab: 'Campos llenos inválidos',
+
     page_size: 'Tamaño de la página',
 
     errors: {

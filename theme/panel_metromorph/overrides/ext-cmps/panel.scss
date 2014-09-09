@@ -108,6 +108,7 @@ $light-panel-tab-over-bg-color: darken($light-panel-header-bg-color, 4%);
 
 $light-panel-header-tab-padding: 7px 15px;
 $light-panel-header-tab-bg-color: lighten($light-panel-header-bg-color, 6%);
+$light-panel-header-tab-invalid-bg-color: lighten($invalid-color, 25%);
 $light-panel-header-tab-active-bg-color: lighten($light-panel-header-bg-color, 1%);
 $light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%);
 
@@ -131,6 +132,12 @@ $light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%)
 
         .x-tab-light-over {
             background-color: $light-panel-header-tab-over-bg-color;
+        }
+
+        .invalid-tab {
+            background-color: $light-panel-header-tab-invalid-bg-color !important;
+            border: 1px dashed $invalid-color !important;
+            padding: 6px 14px !important;
         }
     }
 }
