@@ -24,6 +24,7 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'email_from', type: 'string'},
         {name: 'email_footer', type: 'string'},
         {name: 'sms_originator', type: 'string'},
+        {name: 'caller_id', type: 'string'},
 
         {name: 'favicon', type: 'string'},
         {name: 'logo', type: 'string'},

@@ -561,7 +561,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'google_client_id',
                 fieldLabel: _l.get('settings.fields.google_client_id'),
-                allowBlank: false,
                 minLength: 2,
                 maxLength: 100
             }
@@ -626,14 +625,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'sms_originator',
                 fieldLabel: _l.get('settings.fields.sms_originator'),
-
+                allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
             },
             {
                 name: 'caller_id',
                 fieldLabel: _l.get('settings.fields.caller_id'),
-
+                allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
             }
