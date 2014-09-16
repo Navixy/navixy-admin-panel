@@ -560,7 +560,7 @@ Ext.define('Locale.locale-ru', {
         },
         price_type: {
             monthly: 'Месячный платеж',
-            activeday: 'Суточный платиеж'
+            activeday: 'Суточный платеж'
         }
     },
 
