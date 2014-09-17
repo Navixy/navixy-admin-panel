@@ -303,7 +303,17 @@ Ext.define('Locale.locale-es', {
                 status_true: 'Activo',
                 status_false: 'No activo'
             },
-            registered_short: 'legal'
+            registered_short: 'legal',
+
+            password: 'Nuevo password',
+            password_repeat: 'Repita el nuevo password',
+            password_mismatched: 'Passwords no coincide',
+        },
+        password_form: {
+            title: 'Cambiar la contraseña de usuario',
+            save_btn: 'Fijar Contraseña',
+            return_btn: 'Cancelar',
+            success_msg: 'Contraseña cambiada con éxito'
         },
         list: {
             create_btn_text: 'Crear nuevo usuarior',
@@ -325,6 +335,7 @@ Ext.define('Locale.locale-es', {
             links: {
                 session_text: 'Ir a monitoreo',
                 user_edit: 'Editar usuario',
+                user_change_password: 'Cambiar contraseña',
                 transactions: 'Transacciones',
                 create_transaction: 'Cambiar balance'
             }

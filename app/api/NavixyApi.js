@@ -124,6 +124,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    updateUserPassword: function (config) {
+        this.requestWithOptions(config, {
+            action: 'change_password',
+            handler: 'user',
+            root: 'success'
+        });
+    },
+
     addUserTransaction: function (config) {
         this.requestWithOptions(config, {
             action: 'change_balance',

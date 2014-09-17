@@ -308,7 +308,17 @@ Ext.define('Locale.locale-ru', {
                 status_true: 'Активен',
                 status_false: 'Не активен'
             },
-            registered_short: 'юр'
+            registered_short: 'юр',
+
+            password: 'Новый пароль',
+            password_repeat: 'Повторите новый пароль',
+            password_mismatched: 'Пароли не совпадают'
+        },
+        password_form: {
+            title: 'Изменение пароля пользователя',
+            save_btn: 'Задать пароль',
+            return_btn: 'Отмена',
+            success_msg: 'Пароль успешно изменен'
         },
         list: {
             create_btn_text: 'Добавить пользователя',
@@ -330,6 +340,7 @@ Ext.define('Locale.locale-ru', {
             links: {
                 session_text : 'Перейти к мониторингу',
                 user_edit: 'Редактировать пользователя',
+                user_change_password: 'Изменить пароль',
                 transactions: 'Транзакции',
                 create_transaction: 'Изменить баланс'
             }

@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
         'users.TransactionsList',
         'users.TransactionAdd',
+        'users.ChangePassword',
         'users.List',
         'users.Create',
         'users.Edit',
@@ -32,6 +33,10 @@ Ext.define('NavixyPanel.controller.Users', {
         {
             ref: 'userEdit',
             selector: 'useredit'
+        },
+        {
+            ref: 'userChangePassword',
+            selector: 'userchangepassword'
         },
         {
             ref: 'transactionAdd',
@@ -59,6 +64,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'useredit' : {
                 formsubmit: this.handleUserEditSubmit
+            },
+            'userchangepassword' : {
+                formsubmit: this.handleUserChangePasswordSubmit
             },
             'usertransactionadd' : {
                 formsubmit: this.handleUserTransactionAddSubmit
@@ -96,6 +104,11 @@ Ext.define('NavixyPanel.controller.Users', {
                 fn: this.handleUserTransactionAdd,
                 loadRecord: true,
                 access: 'update'
+            },
+            'user > change_password' : {
+                fn: this.handleUserChangePassword,
+                loadRecord: true,
+                access: 'update'
             }
         });
 
@@ -130,6 +143,13 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserTransactionAdd: function (userRecord) {
         this.fireContent({
             xtype: 'usertransactionadd',
+            record: userRecord
+        });
+    },
+
+    handleUserChangePassword: function (userRecord) {
+        this.fireContent({
+            xtype: 'userchangepassword',
             record: userRecord
         });
     },
@@ -231,6 +251,50 @@ Ext.define('NavixyPanel.controller.Users', {
             errDescription = _l.get('errors')[errCode] || status.description || false;
 
         this.getUserEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    handleUserChangePasswordSubmit: function (cmp, formValues, record) {
+        var userData = Ext.apply({}, formValues, record.getData());
+
+        Ext.API.updateUserPassword({
+            params: {
+                user_id: record.getData().id,
+                password: formValues.new_password
+            },
+            callback: function (response) {
+                this.afterUserChangePassword(response, formValues, record);
+            },
+            failure: this.afterUserChangePasswordFailure,
+            scope: this
+        });
+    },
+
+    afterUserChangePassword: function (success, formValues, record) {
+        if (success) {
+
+            var titleTpl = new Ext.XTemplate(
+                ' #{id}: {last_name} {first_name} {middle_name}'
+            );
+
+            Ext.MessageBox.show({
+                title: titleTpl.apply(record.getData()),
+                msg: _l.get('users.password_form.success_msg'),
+                width: 300,
+                buttons: Ext.MessageBox.OK,
+                fn: Ext.bind(function () {
+                    this.getUserChangePassword().afterSave()
+                }, this)
+            });
+        }
+    },
+
+    afterUserChangePasswordFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.get('errors')[errCode] || status.description || false;
+
+        this.getUserChangePassword().showSubmitErrors(errCode, errors, errDescription);
     },
 
     handleUserTransactionAddSubmit: function (cmp, formValues, record) {

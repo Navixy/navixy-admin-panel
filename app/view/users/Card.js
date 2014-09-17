@@ -26,6 +26,20 @@ Ext.define('NavixyPanel.view.users.Card', {
             }
         );
 
+        if (Ext.checkPermission('users', 'update')) {
+            result.unshift(
+                {
+                    html: '<a>' + _l.get('users.card.links.user_change_password') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireUserChangePassword,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
         if (Ext.checkPermission('users', 'update') && Ext.checkPermission('transactions', 'create')) {
             result.unshift(
                 {
@@ -230,6 +244,10 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     fireUserEdit: function () {
         this.fireEvent('useredit', this.record);
+    },
+
+    fireUserChangePassword: function () {
+        Ext.Nav.shift('user/' + this.record.getId() + '/change_password');
     },
 
     fireTransactionsShow: function () {
