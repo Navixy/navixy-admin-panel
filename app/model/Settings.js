@@ -20,6 +20,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
         {name: 'currency', type: 'string'},
         {name: 'payment_link', type: 'string'},
+        {name: 'promo_url', type: 'string'},
 
         {name: 'email_from', type: 'string'},
         {name: 'email_footer', type: 'string'},

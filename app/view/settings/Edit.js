@@ -274,6 +274,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
             {
+                name: 'promo_url',
+                fieldLabel: _l.get('settings.fields.promo_url'),
+                allowBlank: true,
+                minLength: 2,
+                maxLength: 100
+            },
+            {
                 name: 'payment_link',
                 fieldLabel: _l.get('settings.fields.payment_link'),
 
