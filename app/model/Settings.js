@@ -39,6 +39,12 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'map_location_lng', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}}
     ],
 
+    imagesMap: {
+        favicon: 'favicon',
+        logo: 'logo',
+        login_wallpaper: 'login_wallpaper'
+    },
+
     defaultMapMap: {
         map_type: 'type',
         map_zoom: 'zoom'
@@ -145,7 +151,9 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     getServiceFormatted: function () {
-        var data = Ext.apply({}, this.getData());
+        var data = Ext.apply({}, this.getData()),
+            dealer = Ext.getStore('Dealer') && Ext.getStore('Dealer').first();
+
 
         Ext.iterate(data, function (field, value) {
             if (
@@ -155,6 +163,10 @@ Ext.define('NavixyPanel.model.Settings', {
                 ) {
 
                 delete data[field];
+            }
+
+            if (this.imagesMap[field]) {
+                data[field] = dealer.get(field);
             }
         }, this);
 

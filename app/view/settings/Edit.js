@@ -466,6 +466,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
 
     afterUpload: function (type, record) {
+        Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
+
         var imgContainer = this.down('[role="' + type + '_img"]'),
             removeBtn = this.down('[role="' + type + '_delete_btn"]'),
             newSrc = this.getImgUrl(type, record);
@@ -480,12 +482,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     afterRemove: function (type) {
+
+        Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
+
         var imgContainer = this.down('[role="' + type + '_img"]'),
             removeBtn = this.down('[role="' + type + '_delete_btn"]');
 
         if (imgContainer && removeBtn) {
             imgContainer.hide();
             removeBtn.hide();
+        }
+    },
+
+    updateDealerInfo: function (data) {
+        var store = Ext.getStore('Dealer'),
+            dealer = store && store.first();
+
+        if (dealer) {
+            dealer.set(data);
         }
     },
 
