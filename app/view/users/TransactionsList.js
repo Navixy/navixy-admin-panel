@@ -119,7 +119,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                     width: 100,
                     ui: 'trigger-blue',
                     role: 'period-end',
-                    value: Ext.Date.formatISO(moment(), "Y-m-d"),
+                    value: Ext.Date.formatISO(moment().subtract('days', -1), "Y-m-d"),
                     listeners: {
                         focus: function () {
                             this.expand();
