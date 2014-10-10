@@ -41,8 +41,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
     imagesMap: {
         favicon: 'favicon',
-        logo: 'logo',
-        login_wallpaper: 'login_wallpaper'
+        logo: 'logo'
     },
 
     defaultMapMap: {
