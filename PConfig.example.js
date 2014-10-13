@@ -1,24 +1,27 @@
 Config = {
+
+    // Шаблоны профилей API
     apiProfiles: {
+        // Настройки Java-API
         japi: {
             apiRoot: 'http://api.domain.com/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
         }
     },
 
-    appRedirect: {
-        authProperty: 'hash',
-        appPage: 'main',
-        loginPage: 'login'
-    },
-
+    // Шаблоны внешних ссылок
     links: {
+        // Ссылка на "автоматичесую" авторизацию в мониторинге, с передачей хэша через GET. Испольхуется страница  прямого показа демонстрации мониторинга.
         monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
     },
 
+    // Адарес подкючения к веб-сокету терминала для устройств
     terminalHost: 'ws://api.domain.com:8383/',
+    // Доменное имя по умолчанию. Учатсвует в определении доступных типов карт и других настроек paas.
     paas_domain: '.domain.com',
 
+    // Адрес до OPT-a, функции которого будут использоваться для некоторых бухгалтерских операций (рассылка с уведомлением о выгрузке 1C -  optUtl/orders/send_acts)
     optUrl: 'http://opt.domain.com/',
+    // Флаг доступности рассылки уведомлений о выгрузке 1С (выключает/выключает отображение конопки)
     hasOptDelivery: false
 };
