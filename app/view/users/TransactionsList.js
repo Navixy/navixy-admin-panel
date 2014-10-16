@@ -75,17 +75,26 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             {
                 text: _l.get('users.transactions.fields.amount'),
                 dataIndex: 'amount',
-                width: 70
+                renderer: function (value) {
+                    return Ext.Number.toFixed(value, 2);
+                },
+                width: 90
             },
             {
                 text: _l.get('users.transactions.fields.old_balance'),
                 dataIndex: 'old_balance',
-                width: 70
+                renderer: function (value) {
+                    return Ext.Number.toFixed(value, 2);
+                },
+                width: 90
             },
             {
                 text: _l.get('users.transactions.fields.new_balance'),
                 dataIndex: 'new_balance',
-                width: 70
+                renderer: function (value) {
+                    return Ext.Number.toFixed(value, 2);
+                },
+                width: 90
             }
         ];
     },

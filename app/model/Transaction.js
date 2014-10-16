@@ -30,12 +30,12 @@ Ext.define('NavixyPanel.model.Transaction', {
             }
         },
 
-        {name: 'amount', type: 'int'},
-        {name: 'new_balance', type: 'int'},
-        {name: 'old_balance', type: 'int'},
+        {name: 'amount', type: 'number'},
+        {name: 'new_balance', type: 'number'},
+        {name: 'old_balance', type: 'number'},
 
-        {name: 'bonus_amount', type: 'int'},
-        {name: 'new_bonus', type: 'int'},
-        {name: 'old_bonus', type: 'int'}
+        {name: 'bonus_amount', type: 'number'},
+        {name: 'new_bonus', type: 'number'},
+        {name: 'old_bonus', type: 'number'}
     ]
 });
