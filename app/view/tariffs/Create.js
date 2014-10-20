@@ -19,10 +19,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
         });
         this.tariffTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : [
-                {type: "monthly", "name": _l.get('tariffs.types.monthly')},
-                {type: "activeday", "name": _l.get('tariffs.types.activeday')}
-            ]
+            data : this.getTariffTypesData()
         });
 
         return [
@@ -64,7 +61,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
                 valueField: 'type',
                 listeners: {
                     change: function() {
-                        me.changePaymentType(this.getValue() !== "monthly");
+                        me.changePaymentType(this.getValue());
                     }
                 }
             },
@@ -99,7 +96,9 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
         }
     },
 
-    changePaymentType: function (type) {
+    changePaymentType: function (paymentType) {
+        var type = paymentType !== "monthly";
+
         var trackerFields = [
                 this.down('[name="proportional_charge"]')
             ],
@@ -109,7 +108,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
             field[type ? 'hide' : 'show']();
         }, this);
 
-        price_field.setFieldLabel(_l.get('tariffs.price_type')[type ? 'activeday': "monthly"]);
+        price_field.setFieldLabel(_l.get('tariffs.price_type')[paymentType]);
         price_field.show();
     }
 });

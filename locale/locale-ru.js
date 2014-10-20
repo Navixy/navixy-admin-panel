@@ -567,11 +567,14 @@ Ext.define('Locale.locale-ru', {
         },
         types: {
             activeday: 'Посуточно',
-            monthly: 'Помесячно'
+            monthly: 'Помесячно',
+            everyday: 'Помесячно (ежедневное списание)',
+            empty: 'Без биллинга'
         },
         price_type: {
             monthly: 'Месячный платеж',
-            activeday: 'Суточный платеж'
+            activeday: 'Суточный платеж',
+            everyday: 'Месячный платеж'
         }
     },
 

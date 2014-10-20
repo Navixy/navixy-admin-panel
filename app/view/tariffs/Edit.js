@@ -47,5 +47,12 @@ Ext.define('NavixyPanel.view.tariffs.Edit', {
         }
 
         this.getForm().isValid();
+    },
+    getTariffTypesData: function () {
+        return  [
+            {type: "monthly", "name": _l.get('tariffs.types.monthly')},
+            {type: "everyday", "name": _l.get('tariffs.types.everyday')},
+            {type: "activeday", "name": _l.get('tariffs.types.activeday')}
+        ]
     }
 });

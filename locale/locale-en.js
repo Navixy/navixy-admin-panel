@@ -568,11 +568,13 @@ Ext.define('Locale.locale-en', {
         },
         types: {
             activeday: 'Daily',
-            monthly: 'Monthly'
+            monthly: 'Monthly',
+            everyday: 'Monthly (daily debit)'
         },
         price_type: {
             monthly: 'Monthly fee',
-            activeday: 'Daily fee'
+            activeday: 'Daily fee',
+            everyday: 'Monthly fee'
         }
     },
 

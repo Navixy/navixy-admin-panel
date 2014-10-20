@@ -533,11 +533,13 @@ Ext.define('Locale.locale-es', {
         },
         types: {
             activeday: 'Diaria',
-            monthly: 'Mensual'
+            monthly: 'Mensual',
+            everyday: 'Mensual (débito diario)'
         },
         price_type: {
             monthly: 'Cuota mensual',
-            activeday: 'Tarifa diaria'
+            activeday: 'Tarifa diaria',
+            everyday: 'Cuota mensual'
         }
     },
 

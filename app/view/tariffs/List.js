@@ -13,6 +13,42 @@ Ext.define('NavixyPanel.view.tariffs.List', {
     viewPageSize: 1000,
     showBBar: false,
 
+    getTopBar: function () {
+
+        var barConfig = {
+            padding: '0 0 10 0',
+            border: 0,
+            ui: 'light',
+            height: 36,
+            items: []
+        };
+
+        if (this.createBtn && !(Config.excludedTariffs && Ext.isArray(Config.excludedTariffs) && Config.excludedTariffs.length > 2)) {
+            barConfig.items.push({
+                xtype: 'button',
+                iconCls: 'add-button',
+                role: this.texts.createBtnRole,
+                text: this.texts.createBtnText
+            });
+        }
+
+        if (this.hasFilter) {
+            barConfig.items.push('->');
+            barConfig.items.push({
+                xtype: 'navixylistfilter',
+                margin: '0 -2 0 0',
+                width: 200,
+                listeners: {
+                    filter: this.applyListFilter,
+                    clear: this.removeListFilter,
+                    scope: this
+                }
+            });
+        }
+
+        return !this.noTBar && barConfig;
+    },
+
     getBottomBar: function () {
         return this.storeSearch || this.showBBar ? this.callParent(arguments) : false;
     },

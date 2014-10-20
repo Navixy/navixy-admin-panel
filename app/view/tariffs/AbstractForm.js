@@ -34,10 +34,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
         });
         this.tariffTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : [
-                {type: "monthly", "name": _l.get('tariffs.types.monthly')},
-                {type: "activeday", "name": _l.get('tariffs.types.activeday')}
-            ]
+            data : this.getTariffTypesData()
         });
 
         return [
@@ -81,7 +78,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 valueField: 'type',
                 listeners: {
                     change: function() {
-                        me.changePaymentType(this.getValue() !== "monthly");
+                        me.changePaymentType(this.getValue());
                     }
                 }
             },
@@ -281,14 +278,38 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
         }, this);
     },
 
-    changePaymentType: function (type) {
+    changePaymentType: function (paymentType) {
+        var type = paymentType !== "monthly";
+
         var trackerFields = [
                 this.down('[name="proportional_charge"]')
-            ];
+            ],
+            price_field = this.down('[name="price"]');
 
         Ext.iterate(trackerFields, function (field) {
             field[type ? 'hide' : 'show']();
         }, this);
+
+        price_field.setFieldLabel(_l.get('tariffs.price_type')[paymentType]);
+        price_field.show();
+    },
+
+    getTariffTypesData: function () {
+        var types = Ext.Array.difference(["monthly", "everyday", "activeday"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
+            result = [],
+            empty_result = [
+                {
+                    type: null, "name": _l.get('tariffs.types.empty')
+                }
+            ];
+
+        Ext.iterate(types, function(type) {
+            result.push({
+                type: type, "name": _l.get('tariffs.types')[type]
+            })
+        }, this);
+
+        return result.length ? result : empty_result;
     },
 
     gatSaveTarget: function (value) {
