@@ -696,6 +696,8 @@ Ext.define('Locale.locale-en', {
             notifications_fields: 'Notifications',
             password_fields: 'Change password',
             pass_hint: 'Changes in other tabs will not be saved',
+            pass_save_msg: 'Password changed successfully',
+            pass_save_btn: 'Change Password',
 
             maps_hint: 'Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.',
             demo_hint: 'Choose user account which will be used for demo purposes and available on login page (optional)'

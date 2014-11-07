@@ -55,6 +55,92 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
+        this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
+    },
+
+    changeSaveBtn: function () {
+        var save_btn = this.down('[action="form_submit"]'),
+            pass_btn = this.down('[action="pass_submit"]');
+
+        if (this.isPassTab()) {
+            pass_btn.show();
+            save_btn.hide();
+        } else {
+            pass_btn.hide();
+            save_btn.show();
+        }
+
+        this.clearPasswords();
+    },
+
+    getButtons: function () {
+
+        var passSaveBtn = this.getPassBtnTitle(),
+            saveBtn = this.getSaveBtnTitle(),
+            clearBtn = this.getClearBtnTitle(),
+            backBtn = this.getBackBtnTitle(),
+            result = [];
+
+        if (saveBtn) {
+            result.push(
+                {
+                    text: saveBtn,
+                    scale: 'medium',
+                    formBind: true,
+                    disabled: true,
+                    margin: '10 5',
+                    action: 'form_submit',
+                    handler: Ext.bind(this.sendForm, this)
+                }
+            );
+        }
+
+        if (passSaveBtn) {
+            result.push(
+                {
+                    text: passSaveBtn,
+                    scale: 'medium',
+                    hidden: true,
+                    margin: '10 5',
+                    action: 'pass_submit',
+                    handler: Ext.bind(this.sendPassForm, this)
+                }
+            );
+        }
+
+        if (clearBtn) {
+            result.push(
+                {
+                    text: clearBtn,
+                    scale: 'medium',
+                    ui: 'gray',
+                    margin: '10 5',
+                    handler: Ext.bind(this.doFormReset, this)
+                }
+            );
+        }
+
+        if (backBtn) {
+            result.push(
+                {
+                    text: backBtn,
+                    scale: 'medium',
+                    ui: 'gray',
+                    margin: '10 5',
+                    handler: Ext.bind(this.backFromForm, this)
+                }
+            );
+        }
+
+        return result;
+    },
+
+    sendPassForm: function () {
+        var form = this.getForm();
+
+        if (form.isValid()) {
+            this.fireEvent('formsubmitpassword', this, this.getProcessedValues(), this.record);
+        }
     },
 
     getTitle: function () {
@@ -63,6 +149,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getSaveBtnTitle: function () {
         return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('settings.edit_form.save_btn');
+    },
+
+    getPassBtnTitle: function () {
+        return Ext.checkPermission('password', 'update') && _l.get('settings.edit_form.pass_save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -148,6 +238,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
+    afterPasswordSave: function () {
+        this.clearPasswords();
+        Ext.MessageBox.show({
+            msg: _l.get('settings.edit_form.pass_save_msg'),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+    },
+
+    clearPasswords: function () {
+        var pField = this.down('[name="password"]'),
+            npField = this.down('[name="new_password"]'),
+            opField = this.down('[name="old_password"]');
+
+        pField.setValue('');
+        npField.setValue('');
+        opField.setValue('');
+    },
+
     getProcessedValues: function () {
         var values = this.getValues();
 
@@ -184,6 +293,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 title: _l.get('settings.edit_form.domain_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getDomainItems()
@@ -193,6 +303,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             // TODO: Open after all api ready
             {
                 title: _l.get('settings.edit_form.custom_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getImgsCustomLeft()
@@ -204,6 +315,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 title: _l.get('settings.edit_form.regional_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getRegionalItems()
@@ -212,6 +324,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 title: _l.get('settings.edit_form.maps_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getMapsItems()
@@ -224,6 +337,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 title: _l.get('settings.edit_form.demo_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getDemoItems()
@@ -236,6 +350,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 title: _l.get('settings.edit_form.notifications_fields'),
+                role: 'tab',
                 items: [
                     {
                         items: this.getNotificationsItems()
@@ -684,7 +799,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 fieldLabel: _l.get('settings.fields.password_repeat'),
                 inputType: 'password',
-
+                name: 'password',
                 minLength: 6,
                 maxLength: 20,
 

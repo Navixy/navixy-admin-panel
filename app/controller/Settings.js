@@ -28,7 +28,8 @@ Ext.define('NavixyPanel.controller.Settings', {
 
         this.control({
             'settingsedit' : {
-                formsubmit: this.onEditSubmit
+                formsubmit: this.onEditSubmit,
+                formsubmitpassword: this.onPasswordEditSubmit
             }
         });
 
@@ -59,33 +60,49 @@ Ext.define('NavixyPanel.controller.Settings', {
         });
     },
 
-    onEditSubmit: function (cmp, formValues, record) {
-
-        record.set(formValues);
-
-        var serviceChanges = record.getServiceChanges(),
-            notificationChanges = record.getNotificationChanges(),
-            settingsData = record.getData(),
-            requestsCnt = 0;
-
+    onPasswordEditSubmit: function (cmp, formValues, record) {
+        console.log('onPasswordEditSubmit', formValues);
         if (formValues.new_password && formValues.old_password) {
-            requestsCnt++ ;
             Ext.API.updateSettingsPassword({
                 params: {
                     old_password: formValues.old_password,
                     new_password: formValues.new_password
                 },
                 callback: function (response) {
-                    if (--requestsCnt === 0)  {
-                        this.afterSettingsEdit(response, record);
-                    }
+                    this.afterPasswordEdit(response, record);
                 },
                 failure: function (response) {
-                    this.afterSettingsEditFailure(response, record);
+                    this.afterPasswordEditFailure(response, record);
                 },
                 scope: this
             });
         }
+    },
+
+    afterPasswordEdit: function (success, record) {
+        if (success) {
+            this.getSettingsEdit().afterPasswordSave();
+        } else {
+        }
+    },
+
+    afterPasswordEditFailure: function (response, record) {
+        record.reject(false);
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
+
+        this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    onEditSubmit: function (cmp, formValues, record) {
+        record.set(formValues);
+
+        var serviceChanges = record.getServiceChanges(),
+            notificationChanges = record.getNotificationChanges(),
+            settingsData = record.getData(),
+            requestsCnt = 0;
 
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {
             requestsCnt++ ;

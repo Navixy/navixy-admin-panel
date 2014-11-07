@@ -656,6 +656,9 @@ Ext.define('Locale.locale-es', {
             demo_fields: 'Usuario demo',
             notifications_fields: 'Notificacioness',
             password_fields: 'Cambiar password',
+            pass_hint: 'No se guardarán los cambios en otras pestañas',
+            pass_save_msg: 'Contraseña cambiada con éxito',
+            pass_save_btn: 'Cambiar contraseña',
 
             maps_hint: 'Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.',
             demo_hint: 'Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)'

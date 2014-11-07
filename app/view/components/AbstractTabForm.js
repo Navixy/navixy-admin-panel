@@ -53,7 +53,6 @@ Ext.define('NavixyPanel.view.components.AbstractTabForm', {
         return this.down('tabpanel');
     },
 
-
     checkInvalidTab: function (form) {
 
         var state = this.getForm().isValid(),
@@ -83,7 +82,10 @@ Ext.define('NavixyPanel.view.components.AbstractTabForm', {
 
         fields.each(function (field) {
             if (!field.isValid()) {
-                result.push(field.up('[role="tab"]'));
+                var cmp = field.up('[role="tab"]');
+                if (cmp.xtype !== 'tabpanel') {
+                    result.push(field.up('[role="tab"]'));
+                }
             }
         }, this);
 
