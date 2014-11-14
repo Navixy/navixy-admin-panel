@@ -270,6 +270,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 if (field.isDisabled()) {
                     delete values[field.name];
                 }
+                if (field.is('checkboxgroup')) {
+                    var value = field.getValue(),
+                        name = field.items.first().name,
+                        data = value[name];
+
+                    values[name] = Ext.isArray(data) ? data : [data];
+                }
             });
         }
 
