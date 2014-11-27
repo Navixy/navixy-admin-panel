@@ -210,6 +210,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     afterUserCreate: function (userId, record) {
         this.getUserCreate().afterSave(userId);
+        Ext.getStore('Users').load();
     },
 
 
