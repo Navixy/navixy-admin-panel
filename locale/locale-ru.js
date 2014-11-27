@@ -650,6 +650,7 @@ Ext.define('Locale.locale-ru', {
             promo_url: "URL промо сайта",
             domain: "Доменное имя",
             email_from: "Email отправителя",
+            email_special: "Email для оповещений",
             email_footer: "Email подпись",
             sms_originator: "Оригинатор SMS уведомлений",
             caller_id: "Оригинатор голосовых увед.",
@@ -756,6 +757,52 @@ Ext.define('Locale.locale-ru', {
                     rbkmoney: 'RBK Money',
                     webmoney: 'WebMoney'
                 }
+            }
+        }
+    },
+
+    bundles: {
+        menu_text: 'SIM-карты',
+        fields: {
+            id: 'ID',
+            model_code: 'Модель',
+            imei: 'IMEI',
+            iccid: 'ICCID',
+            sim_card: 'SIM-карта',
+            assign_time: 'Дата',
+            phone: 'Телефон',
+            apn: 'APN',
+        },
+
+        list: {
+            scan_btn_text: 'Привязать маячки'
+        },
+
+        scan: {
+            title: 'Привязка маячка к SIM карте',
+            steps: {
+                first: {
+                    title: 'Сканирование IMEI-кода устройства'
+                },
+                second: {
+                    title: 'Установка ICCID-кода устройства'
+                }
+            },
+
+            hints: {
+                imei_ready: 'Готов к сканированию. Приложите сканер к штррих-коду IMEI устрйоства.',
+                imei_focus_lose: 'Ошибка. К сканированию не готов. Нажмите кнопку ниже или клавишу "Enter" на клавиатуре.',
+                imei_focus_lose_btn: 'Восстановить',
+                imei_invalid: 'Ошибка. Введено некорректное значение IMEI "{0}". Пожалуйста пересканируйте.',
+
+                iccid_ready: 'IMEI найден. Готов к сканированию. Приложите сканер к штррих-коду ICCID.',
+                iccid_focus_lose: 'Ошибка. К сканированию не готов. Нажмите кнопку ниже или клавишу "Enter" на клавиатуре.',
+                iccid_focus_lose_btn: 'Восстановить',
+                iccid_invalid: 'Ошибка. Введено некорректное значение ICCID "{0}". Пожалуйста пересканируйте.',
+
+                iccid_found: 'IMEI найден. С ним уже связан ICCID-код "{0}".<br>Вы можете сканировать новый ICCID-код или изменить его вручную.',
+
+                iccid_send_btn: 'Отправить ICCID'
             }
         }
     }

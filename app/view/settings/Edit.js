@@ -758,6 +758,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'permission-field'
             },
             {
+                name: 'email_special',
+                fieldLabel: _l.get('settings.fields.email_special'),
+
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            },
+            {
                 name: 'email_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.get('settings.fields.email_footer'),

@@ -1,0 +1,26 @@
+$scan-font-size: 14px;
+
+.scan-panel {
+
+    .step-title {
+        padding: 10px 0;
+        font-size: $scan-font-size + 4
+    }
+
+    .step-field {
+
+        input {
+            height: 46px;
+            font-size: $scan-font-size * 2
+        }
+    }
+
+    .step-hint {
+        padding: 10px 0;
+        font-size: $scan-font-size + 2;
+
+        &.error {
+            color: $invalid-color
+        }
+    }
+}

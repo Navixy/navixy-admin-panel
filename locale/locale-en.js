@@ -650,6 +650,7 @@ Ext.define('Locale.locale-en', {
             promo_url: "Promo website URL",
             domain: "Domain",
             email_from: "Sender Email",
+            email_special: "Email для оповещений",
             email_footer: "Email footer",
             sms_originator: "SMS originator",
             caller_id: "Voice notice originator",

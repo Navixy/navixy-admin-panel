@@ -436,5 +436,27 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'export',
             handler: 'payments'
         });
+    },
+
+
+    getBundlesList: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'tracker/bundle'
+        });
+    },
+
+    getBundles: function (config) {
+        this.requestWithOptions(config, {
+            action: 'read',
+            handler: 'tracker/bundle'
+        });
+    },
+
+    assignBundle: function (config) {
+        this.requestWithOptions(config, {
+            action: 'read',
+            handler: 'tracker/bundle'
+        });
     }
 });
