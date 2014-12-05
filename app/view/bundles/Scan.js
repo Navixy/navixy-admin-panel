@@ -22,7 +22,9 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
     currentStep: 1,
     imie: null,
-    iccid: null,
+
+    bundle: null,
+    lustBundle: null,
 
     initComponent: function () {
         this.title = this.getTitle();
@@ -40,7 +42,24 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     },
 
     getButtons: function () {
-        return [];
+        return [
+            {
+                xtype: 'button',
+                scale: 'large',
+
+                text: _l.get('bundles.scan.clear_form'),
+                handler: this.restartForm,
+                scope: this
+            },
+            {
+                xtype: 'button',
+                scale: 'large',
+
+                text: _l.get('bundles.scan.to_list'),
+                handler: this.fireBundlesList,
+                scope: this
+            }
+        ];
     },
 
     getItems: function () {
@@ -75,7 +94,8 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
             items: [
                 this.getFirstStepHints(),
-                this.getSecondStepHints()
+                this.getSecondStepHints(),
+                this.getThirdStepHints(),
             ]
         }
     },
@@ -112,7 +132,9 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                     listeners: {
                         blur: this.checkScanFocus,
                         focus: this.checkScanFocus,
-                        change: this.onScanFilled,
+                        change: function() {
+                            this.onScanFilled();
+                        },
                         scope: this
                     }
                 },
@@ -177,6 +199,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                 {
                     role: 'bundle-info',
                     xtype: 'container',
+                    hidden: true,
                     tpl: this.makeMBundleTpl(),
                     margin: '0 0 30 25'
                 },
@@ -274,6 +297,72 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
     },
 
+    getThirdStepHints: function () {
+        return {
+            xtype: 'container',
+            layout: 'vbox',
+            role: 'third-step',
+
+            margin: '40 0 0 0',
+
+            items: [
+                {
+                    xtype: 'container',
+                    role: 'iccid-succes',
+                    layout: {
+                        type: 'vbox'
+                    },
+                    hidden: true,
+                    items: [
+                        {
+                            xtype: 'container',
+                            cls: 'step-hint success',
+                            html: _l.get('bundles.scan.hints.last_scan_text')
+                        },
+                        {
+                            xtype: 'container',
+                            cls: 'step-hint',
+                            role: 'iccid-success-text',
+                            html: _l.get('bundles.scan.hints.iccid_success')
+                        },
+//                        {
+//                            xtype: 'container',
+//                            cls: 'step-hint',
+//                            html: _l.get('bundles.scan.hints.iccid_print_ready')
+//                        },
+                        {
+                            xtype: 'button',
+                            scale: 'large',
+                            text: _l.get('bundles.scan.hints.iccid_print_btn'),
+                            handler: this.printICCID,
+                            scope: this
+                        },
+                    ]
+                }
+            ]
+        }
+
+    },
+
+    fireBundlesList: function () {
+        this.fireEvent('bundles-list', this);
+    },
+
+    restartForm: function () {
+        this.hideAllHints();
+        this.getBundleInfo().hide();
+        this.bundle = null;
+        this.imei = null;
+        this.currentStep = 1;
+
+        this.getIMEIField().setValue('');
+        this.getIMEIField().enable();
+        this.fixScanFocus();
+
+        this.getICCIDField().enable();
+        this.getICCIDField().setValue('');
+        this.getSecondStepField().hide();
+    },
 
     hideAllHints: function () {
         this.getScanHintText().hide();
@@ -325,16 +414,18 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         return imei && str && str.length === 15
     },
 
-    onScanFilled: function () {
-        var value = this.getIMEIField().getValue();
+    onScanFilled: function (force, text) {
+        var value = this.getIMEIField().getValue(),
+            errText = text || _l.get('bundles.scan.hints.imei_invalid');
 
-        if (value) {
+
+        if (value && this.getStepState() === 1) {
             this.hideAllHints();
-            if (this.validateIMEI(value)) {
+            if (this.validateIMEI(value) && !force) {
                 this.checkServerICCID();
             } else {
                 this.getScanHintInvalid().show();
-                this.getScanHintInvalid().update(Ext.String.format(_l.get('bundles.scan.hints.imei_invalid'), value));
+                this.getScanHintInvalid().update(Ext.String.format(errText, value));
                 this.getIMEIField().setValue('');
                 this.getIMEIField().focus();
             }
@@ -362,7 +453,8 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     },
 
     afterServerCheckFailure: function () {
-        this.startSecondStep();
+        this.onScanFilled(true, _l.get('bundles.scan.hints.imei_invalid'));
+//        this.startSecondStep();
     },
 
 
@@ -401,6 +493,15 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     getICCIDSendBnt: function () {
         return this.down('[role="steps"] [role="second-step"] [role="iccid-send"]');
     },
+
+    getICCIDHintAssigned: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="iccid-succes"]');
+    },
+
+    getICCIDHintSuccessText: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="iccid-success-text"]');
+    },
+
 
     startSecondStep: function () {
         this.currentStep = 2;
@@ -443,13 +544,14 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                 ]
             };
 
+        this.getBundleInfo().show();
         this.getBundleInfo().update(data);
     },
 
 
     checkICCIDScanFocus: function () {
-        if (!this.bundle.get('iccid')) {
-            if (this.getStepState() === 2 && !this.getICCIDField().isDisabled()) {
+        if (this.getStepState() === 2 && !this.bundle.get('iccid')) {
+            if (!this.getICCIDField().isDisabled()) {
                 if (!this.getICCIDField().hasFocus) {
                     this.hideAllHints();
                     this.getICCIDScanHintFocusLose().show();
@@ -475,19 +577,20 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     onICCIDScanFilled: function () {
         var value = this.getICCIDField().getValue();
 
-        if (value && this.bundle && !this.bundle.get('iccid')) {
-            this.hideAllHints();
-            if (this.validateICCID(value)) {
-                this.applyServerICCID();
-                console.log('start third step');
-            } else {
-                this.getICCIDScanHintInvalid().show();
-                this.getICCIDScanHintInvalid().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), value));
-                this.getICCIDField().setValue('');
-                this.getICCIDField().focus();
+        if (this.getStepState() === 2) {
+            if (value && this.bundle && !this.bundle.get('iccid')) {
+                this.hideAllHints();
+                if (this.validateICCID(value)) {
+                    this.applyServerICCID();
+                } else {
+                    this.getICCIDScanHintInvalid().show();
+                    this.getICCIDScanHintInvalid().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), value));
+                    this.getICCIDField().setValue('');
+                    this.getICCIDField().focus();
+                }
+            } else if (this.bundle.get('iccid')) {
+                this.getICCIDSendBnt().show()
             }
-        } else if (this.bundle.get('iccid')) {
-            this.getICCIDSendBnt().show()
         }
     },
 
@@ -496,7 +599,6 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
         if (this.validateICCID(value)) {
             this.applyServerICCID();
-            console.log('start third step');
         } else {
             this.getICCIDScanHintInvalid().show();
             this.getICCIDScanHintInvalid().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), value));
@@ -508,9 +610,6 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
     applyServerICCID: function () {
         var value = this.getICCIDField().getValue();
-        this.currentStep = 3;
-
-        return false;
 
         Ext.API.assignBundle({
             params: {
@@ -518,19 +617,55 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                 bundle_id: this.bundle.get('id')
             },
             callback: this.afterServerAssign,
-            failure: this.afterServerAssignFailure,
+            failure: this.afterServerAssign,
             scope: this
         });
     },
 
-    afterServerAssign: function () {
-        
+    afterServerAssign: function (response) {
+        var success = response && response.success;
+
+        if (success) {
+            this.bundle.set('iccid', this.getICCIDField().getValue());
+            this.startThirdStep();
+        } else {
+            this.afterServerAssignFailure(response);
+        }
     },
 
-    afterServerAssignFailure: function () {
-        
+    afterServerAssignFailure: function (response) {
+        var errStatus = response.status,
+            errCode = errStatus.code,
+            errLocale = _l.get('errors.bundles')[errCode] || _l.get('errors')[errCode] || false,
+            value = this.getICCIDField().getValue();
+
+        this.getICCIDScanHintInvalid().show();
+        this.getICCIDScanHintInvalid().update([errLocale + '.', '', Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), value)].join('<br>'));
+        this.getICCIDField().setValue('');
+        this.getICCIDField().focus();
     },
 
+
+    startThirdStep: function () {
+        this.currentStep = 3;
+
+        this.hideAllHints();
+        this.getICCIDField().disable();
+
+        this.lastBundle = this.bundle;
+        this.bundle = null;
+
+        var serverICCID = this.lastBundle && this.lastBundle.get('iccid');
+
+        this.getICCIDHintAssigned().show();
+        this.getICCIDHintSuccessText().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_succcess'), this.lastBundle.get('iccid')));
+
+        this.printICCID();
+        this.restartForm();
+    },
+
+    printICCID: function () {
+    },
 
     getStepState: function () {
         return this.currentStep;
@@ -539,5 +674,9 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     afterRender: function () {
         this.callParent(arguments);
         this.fixScanFocus();
+        this.on('activate', function () {
+            this.fixScanFocus();
+            this.fixICCIDScanFocus();
+        }, this);
     }
 });

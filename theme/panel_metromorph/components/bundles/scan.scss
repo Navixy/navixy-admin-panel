@@ -22,5 +22,9 @@ $scan-font-size: 14px;
         &.error {
             color: $invalid-color
         }
+
+        &.success {
+            color: $green
+        }
     }
 }

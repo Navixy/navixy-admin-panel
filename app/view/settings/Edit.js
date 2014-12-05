@@ -771,6 +771,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'email_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.get('settings.fields.email_footer'),
+                width: 600,
+                rows: 10,
 
                 maxLength: 600,
                 role: 'permission-field'

@@ -455,7 +455,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     assignBundle: function (config) {
         this.requestWithOptions(config, {
-            action: 'read',
+            action: 'assign',
             handler: 'tracker/bundle'
         });
     }

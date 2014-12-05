@@ -33,7 +33,10 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
         this.control({
             'bundleslist': {
-                bundlescan: this.handleScanAction,
+                bundlescan: this.handleScanAction
+            },
+            'bundlescan': {
+                'bundles-list': this.handleListAction
             }
         });
 
@@ -50,8 +53,12 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
         this.menuConfig = {
             text: _l.get('bundles.menu_text'),
-            target: 'bundles'
+            target: 'bundles/scan'
         };
+    },
+
+    handleListAction: function () {
+        Ext.Nav.shift('bundles');
     },
 
     handleList: function () {
