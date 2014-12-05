@@ -232,7 +232,8 @@ Ext.define('NavixyPanel.view.users.Card', {
                 user_id: userId
             },
             callback: function(hash) {
-                win.location = Ext.Nav.getMonitoring(hash);
+                console.log(Ext.Nav.getMonitoring(hash));
+//                win.location = Ext.Nav.getMonitoring(hash);
             },
             failure: this.showUserSessionHashFailure
         });

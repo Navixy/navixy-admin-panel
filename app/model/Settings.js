@@ -24,6 +24,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
         {name: 'email_from', type: 'string'},
         {name: 'email_footer', type: 'string'},
+        {name: 'email_special', type: 'string'},
         {name: 'sms_originator', type: 'string'},
         {name: 'caller_id', type: 'string'},
 
@@ -57,6 +58,7 @@ Ext.define('NavixyPanel.model.Settings', {
     notificationMap: {
         email_from : 'email_from',
         email_footer : 'email_footer',
+        email_special : 'email_special',
         sms_originator : 'sms_originator',
         caller_id : 'caller_id'
     },

@@ -270,6 +270,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 if (field.isDisabled()) {
                     delete values[field.name];
                 }
+                if (field.is('checkboxgroup')) {
+                    var value = field.getValue(),
+                        name = field.items.first().name,
+                        data = value[name];
+
+                    values[name] = Ext.isArray(data) ? data : [data];
+                }
             });
         }
 
@@ -393,14 +400,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 fieldLabel: _l.get('settings.fields.promo_url'),
                 allowBlank: true,
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                vtype:'url'
             },
             {
                 name: 'payment_link',
                 fieldLabel: _l.get('settings.fields.payment_link'),
 
                 minLength: 2,
-                maxLength: 100
+                maxLength: 100,
+                vtype:'url'
             },
             {
                 xtype: 'container',
@@ -751,9 +760,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'permission-field'
             },
             {
+                name: 'email_special',
+                fieldLabel: _l.get('settings.fields.email_special'),
+
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            },
+            {
                 name: 'email_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.get('settings.fields.email_footer'),
+                width: 600,
+                rows: 10,
 
                 maxLength: 600,
                 role: 'permission-field'
