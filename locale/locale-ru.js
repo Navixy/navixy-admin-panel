@@ -362,12 +362,16 @@ Ext.define('Locale.locale-ru', {
                 old_balance: 'Было',
                 new_balance: 'Стало',
                 type_set: {
-                    main_charge: 'main_charge',
-                    payment: 'платеж'
+                    main_charge: 'абонентская плата',
+                    payment: 'платеж',
+                    tariff_charge: 'услуги связи',
+                    bonus_charge: 'пополнение бонуса'
                 },
                 subtype_set: {
                     monthly: 'ежемесячный',
-                    partner: 'от партнера'
+                    partner: 'от партнера',
+                    activeday: 'активный день',
+                    everyday: 'ежемесячный с посуточным списанием'
                 }
             }
         },
