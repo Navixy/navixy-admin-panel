@@ -24,7 +24,7 @@ Config = {
     excludedTariffs: "monthly",
 
     // Адрес до OPT-a, функции которого будут использоваться для некоторых бухгалтерских операций (рассылка с уведомлением о выгрузке 1C -  optUtl/orders/send_acts)
-    optUrl: 'http://opt.domain.com/',
+    optUrl: 'http://opt.domain.com/',     // Для стедэлона не нужен
     // Флаг доступности рассылки уведомлений о выгрузке 1С (выключает/выключает отображение конопки)
     hasOptDelivery: false
 };

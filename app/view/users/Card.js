@@ -4,7 +4,6 @@ Ext.define('NavixyPanel.view.users.Card', {
     stateful: true,
     stateId: 'userCard',
 
-
     getLinks: function () {
         var me = this,
             result = [
@@ -156,7 +155,7 @@ Ext.define('NavixyPanel.view.users.Card', {
 
         return {
             title: _l.get('users.create_form.address_fields'),
-            main_cls : 'card-body-inner',
+            main_cls: 'card-body-inner',
             table_cls: 'body-table',
             fields: [
                 {
@@ -188,7 +187,7 @@ Ext.define('NavixyPanel.view.users.Card', {
 
         return {
             title: _l.get('users.create_form.legal_fields'),
-            main_cls : 'card-body-inner',
+            main_cls: 'card-body-inner',
             table_cls: 'body-table',
             fields: [
                 {
@@ -231,9 +230,8 @@ Ext.define('NavixyPanel.view.users.Card', {
             params: {
                 user_id: userId
             },
-            callback: function(hash) {
-                console.log(Ext.Nav.getMonitoring(hash));
-//                win.location = Ext.Nav.getMonitoring(hash);
+            callback: function (hash) {
+                win.location = Ext.Nav.getMonitoring(hash);
             },
             failure: this.showUserSessionHashFailure
         });
