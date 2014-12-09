@@ -359,12 +359,16 @@ Ext.define('Locale.locale-en', {
                 old_balance: 'Old',
                 new_balance: 'New',
                 type_set: {
-                    main_charge: 'main_charge',
-                    payment: 'payment'
+                    main_charge: 'subscription',
+                    payment: 'payment',
+                    tariff_charge: 'telecom services',
+                    bonus_charge: 'bonus refill'
                 },
                 subtype_set: {
                     monthly: 'monthly',
-                    partner: 'partner'
+                    partner: 'from a partner',
+                    activeday: 'active day',
+                    everyday: 'monthly by day'
                 }
             }
         },
