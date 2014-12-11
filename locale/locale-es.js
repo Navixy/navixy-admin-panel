@@ -354,12 +354,16 @@ Ext.define('Locale.locale-es', {
                 old_balance: 'Viejo',
                 new_balance: 'Nuevo',
                 type_set: {
-                    main_charge: 'main_charge',
-                    payment: 'pago'
+                    main_charge: 'suscripción',
+                    payment: 'pago',
+                    tariff_charge: 'servicios de telecomunicaciones',
+                    bonus_charge: 'recarga bono'
                 },
                 subtype_set: {
-                    monthly: 'Mensual',
-                    partner: 'Colaborador'
+                    monthly: 'mensual',
+                    partner: 'de un socio',
+                    activeday: 'día activo',
+                    everyday: 'mensualmente por día'
                 }
             }
         },
