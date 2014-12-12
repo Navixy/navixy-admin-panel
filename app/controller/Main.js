@@ -287,6 +287,40 @@ Ext.define('NavixyPanel.controller.Main', {
     initPanelOverrides: function () {
 
         Ext.override(Ext, {
+            waitFor: function (condition, callback, scope, timeout) {
+                var readyFn = function () {
+                    try {
+                        if (callback) {
+                            callback.call(scope || this);
+                        }
+                    } catch (e) {
+                        Ext.logger(e.stack);
+                    }
+                }, result;
+
+                try {
+                    result = condition && condition.call(scope || this);
+                } catch (e) {
+                    result = false;
+                }
+
+                if (result) {
+                    readyFn();
+                } else {
+                    var checkInterval = setInterval(function () {
+                        if (condition && condition.call(scope || this)) {
+                            clearInterval(checkInterval);
+                            readyFn();
+                        }
+                    }, 5);
+                }
+
+                timeout = timeout || 100000;
+
+                setTimeout(function () {
+                    clearInterval(checkInterval);
+                }, timeout);
+            },
 
             /**
              * Get access to module, or permission of module

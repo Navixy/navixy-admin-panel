@@ -10,7 +10,8 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
     views: [
         'bundles.List',
-        'bundles.Scan'
+        'bundles.Scan',
+        'bundles.Printer'
     ],
 
     refs: [

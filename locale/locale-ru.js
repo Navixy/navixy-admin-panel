@@ -769,7 +769,7 @@ Ext.define('Locale.locale-ru', {
     },
 
     bundles: {
-        menu_text: 'SIM-карты',
+        menu_text: 'Комплектация',
         fields: {
             id: 'ID',
             model_code: 'Модель',
@@ -788,7 +788,7 @@ Ext.define('Locale.locale-ru', {
         scan: {
             title: 'Привязка маячка к SIM карте',
             clear_form: 'Начать сначала',
-            to_list: 'Список пакетов',
+            to_list: 'Список комплектов',
             steps: {
                 first: {
                     title: 'Сканирование IMEI-кода устройства'
@@ -812,10 +812,12 @@ Ext.define('Locale.locale-ru', {
 
                 iccid_found: 'IMEI найден. С ним уже связан ICCID-код "{0}".<br>Вы можете сканировать новый ICCID-код или изменить его вручную.',
 
-                iccid_succcess: 'ICCID "{0}" успешно назначен.<br>Если автоматическая печать наклейки не произошла, нажмите кнопку ниже.',
+                iccid_succcess: 'ICCID "{0}" успешно назначен.',
+                iccid_print_ready: 'Если автоматическая печать наклейки не произошла, нажмите кнопку ниже.',
 
+                iccid_no_model: 'Ошибка. Не найден шаблон наклейки для модели устройства. Печать невозможна',
                 iccid_send_btn: 'Отправить ICCID',
-                iccid_print_btn: 'Распечатать стикер',
+                iccid_print_btn: 'Распечатать наклейку',
 
                 last_scan_text: 'Результаты предыдущего сканирования:'
             }

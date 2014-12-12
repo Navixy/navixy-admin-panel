@@ -12,6 +12,8 @@ Ext.define('NavixyPanel.model.Bundle', {
         {name: 'imei', type: 'float'},
         {name: 'iccid', type: 'string'},
 
+        {name: 'equip_id', type: 'string'},
+
         {name: 'sim_card', type: 'auto'},
 
         {name: 'phone', type: 'string', convert: function (value, record) {return record.simConverter(this, value);}},

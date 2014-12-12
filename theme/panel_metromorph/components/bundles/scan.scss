@@ -27,4 +27,8 @@ $scan-font-size: 14px;
             color: $green
         }
     }
+
+    .print-frame {
+        background: url($img_dir + '/loader/loading_white.gif') no-repeat 50% 50%;
+    }
 }

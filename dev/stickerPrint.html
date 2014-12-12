@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        @media print {
+            html, body {
+                width: 100mm;
+                height: 72mm;
+            }
+        }
+    </style>
+
+    <script src="../libs/pdf/pdf.js"></script>
+    <script src="../libs/jquery/jQuery.js"></script>
+    <script src="../libs/jquery/jquery-barcode.js"></script>
+
+</head>
+<body>
+
+<!--<canvas id="canvas" width="350" height="150"></canvas>-->
+<canvas id="canvas" style="width:100%; height:100%"></canvas>
+
+<!-- for legacy browsers add compatibility.js -->
+<!--<script src="../compatibility.js"></script>-->
+
+
+<script id="script">
+
+    ready = false;
+    someError = false;
+
+    var _url = ['..', '/', 'stickers', '/', getParameterByName('equip_id') || 'no_equip' , '.pdf'].join(''),
+        _scale = 10,
+        _width = 100,
+        _height = 72,
+        _value = getParameterByName('imei') || null,
+        _barType = 'code39';
+
+    PDFJS.getDocument(_url).then(getPdf, pdfError);
+
+    function pdfError() {
+        someError = true;
+    }
+
+    function getPdfPage (page) {
+        var viewPort = page.getViewport(_scale),
+            canvas = preparePdfCanvas(viewPort),
+            context = canvas.getContext('2d'),
+            barOptions = prepareBarcodeConfig(canvas),
+            renderOptions = {
+                canvasContext: context,
+                viewport: viewPort
+            };
+
+        page.render(renderOptions);
+
+        if (_value) {
+            setTimeout(function () {
+                $(canvas).barcode(_value, _barType, barOptions);
+                ready = true;
+            }, 300);
+        } else {
+            someError = true;
+        }
+    }
+
+    function getPdf (pdf) {
+        pdf.getPage(1).then(getPdfPage);
+    }
+
+    function preparePdfCanvas(viewPort) {
+        var canvas = document.getElementById('canvas');
+
+        canvas.height = viewPort.height;
+        canvas.width = viewPort.width;
+
+        return canvas;
+    }
+
+    function sizeConvert (canvas, mm) {
+        return canvas.width / _width * mm;
+    }
+
+    function prepareBarcodeConfig (canvas) {
+        return {
+            output: 'canvas',
+            bgColor: '#FFFFFF',
+            color: '#000000',
+            barWidth: sizeConvert(canvas, 0.3),
+            barHeight: sizeConvert(canvas, 5),
+            posX: sizeConvert(canvas, 30),
+            posY: sizeConvert(canvas, 60),
+            fontSize: sizeConvert(canvas, 2),
+            font: [sizeConvert(canvas, 1.8), 'px Arial'].join('')
+        }
+    }
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+</script>
+</html>

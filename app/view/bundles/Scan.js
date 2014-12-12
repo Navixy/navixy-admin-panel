@@ -10,8 +10,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     singleCmp: true,
 
     layout: {
-        type: 'hbox',
-//        align: 'center'
+        type: 'hbox'
     },
 
     ui: 'light',
@@ -132,8 +131,10 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                     listeners: {
                         blur: this.checkScanFocus,
                         focus: this.checkScanFocus,
-                        change: function() {
-                            this.onScanFilled();
+                        specialkey: function(f, event) {
+                            if (event.getKey() == event.ENTER) {
+                                this.onScanFilled();
+                            }
                         },
                         scope: this
                     }
@@ -225,7 +226,11 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                     listeners: {
                         blur: this.checkICCIDScanFocus,
                         focus: this.checkICCIDScanFocus,
-                        change: this.onICCIDScanFilled,
+                        specialkey: function(f, event) {
+                            if (event.getKey() == event.ENTER) {
+                                this.onICCIDScanFilled();
+                            }
+                        },
                         scope: this
                     }
                 },
@@ -325,18 +330,34 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                             role: 'iccid-success-text',
                             html: _l.get('bundles.scan.hints.iccid_success')
                         },
-//                        {
-//                            xtype: 'container',
-//                            cls: 'step-hint',
-//                            html: _l.get('bundles.scan.hints.iccid_print_ready')
-//                        },
+                        {
+                            xtype: 'container',
+                            cls: 'step-hint',
+                            role: 'iccid-print-ready',
+                            html: _l.get('bundles.scan.hints.iccid_print_ready'),
+                            hidden: true
+                        },
+                        {
+                            xtype: 'container',
+                            cls: 'step-hint error',
+                            role: 'iccid-no-model',
+                            html: _l.get('bundles.scan.hints.iccid_no_model'),
+                            hidden: true
+                        },
                         {
                             xtype: 'button',
                             scale: 'large',
+                            role: 'iccid-print-btn',
                             text: _l.get('bundles.scan.hints.iccid_print_btn'),
                             handler: this.printICCID,
-                            scope: this
+                            scope: this,
+                            hidden: true
                         },
+                        {
+                            xtype: 'container',
+                            role: 'print-frame',
+                            margin: '5 0 10 0'
+                        }
                     ]
                 }
             ]
@@ -454,7 +475,6 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
     afterServerCheckFailure: function () {
         this.onScanFilled(true, _l.get('bundles.scan.hints.imei_invalid'));
-//        this.startSecondStep();
     },
 
 
@@ -502,6 +522,22 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         return this.down('[role="hints"] [role="third-step"] [role="iccid-success-text"]');
     },
 
+    getICCIDHintReadyText: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="iccid-print-ready"]');
+    },
+
+    getICCIDHintPrintFailureText: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="iccid-no-model"]');
+    },
+
+    getICCIDHintPrintBtn: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="iccid-print-btn"]');
+    },
+
+    getPrintFrame: function () {
+        return this.down('[role="hints"] [role="third-step"] [role="print-frame"]');
+    },
+
 
     startSecondStep: function () {
         this.currentStep = 2;
@@ -519,6 +555,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
             this.getICCIDField().setValue(serverICCID);
             this.getICCIDHintFound().show();
             this.getICCIDHintFound().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_found'), this.bundle.get('imei')));
+            this.onICCIDScanFilled();
         } else {
             this.getICCIDScanHintText().show();
             this.getICCIDField().setValue('');
@@ -660,12 +697,59 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         this.getICCIDHintAssigned().show();
         this.getICCIDHintSuccessText().update(Ext.String.format(_l.get('bundles.scan.hints.iccid_succcess'), this.lastBundle.get('iccid')));
 
-        this.printICCID();
+        this.showPrintICCID();
         this.restartForm();
     },
 
-    printICCID: function () {
+    showPrintICCID: function () {
+        this.getICCIDHintPrintFailureText().hide();
+        this.getICCIDHintPrintBtn().hide();
+        this.getICCIDHintReadyText().show();
+
+        var frame = this.getPrintFrame();
+
+        frame.removeAll(true);
+        frame.add(
+            {
+                xtype: 'bundleprint',
+                bodyPadding: 5,
+                cls: 'print-frame',
+                imei: this.lastBundle.get('equip_id'),
+                listeners: {
+                    docready: {
+                        fn: this.printReady,
+                        scope: this
+                    },
+                    docerror: {
+                        fn: this.printError,
+                        scope: this
+                    }
+                },
+//                model: this.lastBundle.get('equip_model'),
+            }
+        );
     },
+
+    printError: function () {
+        this.getICCIDHintPrintFailureText().show();
+        this.getICCIDHintPrintBtn().hide();
+        this.getICCIDHintReadyText().hide();
+        this.getPrintFrame().removeAll(true);
+    },
+
+    printReady: function () {
+        this.getICCIDHintPrintBtn().show();
+        this.printICCID();
+    },
+
+
+    printICCID: function () {
+        var printer = this.down('bundleprint');
+        if (printer && printer.docReady) {
+            printer.printWin();
+        }
+    },
+
 
     getStepState: function () {
         return this.currentStep;

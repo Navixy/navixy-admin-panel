@@ -30,9 +30,12 @@ module.exports = function (grunt) {
                         'locale/ext/locale-ru.js',
                         'locale/ext/*',
                         'dev/uploadHandler.html',
+                        'dev/stickerPrint.html',
                         'libs/jquery/*',
                         'libs/inputmask/*',
                         'libs/momentjs/*',
+                        'libs/pdf/*',
+                        'stickers/*',
                         //Theme files
                         'favicon.ico',
                         'theme/panel_metromorph/images/**',
