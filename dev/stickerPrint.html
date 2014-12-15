@@ -38,7 +38,7 @@
         _width = 100,
         _height = 72,
         _value = getParameterByName('imei') || null,
-        _barType = 'code39';
+        _barType = 'code128';
 
     PDFJS.getDocument(_url).then(getPdf, pdfError);
 
@@ -62,7 +62,7 @@
             setTimeout(function () {
                 $(canvas).barcode(_value, _barType, barOptions);
                 ready = true;
-            }, 300);
+            }, 500);
         } else {
             someError = true;
         }
@@ -92,7 +92,7 @@
             color: '#000000',
             barWidth: sizeConvert(canvas, 0.3),
             barHeight: sizeConvert(canvas, 5),
-            posX: sizeConvert(canvas, 30),
+            posX: sizeConvert(canvas, 55),
             posY: sizeConvert(canvas, 60),
             fontSize: sizeConvert(canvas, 2),
             font: [sizeConvert(canvas, 1.8), 'px Arial'].join('')

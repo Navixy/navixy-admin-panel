@@ -653,31 +653,34 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                 iccid: value,
                 bundle_id: this.bundle.get('id')
             },
-            callback: this.afterServerAssign,
-            failure: this.afterServerAssign,
+            callback: function (response) {
+                this.afterServerAssign(response, value);
+            },
+            failure: function (response) {
+                this.afterServerAssign(response, value);
+            },
             scope: this
         });
     },
 
-    afterServerAssign: function (response) {
+    afterServerAssign: function (response, iccid) {
         var success = response && response.success;
 
         if (success) {
-            this.bundle.set('iccid', this.getICCIDField().getValue());
+            this.bundle.set('iccid', iccid);
             this.startThirdStep();
         } else {
             this.afterServerAssignFailure(response);
         }
     },
 
-    afterServerAssignFailure: function (response) {
+    afterServerAssignFailure: function (response, iccid) {
         var errStatus = response.status,
             errCode = errStatus.code,
-            errLocale = _l.get('errors.bundles')[errCode] || _l.get('errors')[errCode] || false,
-            value = this.getICCIDField().getValue();
+            errLocale = _l.get('errors.bundles')[errCode] || _l.get('errors')[errCode] || false;
 
         this.getICCIDScanHintInvalid().show();
-        this.getICCIDScanHintInvalid().update([errLocale + '.', '', Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), value)].join('<br>'));
+        this.getICCIDScanHintInvalid().update([errLocale + '.', '', Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), iccid)].join('<br>'));
         this.getICCIDField().setValue('');
         this.getICCIDField().focus();
     },
@@ -714,7 +717,8 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                 xtype: 'bundleprint',
                 bodyPadding: 5,
                 cls: 'print-frame',
-                imei: this.lastBundle.get('equip_id'),
+                imei: this.lastBundle.get('imei'),
+                equip_id: this.lastBundle.get('equip_id'),
                 listeners: {
                     docready: {
                         fn: this.printReady,
@@ -724,8 +728,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                         fn: this.printError,
                         scope: this
                     }
-                },
-//                model: this.lastBundle.get('equip_model'),
+                }
             }
         );
     },

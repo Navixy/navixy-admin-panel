@@ -12,12 +12,13 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
 
     model: null,
     imei: null,
+    equip_id: null,
 
     width: '105mm',
     height: '75mm',
 
     renderTpl: [
-        '<iframe src="{src}?model={model}&imei={imei}" frameborder="0" ',
+        '<iframe src="{src}?imei={imei}&equip_id={equip_id}" frameborder="0" ',
         'style="height:100%;width:100%"></iframe>'
     ],
 
@@ -28,13 +29,11 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
 
         this.renderData = {
             imei: this.imei,
-            model: this.model,
+            equip_id: this.equip_id,
             src: this.src
         };
 
         this.callParent();
-
-        this.model = 'test';
 
         Ext.apply(this.renderSelectors, {
             iframeEl: 'iframe'
