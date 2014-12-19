@@ -307,7 +307,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            // TODO: Open after all api ready
             {
                 title: _l.get('settings.edit_form.custom_fields'),
                 role: 'tab',
@@ -606,11 +605,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     afterRemove: function (type) {
-
         Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
 
         var imgContainer = this.down('[role="' + type + '_img"]'),
             removeBtn = this.down('[role="' + type + '_delete_btn"]');
+
+        this.record.set(type, null);
 
         if (imgContainer && removeBtn) {
             imgContainer.hide();

@@ -61,7 +61,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     },
 
     onPasswordEditSubmit: function (cmp, formValues, record) {
-        console.log('onPasswordEditSubmit', formValues);
         if (formValues.new_password && formValues.old_password) {
             Ext.API.updateSettingsPassword({
                 params: {
