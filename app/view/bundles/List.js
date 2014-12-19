@@ -13,8 +13,37 @@ Ext.define('NavixyPanel.view.bundles.List', {
     getTexts: function () {
         return {
             createBtnText: _l.get('bundles.list.scan_btn_text'),
-            emptyData: _l.get('bundles.list.empty_text')
+            emptyData: _l.get('bundles.list.empty_text'),
+            editToolTip: _l.get('bundles.list.unassign')
         };
+    },
+
+    getToolsColumns: function () {
+        return this.hasEdit
+            ? [
+            {
+                xtype: 'toolcolumn',
+                width: 31,
+                action: 'remove',
+                tip: this.texts.editToolTip
+            }
+        ]
+            : [];
+    },
+
+    handleCellClick: function (table, td, cellIndex, record) {
+        var tdEl = Ext.get(td),
+            isTool = tdEl.hasCls('tool-column'),
+            isEdit = isTool && tdEl.hasCls('remove'),
+            isCheckbox = tdEl.down('.x-grid-row-checker');
+
+        if (isCheckbox) {
+            this.fireEvent('checkboxclick', record);
+        } else if (isEdit) {
+            this.fireEvent('editclick', record);
+        } else {
+            this.fireEvent('actionclick', record);
+        }
     },
 
     getTopBar: function () {
@@ -58,7 +87,6 @@ Ext.define('NavixyPanel.view.bundles.List', {
         this.fireEvent('bundlescan')
     },
 
-
     getColumnsConfig: function () {
         return [
             {
@@ -74,7 +102,15 @@ Ext.define('NavixyPanel.view.bundles.List', {
             {
                 text: _l.get('bundles.fields.iccid'),
                 dataIndex: 'iccid',
-                width: 180
+                flex: 1
+            },
+            {
+                text: _l.get('bundles.fields.order_id'),
+                dataIndex: 'order_id',
+                renderer: function (value) {
+                    return value || ''
+                },
+                width: 120
             },
             {
                 text: _l.get('bundles.fields.model_code'),
@@ -82,24 +118,10 @@ Ext.define('NavixyPanel.view.bundles.List', {
                 width: 120
             },
             {
-                text: _l.get('bundles.fields.sim_card'),
-                dataIndex: 'sim_card',
-                width: 120
-            },
-            {
                 text: _l.get('bundles.fields.assign_time'),
                 dataIndex: 'assign_time',
-                width: 120
-            },
-            {
-                text: _l.get('bundles.fields.phone'),
-                dataIndex: 'phone',
-                width: 120
-            },
-            {
-                text: _l.get('bundles.fields.apn'),
-                dataIndex: 'apn',
-                width: 60
+                renderer: Ext.util.Format.dateRenderer('Y-m-d H:i:s'),
+                width: 180
             }
         ];
     }

@@ -11,7 +11,9 @@ Ext.define('NavixyPanel.controller.Bundles', {
     views: [
         'bundles.List',
         'bundles.Scan',
-        'bundles.Printer'
+        'bundles.Printer',
+        'bundles.Bundles',
+        'bundles.Shipping',
     ],
 
     refs: [
@@ -26,7 +28,7 @@ Ext.define('NavixyPanel.controller.Bundles', {
     ],
 
     stores: ['Bundles'],
-    models: ['Bundle'],
+    models: ['Bundle', 'Order'],
     waitStores: ['Bundles'],
 
     init: function () {
@@ -34,15 +36,16 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
         this.control({
             'bundleslist': {
-                bundlescan: this.handleScanAction
-            },
-            'bundlescan': {
-                'bundles-list': this.handleListAction
+                editclick: this.handleListAction
             }
         });
 
         this.handle({
             'bundles' : {
+                fn: this.handleBundles,
+                access: 'read'
+            },
+            'bundles > list' : {
                 fn: this.handleList,
                 access: 'read'
             },
@@ -54,19 +57,20 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
         this.menuConfig = {
             text: _l.get('bundles.menu_text'),
-            target: 'bundles/scan'
+            target: 'bundles'
         };
-    },
-
-    handleListAction: function () {
-        Ext.Nav.shift('bundles');
     },
 
     handleList: function () {
         this.fireContent({
             xtype: 'bundleslist',
-            createBtn: true,
-            hasEdit: false
+            hasEdit: true
+        });
+    },
+
+    handleBundles: function () {
+        this.fireContent({
+            xtype: 'bundles'
         });
     },
 
@@ -78,5 +82,37 @@ Ext.define('NavixyPanel.controller.Bundles', {
         this.fireContent({
             xtype: 'bundlescan'
         });
+    },
+
+    handleListAction: function (bundle) {
+        if (bundle && bundle.get('order_id')) {
+            Ext.MessageBox.show({
+                msg: Ext.String.format(_l.get('bundles.list.unassign_q'), bundle.get('imei')),
+                width: 450,
+                buttons: Ext.MessageBox.OKCANCEL,
+                icon: Ext.MessageBox.QUESTION,
+                closable: false,
+                fn: Ext.bind(this.unOrderBundle, this, [bundle])
+            });
+        }
+    },
+
+    unOrderBundle: function (bundle) {
+        Ext.API.assignBundleToOrder({
+            params: {
+                order_id: null,
+                bundle_id: bundle.getId()
+            },
+            callback: function () {
+                this.afterServerAssign(bundle)
+            },
+//            failure: this.afterServerAssignFailure,
+            scope: this
+        });
+    },
+
+    afterServerAssign: function (bundle) {
+        bundle.set('order_id', null);
+        Ext.getStore('Bundles').load();
     }
 });

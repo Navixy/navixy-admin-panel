@@ -37,7 +37,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
 
     getTitle: function () {
-        return _l.get('bundles.scan.title');
+        return null;
     },
 
     getButtons: function () {
@@ -48,14 +48,6 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
                 text: _l.get('bundles.scan.clear_form'),
                 handler: this.restartForm,
-                scope: this
-            },
-            {
-                xtype: 'button',
-                scale: 'large',
-
-                text: _l.get('bundles.scan.to_list'),
-                handler: this.fireBundlesList,
                 scope: this
             }
         ];
@@ -240,6 +232,17 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                     margin: '10 0 0 20',
 
                     hidden: true,
+                    role: 'iccid-unasssign',
+                    text: _l.get('bundles.scan.hints.iccid_unassign_btn'),
+                    handler: this.onICCIunAssignSend,
+                    scope: this
+                },
+                {
+                    xtype: 'button',
+                    scale: 'large',
+                    margin: '10 0 0 20',
+
+                    hidden: true,
                     role: 'iccid-send',
                     text: _l.get('bundles.scan.hints.iccid_send_btn'),
                     handler: this.onICCIDScanSend,
@@ -394,6 +397,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         this.getICCIDScanHintInvalid().hide();
         this.getICCIDHintFound().hide();
         this.getICCIDSendBnt().hide();
+        this.getICCIDunAssignBnt().hide();
     },
 
     getScanHintText: function () {
@@ -514,6 +518,10 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         return this.down('[role="steps"] [role="second-step"] [role="iccid-send"]');
     },
 
+    getICCIDunAssignBnt: function () {
+        return this.down('[role="steps"] [role="second-step"] [role="iccid-unasssign"]');
+    },
+
     getICCIDHintAssigned: function () {
         return this.down('[role="hints"] [role="third-step"] [role="iccid-succes"]');
     },
@@ -626,7 +634,8 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
                     this.getICCIDField().focus();
                 }
             } else if (this.bundle.get('iccid')) {
-                this.getICCIDSendBnt().show()
+                this.getICCIDSendBnt().show();
+                this.getICCIDunAssignBnt().show()
             }
         }
     },
@@ -644,6 +653,48 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         }
     },
 
+    onICCIunAssignSend: function () {
+        if (this.bundle) {
+            Ext.MessageBox.show({
+                msg: Ext.String.format(_l.get('bundles.scan.hints.unassign_q'), this.bundle.get('imei')),
+                width: 450,
+                buttons: Ext.MessageBox.OKCANCEL,
+                icon: Ext.MessageBox.QUESTION,
+                closable: false,
+                fn: Ext.bind(this.unassignBundle, this, [this.bundle])
+            });
+        }
+    },
+
+
+    unassignBundle: function () {
+        Ext.API.assignBundle({
+            params: {
+                iccid: null,
+                bundle_id: this.bundle.get('id')
+            },
+            callback: this.afterServerUnAssign,
+            failure: this.afterServerUnAssignFailure,
+            scope: this
+        });
+    },
+
+    afterServerUnAssign: function () {
+        this.restartForm();
+        Ext.MessageBox.show({
+            msg: _l.get('bundles.scan.hints.unassign_success'),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+    },
+
+    afterServerUnAssignFailure: function () {
+        Ext.MessageBox.show({
+            msg: _l.get('bundles.scan.hints.unassign_failure'),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+    },
 
     applyServerICCID: function () {
         var value = this.getICCIDField().getValue();

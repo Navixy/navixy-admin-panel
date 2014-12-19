@@ -12,7 +12,8 @@ Ext.define('NavixyPanel.model.Bundle', {
         {name: 'imei', type: 'float'},
         {name: 'iccid', type: 'string'},
 
-        {name: 'equip_id', type: 'string'},
+        {name: 'equip_id', type: 'int'},
+        {name: 'order_id', type: 'int'},
 
         {name: 'sim_card', type: 'auto'},
 

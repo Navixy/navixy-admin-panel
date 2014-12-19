@@ -458,5 +458,19 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'assign',
             handler: 'tracker/bundle'
         });
+    },
+
+    assignBundleToOrder: function (config) {
+        this.requestWithOptions(config, {
+            action: 'assign',
+            handler: 'tracker/bundle/order'
+        });
+    },
+
+    getBundleOrder: function (config) {
+        this.requestWithOptions(config, {
+            action: 'read',
+            handler: 'order'
+        });
     }
 });

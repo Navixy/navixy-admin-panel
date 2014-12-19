@@ -31,4 +31,13 @@ $scan-font-size: 14px;
     .print-frame {
         background: url($img_dir + '/loader/loading_white.gif') no-repeat 50% 50%;
     }
+
+    .tool-column {
+        &.edit {
+            .x-grid-cell-inner {
+                @extend .icon-pencil;
+            }
+        }
+    }
 }
+

@@ -104,6 +104,18 @@ $grid-cell-empty-font-size: 14px;
                 @extend .icon-save;
             }
         }
+
+        &.save {
+            .x-grid-cell-inner {
+                @extend .icon-remove;
+            }
+        }
+
+        &.remove {
+            .x-grid-cell-inner {
+                @extend .icon-close;
+            }
+        }
     }
 
     .x-grid-cell-inner {
