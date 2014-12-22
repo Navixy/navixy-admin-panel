@@ -90,7 +90,8 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 xtype: 'checkbox',
                 labelWidth: 'auto',
                 width: 'auto',
-                margin: '0 0 0 180'
+                margin: '0 0 0 180',
+                checked: true
             },
             {
                 xtype: 'container',
