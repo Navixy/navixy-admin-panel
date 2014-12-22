@@ -55,7 +55,8 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                         xtype: 'bundleslist',
                         hasEdit: true,
                         padding: '10 0 0 0',
-                        style: 'background-color: #f0f0f0'
+                        style: 'background-color: #f0f0f0',
+                        role: 'bundles-list'
                     }
                 ]
             }

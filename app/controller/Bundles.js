@@ -113,6 +113,8 @@ Ext.define('NavixyPanel.controller.Bundles', {
 
     afterServerAssign: function (bundle) {
         bundle.set('order_id', null);
+
+        Ext.getFirst('[role="bundles-list"]');
         Ext.getStore('Bundles').load();
     }
 });

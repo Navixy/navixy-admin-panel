@@ -440,6 +440,7 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
         this.lastBundle.set('order_id', this.order.getId());
         this.bundlesStore.add(this.lastBundle);
 
+        Ext.getFirst('[role="bundles-list"]').doRefresh();
         this.lastBundle = null;
     },
 
@@ -485,5 +486,6 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
     afterServerUnAssign: function (bundle) {
         bundle.set('order_id', null);
         this.bundlesStore.remove(bundle);
+        Ext.getFirst('[role="bundles-list"]').doRefresh();
     }
 });

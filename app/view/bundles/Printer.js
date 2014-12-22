@@ -14,8 +14,8 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
     imei: null,
     equip_id: null,
 
-    width: '105mm',
-    height: '75mm',
+    width: '100mm',
+    height: '72mm',
 
     renderTpl: [
         '<iframe src="{src}?imei={imei}&equip_id={equip_id}" frameborder="0" ',

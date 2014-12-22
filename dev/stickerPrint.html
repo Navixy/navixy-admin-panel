@@ -21,12 +21,7 @@
 </head>
 <body>
 
-<!--<canvas id="canvas" width="350" height="150"></canvas>-->
-<canvas id="canvas" style="width:100%; height:100%"></canvas>
-
-<!-- for legacy browsers add compatibility.js -->
-<!--<script src="../compatibility.js"></script>-->
-
+<canvas id="canvas" style="width:100mm; height:71mm"></canvas>
 
 <script id="script">
 
@@ -61,6 +56,7 @@
         if (_value) {
             setTimeout(function () {
                 $(canvas).barcode(_value, _barType, barOptions);
+
                 ready = true;
             }, 500);
         } else {

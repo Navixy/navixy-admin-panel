@@ -720,17 +720,17 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
             this.bundle.set('iccid', iccid);
             this.startThirdStep();
         } else {
-            this.afterServerAssignFailure(response);
+            this.afterServerAssignFailure(response, iccid);
         }
     },
 
     afterServerAssignFailure: function (response, iccid) {
         var errStatus = response.status,
             errCode = errStatus.code,
-            errLocale = _l.get('errors.bundles')[errCode] || _l.get('errors')[errCode] || false;
+            errLocale = _l.get('errors.bundles')[errCode] || (Ext.isObject(_l.get('errors')[errCode]) ? _l.get('errors')[errCode] && _l.get('errors')[errCode].default_msg : _l.get('errors')[errCode]) || false;
 
         this.getICCIDScanHintInvalid().show();
-        this.getICCIDScanHintInvalid().update([errLocale + '.', '', Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), iccid)].join('<br>'));
+        this.getICCIDScanHintInvalid().update([errLocale, '', Ext.String.format(_l.get('bundles.scan.hints.iccid_invalid'), iccid)].join('<br>'));
         this.getICCIDField().setValue('');
         this.getICCIDField().focus();
     },
@@ -758,6 +758,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         this.getICCIDHintPrintFailureText().hide();
         this.getICCIDHintPrintBtn().hide();
         this.getICCIDHintReadyText().show();
+        Ext.getFirst('[role="bundles-list"]').doRefresh();
 
         var frame = this.getPrintFrame();
 

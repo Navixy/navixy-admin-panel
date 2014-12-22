@@ -10,6 +10,15 @@ Ext.define('NavixyPanel.view.bundles.List', {
 
     store: 'Bundles',
 
+    doRefresh : function(){
+        var me = this,
+            current = me.store.currentPage;
+
+        if (me.fireEvent('beforechange', me, current) !== false) {
+            me.store.loadPage(current);
+        }
+    },
+    
     getTexts: function () {
         return {
             createBtnText: _l.get('bundles.list.scan_btn_text'),
