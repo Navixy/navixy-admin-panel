@@ -670,7 +670,6 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
     unassignBundle: function () {
         Ext.API.assignBundle({
             params: {
-                iccid: null,
                 bundle_id: this.bundle.get('id')
             },
             callback: this.afterServerUnAssign,
