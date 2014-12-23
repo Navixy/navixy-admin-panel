@@ -116,6 +116,13 @@ $grid-cell-empty-font-size: 14px;
                 @extend .icon-close;
             }
         }
+
+        &.hidden {
+            cursor: default;
+            .x-grid-cell-inner {
+                display: none;
+            }
+        }
     }
 
     .x-grid-cell-inner {

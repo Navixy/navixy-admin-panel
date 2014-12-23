@@ -28,13 +28,22 @@ Ext.define('NavixyPanel.view.bundles.List', {
     },
 
     getToolsColumns: function () {
+        var me = this;
         return this.hasEdit
             ? [
             {
                 xtype: 'toolcolumn',
                 width: 31,
                 action: 'remove',
-                tip: this.texts.editToolTip
+                renderer: function (value, meta, record) {
+
+                    if (!record.get('order_id')) {
+                        meta.tdCls = 'hidden';
+                    }
+                    meta.tdAttr = 'data-qtip="' + me.texts.editToolTip + '"';
+
+                    return value;
+                }
             }
         ]
             : [];
