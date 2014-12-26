@@ -1195,8 +1195,11 @@
         }
       }
       if (settings.showHRI){
-        var dim = ctx.measureText(hri);
-        ctx.fillText(hri, xi + Math.floor((columns * mw - dim.width)/2), yi + lines * mh + settings.fontSize + settings.marginHRI);
+        var dim = ctx.measureText(hri),
+            text = settings.prefix ? settings.prefix + hri : hri,
+            xi = settings.prefix ? xi - 50: xi;
+
+        ctx.fillText(text, xi + Math.floor((columns * mw - dim.width)/2), yi + lines * mh + settings.fontSize + settings.marginHRI);
       }
     },
     // canvas 1D barcode renderer

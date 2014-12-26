@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.view.bundles.Shipping', {
     extend: 'Ext.Container',
-    alias: 'widget.bundlesshipping',
+    alias: 'widget.bundles-shipping',
     singleCmp: true,
 
     layout: {
@@ -201,22 +201,12 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
                 model: 'NavixyPanel.model.Bundle'
             }),
             gridConfig = {
-                xtype: 'bundleslist',
+                xtype: 'bundles-list',
                 hasEdit: true,
                 getBottomBar: Ext.emptyFn,
                 getTopBar: Ext.emptyFn,
                 initStore: function () {
                     this.store = store;
-                },
-                handleCellClick: function (table, td, cellIndex, record) {
-                    var tdEl = Ext.get(td),
-                        isTool = tdEl.hasCls('tool-column'),
-                        isEdit = isTool && tdEl.hasCls('remove'),
-                        isCheckbox = tdEl.down('.x-grid-row-checker');
-
-                    if (isEdit) {
-                        me.handleListAction(record)
-                    }
                 }
             },
 
@@ -441,6 +431,7 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
         this.bundlesStore.add(this.lastBundle);
 
         Ext.getFirst('[role="bundles-list"]').doRefresh();
+        this.fireEvent('order-assign', this.lastBundle);
         this.lastBundle = null;
     },
 
@@ -456,36 +447,15 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
         this.lastBundle = null;
     },
 
-    handleListAction: function (bundle) {
-        if (bundle && bundle.get('order_id')) {
-            Ext.MessageBox.show({
-                msg: Ext.String.format(_l.get('bundles.list.unassign_q'), bundle.get('imei')),
-                width: 450,
-                buttons: Ext.MessageBox.OKCANCEL,
-                icon: Ext.MessageBox.QUESTION,
-                closable: false,
-                fn: Ext.bind(this.unOrderBundle, this, [bundle])
-            });
-        }
-    },
-
-    unOrderBundle: function (bundle) {
-        Ext.API.assignBundleToOrder({
-            params: {
-                order_id: null,
-                bundle_id: bundle.getId()
-            },
-            callback: function () {
-                this.afterServerUnAssign(bundle)
-            },
-//            failure: this.afterServerAssignFailure,
-            scope: this
-        });
-    },
-
     afterServerUnAssign: function (bundle) {
-        bundle.set('order_id', null);
-        this.bundlesStore.remove(bundle);
-        Ext.getFirst('[role="bundles-list"]').doRefresh();
+        this.fireEvent('order-assign', bundle);
+    },
+
+    updateList: function (bundle) {
+        var curBundle = this.bundlesStore.findRecord('imei', bundle.get('imei'));
+
+        if (curBundle && !bundle.get('order_id')) {
+            this.bundlesStore.remove(curBundle);
+        }
     }
 });

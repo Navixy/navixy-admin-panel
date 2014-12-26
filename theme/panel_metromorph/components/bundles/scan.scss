@@ -13,6 +13,32 @@ $scan-font-size: 14px;
             height: 46px;
             font-size: $scan-font-size * 2
         }
+
+        .x-form-invalid-under {
+            padding: 5px 0 0 0;
+            font-size: $scan-font-size - 1;
+            line-height: $scan-font-size + 2;
+        }
+
+        &.has-message .x-form-invalid-under {
+            display: inherit !important;
+
+            color: $baseFontColor;
+        }
+
+        .x-form-invalid-field {
+            background-color: inherit !important;
+            border: 1px solid $invalid-color !important;
+            padding: 0 3px !important;
+        }
+
+        &.x-form-invalid .x-form-trigger-wrap {
+            border: 1px solid $invalid-color !important;
+        }
+
+        &.x-item-disabled .x-form-trigger-wrap {
+            padding: 1px 0;
+        }
     }
 
     .step-hint {
@@ -37,6 +63,17 @@ $scan-font-size: 14px;
             .x-grid-cell-inner {
                 @extend .icon-pencil;
             }
+        }
+    }
+
+    .card-header-inner .title {
+        padding: 10px 0;
+        font-size: $scan-font-size + 4;
+        font-weight: normal;
+
+        .title-add {
+            color: $invalid-color;
+            font-weight: normal;
         }
     }
 }

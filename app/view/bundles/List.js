@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.view.bundles.List', {
     extend: 'NavixyPanel.view.components.AbstractList',
-    alias: 'widget.bundleslist',
+    alias: 'widget.bundles-list',
 
     store: 'Bundles',
 
@@ -23,7 +23,7 @@ Ext.define('NavixyPanel.view.bundles.List', {
         return {
             createBtnText: _l.get('bundles.list.scan_btn_text'),
             emptyData: _l.get('bundles.list.empty_text'),
-            editToolTip: _l.get('bundles.list.unassign')
+            removeToolTip: _l.get('bundles.list.unassign')
         };
     },
 
@@ -31,6 +31,12 @@ Ext.define('NavixyPanel.view.bundles.List', {
         var me = this;
         return this.hasEdit
             ? [
+                {
+                    xtype: 'toolcolumn',
+                    width: 31,
+                    action: 'edit',
+                    tip: this.texts.editToolTip
+                },
             {
                 xtype: 'toolcolumn',
                 width: 31,
@@ -39,8 +45,9 @@ Ext.define('NavixyPanel.view.bundles.List', {
 
                     if (!record.get('order_id')) {
                         meta.tdCls = 'hidden';
+                    } else {
+                        meta.tdAttr = 'data-qtip="' + me.texts.removeToolTip + '"';
                     }
-                    meta.tdAttr = 'data-qtip="' + me.texts.editToolTip + '"';
 
                     return value;
                 }
@@ -52,13 +59,17 @@ Ext.define('NavixyPanel.view.bundles.List', {
     handleCellClick: function (table, td, cellIndex, record) {
         var tdEl = Ext.get(td),
             isTool = tdEl.hasCls('tool-column'),
-            isEdit = isTool && tdEl.hasCls('remove'),
+            isEdit = isTool && tdEl.hasCls('edit'),
+            isRemove = isTool && tdEl.hasCls('remove'),
+            isActive = isTool && !tdEl.hasCls('hidden'),
             isCheckbox = tdEl.down('.x-grid-row-checker');
 
         if (isCheckbox) {
             this.fireEvent('checkboxclick', record);
         } else if (isEdit) {
             this.fireEvent('editclick', record);
+        } else if (isRemove && isActive) {
+            this.fireEvent('removeclick', record);
         } else {
             this.fireEvent('actionclick', record);
         }

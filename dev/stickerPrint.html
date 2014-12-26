@@ -32,6 +32,7 @@
         _width = 100,
         _height = 72,
         _value = getParameterByName('imei') || null,
+        _iccid = getParameterByName('iccid') || null,
         _barType = 'code128';
 
     PDFJS.getDocument(_url).then(getPdf, pdfError);
@@ -44,7 +45,8 @@
         var viewPort = page.getViewport(_scale),
             canvas = preparePdfCanvas(viewPort),
             context = canvas.getContext('2d'),
-            barOptions = prepareBarcodeConfig(canvas),
+            imeiOptions = prepareIMEIConfig(canvas),
+            iccidOptions = prepareICCIDConfig(canvas),
             renderOptions = {
                 canvasContext: context,
                 viewport: viewPort
@@ -54,7 +56,11 @@
 
         if (_value) {
             setTimeout(function () {
-                $(canvas).barcode(_value, _barType, barOptions);
+                $(canvas).barcode(_value, _barType, imeiOptions);
+
+                if (_iccid) {
+                    $(canvas).barcode(_iccid, _barType, iccidOptions);
+                }
 
                 ready = true;
             }, 500);
@@ -80,7 +86,7 @@
         return canvas.width / _width * mm;
     }
 
-    function prepareBarcodeConfig (canvas) {
+    function prepareIMEIConfig (canvas) {
         return {
             output: 'canvas',
             bgColor: '#FFFFFF',
@@ -90,6 +96,22 @@
             posX: sizeConvert(canvas, 55),
             posY: sizeConvert(canvas, 60),
             fontSize: sizeConvert(canvas, 2),
+            prefix: 'IMEI: ',
+            font: [sizeConvert(canvas, 1.8), 'px Arial'].join('')
+        }
+    }
+
+    function prepareICCIDConfig (canvas) {
+        return {
+            output: 'canvas',
+            bgColor: '#FFFFFF',
+            color: '#000000',
+            barWidth: sizeConvert(canvas, 0.25),
+            barHeight: sizeConvert(canvas, 4),
+            posX: sizeConvert(canvas, 56),
+            posY: sizeConvert(canvas, 52),
+            fontSize: sizeConvert(canvas, 2),
+            prefix: 'ICCID: ',
             font: [sizeConvert(canvas, 1.8), 'px Arial'].join('')
         }
     }

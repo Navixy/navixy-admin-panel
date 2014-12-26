@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.view.bundles.Printer', {
     extend: 'Ext.Component',
-    alias: 'widget.bundleprint',
+    alias: 'widget.bundle-printer',
 
     src: '/dev/stickerPrint.html',
 
@@ -14,11 +14,15 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
     imei: null,
     equip_id: null,
 
-    width: '100mm',
-    height: '72mm',
+    bundle: null,
+
+    width: '101mm',
+    height: '73mm',
+
+    style: 'border: 1px solid #ddd',
 
     renderTpl: [
-        '<iframe src="{src}?imei={imei}&equip_id={equip_id}" frameborder="0" ',
+        '<iframe src="{src}?imei={imei}&iccid={iccid}&equip_id={equip_id}" frameborder="0" ',
         'style="height:100%;width:100%"></iframe>'
     ],
 
@@ -28,8 +32,9 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
     initComponent: function () {
 
         this.renderData = {
-            imei: this.imei,
-            equip_id: this.equip_id,
+            imei: this.bundle.get('imei'),
+            equip_id: this.bundle.get('equip_id'),
+            iccid: this.bundle.get('iccid'),
             src: this.src
         };
 
@@ -57,10 +62,10 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
 
             if (win.someError) {
                 me.docError = true;
-                me.fireEvent('docerror', me);
+                me.fireEvent('doc-error', me);
             } else {
                 me.docReady = true;
-                me.fireEvent('docready', me);
+                me.fireEvent('doc-ready', me);
             }
         }, me)
     },

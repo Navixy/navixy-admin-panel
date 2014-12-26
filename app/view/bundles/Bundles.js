@@ -34,9 +34,10 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
         return [
             {
                 title: _l.get('bundles.menu.scan'),
+                part: 'bundle-scanner',
                 items: [
                     {
-                        xtype: 'bundlescan'
+                        xtype: 'bundle-scanner'
                     }
                 ]
             },
@@ -44,7 +45,7 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                 title: _l.get('bundles.menu.shipping'),
                 items: [
                     {
-                        xtype: 'bundlesshipping'
+                        xtype: 'bundles-shipping'
                     }
                 ]
             },
@@ -52,7 +53,7 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                 title: _l.get('bundles.menu.list'),
                 items: [
                     {
-                        xtype: 'bundleslist',
+                        xtype: 'bundles-list',
                         hasEdit: true,
                         padding: '10 0 0 0',
                         style: 'background-color: #f0f0f0',
@@ -61,5 +62,13 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                 ]
             }
         ]
+    },
+
+    startBundleEdit: function (imei) {
+        var scanner = this.down('bundle-scanner'),
+            tab = scanner && scanner.up();
+
+        this.getTabPanel().setActiveTab(tab);
+        scanner.resetScanner(imei);
     }
 });

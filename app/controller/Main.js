@@ -473,6 +473,11 @@ Ext.define('NavixyPanel.controller.Main', {
                     : value
             },
 
+            booleanEncode: function (value) {
+
+                return value || _l.get('no');
+            },
+
             balanceEncode: function (value) {
 
                 return !value
