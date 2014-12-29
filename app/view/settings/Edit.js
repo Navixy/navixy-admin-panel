@@ -30,9 +30,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             ]
         });
 
-        this.mapsStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name', 'free'],
-            data: [
+        var data = [
                 {type: "roadmap", "name": _l.get('maps.roadmap'), free: true},
                 {type: "satellite", "name": _l.get('maps.satellite'), free: true},
                 {type: "hybrid", "name": _l.get('maps.hybrid'), free: true},
@@ -46,7 +44,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 {type: "doublegis", "name": _l.get('maps.doublegis')},
                 {type: "ovi", "name": _l.get('maps.ovi')},
                 {type: "mailru", "name": _l.get('maps.mailru')}
-            ]
+            ],
+            storeData = [],
+            allowedMaps = this.getRecordData().allowed_maps,
+            hasLimit = !this.getRecordData().limited_domain;
+
+        Ext.iterate(data, function(mapOptions) {
+            if (Ext.Array.indexOf(allowedMaps, mapOptions.type) > -1) {
+                storeData.push({
+                    type: mapOptions.type,
+                    name: mapOptions.name,
+                    free: mapOptions.free
+                })
+            }
+        }, this);
+
+        this.mapsStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name', 'free'],
+            data: storeData
         });
 
         this.callParent(arguments);
@@ -191,7 +206,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     checkFreeDomain: function () {
-        return this.getDomainValue().indexOf(Config.paas_domain || this.default_paas_domain) > -1;
+        var value = this.getDomainValue(),
+            hasLimit = this.getRecordData().limited_domain,
+            fromConfig = Config.paas_domain && Ext.Array.from(Config.paas_domain),
+            isDomain = Config.paas_domain === false ? false : value.indexOf(this.default_paas_domain) > -1;
+
+        Ext.iterate(fromConfig, function (domain) {
+            if (value.indexOf(domain) > -1) {
+                isDomain = true;
+            }
+        });
+
+        return (hasLimit && isDomain) || false
     },
 
     updateFreeMaps: function () {
@@ -409,13 +435,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 2,
                 maxLength: 100,
                 vtype:'url'
-            },
-            {
-                xtype: 'container',
-                html: Ext.String.format(_l.get('settings.edit_form.domain_sup'), Config.paas_domain || this.default_paas_domain),
-                cls: 'block_sup',
-                padding: '10 0 0 170',
-                role: 'service-field'
             }
         ]
     },

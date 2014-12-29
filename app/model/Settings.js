@@ -18,6 +18,9 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'default_map', type: 'auto'},
         {name: 'google_client_id', type: 'string'},
 
+        {name: 'allowed_maps', type: 'auto'},
+        {name: 'limited_domain', type: 'boolean', default: true},
+
         {name: 'currency', type: 'string'},
         {name: 'payment_link', type: 'string'},
         {name: 'promo_url', type: 'string'},
