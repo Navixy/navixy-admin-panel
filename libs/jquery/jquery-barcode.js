@@ -1157,51 +1157,62 @@
     },
     
     // canvas barcode renderer
-    digitToCanvasRenderer : function($container, settings, digit, hri, xi, yi, mw, mh){
-      var canvas = $container.get(0);
-      if ( !canvas || !canvas.getContext ) return; // not compatible
-      
-      var lines = digit.length;
-      var columns = digit[0].length;
-      
-      var ctx = canvas.getContext('2d');
-      ctx.lineWidth = 1;
-      ctx.lineCap = 'butt';
-      ctx.fillStyle = settings.bgColor;
-      ctx.fillRect (xi, yi, columns * mw, lines * mh);
-      
-      ctx.fillStyle = settings.color;
+      digitToCanvasRenderer : function($container, settings, digit, hri, xi, yi, mw, mh){
+          var canvas = $container.get(0);
+          var sandbox = document.createElement('canvas');
 
-      if (settings.font) {
-        ctx.font = settings.font;
-      }
-      
-      for(var y=0; y<lines; y++){
-        var len = 0;
-        var current = digit[y][0];
-        for(var x=0; x<columns; x++){
-          if (current == digit[y][x]) {
-            len++;
-          } else {
-            if (current == '1'){
-              ctx.fillRect (xi + (x - len) * mw, yi + y * mh, mw * len, mh);
-            }
-            current = digit[y][x];
-            len=1;
+          if ( !canvas || !canvas.getContext ) return; // not compatible
+
+          var lines = digit.length;
+          var columns = digit[0].length;
+
+
+          sandbox.width = columns * mw;
+          sandbox.height = lines * mh + settings.fontSize;
+
+          var ctx = sandbox.getContext('2d');
+          var _ctx = canvas.getContext('2d');
+
+          var _xi = 0;
+          var _yi = 0;
+          ctx.lineWidth = 1;
+          ctx.lineCap = 'butt';
+          ctx.fillStyle = settings.bgColor;
+          ctx.fillRect (_xi, _xi, columns * mw, lines * mh);
+
+          ctx.fillStyle = settings.color;
+
+          if (settings.font) {
+              ctx.font = settings.font;
           }
-        }
-        if ( (len > 0) && (current == '1') ){
-          ctx.fillRect (xi + (columns - len) * mw, yi + y * mh, mw * len, mh);
-        }
-      }
-      if (settings.showHRI){
-        var dim = ctx.measureText(hri),
-            text = settings.prefix ? settings.prefix + hri : hri,
-            xi = settings.prefix ? xi - 50: xi;
 
-        ctx.fillText(text, xi + Math.floor((columns * mw - dim.width)/2), yi + lines * mh + settings.fontSize + settings.marginHRI);
-      }
-    },
+          for(var y=0; y<lines; y++){
+              var len = 0;
+              var current = digit[y][0];
+              for(var x=0; x<columns; x++){
+                  if (current == digit[y][x]) {
+                      len++;
+                  } else {
+                      if (current == '1'){
+                          ctx.fillRect (_xi + (x - len) * mw, _xi + y * mh, mw * len, mh);
+                      }
+                      current = digit[y][x];
+                      len=1;
+                  }
+              }
+              if ( (len > 0) && (current == '1') ){
+                  ctx.fillRect (_xi + (columns - len) * mw, _xi + y * mh, mw * len, mh);
+              }
+          }
+          if (settings.showHRI){
+              var dim = ctx.measureText(hri),
+                  text = settings.prefix ? settings.prefix + hri : hri,
+                  _xi = settings.prefix ? _xi - 50: _xi;
+
+              ctx.fillText(text, _xi + Math.floor((columns * mw - dim.width)/2), _xi + lines * mh + settings.fontSize + settings.marginHRI + settings.fontSize / 1.5);
+          }
+          _ctx.drawImage(sandbox, 0, 0, sandbox.width, sandbox.height, xi, yi, settings.resultWidth || sandbox.width, settings.resultHeight || sandbox.height);
+      },
     // canvas 1D barcode renderer
     digitToCanvas: function($container, settings, digit, hri){
       var w  = barcode.intval(settings.barWidth);

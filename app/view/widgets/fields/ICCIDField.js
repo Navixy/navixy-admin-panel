@@ -77,7 +77,7 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
         this.changeStatus();
     },
 
-    changeStatus: function () {
+    changeStatus: function (silent) {
         var value = this.getValue(),
             newStatus = 'empty';
 
@@ -91,7 +91,9 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
 
         this.iccidStatus = newStatus;
 
-        this.fireEvent('status-changed', newStatus);
+        if (!silent) {
+            this.fireEvent('status-changed', newStatus);
+        }
 
         return newStatus;
     },
@@ -122,14 +124,17 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
     },
 
     doServerAction: function (value) {
+
         var params = {
                 bundle_id: this.bundle.get('id')
             },
             processedValue = null;
 
-        if (this.changeStatus() === 'new') {
+        if (this.changeStatus(true) === 'new') {
             params.iccid = processedValue = value;
         }
+
+        this.fireEvent('boundle-before-changed', this.bundle, this.getStatus());
 
         Ext.API.assignBundle({
             params: params,
@@ -150,6 +155,8 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
         this.bundle.set('iccid', value);
 
         this.setBundle(this.bundle);
+
+        this.changeStatus();
 
         this.fireEvent('boundle-changed', this.bundle);
     },

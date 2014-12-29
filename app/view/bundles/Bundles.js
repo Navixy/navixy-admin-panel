@@ -13,6 +13,16 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
     bodyPadding: '0 0 0 0',
     formRowPadding: '50 0 0 0',
 
+    initComponent: function () {
+        this.callParent(arguments);
+        this.mon(this.getTabPanel(), 'tabchange', function (tabpanel, card) {
+            var cmp = card.down('bundle-scanner');
+            if (cmp && Ext.isFunction(cmp.tabActivated)){
+                cmp.tabActivated();
+            }
+        }, this)
+    },
+
 
     getCellDefaults: function () {
         return {

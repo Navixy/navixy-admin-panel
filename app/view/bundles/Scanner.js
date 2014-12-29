@@ -19,6 +19,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
     padding: '30 25 20 25',
 
     bundle: null,
+    shouldBePrinted: false,
 
     initComponent: function () {
         this.items = this.getItems();
@@ -50,6 +51,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                                 role: 'form-container',
                                 xtype: 'container',
                                 layout: 'vbox',
+                                minHeight: 150,
                                 flex: 1
                             },
                             {
@@ -63,9 +65,15 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                                     scale: 'large',
                                     width: 330,
                                     margin: '20 0 0 20',
-                                    hidden: true
+                                    disabled: true
                                 },
                                 items: [
+                                    {
+                                        xtype: 'checkbox',
+                                        role: 'auto-print-option',
+                                        boxLabel: _l.get('bundles.scan.imie_hints.auto_print'),
+                                        disabled: false
+                                    },
                                     {
                                         text: _l.get('bundles.scan.buttons.print'),
                                         role: 'print-button',
@@ -76,8 +84,8 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                                         text: _l.get('bundles.scan.buttons.reset'),
                                         ui: 'gray',
                                         role: 'reset-button',
-                                        hidden: false,
                                         handler: this.resetScanner,
+                                        disabled: false,
                                         scope: this
                                     }
                                 ]
@@ -156,6 +164,20 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
 
     getResetButton: function () {
         return this.down('[role="reset-button"]');
+    },
+
+    getAutoPrintOption: function () {
+        return this.down('[role="auto-print-option"]');
+    },
+
+    isAutoReset: function () {
+        return this.getAutoPrintOption().getValue();
+    },
+
+    tabActivated: function () {
+        if (!this.bundle) {
+            this.fixScanFocus();
+        }
     },
 
     resetScanner: function (imei) {
@@ -258,6 +280,8 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                 listeners: {
                     'status-changed': this.onICCIDChanged,
                     'boundle-changed': this.onICCIDServerChanged,
+                    'boundle-before-changed': this.checkAutoPrint,
+                    'server-error': this.onICCIDServerError,
                     scope: this
                 }
             },
@@ -313,11 +337,20 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
         btn[toggle ? 'show' : 'hide']();
     },
 
+    onICCIDServerError: function () {
+        this.shouldBePrinted = false;
+    },
+
     onICCIDServerChanged: function () {
         this.showBundleInfo(_l.get('bundles.scan.fields.title_add_changed'));
         this.showBundlePrinter();
     },
 
+    checkAutoPrint: function (bundle, status) {
+        if (this.isAutoReset() && bundle && !bundle.get('iccid') && status === 'new') {
+            this.shouldBePrinted = true;
+        }
+    },
 
     showBundleInfo: function (msg) {
         var localePart = _l.get('bundles.scan.fields'),
@@ -378,25 +411,30 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
 
     showBundlePrinter: function () {
         this.getBundlePrintFrame().removeAll(true);
-        var a = this.getBundlePrintFrame().add(this.getBundlePrinterConfig());
+        this.getBundlePrintFrame().add(this.getBundlePrinterConfig());
 
         this.getBundlePrintErrorContainer().hide();
     },
 
     hideBundlePrinter: function () {
         this.getBundlePrintFrame().removeAll(true);
-        this.getPrintButton().hide();
+        this.getPrintButton().disable();
         this.getBundlePrintErrorContainer().hide();
     },
 
     printError: function () {
-        this.hideBundlePrinter()
+        this.hideBundlePrinter();
         this.getBundlePrintErrorContainer().show();
         this.getBundlePrintContainer().show();
     },
 
     printReady: function () {
-        this.getPrintButton().show();
+        this.getPrintButton().enable();
+        if (this.shouldBePrinted) {
+            this.printBundle();
+            this.resetScanner();
+        }
+        this.shouldBePrinted = false;
     },
 
     printBundle: function () {

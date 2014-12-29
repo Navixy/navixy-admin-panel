@@ -765,7 +765,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
         frame.removeAll(true);
         frame.add(
             {
-                xtype: 'bundleprint',
+                xtype: 'bundle-printer',
                 bodyPadding: 5,
                 cls: 'print-frame',
                 imei: this.lastBundle.get('imei'),
@@ -798,7 +798,7 @@ Ext.define('NavixyPanel.view.bundles.Scan', {
 
 
     printICCID: function () {
-        var printer = this.down('bundleprint');
+        var printer = this.down('bundle-printer');
         if (printer && printer.docReady) {
             printer.printWin();
         }
