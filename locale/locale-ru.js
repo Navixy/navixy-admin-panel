@@ -851,6 +851,7 @@ Ext.define('Locale.locale-ru', {
                 title: 'Информация о комплекте',
                 title_add: 'SIM-карта уже привязана!',
                 title_add_changed: 'SIM-карта изменена',
+                equip_add_changed: 'Состав комплекта изменен',
                 id: 'Номер комплекта',
                 imei: 'IMEI',
                 iccid: 'ICCID',
@@ -867,7 +868,8 @@ Ext.define('Locale.locale-ru', {
                 remove_iccid: 'Отвязать SIM-карту',
 
                 print: 'Распечатать этикетку',
-                reset: 'Начать сначала'
+                reset: 'Начать сначала',
+                change_equip: 'Изменить состав'
             },
 
             imie_hints: {
@@ -888,7 +890,7 @@ Ext.define('Locale.locale-ru', {
             },
 
             print_hints: {
-                print_error: 'Ошибка. Не найден шаблон наклейки для модели устройства. Печать невозможна',
+                print_error: 'Ошибка. Не найден шаблон наклейки для состава комплекта.<br>Печать невозможна.',
             },
 
             hints: {
@@ -919,6 +921,24 @@ Ext.define('Locale.locale-ru', {
                 unassign_success: 'Сим-карта отвязана от устройства',
                 unassign_failure: 'Ошибка. Не удалось отвязать SIM-карту от сустройсва'
             }
+        }
+    },
+
+    equipment: {
+        fields: {
+            equip_id: 'ID',
+            name: 'Название',
+            model_name: 'Модель',
+            model_code: 'Код модели',
+            vendor: 'Производитель'
+        },
+
+        select: {
+            title: 'Выбор состава комплекта'
+        },
+
+        list: {
+            empty_text: 'Типов комплектов не найдено'
         }
     }
 });

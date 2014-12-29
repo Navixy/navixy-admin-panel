@@ -32,9 +32,11 @@
         _width = 100,
         _height = 72,
         _value = getParameterByName('imei') || null,
-        _iccid = getParameterByName('iccid') || null,
-        _barType = 'code128';
+        _iccid = getParameterByName('iccid') || 0,
+        _barType = 'code128',
+        _iccid_url = 'iccid.png';
 
+    console.log(getParameterByName('iccid'), !!_iccid);
     PDFJS.getDocument(_url).then(getPdf, pdfError);
 
     function pdfError() {
@@ -46,7 +48,6 @@
             canvas = preparePdfCanvas(viewPort),
             context = canvas.getContext('2d'),
             imeiOptions = prepareIMEIConfig(canvas),
-            iccidOptions = prepareICCIDConfig(canvas),
             renderOptions = {
                 canvasContext: context,
                 viewport: viewPort
@@ -58,8 +59,19 @@
             setTimeout(function () {
                 $(canvas).barcode(_value, _barType, imeiOptions);
 
-                if (_iccid) {
-                    $(canvas).barcode(_iccid, _barType, iccidOptions);
+                if (_iccid * 1) {
+                    var imageObj = new Image();
+
+                    imageObj.onload = function() {
+                        context.drawImage(imageObj,
+                                0, 0,
+                                540, 160,
+                                1615, 1400,
+                                1090, 323
+                        );
+                    };
+
+                    imageObj.src = _iccid_url;
                 }
 
                 ready = true;
@@ -98,23 +110,7 @@
             resultWidth: 1200,
             fontSize: 60,
             prefix: 'IMEI: ',
-            font: [50, 'px Arial'].join('')
-        }
-    }
-
-    function prepareICCIDConfig (canvas) {
-        return {
-            output: 'canvas',
-            bgColor: '#FFFFFF',
-            color: '#000000',
-            barWidth: 8,
-            barHeight: 140,
-            posX: 1565,
-            posY: 1535,
-            resultWidth: 1190,
-            fontSize: 60,
-            prefix: 'ICCID: ',
-            font: [50, 'px Arial'].join('')
+            font: [60, 'px Arial'].join('')
         }
     }
 

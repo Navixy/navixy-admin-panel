@@ -17,7 +17,9 @@ Ext.define('NavixyPanel.controller.Bundles', {
         'bundles.Shipping',
 
         'widgets.fields.IMEIField',
-        'widgets.fields.ICCIDField'
+        'widgets.fields.ICCIDField',
+
+        'equipment.SelectWindow'
     ],
 
     refs: [
@@ -47,9 +49,8 @@ Ext.define('NavixyPanel.controller.Bundles', {
         }
     ],
 
-    stores: ['Bundles'],
-    models: ['Bundle', 'Order'],
-    waitStores: ['Bundles'],
+    stores: ['Bundles', 'Equipment'],
+    models: ['Bundle', 'Order', 'Equipment'],
 
     init: function () {
         this.callParent(arguments);

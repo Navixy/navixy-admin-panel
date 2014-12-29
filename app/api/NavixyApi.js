@@ -302,8 +302,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-
-
     getCodesList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
@@ -471,6 +469,20 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             action: 'read',
             handler: 'order'
+        });
+    },
+
+    getEquipmentList: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'equipment'
+        });
+    },
+
+    assignEquipToBundle: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'tracker/bundle'
         });
     }
 });

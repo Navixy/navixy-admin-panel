@@ -31,6 +31,7 @@ module.exports = function (grunt) {
                         'locale/ext/*',
                         'dev/uploadHandler.html',
                         'dev/stickerPrint.html',
+                        'dev/iccid.png',
                         'libs/jquery/*',
                         'libs/inputmask/*',
                         'libs/momentjs/*',

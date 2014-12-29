@@ -46,6 +46,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                         xtype: 'container',
                         layout: 'vbox',
                         width: 450,
+                        minHeight: 550,
                         items: [
                             {
                                 role: 'form-container',
@@ -73,6 +74,12 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                                         role: 'auto-print-option',
                                         boxLabel: _l.get('bundles.scan.imie_hints.auto_print'),
                                         disabled: false
+                                    },
+                                    {
+                                        text: _l.get('bundles.scan.buttons.change_equip'),
+                                        role: 'equip-button',
+                                        handler: this.changeEquip,
+                                        scope: this
                                     },
                                     {
                                         text: _l.get('bundles.scan.buttons.print'),
@@ -108,16 +115,16 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                             },
                             {
                                 xtype: 'container',
-                                role: 'printer-container',
-                                flex: 1
-                            },
-                            {
-                                xtype: 'container',
                                 role: 'print-error',
                                 margin: '0 0 30 25',
                                 cls: 'step-title',
                                 hidden: true,
                                 html: _l.get('bundles.scan.print_hints.print_error')
+                            },
+                            {
+                                xtype: 'container',
+                                role: 'printer-container',
+                                flex: 1
                             }
                         ]
                     }
@@ -156,6 +163,10 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
 
     getBundlePrintErrorContainer: function () {
         return this.down('[role="print-error"]');
+    },
+
+    getEquipButton: function () {
+        return this.down('[role="equip-button"]');
     },
 
     getPrintButton: function () {
@@ -220,6 +231,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
         this.hideBundleInfo();
         this.hideBundlePrinter();
         this.removeStepFromForm('[step="first"]');
+        this.getEquipButton().disable();
     },
 
     stepFirst: function () {
@@ -264,6 +276,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
         this.bundle = bundle;
         this.showBundleInfo();
         this.showBundlePrinter();
+        this.getEquipButton().enable();
 
         var stepConfig = [
             {
@@ -442,6 +455,60 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
         if (printer && printer.docReady) {
             printer.printWin();
         }
+    },
+
+    changeEquip: function () {
+        this.window = Ext.widget('equipment-select-window', {
+            listeners: {
+                select: this.onEquipSelect,
+                destroy: function () {
+                    this.window = null;
+                },
+                scope: this
+            }
+        }).show();
+    },
+
+    onEquipSelect: function (equip) {
+        var equip_id = equip && equip.getId();
+
+        if (equip_id) {
+            Ext.API.assignEquipToBundle({
+                params: {
+                    equip_id: equip_id,
+                    bundle_id: this.bundle.getId()
+                },
+                callback: function (response) {
+                    this.afterEquipAssign(response, equip_id)
+                },
+                failure: this.afterEquipFailure,
+                scope: this
+            });
+        }
+    },
+
+    afterEquipAssign: function (response, equip_id) {
+        this.bundle.set('equip_id', equip_id);
+
+        this.showBundleInfo(_l.get('bundles.scan.fields.equip_add_changed'));
+        this.showBundlePrinter();
+    },
+
+    afterEquipFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = errCode == 7
+                ? status.description || false
+                : _l.get('errors')[errCode] || status.description || false;
+
+
+        Ext.MessageBox.show({
+            title: _l.get('error') + ' #' + errCode,
+            msg: errDescription,
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
     }
 });
 
