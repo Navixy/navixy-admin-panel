@@ -686,21 +686,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'map_zoom',
                 fieldLabel: _l.get('settings.fields.maps_default.zoom'),
                 xtype: 'numberfield',
-                maxValue: 17,
-                minValue: 1
+                allowBlank: true,
+                maxValue: 17
             },
             {
                 name: 'map_location_lat',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
-                allowBlank: false,
-                minLength: 2,
+                allowBlank: true,
+                minLength: 0,
                 maxLength: 100
             },
             {
                 name: 'map_location_lng',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
-                allowBlank: false,
-                minLength: 2,
+                allowBlank: true,
+                minLength: 0,
                 maxLength: 100
             },
             {
