@@ -208,9 +208,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     checkFreeDomain: function () {
         var value = this.getDomainValue(),
-            hasLimit = this.getRecordData().limited_domain,
             fromConfig = Config.paas_domain && Ext.Array.from(Config.paas_domain),
-            isDomain = Config.paas_domain === false ? false : value.indexOf(this.default_paas_domain) > -1;
+            isDomain = false;
 
         Ext.iterate(fromConfig, function (domain) {
             if (value.indexOf(domain) > -1) {
@@ -218,7 +217,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
         });
 
-        return (hasLimit && isDomain) || false
+        return isDomain || false
     },
 
     updateFreeMaps: function () {
