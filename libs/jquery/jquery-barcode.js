@@ -1168,7 +1168,7 @@
 
 
           sandbox.width = columns * mw;
-          sandbox.height = lines * mh + settings.fontSize;
+          sandbox.height = lines * mh + settings.fontSize + 10;
 
           var ctx = sandbox.getContext('2d');
           var _ctx = canvas.getContext('2d');
@@ -1209,7 +1209,7 @@
                   text = settings.prefix ? settings.prefix + hri : hri,
                   _xi = settings.prefix ? _xi - 50: _xi;
 
-              ctx.fillText(text, _xi + Math.floor((columns * mw - dim.width)/2), _xi + lines * mh + settings.fontSize + settings.marginHRI + settings.fontSize / 1.5);
+              ctx.fillText(text, _xi + Math.floor((columns * mw - dim.width)/2) - 40, _xi + lines * mh + settings.fontSize + settings.marginHRI + settings.fontSize / 1.5);
           }
           _ctx.drawImage(sandbox, 0, 0, sandbox.width, sandbox.height, xi, yi, settings.resultWidth || sandbox.width, settings.resultHeight || sandbox.height);
       },
