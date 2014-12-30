@@ -77,14 +77,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var save_btn = this.down('[action="form_submit"]'),
             pass_btn = this.down('[action="pass_submit"]');
 
-        if (this.isPassTab()) {
-            pass_btn.show();
-            save_btn.hide();
-        } else {
-            pass_btn.hide();
-            save_btn.show();
+        if (save_btn && pass_btn) {
+            if (this.isPassTab()) {
+                pass_btn.show();
+                save_btn.hide();
+            } else {
+                pass_btn.hide();
+                save_btn.show();
+            }
         }
-
         this.clearPasswords();
     },
 
@@ -278,9 +279,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             npField = this.down('[name="new_password"]'),
             opField = this.down('[name="old_password"]');
 
-        pField.setValue('');
-        npField.setValue('');
-        opField.setValue('');
+        if (pField && npField && opField) {
+            pField.setValue('');
+            npField.setValue('');
+            opField.setValue('');
+        }
     },
 
     getProcessedValues: function () {
