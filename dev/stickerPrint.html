@@ -36,7 +36,7 @@
         _barType = 'code128',
         _iccid_url = 'iccid.png';
 
-    console.log(getParameterByName('iccid'), !!_iccid);
+    PDFJS.workerSrc = '../libs/pdf/pdf.worker.js';
     PDFJS.getDocument(_url).then(getPdf, pdfError);
 
     function pdfError() {
@@ -66,7 +66,7 @@
                         context.drawImage(imageObj,
                                 0, 0,
                                 540, 160,
-                                1615, 1330,
+                                1615, 1230,
                                 1090, 323
                         );
                     };
@@ -106,7 +106,7 @@
             barWidth: 8,
             barHeight: 200,
             posX: 1560,
-            posY: 1690,
+            posY: 1600,
             resultWidth: 1200,
             fontSize: 70,
             prefix: 'IMEI: ',

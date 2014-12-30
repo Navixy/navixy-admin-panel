@@ -395,6 +395,8 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
             }
         }, this);
 
+        console.log(data);
+
         this.getBundleInfoContainer().show();
         this.getBundleInfoContainer().update(data);
     },
