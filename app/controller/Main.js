@@ -294,7 +294,7 @@ Ext.define('NavixyPanel.controller.Main', {
                             callback.call(scope || this);
                         }
                     } catch (e) {
-                        Ext.logger(e.stack);
+                        console.log(e.stack)
                     }
                 }, result;
 

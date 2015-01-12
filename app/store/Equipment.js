@@ -8,7 +8,6 @@ Ext.define('NavixyPanel.store.Equipment', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.Equipment',
     storeId: 'Equipment',
-    autoLoad: true,
     api: {
         read: 'getEquipmentList'
     },
