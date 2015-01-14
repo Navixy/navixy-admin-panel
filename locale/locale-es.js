@@ -11,7 +11,7 @@ Ext.define('Locale.locale-es', {
     ],
     singleton: true,
 
-    main_copyright: '© 2005-2014 RusLink. Todos los derechos reservados.',
+    main_copyright: '© ' + new Date().getUTCFullYear() + ' RusLink. Todos los derechos reservados.',
 
     panel_title: 'NavixyPanel',
     error: 'Error',
