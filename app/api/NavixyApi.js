@@ -484,5 +484,12 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'tracker/bundle'
         });
+    },
+
+    importBundles: function (config) {
+        this.requestWithOptions(config, {
+            action: 'import',
+            handler: 'tracker/bundle'
+        });
     }
 });
