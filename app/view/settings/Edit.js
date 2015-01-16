@@ -25,8 +25,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             data: [
                 {type: "RUB", "name": _l.get('currency.rub')},
                 {type: "USD", "name": _l.get('currency.usd')},
+                {type: "EUR", "name": _l.get('currency.eur')},
                 {type: "KZT", "name": _l.get('currency.kzt')},
-                {type: "BYR", "name": _l.get('currency.byr')}
+                {type: "BYR", "name": _l.get('currency.byr')},
+                {type: "JPY", "name": _l.get('currency.jpy')},
+                {type: "GBP", "name": _l.get('currency.gbp')},
+                {type: "CHF", "name": _l.get('currency.chf')},
+                {type: "CAD", "name": _l.get('currency.cad')},
+                {type: "AUD", "name": _l.get('currency.aud')},
+                {type: "NZD", "name": _l.get('currency.nzd')},
             ]
         });
 

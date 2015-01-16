@@ -11,8 +11,8 @@ Ext.define('Locale.Manager', {
     _locale: null,
     _locales: [
         { id: 'en_US', name: 'en', text: 'English', alias: ['en', 'en_US', 'English'] },
-        { id: 'ru_RU', name: 'ru', text: 'Русский', alias: ['ru', 'ru_RU', 'Русский'] },
-        { id: 'es_ES', name: 'es', text: 'Español', alias: ['es', 'es_ES', 'Español'] }
+        { id: 'ru_RU', name: 'ru', text: 'Russian - Русский', alias: ['ru', 'ru_RU', 'Русский'] },
+        { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'] }
     ],
 
     _tpl: 'locale-{locale}',

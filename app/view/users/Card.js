@@ -119,11 +119,11 @@ Ext.define('NavixyPanel.view.users.Card', {
                 },
                 {
                     title: _l.get('users.fields.balance'),
-                    value: recordData.balance
+                    value: Ext.Number.toFixed(recordData.balance, 2)
                 },
                 {
                     title: _l.get('users.fields.bonus'),
-                    value: recordData.bonus
+                    value: Ext.Number.toFixed(recordData.bonus, 2)
                 },
                 {
                     title: _l.get('users.fields.post_city'),
