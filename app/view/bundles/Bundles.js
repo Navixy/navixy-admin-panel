@@ -51,14 +51,14 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                     }
                 ]
             },
-            {
-                title: _l.get('bundles.menu.import'),
-                items: [
-                    {
-                        xtype: 'bundle-import'
-                    }
-                ]
-            },
+//            {
+//                title: _l.get('bundles.menu.import'),
+//                items: [
+//                    {
+//                        xtype: 'bundle-import'
+//                    }
+//                ]
+//            },
             {
                 title: _l.get('bundles.menu.shipping'),
                 items: [
