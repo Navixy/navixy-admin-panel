@@ -30,14 +30,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     initStore: function () {
 
         this.store = Ext.create('Ext.data.Store', {
-            model: 'NavixyPanel.model.Transaction',
-            sorters: [
-                {
-                    property: 'timestamp',
-                    direction: 'DESC'
-                }
-            ],
-            pageSize: 100
+            model: 'NavixyPanel.model.Transaction'
         });
     },
 
@@ -54,16 +47,18 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             {
                 text: _l.get('users.transactions.fields.type'),
                 dataIndex: 'type',
-                xtype: 'templatecolumn',
-                tpl: typeTpl,
+                renderer: function (value) {
+                    return '<div style="white-space:normal !important;">'+ _l.get("users.transactions.fields.type_set")[value] || value +'</div>';
+                },
                 sortable: true,
                 width: 120
             },
             {
                 text: _l.get('users.transactions.fields.subtype'),
                 dataIndex: 'subtype',
-                xtype: 'templatecolumn',
-                tpl: subtypeTpl,
+                renderer: function (value) {
+                    return '<div style="white-space:normal !important;">'+ _l.get("users.transactions.fields.subtype_set")[value] || value +'</div>';
+                },
                 sortable: true,
                 width: 120
             },
@@ -185,6 +180,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             callback: function (transactions, limitExceeded) {
                 me.unmask();
                 me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.emptyData + '</div>';
+                transactions.reverse();
                 store.loadData(transactions);
             },
             failure: function() {

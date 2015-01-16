@@ -14,6 +14,10 @@ $scan-font-size: 14px;
             font-size: $scan-font-size * 2
         }
 
+        textarea {
+            font-size: $scan-font-size + 4
+        }
+
         .x-form-invalid-under {
             padding: 5px 0 0 0;
             font-size: $scan-font-size - 1;

@@ -215,7 +215,14 @@ Ext.define('Locale.locale-es', {
         rub: 'Rublo Ruso',
         usd: 'U.S. Dollar',
         kzt: 'Kazakhstan Tenge',
-        byr: 'Rublo Bieloruso'
+        byr: 'Rublo Bieloruso',
+        eur: 'Euro',
+        jpy: 'Yen japonés',
+        gbp: 'Libra esterlina',
+        chf: 'Franco suizo',
+        cad: 'Canadian dollar',
+        aud: 'Dólar canadiense',
+        nzd: 'Dólar de Nueva Zelanda'
     },
 
     maps: {
@@ -267,6 +274,7 @@ Ext.define('Locale.locale-es', {
             return_btn: 'regresar'
         },
         fields: {
+            creation_date: 'Fecha de registro',
             login: 'Direccion de correo',
             balance: 'Balance',
             bonus: 'Bonus',
@@ -618,6 +626,7 @@ Ext.define('Locale.locale-es', {
             promo_url: "Sitio de promoción URL",
             domain: "Dominio",
             email_from: "Remitente de  Email",
+            email_special: "Correo electrónico las alertas",
             email_footer: "Email de pie de pagina",
             sms_originator: "SMS originador",
             caller_id: "Aviso de voz originador ",

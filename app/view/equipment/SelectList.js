@@ -87,7 +87,7 @@ Ext.define('NavixyPanel.view.equipment.SelectList', {
             ]
         );
 
-        return config
+        return this.showBBar ? config : false;
     },
 
     getSelectBtn: function () {
@@ -96,7 +96,7 @@ Ext.define('NavixyPanel.view.equipment.SelectList', {
 
     onRecordSelect: function (grid, record) {
 
-        if (record) {
+        if (record && this.showBBar) {
             var button = this.getSelectBtn(),
                 tariffTitle = this.texts.selectBtn + ' "' + record.get('name') + '"';
 
@@ -106,11 +106,13 @@ Ext.define('NavixyPanel.view.equipment.SelectList', {
     },
 
     onRecordDeSelect: function () {
-        var button = this.getSelectBtn(),
-            tariffTitle = this.texts.selectBtn;
+        if (this.showBBar) {
+            var button = this.getSelectBtn(),
+                tariffTitle = this.texts.selectBtn;
 
-        button.setText(tariffTitle);
-        button.disable();
+            button.setText(tariffTitle);
+            button.disable();
+        }
     },
 
     submitValue: function () {

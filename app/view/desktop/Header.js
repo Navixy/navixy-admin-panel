@@ -65,7 +65,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                 xtype: 'localecombo',
                                 ui: 'light',
                                 fieldLabel: false,
-                                width: 90,
+                                width: 145,
                                 margin: '0 10 0 0'
                             },
                             {

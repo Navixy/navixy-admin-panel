@@ -15,10 +15,13 @@ Ext.define('NavixyPanel.controller.Bundles', {
         'bundles.Printer',
         'bundles.Bundles',
         'bundles.Shipping',
+        'bundles.Import',
 
         'widgets.fields.IMEIField',
         'widgets.fields.ICCIDField',
+        'widgets.fields.ImportField',
 
+        'equipment.SelectList',
         'equipment.SelectWindow'
     ],
 
@@ -65,6 +68,9 @@ Ext.define('NavixyPanel.controller.Bundles', {
             },
             'bundles-shipping': {
                 'order-assign': this.afterOrderAssign
+            },
+            'bundle-import': {
+                success: this.afterImport
             }
         });
 
@@ -171,5 +177,9 @@ Ext.define('NavixyPanel.controller.Bundles', {
         if (scanner) {
             scanner.checkBundleChanges(bundle.get('imei'));
         }
+    },
+
+    afterImport: function () {
+        this.getMainList().doRefresh();
     }
 });

@@ -16,7 +16,7 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
     initComponent: function () {
         this.callParent(arguments);
         this.mon(this.getTabPanel(), 'tabchange', function (tabpanel, card) {
-            var cmp = card.down('bundle-scanner');
+            var cmp = card.down('bundle-scanner') || card.down('bundle-import');
             if (cmp && Ext.isFunction(cmp.tabActivated)){
                 cmp.tabActivated();
             }
@@ -51,6 +51,14 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                     }
                 ]
             },
+//            {
+//                title: _l.get('bundles.menu.import'),
+//                items: [
+//                    {
+//                        xtype: 'bundle-import'
+//                    }
+//                ]
+//            },
             {
                 title: _l.get('bundles.menu.shipping'),
                 items: [
