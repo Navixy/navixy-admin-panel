@@ -174,6 +174,10 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }, this);
 
+        if (data['allowed_maps']) {
+            delete data['allowed_maps'];
+        }
+
         data.maps = Ext.encode(data.maps);
         data.default_map = Ext.encode(data.default_map);
 
