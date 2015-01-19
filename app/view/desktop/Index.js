@@ -19,9 +19,7 @@ Ext.define('NavixyPanel.view.desktop.Index', {
             },
             {
                 xtype: 'container',
-                padding: '5 50 0 50',
-                style: 'font-size: 12px; text-align: center',
-                html: _l.get('index_tip')
+                padding: '5 50 0 50'
             }
         ];
 
