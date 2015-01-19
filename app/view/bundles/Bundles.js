@@ -52,14 +52,6 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                 ]
             },
             {
-                title: _l.get('bundles.menu.import'),
-                items: [
-                    {
-                        xtype: 'bundle-import'
-                    }
-                ]
-            },
-            {
                 title: _l.get('bundles.menu.shipping'),
                 items: [
                     {
@@ -76,6 +68,14 @@ Ext.define('NavixyPanel.view.bundles.Bundles', {
                         padding: '10 0 0 0',
                         style: 'background-color: #f0f0f0',
                         role: 'bundles-list'
+                    }
+                ]
+            },
+            {
+                title: _l.get('bundles.menu.import'),
+                items: [
+                    {
+                        xtype: 'bundle-import'
                     }
                 ]
             }
