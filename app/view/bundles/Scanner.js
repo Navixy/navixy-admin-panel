@@ -377,7 +377,16 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
             dataMap = {
                 id: false,
                 imei: false,
-                iccid: function (value) {return Ext.util.Format.booleanEncode(value)},
+                iccid: function (value) {
+                    var raw = value.toString(),
+                        iccidString = raw.replace(/[^0-9]+/g, ""),
+                        startIndex = iccidString.indexOf("89");
+
+                    if (startIndex < 0) {
+                        startIndex = 0;
+                    }
+                    return iccidString.substring(startIndex);
+                },
                 assign_time: function (value) {return Ext.Date.formatISO(value, "d-m-Y H:i:s")},
                 model_code: false,
                 equip_id: false,
