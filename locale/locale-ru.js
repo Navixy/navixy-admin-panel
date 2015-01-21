@@ -426,7 +426,7 @@ Ext.define('Locale.locale-ru', {
                 active: 'Наблюдается',
                 signal_lost: 'Связь потеряна',
                 offline: 'Оффлайн',
-                just_registered: "Не активинован",
+                just_registered: "Не активирован",
                 idle: 'GPS не обновлен'
             }
         },
