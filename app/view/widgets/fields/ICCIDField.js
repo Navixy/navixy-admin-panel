@@ -10,6 +10,8 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
     ui: 'light',
     cls: 'step-field',
 
+    vtype: null,
+
     width: 330,
 
     maxLength: 25,

@@ -47,42 +47,43 @@
         var viewPort = page.getViewport(_scale),
             canvas = preparePdfCanvas(viewPort),
             context = canvas.getContext('2d'),
-            imeiOptions = prepareIMEIConfig(canvas),
             renderOptions = {
                 canvasContext: context,
                 viewport: viewPort
             };
 
-        page.render(renderOptions);
-
-        if (_value) {
-            setTimeout(function () {
-                $(canvas).barcode(_value, _barType, imeiOptions);
-
-                if (_iccid * 1) {
-                    var imageObj = new Image();
-
-                    imageObj.onload = function() {
-                        context.drawImage(imageObj,
-                                0, 0,
-                                540, 160,
-                                1615, 1230,
-                                1090, 323
-                        );
-                    };
-
-                    imageObj.src = _iccid_url;
-                }
-
-                ready = true;
-            }, 500);
-        } else {
-            someError = true;
-        }
+        page.render(renderOptions).then(renderBarcode);
     }
 
     function getPdf (pdf) {
         pdf.getPage(1).then(getPdfPage);
+    }
+
+    function renderBarcode() {
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d');
+
+
+        if (_value) {
+            $(canvas).barcode(_value, _barType, prepareIMEIConfig(canvas));
+
+            if (_iccid * 1) {
+                var imageObj = new Image();
+
+                imageObj.onload = function() {
+                    context.drawImage(imageObj,
+                            0, 0,
+                            540, 160,
+                            1615, 1230,
+                            1090, 323
+                    );
+                };
+
+                imageObj.src = _iccid_url;
+
+                ready = true;
+            }
+        }
     }
 
     function preparePdfCanvas(viewPort) {
