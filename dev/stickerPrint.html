@@ -67,7 +67,7 @@
         if (_value) {
             $(canvas).barcode(_value, _barType, prepareIMEIConfig(canvas));
 
-            if (_iccid * 1) {
+            if (_iccid) {
                 var imageObj = new Image();
 
                 imageObj.onload = function() {
