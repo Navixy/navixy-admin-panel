@@ -230,7 +230,7 @@ Ext.define('NavixyPanel.view.bundles.Shipping', {
                             },
                             {
                                 title: _l.get('bundles.shipping.fields.creation_time'),
-                                value: Ext.Date.formatISO(orderRecord.get('creation_time'), "d-m-Y H:i:s")
+                                value: Ext.Date.format(orderRecord.get('creation_time'), Ext.util.Format.dateFormatFull)
                             },
                             {
                                 title: _l.get('bundles.shipping.fields.status'),

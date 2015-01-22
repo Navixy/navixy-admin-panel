@@ -17,6 +17,6 @@ Ext.define('NavixyPanel.model.Order', {
         {name: 'comment', type: 'string'},
         {name: 'status', type: 'string'},
 
-        {name: 'creation_time', type: 'date', dateReadFormat: 'Y-m-d H:i:s'}
+        {name: 'creation_time', type: 'date', dateReadFormat: Ext.util.Format.dateFormatFull}
     ]
 });

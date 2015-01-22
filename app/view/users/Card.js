@@ -140,7 +140,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 },
                 {
                     title: _l.get('users.fields.creation_date'),
-                    value: Ext.Date.formatISO(recordData.creation_date, "d-m-Y")
+                    value: Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat)
                 },
                 {
                     title: _l.get('users.fields.phone'),

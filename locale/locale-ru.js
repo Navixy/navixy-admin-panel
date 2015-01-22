@@ -405,7 +405,7 @@ Ext.define('Locale.locale-ru', {
             model: 'Модель',
             phone: 'Телефон',
             device_id: 'Номер устройства',
-            creation_date: 'Дата создания',
+            creation_date: 'Дата регистрации',
             creation_date_short: 'Создан',
             connection_status: 'Статус',
             tracker_id_exp: 'Номер трекера',

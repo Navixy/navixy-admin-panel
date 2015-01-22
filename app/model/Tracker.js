@@ -26,7 +26,7 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'phone', type: 'string', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'blocked', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'connection_status', type: 'boolean', convert: function (value, record) {return record.sourceConverter(this, value);}},
-        {name: 'source_creation_date', type: 'date', dateReadFormat: 'Y-m-d H:i:s', convert: function (value, record) {return record.sourceConverter(this, value);}}
+        {name: 'source_creation_date', type: 'date', dateReadFormat: Ext.util.Format.dateFormatFull, convert: function (value, record) {return record.sourceConverter(this, value);}}
     ],
 
     sourceMap: {

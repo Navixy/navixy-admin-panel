@@ -387,7 +387,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
                     }
                     return iccidString.substring(startIndex);
                 },
-                assign_time: function (value) {return Ext.Date.formatISO(value, "d-m-Y H:i:s")},
+                assign_time: function (value) {return Ext.Date.format(value, Ext.util.Format.dateFormatFull)},
                 model_code: false,
                 equip_id: false,
                 order_id: function (value) {return Ext.util.Format.booleanEncode(value)}

@@ -24,7 +24,7 @@ Ext.define('NavixyPanel.model.Bundle', {
         {name: 'blocked', type: 'boolean', convert: function (value, record) {return record.simConverter(this, value);}},
         {name: 'registered', type: 'boolean', convert: function (value, record) {return record.simConverter(this, value);}},
 
-        {name: 'assign_time', type: 'date', dateReadFormat: 'Y-m-d H:i:s'}
+        {name: 'assign_time', type: 'date'}
     ],
 
     simMap: {

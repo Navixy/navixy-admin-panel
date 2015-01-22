@@ -149,7 +149,7 @@ Ext.define('NavixyPanel.view.bundles.List', {
             {
                 text: _l.get('bundles.fields.assign_time'),
                 dataIndex: 'assign_time',
-                renderer: Ext.util.Format.dateRenderer('Y-m-d H:i:s'),
+                renderer: Ext.util.Format.dateRenderer(Ext.util.Format.dateFormatFull),
                 width: 180
             }
         ];

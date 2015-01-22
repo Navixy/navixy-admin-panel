@@ -26,7 +26,7 @@ Ext.define('NavixyPanel.model.Transaction', {
             name: 'date',
             type: 'date',
             convert: function (value, record) {
-                return Ext.Date.formatISO(record.get('timestamp'), "Y-m-d");
+                return Ext.Date.format(record.get('timestamp'), Ext.util.Format.dateFormat);
             }
         },
 
