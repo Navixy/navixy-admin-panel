@@ -402,7 +402,7 @@ Ext.define('Locale.locale-en', {
             phone: 'Phone',
             device_id: 'Device id',
             creation_date: 'Date of registration',
-            creation_date_short: 'Created',
+            creation_date_short: 'Registered',
             connection_status: 'Status',
             tracker_id_exp: 'Tracker number',
             phone_exp: 'Phone number',
