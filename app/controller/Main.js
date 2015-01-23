@@ -422,7 +422,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
                 newIcon = document.createElement("link");
                 newIcon.setAttribute("rel", "icon");
-                newIcon.setAttribute("href", favicon_url);
+                newIcon.setAttribute("href", [favicon_url, '?', Ext.Date.now()].join(''));
                 document.querySelector("head").appendChild(newIcon);
             }
         });
