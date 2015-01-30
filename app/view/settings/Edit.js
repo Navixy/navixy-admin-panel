@@ -81,6 +81,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     changeSaveBtn: function () {
+
+        this.getForm().isValid();
+
         var save_btn = this.down('[action="form_submit"]'),
             pass_btn = this.down('[action="pass_submit"]');
 
@@ -421,6 +424,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'domain',
                 fieldLabel: _l.get('settings.fields.domain') + '<sup>*</sup>',
+                allowBlank: false,
 
                 minLength: 2,
                 maxLength: 100,
@@ -694,9 +698,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'checkboxgroup',
                 fieldLabel: _l.get('settings.fields.maps_title'),
+                allowBlank: false,
                 columns: 1,
                 vertical: true,
-                margin: '0 0 10 0',
+                margin: '0 0 50 0',
                 ui: 'light',
                 items: this.getMapsList()
             },

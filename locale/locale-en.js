@@ -230,11 +230,11 @@ Ext.define('Locale.locale-en', {
     },
 
     maps: {
-        roadmap: 'Google дорожная карта',
-        satellite: 'Google спутник',
-        hybrid: 'Google гибрид',
+        roadmap: 'Google roadmap',
+        satellite: 'Google satellite',
+        hybrid: 'Google hybrid',
         yandex: 'Yandes Maps',
-        yandexpublic: 'Uandex Narod Map',
+        yandexpublic: 'Yandex Narod Map',
         cdcom: 'ProGorod Maps',
         osm: 'OpenStreet Maps',
         osmmapnik: 'OpenStreet Maps 2',

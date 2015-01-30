@@ -303,3 +303,9 @@ Ext.define("Ext.locale.ru.Component", {
     override: "Ext.Component"
 });
 
+Ext.define("Ext.locale.ru.form.CheckboxGroup", {
+    override: "Ext.form.CheckboxGroup",
+
+    blankText: 'Вы должны выбрать по крайней мере один элемент в этой группе'
+});
+
