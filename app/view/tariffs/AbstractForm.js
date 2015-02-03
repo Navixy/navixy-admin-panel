@@ -24,13 +24,20 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     },
 
     getNWItems: function () {
-        var me = this;
+        var me = this,
+            deviceData = [
+                {type: "tracker", "name": _l.get('devices.tracker')},
+            ],
+            dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first();
+
+        if (!!dealer.get('enable_cameras')) {
+            deviceData.push({type: "camera", "name": _l.get('devices.camera')})
+        }
+
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : [
-                {type: "tracker", "name": _l.get('devices.tracker')},
-                {type: "camera", "name": _l.get('devices.camera')}
-            ]
+            data : deviceData
         });
         this.tariffTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
@@ -85,6 +92,9 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
             {
                 fieldLabel: _l.get('tariffs.price_type')[this.getRecordData().type || "monthly"],
                 name: 'price',
+
+                editable: false,
+                disabled: true,
 
                 minLength: 1,
                 maxLength: 6,
