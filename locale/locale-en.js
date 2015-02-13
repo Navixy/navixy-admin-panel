@@ -226,7 +226,8 @@ Ext.define('Locale.locale-en', {
         chf: 'Swiss franc',
         cad: 'Canadian dollar',
         aud: 'Australian Dollar',
-        nzd: 'New Zealand Dollar'
+        nzd: 'New Zealand Dollar',
+        tjs: 'Tajik Somoni'
     },
 
     maps: {

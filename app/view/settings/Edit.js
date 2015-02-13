@@ -34,6 +34,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 {type: "CAD", "name": _l.get('currency.cad')},
                 {type: "AUD", "name": _l.get('currency.aud')},
                 {type: "NZD", "name": _l.get('currency.nzd')},
+                {type: "TJS", "name": _l.get('currency.tjs')},
             ]
         });
 
