@@ -289,6 +289,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 record.commit();
             } catch (e) {}
 
+            this.getTrackersList().store.load();
             this.getTrackerEdit().afterSave();
         } else {
             record.reject(false);
@@ -364,7 +365,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     afterTrackerCloneRemove: function (response, record) {
-        console.log(response);
         if (response) {
             this.getTrackersList().store.load();
 
@@ -417,6 +417,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 record.commit();
             } catch (e) {}
 
+            this.getTrackersList().store.load();
             this.getTrackerTariff().afterSave();
         } else {
             record.reject(false);

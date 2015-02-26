@@ -210,6 +210,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     afterUserCreate: function (userId, record) {
         this.getUserCreate().afterSave(userId);
+        this.getUsersList().store.load();
         Ext.getStore('Users').load();
     },
 
@@ -242,6 +243,7 @@ Ext.define('NavixyPanel.controller.Users', {
         if (success) {
             record.set(formValues);
             this.getUserEdit().afterSave();
+            this.getUsersList().store.load();
         }
     },
 
