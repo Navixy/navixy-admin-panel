@@ -483,8 +483,15 @@ Ext.define('NavixyPanel.controller.Main', {
                 return !value
                     ? '<span class="gray nopad">' + value + '</span>'
                     : value > 0
-                        ? value
+                        ? Ext.Number.toFixed(value, 2)
                         : '<span class="red nopad">' + value + '</span>'
+            },
+
+            bonusEncode: function (value) {
+
+                return !value
+                    ? '<span class="gray nopad">' + value + '</span>'
+                    : Ext.Number.toFixed(value, 2)
             }
         });
     },

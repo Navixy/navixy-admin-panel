@@ -469,7 +469,7 @@ Ext.define('Locale.locale-en', {
             after_owner_success: 'Changed: {0}',
             after_owner_failure: 'Changed: {0}, {1} change failed',
             select_req: 'Select trackers from list',
-            select_clone_req: 'Clones selected, group operations can be performed'
+            select_clone_req: 'Clones selected, group operations can not be performed'
         },
         card: {
             links: {

@@ -443,7 +443,16 @@ Ext.define('Locale.locale-es', {
         },
         list: {
             create_btn_text: 'Crea un nuevo tracker',
-            empty_text: 'No se han encontrado marcadores'
+            owner_btn: 'Cambiar propietario',
+            clone_btn: 'Clon',
+            edit_btn: 'Editar seleccionado',
+            empty_text: 'No se han encontrado marcadores',
+            after_clone_success: 'clonada: {0}',
+            after_clone_failure: 'clonados: {0}, {1} clon no',
+            after_owner_success: 'Cambiado: {0}',
+            after_owner_failure: 'Cambiado: {0}, {1} cambio no',
+            select_req: 'Seleccione rastreadores de la lista',
+            select_clone_req: 'Los clones seleccionados, las operaciones del grupo no se pueden realizar'
         },
         card: {
             links: {

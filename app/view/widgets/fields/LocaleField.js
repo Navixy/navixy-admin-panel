@@ -15,7 +15,7 @@ Ext.define('NavixyPanel.view.widgets.fields.LocaleField', {
     editable: false,
 
     initComponent: function () {
-        this.store = Locale.Manager.getAvailable();
+        this.store = Locale.Manager.getAvailableForUI();
         this.value = Ext.getStore('Dealer').first().get('locale');
         this.callParent(arguments);
     }

@@ -15,6 +15,13 @@ Ext.define('Locale.Manager', {
         { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'] }
     ],
 
+    _ui_locales: [
+        { id: 'en_US', name: 'en', text: 'English', alias: ['en', 'en_US', 'English'], rtl: false },
+        { id: 'ru_RU', name: 'ru', text: 'Russian - Русский', alias: ['ru', 'ru_RU', 'Русский'], rtl: false },
+        { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'], rtl: false },
+        { id: 'ar_AR', name: 'ar', text: 'Arabic - العربية', alias: ['ar', 'ar_AR', 'ar_AR'], rtl: true },
+    ],
+
     _tpl: 'locale-{locale}',
     _cookie_name: 'locale',
 
@@ -48,6 +55,19 @@ Ext.define('Locale.Manager', {
 
     getAvailable: function (simple) {
         var locales = this._locales;
+
+        if (simple) {
+            return locales;
+        } else {
+            return new Ext.data.Store({
+                fields: ['name', 'text', 'alias'],
+                data: locales
+            });
+        }
+    },
+
+    getAvailableForUI: function (simple) {
+        var locales = this._ui_locales;
 
         if (simple) {
             return locales;

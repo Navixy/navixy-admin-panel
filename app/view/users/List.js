@@ -31,7 +31,7 @@ Ext.define('NavixyPanel.view.users.List', {
             ],
             userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>',
             balanceTpl = '{balance:balanceEncode}',
-            bonusTpl = '{bonus:emptyEncode}',
+            bonusTpl = '{bonus:bonusEncode}',
             statusTpl = [
                 '<tpl if="activated">',
                 '{[_l.get("users.fields.activated_short.status_true")]}',

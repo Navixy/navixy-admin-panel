@@ -727,6 +727,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'map_location_lat',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
                 allowBlank: true,
+                vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
             },
@@ -734,6 +735,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'map_location_lng',
                 fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
                 allowBlank: true,
+                vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
             },
