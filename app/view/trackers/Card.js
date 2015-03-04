@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && !this.getRecordData().clone && !this.getRecordData().deleted) {
+        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && Ext.checkPermission('tariffs', 'read') && !this.getRecordData().clone && !this.getRecordData().deleted) {
             result.push(
                 {
                     html: '<a>' + _l.get('trackers.card.links.tracker_tariff_edit') + '</a>',
