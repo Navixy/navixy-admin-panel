@@ -54,5 +54,21 @@ Ext.define('NavixyPanel.view.tariffs.Edit', {
             {type: "everyday", "name": _l.get('tariffs.types.everyday')},
             {type: "activeday", "name": _l.get('tariffs.types.activeday')}
         ]
+    },
+    changePaymentType: function (paymentType) {
+        var type = paymentType !== "monthly";
+
+        var trackerFields = [
+                this.down('[name="proportional_charge"]')
+            ],
+            price_field = this.down('[name="price"]');
+
+        Ext.iterate(trackerFields, function (field) {
+            field[type ? 'hide' : 'show']();
+        }, this);
+
+        price_field.setFieldLabel(_l.get('tariffs.price_type')[paymentType]);
+        price_field.show();
+        price_field.enable();
     }
 });
