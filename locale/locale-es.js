@@ -659,6 +659,10 @@ Ext.define('Locale.locale-es', {
 
             custom_fields: 'Personalización',
 
+            main_buttons_title: 'Mostrando botones',
+            show_mobile_apps: 'Mostrar botones para la descarga de aplicaciones móviles',
+            allow_registration: 'Permitir inquilino usuario',
+
             main_texts_title: 'Principales textos',
             footer_texts_title: 'Texto en el sótano de la página de inicio de sesión',
 

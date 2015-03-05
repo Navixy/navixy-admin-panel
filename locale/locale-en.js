@@ -687,6 +687,10 @@ Ext.define('Locale.locale-en', {
 
             custom_fields: 'Customization',
 
+            main_buttons_title: 'Displaying buttons',
+            show_mobile_apps: 'Show buttons for downloading mobile apps',
+            allow_registration: 'Allow user self registration',
+
             main_texts_title: 'Main texts',
             footer_texts_title: 'Text in the basement of the login page',
 

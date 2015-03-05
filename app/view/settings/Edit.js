@@ -316,6 +316,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                     values[name] = Ext.isArray(data) ? data : [data];
                 }
+                if (field.role === 'checkbox') {
+                    values[field.name] = field.getValue();
+                }
             });
         }
 
@@ -459,8 +462,26 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
+                html: _l.get('settings.edit_form.main_buttons_title'),
+                padding: '0 0 10 0'
+            },
+            {
+                name: 'show_mobile_apps',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.edit_form.show_mobile_apps')
+            },
+            {
+                name: 'allow_registration',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.edit_form.allow_registration')
+            },
+            {
+                xtype: 'container',
+                cls: 'block_header',
                 html: _l.get('settings.edit_form.main_texts_title'),
-                padding: '0 0 20 0'
+                padding: '20 0 20 0'
             },
             {
                 name: 'service_title',

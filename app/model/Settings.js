@@ -21,6 +21,10 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'allowed_maps', type: 'auto'},
         {name: 'limited_domain', type: 'boolean', default: true},
 
+        {name: 'show_mobile_apps', type: 'boolean', defaultValue: true},
+        {name: 'allow_registration', type: 'boolean', defaultValue: true},
+
+
         {name: 'currency', type: 'string'},
         {name: 'payment_link', type: 'string'},
         {name: 'promo_url', type: 'string'},

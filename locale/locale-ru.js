@@ -691,6 +691,10 @@ Ext.define('Locale.locale-ru', {
 
             custom_fields: 'Кастомизация',
 
+            main_buttons_title: 'Отображение кнопок',
+            show_mobile_apps: 'Показывать кнопки для загрузки мобильных приложений',
+            allow_registration: 'Разрешить самостоятельную регистрацию пользователей',
+
             main_texts_title: 'Кастомизация текстов',
             footer_texts_title: 'Тесты в подвале страницы авторизации',
 
