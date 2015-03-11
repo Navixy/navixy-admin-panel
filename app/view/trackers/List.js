@@ -165,8 +165,8 @@ Ext.define('NavixyPanel.view.trackers.List', {
             },
             {
                 text: _l.get('trackers.fields.model'),
-                dataIndex: 'model',
-                width: 120
+                dataIndex: 'model_name',
+                width: 220
             },
             {
                 text: _l.get('trackers.fields.device_id'),
@@ -176,7 +176,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
             {
                 text: _l.get('trackers.fields.phone'),
                 dataIndex: 'phone',
-                width: 140
+                width: 120
             },
             {
                 text: _l.get('trackers.fields.creation_date_short'),

@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'dealer_id', type: 'int'},
 
         {name: 'label', type: 'string'},
+        {name: 'model_name', type: 'string'},
 
         {name: 'clone', type: 'boolean'},
         {name: 'deleted', type: 'boolean'},

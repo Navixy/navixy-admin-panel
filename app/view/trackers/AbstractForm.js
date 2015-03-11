@@ -87,7 +87,7 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
             },
             {
                 fieldLabel: _l.get('trackers.fields.model'),
-                name: 'model',
+                name: 'model_name',
                 disabled: true
             },
             {

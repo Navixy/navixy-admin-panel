@@ -103,8 +103,8 @@ Ext.define('NavixyPanel.view.trackers.AbstractGroupForm', {
                 },
                 {
                     text: _l.get('trackers.fields.model'),
-                    dataIndex: 'model',
-                    width: 120
+                    dataIndex: 'model_name',
+                    width: 220
                 }
             ],
             plugins: plugins

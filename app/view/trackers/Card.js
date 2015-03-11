@@ -176,7 +176,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 },
                 {
                     title: _l.get('trackers.fields.model'),
-                    value: recordData.model
+                    value: recordData.model_name
                 },
                 {
                     title: _l.get('trackers.fields.device_id'),
