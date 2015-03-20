@@ -701,6 +701,7 @@ Ext.define('Locale.locale-ru', {
 
             logo_title: 'Логотип',
             favicon_title: 'Favicon',
+            favicon_desc: 'не работает в Internet Explorer',
 
             login_wallpaper_title: 'Фон окна авторизации',
             desktop_wallpaper_title: 'Фон окна сервиса',

@@ -513,7 +513,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.get('settings.edit_form.favicon_title'),
+                html: _l.get('settings.edit_form.favicon_title') + ' <span class="desc">(' + _l.get('settings.edit_form.favicon_desc') + ')</span>',
                 padding: '0 0 10 0'
             },
             this.getImgButtonConfig('favicon'),

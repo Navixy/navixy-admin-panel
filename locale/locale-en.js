@@ -697,6 +697,7 @@ Ext.define('Locale.locale-en', {
 
             logo_title: 'Logo',
             favicon_title: 'Favicon',
+            favicon_desc: 'not work in Internet Explorer',
 
             login_wallpaper_title: 'Authorization page background',
             desktop_wallpaper_title: 'Services page background',

@@ -6,6 +6,11 @@ $users-create-block-header-font-size: 15px;
         color: $light-panel-text-color;
         font-size: $users-create-block-header-font-size;
         @extend .x-panel-header-text-container-light;
+
+        .desc {
+            color: $grayLight;
+            font-size: $users-create-block-header-font-size - 3;
+        }
     }
 
     .block_sup {
