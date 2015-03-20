@@ -223,7 +223,8 @@ Ext.define('Locale.locale-es', {
         cad: 'Canadian dollar',
         aud: 'Dólar canadiense',
         nzd: 'Dólar de Nueva Zelanda',
-        tjs: 'Таджикский сомони'
+        tjs: 'Таджикский сомони',
+        php: 'Peso filipino'
     },
 
     maps: {
