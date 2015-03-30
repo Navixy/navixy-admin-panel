@@ -1,6 +1,6 @@
 {
   "name": "NavixyPanel-v2",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "readme": "Navixy New Panel",
   "peerDependencies": {
     "grunt": "~0.4.0"
