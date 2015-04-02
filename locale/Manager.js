@@ -12,7 +12,8 @@ Ext.define('Locale.Manager', {
     _locales: [
         { id: 'en_US', name: 'en', text: 'English', alias: ['en', 'en_US', 'English'] },
         { id: 'ru_RU', name: 'ru', text: 'Russian - Русский', alias: ['ru', 'ru_RU', 'Русский'] },
-        { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'] }
+        { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'] },
+        { id: 'de_DE', name: 'de', text: 'Deutsch - German', alias: ['de', 'de_DE', 'de_AT']},
     ],
 
     _ui_locales: [
@@ -20,6 +21,7 @@ Ext.define('Locale.Manager', {
         { id: 'ru_RU', name: 'ru', text: 'Russian - Русский', alias: ['ru', 'ru_RU', 'Русский'], rtl: false },
         { id: 'es_ES', name: 'es', text: 'Spanish - Español', alias: ['es', 'es_ES', 'Español'], rtl: false },
         { id: 'ar_AR', name: 'ar', text: 'Arabic - العربية', alias: ['ar', 'ar_AR', 'ar_AR'], rtl: true },
+        { id: 'de_DE', name: 'de', text: 'Deutsch - German', alias: ['de', 'de_DE', 'de_AT'], rtl: false },
     ],
 
     _tpl: 'locale-{locale}',
