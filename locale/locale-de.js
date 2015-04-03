@@ -399,7 +399,10 @@ Ext.define('Locale.locale-de', {
                 "type": "Operationstyp",
                 "subtype": "Subtyp",
                 "date": "Datum",
-                "amount": "Summe",
+                bonus_amount: 'Bonus:',
+                old_bonus: 'Old',
+                new_bonus: 'New',
+                "amount": "Summe:",
                 "old_balance": "Alte",
                 "new_balance": "Neu",
                 "type_set": {

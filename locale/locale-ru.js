@@ -368,7 +368,10 @@ Ext.define('Locale.locale-ru', {
                 type: 'Тип операции',
                 subtype: 'Подтип',
                 date: 'Дата',
-                amount: 'Сумма',
+                bonus_amount: 'Бонус:',
+                old_bonus: 'Было',
+                new_bonus: 'Стало',
+                amount: 'Сумма:',
                 old_balance: 'Было',
                 new_balance: 'Стало',
                 type_set: {
