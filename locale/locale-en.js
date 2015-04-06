@@ -264,12 +264,14 @@ Ext.define('Locale.locale-en', {
         "byr": "Belarusian Ruble",
         "eur": "Euro",
         "jpy": "Japanese Yen",
-        "gbp": "Pound sterling",
-        "chf": "Swiss franc",
-        "cad": "Canadian dollar",
+        "gbp": "Pound Sterling",
+        "chf": "Swiss Franc",
+        "cad": "Canadian Dollar",
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
-        "tjs": "Tajik Somoni"
+        "tjs": "Tajik Somoni",
+        "php": 'Philippine Peso'
+
     },
     "maps": {
         "roadmap": "Google roadmap",

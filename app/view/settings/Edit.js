@@ -21,21 +21,31 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     initComponent: function () {
 
         this.currencyStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name'],
+            fields: ['type', 'name', 'priority'],
+            sorters: [
+                {
+                    property: 'priority',
+                    direction: 'ASC'
+                },
+                {
+                    property: 'name',
+                    direction: 'ASC'
+                }
+            ],
             data: [
-                {type: "RUB", "name": _l.get('currency.rub')},
-                {type: "USD", "name": _l.get('currency.usd')},
-                {type: "EUR", "name": _l.get('currency.eur')},
-                {type: "KZT", "name": _l.get('currency.kzt')},
-                {type: "BYR", "name": _l.get('currency.byr')},
-                {type: "JPY", "name": _l.get('currency.jpy')},
-                {type: "GBP", "name": _l.get('currency.gbp')},
-                {type: "CHF", "name": _l.get('currency.chf')},
-                {type: "CAD", "name": _l.get('currency.cad')},
-                {type: "AUD", "name": _l.get('currency.aud')},
-                {type: "NZD", "name": _l.get('currency.nzd')},
-                {type: "TJS", "name": _l.get('currency.tjs')},
-                {type: "PHP", "name": _l.get('currency.php')},
+                {type: "RUB", "name": _l.get('currency.rub'), priority: 2},
+                {type: "USD", "name": _l.get('currency.usd'), priority: 0},
+                {type: "EUR", "name": _l.get('currency.eur'), priority: 1},
+                {type: "KZT", "name": _l.get('currency.kzt'), priority: 3},
+                {type: "BYR", "name": _l.get('currency.byr'), priority: 3},
+                {type: "JPY", "name": _l.get('currency.jpy'), priority: 3},
+                {type: "GBP", "name": _l.get('currency.gbp'), priority: 3},
+                {type: "CHF", "name": _l.get('currency.chf'), priority: 3},
+                {type: "CAD", "name": _l.get('currency.cad'), priority: 3},
+                {type: "AUD", "name": _l.get('currency.aud'), priority: 3},
+                {type: "NZD", "name": _l.get('currency.nzd'), priority: 3},
+                {type: "TJS", "name": _l.get('currency.tjs'), priority: 3},
+                {type: "PHP", "name": _l.get('currency.php'), priority: 3},
             ]
         });
 
