@@ -289,7 +289,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     },
 
     changePaymentType: function (paymentType) {
-        var type = paymentType !== "monthly";
+        var type = paymentType == "monthly";
 
         var trackerFields = [
                 this.down('[name="proportional_charge"]')
@@ -324,5 +324,21 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
 
     gatSaveTarget: function (value) {
         return 'tariff/' + (value || this.record.getId());
+    },
+
+    getProcessedValues: function () {
+        var values = this.getValues(),
+            type = values.type || this.getRecordData().type;
+
+        this.iterateFields(function(field) {
+            if (field.is('checkboxfield, checkbox')) {
+                values[field.name] = field.getValue();
+            }
+        });
+
+        if (type != "monthly") {
+            values.proportional_charge = false;
+        }
+        return values;
     }
 });

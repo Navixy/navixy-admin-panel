@@ -56,7 +56,7 @@ Ext.define('NavixyPanel.view.tariffs.Edit', {
         ]
     },
     changePaymentType: function (paymentType) {
-        var type = paymentType !== "monthly";
+        var type = paymentType == "monthly";
 
         var trackerFields = [
                 this.down('[name="proportional_charge"]')
