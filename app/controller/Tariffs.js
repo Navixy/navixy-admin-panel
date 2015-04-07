@@ -212,6 +212,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 record.commit();
             } catch (e) {}
 
+            this.getTariffsList().store.load();
             this.getTariffEdit().afterSave();
         } else {
             record.reject(false);
@@ -306,6 +307,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 defaultRecord.commit();
             } catch (e) {}
 
+            this.getTariffsList().store.load();
             this.getTariffDefault().afterSave();
         } else {
             defaultRecord.reject(false);
