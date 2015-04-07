@@ -786,6 +786,20 @@ Ext.define('Locale.locale-ru', {
         }
     },
 
+    payments: {
+        menu_text: 'Платежи',
+        import_sberbank: {
+            title: 'Загрузка платежей Себербанка',
+            save_btn: 'Импорт платежей',
+            upload_btn: 'Обзор',
+            upload_loading: 'Загрузка файла',
+            error_text: 'Не удалось импортировать платежи',
+            fields: {
+                file_title: 'Файл выгрузки формата {0} (максимальный размер {1} мб)'
+            }
+        }
+    },
+
     bundles: {
         menu_text: 'Комплектация',
         title: 'Работа с комплектами оборудования',

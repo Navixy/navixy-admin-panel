@@ -436,6 +436,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    importSberbank: function (form, config) {
+        this.uploadFile(form, Ext.apply({
+            action: 'sberbank',
+            handler: 'payments/import'
+        }, config));
+    },
+
 
     getBundlesList: function (config) {
         this.requestWithOptions(config, {
