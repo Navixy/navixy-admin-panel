@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
     store: 'Trackers',
 
     hasSelection: false,
+    showStatus: true,
 
     getTexts: function () {
         return {
@@ -141,6 +142,13 @@ Ext.define('NavixyPanel.view.trackers.List', {
             ],
             trackerStatusTpl = [
                 '<span class="{connection_status}">{[_l.get("trackers.fields.statuses")[values.connection_status]]}</span>',
+            ],
+            blockedStatusTpl = [
+                '<tpl if="blocked">',
+                '<span class="scaled red">{[_l.get("yes")]}</span>',
+                '<tpl else>',
+                '<span class="scaled lighten">{[_l.get("no")]}</span>',
+                '</tpl>'
             ];
 
         return [
@@ -156,17 +164,23 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 dataIndex: 'label',
                 flex: 1
             },
-            {
+            this.showStatus ? {
                 text: _l.get('trackers.fields.connection_status'),
                 xtype: 'templatecolumn',
                 tpl: trackerStatusTpl,
                 dataIndex: 'status',
                 width: 140
+            } : {
+                text: _l.get('trackers.fields.blocked'),
+                xtype: 'templatecolumn',
+                tpl: blockedStatusTpl,
+                dataIndex: 'blocked',
+                width: 180
             },
             {
                 text: _l.get('trackers.fields.model'),
                 dataIndex: 'model_name',
-                width: 220
+                width: 180
             },
             {
                 text: _l.get('trackers.fields.device_id'),
