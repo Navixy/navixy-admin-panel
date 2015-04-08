@@ -1,0 +1,11 @@
+[main]
+host = https://www.transifex.com
+login = a.ekimov@ruslink.pro
+password = 5073236
+
+[navixy.panel-ui]
+file_filter = transifex/<lang>/panel-ui.json
+source_file = transifex/en/panel-ui.json
+source_lang = en
+lang_map = uk_UA:uk, ro_RO:ro, pt_BR:pt
+type = KEYVALUEJSON

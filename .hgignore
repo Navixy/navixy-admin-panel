@@ -9,5 +9,7 @@ rsync-deploy.js
 theme/metromorph.css
 PConfig.js
 
+.tx/config
 syntax: regexp
 ^ext/
+^transifex/
