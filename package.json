@@ -1,6 +1,6 @@
 {
   "name": "NavixyPanel-v2",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "readme": "Navixy New Panel",
   "peerDependencies": {
     "grunt": "~0.4.0"
@@ -23,5 +23,10 @@
     "grunt-lib-phantomjs": "0.4.0",
     "grunt-hg-release": "~0.1.1",
     "grunt-file-creator": "~0.1.1"
+  },
+  "dependencies": {
+    "merge": "^1.2.0",
+    "promise": "^7.0.0",
+    "string-template": "^0.2.0"
   }
 }

@@ -2,9 +2,14 @@ syntax: glob
 .idea/*
 app/api/_proxy/*
 theme/panel_metromorph/.sass-cache/*
-/ext/
+
 build
 node_modules
 rsync-deploy.js
 theme/metromorph.css
 PConfig.js
+
+.tx/config
+syntax: regexp
+^ext/
+^transifex/

@@ -9,11 +9,7 @@ module.exports = function (grunt) {
                     targetPath: 'build',
                     appDest: 'panel',
                     excludeClasses: [
-                        'Config',
-                        'Locale.locale-en',
-                        'Locale.locale-ru',
-                        'Locale.ext.locale-en',
-                        'Locale.ext.locale-ru'
+                        'Config'
                     ],
                     copyFiles: [
                         {
@@ -23,15 +19,10 @@ module.exports = function (grunt) {
                         'VERSION',
                         'PConfig.js',
                         'PConfig.example.js',
-                        'locale/locale-en.js',
-                        'locale/locale-es.js',
-                        'locale/locale-ru.js',
+                        'locale/**',
                         'locale/locale-de.js',
-                        'locale/ext/locale-en.js',
                         'locale/ext/locale-es.js',
                         'locale/ext/locale-de.js',
-                        'locale/ext/locale-ru.js',
-                        'locale/ext/*',
                         'dev/uploadHandler.html',
                         'dev/stickerPrint.html',
                         'dev/iccid.png',

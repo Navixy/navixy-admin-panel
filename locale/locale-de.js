@@ -1,5 +1,5 @@
 /**
- * @class Locale.locale-en
+ * @class Locale.locale-de
  * @extends Ext.Base
  * Description
  */
@@ -10,8 +10,6 @@ Ext.define('Locale.locale-de', {
         'Locale.ext.locale-de'
     ],
     singleton: true,
-
-    main_copyright: '© ' + new Date().getUTCFullYear() + ' RusLink. All rights reserved.',
 
     "panel_title": "NavixyPanel",
     "error": "Fehler",
@@ -399,10 +397,7 @@ Ext.define('Locale.locale-de', {
                 "type": "Operationstyp",
                 "subtype": "Subtyp",
                 "date": "Datum",
-                bonus_amount: 'Bonus:',
-                old_bonus: 'Old',
-                new_bonus: 'New',
-                "amount": "Summe:",
+                "amount": "Summe",
                 "old_balance": "Alte",
                 "new_balance": "Neu",
                 "type_set": {
@@ -799,5 +794,4 @@ Ext.define('Locale.locale-de', {
             }
         }
     }
-})
-;
+});
