@@ -31,7 +31,7 @@ Ext.define('NavixyPanel.controller.Payments', {
         this.handle({
             'payments' : {
                 fn: this.handlePayments,
-                access: 'generate'
+                access: 'create'
             }
         });
 
