@@ -43,7 +43,7 @@ Ext.define('NavixyPanel.controller.Payments', {
 
     registerMenu: function (config) {
         console.log(this.getModuleName());
-        if (Ext.checkPermission(this.getModuleName(), 'import_payments') && this.menuConfig && this.menuConfig.target) {
+        if (Ext.checkPermission(this.getModuleName(), 'import_payments') && Ext.checkPermission('users', 'update') && Ext.checkPermission('transactions', 'create') && this.menuConfig && this.menuConfig.target) {
 
             this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
 
