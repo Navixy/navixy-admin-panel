@@ -1,19 +1,18 @@
 /**
- * @class Locale.locale-en
- * @extends Ext.Base
- * Description
- */
-
-Ext.define('Locale.locale-en', {
-    extend: 'Locale.AbstractLocale',
-    dependencies: [
-        'Locale.ext.locale-en'
+* @class Locale.locale-en
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-en',{
+    "extend": "Locale.AbstractLocale",
+    "dependencies": [
+        {
+            "name": "Locale.ext.locale-en",
+            "history": false
+        }
     ],
-    singleton: true,
-
-    main_copyright: '© ' + new Date().getUTCFullYear() + ' RusLink. All rights reserved.',
-
-    panel_title: 'NavixyPanel',
+    "singleton": true,
+    "main_copyright": "© 2015 RusLink. All rights reserved.",
+    "panel_title": "NavixyPanel",
     "error": "Error",
     "loading": "Loading...",
     "conneting_loader": "Connecting to server",
@@ -270,8 +269,7 @@ Ext.define('Locale.locale-en', {
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
         "tjs": "Tajik Somoni",
-        "php": 'Philippine Peso'
-
+        "php": "Philippine Peso"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -798,5 +796,4 @@ Ext.define('Locale.locale-en', {
             }
         }
     }
-})
-;
+});

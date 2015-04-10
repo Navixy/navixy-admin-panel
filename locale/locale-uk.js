@@ -1,16 +1,16 @@
 /**
- * @class Locale.locale-uk
- * @extends Ext.Base
- * Description
- */
-
-Ext.define('Locale.locale-uk', {
-    extend: 'Locale.AbstractLocale',
-    dependencies: [
-        'Locale.ext.locale-uk'
+* @class Locale.locale-uk
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-uk',{
+    "extend": "Locale.AbstractLocale",
+    "dependencies": [
+        {
+            "name": "Locale.ext.locale-uk",
+            "history": false
+        }
     ],
-    singleton: true,
-
+    "singleton": true,
     "panel_title": "NavixyPanel",
     "error": "Помилка",
     "loading": "Завантаження...",
@@ -267,7 +267,8 @@ Ext.define('Locale.locale-uk', {
         "cad": "Канадський долар",
         "aud": "Австралійський долар",
         "nzd": "Новозеландський долар",
-        "tjs": "Таджицька Сомоні"
+        "tjs": "Таджицька Сомоні",
+        "php": "Філіппінське песо"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -793,5 +794,6 @@ Ext.define('Locale.locale-uk', {
                 }
             }
         }
-    }
+    },
+    "main_copyright": "© 2015 RusLink. Всі права захищені."
 });

@@ -1,16 +1,16 @@
 /**
- * @class Locale.locale-de
- * @extends Ext.Base
- * Description
- */
-
-Ext.define('Locale.locale-de', {
-    extend: 'Locale.AbstractLocale',
-    dependencies: [
-        'Locale.ext.locale-de'
+* @class Locale.locale-de
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-de',{
+    "extend": "Locale.AbstractLocale",
+    "dependencies": [
+        {
+            "name": "Locale.ext.locale-de",
+            "history": false
+        }
     ],
-    singleton: true,
-
+    "singleton": true,
     "panel_title": "NavixyPanel",
     "error": "Fehler",
     "loading": "Laden...",
@@ -233,7 +233,7 @@ Ext.define('Locale.locale-de', {
         "edit_tool": "Bearbeiten",
         "create_btn_text": "Erstellen",
         "empty_text": "Keine Daten",
-        "search_title_tpl": "{0}: gefunden {1} ",
+        "search_title_tpl": "{0}: gefunden {1}",
         "search_empty_title_tpl": "{0}: keine Treffer gefunden",
         "search_title": "Suche",
         "search_empty_title": "Keine Treffer gefunden"
@@ -267,7 +267,8 @@ Ext.define('Locale.locale-de', {
         "cad": "Kanadischer dollar",
         "aud": "Australischer Dollar",
         "nzd": "Neuseeland-Dollar",
-        "tjs": "Tajik Somoni"
+        "tjs": "Tajik Somoni",
+        "php": "Philippinischer Peso"
     },
     "maps": {
         "roadmap": "Google-Fahrplan",
@@ -311,7 +312,7 @@ Ext.define('Locale.locale-de', {
         },
         "edit_form": {
             "title": "Benutzer bearbeiten",
-            "save_btn": " Änderungen speichern",
+            "save_btn": "Änderungen speichern",
             "return_btn": "Zurück"
         },
         "fields": {
@@ -484,7 +485,7 @@ Ext.define('Locale.locale-de', {
             "grid_clone_label": "Tracker werden geändert"
         },
         "tariff_form": {
-            "title": "Tarif für tracker ändern ",
+            "title": "Tarif für tracker ändern",
             "save_btn": "Änderungen speichern",
             "repay": "Rest des aktuellen Tarif Zahlung zurückzahlen",
             "charge": "Zahlung berechnen für neuen Tarif",
@@ -591,13 +592,13 @@ Ext.define('Locale.locale-de', {
             "tariff_type_short": "Zahlung"
         },
         "list": {
-            "create_btn_text": "Neuen Tarif hinzufügen ",
+            "create_btn_text": "Neuen Tarif hinzufügen",
             "empty_text": "Tarife nicht gefunden"
         },
         "card": {
             "links": {
                 "make_default": "Mark als Standard",
-                "tariff_edit": " Tarif bearbeiten"
+                "tariff_edit": "Tarif bearbeiten"
             },
             "tab_panel": {
                 "trackers": {
@@ -710,7 +711,7 @@ Ext.define('Locale.locale-de', {
             "save_msg": "Einstellungen erfolgreich gespeichert",
             "main_fields": "Grundeinstellungen",
             "map_fields": "Karten-Einstellungen",
-            "permission_fields": " Benachrichtigungs-Einstellungen",
+            "permission_fields": "Benachrichtigungs-Einstellungen",
             "domain_sup": "* - für Domänen wie * {0} verfügbar Landkarte Typen beschränkt",
             "custom_fields": "Anpassung",
             "main_buttons_title": "Schaltflächen anzeigen",
@@ -771,7 +772,7 @@ Ext.define('Locale.locale-de', {
                 "save_btn": "1C-Daten-Datei erhalten",
                 "report_btn": "Taten per e-Mail senden",
                 "fields": {
-                    "month": "Einen Monat wählen ",
+                    "month": "Einen Monat wählen",
                     "last_act": "Letzte Tat Nummer"
                 }
             },
@@ -793,5 +794,6 @@ Ext.define('Locale.locale-de', {
                 }
             }
         }
-    }
+    },
+    "main_copyright": "© 2015 RusLink. Alle Rechte vorbehalten."
 });

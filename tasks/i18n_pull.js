@@ -32,6 +32,10 @@ module.exports = function (grunt) {
                 'panel-ui': {
                     path: './locale/',
                     fileNameTpl: 'locale-{locale}.js',
+                    localeMap: {
+                        en_US: 'en'
+                    },
+                    skipLocale: ['en'],
                     converter: function (locale, json, originalLocaleClass) {
                         var localeData = null,
                             Ext = {
@@ -130,55 +134,53 @@ module.exports = function (grunt) {
 
                 var resourceData = map[resourceName];
 
-                (function (resourceData, fileName) {
-                    var converter = resourceData.converter,
-                        resourceLocale = resourceData.localeMap ? resourceData.localeMap[locale] || locale : locale,
-                        classFileName = template(resourceData.fileNameTpl, {
-                            locale: resourceLocale
-                        }),
-                        destPath = resourceData.path + classFileName,
-                        jsonCache;
+                if (resourceData.skipLocale && resourceData.skipLocale.indexOf(locale) < 0) {
+                    (function (resourceData, fileName) {
+                        var converter = resourceData.converter,
+                            resourceLocale = resourceData.localeMap ? resourceData.localeMap[locale] || locale : locale,
+                            classFileName = template(resourceData.fileNameTpl, {
+                                locale: resourceLocale
+                            }),
+                            destPath = resourceData.path + classFileName,
+                            jsonCache;
 
-                    getLocaleJson(fileName)
-                        .then(function (data) {
-                            jsonCache = data;
-                            if (!data) {
-                                console.log('Resource file error:', fileName);
-                            }
-                        })
-                        .then(getLocaleJson(destPath)
-                            .then(function (originalJson) {
-                                try {
-                                    if (!originalJson) {
-                                        console.log('Original file error:', locale, destPath);
+                        getLocaleJson(fileName)
+                            .then(function (data) {
+                                jsonCache = data;
+                                if (!data) {
+                                    console.log('Resource file error:', fileName);
+                                }
+                            })
+                            .then(getLocaleJson(destPath)
+                                .then(function (originalJson) {
+                                    try {
+                                        if (!originalJson) {
+                                            console.log('Original file error:', locale, destPath);
+                                        }
+                                        return converter(resourceLocale, jsonCache || '{}', originalJson || '{}');
+                                    } catch (e) {
+                                        console.log(e.stack);
+                                    }
+
+                                })
+                                .then(function (classText) {
+                                    if (classText) {
+                                        ensureExists(resourceData.path, function () {
+                                            fs.writeFile(destPath, classText, 'utf8', function (err) {
+                                                if (err) {
+                                                    console.log('Write error:', destPath);
+                                                }
+                                                console.log('OK:', destPath);
+                                                checkCount--;
+                                            });
+                                        });
+                                    } else {
+                                        console.log('error:', locale);
                                         checkCount--;
                                     }
-                                    return converter(resourceLocale, jsonCache || '{}', originalJson);
-                                } catch (e) {
-                                    console.log(e.stack);
-                                }
-
-                            })
-                            .then(function (classText) {
-                                if (classText) {
-                                    ensureExists(resourceData.path, function () {
-                                        fs.writeFile(destPath, classText, {
-                                            encoding: 'utf8',
-                                            mode: parseInt(777, 8)
-                                        }, function (err) {
-                                            if (err) {
-                                                console.log('Write error:', destPath);
-                                            }
-                                            console.log('OK:', destPath);
-                                            checkCount--;
-                                        });
-                                    });
-                                } else {
-                                    console.log('error:', locale);
-                                    checkCount--;
-                                }
-                            }));
-                })(resourceData, [folder + locale, resourceName + '.json'].join('/'));
+                                }));
+                    })(resourceData, [folder + locale, resourceName + '.json'].join('/'));
+                }
 
             }
 
