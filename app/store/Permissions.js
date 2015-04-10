@@ -13,7 +13,7 @@ Ext.define('NavixyPanel.store.Permissions', {
         'codes' : 'activation_code',
         'bundles' : 'tracker_bundles',
         'settings' : 'service_settings,notification_settings',
-        'payments' : 'transactions'
+        'payments' : 'accounting'
     },
 
     getAlias: function (sectionId) {
