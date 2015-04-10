@@ -130,11 +130,10 @@ module.exports = function (grunt) {
 
         function updateLocale(locale, folder, map) {
             for (var resourceName in map) {
-                checkCount++;
-
                 var resourceData = map[resourceName];
 
                 if (resourceData.skipLocale && resourceData.skipLocale.indexOf(locale) < 0) {
+                    checkCount++;
                     (function (resourceData, fileName) {
                         var converter = resourceData.converter,
                             resourceLocale = resourceData.localeMap ? resourceData.localeMap[locale] || locale : locale,
@@ -172,11 +171,13 @@ module.exports = function (grunt) {
                                                 }
                                                 console.log('OK:', destPath);
                                                 checkCount--;
+                                                availableLocales.splice(availableLocales.indexOf(locale), 1);
                                             });
                                         });
                                     } else {
                                         console.log('error:', locale);
                                         checkCount--;
+                                        availableLocales.splice(availableLocales.indexOf(locale), 1);
                                     }
                                 }));
                     })(resourceData, [folder + locale, resourceName + '.json'].join('/'));
@@ -201,9 +202,10 @@ module.exports = function (grunt) {
 
         timeoutInterval = setTimeout(function () {
             console.log('Timedout', checkCount);
+            console.log(availableLocales);
             clearInterval(checkInterval);
             done();
-        }, 10000);
+        }, 20000);
     });
 
     grunt.registerTask('lpull', 'Pull translations from Transifex service to resource folder', function () {
