@@ -24,7 +24,7 @@ Ext.define('Locale.locale-en',{
         "login": "Login or Email address",
         "password": "Password",
         "login_btn": "Login",
-        "locale_title": "Interface language / Язык интерфейса",
+        "locale_title": "Choose language",
         "locale_title_short": "language",
         "auth_error": "Authentication error",
         "reloading_soon": "Reloading",
@@ -678,7 +678,7 @@ Ext.define('Locale.locale-en',{
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",
-            "locale": "Monitoring Language",
+            "locale": "User interface language",
             "demo_login": "Demo user",
             "demo_password": "Demo password",
             "maps_title": "Available maps",
