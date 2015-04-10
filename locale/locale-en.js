@@ -134,6 +134,14 @@ Ext.define('Locale.locale-en', {
         "settings": {
             "225": "New password must be different",
             "248": "Wrong password"
+        },
+        "payment": {
+            "242": "There were errors during content validation",
+            "201": "Not found in database",
+            "259": "Payments count not comply with summary",
+            "260": "Payments sum not comply with summary",
+            "246": "Invalid user ID",
+            "247": "Entity already exists"
         }
     },
     "units_combination": {
@@ -796,6 +804,24 @@ Ext.define('Locale.locale-en', {
                     "webmoney": "WebMoney"
                 }
             }
+        }
+    },
+    "payments": {
+        "menu_text": "Payments",
+        "import_sberbank": {
+            "title": "Sberbank payments import",
+            "save_btn": "Import payments",
+            "upload_btn": "View",
+            "upload_loading": "Uploading file",
+            "error_text": "Failed to import payments",
+            "fields": {
+                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+            },
+            "errors": {
+                "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
+            },
+            "success_msg": "Sberbank payments successfully imported",
+            "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
         }
     }
 })
