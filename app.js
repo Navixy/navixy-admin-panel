@@ -40,6 +40,7 @@ Ext.application({
         'NavixyPanel.controller.Codes',
         'NavixyPanel.controller.Bundles',
         'NavixyPanel.controller.Settings',
-        'NavixyPanel.controller.Accounting'
+        'NavixyPanel.controller.Accounting',
+        'NavixyPanel.controller.Payments'
     ]
 });

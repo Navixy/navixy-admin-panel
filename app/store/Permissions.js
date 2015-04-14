@@ -12,7 +12,8 @@ Ext.define('NavixyPanel.store.Permissions', {
     aliasesMap: {
         'codes' : 'activation_code',
         'bundles' : 'tracker_bundles',
-        'settings' : 'service_settings,notification_settings'
+        'settings' : 'service_settings,notification_settings',
+        'payments' : 'accounting'
     },
 
     getAlias: function (sectionId) {

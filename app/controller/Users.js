@@ -118,6 +118,22 @@ Ext.define('NavixyPanel.controller.Users', {
         };
     },
 
+    registerMenu: function (config) {
+        if (Ext.checkPermission(this.getModuleName(), 'read') && this.menuConfig && this.menuConfig.target) {
+
+            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
+
+            var menuText = this.menuConfig.text || this.getModuleName(),
+                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+
+            this.application.fireEvent('menuregister', {
+                name: this.getModuleName(),
+                text: menuText,
+                target: menuTarget
+            });
+        }
+    },
+
     handleUserList: function () {
         this.fireContent({
             xtype: 'userslist',
