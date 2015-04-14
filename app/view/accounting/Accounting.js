@@ -9,6 +9,10 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
     alias: 'widget.accountingmain',
     bodyPadding: '0',
 
+    getInvalidTabs: function () {
+        return [];
+    },
+
     getTitle: function () {
         return _l.get('accounting.form.title');
     },

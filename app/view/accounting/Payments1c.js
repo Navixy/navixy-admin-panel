@@ -25,6 +25,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                 {type: "mobimoney", "name": _l.get('accounting.form.payments.ps.mobimoney')},
                 {type: "rbkmoney", "name": _l.get('accounting.form.payments.ps.rbkmoney')},
                 {type: "webmoney", "name": _l.get('accounting.form.payments.ps.webmoney')},
+                {type: "sberbank", "name": _l.get('accounting.form.payments.ps.sberbank')},
             ]
         });
 
