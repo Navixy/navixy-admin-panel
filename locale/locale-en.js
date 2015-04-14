@@ -135,12 +135,12 @@ Ext.define('Locale.locale-en',{
             "248": "Wrong password"
         },
         "payment": {
-            "242": "There were errors during content validation",
             "201": "Not found in database",
-            "259": "Payments count not comply with summary",
-            "260": "Payments sum not comply with summary",
+            "242": "There were errors during content validation",
             "246": "Invalid user ID",
-            "247": "Entity already exists"
+            "247": "Entity already exists",
+            "259": "Payments count not comply with summary",
+            "260": "Payments sum not comply with summary"
         }
     },
     "units_combination": {
