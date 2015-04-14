@@ -800,7 +800,7 @@ Ext.define('Locale.locale-en',{
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
                     "webmoney": "WebMoney",
-                    "sberbank": "Sberbank"
+                    "sberbank": "Sberbank-Online"
                 }
             }
         }

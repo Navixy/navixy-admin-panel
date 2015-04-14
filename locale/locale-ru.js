@@ -810,7 +810,7 @@ Ext.define('Locale.locale-ru',{
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
                     "webmoney": "WebMoney",
-                    "sberbank": "Сбербанк"
+                    "sberbank": "Сбербанк-Онлайн"
                 }
             }
         }
