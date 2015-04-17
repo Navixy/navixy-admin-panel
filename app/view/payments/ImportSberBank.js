@@ -81,9 +81,6 @@ Ext.define('NavixyPanel.view.payments.ImportSberBank', {
                     padding: "3 10 3 10"
                 },
                 listeners: {
-                    afterrender: function(field) {
-                        field.fileInputEl.set(me.accept);
-                    },
                     change: function(field, value){
                         var node = Ext.DomQuery.selectNode('input[id=' + field.getInputId() + ']');
                         node.value = value.replace("C:\\fakepath\\","");
@@ -98,10 +95,6 @@ Ext.define('NavixyPanel.view.payments.ImportSberBank', {
             errors = response.errors || [],
             errCode = status.code,
             errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
-
-        this.down("container[role=form]").down("filefield").fileInputEl.set({
-            accept: this.accept
-        });
 
         this.showUploadError(errDescription);
     },
