@@ -103,8 +103,6 @@ Ext.define('NavixyPanel.controller.Settings', {
             settingsData = record.getData(),
             requestsCnt = 0;
 
-        console.log(formValues);
-
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {
             requestsCnt++ ;
             Ext.API.updateSettingsSerivce({

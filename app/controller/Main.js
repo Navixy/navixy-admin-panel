@@ -281,6 +281,14 @@ Ext.define('NavixyPanel.controller.Main', {
             amountMask: /[\-\+0-9.]/,
             amountVal: /^[-+]?\d*\.?\d{0,2}$/i
         });
+
+        Ext.apply(Ext.form.field.VTypes, {
+            rurl: function(v) {
+                return Ext.form.VTypes['rurlVal'].test(v);
+            },
+            rurlText: Ext.form.field.VTypes.urlText,
+            rurlVal: /(((^https?)|(^ftp)):\/\/([\-а-яёa-z0-9]+\.)+[а-яёa-z0-9]{2,3}(\/[%\-а-яёa-z0-9]+(\.[а-яёa-z0-9]{2,})?)*(([а-яёa-z0-9\-\.\?\\\/+@&#;`~=%!]*)(\.[а-яёa-z0-9]{2,})?)*\/?)/i
+        });
     },
 
     // Special Overrides

@@ -454,7 +454,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 allowBlank: true,
                 minLength: 2,
                 maxLength: 100,
-                vtype:'url'
+                vtype:'rurl'
             },
             {
                 name: 'payment_link',
