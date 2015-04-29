@@ -413,7 +413,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 items: [
                     {
                         items: this.getNotificationsItems()
-                    }
+                    },
+                    {
+                        padding: this.formRowPadding,
+                        items: this.getSpecialNotificationsItems()
+                    },
                 ]
             },
             Ext.checkPermission('password', 'update')
@@ -820,17 +824,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getNotificationsItems: function () {
         return [
             {
-                name: 'email_from',
-                fieldLabel: _l.get('settings.fields.email_from'),
-
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field'
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.get('settings.edit_form.user_notifications_title'),
+                padding: '0 0 10 0'
             },
             {
-                name: 'email_special',
-                fieldLabel: _l.get('settings.fields.email_special'),
-
+                xtype: 'container',
+                html: _l.get('settings.edit_form.user_notifications_hint'),
+                padding: '0 0 10 0'
+            },
+            {
+                name: 'email_from',
+                fieldLabel: _l.get('settings.fields.email_from'),
+                labelAlign: 'top',
                 minLength: 2,
                 maxLength: 100,
                 role: 'permission-field'
@@ -839,15 +846,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'email_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.get('settings.fields.email_footer'),
-                width: 600,
+                labelAlign: 'top',
+                width: 450,
                 rows: 10,
 
-                maxLength: 600,
+                maxLength: 450,
                 role: 'permission-field'
             },
             {
                 name: 'sms_originator',
                 fieldLabel: _l.get('settings.fields.sms_originator'),
+                labelAlign: 'top',
                 allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
@@ -855,12 +864,38 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'caller_id',
                 fieldLabel: _l.get('settings.fields.caller_id'),
+                labelAlign: 'top',
                 allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
             }
         ];
     },
+
+    getSpecialNotificationsItems: function () {
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.get('settings.edit_form.special_notifications_title'),
+                padding: '0 0 10 0'
+            },
+            {
+                xtype: 'container',
+                html: _l.get('settings.edit_form.special_notifications_hint'),
+                padding: '0 0 10 0'
+            },
+            {
+                name: 'email_special',
+                fieldLabel: _l.get('settings.fields.email_special'),
+                labelAlign: 'top',
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            }
+        ];
+    },
+
 
     getPassHint: function () {
         return [

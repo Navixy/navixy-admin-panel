@@ -698,7 +698,7 @@ Ext.define('Locale.locale-es',{
             "promo_url": "Sitio de promoción URL",
             "domain": "Dominio",
             "email_from": "Remitente de  Email",
-            "email_special": "Correo electrónico las alertas",
+            "email_special": "Correo electrónico para las notificaciones del sistema",
             "email_footer": "Email de pie de pagina",
             "sms_originator": "SMS originador",
             "caller_id": "Aviso de voz originador",
@@ -744,7 +744,11 @@ Ext.define('Locale.locale-es',{
             "pass_save_msg": "Contraseña cambiada con éxito",
             "pass_save_btn": "Cambiar contraseña",
             "maps_hint": "Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.",
-            "demo_hint": "Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)"
+            "demo_hint": "Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)",
+            "user_notifications_title": "Notificaciones a los usuarios",
+            "user_notifications_hint": "Ajustes para notificaciones de su sistema de seguimiento de los usuarios: sobre geo-eventos, bajo el equilibrio, la recuperación de la contraseña, etc.",
+            "special_notifications_title": "Las notificaciones a los administradores",
+            "special_notifications_hint": "Notificaciones del sistema a los administradores sobre el estado del servicio, estadísticas y demás"
         },
         "upload_form": {
             "save_btn": "Subir",

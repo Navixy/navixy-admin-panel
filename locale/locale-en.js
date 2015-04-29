@@ -702,7 +702,7 @@ Ext.define('Locale.locale-en',{
             "promo_url": "Promo website URL",
             "domain": "Domain",
             "email_from": "Sender Email",
-            "email_special": "Email for alerts",
+            "email_special": "Email for system notifications",
             "email_footer": "Email footer",
             "sms_originator": "SMS originator",
             "caller_id": "Voice notice originator",
@@ -746,7 +746,11 @@ Ext.define('Locale.locale-en',{
             "pass_save_msg": "Password changed successfully",
             "pass_save_btn": "Change Password",
             "maps_hint": "Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.",
-            "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)"
+            "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
+            "user_notifications_title": "Notifications to users",
+            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
+            "special_notifications_title": "Notifications to administrators",
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
         },
         "upload_form": {
             "save_btn": "Upload",

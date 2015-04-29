@@ -693,7 +693,7 @@ Ext.define('Locale.locale-de',{
             "promo_url": "Promo-Website-URL",
             "domain": "Domäne",
             "email_from": "Absender E-Mail",
-            "email_special": "E-Mail für Benachrichtigungen",
+            "email_special": "E-Mail für die Systembenachrichtigungen",
             "email_footer": "E-Mail-Fußzeile",
             "sms_originator": "SMS-Absender",
             "caller_id": "Voice- Mitteilung Absender",
@@ -737,7 +737,11 @@ Ext.define('Locale.locale-de',{
             "pass_save_msg": "Passwort wurde erfolgreich geändert",
             "pass_save_btn": "Passwort ändern",
             "maps_hint": "Bitte definieren Sie die Auswahl der Karten, die für die Kunden von Ihrem Service verfügbar sein wird. Die Liste der Karten für bestimmte Benutzer können mit ihren Tarif -Einstellungen beschränkt sein.<br><br>Der Gebrauch von Kartendienstleistungen, die Sie ausgewählt haben, muss Ihnen von ihren Rechteigentümern gewährt werden. NAVIXY ist nicht verantwortlich für ein Verstoß gegen die Lizenzbedingungen durch Sie oder Ihre Endbenutzer.",
-            "demo_hint": "Wählen Sie Benutzerkonto, das zu Demonstrationszwecken und auf Login-Seite verwendet werden soll (optional)"
+            "demo_hint": "Wählen Sie Benutzerkonto, das zu Demonstrationszwecken und auf Login-Seite verwendet werden soll (optional)",
+            "user_notifications_title": "Benachrichtigungen an Benutzer ",
+            "user_notifications_hint": "Einstellungen für Benachrichtigungen von Ihrem Tracking-System für die Nutzer: über Geo-Events, niedrigen Schwerpunkt, Kennwort Rückgewinnung usw.",
+            "special_notifications_title": "Benachrichtigungen an die Administratoren",
+            "special_notifications_hint": "System Benachrichtigungen an Administratoren über den Service-Status, Statistiken und andere"
         },
         "upload_form": {
             "save_btn": "Hochladen",
