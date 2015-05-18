@@ -38,14 +38,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 {type: "EUR", "name": _l.get('currency.eur'), priority: 1},
                 {type: "KZT", "name": _l.get('currency.kzt'), priority: 3},
                 {type: "BYR", "name": _l.get('currency.byr'), priority: 3},
-                {type: "JPY", "name": _l.get('currency.jpy'), priority: 3},
-                {type: "GBP", "name": _l.get('currency.gbp'), priority: 3},
-                {type: "CHF", "name": _l.get('currency.chf'), priority: 3},
-                {type: "CAD", "name": _l.get('currency.cad'), priority: 3},
-                {type: "AUD", "name": _l.get('currency.aud'), priority: 3},
-                {type: "NZD", "name": _l.get('currency.nzd'), priority: 3},
-                {type: "TJS", "name": _l.get('currency.tjs'), priority: 3},
-                {type: "PHP", "name": _l.get('currency.php'), priority: 3},
+                {type: "UAH", "name": _l.get('currency.uah'), priority: 4},
+                {type: "JPY", "name": _l.get('currency.jpy'), priority: 5},
+                {type: "GBP", "name": _l.get('currency.gbp'), priority: 5},
+                {type: "CHF", "name": _l.get('currency.chf'), priority: 5},
+                {type: "CAD", "name": _l.get('currency.cad'), priority: 5},
+                {type: "AUD", "name": _l.get('currency.aud'), priority: 5},
+                {type: "NZD", "name": _l.get('currency.nzd'), priority: 5},
+                {type: "TJS", "name": _l.get('currency.tjs'), priority: 5},
+                {type: "PHP", "name": _l.get('currency.php'), priority: 5}
             ]
         });
 

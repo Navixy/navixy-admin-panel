@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-de
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-de',{
+ * @class Locale.locale-de
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-de', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -132,6 +132,14 @@ Ext.define('Locale.locale-de',{
         "settings": {
             "225": "Neues Passwort muss unterschiedlich sein.",
             "248": "Falsches Passwort"
+        },
+        "payment": {
+            "201": "Not found in database",
+            "242": "There were errors during content validation",
+            "246": "Invalid user ID",
+            "247": "Entity already exists",
+            "259": "Payments count not comply with summary",
+            "260": "Payments sum not comply with summary"
         }
     },
     "units_combination": {
@@ -268,7 +276,8 @@ Ext.define('Locale.locale-de',{
         "aud": "Australischer Dollar",
         "nzd": "Neuseeland-Dollar",
         "tjs": "Tajik Somoni",
-        "php": "Philippinischer Peso"
+        "php": "Philippinischer Peso",
+        "uah": "Ukrainische Hrywnja"
     },
     "maps": {
         "roadmap": "Google-Fahrplan",
@@ -693,7 +702,7 @@ Ext.define('Locale.locale-de',{
             "promo_url": "Promo-Website-URL",
             "domain": "Domäne",
             "email_from": "Absender E-Mail",
-            "email_special": "E-Mail für die Systembenachrichtigungen",
+            "email_special": "Email for alerts",
             "email_footer": "E-Mail-Fußzeile",
             "sms_originator": "SMS-Absender",
             "caller_id": "Voice- Mitteilung Absender",
@@ -738,10 +747,10 @@ Ext.define('Locale.locale-de',{
             "pass_save_btn": "Passwort ändern",
             "maps_hint": "Bitte definieren Sie die Auswahl der Karten, die für die Kunden von Ihrem Service verfügbar sein wird. Die Liste der Karten für bestimmte Benutzer können mit ihren Tarif -Einstellungen beschränkt sein.<br><br>Der Gebrauch von Kartendienstleistungen, die Sie ausgewählt haben, muss Ihnen von ihren Rechteigentümern gewährt werden. NAVIXY ist nicht verantwortlich für ein Verstoß gegen die Lizenzbedingungen durch Sie oder Ihre Endbenutzer.",
             "demo_hint": "Wählen Sie Benutzerkonto, das zu Demonstrationszwecken und auf Login-Seite verwendet werden soll (optional)",
-            "user_notifications_title": "Benachrichtigungen an Benutzer ",
-            "user_notifications_hint": "Einstellungen für Benachrichtigungen von Ihrem Tracking-System für die Nutzer: über Geo-Events, niedrigen Schwerpunkt, Kennwort Rückgewinnung usw.",
-            "special_notifications_title": "Benachrichtigungen an die Administratoren",
-            "special_notifications_hint": "System Benachrichtigungen an Administratoren über den Service-Status, Statistiken und andere"
+            "user_notifications_title": "Notifications to users",
+            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
+            "special_notifications_title": "Notifications to administrators",
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
         },
         "upload_form": {
             "save_btn": "Hochladen",
@@ -794,10 +803,29 @@ Ext.define('Locale.locale-de',{
                     "mobile": "Mobile",
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
-                    "webmoney": "WebMoney"
+                    "webmoney": "WebMoney",
+                    "sberbank": "Sberbank"
                 }
             }
         }
     },
-    "main_copyright": "© 2015 RusLink. Alle Rechte vorbehalten."
+    "main_copyright": "© 2015 RusLink. Alle Rechte vorbehalten.",
+    "payments": {
+        "menu_text": "Payments",
+        "import_sberbank": {
+            "title": "Sberbank payments import",
+            "save_btn": "Import payments",
+            "upload_btn": "View",
+            "upload_loading": "Uploading file",
+            "error_text": "Failed to import payments",
+            "fields": {
+                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+            },
+            "errors": {
+                "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
+            },
+            "success_msg": "Sberbank payments successfully imported",
+            "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
+        }
+    }
 });

@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-uk
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-uk',{
+ * @class Locale.locale-uk
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-uk', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -132,6 +132,14 @@ Ext.define('Locale.locale-uk',{
         "settings": {
             "225": "Новий пароль має відрізнятися",
             "248": "Неправильний пароль"
+        },
+        "payment": {
+            "201": "Not found in database",
+            "242": "There were errors during content validation",
+            "246": "Invalid user ID",
+            "247": "Entity already exists",
+            "259": "Payments count not comply with summary",
+            "260": "Payments sum not comply with summary"
         }
     },
     "units_combination": {
@@ -268,7 +276,8 @@ Ext.define('Locale.locale-uk',{
         "aud": "Австралійський долар",
         "nzd": "Новозеландський долар",
         "tjs": "Таджицька Сомоні",
-        "php": "Філіппінське песо"
+        "php": "Філіппінське песо",
+        "uah": "Українська гривня"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -693,7 +702,7 @@ Ext.define('Locale.locale-uk',{
             "promo_url": "URL промо-сайту",
             "domain": "Домен",
             "email_from": "Електронна пошта відправника",
-            "email_special": "E-mail для повідомлень системи",
+            "email_special": "Email for alerts",
             "email_footer": "Підвал Email",
             "sms_originator": "Автор SMS",
             "caller_id": "Відправник голосового повідомлення",
@@ -738,10 +747,10 @@ Ext.define('Locale.locale-uk',{
             "pass_save_btn": "Зміна пароля",
             "maps_hint": "Будь ласка, визначьте карти, які будуть доступні для клієнтів вашої служби. Список карт для конкретних користувачів може бути обмежений налаштуваннями їх тарифних планів.<br><br>Права на використання картографічних сервісів, що ви вибрали повинні бути надані вам їх правовласниками. NAVIXY не несе відповідальності за будь-яке порушення умов ліцензії вами або вашими кінцевими користувачами.",
             "demo_hint": "Виберіть обліковий запис користувача, який буде використовуватися для демонстраційних цілей і буде доступним на сторонці входа в систему (опціонально)",
-            "user_notifications_title": "Повідомлення для користувачів",
-            "user_notifications_hint": "Налаштування повідомлень, оптравляемих користувачам від вашої системи моніторингу: про гео-події, низькому балансі, відновленні пароля і т.д.",
-            "special_notifications_title": "Повідомлення для адміністраторів",
-            "special_notifications_hint": "Системні оповіщення адміністраторам про стан роботи сервісу, статистики та ін."
+            "user_notifications_title": "Notifications to users",
+            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
+            "special_notifications_title": "Notifications to administrators",
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
         },
         "upload_form": {
             "save_btn": "Завантажити",
@@ -794,10 +803,29 @@ Ext.define('Locale.locale-uk',{
                     "mobile": "Мобільний",
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
-                    "webmoney": "WebMoney"
+                    "webmoney": "WebMoney",
+                    "sberbank": "Sberbank"
                 }
             }
         }
     },
-    "main_copyright": "© 2015 RusLink. Всі права захищені."
+    "main_copyright": "© 2015 RusLink. Всі права захищені.",
+    "payments": {
+        "menu_text": "Payments",
+        "import_sberbank": {
+            "title": "Sberbank payments import",
+            "save_btn": "Import payments",
+            "upload_btn": "View",
+            "upload_loading": "Uploading file",
+            "error_text": "Failed to import payments",
+            "fields": {
+                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+            },
+            "errors": {
+                "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
+            },
+            "success_msg": "Sberbank payments successfully imported",
+            "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
+        }
+    }
 });

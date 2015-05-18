@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-ru
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-ru',{
+ * @class Locale.locale-ru
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-ru', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -282,7 +282,8 @@ Ext.define('Locale.locale-ru',{
         "aud": "Австралийский доллар",
         "nzd": "Новозеландский доллар",
         "tjs": "Таджикский сомони",
-        "php": "Филиппинское песо"
+        "php": "Филиппинское песо",
+        "uah": "Украинская гривна"
     },
     "maps": {
         "roadmap": "Google дорожная карта",

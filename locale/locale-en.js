@@ -277,7 +277,8 @@ Ext.define('Locale.locale-en',{
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
         "tjs": "Tajik Somoni",
-        "php": "Philippine Peso"
+        "php": "Philippine Peso",
+        "uah": "Ukrainian hryvnia"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -702,7 +703,7 @@ Ext.define('Locale.locale-en',{
             "promo_url": "Promo website URL",
             "domain": "Domain",
             "email_from": "Sender Email",
-            "email_special": "Email for system notifications",
+            "email_special": "Email for alerts",
             "email_footer": "Email footer",
             "sms_originator": "SMS originator",
             "caller_id": "Voice notice originator",
@@ -804,7 +805,7 @@ Ext.define('Locale.locale-en',{
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
                     "webmoney": "WebMoney",
-                    "sberbank": "Sberbank-Online"
+                    "sberbank": "Sberbank"
                 }
             }
         }
