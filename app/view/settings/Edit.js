@@ -467,7 +467,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                 minLength: 2,
                 maxLength: 100,
-                vtype:'url'
+                vtype:'rurl'
             }
         ]
     },
