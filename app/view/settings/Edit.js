@@ -33,74 +33,300 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             ],
             data: [
-                {type: "GBP", "name": _l.get('currency.gbp'), priority: 5},			
-				{type: "BRL", "name": _l.get('currency.brl'), priority: 5},
-				{type: "HUF", "name": _l.get('currency.huf'), priority: 5},
-				{type: "HKD", "name": _l.get('currency.hkd'), priority: 5},
-				{type: "DKK", "name": _l.get('currency.dkk'), priority: 5},
-				{type: "EUR", "name": _l.get('currency.eur'), priority: 1},
-				{type: "ILS", "name": _l.get('currency.ils'), priority: 5},
-				{type: "INR", "name": _l.get('currency.inr'), priority: 5},
-				{type: "IDR", "name": _l.get('currency.idr'), priority: 5},
-				{type: "CAD", "name": _l.get('currency.cad'), priority: 5},
-				{type: "CNY", "name": _l.get('currency.cny'), priority: 5},
-				{type: "KRW", "name": _l.get('currency.krw'), priority: 5},
-				{type: "MYR", "name": _l.get('currency.myr'), priority: 5},
-				{type: "MXN", "name": _l.get('currency.mxn'), priority: 5},
-				{type: "NZD", "name": _l.get('currency.nzd'), priority: 5},
-				{type: "NOK", "name": _l.get('currency.nok'), priority: 5},
-				{type: "PKR", "name": _l.get('currency.pkr'), priority: 5},
-				{type: "PLN", "name": _l.get('currency.pln'), priority: 5},
-				{type: "RUB", "name": _l.get('currency.rub'), priority: 2},
-				{type: "SGD", "name": _l.get('currency.sgd'), priority: 5},
-				{type: "USD", "name": _l.get('currency.usd'), priority: 0},
-				{type: "TWD", "name": _l.get('currency.twd'), priority: 5},
-				{type: "THB", "name": _l.get('currency.thb'), priority: 5},
-				{type: "TRY", "name": _l.get('currency.try'), priority: 5},
-				{type: "PHP", "name": _l.get('currency.php'), priority: 5},
-				{type: "CZK", "name": _l.get('currency.czk'), priority: 5},
-				{type: "CLP", "name": _l.get('currency.clp'), priority: 5},
-				{type: "SEK", "name": _l.get('currency.sek'), priority: 5},
-				{type: "CHF", "name": _l.get('currency.chf'), priority: 5},
-				{type: "ZAR", "name": _l.get('currency.zar'), priority: 5},
-				{type: "JPY", "name": _l.get('currency.jpy'), priority: 5},
-				{type: "KZT", "name": _l.get('currency.kzt'), priority: 3},
-				{type: "BYR", "name": _l.get('currency.byr'), priority: 3},
-				{type: "AUD", "name": _l.get('currency.aud'), priority: 5},
-				{type: "TJS", "name": _l.get('currency.tjs'), priority: 5},
-				{type: "UAH", "name": _l.get('currency.uah'), priority: 4},
-				{type: "LTL", "name": _l.get('currency.ltl'), priority: 5},
-				{type: "LVL", "name": _l.get('currency.lvl'), priority: 5},
-				{type: "KGS", "name": _l.get('currency.kgs'), priority: 5},
-				{type: "TMT", "name": _l.get('currency.tmt'), priority: 5},
-				{type: "UZS", "name": _l.get('currency.uzs'), priority: 5},
-				{type: "MDL", "name": _l.get('currency.mdl'), priority: 5},
-				{type: "GEL", "name": _l.get('currency.gel'), priority: 5},
-				{type: "AMD", "name": _l.get('currency.amd'), priority: 5},
-				{type: "AZN", "name": _l.get('currency.azn'), priority: 5}
+                {
+                    type: "GBP",
+                    "name": _l.get('currency.gbp'),
+                    priority: 5
+                },
+                {
+                    type: "BRL",
+                    "name": _l.get('currency.brl'),
+                    priority: 5
+                },
+                {
+                    type: "HUF",
+                    "name": _l.get('currency.huf'),
+                    priority: 5
+                },
+                {
+                    type: "HKD",
+                    "name": _l.get('currency.hkd'),
+                    priority: 5
+                },
+                {
+                    type: "DKK",
+                    "name": _l.get('currency.dkk'),
+                    priority: 5
+                },
+                {
+                    type: "EUR",
+                    "name": _l.get('currency.eur'),
+                    priority: 1
+                },
+                {
+                    type: "ILS",
+                    "name": _l.get('currency.ils'),
+                    priority: 5
+                },
+                {
+                    type: "INR",
+                    "name": _l.get('currency.inr'),
+                    priority: 5
+                },
+                {
+                    type: "IDR",
+                    "name": _l.get('currency.idr'),
+                    priority: 5
+                },
+                {
+                    type: "CAD",
+                    "name": _l.get('currency.cad'),
+                    priority: 5
+                },
+                {
+                    type: "CNY",
+                    "name": _l.get('currency.cny'),
+                    priority: 5
+                },
+                {
+                    type: "KRW",
+                    "name": _l.get('currency.krw'),
+                    priority: 5
+                },
+                {
+                    type: "MYR",
+                    "name": _l.get('currency.myr'),
+                    priority: 5
+                },
+                {
+                    type: "MXN",
+                    "name": _l.get('currency.mxn'),
+                    priority: 5
+                },
+                {
+                    type: "NZD",
+                    "name": _l.get('currency.nzd'),
+                    priority: 5
+                },
+                {
+                    type: "NOK",
+                    "name": _l.get('currency.nok'),
+                    priority: 5
+                },
+                {
+                    type: "PKR",
+                    "name": _l.get('currency.pkr'),
+                    priority: 5
+                },
+                {
+                    type: "PLN",
+                    "name": _l.get('currency.pln'),
+                    priority: 5
+                },
+                {
+                    type: "RUB",
+                    "name": _l.get('currency.rub'),
+                    priority: 2
+                },
+                {
+                    type: "SGD",
+                    "name": _l.get('currency.sgd'),
+                    priority: 5
+                },
+                {
+                    type: "USD",
+                    "name": _l.get('currency.usd'),
+                    priority: 0
+                },
+                {
+                    type: "TWD",
+                    "name": _l.get('currency.twd'),
+                    priority: 5
+                },
+                {
+                    type: "THB",
+                    "name": _l.get('currency.thb'),
+                    priority: 5
+                },
+                {
+                    type: "TRY",
+                    "name": _l.get('currency.try'),
+                    priority: 5
+                },
+                {
+                    type: "PHP",
+                    "name": _l.get('currency.php'),
+                    priority: 5
+                },
+                {
+                    type: "CZK",
+                    "name": _l.get('currency.czk'),
+                    priority: 5
+                },
+                {
+                    type: "CLP",
+                    "name": _l.get('currency.clp'),
+                    priority: 5
+                },
+                {
+                    type: "SEK",
+                    "name": _l.get('currency.sek'),
+                    priority: 5
+                },
+                {
+                    type: "CHF",
+                    "name": _l.get('currency.chf'),
+                    priority: 5
+                },
+                {
+                    type: "ZAR",
+                    "name": _l.get('currency.zar'),
+                    priority: 5
+                },
+                {
+                    type: "JPY",
+                    "name": _l.get('currency.jpy'),
+                    priority: 5
+                },
+                {
+                    type: "KZT",
+                    "name": _l.get('currency.kzt'),
+                    priority: 3
+                },
+                {
+                    type: "BYR",
+                    "name": _l.get('currency.byr'),
+                    priority: 3
+                },
+                {
+                    type: "AUD",
+                    "name": _l.get('currency.aud'),
+                    priority: 5
+                },
+                {
+                    type: "TJS",
+                    "name": _l.get('currency.tjs'),
+                    priority: 5
+                },
+                {
+                    type: "UAH",
+                    "name": _l.get('currency.uah'),
+                    priority: 4
+                },
+                {
+                    type: "LTL",
+                    "name": _l.get('currency.ltl'),
+                    priority: 5
+                },
+                {
+                    type: "LVL",
+                    "name": _l.get('currency.lvl'),
+                    priority: 5
+                },
+                {
+                    type: "KGS",
+                    "name": _l.get('currency.kgs'),
+                    priority: 5
+                },
+                {
+                    type: "TMT",
+                    "name": _l.get('currency.tmt'),
+                    priority: 5
+                },
+                {
+                    type: "UZS",
+                    "name": _l.get('currency.uzs'),
+                    priority: 5
+                },
+                {
+                    type: "MDL",
+                    "name": _l.get('currency.mdl'),
+                    priority: 5
+                },
+                {
+                    type: "GEL",
+                    "name": _l.get('currency.gel'),
+                    priority: 5
+                },
+                {
+                    type: "AMD",
+                    "name": _l.get('currency.amd'),
+                    priority: 5
+                },
+                {
+                    type: "AZN",
+                    "name": _l.get('currency.azn'),
+                    priority: 5
+                }
             ]
         });
 
         var data = [
-                {type: "roadmap", "name": _l.get('maps.roadmap'), free: true},
-                {type: "satellite", "name": _l.get('maps.satellite'), free: true},
-                {type: "hybrid", "name": _l.get('maps.hybrid'), free: true},
-                {type: "yandex", "name": _l.get('maps.yandex')},
-                {type: "yandexpublic", "name": _l.get('maps.yandexpublic'), free: true},
-                {type: "osm", "name": _l.get('maps.osm'), free: true},
-                {type: "osmmapnik", "name": _l.get('maps.osmmapnik'), free: true},
-                {type: "wikimapia", "name": _l.get('maps.wikimapia'), free: true},
-                {type: "cdcom", "name": _l.get('maps.cdcom')},
-                {type: "navitel", "name": _l.get('maps.navitel')},
-                {type: "doublegis", "name": _l.get('maps.doublegis')},
-                {type: "ovi", "name": _l.get('maps.ovi')},
-                {type: "mailru", "name": _l.get('maps.mailru')}
+                {
+                    type: "roadmap",
+                    "name": _l.get('maps.roadmap'),
+                    free: true
+                },
+                {
+                    type: "satellite",
+                    "name": _l.get('maps.satellite'),
+                    free: true
+                },
+                {
+                    type: "hybrid",
+                    "name": _l.get('maps.hybrid'),
+                    free: true
+                },
+                {
+                    type: "yandex",
+                    "name": _l.get('maps.yandex')
+                },
+                {
+                    type: "yandexpublic",
+                    "name": _l.get('maps.yandexpublic'),
+                    free: true
+                },
+                {
+                    type: "osm",
+                    "name": _l.get('maps.osm'),
+                    free: true
+                },
+                {
+                    type: "osmmapnik",
+                    "name": _l.get('maps.osmmapnik'),
+                    free: true
+                },
+                {
+                    type: "wikimapia",
+                    "name": _l.get('maps.wikimapia'),
+                    free: true
+                },
+                {
+                    type: "cdcom",
+                    "name": _l.get('maps.cdcom')
+                },
+                {
+                    type: "navitel",
+                    "name": _l.get('maps.navitel')
+                },
+                {
+                    type: "doublegis",
+                    "name": _l.get('maps.doublegis')
+                },
+                {
+                    type: "ovi",
+                    "name": _l.get('maps.ovi')
+                },
+                {
+                    type: "mailru",
+                    "name": _l.get('maps.mailru')
+                }
             ],
             storeData = [],
             allowedMaps = this.getRecordData().allowed_maps,
             hasLimit = !this.getRecordData().limited_domain;
 
-        Ext.iterate(data, function(mapOptions) {
+        Ext.iterate(data, function (mapOptions) {
             if (Ext.Array.indexOf(allowedMaps, mapOptions.type) > -1) {
                 storeData.push({
                     type: mapOptions.type,
@@ -490,7 +716,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 allowBlank: true,
                 minLength: 2,
                 maxLength: 100,
-                vtype:'rurl'
+                vtype: 'rurl'
             },
             {
                 name: 'payment_link',
@@ -498,7 +724,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                 minLength: 2,
                 maxLength: 100,
-                vtype:'rurl'
+                vtype: 'rurl'
             }
         ]
     },
@@ -605,7 +831,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 }
             },
-                config || {})
+            config || {})
     },
 
     getImgUrl: function (type, record) {
@@ -618,11 +844,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return value
             ? isUrl
-                ? value + aCache
-                : [Ext.API.getGlobalApiUrl({action: value}), aCache].join('')
+                   ? value + aCache
+                   : [Ext.API.getGlobalApiUrl({action: value}), aCache].join('')
             : null
     },
-
 
     getImgButtonConfig: function (type) {
         var me = this,
@@ -633,42 +858,42 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
-                xtype: 'container',
-                layout: 'hbox',
-                items: [
-                    {
-                        role: role,
-                        xtype: 'button',
-                        text: text,
-                        margin: '0 0 10 0',
-                        ui: 'default',
-                        scale: 'medium',
-                        width: 140,
-                        handler: function () {
-                            Ext.widget('uploadwindow', {
-                                fileType: type,
-                                listeners: {
-                                    fileupload: me.afterUpload,
-                                    scope: me
-                                }
-                            });
-                        }
-                    },
-                    {
-                        role: delRole,
-                        xtype: 'button',
-                        text: _l.get('settings.edit_form.remove_btn'),
-                        margin: '0 0 10 10',
-                        hidden: hidden,
-                        ui: 'gray',
-                        scale: 'medium',
-                        width: 140,
-                        handler: function () {
-                            me.removeImgCall(type);
-                        }
+            xtype: 'container',
+            layout: 'hbox',
+            items: [
+                {
+                    role: role,
+                    xtype: 'button',
+                    text: text,
+                    margin: '0 0 10 0',
+                    ui: 'default',
+                    scale: 'medium',
+                    width: 140,
+                    handler: function () {
+                        Ext.widget('uploadwindow', {
+                            fileType: type,
+                            listeners: {
+                                fileupload: me.afterUpload,
+                                scope: me
+                            }
+                        });
                     }
-                ]
-            }
+                },
+                {
+                    role: delRole,
+                    xtype: 'button',
+                    text: _l.get('settings.edit_form.remove_btn'),
+                    margin: '0 0 10 10',
+                    hidden: hidden,
+                    ui: 'gray',
+                    scale: 'medium',
+                    width: 140,
+                    handler: function () {
+                        me.removeImgCall(type);
+                    }
+                }
+            ]
+        }
             : null
     },
 
@@ -687,7 +912,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             scope: this
         })
     },
-
 
     afterUpload: function (type, record) {
         Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
@@ -927,7 +1151,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
         ];
     },
-
 
     getPassHint: function () {
         return [

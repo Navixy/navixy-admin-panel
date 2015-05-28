@@ -327,7 +327,7 @@ Ext.define('Locale.locale-ru', {
         "osmmapnik": "OpenStreet Maps 2",
         "wikimapia": "Wikimapia",
         "navitel": "Карты Navitel",
-        "doublegis": "Карты DoubleGis",
+        "doublegis": "Карты 2Gis",
         "ovi": "Карты OVI",
         "mailru": "Карты Mail.ru"
     },
