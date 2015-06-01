@@ -112,7 +112,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
             price_field = this.down('[name="price"]');
 
         Ext.iterate(trackerFields, function (field) {
-            field[type ? 'hide' : 'show']();
+            field[!type ? 'hide' : 'show']();
         }, this);
 
         price_field.setFieldLabel(_l.get('tariffs.price_type')[paymentType]);
