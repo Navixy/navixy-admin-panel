@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-pt
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-pt', {
+* @class Locale.locale-pt
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-pt',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -11,220 +11,220 @@ Ext.define('Locale.locale-pt', {
         }
     ],
     "singleton": true,
-    "main_copyright": "© 2015 RusLink. All rights reserved.",
+    "main_copyright": "© RusLink de 2015. Todos os direitos reservados.",
     "panel_title": "NavixyPanel",
-    "error": "Error",
-    "loading": "Loading...",
-    "conneting_loader": "Connecting to server",
-    "access_denied": "Access denied",
-    "access_denied_tip": "you do not have permission to access requested page",
-    "index_title": "Welcome to Control Panel",
-    "old_version": "Old version",
+    "error": "Erro",
+    "loading": "Carregar...",
+    "conneting_loader": "Conectando ao servidor",
+    "access_denied": "Acesso negado",
+    "access_denied_tip": "Você não tem permissão para acessar a página solicitada",
+    "index_title": "Bem-vindo ao Painel de Controle",
+    "old_version": "Versão antiga",
     "auth": {
-        "login": "Login or Email address",
-        "password": "Password",
+        "login": "Login ou endereço de E-mail",
+        "password": "Senha",
         "login_btn": "Login",
-        "locale_title": "Choose language",
-        "locale_title_short": "language",
-        "auth_error": "Authentication error",
-        "reloading_soon": "Reloading",
+        "locale_title": "Escolha o idioma",
+        "locale_title_short": "língua",
+        "auth_error": "Erro de autenticação",
+        "reloading_soon": "Recarga",
         "logout": "Logout",
-        "title": "Admin panel"
+        "title": "Painel de administração"
     },
-    "no_path_found": "No page on this path",
-    "phone_invalid_msg": "Please enter a valid phone number",
-    "invalid_numeric_msg": "Not a valid number",
-    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal mark)",
-    "searcher_empty_text": "Enter search query",
-    "search_empty_text": "Enter search query",
-    "searchTitle": "Search by category",
-    "clear_form_btn": "Clear",
-    "save_form_btn": "Save",
-    "back_form_btn": "Back",
-    "select_form_btn": "Select",
-    "close_form_btn": "Close",
-    "yes": "yes",
-    "no": "no",
-    "show_btn": "Show",
-    "wrong_period": "An invalid period",
-    "required_fields": "* - required fields or sections",
-    "invalid_tab": "Invalid filled fields",
-    "page_size": "Page size",
+    "no_path_found": "Nenhuma página neste caminho",
+    "phone_invalid_msg": "Introduza um número de telefone válido",
+    "invalid_numeric_msg": "Não é um número válido",
+    "invalid_amount_msg": "Não é um número válido <br>(2 dígitos depois da marca decimal)",
+    "searcher_empty_text": "Digite a consulta de pesquisa",
+    "search_empty_text": "Digite a consulta de pesquisa",
+    "searchTitle": "Pesquisar por categoria",
+    "clear_form_btn": "Clara",
+    "save_form_btn": "Salvar",
+    "back_form_btn": "Voltar",
+    "select_form_btn": "Selecione",
+    "close_form_btn": "Fechar",
+    "yes": "sim",
+    "no": "não",
+    "show_btn": "Mostrar",
+    "wrong_period": "Um período inválido",
+    "required_fields": "* - campos ou seções necessários",
+    "invalid_tab": "Campos preenchidos inválidos",
+    "page_size": "Tamanho da página",
     "errors": {
-        "1": "Database connection error (001). Please contact support or try again later.",
-        "2": "Authorization system error (002).  Please contact support or try again later.",
-        "3": "Wrong session key (003).  Please re-login. If the problem persists, contact support.",
-        "4": "User can not be found or session has ended (004).  Please re-login.",
-        "5": "Incorrect request (005). Please contact support or try again later.",
-        "6": "Unexpected error (006). Please contact support or try again later.",
+        "1": "Erro de conexão de banco de dados (001). Por favor entre em contato com o suporte, ou tente novamente mais tarde.",
+        "2": "Erro de sistema de autorização (002).  Por favor entre em contato com o suporte, ou tente novamente mais tarde.",
+        "3": "Chave de sessão errada (003).  Por favor, re-login. Se o problema persistir, contate o suporte.",
+        "4": "Usuário não pode ser encontrado ou sessão terminou (004).  Por favor, re-login.",
+        "5": "Solicitação incorreta (005). Por favor entre em contato com o suporte, ou tente novamente mais tarde.",
+        "6": "Erro inesperado (006). Por favor entre em contato com o suporte, ou tente novamente mais tarde.",
         "7": {
-            "default_msg": "Incorrect request parameters. Check the data.",
-            "title": "Incorrect parameters:",
+            "default_msg": "Parâmetros de solicitação incorreta. Verifique os dados.",
+            "title": "Parâmetros incorretos:",
             "errors": {
-                "login": "Must be a valid email address",
-                "domain": "Incorrect domain name"
+                "login": "Deve ser um endereço de e-mail válido",
+                "domain": "Nome de domínio incorreto"
             }
         },
-        "11": "Access denied",
-        "12": "The service platform is not found",
-        "101": "In demo mode this feature is disabled",
-        "102": "Wrong username or password",
-        "103": "The user has not activated",
-        "111": "Wrong handler",
-        "112": "Wrong method",
-        "201": "No data found",
-        "202": "There are too many points in the area",
-        "203": "Related item has been deleted",
-        "204": "Element not found",
-        "205": "Invalid parameters",
-        "206": "This username is already in use",
-        "207": "Invalid captcha",
-        "208": "The device is locked",
-        "209": "Failed to send message",
-        "210": "Geocoding failed",
-        "211": "Requested time span is too big",
-        "212": "Requested limit is too big",
-        "213": "The device is offline",
-        "214": "Requested operation are not supported by the device",
-        "215": "External service error",
-        "216": "Group is not empty",
-        "217": "List contains nonexistent entities",
-        "218": "Malformed external service parameters",
-        "219": "The action is not allowed for the clone objects",
-        "220": "Unknown device model",
-        "221": "Tariff restriction:</br> Device limit exceeded.",
-        "222": "Plugin not found",
-        "223": "This phone number is already in use",
-        "224": "Device with this device-id is already in use",
-        "225": "Not allowed for this legal type",
-        "226": "Wrong ICCID",
-        "227": "Invalid activation code",
-        "228": "Not supported by sensor",
-        "229": "Requested data is not ready yet",
-        "230": "Not supported for this entity type",
-        "231": "Entity type mismatch",
-        "232": "Input already in use",
-        "233": "No data file",
-        "234": "Invalid data format",
-        "235": "Missing calibration data",
-        "236": "Feature unavailable due to tariff restrictions",
-        "238": "Changing tariff is not allowed",
-        "240": "Not allowed to change tariff too frequently",
-        "242": "Validation error",
-        "251": "Insufficient funds",
-        "254": "Cannot save file",
-        "upload_exeption": "File upload error",
-        "no_hash": "The session key is not found",
-        "service_not_respond": "The service is temporarily unavailable",
+        "11": "Acesso negado",
+        "12": "A plataforma de serviço não se encontra",
+        "101": "No modo demo este recurso está desativado",
+        "102": "Nome de usuário errado ou a senha",
+        "103": "O usuário não tiver ativado",
+        "111": "Manipulador de errado",
+        "112": "Método errado",
+        "201": "Nenhum dado encontrado",
+        "202": "Há muitos pontos na área",
+        "203": "Item relacionado foi excluído",
+        "204": "Elemento não encontrado",
+        "205": "Parâmetros inválidos",
+        "206": "Este nome de usuário já está em uso",
+        "207": "Captcha inválido",
+        "208": "O dispositivo está bloqueado.",
+        "209": "Falha ao enviar mensagem",
+        "210": "Geocodificação falhada",
+        "211": "Intervalo de tempo requerido é muito grande",
+        "212": "Limite solicitado é muito grande",
+        "213": "O dispositivo está offline",
+        "214": "As operações solicitadas não são apoiadas pelo dispositivo",
+        "215": "Erro de serviço externo",
+        "216": "Grupo não está vazio",
+        "217": "Lista contém entidades inexistentes",
+        "218": "Parâmetros de serviço externo malformado",
+        "219": "A ação não é permitida para os objetos de clone",
+        "220": "Modelo de dispositivo desconhecido",
+        "221": "Pautais restrição:</br> limite de dispositivo ultrapassado.",
+        "222": "Plugin não encontrado",
+        "223": "Este número de telefone já está em uso",
+        "224": "Dispositivo com este id de dispositivo já está em uso",
+        "225": "Não permitido para este tipo jurídico",
+        "226": "ICCID errado",
+        "227": "Código de ativação inválido",
+        "228": "Não suportados pelo sensor",
+        "229": "Dados solicitados ainda não está prontos",
+        "230": "Não há suporte para esse tipo de entidade",
+        "231": "Incompatibilidade de tipo de entidade",
+        "232": "Entrada já em uso",
+        "233": "Nenhum arquivo de dados",
+        "234": "Formato de dados inválido",
+        "235": "Falta de dados de calibração",
+        "236": "Recurso indisponível devido a restrições tarifárias",
+        "238": "Mudança de tarifa não é permitida",
+        "240": "Não podem para alterar a pauta também freqüentemente",
+        "242": "Erro de validação",
+        "251": "Fundos insuficientes",
+        "254": "Não é possível salvar o arquivo.",
+        "upload_exeption": "Erro de upload de arquivo",
+        "no_hash": "A chave de sessão não for encontrada.",
+        "service_not_respond": "O serviço está temporariamente indisponível",
         "tracker": {
-            "203": "Tracker has attached rules",
-            "237": "Invalid tariff",
-            "238": "Changing tariff is not allowed",
-            "239": "New tariff doesn't exist",
-            "246": "User is incorrect",
-            "247": "Clone already exists",
-            "249": "The operation is available only for the clones",
-            "250": "Not allowed for deleted devices",
-            "253": "The operation can not be performed, the tracker has clones<br>Clones ID: {0}"
+            "203": "Tracker atribuiu regras",
+            "237": "Pauta inválida",
+            "238": "Mudança de tarifa não é permitida",
+            "239": "Não existe nova pauta",
+            "246": "Usuário está incorreto",
+            "247": "Clone já existe",
+            "249": "A operação está disponível apenas para os clones",
+            "250": "Não permitido para dispositivos excluídos",
+            "253": "A operação não pode ser executada, o rastreador tem clones <br>Clones ID: {0}"
         },
         "tariff": {
-            "244": "Tariff with the same name already exists"
+            "244": "Tarifa com o mesmo nome já existe."
         },
         "settings": {
-            "225": "New password must be different",
-            "248": "Wrong password"
+            "225": "A nova senha deve ser diferente",
+            "248": "Senha errada"
         },
         "payment": {
-            "201": "Not found in database",
-            "242": "There were errors during content validation",
-            "246": "Invalid user ID",
-            "247": "Entity already exists",
-            "259": "Payments count not comply with summary",
-            "260": "Payments sum not comply with summary"
+            "201": "Não foi encontrado no banco de dados",
+            "242": "Houve erros durante a validação de conteúdo",
+            "246": "ID de usuário inválido",
+            "247": "Entidade já existe",
+            "259": "Contagem de pagamentos não cumprir com resumo",
+            "260": "Soma de pagamentos não cumprir com resumo"
         }
     },
     "units_combination": {
         "days": [
-            "days",
-            "day",
-            "days"
+            "dias",
+            "dia",
+            "dias"
         ],
         "hours": [
-            "hours",
-            "hour",
-            "hours"
+            "horas",
+            "hora",
+            "horas"
         ],
         "minutes": [
-            "minutes",
-            "minute",
-            "minutes"
+            "minutos",
+            "minuto",
+            "minutos"
         ],
         "seconds": [
-            "seconds",
-            "second",
-            "seconds"
+            "segundos",
+            "segundo",
+            "segundos"
         ],
         "everyminutes": [
-            "minutes",
-            "minute",
-            "minutes"
+            "minutos",
+            "minuto",
+            "minutos"
         ],
         "everyseconds": [
-            "seconds",
-            "second",
-            "seconds"
+            "segundos",
+            "segundo",
+            "segundos"
         ],
         "meters": [
-            "meters",
-            "meter",
-            "meters"
+            "metros",
+            "medidor",
+            "metros"
         ],
         "degrees": [
-            "degrees",
-            "degree",
-            "degrees"
+            "graus",
+            "grau",
+            "graus"
         ],
         "objects": [
-            "objects",
-            "object",
-            "objects"
+            "objetos",
+            "objeto",
+            "objetos"
         ],
         "years": [
-            "years",
-            "year",
-            "years"
+            "anos",
+            "ano",
+            "anos"
         ],
         "months": [
-            "months",
-            "month",
-            "months"
+            "meses",
+            "mês",
+            "meses"
         ],
         "codes": [
-            "codes",
-            "code",
-            "codes"
+            "códigos",
+            "código",
+            "códigos"
         ],
         "trackers": [
-            "trackers",
-            "tracker",
-            "trackers"
+            "rastreadores",
+            "rastreador",
+            "rastreadores"
         ],
         "devices": [
-            "devices",
-            "device",
-            "devices"
+            "dispositivos",
+            "dispositivo",
+            "dispositivos"
         ],
         "entries": [
-            "matches",
-            "match",
-            "matches"
+            "fósforos",
+            "fósforo",
+            "fósforos"
         ]
     },
     "units_short": {
         "kilometer": "km",
         "meter": "m",
-        "square_kilometer": "sq. km",
-        "square_meter": "sq. m",
+        "square_kilometer": "sq km",
+        "square_meter": "sq m",
         "ar": "ar",
         "hectare": "ha",
         "kmh": "km / h",
@@ -235,56 +235,56 @@ Ext.define('Locale.locale-pt', {
         "day": "d"
     },
     "search": {
-        "empty": "Search by category",
-        "btn": "Find"
+        "empty": "Pesquisar por categoria",
+        "btn": "Encontrar"
     },
     "list": {
-        "edit_tool": "edit",
-        "create_btn_text": "Create",
-        "empty_text": "No data",
-        "search_title_tpl": "{0}: found {1}",
-        "search_empty_title_tpl": "{0}: no matches found",
-        "search_title": "Search",
-        "search_empty_title": "No matches found"
+        "edit_tool": "editar",
+        "create_btn_text": "Criar",
+        "empty_text": "Não há dados",
+        "search_title_tpl": "{0}: encontrado {1}",
+        "search_empty_title_tpl": "{0}: nenhuma correspondência encontrada",
+        "search_title": "Pesquisa",
+        "search_empty_title": "Nenhuma correspondência encontrada"
     },
     "card": {
         "links": {
-            "collapser_tip": "Hide links",
-            "collapser_exptip": "Show links"
+            "collapser_tip": "Esconder links",
+            "collapser_exptip": "Mostrar links"
         },
         "body": {
-            "title": "Additional information:",
-            "exptitle": "Additional information <a>(show)</a>",
-            "collapser_tip": "Hide additional information",
-            "collapser_exptip": "Show additional information"
+            "title": "Informações adicionais:",
+            "exptitle": "Informações adicionais <a>(mostrar)</a>",
+            "collapser_tip": "Ocultar informações adicionais",
+            "collapser_exptip": "Mostrar informações adicionais"
         }
     },
     "devices": {
         "tracker": "Tracker",
-        "camera": "Camera",
-        "socket": "Socket"
+        "camera": "Câmera",
+        "socket": "Soquete"
     },
     "currency": {
-        "rub": "Russian Rouble",
-        "usd": "U.S. Dollar",
-        "kzt": "Kazakhstan Tenge",
-        "byr": "Belarusian Ruble",
+        "rub": "Rublo Russo",
+        "usd": "Dólar de E.U.",
+        "kzt": "Tenge do Cazaquistão",
+        "byr": "Rublo bielorrusso",
         "eur": "Euro",
-        "jpy": "Japanese Yen",
-        "gbp": "Pound Sterling",
-        "chf": "Swiss Franc",
-        "cad": "Canadian Dollar",
-        "aud": "Australian Dollar",
-        "nzd": "New Zealand Dollar",
-        "tjs": "Tajik Somoni",
-        "php": "Philippine Peso",
+        "jpy": "Iene Japonês",
+        "gbp": "Sterling de libra",
+        "chf": "Franco suíço",
+        "cad": "Dólar canadense",
+        "aud": "Dólar australiano",
+        "nzd": "Dólar de Nova Zelândia",
+        "tjs": "Somoni Tadjique",
+        "php": "Peso Philippine",
         "uah": "Ukrainian hryvnia"
     },
     "maps": {
         "roadmap": "Google roadmap",
-        "satellite": "Google satellite",
-        "hybrid": "Google hybrid",
-        "yandex": "Yandes Maps",
+        "satellite": "Satélite do Google",
+        "hybrid": "Google híbrido",
+        "yandex": "Yandex Maps",
         "yandexpublic": "Yandex Narod Map",
         "cdcom": "ProGorod Maps",
         "osm": "OpenStreet Maps",
@@ -297,508 +297,508 @@ Ext.define('Locale.locale-pt', {
     },
     "dealer_info": {
         "first": "total",
-        "last": "of"
+        "last": "de"
     },
     "index": {
-        "menu_text": "Home"
+        "menu_text": "Casa"
     },
     "users": {
-        "menu_text": "Users",
-        "create_btn": "New user",
+        "menu_text": "Usuários",
+        "create_btn": "Novo usuário",
         "create_form": {
-            "title": "New user",
-            "main_fields": "General information",
-            "contact_fields": "Contact details",
-            "address_fields": "Address",
-            "legal_fields": "Legal entity information",
-            "password": "Password",
-            "password_repeat": "Repeat password",
-            "password_mismatched": "Passwords do not match",
-            "language": "Default language",
-            "time_zone": "Time Zone",
-            "save_btn": "Create User",
-            "clear_btn": "Clear form",
-            "copy_address": "Copy from address"
+            "title": "Novo usuário",
+            "main_fields": "Informações gerais",
+            "contact_fields": "Informações para contato",
+            "address_fields": "Endereço",
+            "legal_fields": "Informações de pessoa jurídica",
+            "password": "Senha",
+            "password_repeat": "Repita a senha",
+            "password_mismatched": "Senhas não combinam",
+            "language": "Idioma padrão",
+            "time_zone": "Fuso horário",
+            "save_btn": "Criar usuário",
+            "clear_btn": "Forma clara",
+            "copy_address": "Copiar do endereço"
         },
         "edit_form": {
-            "title": "Edit user",
-            "save_btn": "Save changes",
-            "return_btn": "Back"
+            "title": "Editar usuário",
+            "save_btn": "Salvar as alterações",
+            "return_btn": "Voltar"
         },
         "fields": {
-            "creation_date": "Date of registration",
-            "login": "Email address",
+            "creation_date": "Data do registo",
+            "login": "Endereço de e-mail",
             "balance": "Balance",
-            "bonus": "Bonus",
-            "first_name": "Name",
-            "middle_name": "Middle name",
-            "last_name": "Surname",
-            "activated": "Activated",
-            "activated_t": "User active",
-            "legal_type": "Legal status",
+            "bonus": "Bônus",
+            "first_name": "Nome",
+            "middle_name": "Nome do meio",
+            "last_name": "Sobrenome",
+            "activated": "Ativado",
+            "activated_t": "Usuário ativo",
+            "legal_type": "Estatuto jurídico",
             "tin": "TIN",
-            "legal_name": "Legal Name",
+            "legal_name": "Nome legal",
             "iec": "IEC",
-            "phone": "Phone number",
-            "post_country": "Country",
-            "post_index": "Zip code",
-            "post_region": "Region",
-            "post_city": "City",
-            "post_street_address": "Street, address",
-            "registered_country": "Registration country",
-            "registered_index": "Registration zip code",
-            "registered_region": "Registration region",
-            "registered_city": "Registration city",
-            "registered_street_address": "Registration address",
-            "sole_trader": "Sole trader",
-            "legal_entity": "Legal entity",
-            "individual": "Individual",
-            "full_name": "Full Name",
+            "phone": "Número de telefone",
+            "post_country": "País",
+            "post_index": "Código Postal",
+            "post_region": "Região",
+            "post_city": "Cidade",
+            "post_street_address": "Rua, endereço",
+            "registered_country": "País de registo",
+            "registered_index": "Registro CEP",
+            "registered_region": "Região de registro",
+            "registered_city": "Cidade de registro",
+            "registered_street_address": "Endereço de inscrição",
+            "sole_trader": "Único comerciante",
+            "legal_entity": "Pessoa jurídica",
+            "individual": "Indivíduo",
+            "full_name": "Nome completo",
             "login_short": "Login",
             "user_id": "ID",
-            "user_id_exp": "User number",
+            "user_id_exp": "Número de usuário",
             "activated_short": {
                 "title": "Status",
-                "status_true": "Active",
-                "status_false": "Not active"
+                "status_true": "Ativo",
+                "status_false": "Não ativo"
             },
             "registered_short": "legal",
-            "password": "New password",
-            "password_repeat": "Repeat new password",
-            "password_mismatched": "Passwords do not match"
+            "password": "Nova senha",
+            "password_repeat": "Repetir nova senha",
+            "password_mismatched": "Senhas não combinam"
         },
         "password_form": {
-            "title": "Changing password of user",
-            "save_btn": "Set Password",
-            "return_btn": "Cancel",
-            "success_msg": "Password successfully changed"
+            "title": "Alterar senha do usuário",
+            "save_btn": "Definir senha",
+            "return_btn": "Cancelar",
+            "success_msg": "Senha alterada com sucesso"
         },
         "list": {
-            "create_btn_text": "Create new user",
-            "empty_text": "No users found"
+            "create_btn_text": "Criar novo usuário",
+            "empty_text": "Nenhum usuário encontrado"
         },
         "session_alert": {
-            "error": "Cant create user session",
-            "title": "Your sessio code"
+            "error": "Não é possível criar a sessão do usuário",
+            "title": "O seu código de sessão"
         },
         "card": {
             "tab_panel": {
                 "trackers": {
-                    "title": "User trackers"
+                    "title": "Rastreadores de usuário"
                 },
                 "transactions": {
-                    "title": "Transactions"
+                    "title": "Transações"
                 }
             },
             "links": {
-                "session_text": "Go to monitoring",
-                "user_edit": "Edit user",
-                "user_change_password": "Change password",
-                "transactions": "Transactions",
-                "create_transaction": "Change balance"
+                "session_text": "Ir para monitoramento",
+                "user_edit": "Editar usuário",
+                "user_change_password": "Alterar senha",
+                "transactions": "Transações",
+                "create_transaction": "Alterar o equilíbrio"
             }
         },
         "transactions": {
             "list": {
-                "empty_text": "No transactions found",
-                "title": "Transactions for user"
+                "empty_text": "Nenhuma transação encontrada",
+                "title": "Transações por usuário"
             },
             "fields": {
-                "description": "Operation",
-                "type": "Operation type",
-                "subtype": "Subtype",
-                "date": "Date",
-                "amount": "Sum",
-                "old_balance": "Old",
-                "new_balance": "New",
+                "description": "Operação",
+                "type": "Tipo de operação",
+                "subtype": "Subtipo",
+                "date": "Data",
+                "amount": "Soma",
+                "old_balance": "Velho",
+                "new_balance": "Novo",
                 "type_set": {
-                    "main_charge": "subscription",
-                    "payment": "payment",
-                    "tariff_charge": "telecom services",
-                    "bonus_charge": "bonus refill"
+                    "main_charge": "assinatura",
+                    "payment": "pagamento",
+                    "tariff_charge": "serviços de telecom",
+                    "bonus_charge": "reenchimento de bônus"
                 },
                 "subtype_set": {
-                    "monthly": "monthly",
-                    "partner": "from a partner",
-                    "activeday": "active day",
-                    "everyday": "monthly by day"
+                    "monthly": "mensal",
+                    "partner": "de um parceiro",
+                    "activeday": "dia activo",
+                    "everyday": "mensal por dia"
                 }
             }
         },
         "transaction_add": {
-            "title": "Changing balance (adding transaction) of users",
-            "description": "Transaction description",
-            "balance": "Balance changes",
-            "bonus": "Bonus changes",
-            "value_sup": "* - amount of which will change the current value, can be negative"
+            "title": "Alterando o balance (adição de transação) de usuários",
+            "description": "Descrição da transação",
+            "balance": "Alterações de balance",
+            "bonus": "Alterações de bônus",
+            "value_sup": "* - quantidade de que irá alterar o valor atual, pode ser negativo"
         },
-        "combo_empty": "Select an user",
-        "select_error": "Tracker or his clone is already bound to selected user",
+        "combo_empty": "Selecione um usuário",
+        "select_error": "Tracker ou o clone dele já está vinculado ao usuário selecionado",
         "select": {
-            "title": "Select an user"
+            "title": "Selecione um usuário"
         }
     },
     "trackers": {
-        "menu_text": "Trackers",
+        "menu_text": "Rastreadores",
         "fields": {
             "tracker_id": "ID",
-            "label": "Title",
-            "model": "Model",
-            "phone": "Phone",
-            "device_id": "Device id",
-            "creation_date": "Date of registration",
-            "creation_date_short": "Registered",
+            "label": "Título",
+            "model": "Modelo",
+            "phone": "Telefone",
+            "device_id": "Id do dispositivo",
+            "creation_date": "Data do registo",
+            "creation_date_short": "Registrado",
             "connection_status": "Status",
-            "tracker_id_exp": "Tracker number",
-            "phone_exp": "Phone number",
-            "owner": "Tracker owner",
-            "tariff": "Tracker tariff",
-            "deleted": "Marked as deleted",
-            "blocked": "Service paused",
-            "user_id": "User ID",
+            "tracker_id_exp": "Número do rastreador",
+            "phone_exp": "Número de telefone",
+            "owner": "Proprietário do rastreador",
+            "tariff": "Tarifa de perseguidor",
+            "deleted": "Marcado como excluído",
+            "blocked": "Serviço pausado",
+            "user_id": "ID de usuário",
             "clone": "Clone",
-            "clone_owner": "Clone owner",
+            "clone_owner": "Proprietário do clone",
             "options": {
                 "clone": "clone",
-                "deleted": "deleted",
-                "blocked": "blocked"
+                "deleted": "eliminado",
+                "blocked": "bloqueado"
             },
             "statuses": {
-                "active": "Online",
-                "signal_lost": "Connection lost",
-                "offline": "Offline",
-                "just_registered": "Just registered",
-                "idle": "GPS not updated"
+                "active": "On-line",
+                "signal_lost": "Conexão perdida",
+                "offline": "Off-line",
+                "just_registered": "Acabei de me matricular",
+                "idle": "GPS não atualizado"
             }
         },
         "edit_form": {
-            "main_fields": "Main information",
-            "title": "Edit tracker",
-            "save_btn": "Save changes",
-            "return_btn": "Back"
+            "main_fields": "Principais informações",
+            "title": "Editar tracker",
+            "save_btn": "Salvar as alterações",
+            "return_btn": "Voltar"
         },
         "clone_form": {
-            "title": "Crate clone of tracker",
-            "remove_failure_msg": "Removing clone failed",
-            "failure_msg": "Creating clone failed",
-            "remove_confirm": "Remove clone"
+            "title": "Crie o clone do perseguidor",
+            "remove_failure_msg": "Remover o clone falhou",
+            "failure_msg": "Criar clone falhou",
+            "remove_confirm": "Remover o clone"
         },
         "group_clone_form": {
-            "title": "Cloning group of trackers",
+            "title": "Clonagem-grupo de perseguidores",
             "save_btn": "Clone",
-            "grid_clone_label": "Clones will be added",
-            "grid_clone_tip": "You can change the label of the clone by double clicking on it in the list"
+            "grid_clone_label": "Clones serão adicionados",
+            "grid_clone_tip": "Você pode alterar o rótulo do clone clicando duas vezes na lista"
         },
         "group_owner_form": {
-            "title": "Changing owner for group of trackers",
-            "save_btn": "Changing owner",
-            "grid_clone_label": "Trackers will be changed"
+            "title": "Alterar o proprietário para o grupo de trackers",
+            "save_btn": "Mudança de proprietário",
+            "grid_clone_label": "Rastreadores serão alterados"
         },
         "tariff_form": {
-            "title": "Change tariff plan for tracker",
-            "save_btn": "Save changes",
-            "repay": "Repay remainder of current tariff payment",
-            "charge": "Charge payment for new tariff",
-            "charge_sup": "only for the tariff plans with monthly payment",
-            "tariff_invalid": "must be different from current"
+            "title": "Plano tarifário de mudança para tracker",
+            "save_btn": "Salvar as alterações",
+            "repay": "Pagar o restante do pagamento de Tarifa atual",
+            "charge": "Pagamento de taxa para nova pauta",
+            "charge_sup": "somente para os planos tarifários com pagamento mensal",
+            "tariff_invalid": "deve ser diferente da atual"
         },
         "list": {
-            "create_btn_text": "Create new tracker",
-            "owner_btn": "Change owner",
+            "create_btn_text": "Criar novo tracker",
+            "owner_btn": "Alterar o proprietário",
             "clone_btn": "Clone",
-            "edit_btn": "Edit selected",
-            "empty_text": "No tracers found",
-            "after_clone_success": "Cloned: {0}",
-            "after_clone_failure": "Cloned: {0}, {1} clone failed",
-            "after_owner_success": "Changed: {0}",
-            "after_owner_failure": "Changed: {0}, {1} change failed",
-            "select_req": "Select trackers from list",
-            "select_clone_req": "Clones selected, group operations can not be performed"
+            "edit_btn": "Edição selecionada",
+            "empty_text": "Nenhum perseguidor encontrou",
+            "after_clone_success": "Clonado: {0}",
+            "after_clone_failure": "Clonado: {0}, {1} clone falhado",
+            "after_owner_success": "Alterado: {0}",
+            "after_owner_failure": "Alterado: {0}, {1} mudança falhada",
+            "select_req": "Selecione perseguidores da lista",
+            "select_clone_req": "Clones selecionados, as operações de grupo não podem ser executadas"
         },
         "card": {
             "links": {
-                "change_tracker_user": "Change owner",
-                "tracker_edit": "Edit tracker",
-                "tracker_tariff_edit": "Change tariff",
-                "tracker_clone_create": "Create clone of this tracker",
-                "tracker_clone_remove": "Delete this clone",
-                "tracker_tariff": "Tracker tariff",
-                "tracker_owner": "Tracker owner",
+                "change_tracker_user": "Alterar o proprietário",
+                "tracker_edit": "Editar tracker",
+                "tracker_tariff_edit": "Tarifa de mudança",
+                "tracker_clone_create": "Criar clone deste tracker",
+                "tracker_clone_remove": "Excluir este clone",
+                "tracker_tariff": "Pauta tracker",
+                "tracker_owner": "Proprietário do rastreador",
                 "tracker_console": "GPRS-terminal",
-                "tracker_corrupt": "Cancel registration"
+                "tracker_corrupt": "Cancelar registro"
             }
         },
         "console": {
-            "title": "GPRS-terminal for tracker",
-            "connect_btn": "Start connection",
-            "disconnect_btn": "Close connection",
-            "auto_scroll": "Auto-scrolling",
-            "clear": "Clear console",
-            "send_btn": "Send",
-            "send_empty": "Type the command",
-            "loading": "Connecting to a device",
-            "connect_init": "Connection is established",
-            "show_time": "Show message time",
-            "show_status": "Show status",
-            "disconnect_msg": "Connection terminated",
-            "connect_msg": "Connection is established",
-            "error_msg": "Error connecting to device",
-            "connection_failure": "Unable to connect to device",
-            "close_question": "Close connection?",
-            "status_title": "Device status",
+            "title": "GPRS-terminal para tracker",
+            "connect_btn": "Iniciar ligação",
+            "disconnect_btn": "Conexão fechada",
+            "auto_scroll": "Rolagem automática",
+            "clear": "Clara console",
+            "send_btn": "Enviar",
+            "send_empty": "Digite o comando",
+            "loading": "Conectando a um dispositivo",
+            "connect_init": "Conexão é estabelecida.",
+            "show_time": "Mostrar mensagem tempo",
+            "show_status": "Mostrar status",
+            "disconnect_msg": "Conexão encerrada",
+            "connect_msg": "Conexão é estabelecida.",
+            "error_msg": "Erro ao conectar ao dispositivo",
+            "connection_failure": "Não é possível se conectar ao dispositivo",
+            "close_question": "Fechar a conexão?",
+            "status_title": "Status do dispositivo",
             "status_property_title": "Status",
-            "status_value_title": "Value"
+            "status_value_title": "Valor"
         },
         "corrupt": {
             "alert": {
-                "title": "Remove tracker registration?",
-                "text": "The device will be permanently deleted from the database, all the data - not available!<br><br>You sure you want remove registration?"
+                "title": "Remover o registro do rastreador?",
+                "text": "O dispositivo será permanentemente excluído do banco de dados, todos os dados - não disponíveis! <br><br>Tem certeza que quer remove o registro?"
             },
-            "success_msg": "Device {0} successfully removed"
+            "success_msg": "{0} dispositivo removido com sucesso"
         }
     },
     "tariffs": {
-        "menu_text": "Tariffs",
+        "menu_text": "Tarifas",
         "create_form": {
-            "title": "Create new tariff",
-            "main_fields": "Main information",
-            "save_btn": "Create tariff",
-            "clear_btn": "Clear form",
-            "options_fields": "Tariff options",
-            "prices_fields": "Tariff prices"
+            "title": "Criar nova pauta",
+            "main_fields": "Principais informações",
+            "save_btn": "Criar tarifa",
+            "clear_btn": "Forma clara",
+            "options_fields": "Opções tarifárias",
+            "prices_fields": "Preços tabelados"
         },
         "edit_form": {
-            "title": "Edit tariff",
-            "save_btn": "Save changes"
+            "title": "Editar pautais",
+            "save_btn": "Salvar as alterações"
         },
         "default_form": {
-            "title": "Default tariff settings"
+            "title": "Pauta configurações padrão"
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Label",
-            "group_id": "Group",
-            "price": "Monthly payment",
-            "device_limit": "Limit of devices",
-            "device_type": "Device type",
-            "store_period": "History storage period",
-            "active": "Available for user",
-            "has_reports": "Table reports is available",
-            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
-            "incoming_sms": "Incoming SMS",
-            "outgoing_sms": "Outgoing SMS",
-            "service_sms": "Service SMS",
-            "phone_call": "Phone calls",
-            "traffic": "GPRS (for Mb)",
-            "default_tariff": "the default tariff for devices of type «{0}»",
-            "default_short": "default",
-            "service_price": "the amount charged for service usage",
-            "group_id_exp": "Tariff group",
-            "active_exp": "Users can switch to this tariff on his own",
-            "device_limit_exp": "Maximum devices",
-            "activation_bonus": "Activation bonus",
-            "free_days": "Number of free days",
-            "tariff_type": "Billing cycle",
-            "tariff_type_short": "Payment"
+            "name": "Rótulo",
+            "group_id": "Grupo",
+            "price": "Pagamento mensal",
+            "device_limit": "Limite de dispositivos",
+            "device_type": "Tipo de dispositivo",
+            "store_period": "Período de armazenagem de história",
+            "active": "Disponível para o usuário",
+            "has_reports": "Os relatórios de mesa são disponíveis",
+            "proportional_charge": "Taxa de assinatura para o mês parcial de proporção ao número de dias para amortizar",
+            "incoming_sms": "SMS recebidas",
+            "outgoing_sms": "Saída de SMS",
+            "service_sms": "Serviço SMS",
+            "phone_call": "Chamadas de telefone",
+            "traffic": "GPRS (por Mb)",
+            "default_tariff": "pauta padrão para dispositivos do tipo «{0}»",
+            "default_short": "padrão",
+            "service_price": "o valor cobrado para o uso do serviço",
+            "group_id_exp": "Grupo tarifário",
+            "active_exp": "Os usuários podem alternar para essa tarifa por conta própria",
+            "device_limit_exp": "Máximo dispositivos",
+            "activation_bonus": "Bônus de ativação",
+            "free_days": "Número de dias livres",
+            "tariff_type": "Ciclo de faturamento",
+            "tariff_type_short": "Pagamento"
         },
         "list": {
-            "create_btn_text": "Add new tariff",
-            "empty_text": "Tariffs not found"
+            "create_btn_text": "Adicionar nova pauta",
+            "empty_text": "Tarifas não encontradas"
         },
         "card": {
             "links": {
-                "make_default": "Mark as default",
-                "tariff_edit": "Edit tariff"
+                "make_default": "Marcar como padrão",
+                "tariff_edit": "Editar pautais"
             },
             "tab_panel": {
                 "trackers": {
-                    "title": "Trackers at this tariff"
+                    "title": "Registadores nessa tarifa"
                 }
             }
         },
-        "combo_empty": "Select tariff",
-        "select_error": "This tariff is not available",
+        "combo_empty": "Selecione a pauta",
+        "select_error": "Essa tarifa não está disponível",
         "select": {
-            "title": "Select tariff"
+            "title": "Selecione a pauta"
         },
         "types": {
-            "activeday": "Daily",
-            "monthly": "Monthly",
-            "everyday": "Monthly (daily debit)"
+            "activeday": "Diário",
+            "monthly": "Mensal",
+            "everyday": "Mensal (débito diário)"
         },
         "price_type": {
-            "monthly": "Monthly fee",
-            "activeday": "Daily fee",
-            "everyday": "Monthly fee"
+            "monthly": "Taxa mensal",
+            "activeday": "Taxa diária",
+            "everyday": "Taxa mensal"
         }
     },
     "codes": {
-        "menu_text": "Activation codes",
+        "menu_text": "Códigos de ativação",
         "fields": {
             "activated": "status",
-            "activation_date": "Activation date",
-            "bonus_amount": "Bonus",
-            "code": "code",
-            "device_id": "Device ID",
-            "device_type": "Device type",
-            "free_days": "Free days",
-            "money_amount": "Amount",
-            "tariff_id": "Tariff ID",
-            "tariff_name": "Tariff",
+            "activation_date": "Data de ativação",
+            "bonus_amount": "Bônus",
+            "code": "código",
+            "device_id": "ID do dispositivo",
+            "device_type": "Tipo de dispositivo",
+            "free_days": "Dias livres",
+            "money_amount": "Quantidade",
+            "tariff_id": "ID de Tarifa",
+            "tariff_name": "Pauta",
             "status": {
-                "activated": "activated",
-                "no_activated": "not activated"
+                "activated": "ativado",
+                "no_activated": "não ativado"
             }
         },
         "edit_form": {
-            "title": "Edit activation codes",
-            "save_btn": "Save changes",
-            "selected_count": "Codes selected",
-            "device_type": "Codes selected for devices"
+            "title": "Editar códigos de ativação",
+            "save_btn": "Salvar as alterações",
+            "selected_count": "Códigos selecionados",
+            "device_type": "Códigos selecionados para dispositivos"
         },
         "create_form": {
-            "title": "Create activation codes",
-            "save_btn": "Create codes",
-            "new_codes_count": "Amount of new codes"
+            "title": "Criar códigos de ativação",
+            "save_btn": "Criar códigos",
+            "new_codes_count": "Quantidade de novos códigos"
         },
         "list": {
-            "empty_text": "No activation codes found",
-            "create_btn": "Create new",
-            "edit_btn": "Edit selected",
-            "reload_btn": "Reload",
-            "after_create_success": "Created: {0}",
-            "after_edit_success": "Changes: {0}",
-            "after_edit_failure": "Changed: {0}, {1} change failed",
-            "select_req": "Select codes from list",
-            "same_type_req": "You must specify one device type codes",
-            "edited_tip": "changed",
+            "empty_text": "Códigos de ativação não encontrados",
+            "create_btn": "Criar uma nova",
+            "edit_btn": "Edição selecionada",
+            "reload_btn": "Recarga",
+            "after_create_success": "Criado: {0}",
+            "after_edit_success": "Alterações: {0}",
+            "after_edit_failure": "Alterado: {0}, {1} mudança falhada",
+            "select_req": "Selecione códigos da lista",
+            "same_type_req": "Você deve especificar um código do tipo de dispositivo",
+            "edited_tip": "mudou",
             "filters": {
-                "activated": "Activated",
-                "no_activated": "Not activated",
-                "trackers": "Trackers",
-                "cameras": "Cameras",
-                "sockets": "Sockets",
-                "toggle_all": "Show all"
+                "activated": "Ativado",
+                "no_activated": "Não ativado",
+                "trackers": "Rastreadores",
+                "cameras": "Câmeras",
+                "sockets": "Soquetes",
+                "toggle_all": "Mostrar todo"
             }
         }
     },
     "settings": {
-        "menu_text": "Settings",
+        "menu_text": "Configurações",
         "fields": {
-            "service_title": "Service title",
-            "page_title": "Page title",
-            "locale": "User interface language",
-            "demo_login": "Demo user",
-            "demo_password": "Demo password",
-            "maps_title": "Available maps",
+            "service_title": "Título do serviço",
+            "page_title": "Título da página",
+            "locale": "Idioma da interface do usuário",
+            "demo_login": "Usuário demo",
+            "demo_password": "Demo senha",
+            "maps_title": "Mapas disponíveis",
             "maps_default": {
-                "type": "Default map",
-                "location_lat": "Latitude default",
-                "location_lng": "Longitude default",
-                "zoom": "Default zoom"
+                "type": "Mapa padrão",
+                "location_lat": "Padrão de latitude",
+                "location_lng": "Padrão de longitude",
+                "zoom": "Zoom padrão"
             },
-            "google_client_id": "Client ID for google maps",
-            "currency": "Currency for users",
-            "payment_link": "Payment system URL",
-            "promo_url": "Promo website URL",
-            "domain": "Domain",
-            "email_from": "Sender Email",
-            "email_special": "Email for alerts",
-            "email_footer": "Email footer",
-            "sms_originator": "SMS originator",
-            "caller_id": "Voice notice originator",
-            "password": "New password",
-            "password_repeat": "Repeat new password",
-            "password_old": "Current password",
-            "password_mismatched": "Passwords do not match",
-            "footer_email": "Company E-mail",
-            "footer_site": "«About Us» Link",
-            "footer_text": "The text at the bottom of page"
+            "google_client_id": "ID do cliente para o google maps",
+            "currency": "Moeda para usuários",
+            "payment_link": "URL do sistema de pagamento",
+            "promo_url": "Promo site URL",
+            "domain": "Domínio",
+            "email_from": "E-mail remetente",
+            "email_special": "E-mail para alertas",
+            "email_footer": "Rodapé do e-mail",
+            "sms_originator": "Originador SMS",
+            "caller_id": "Remetente de anúncio de voz",
+            "password": "Nova senha",
+            "password_repeat": "Repetir nova senha",
+            "password_old": "Senha atual",
+            "password_mismatched": "Senhas não combinam",
+            "footer_email": "E-mail da empresa",
+            "footer_site": "«Acerca de nós» Link",
+            "footer_text": "O texto na parte inferior da página"
         },
         "edit_form": {
-            "title": "Service Settings",
-            "save_btn": "Save",
-            "save_msg": "Settings saved successfully",
-            "main_fields": "Basic Settings",
-            "map_fields": "Maps settings",
-            "permission_fields": "Notification dettings",
-            "domain_sup": "* - for domains like *{0} available map types limited",
-            "custom_fields": "Customization",
-            "main_buttons_title": "Displaying buttons",
-            "show_mobile_apps": "Show buttons for downloading mobile apps",
-            "allow_registration": "Allow user self registration",
-            "main_texts_title": "Main texts",
-            "footer_texts_title": "Text in the basement of the login page",
-            "logo_title": "Logo",
+            "title": "Configurações do serviço",
+            "save_btn": "Salvar",
+            "save_msg": "Configurações salvas com sucesso",
+            "main_fields": "Configurações básicas",
+            "map_fields": "Configurações de mapas",
+            "permission_fields": "Colocações de notificação",
+            "domain_sup": "* - para domínios como * {0} disponível limitados de tipos de mapa",
+            "custom_fields": "Personalização",
+            "main_buttons_title": "Exibindo botões",
+            "show_mobile_apps": "Mostrar botões para fazer o download de aplicativos móveis",
+            "allow_registration": "Permitir que o usuário auto registro",
+            "main_texts_title": "Principais textos",
+            "footer_texts_title": "Texto no porão da página de login",
+            "logo_title": "Logotipo",
             "favicon_title": "Favicon",
-            "login_wallpaper_title": "Authorization page background",
-            "desktop_wallpaper_title": "Services page background",
+            "login_wallpaper_title": "Fundo da página de autorização",
+            "desktop_wallpaper_title": "Fundo da página de serviços",
             "upload_btn": "Upload",
-            "update_btn": "Change",
-            "remove_btn": "Remove",
-            "upload_loading": "Upload Image",
-            "domain_fields": "Domain",
-            "regional_fields": "Regional settings",
-            "maps_fields": "Maps",
-            "demo_fields": "Demo user",
-            "notifications_fields": "Notifications",
-            "password_fields": "Change password",
-            "pass_hint": "Changes in other tabs will not be saved",
-            "pass_save_msg": "Password changed successfully",
-            "pass_save_btn": "Change Password",
-            "maps_hint": "Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.",
-            "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
-            "user_notifications_title": "Notifications to users",
-            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
-            "special_notifications_title": "Notifications to administrators",
-            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
+            "update_btn": "Mudança",
+            "remove_btn": "Remover",
+            "upload_loading": "Upload de imagem",
+            "domain_fields": "Domínio",
+            "regional_fields": "Configurações regionais",
+            "maps_fields": "Mapas",
+            "demo_fields": "Usuário demo",
+            "notifications_fields": "Notificações",
+            "password_fields": "Alterar senha",
+            "pass_hint": "Alterações em outras guias não serão salvos",
+            "pass_save_msg": "Senha alterada com sucesso",
+            "pass_save_btn": "Alterar senha",
+            "maps_hint": "Por favor, defina a seleção de mapas, que estará disponível para os clientes do seu serviço. A lista de mapas para usuários específicos pode ser limitada com suas configurações de plano tarifário. <br><br>a utilização dos serviços de mapa selecionado deve ser concedido a você por seus proprietários de direitos. NAVIXY não é responsável por qualquer violação dos termos de licença por você ou seus usuários finais.",
+            "demo_hint": "Escolher a conta de usuário que será usada para fins de demonstração e estão disponíveis na página de login (opcional)",
+            "user_notifications_title": "Notificações aos usuários",
+            "user_notifications_hint": "Configurações para notificações do seu sistema de rastreamento de usuários: sobre geo-eventos, baixa o equilíbrio, recuperação de senha, etc.",
+            "special_notifications_title": "Notificações para os administradores",
+            "special_notifications_hint": "Notificações de sistema para os administradores sobre o status do serviço, estatísticas e outros"
         },
         "upload_form": {
             "save_btn": "Upload",
-            "cancel_btn": "Cancel",
-            "upload_btn": "View",
-            "title": "Upload image. {0}",
+            "cancel_btn": "Cancelar",
+            "upload_btn": "Vista",
+            "title": "Upload de imagem. {0}",
             "titles": {
-                "logo": "Logo",
+                "logo": "Logotipo",
                 "favicon": "Favicon",
-                "login_wallpaper": "Login page wallpaper",
-                "desktop_wallpaper": "Service page wallpaper"
+                "login_wallpaper": "Papel de parede página de login",
+                "desktop_wallpaper": "Papel de parede do serviço página"
             },
             "tips": {
-                "logo": "Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.",
-                "favicon": "Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.",
-                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG."
+                "logo": "Recomendado carregar horizontalmente orientado a imagem com um fundo transparente e com uma largura não inferior a 200 pontos.",
+                "favicon": "Recomendado para carregar a imagem com um fundo transparente e uma resolução mínima de 32 x 32 pixels.",
+                "login_wallpaper": "Recomendado para carregar imagens de fundo com uma resolução de pelo menos 1920 x 1080 pixels (FullHD) no formato JPEG."
             },
-            "img_title": "The image format {0} (the maximum size of {1} MB)",
-            "error_text": "Failed to load image"
+            "img_title": "O {0} de formato de imagem (o tamanho máximo de {1} MB)",
+            "error_text": "Falha ao carregar a imagem"
         }
     },
     "accounting": {
-        "menu_text": "Accounting",
+        "menu_text": "Contabilidade",
         "report_msg": {
-            "title": "Confirm email-newsletter",
-            "text": "Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?"
+            "title": "Confirmar e-mail-boletim",
+            "text": "Alerte os clientes sobre como exportar dados de 1c para <b>{0}</b>. <br>Tem certeza que quer fazer o <b>Boletim de e-mail</b>?"
         },
         "form": {
-            "title": "«1C:Enterprise» Data exporting",
+            "title": "«1C:Enterprise» Exportação de dados",
             "export1c": {
-                "tab_title": "Accounting",
-                "save_btn": "Get 1C data file",
-                "report_btn": "Submit deeds by email",
+                "tab_title": "Contabilidade",
+                "save_btn": "Se o arquivo de dados de 1C",
+                "report_btn": "Apresentar ações por e-mail",
                 "fields": {
-                    "month": "Select a month",
-                    "last_act": "Last deed number"
+                    "month": "Selecione um mês",
+                    "last_act": "Último número de escritura"
                 }
             },
             "payments": {
-                "tab_title": "Payments",
-                "save_btn": "Get 1C data file",
+                "tab_title": "Pagamentos",
+                "save_btn": "Se o arquivo de dados de 1C",
                 "fields": {
-                    "date": "Time interval",
-                    "type": "Payment system"
+                    "date": "Intervalo de tempo",
+                    "type": "Sistema de pagamento"
                 },
                 "ps": {
-                    "default": "All of the above",
+                    "default": "Todas as anteriores",
                     "cyberplat": "CyberPlat",
                     "deltapay": "DeltaPay",
                     "mobile": "Mobile",
@@ -811,21 +811,21 @@ Ext.define('Locale.locale-pt', {
         }
     },
     "payments": {
-        "menu_text": "Payments",
+        "menu_text": "Pagamentos",
         "import_sberbank": {
-            "title": "Sberbank payments import",
-            "save_btn": "Import payments",
-            "upload_btn": "View",
-            "upload_loading": "Uploading file",
-            "error_text": "Failed to import payments",
+            "title": "Importação de pagamentos Sberbank",
+            "save_btn": "Pagamentos de importação",
+            "upload_btn": "Vista",
+            "upload_loading": "Upload de arquivo",
+            "error_text": "Falha ao importar os pagamentos",
             "fields": {
-                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+                "file_title": "Importar arquivo de formato {0} (tamanho máximo {1} Mb)"
             },
             "errors": {
-                "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
+                "242": "Linha {0}, {1}, coluna descrição: <br><i>{2}</i>"
             },
-            "success_msg": "Sberbank payments successfully imported",
-            "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
+            "success_msg": "Sberbank pagamentos importados com êxito",
+            "success_dsc": "Data de registro: <b>{0}</b> <br>Conde de pagamentos carregados: <b>{1}</b> <br>carregado dos pagamentos: <b>{2}</b>"
         }
     }
 });

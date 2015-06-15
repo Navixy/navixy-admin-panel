@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-ro
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-ro', {
+* @class Locale.locale-ro
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-ro',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {

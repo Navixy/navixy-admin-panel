@@ -39,6 +39,13 @@ Ext.define('Locale.Manager', {
             name: 'uk',
             text: 'Ukrainian - Українська',
             alias: ['ua', 'uk', 'uk_UA']
+        },
+        {
+            id: 'pt_PT',
+            name: 'pt',
+            text: 'Portuguese - Português',
+            alias: ['pt', 'pt_PT', 'Português'],
+            rtl: false
         }
 
     ],
@@ -68,7 +75,7 @@ Ext.define('Locale.Manager', {
         {
             id: 'ru_RU',
             name: 'ru',
-            text: 'Russian - Русский',
+            text: 'Русский',
             alias: ['ru', 'ru_RU', 'Русский'],
             rtl: false
         },
@@ -77,6 +84,13 @@ Ext.define('Locale.Manager', {
             name: 'uk',
             text: 'Українська',
             alias: ['ua', 'uk', 'uk_UA'],
+            rtl: false
+        },
+        {
+            id: 'pt_PT',
+            name: 'pt',
+            text: 'Português',
+            alias: ['pt', 'pt_PT', 'Português'],
             rtl: false
         },
         {

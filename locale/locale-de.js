@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-de
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-de', {
+* @class Locale.locale-de
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-de',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -134,12 +134,12 @@ Ext.define('Locale.locale-de', {
             "248": "Falsches Passwort"
         },
         "payment": {
-            "201": "Not found in database",
-            "242": "There were errors during content validation",
-            "246": "Invalid user ID",
-            "247": "Entity already exists",
-            "259": "Payments count not comply with summary",
-            "260": "Payments sum not comply with summary"
+            "201": "In der Datenbank nicht gefunden",
+            "242": "Während Inhaltsüberprüfung gab es Störungen",
+            "246": "Ungültige Benutzer-ID",
+            "247": "Einheit ist bereits vorhanden.",
+            "259": "Anzahl der Zahlungen nicht nachkommt, Zusammenfassung",
+            "260": "Summe der Zahlungen nicht nachkommt, Zusammenfassung"
         }
     },
     "units_combination": {
@@ -264,52 +264,52 @@ Ext.define('Locale.locale-de', {
         "socket": "Socket"
     },
     "currency": {
-		"gbp": "Pfund Sterling",
-		"brl": "Brasilianischer Real",
-		"huf": "Forint",
-		"hkd": "Hongkong-Dollar",
-		"dkk": "Dänische Krone",
-		"eur": "Euro",
-		"ils": "Schekel",
-		"inr": "Indische Rupie",
-		"idr": "Indonesische Rupiah",
-		"cad": "Kanadischer Dollar",
-		"cny": "Renminbi",
-		"krw": "Südkoreanischer Won",
-		"myr": "Ringgit",
-		"mxn": "Mexikanischer Peso",
-		"nzd": "Neuseeland-Dollar",
-		"nok": "Norwegische Krone",
-		"pkr": "Pakistanische Rupie",
-		"pln": "Złoty",
-		"rub": "Russischer Rubel",
-		"sgd": "Singapur-Dollar",
-		"usd": "US-Dollar",
-		"twd": "Neuer Taiwan-Dollar",
-		"thb": "Baht",
-		"try": "Türkische Lira",
-		"php": "Philippinischer Peso",
-		"czk": "Tschechische Krone",
-		"clp": "Chilenischer Peso",
-		"sek": "Schwedische Krone",
-		"chf": "Schweizer Franken",
-		"zar": "Südafrikanischer Rand",
-		"jpy": "Yen",
-		"kzt": "Tenge",
-		"byr": "Weißrussischer Rubel",
-		"aud": "Australischer Dollar",
-		"tjs": "Somoni",
-		"uah": "Hrywnja",
-		"ltl": "Litas",
-		"lvl": "Lats",
-		"kgs": "Som",
-		"tmt": "Turkmenistan-Manat",
-		"uzs": "Soʻm",
-		"mdl": "Moldauischer Leu",
-		"gel": "Georgischer Lari",
-		"amd": "Armenischer Dram",
-		"azn": "Aserbaidschan-Manat",
-	},
+        "gbp": "Pfund sterling",
+        "brl": "Brasilianischer Real",
+        "huf": "Forint",
+        "hkd": "Hongkong-Dollar",
+        "dkk": "Dänische Krone",
+        "eur": "Euro",
+        "ils": "Schekel",
+        "inr": "Indische Rupie",
+        "idr": "Indonesische Rupiah",
+        "cad": "Kanadischer dollar",
+        "cny": "Renminbi",
+        "krw": "Südkoreanischer Won",
+        "myr": "Ringgit",
+        "mxn": "Mexikanischer Peso",
+        "nzd": "Neuseeland-Dollar",
+        "nok": "Norwegische Krone",
+        "pkr": "Pakistanische Rupie",
+        "pln": "Złoty",
+        "rub": "Russischer Rubel",
+        "sgd": "Singapur-Dollar",
+        "usd": "US-Dollar",
+        "twd": "Neuer Taiwan-Dollar",
+        "thb": "Baht",
+        "try": "Türkische Lira",
+        "php": "Philippinischer Peso",
+        "czk": "Tschechische Krone",
+        "clp": "Chilenischer Peso",
+        "sek": "Schwedische Krone",
+        "chf": "Schweizer Franken",
+        "zar": "Südafrikanischer Rand",
+        "jpy": "Japanischer Yen",
+        "kzt": "Kasachstan Tenge",
+        "byr": "Weißrussischer Rubel",
+        "aud": "Australischer Dollar",
+        "tjs": "Tajik Somoni",
+        "uah": "Hrywnja",
+        "ltl": "Litas",
+        "lvl": "Lats",
+        "kgs": "Som",
+        "tmt": "Turkmenistan-Manat",
+        "uzs": "Soʻm",
+        "mdl": "Moldauischer Leu",
+        "gel": "Georgischer Lari",
+        "amd": "Armenischer Dram",
+        "azn": "Aserbaidschan-Manat"
+    },
     "maps": {
         "roadmap": "Google-Fahrplan",
         "satellite": "Google Satellit",
@@ -733,7 +733,7 @@ Ext.define('Locale.locale-de', {
             "promo_url": "Promo-Website-URL",
             "domain": "Domäne",
             "email_from": "Absender E-Mail",
-            "email_special": "Email for alerts",
+            "email_special": "E-Mail für Benachrichtigungen",
             "email_footer": "E-Mail-Fußzeile",
             "sms_originator": "SMS-Absender",
             "caller_id": "Voice- Mitteilung Absender",
@@ -778,10 +778,10 @@ Ext.define('Locale.locale-de', {
             "pass_save_btn": "Passwort ändern",
             "maps_hint": "Bitte definieren Sie die Auswahl der Karten, die für die Kunden von Ihrem Service verfügbar sein wird. Die Liste der Karten für bestimmte Benutzer können mit ihren Tarif -Einstellungen beschränkt sein.<br><br>Der Gebrauch von Kartendienstleistungen, die Sie ausgewählt haben, muss Ihnen von ihren Rechteigentümern gewährt werden. NAVIXY ist nicht verantwortlich für ein Verstoß gegen die Lizenzbedingungen durch Sie oder Ihre Endbenutzer.",
             "demo_hint": "Wählen Sie Benutzerkonto, das zu Demonstrationszwecken und auf Login-Seite verwendet werden soll (optional)",
-            "user_notifications_title": "Notifications to users",
-            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
-            "special_notifications_title": "Notifications to administrators",
-            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
+            "user_notifications_title": "Benachrichtigungen an Benutzer",
+            "user_notifications_hint": "Einstellungen für Benachrichtigungen von Ihrem Trackingsystem, Benutzer: über Geo-Veranstaltungen, niedrige, Gleichgewicht, Passwort wiederherstellen, etc..",
+            "special_notifications_title": "Benachrichtigungen an Administratoren",
+            "special_notifications_hint": "Systembenachrichtigungen an Administratoren über Service-Status, Statistiken und andere"
         },
         "upload_form": {
             "save_btn": "Hochladen",
@@ -842,21 +842,21 @@ Ext.define('Locale.locale-de', {
     },
     "main_copyright": "© 2015 RusLink. Alle Rechte vorbehalten.",
     "payments": {
-        "menu_text": "Payments",
+        "menu_text": "Zahlungen",
         "import_sberbank": {
-            "title": "Sberbank payments import",
-            "save_btn": "Import payments",
-            "upload_btn": "View",
-            "upload_loading": "Uploading file",
-            "error_text": "Failed to import payments",
+            "title": "Sberbank Zahlungen importieren",
+            "save_btn": "Import von Zahlungen",
+            "upload_btn": "Ansicht",
+            "upload_loading": "Datei hochladen",
+            "error_text": "Fehler beim Importieren von Zahlungen",
             "fields": {
-                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+                "file_title": "Import-Datei Format {0} (maximale Größe {1} Mb)"
             },
             "errors": {
-                "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
+                "242": "Zeile {0}, Spalte {1}, Beschreibung: <br><i>{2}</i>"
             },
-            "success_msg": "Sberbank payments successfully imported",
-            "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
+            "success_msg": "Sberbank Zahlungen erfolgreich importiert",
+            "success_dsc": "Datum der Registrierung: <b>{0}</b> <br>Anzahl der geladenen Zahlungen: <b>{1}</b> <br>Summe geladen Zahlungen: <b>{2}</b>"
         }
     }
 });
