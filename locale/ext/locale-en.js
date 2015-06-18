@@ -72,8 +72,8 @@ Ext.onReady(function () {
             thousandSeparator: ',',
             decimalSeparator: '.',
             currencySign: '$',
-            dateFormat: 'm/d/Y',
-            dateFormatFull: 'm/d/Y H:i:s'
+            dateFormat: 'd M Y',
+            dateFormatFull: 'd M Y H:i:s'
         });
     }
 });
