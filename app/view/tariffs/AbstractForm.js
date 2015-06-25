@@ -166,6 +166,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 boxLabel: _l.get('tariffs.fields.has_reports'),
                 name: 'has_reports',
                 allowBlank: true,
+                checked: true,
                 labelWidth: 'auto',
                 width: 'auto',
                 xtype: 'checkbox'
