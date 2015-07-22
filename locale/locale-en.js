@@ -888,8 +888,12 @@ Ext.define('Locale.locale-en', {
         "shipping": {
             "search_btn": "Search",
             "steps": {
-                "first": {"title": "The order search"},
-                "second": {"title": "The addition of retro fit kits to order"}
+                "first": {
+                    "title": "The order search"
+                },
+                "second": {
+                    "title": "The addition of retro fit kits to order"
+                }
             },
             "hints": {
                 "ready_for_search": "Please enter the order number.",
@@ -919,8 +923,12 @@ Ext.define('Locale.locale-en', {
             "clear_form": "To start over",
             "to_list": "A list of sets",
             "steps": {
-                "first": {"title": "Scan the IMEI code of the device"},
-                "second": {"title": "Installation ICCID code device"}
+                "first": {
+                    "title": "Scan the IMEI code of the device"
+                },
+                "second": {
+                    "title": "Installation ICCID code device"
+                }
             },
             "fields": {
                 "title": "Information about the kit",
@@ -958,7 +966,9 @@ Ext.define('Locale.locale-en', {
                 "iccid_not_found": "Failed to bind the SIM card c code<br><b>{0}</b>",
                 "iccid_cant_unassign": "Failed to detach the SIM card"
             },
-            "print_hints": {"print_error": "Error. Not found the label template for the kit.<br>Printing is not possible."},
+            "print_hints": {
+                "print_error": "Error. Not found the label template for the kit.<br>Printing is not possible."
+            },
             "hints": {
                 "imei_ready": "Ready to scan. Attach the scanner to the barcode device IMEI.",
                 "imei_focus_lose": "Error. Scanning is not ready. Click the button below.",
@@ -1012,7 +1022,11 @@ Ext.define('Locale.locale-en', {
             "model_code": "Model code",
             "vendor": "Manufacturer"
         },
-        "select": {"title": "The choice of kit"},
-        "list": {"empty_text": "Packages not found"}
+        "select": {
+            "title": "The choice of kit"
+        },
+        "list": {
+            "empty_text": "Packages not found"
+        }
     }
 });

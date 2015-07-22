@@ -858,5 +858,175 @@ Ext.define('Locale.locale-fr',{
             "success_msg": "Sberbank payments successfully imported",
             "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
         }
+    },
+    "bundles": {
+        "menu_text": "Package contents",
+        "title": "Working with sets of equipment",
+        "menu": {
+            "list": "A list of sets",
+            "scan": "Linking the SIM card to the beacon",
+            "shipping": "Shipping",
+            "import": "Import"
+        },
+        "fields": {
+            "id": "ID",
+            "model_code": "Model",
+            "imei": "IMEI",
+            "iccid": "ICCID",
+            "sim_card": "SIM card",
+            "assign_time": "Date",
+            "phone": "Phone",
+            "apn": "APN",
+            "order_id": "The order number"
+        },
+        "list": {
+            "scan_btn_text": "Snap beacons",
+            "empty_text": "No kits",
+            "unassign": "detach from order",
+            "unassign_q": "Do you want to remove the complete<br>c IMEI-code \"{0}\" out of order?"
+        },
+        "shipping": {
+            "search_btn": "Search",
+            "steps": {
+                "first": {
+                    "title": "The order search"
+                },
+                "second": {
+                    "title": "The addition of retro fit kits to order"
+                }
+            },
+            "hints": {
+                "ready_for_search": "Please enter the order number.",
+                "order_search_failure": "Error. Order number \"{0}\" not found.",
+                "order_found": "Order number \"{0}\" was found.",
+                "imei_same_order": "Error. Set your phone's IMEI code \"{0}\" is already attached to the current order.",
+                "imei_order_set": "Attention! Set your phone's IMEI code \"{0}\" is already assigned to the order number \"{1}\".",
+                "imei_reset_q": "Do you want perinatality set on the current order?",
+                "imei_reset_btn": "Reassign",
+                "bundle_asssigned": "Set your phone's IMEI code \"{0}\" was successfully added to the order of \"{1}\".",
+                "bundle_asssign_failure": "Error. Set your phone's IMEI code \"{0}\" could not be added to the order \"{1}\"."
+            },
+            "fields": {
+                "id": "The order number",
+                "user_id": "The user number",
+                "sum": "Order amount",
+                "payer": "Payer",
+                "recipient": "The recipient",
+                "contacts": "Contacts",
+                "place": "Address",
+                "comment": "Comment",
+                "creation_time": "Creation time",
+                "status": "Status"
+            }
+        },
+        "scan": {
+            "clear_form": "To start over",
+            "to_list": "A list of sets",
+            "steps": {
+                "first": {
+                    "title": "Scan the IMEI code of the device"
+                },
+                "second": {
+                    "title": "Installation ICCID code device"
+                }
+            },
+            "fields": {
+                "title": "Information about the kit",
+                "title_add": "The SIM card is already linked!",
+                "title_add_changed": "The SIM card is changed",
+                "equip_add_changed": "The kit changed",
+                "id": "Room set",
+                "imei": "IMEI",
+                "iccid": "ICCID",
+                "model_code": "The model",
+                "equip_id": "Code kit",
+                "order_id": "The order number",
+                "assign_time": "The binding sim card"
+            },
+            "buttons": {
+                "enter": "Enter",
+                "assign_iccid": "Snap the SIM card",
+                "reassign_iccid": "To reassign the SIM card",
+                "remove_iccid": "Detach the SIM card",
+                "print": "To print the label",
+                "reset": "To start over",
+                "change_equip": "Change the composition"
+            },
+            "imie_hints": {
+                "imei_ready": "Attach the scanner to the bar code IMEI",
+                "imei_invalid": "You entered an incorrect value<br>scan Again",
+                "imei_focus_lose": "Scanning is not ready<br>Set the focus on the field",
+                "imei_not_found": "Sets your phone's IMEI code<br><b>{0}</b> not found",
+                "auto_print": "Automatically print and start again"
+            },
+            "iccid_hints": {
+                "iccid_ready": "Attach the scanner to the barcode ICCID",
+                "iccid_invalid": "You entered an incorrect value<br>scan Again",
+                "iccid_focus_lose": "Scanning is not ready<br>Set the focus on the field",
+                "iccid_not_found": "Failed to bind the SIM card c code<br><b>{0}</b>",
+                "iccid_cant_unassign": "Failed to detach the SIM card"
+            },
+            "print_hints": {
+                "print_error": "Error. Not found the label template for the kit.<br>Printing is not possible."
+            },
+            "hints": {
+                "imei_ready": "Ready to scan. Attach the scanner to the barcode device IMEI.",
+                "imei_focus_lose": "Error. Scanning is not ready. Click the button below.",
+                "imei_focus_lose_btn": "To start the scan",
+                "imei_invalid": "Error. Entered IMEI invalid value \"{0}\".<br>Please re-scan.",
+                "imei_not_found": "Error. The ICCID value \"{0}\" not found.<br>Please re-scan.",
+                "iccid_ready": "IMEI found. Ready to scan.<br>Attach the scanner to the barcode ICCID.",
+                "iccid_focus_lose": "Error. Scanning is not ready. Click the button below.",
+                "iccid_focus_lose_btn": "To start the scan",
+                "iccid_invalid": "Error. You entered an incorrect value ICCID \"{0}\".<br>Please re-scan.",
+                "iccid_found": "IMEI found. With him is associated ICCID code \"{0}\".<br>You can scan the new ICCID code to change it manually or detach the SIM card",
+                "iccid_succcess": "ICCID \"{0}\" successfully assigned.",
+                "iccid_print_ready": "If automatic printing of stickers has not occurred, click the button below.",
+                "iccid_no_model": "Error. Not found the label template for the model. Cannot print",
+                "iccid_send_btn": "Send ICCID",
+                "iccid_unassign_btn": "Detach the SIM card",
+                "iccid_print_btn": "Print sticker",
+                "last_scan_text": "The results of the previous scan:",
+                "unassign_q": "Detach the SIM card from the device?",
+                "unassign_success": "SIM card untethered from the device",
+                "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
+            }
+        },
+        "import": {
+            "import_hints": {
+                "enter_list": "Enter or scan the list of IMEI-codes",
+                "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
+                "list_count": "Resposne codes: <b>{0}</b>",
+                "list_miss": "incorrect: <b>{0}</b> ",
+                "list_rep": "introduced repetitions: <b>{0}</b>",
+                "import_success": "Successfully imported {0}",
+                "import_failure": "The list of devices to import failed",
+                "factory_preset": "The device is already configured by the manufacturer",
+                "no_model": "The model is not selected"
+            },
+            "titles": {
+                "first": "The input set of IMEI-codes",
+                "second": "Model selection for devices"
+            },
+            "buttons": {
+                "import": "To import codes",
+                "reset": "Clear form"
+            }
+        }
+    },
+    "equipment": {
+        "fields": {
+            "equip_id": "ID",
+            "name": "Name",
+            "model_name": "Model",
+            "model_code": "Model code",
+            "vendor": "Manufacturer"
+        },
+        "select": {
+            "title": "The choice of kit"
+        },
+        "list": {
+            "empty_text": "Packages not found"
+        }
     }
 });
