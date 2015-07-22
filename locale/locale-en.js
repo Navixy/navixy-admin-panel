@@ -924,7 +924,7 @@ Ext.define('Locale.locale-en', {
             }
         },
         "scan": {
-            "clear_form": "To start over",
+            "clear_form": "Try again",
             "to_list": "A list of sets",
             "steps": {
                 "first": {
@@ -939,7 +939,7 @@ Ext.define('Locale.locale-en', {
                 "title_add": "The SIM card is already linked!",
                 "title_add_changed": "The SIM card is changed",
                 "equip_add_changed": "The kit changed",
-                "id": "Room set",
+                "id": "Kit ID",
                 "imei": "IMEI",
                 "iccid": "ICCID",
                 "model_code": "The model",
