@@ -1027,7 +1027,7 @@ Ext.define('Locale.locale-ru',{
     "equipment": {
         "fields": {
             "equip_id": "ID",
-            "name": "Название",
+            "name": "Нnm азвание",
             "model_name": "Модель",
             "model_code": "Код модели",
             "vendor": "Производитель"
