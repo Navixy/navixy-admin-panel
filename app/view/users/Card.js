@@ -8,6 +8,14 @@ Ext.define('NavixyPanel.view.users.Card', {
         var me = this,
             result = [
                 {
+                    xtype: 'container',
+                    height: 10
+                }
+            ];
+
+        if (Ext.checkPermission('users', 'read') && Ext.checkPermission('users', 'user_sessions')) {
+            result.push(
+                {
                     html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
                     listeners: {
                         click: {
@@ -16,14 +24,8 @@ Ext.define('NavixyPanel.view.users.Card', {
                         }
                     }
                 }
-            ];
-
-        result.unshift(
-            {
-                xtype: 'container',
-                height: 10
-            }
-        );
+            );
+        }
 
         if (Ext.checkPermission('users', 'update')) {
             result.unshift(

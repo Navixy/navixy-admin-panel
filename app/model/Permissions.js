@@ -50,6 +50,11 @@ Ext.define('NavixyPanel.model.Permissions', {
             name: 'corrupt',
             type: 'boolean',
             defaultValue: false
+        },
+        {
+            name: 'user_sessions',
+            type: 'boolean',
+            defaultValue: false
         }
     ]
 });
