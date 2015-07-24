@@ -13,7 +13,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 }
             ];
 
-        if (Ext.checkPermission('users', 'read') && Ext.checkPermission('users', 'user_sessions')) {
+        if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
             result.push(
                 {
                     html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
