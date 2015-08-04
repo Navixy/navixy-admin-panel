@@ -44,7 +44,14 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'map_type', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
         {name: 'map_zoom', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
         {name: 'map_location_lat', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}},
-        {name: 'map_location_lng', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}}
+        {name: 'map_location_lng', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}},
+
+        {name: 'default_user_settings', type: 'auto'},
+        {name: 'geocoder', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
+        {name: 'route_provider', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
+        {name: 'measurement_system', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
+        {name: 'translit', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
+
     ],
 
     imagesMap: {
@@ -70,6 +77,17 @@ Ext.define('NavixyPanel.model.Settings', {
         caller_id : 'caller_id'
     },
 
+    defaultUserSettingsMap: {
+        geocoder : 'geocoder',
+        measurement_system : 'measurement_system',
+        route_provider : 'route_provider',
+        translit : 'translit'
+    },
+
+    defaultUserConverter: function (field, value) {
+        return value !== '' ? value : this.get('default_user_settings')[this.defaultUserSettingsMap[field.name]] || 0;
+    },
+
     defaultMapConverter: function (field, value) {
         return value !== '' ? value : this.get('default_map')[this.defaultMapMap[field.name]] || 0;
     },
@@ -79,10 +97,10 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     set: function () {
-        this.callParent([this.setMapDefaults(arguments)]);
+        this.callParent([this.setDefaults(arguments)]);
     },
 
-    setMapDefaults: function (fields) {
+    setDefaults: function (fields) {
         var fieldsObj = {};
 
         if (typeof fields[0] === 'string') {
@@ -116,6 +134,25 @@ Ext.define('NavixyPanel.model.Settings', {
             fieldsObj.default_map = default_map;
         }
 
+        var default_user_settings_map = Ext.apply({}, this.get('default_user_settings'));
+
+        if (fieldsObj.default_user_settings) {
+            fieldsObj = Ext.apply(fieldsObj, {
+                geocoder: '',
+                measurement_system: '',
+                translit: ''
+            });
+        } else {
+            Ext.iterate(fieldsObj, function (fieldName, fieldValue) {
+                if (this.defaultUserSettingsMap[fieldName]) {
+                    default_user_settings_map[this.defaultUserSettingsMap[fieldName]] = fieldValue;
+                    modified = true;
+                }
+            }, this);
+
+            fieldsObj.default_user_settings = default_user_settings_map;
+        }
+
         return fieldsObj;
     },
 
@@ -136,6 +173,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
         Ext.iterate(changes, function(fieldName, fieldValue) {
             if (!this.notificationMap[fieldName]
+                && !this.defaultUserSettingsMap[fieldName]
                 && !this.defaultMapMap[fieldName]
                 && !this.defaultMapLocationMap[fieldName] ) {
                 result[fieldName] = fieldValue;
@@ -168,6 +206,7 @@ Ext.define('NavixyPanel.model.Settings', {
                 this.defaultMapMap[field]
                 || this.defaultMapLocationMap[field]
                 || this.notificationMap[field]
+                || this.defaultUserSettingsMap[field]
                 ) {
 
                 delete data[field];
@@ -184,6 +223,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
         data.maps = Ext.encode(data.maps);
         data.default_map = Ext.encode(data.default_map);
+        data.default_user_settings = Ext.encode(data.default_user_settings);
 
         return data;
     },

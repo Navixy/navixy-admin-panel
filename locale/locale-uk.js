@@ -743,7 +743,11 @@ Ext.define('Locale.locale-uk',{
             "password_mismatched": "Паролі не співпадають",
             "footer_email": "Електронна пошта компанії",
             "footer_site": "Посилання «Про нас»",
-            "footer_text": "Текст у нижній частині сторінки"
+            "footer_text": "Текст у нижній частині сторінки",
+            "geocoder": "Геокодер за замовчуванням",
+            "measurement_system": "Cистема заходів",
+            "route_provider": "Постачальник типового маршруту",
+            "translit": "Транслітерація SMS-повідомлень"
         },
         "edit_form": {
             "title": "Параметри служби",
@@ -1028,5 +1032,21 @@ Ext.define('Locale.locale-uk',{
         "list": {
             "empty_text": "Packages not found"
         }
+    },
+    "route_providers": {
+        "progorod": "Progorod",
+        "google": "Google",
+        "osrm": "OSRM"
+    },
+    "measurement_systems": {
+        "metric": "Метрична",
+        "imperial": "Англійська",
+        "us": "Англійська (США)"
+    },
+    "geocoders": {
+        "google": "Google",
+        "yandex": "Яндекс",
+        "progorod": "Progorod",
+        "osm": "OpenStreetMap"
     }
 });

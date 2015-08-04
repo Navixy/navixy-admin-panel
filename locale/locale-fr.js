@@ -744,7 +744,11 @@ Ext.define('Locale.locale-fr',{
             "password_mismatched": "Passwords do not match",
             "footer_email": "Company E-mail",
             "footer_site": "«About Us» Link",
-            "footer_text": "The text at the bottom of page"
+            "footer_text": "The text at the bottom of page",
+            "geocoder": "Default geocoder",
+            "measurement_system": "Measurement system",
+            "route_provider": "Default route provider",
+            "translit": "SMS transliteration"
         },
         "edit_form": {
             "title": "Service Settings",
@@ -1028,5 +1032,21 @@ Ext.define('Locale.locale-fr',{
         "list": {
             "empty_text": "Packages not found"
         }
+    },
+    "route_providers": {
+        "progorod": "Progorod",
+        "google": "Google",
+        "osrm": "OSRM"
+    },
+    "measurement_systems": {
+        "metric": "Metric",
+        "imperial": "Imperial",
+        "us": "US"
+    },
+    "geocoders": {
+        "google": "Google",
+        "yandex": "Yandex",
+        "progorod": "Progorod",
+        "osm": "OpenStreetMap"
     }
 });

@@ -743,7 +743,11 @@ Ext.define('Locale.locale-de',{
             "password_mismatched": "Passwörter stimmen nicht überein",
             "footer_email": "Firma E-mail",
             "footer_site": "«Über uns» Link",
-            "footer_text": "Der Text am Ende der Seite"
+            "footer_text": "Der Text am Ende der Seite",
+            "geocoder": "Standard Geocoder",
+            "route_provider": "Standard-Route-Anbieter",
+            "translit": "SMS-Transkription",
+            "measurement_system": "Messsystem"
         },
         "edit_form": {
             "title": "Diensteinstellungen",
@@ -1028,5 +1032,21 @@ Ext.define('Locale.locale-de',{
         "list": {
             "empty_text": "Packages not found"
         }
+    },
+    "measurement_systems": {
+        "metric": "Metrisch",
+        "imperial": "Kaiserlich",
+        "us": "US"
+    },
+    "route_providers": {
+        "progorod": "Progorod",
+        "google": "Google",
+        "osrm": "OSRM"
+    },
+    "geocoders": {
+        "google": "Google",
+        "yandex": "Yandex",
+        "progorod": "Progorod",
+        "osm": "OpenStreetMap"
     }
 });

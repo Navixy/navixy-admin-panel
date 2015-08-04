@@ -19,7 +19,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     formRowPadding: '50 0 0 0',
 
     initComponent: function () {
-
         this.currencyStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'priority'],
             sorters: [
@@ -257,6 +256,60 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     type: "AZN",
                     "name": _l.get('currency.azn'),
                     priority: 5
+                }
+            ]
+        });
+
+        this.measurementStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data: [
+                {
+                    type: 'metric',
+                    name: _l.get('measurement_systems.metric')
+                },
+                {
+                    type: 'imperial',
+                    name: _l.get('measurement_systems.imperial')
+                },
+                {
+                    type: 'us',
+                    name: _l.get('measurement_systems.us')
+                }
+            ]
+        });
+
+        this.geocoderStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data: [
+                {
+                    type: 'google',
+                    name: _l.get('geocoders.google')
+                },
+                {
+                    type: 'progorod',
+                    name: _l.get('geocoders.progorod')
+                },
+                {
+                    type: 'osm',
+                    name: _l.get('geocoders.osm')
+                }
+            ]
+        });
+
+        this.routeProviderStore = Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data: [
+                {
+                    type: 'progorod',
+                    name: _l.get('route_providers.progorod')
+                },
+                {
+                    type: 'google',
+                    name: _l.get('route_providers.google')
+                },
+                {
+                    type: 'osrm',
+                    name: _l.get('route_providers.osrm')
                 }
             ]
         });
@@ -982,6 +1035,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
+            },
+            {
+                name: 'measurement_system',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.measurement_system'),
+                store: this.measurementStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
             }
         ]
     },
@@ -1036,6 +1099,26 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 fieldLabel: _l.get('settings.fields.google_client_id'),
                 minLength: 2,
                 maxLength: 100
+            },
+            {
+                name: 'geocoder',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                store: this.geocoderStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'route_provider',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                store: this.routeProviderStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
             }
         ];
     },
@@ -1124,7 +1207,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
+            },
+            {
+                name: 'translit',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.fields.translit')
             }
+
         ];
     },
 

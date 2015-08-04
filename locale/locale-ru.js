@@ -753,7 +753,11 @@ Ext.define('Locale.locale-ru',{
             "password_mismatched": "Пароли не совпадают",
             "footer_email": "E-mail компании",
             "footer_site": "Ссылка «О компании»",
-            "footer_text": "Подвал страницы авторизации"
+            "footer_text": "Подвал страницы авторизации",
+            "geocoder": "Геокодер по умолчанию",
+            "route_provider": "Провайдер маршрутов по умолчанию",
+            "translit": "Транслитерация SMS уведомлений",
+            "measurement_system": "Система мер"
         },
         "edit_form": {
             "title": "Настройки сервиса",
@@ -1038,5 +1042,21 @@ Ext.define('Locale.locale-ru',{
         "list": {
             "empty_text": "Типов комплектов не найдено"
         }
+    },
+    "measurement_systems": {
+        "metric": "Метрическая",
+        "imperial": "Английская",
+        "us": "Английская (США)"
+    },
+    "route_providers": {
+        "progorod": "Прогород",
+        "google": "Google",
+        "osrm": "OSRM"
+    },
+    "geocoders": {
+        "google": "Google",
+        "yandex": "Яндекс",
+        "progorod": "Прогород",
+        "osm": "OpenStreetMap"
     }
 });
