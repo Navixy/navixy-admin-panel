@@ -20,6 +20,7 @@ module.exports = function (grunt) {
                         'PConfig.js',
                         'PConfig.example.js',
                         'locale/**',
+                        'redirector/**',
                         'dev/uploadHandler.html',
                         'dev/stickerPrint.html',
                         'dev/iccid.png',
