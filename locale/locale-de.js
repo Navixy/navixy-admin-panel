@@ -785,7 +785,9 @@ Ext.define('Locale.locale-de',{
             "user_notifications_title": "Benachrichtigungen an Benutzer",
             "user_notifications_hint": "Einstellungen für Benachrichtigungen von Ihrem Trackingsystem, Benutzer: über Geo-Veranstaltungen, niedrige, Gleichgewicht, Passwort wiederherstellen, etc..",
             "special_notifications_title": "Benachrichtigungen an Administratoren",
-            "special_notifications_hint": "Systembenachrichtigungen an Administratoren über Service-Status, Statistiken und andere"
+            "special_notifications_hint": "Systembenachrichtigungen an Administratoren über Service-Status, Statistiken und andere",
+            "defaults_fields": "Benutzerdefinierte Einstellungen",
+            "defaults_hint": "Einstellungen in diesem Abschnitt wird automatisch auf alle neuen Benutzer angewendet werden"
         },
         "upload_form": {
             "save_btn": "Hochladen",
