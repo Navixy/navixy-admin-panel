@@ -9,7 +9,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     alias: 'widget.settingsedit',
     requires: [
         'NavixyPanel.view.widgets.fields.LocaleField',
-        'NavixyPanel.view.settings.UploadWindow'
+        'NavixyPanel.view.widgets.fields.TimeZoneCombo',
+        'NavixyPanel.view.settings.UploadWindow',
+        'NavixyPanel.view.settings.BlockHeader'
     ],
 
     default_paas_domain: '.navixy.ru',
@@ -19,381 +21,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     formRowPadding: '50 0 0 0',
 
     initComponent: function () {
-        this.currencyStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name', 'priority'],
-            sorters: [
-                {
-                    property: 'priority',
-                    direction: 'ASC'
-                },
-                {
-                    property: 'name',
-                    direction: 'ASC'
-                }
-            ],
-            data: [
-                {
-                    type: "GBP",
-                    "name": _l.get('currency.gbp'),
-                    priority: 5
-                },
-                {
-                    type: "BRL",
-                    "name": _l.get('currency.brl'),
-                    priority: 5
-                },
-                {
-                    type: "HUF",
-                    "name": _l.get('currency.huf'),
-                    priority: 5
-                },
-                {
-                    type: "HKD",
-                    "name": _l.get('currency.hkd'),
-                    priority: 5
-                },
-                {
-                    type: "DKK",
-                    "name": _l.get('currency.dkk'),
-                    priority: 5
-                },
-                {
-                    type: "EUR",
-                    "name": _l.get('currency.eur'),
-                    priority: 1
-                },
-                {
-                    type: "ILS",
-                    "name": _l.get('currency.ils'),
-                    priority: 5
-                },
-                {
-                    type: "INR",
-                    "name": _l.get('currency.inr'),
-                    priority: 5
-                },
-                {
-                    type: "IDR",
-                    "name": _l.get('currency.idr'),
-                    priority: 5
-                },
-                {
-                    type: "CAD",
-                    "name": _l.get('currency.cad'),
-                    priority: 5
-                },
-                {
-                    type: "CNY",
-                    "name": _l.get('currency.cny'),
-                    priority: 5
-                },
-                {
-                    type: "KRW",
-                    "name": _l.get('currency.krw'),
-                    priority: 5
-                },
-                {
-                    type: "MYR",
-                    "name": _l.get('currency.myr'),
-                    priority: 5
-                },
-                {
-                    type: "MXN",
-                    "name": _l.get('currency.mxn'),
-                    priority: 5
-                },
-                {
-                    type: "NZD",
-                    "name": _l.get('currency.nzd'),
-                    priority: 5
-                },
-                {
-                    type: "NOK",
-                    "name": _l.get('currency.nok'),
-                    priority: 5
-                },
-                {
-                    type: "PKR",
-                    "name": _l.get('currency.pkr'),
-                    priority: 5
-                },
-                {
-                    type: "PLN",
-                    "name": _l.get('currency.pln'),
-                    priority: 5
-                },
-                {
-                    type: "RUB",
-                    "name": _l.get('currency.rub'),
-                    priority: 2
-                },
-                {
-                    type: "SGD",
-                    "name": _l.get('currency.sgd'),
-                    priority: 5
-                },
-                {
-                    type: "USD",
-                    "name": _l.get('currency.usd'),
-                    priority: 0
-                },
-                {
-                    type: "TWD",
-                    "name": _l.get('currency.twd'),
-                    priority: 5
-                },
-                {
-                    type: "THB",
-                    "name": _l.get('currency.thb'),
-                    priority: 5
-                },
-                {
-                    type: "TRY",
-                    "name": _l.get('currency.try'),
-                    priority: 5
-                },
-                {
-                    type: "PHP",
-                    "name": _l.get('currency.php'),
-                    priority: 5
-                },
-                {
-                    type: "CZK",
-                    "name": _l.get('currency.czk'),
-                    priority: 5
-                },
-                {
-                    type: "CLP",
-                    "name": _l.get('currency.clp'),
-                    priority: 5
-                },
-                {
-                    type: "SEK",
-                    "name": _l.get('currency.sek'),
-                    priority: 5
-                },
-                {
-                    type: "CHF",
-                    "name": _l.get('currency.chf'),
-                    priority: 5
-                },
-                {
-                    type: "ZAR",
-                    "name": _l.get('currency.zar'),
-                    priority: 5
-                },
-                {
-                    type: "JPY",
-                    "name": _l.get('currency.jpy'),
-                    priority: 5
-                },
-                {
-                    type: "KZT",
-                    "name": _l.get('currency.kzt'),
-                    priority: 3
-                },
-                {
-                    type: "BYR",
-                    "name": _l.get('currency.byr'),
-                    priority: 3
-                },
-                {
-                    type: "AUD",
-                    "name": _l.get('currency.aud'),
-                    priority: 5
-                },
-                {
-                    type: "TJS",
-                    "name": _l.get('currency.tjs'),
-                    priority: 5
-                },
-                {
-                    type: "UAH",
-                    "name": _l.get('currency.uah'),
-                    priority: 4
-                },
-                {
-                    type: "LTL",
-                    "name": _l.get('currency.ltl'),
-                    priority: 5
-                },
-                {
-                    type: "LVL",
-                    "name": _l.get('currency.lvl'),
-                    priority: 5
-                },
-                {
-                    type: "KGS",
-                    "name": _l.get('currency.kgs'),
-                    priority: 5
-                },
-                {
-                    type: "TMT",
-                    "name": _l.get('currency.tmt'),
-                    priority: 5
-                },
-                {
-                    type: "UZS",
-                    "name": _l.get('currency.uzs'),
-                    priority: 5
-                },
-                {
-                    type: "MDL",
-                    "name": _l.get('currency.mdl'),
-                    priority: 5
-                },
-                {
-                    type: "GEL",
-                    "name": _l.get('currency.gel'),
-                    priority: 5
-                },
-                {
-                    type: "AMD",
-                    "name": _l.get('currency.amd'),
-                    priority: 5
-                },
-                {
-                    type: "AZN",
-                    "name": _l.get('currency.azn'),
-                    priority: 5
-                }
-            ]
-        });
-
-        this.measurementStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name'],
-            data: [
-                {
-                    type: 'metric',
-                    name: _l.get('measurement_systems.metric')
-                },
-                {
-                    type: 'imperial',
-                    name: _l.get('measurement_systems.imperial')
-                },
-                {
-                    type: 'us',
-                    name: _l.get('measurement_systems.us')
-                }
-            ]
-        });
-
-        this.geocoderStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name'],
-            data: [
-                {
-                    type: 'google',
-                    name: _l.get('geocoders.google')
-                },
-                {
-                    type: 'progorod',
-                    name: _l.get('geocoders.progorod')
-                },
-                {
-                    type: 'osm',
-                    name: _l.get('geocoders.osm')
-                }
-            ]
-        });
-
-        this.routeProviderStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name'],
-            data: [
-                {
-                    type: 'progorod',
-                    name: _l.get('route_providers.progorod')
-                },
-                {
-                    type: 'google',
-                    name: _l.get('route_providers.google')
-                },
-                {
-                    type: 'osrm',
-                    name: _l.get('route_providers.osrm')
-                }
-            ]
-        });
-
-        var data = [
-                {
-                    type: "roadmap",
-                    "name": _l.get('maps.roadmap'),
-                    free: true
-                },
-                {
-                    type: "satellite",
-                    "name": _l.get('maps.satellite'),
-                    free: true
-                },
-                {
-                    type: "hybrid",
-                    "name": _l.get('maps.hybrid'),
-                    free: true
-                },
-                {
-                    type: "yandex",
-                    "name": _l.get('maps.yandex')
-                },
-                {
-                    type: "yandexpublic",
-                    "name": _l.get('maps.yandexpublic'),
-                    free: true
-                },
-                {
-                    type: "osm",
-                    "name": _l.get('maps.osm'),
-                    free: true
-                },
-                {
-                    type: "osmmapnik",
-                    "name": _l.get('maps.osmmapnik'),
-                    free: true
-                },
-                {
-                    type: "wikimapia",
-                    "name": _l.get('maps.wikimapia'),
-                    free: true
-                },
-                {
-                    type: "cdcom",
-                    "name": _l.get('maps.cdcom')
-                },
-                {
-                    type: "navitel",
-                    "name": _l.get('maps.navitel')
-                },
-                {
-                    type: "doublegis",
-                    "name": _l.get('maps.doublegis')
-                },
-                {
-                    type: "ovi",
-                    "name": _l.get('maps.ovi')
-                },
-                {
-                    type: "mailru",
-                    "name": _l.get('maps.mailru')
-                }
-            ],
-            storeData = [],
-            allowedMaps = this.getRecordData().allowed_maps,
-            hasLimit = !this.getRecordData().limited_domain;
-
-        Ext.iterate(data, function (mapOptions) {
-            if (Ext.Array.indexOf(allowedMaps, mapOptions.type) > -1) {
-                storeData.push({
-                    type: mapOptions.type,
-                    name: mapOptions.name,
-                    free: mapOptions.free
-                })
-            }
-        }, this);
-
-        this.mapsStore = Ext.create('Ext.data.Store', {
-            fields: ['type', 'name', 'free'],
-            data: storeData
-        });
-
+        this.mapsStore = Ext.getStore('MapTypes');
+        this.mapsStore.setAllowedMaps(this.getRecordData().allowed_maps || []);
         this.callParent(arguments);
     },
 
@@ -401,6 +30,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.applyRights();
         this.callParent(arguments);
         this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
+    },
+
+    getHintSymbol: function (hint, cls) {
+        return ['<span class="icon-help ',
+                cls || '',
+            '" style="margin-left:5px;color:#f89406;font-size:12px;" ',
+            'data-qtip="', Ext.String.htmlEncode(hint),
+            '"></span>'].join('');
     },
 
     changeSaveBtn: function () {
@@ -569,7 +206,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.getDefaultMapField().setValue(store.first().get('type'))
         }
 
-        this.getGoogleIdField().hide();
+//        this.getGoogleIdField().hide();
 
         Ext.iterate(this.getUnFreeMaps(), function (field) {
             field.hide();
@@ -580,7 +217,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var store = this.mapsStore;
 
         store.removeFilter();
-        this.getGoogleIdField().show();
+//        this.getGoogleIdField().show();
 
         Ext.iterate(this.getUnFreeMaps(), function (field) {
             field.show();
@@ -652,7 +289,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             xtype: 'container',
             flex: 1,
             defaults: this.getFieldDefaults(),
-            padding: '40 20 0 25',
+            padding: '20 20 0 25',
             layout: {
                 type: 'vbox'
             }
@@ -663,72 +300,100 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return [
             {
-                title: _l.get('settings.edit_form.domain_fields'),
+                title: _l.get('settings.edit_form.branding_fields'),
                 role: 'tab',
+                padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getDomainItems()
+                        items: this.getBrandingItems(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
+                    },
+                    {
+                        items: this.getImgsCustom(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10'
+                        })
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.custom_fields'),
+                title: _l.get('settings.edit_form.service_fields'),
                 role: 'tab',
+                padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getImgsCustomLeft()
+                        items: this.getServiceItemsLeft(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
                     },
                     {
-                        items: this.getImgsCustomRight()
+                        items: this.getServiceItemsRight(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.regional_fields'),
+                title: _l.get('settings.edit_form.accounts_fields'),
                 role: 'tab',
+                padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getRegionalItems()
+                        items: this.getAccountItemsLeft(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
+                    },
+                    {
+                        items: this.getAccountItemsRight(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.maps_fields'),
+                title: _l.get('settings.edit_form.emails_fields'),
                 role: 'tab',
+                padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getMapsItems()
-                    },
-                    {
-                        padding: this.formRowPadding,
-                        items: this.getMapsHint()
+                        items: this.getEmailsItems(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.demo_fields'),
+                title: _l.get('settings.edit_form.sms_fields'),
                 role: 'tab',
+                padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getDemoItems()
-                    },
-                    {
-                        padding: this.formRowPadding,
-                        items: this.getDemoHint()
+                        items: this.getSMSItems(),
+                        defaults: Ext.apply(this.getFieldDefaults(), {
+                            margin: '5 0 0 10',
+                            labelAlign: 'top',
+                            labelSeparator: ''
+                        })
                     }
-                ]
-            },
-            {
-                title: _l.get('settings.edit_form.notifications_fields'),
-                role: 'tab',
-                items: [
-                    {
-                        items: this.getNotificationsItems()
-                    },
-                    {
-                        padding: this.formRowPadding,
-                        items: this.getSpecialNotificationsItems()
-                    },
                 ]
             },
             Ext.checkPermission('password', 'update')
@@ -749,47 +414,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ]
     },
 
-    getDomainItems: function () {
+    getBrandingItems: function () {
         return [
             {
-                name: 'domain',
-                fieldLabel: _l.get('settings.fields.domain') + '<sup>*</sup>',
-                allowBlank: false,
-
-                minLength: 2,
-                maxLength: 100,
-                listeners: {
-                    change: this.updateFreeMaps,
-                    scope: this
-                }
-            },
-            {
-                name: 'promo_url',
-                fieldLabel: _l.get('settings.fields.promo_url'),
-                allowBlank: true,
-                minLength: 2,
-                maxLength: 100,
-                vtype: 'rurl'
-            },
-            {
-                name: 'payment_link',
-                fieldLabel: _l.get('settings.fields.payment_link'),
-
-                minLength: 2,
-                maxLength: 100,
-                vtype: 'rurl'
-            }
-        ]
-    },
-
-    getImgsCustomLeft: function () {
-
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.main_texts_title'),
-                padding: '0 0 10 0'
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.branding_main_title')
             },
             {
                 name: 'service_title',
@@ -804,7 +433,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'login_footer',
                 xtype: 'textarea',
                 labelAlign: 'top',
-                height: 180,
+                height: 120,
                 fieldLabel: _l.get('settings.fields.footer_text'),
 
                 maxLength: 512,
@@ -812,29 +441,37 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 value: '<FooterText Lorem ipsum...>'
             },
             {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.main_buttons_title'),
-                padding: '20 0 20 0'
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.branding_contacts_title')
             },
             {
-                name: 'show_mobile_apps',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.show_mobile_apps')
+                name: 'promo_url',
+                fieldLabel: _l.get('settings.fields.promo_url'),
+                allowBlank: true,
+                minLength: 2,
+                maxLength: 100,
+                vtype: 'rurl'
             },
             {
-                name: 'allow_registration',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.allow_registration')
+                name: 'payment_description',
+                fieldLabel: _l.get('settings.fields.payment_description'),
+                allowBlank: true
             },
+            {
+                name: 'support_email',
+                fieldLabel: _l.get('settings.fields.support_email'),
+                allowBlank: true
+            }
         ]
     },
 
-    getImgsCustomRight: function () {
+    getImgsCustom: function () {
 
         return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.branding_img_title')
+            },
             {
                 xtype: 'container',
                 cls: 'block_header',
@@ -861,6 +498,268 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.getImgConfig('login_wallpaper')
         ]
     },
+
+    getServiceItemsLeft: function () {
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_links_title')
+            },
+            {
+                name: 'domain',
+                fieldLabel: _l.get('settings.fields.domain'),
+                allowBlank: false,
+
+                minLength: 2,
+                maxLength: 100,
+                listeners: {
+                    change: this.updateFreeMaps,
+                    scope: this
+                }
+            },
+            {
+                name: 'payment_link',
+                fieldLabel: _l.get('settings.fields.payment_link'),
+
+                minLength: 2,
+                maxLength: 100,
+                vtype: 'rurl'
+            },
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_regional_title')
+            },
+            {
+                name: 'locale',
+                xtype: 'localefield',
+                fieldLabel: _l.get('settings.fields.locale')
+            },
+            {
+                name: 'currency',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.currency'),
+                store: Ext.getStore('Currencies'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_login_title')
+            },
+            {
+                name: 'allow_registration',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.edit_form.allow_registration')
+            },
+            {
+                name: 'show_mobile_apps',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.edit_form.show_mobile_apps')
+            },
+            {
+                name: 'demo_login',
+                fieldLabel: _l.get('settings.fields.demo_login') + this.getHintSymbol(_l.get('settings.edit_form.demo_hint')),
+
+                minLength: 2,
+                maxLength: 100
+            },
+            {
+                name: 'demo_password',
+                fieldLabel: _l.get('settings.fields.demo_password'),
+
+                minLength: 2,
+                maxLength: 100
+            },
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_additional_title')
+            },
+            {
+                fieldLabel: _l.get('settings.fields.alerts_email'),
+                allowBlank: true
+            }
+        ]
+    },
+
+    getServiceItemsRight: function () {
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_maps_title')
+            },
+            {
+                xtype: 'checkboxgroup',
+                fieldLabel: _l.get('settings.fields.maps_title') + this.getHintSymbol(_l.get('settings.edit_form.maps_hint')),
+                allowBlank: false,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                ui: 'light',
+                items: this.getMapsList()
+            },
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_maps_defaults_title')
+            },
+            {
+                name: 'map_type',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.maps_default.type'),
+                store: this.mapsStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'map_zoom',
+                fieldLabel: _l.get('settings.fields.maps_default.zoom'),
+                xtype: 'numberfield',
+                allowBlank: true,
+                maxValue: 17
+            },
+            {
+                name: 'map_location_lat',
+                fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
+            },
+            {
+                name: 'map_location_lng',
+                fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
+            },
+//            {
+//                name: 'google_client_id',
+//                fieldLabel: _l.get('settings.fields.google_client_id'),
+//                minLength: 2,
+//                maxLength: 100
+//            }
+        ];
+    },
+
+    getAccountItemsLeft: function () {
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.accounts_regional_title')
+            },
+            {
+                xtype: 'timezoneselect',
+                fieldLabel: _l.get('settings.fields.time_zone'),
+                name: 'time_zone'
+            },
+            {
+                name: 'measurement_system',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.measurement_system'),
+                store: Ext.getStore('MeasurementSystems'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'translit',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                margin: '20 0 0 10',
+                boxLabel: _l.get('settings.fields.translit')
+            }
+        ]
+    },
+
+    getAccountItemsRight: function () {
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.accounts_geocoding_title')
+            },
+            {
+                name: 'geocoder',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                store: Ext.getStore('Geocoders'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'route_provider',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                store: Ext.getStore('RouteProviders'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            }
+        ]
+    },
+
+    getEmailsItems: function () {
+        return [
+            {
+                name: 'email_from',
+                fieldLabel: _l.get('settings.fields.email_from'),
+                labelAlign: 'top',
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            },
+            {
+                name: 'email_footer',
+                xtype: 'textarea',
+                fieldLabel: _l.get('settings.fields.email_footer'),
+                labelAlign: 'top',
+                width: 450,
+                rows: 10,
+
+                maxLength: 450,
+                role: 'permission-field'
+            },
+            {
+                name: 'email_special',
+                fieldLabel: _l.get('settings.fields.email_special'),
+                labelAlign: 'top',
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field'
+            }
+        ]
+    },
+
+    getSMSItems: function () {
+        return [
+            {
+                name: 'sms_originator',
+                fieldLabel: _l.get('settings.fields.sms_originator'),
+                labelAlign: 'top',
+                allowBlank: false,
+                maxLength: 20,
+                role: 'permission-field'
+            },
+            {
+                name: 'caller_id',
+                fieldLabel: _l.get('settings.fields.caller_id'),
+                labelAlign: 'top',
+                allowBlank: false,
+                maxLength: 20,
+                role: 'permission-field'
+            },
+        ]
+    },
+
 
     getImgConfig: function (type, config) {
         var value = this.getImgUrl(type),
@@ -1019,228 +918,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
-    getRegionalItems: function () {
-        return [
-            {
-                name: 'locale',
-                xtype: 'localefield',
-                fieldLabel: _l.get('settings.fields.locale')
-            },
-            {
-                name: 'currency',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.currency'),
-                store: this.currencyStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            },
-            {
-                name: 'measurement_system',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.measurement_system'),
-                store: this.measurementStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            }
-        ]
-    },
-
-    getMapsItems: function () {
-        return [
-            {
-                xtype: 'checkboxgroup',
-                fieldLabel: _l.get('settings.fields.maps_title'),
-                allowBlank: false,
-                columns: 1,
-                vertical: true,
-                margin: '0 0 50 0',
-                ui: 'light',
-                items: this.getMapsList()
-            },
-            {
-                name: 'map_type',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.maps_default.type'),
-                store: this.mapsStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            },
-            {
-                name: 'map_zoom',
-                fieldLabel: _l.get('settings.fields.maps_default.zoom'),
-                xtype: 'numberfield',
-                allowBlank: true,
-                maxValue: 17
-            },
-            {
-                name: 'map_location_lat',
-                fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
-                allowBlank: true,
-                vtype: 'numeric',
-                minLength: 0,
-                maxLength: 100
-            },
-            {
-                name: 'map_location_lng',
-                fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
-                allowBlank: true,
-                vtype: 'numeric',
-                minLength: 0,
-                maxLength: 100
-            },
-            {
-                name: 'google_client_id',
-                fieldLabel: _l.get('settings.fields.google_client_id'),
-                minLength: 2,
-                maxLength: 100
-            },
-            {
-                name: 'geocoder',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geocoder'),
-                store: this.geocoderStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            },
-            {
-                name: 'route_provider',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.route_provider'),
-                store: this.routeProviderStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            }
-        ];
-    },
-
-    getMapsHint: function () {
-        return [
-            {
-                xtype: 'container',
-                html: _l.get('settings.edit_form.maps_hint')
-            }
-        ];
-    },
-
-    getDemoItems: function () {
-        return [
-            {
-                name: 'demo_login',
-                fieldLabel: _l.get('settings.fields.demo_login'),
-
-                minLength: 2,
-                maxLength: 100
-            },
-            {
-                name: 'demo_password',
-                fieldLabel: _l.get('settings.fields.demo_password'),
-
-                minLength: 2,
-                maxLength: 100
-            }
-        ];
-    },
-
-    getDemoHint: function () {
-        return [
-            {
-                xtype: 'container',
-                html: _l.get('settings.edit_form.demo_hint')
-            }
-        ];
-    },
-
-    getNotificationsItems: function () {
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.user_notifications_title'),
-                padding: '0 0 10 0'
-            },
-            {
-                xtype: 'container',
-                html: _l.get('settings.edit_form.user_notifications_hint'),
-                padding: '0 0 10 0'
-            },
-            {
-                name: 'email_from',
-                fieldLabel: _l.get('settings.fields.email_from'),
-                labelAlign: 'top',
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field'
-            },
-            {
-                name: 'email_footer',
-                xtype: 'textarea',
-                fieldLabel: _l.get('settings.fields.email_footer'),
-                labelAlign: 'top',
-                width: 450,
-                rows: 10,
-
-                maxLength: 450,
-                role: 'permission-field'
-            },
-            {
-                name: 'sms_originator',
-                fieldLabel: _l.get('settings.fields.sms_originator'),
-                labelAlign: 'top',
-                allowBlank: false,
-                maxLength: 20,
-                role: 'permission-field'
-            },
-            {
-                name: 'caller_id',
-                fieldLabel: _l.get('settings.fields.caller_id'),
-                labelAlign: 'top',
-                allowBlank: false,
-                maxLength: 20,
-                role: 'permission-field'
-            },
-            {
-                name: 'translit',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.fields.translit')
-            }
-
-        ];
-    },
-
-    getSpecialNotificationsItems: function () {
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.special_notifications_title'),
-                padding: '0 0 10 0'
-            },
-            {
-                xtype: 'container',
-                html: _l.get('settings.edit_form.special_notifications_hint'),
-                padding: '0 0 10 0'
-            },
-            {
-                name: 'email_special',
-                fieldLabel: _l.get('settings.fields.email_special'),
-                labelAlign: 'top',
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field'
-            }
-        ];
-    },
 
     getPassHint: function () {
         return [

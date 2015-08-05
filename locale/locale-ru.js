@@ -727,7 +727,7 @@ Ext.define('Locale.locale-ru',{
         "fields": {
             "service_title": "Название сервиса",
             "page_title": "Заголовок страниц",
-            "locale": "Язык&nbsp;интерфейса&nbsp;мониторинга",
+            "locale": "Основной язык интерфейса",
             "demo_login": "Demo пользователь",
             "demo_password": "Demo пароль",
             "maps_title": "Доступные карты",
@@ -738,9 +738,9 @@ Ext.define('Locale.locale-ru',{
                 "zoom": "Масштаб по умолчанию"
             },
             "google_client_id": "Client ID для карт google",
-            "currency": "Валюта расчетов",
+            "currency": "Валюта для биллинга пользователей",
             "payment_link": "URL системы оплаты",
-            "promo_url": "URL промо сайта",
+            "promo_url": "Web-сайт компании",
             "domain": "Доменное имя",
             "email_from": "Email отправителя",
             "email_special": "Email для системных оповещений",
@@ -753,11 +753,17 @@ Ext.define('Locale.locale-ru',{
             "password_mismatched": "Пароли не совпадают",
             "footer_email": "E-mail компании",
             "footer_site": "Ссылка «О компании»",
-            "footer_text": "Подвал страницы авторизации",
+            "footer_text": "Текст внизу страницы входа",
             "geocoder": "Геокодер по умолчанию",
             "route_provider": "Провайдер маршрутов по умолчанию",
             "translit": "Транслитерация SMS уведомлений",
-            "measurement_system": "Система мер"
+            "measurement_system": "Система мер",
+
+            "payment_description": "Методы и условия оплаты",
+            "support_email": "Email службы поддержки",
+            "alerts_email": "Email для важных оповещений и счетов",
+
+            "time_zone": "Временная зона"
         },
         "edit_form": {
             "title": "Настройки сервиса",
@@ -796,7 +802,29 @@ Ext.define('Locale.locale-ru',{
             "user_notifications_title": "Оповещения пользователям",
             "user_notifications_hint": "Настройки уведомлений, оптравляемых пользователям от вашей системы мониторинга: о гео-событиях, низком балансе, восстановлении пароля и т.д.",
             "special_notifications_title": "Оповещения администраторам",
-            "special_notifications_hint": "Системные оповещения администраторам о состоянии работы сервиса, статистики и др."
+            "special_notifications_hint": "Системные оповещения администраторам о состоянии работы сервиса, статистики и др.",
+
+
+            "branding_fields": "Брендирование",
+            "branding_main_title": "Основные параметры брендирования",
+            "branding_img_title": "Изображения и логотипы",
+            "branding_contacts_title": "Контактная информация для пользователей",
+
+            "service_fields": "Параметры сервиса",
+            "service_links_title": "Домен и ссылки",
+            "service_regional_title": "Региональные настройки",
+            "service_login_title": "Страница входа",
+            "service_maps_title": "Карты",
+            "service_maps_defaults_title": "Параметры карты по умолчанию",
+            "service_additional_title": "Дополнительнче параметры",
+
+            "accounts_fields": "Параметры аккаунтов",
+            "accounts_regional_title": "Региональные настройки",
+            "accounts_geocoding_title": "Картография и базы данных",
+
+            "emails_fields": "Email сообщения",
+
+            "sms_fields": "Email сообщения"
         },
         "upload_form": {
             "save_btn": "Загрузить",
