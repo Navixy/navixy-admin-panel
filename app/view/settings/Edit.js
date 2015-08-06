@@ -693,6 +693,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
             {
+                title: _l.get('settings.edit_form.defaults_fields'),
+                role: 'tab',
+                items: [
+                    {
+                        items: this.getDefaultsItems()
+                    },
+                    {
+                        padding: this.formRowPadding,
+                        items: this.getDefaultsHint()
+                    }
+                ]
+            },
+            {
                 title: _l.get('settings.edit_form.maps_fields'),
                 role: 'tab',
                 items: [
@@ -1036,18 +1049,63 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 displayField: 'name',
                 valueField: 'type'
             },
+        ]
+    },
+
+    getDefaultsItems: function () {
+        return [
             {
                 name: 'measurement_system',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.measurement_system'),
+                labelAlign: 'top',
                 store: this.measurementStore,
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
+            },
+            {
+                name: 'geocoder',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                labelAlign: 'top',
+                store: this.geocoderStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'route_provider',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                labelAlign: 'top',
+                store: this.routeProviderStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type'
+            },
+            {
+                name: 'translit',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                labelAlign: 'top',
+                boxLabel: _l.get('settings.fields.translit')
             }
         ]
     },
+
+    getDefaultsHint: function () {
+        return [
+            {
+                xtype: 'container',
+                html: _l.get('settings.edit_form.defaults_hint')
+            }
+        ];
+    },
+
 
     getMapsItems: function () {
         return [
@@ -1099,26 +1157,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 fieldLabel: _l.get('settings.fields.google_client_id'),
                 minLength: 2,
                 maxLength: 100
-            },
-            {
-                name: 'geocoder',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geocoder'),
-                store: this.geocoderStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
-            },
-            {
-                name: 'route_provider',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.route_provider'),
-                store: this.routeProviderStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type'
             }
         ];
     },
@@ -1207,14 +1245,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 allowBlank: false,
                 maxLength: 20,
                 role: 'permission-field'
-            },
-            {
-                name: 'translit',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.fields.translit')
             }
-
         ];
     },
 

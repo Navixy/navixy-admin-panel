@@ -11,23 +11,23 @@ Ext.define('NavixyPanel.store.TariffPrices', {
     fields: [
         {
             name: 'incoming_sms',
-            type: 'int'
+            type: 'auto'
         },
         {
             name: 'outgoing_sms',
-            type: 'int'
+            type: 'auto'
         },
         {
             name: 'service_sms',
-            type: 'int'
+            type: 'auto'
         },
         {
             name: 'phone_call',
-            type: 'int'
+            type: 'auto'
         },
         {
             name: 'traffic',
-            type: 'int'
+            type: 'auto'
         }
     ],
 

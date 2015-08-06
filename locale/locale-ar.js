@@ -786,7 +786,9 @@ Ext.define('Locale.locale-ar',{
             "user_notifications_title": "Notifications to users",
             "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
             "special_notifications_title": "Notifications to administrators",
-            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
+            "defaults_fields": "User default settings",
+            "defaults_hint": "Settings in this section will be automatically applied to all new users"
         },
         "upload_form": {
             "save_btn": "Upload",
