@@ -824,7 +824,7 @@ Ext.define('Locale.locale-ru',{
 
             "emails_fields": "Email сообщения",
 
-            "sms_fields": "Email сообщения"
+            "sms_fields": "SMS сообщения"
         },
         "upload_form": {
             "save_btn": "Загрузить",

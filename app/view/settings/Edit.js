@@ -451,16 +451,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 2,
                 maxLength: 100,
                 vtype: 'rurl'
-            },
-            {
-                name: 'payment_description',
-                fieldLabel: _l.get('settings.fields.payment_description'),
-                allowBlank: true
-            },
-            {
-                name: 'support_email',
-                fieldLabel: _l.get('settings.fields.support_email'),
-                allowBlank: true
+            //    TODO: API w8
+            //},
+            //{
+            //    name: 'payment_description',
+            //    fieldLabel: _l.get('settings.fields.payment_description'),
+            //    allowBlank: true
+            //},
+            //{
+            //    name: 'support_email',
+            //    fieldLabel: _l.get('settings.fields.support_email'),
+            //    allowBlank: true
             }
         ]
     },
@@ -573,15 +574,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
                 minLength: 2,
                 maxLength: 100
-            },
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.service_additional_title')
-            },
-            {
-                fieldLabel: _l.get('settings.fields.alerts_email'),
-                allowBlank: true
             }
+            //    TODO: API w8
+            //{
+            //    xtype: 'blockheader',
+            //    html: _l.get('settings.edit_form.service_additional_title')
+            //},
+            //{
+            //    fieldLabel: _l.get('settings.fields.alerts_email'),
+            //    allowBlank: true
+            //}
         ]
     },
 
@@ -653,11 +655,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.accounts_regional_title')
             },
-            {
-                xtype: 'timezoneselect',
-                fieldLabel: _l.get('settings.fields.time_zone'),
-                name: 'time_zone'
-            },
+            //    TODO: API w8
+            //{
+            //    xtype: 'timezoneselect',
+            //    fieldLabel: _l.get('settings.fields.time_zone'),
+            //    name: 'time_zone'
+            //},
             {
                 name: 'measurement_system',
                 xtype: 'combobox',

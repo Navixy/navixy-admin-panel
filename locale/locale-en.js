@@ -748,7 +748,13 @@ Ext.define('Locale.locale-en', {
             "geocoder": "Default geocoder",
             "route_provider": "Default route provider",
             "translit": "SMS transliteration",
-            "measurement_system": "Measurement system"
+            "measurement_system": "Measurement system",
+
+            "payment_description": "Payment options and terms",
+            "support_email": "Email for customers support",
+            "alerts_email": "Email for important alerts and invoices",
+
+            "time_zone": "Time zone"
         },
         "edit_form": {
             "title": "Service Settings",
@@ -786,7 +792,29 @@ Ext.define('Locale.locale-en', {
             "user_notifications_title": "Notifications to users",
             "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
             "special_notifications_title": "Notifications to administrators",
-            "special_notifications_hint": "System notifications to administrators about service status, statistics and other"
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
+
+
+            "branding_fields": "Branding",
+            "branding_main_title": "Branding main settings",
+            "branding_img_title": "Images and logo",
+            "branding_contacts_title": "Contact information for users",
+
+            "service_fields": "Service preferences",
+            "service_links_title": "Domain and URLs",
+            "service_regional_title": "Regional settings",
+            "service_login_title": "Login page",
+            "service_maps_title": "Maps",
+            "service_maps_defaults_title": "Map default settings",
+            "service_additional_title": "Extra options",
+
+            "accounts_fields": "User defaults",
+            "accounts_regional_title": "Regional settings",
+            "accounts_geocoding_title": "Cartography and databases",
+
+            "emails_fields": "Email messages",
+
+            "sms_fields": "SMS messages"
         },
         "upload_form": {
             "save_btn": "Upload",
