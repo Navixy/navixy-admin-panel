@@ -816,8 +816,118 @@ Ext.define('Locale.locale-en', {
             "demo_login_ph": "login",
             "demo_password_ph": "password",
 
-            "sms_sender_id": "Sender ID and number for inbound messages",
-            "sms_sender_id_ph": "Example: 12162780905"
+            "sms_gateway": "SMS Gateway",
+            "sms_gateway_ph": "SMS Gateway not selected",
+            "sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
+
+            "sms_sender_id": "Sender ID ",
+            "sms_sender_id_ph": "Example: Navixy",
+            "sms_sender_id_hint": "It is highly recommended to use the number your lease for inbound messages as a Sender ID. In this case the service platform will be able to receive SMS from devices replies with the command confirmations and other valued data.",
+
+            "sms_inbound": "Number for inbound messages",
+            "sms_inbound_ph": "Example: 12162780905",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+
+            "user_sms_gateway": "SMS Gateway",
+            "user_sms_gateway_ph": "SMS Gateway not selected",
+            "user_sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
+
+            "user_sms_sender_id": "Sender ID ",
+            "user_sms_sender_id_ph": "Example: Navixy",
+            "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+
+            "user_sms_inbound": "Number for inbound messages",
+            "user_sms_inbound_ph": "Example: 12162780905",
+            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+        },
+        "sms_gateway": {
+            "navixy": {
+                "name": "Navixy",
+                "desc": "SMS-service, provided to you by Navixy for free while you are using Trial version."
+            },
+            "nexmo": {
+                "name": "Nexmo",
+                "desc": "One of the most popular services in the world (<a href=\"http://www.nexmo.com\" target=\"blank\">www.nexmo.com</a>)",
+                "credentials": {
+                    "key": "Key",
+                    "secret": "Secret"
+                }
+            },
+            "twilio": {
+                "name": "Twilio",
+                "desc": "One of the most popular services in the world (<a href=\"http://www.twilio.com\" target=\"blank\">www.twilio.com</a>)",
+                "credentials": {
+                    "sid": "Account SID",
+                    "token": "Auth token"
+                }
+            },
+            "smstraffic": {
+                "name": "SMSTraffic",
+                "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"blank\">www.smstraffic.ru</a>)",
+                "credentials": {
+                    "login": "Login",
+                    "password": "Password"
+                }
+            },
+            "yaestar": {
+                "name": "Yaestar NeoGate",
+                "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"blank\">www.yeastar.com</a>)",
+                "credentials": {
+                    "ip": "Server IP",
+                    "port": "Port",
+                    "login": "Login",
+                    "password": "Password"
+                }
+            },
+            "smpp": {
+                "name": "SMPP v.3.4",
+                "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"blank\">Wikipedia</a>)",
+                "credentials": {
+                    "ip": "Server IP",
+                    "port": "Port",
+                    "login": "Login (System ID)",
+                    "password": "Password",
+                    "source": "Source TON/NPI",
+                    "source_select": {
+                        "-1": "Auto",
+                        "0": "Unknown",
+                        "1": "International",
+                        "2": "National",
+                        "3": "Network Specific",
+                        "4": "Subscriber Number",
+                        "5": "Abbreviated",
+                        "6": "Alphanumeric",
+                        "7": "Reserverd"
+                    },
+                    "destination": "Destination TON/NPI",
+                    "destination_select": {
+                        "0": "Unknown",
+                        "1": "ISDN/telephone numbering plan (E163/E164)",
+                        "3": "Data numbering plan (X.121)",
+                        "4": "Telex numbering plan (F.69)",
+                        "6": "Land Mobile (E.212)",
+                        "8": "National numbering plan",
+                        "9": "Private numbering plan",
+                        "10": "ERMES numbering plan (ETSI DE/PS 3 01-3)",
+                        "13": "Internet (IP)",
+                        "18": "WAP Client Id (to be defined by WAP Forum)"
+                    },
+                    "charset": "Default charset",
+                    "charset_select": {
+                        "GSM8": "GSM8",
+                        "GSM7": "GSM7",
+                        "ISO-8859-1": "ISO-8859-1",
+                        "ISO-8859-15": "ISO-8859-15",
+                        "UTF-8": "UTF-8",
+                        "UCS-2": "UCS-2"
+                    },
+                    "long": "Long messages",
+                    "long_select": {
+                        "UDH": "UDH",
+                        "Payload": "Payload"
+                    }
+                }
+            }
         },
         "edit_form": {
             "title": "Service Settings",
@@ -883,6 +993,11 @@ Ext.define('Locale.locale-en', {
             "sms_fields": "SMS messages",
             "sms_main_title": "Main settings",
             "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
+
+            "sms_m2m_title": "M2M сообщения",
+            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
+            "sms_user_title": "User notifications",
+            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
 
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
 

@@ -152,15 +152,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return false;
     },
 
-    getFieldDefaults: function () {
-        return Ext.apply(this.callParent(arguments), {
-            allowBlank: true,
-            margin: '5 0 0 10',
-            labelAlign: 'top',
-            labelSeparator: ''
-        });
-    },
-
     doFormReset: function () {
         this.applyRecordData();
     },
@@ -340,11 +331,43 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         };
     },
 
+    getFieldDefaults: function () {
+        return Ext.apply(this.callParent(arguments), {
+            allowBlank: true,
+            margin: '5 0 0 10',
+            labelAlign: 'top',
+            labelSeparator: ''
+        });
+    },
+
     getTabs: function () {
 
         var lp = _l.get('settings.edit_form');
 
         return [
+            {
+                title: lp.get('sms_fields'),
+                role: 'tab',
+                padding: '0 0 0 20',
+                items: [
+                    {
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('sms_main_info')
+                    },
+                    {
+                        items: [
+                            {
+                                items: this.getSMSM2MItems()
+                            },
+                            {
+                                items: this.getSMSUserItems()
+                            }
+                        ]
+                    }
+                ]
+            },
             {
                 title: lp.get('branding_fields'),
                 role: 'tab',
@@ -432,29 +455,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         items: [
                             {
                                 items: this.getEmailsItems()
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                title: lp.get('sms_fields'),
-                role: 'tab',
-                padding: '0 0 0 20',
-                items: [
-                    {
-                        xtype: 'component',
-                        cls: 'block_hint',
-                        margin: '40 20 0 25',
-                        html: lp.get('sms_main_info')
-                    },
-                    {
-                        items: [
-                            {
-                                items: this.getSMSM2MItems()
-                            },
-                            {
-                                items: this.getSMSUserItems()
                             }
                         ]
                     }
@@ -865,13 +865,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'blockheader',
-                html: _l.get('settings.edit_form.sms_user_title')
+                html: _l.get('settings.edit_form.sms_user_title') + this.getHintSymbol(_l.get('settings.edit_form.sms_user_info'))
             },
             {
-                xtype: 'component',
-                cls: 'block_hint',
-                margin: '10 20 10 10',
-                html: _l.get('settings.edit_form.sms_user_info')
+                xtype: 'smsgateway',
+                fieldLabel: _l.get('settings.fields.user_sms_gateway') + this.getHintSymbol(_l.get('settings.fields.user_sms_gateway_hint')),
+                emptyText: _l.get('settings.fields.user_sms_gateway_ph')
+            },
+            {
+                fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
+                emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
             },
             {
                 name: 'sms_originator',
@@ -881,11 +888,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
-            },
-            {
-                xtype: 'smsgateway',
-                fieldLabel: _l.get('settings.fields.user_sms_gateway') + this.getHintSymbol(_l.get('settings.fields.user_sms_gateway_hint')),
-                emptyText: _l.get('settings.fields.user_sms_gateway_ph')
             }
         ]
     },
@@ -894,17 +896,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return [
             {
                 xtype: 'blockheader',
-                html: _l.get('settings.edit_form.sms_m2m_title')
+                html: _l.get('settings.edit_form.sms_m2m_title') + this.getHintSymbol(_l.get('settings.edit_form.sms_m2m_info'))
             },
             {
-                xtype: 'component',
-                cls: 'block_hint',
-                margin: '10 20 10 10',
-                html: _l.get('settings.edit_form.sms_m2m_info')
+                xtype: 'smsgateway',
+                fieldLabel: _l.get('settings.fields.sms_gateway') + this.getHintSymbol(_l.get('settings.fields.sms_gateway_hint')),
+                emptyText: _l.get('settings.fields.sms_gateway_ph')
             },
             {
-                name: 'caller_id',
-                fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_hint')),
+                fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.sms_sender_id_ph'),
                 allowBlank: true,
                 vtype: 'numeric',
@@ -912,9 +912,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 maxLength: 100
             },
             {
-                xtype: 'smsgateway',
-                fieldLabel: _l.get('settings.fields.sms_gateway') + this.getHintSymbol(_l.get('settings.fields.sms_gateway_hint')),
-                emptyText: _l.get('settings.fields.sms_gateway_ph')
+                fieldLabel: _l.get('settings.fields.sms_inbound') + this.getHintSymbol(_l.get('settings.fields.sms_inbound_hint')),
+                emptyText: _l.get('settings.fields.sms_inbound_ph'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
             }
             //{
             //    name: 'sms_originator',
