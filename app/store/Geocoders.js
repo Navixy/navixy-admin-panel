@@ -14,12 +14,12 @@ Ext.define('NavixyPanel.store.Geocoders', {
                 name: _l.get('geocoders.google')
             },
             {
-                type: 'progorod',
-                name: _l.get('geocoders.progorod')
-            },
-            {
                 type: 'osm',
                 name: _l.get('geocoders.osm')
+            },
+            {
+                type: 'progorod',
+                name: _l.get('geocoders.progorod')
             }
         ];
 

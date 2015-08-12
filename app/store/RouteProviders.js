@@ -10,16 +10,16 @@ Ext.define('NavixyPanel.store.RouteProviders', {
     constructor: function () {
         this.data = [
             {
-                type: 'progorod',
-                name: _l.get('route_providers.progorod')
-            },
-            {
                 type: 'google',
                 name: _l.get('route_providers.google')
             },
             {
                 type: 'osrm',
                 name: _l.get('route_providers.osrm')
+            },
+            {
+                type: 'progorod',
+                name: _l.get('route_providers.progorod')
             }
         ];
 

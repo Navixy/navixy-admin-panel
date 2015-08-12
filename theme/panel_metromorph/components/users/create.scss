@@ -4,7 +4,18 @@ $users-create-block-header-font-size: 15px;
 
     .block_header {
         color: $light-panel-text-color;
-        font-size: $users-create-block-header-font-size;
+        font-size: $users-create-block-header-font-size + 1;
+        @extend .x-panel-header-text-container-light;
+
+        .desc {
+            color: $grayLight;
+            font-size: $users-create-block-header-font-size - 3;
+        }
+    }
+
+    .block_hint {
+        color: $light-panel-text-color;
+        font-size: $users-create-block-header-font-size - 2;
         @extend .x-panel-header-text-container-light;
 
         .desc {

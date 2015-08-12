@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     requires: [
         'NavixyPanel.view.widgets.fields.LocaleField',
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
+        'NavixyPanel.view.widgets.fields.SMSGateway',
         'NavixyPanel.view.settings.UploadWindow',
         'NavixyPanel.view.settings.BlockHeader'
     ],
@@ -35,9 +36,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getHintSymbol: function (hint, cls) {
         return ['<span class="icon-help ',
                 cls || '',
-            '" style="margin-left:5px;color:#f89406;font-size:12px;" ',
-            'data-qtip="', Ext.String.htmlEncode(hint),
-            '"></span>'].join('');
+            '" style="color:#f89406;font-size:12px; padding: 10px" ',
+            'data-qtip="', Ext.String.htmlEncode(hint), '"',
+            'data-qclass="settings-tip"',
+            'data-qwidth="300"',
+            '></span>'].join('');
     },
 
     changeSaveBtn: function () {
@@ -150,7 +153,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getFieldDefaults: function () {
-        return Ext.apply(this.callParent(arguments), {allowBlank: true});
+        return Ext.apply(this.callParent(arguments), {
+            allowBlank: true,
+            margin: '5 0 0 10',
+            labelAlign: 'top',
+            labelSeparator: ''
+        });
     },
 
     doFormReset: function () {
@@ -206,8 +214,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.getDefaultMapField().setValue(store.first().get('type'))
         }
 
-//        this.getGoogleIdField().hide();
-
         Ext.iterate(this.getUnFreeMaps(), function (field) {
             field.hide();
         }, this);
@@ -217,7 +223,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var store = this.mapsStore;
 
         store.removeFilter();
-//        this.getGoogleIdField().show();
 
         Ext.iterate(this.getUnFreeMaps(), function (field) {
             field.show();
@@ -284,12 +289,51 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return values;
     },
 
+    getItems: function () {
+        return [
+            {
+                xtype: 'tabpanel',
+                plain: true,
+                activeTab: 0,
+                border: 0,
+                width: '100%',
+                ui: 'light',
+                cls: 'header-tabs',
+                defaults: this.getHintDefaults(),
+                items: this.getTabs()
+            }
+        ];
+    },
+
+    getHintDefaults: function () {
+        return {
+            xtype: 'container',
+            role: 'tab',
+            layout: {
+                type: 'vbox',
+                align: 'stretch'
+            },
+            defaults: this.getRowDefaults()
+        }
+    },
+
+    getRowDefaults: function () {
+        return {
+            xtype: 'container',
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            defaults: this.getCellDefaults()
+        };
+    },
+
     getCellDefaults: function () {
         return {
             xtype: 'container',
             flex: 1,
             defaults: this.getFieldDefaults(),
-            padding: '20 20 0 25',
+            padding: '0 20 0 25',
             layout: {
                 type: 'vbox'
             }
@@ -298,115 +342,140 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getTabs: function () {
 
+        var lp = _l.get('settings.edit_form');
+
         return [
             {
-                title: _l.get('settings.edit_form.branding_fields'),
+                title: lp.get('branding_fields'),
                 role: 'tab',
                 padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getBrandingItems(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('branding_main_info')
                     },
                     {
-                        items: this.getImgsCustom(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10'
-                        })
+                        items: [
+                            {
+                                items: this.getBrandingItems()
+                            },
+                            {
+                                items: this.getImgsCustom(),
+                                defaults: Ext.apply(this.getFieldDefaults(), {
+                                    margin: '5 0 0 10'
+                                })
+                            }
+                        ]
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.service_fields'),
+                title: lp.get('service_fields'),
                 role: 'tab',
                 padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getServiceItemsLeft(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('service_info')
                     },
                     {
-                        items: this.getServiceItemsRight(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        items: [
+                            {
+                                items: this.getServiceItemsLeft()
+                            },
+                            {
+                                items: this.getServiceItemsRight()
+                            }
+                        ]
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.accounts_fields'),
+                title: lp.get('accounts_fields'),
                 role: 'tab',
                 padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getAccountItemsLeft(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('account_info')
                     },
                     {
-                        items: this.getAccountItemsRight(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        items: [
+                            {
+                                items: this.getAccountItemsLeft()
+                            },
+                            {
+                                items: this.getAccountItemsRight()
+                            }
+                        ]
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.emails_fields'),
+                title: lp.get('emails_fields'),
                 role: 'tab',
                 padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getEmailsItems(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('emails_main_info')
+                    },
+                    {
+                        items: [
+                            {
+                                items: this.getEmailsItems()
+                            }
+                        ]
                     }
                 ]
             },
             {
-                title: _l.get('settings.edit_form.sms_fields'),
+                title: lp.get('sms_fields'),
                 role: 'tab',
                 padding: '0 0 0 20',
                 items: [
                     {
-                        items: this.getSMSItems(),
-                        defaults: Ext.apply(this.getFieldDefaults(), {
-                            margin: '5 0 0 10',
-                            labelAlign: 'top',
-                            labelSeparator: ''
-                        })
+                        xtype: 'component',
+                        cls: 'block_hint',
+                        margin: '40 20 0 25',
+                        html: lp.get('sms_main_info')
+                    },
+                    {
+                        items: [
+                            {
+                                items: this.getSMSM2MItems()
+                            },
+                            {
+                                items: this.getSMSUserItems()
+                            }
+                        ]
                     }
                 ]
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                title: _l.get('settings.edit_form.password_fields'),
+                title: lp.get('password_fields'),
                 role: 'pass_tab',
                 items: [
                     {
-                        items: this.getPasswordItems()
-                    },
-                    {
-                        padding: this.formRowPadding,
-                        items: this.getPassHint()
+                        margin: '30 0 0 20',
+                        items: [
+                            {
+                                items: this.getPasswordItems()
+                            },
+                            {
+                                padding: this.formRowPadding,
+                                items: this.getPassHint()
+                            }
+                        ]
                     }
                 ]
             }
@@ -422,23 +491,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'service_title',
-                fieldLabel: _l.get('settings.fields.service_title'),
-
+                fieldLabel: _l.get('settings.fields.service_title') + this.getHintSymbol(_l.get('settings.fields.service_title_hint')),
+                emptyText: _l.get('settings.fields.service_title_ph'),
                 minLength: 2,
-                maxLength: 100,
-
-                value: '<Service name>'
+                maxLength: 100
             },
             {
                 name: 'login_footer',
                 xtype: 'textarea',
-                labelAlign: 'top',
                 height: 120,
-                fieldLabel: _l.get('settings.fields.footer_text'),
+                fieldLabel: _l.get('settings.fields.footer_text') + this.getHintSymbol(_l.get('settings.fields.footer_text_hint')),
+                emptyText: _l.get('settings.fields.footer_text_ph'),
 
-                maxLength: 512,
-
-                value: '<FooterText Lorem ipsum...>'
+                maxLength: 512
             },
             {
                 xtype: 'blockheader',
@@ -446,7 +511,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'promo_url',
-                fieldLabel: _l.get('settings.fields.promo_url'),
+                fieldLabel: _l.get('settings.fields.promo_url') + this.getHintSymbol(_l.get('settings.fields.promo_url_hint')),
+                emptyText: _l.get('settings.fields.promo_url_ph'),
                 allowBlank: true,
                 minLength: 2,
                 maxLength: 100,
@@ -476,7 +542,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.get('settings.edit_form.favicon_title') + ' <span class="desc">(' + _l.get('settings.edit_form.favicon_desc') + ')</span>',
+                html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
                 padding: '0 0 10 0'
             },
             this.getImgButtonConfig('favicon'),
@@ -484,7 +550,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.get('settings.edit_form.logo_title'),
+                html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('logo'),
@@ -492,7 +558,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 cls: 'block_header',
-                html: _l.get('settings.edit_form.login_wallpaper_title'),
+                html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
                 padding: '20 0 10 0'
             },
             this.getImgButtonConfig('login_wallpaper'),
@@ -508,7 +574,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'domain',
-                fieldLabel: _l.get('settings.fields.domain'),
+                fieldLabel: _l.get('settings.fields.domain') + this.getHintSymbol(_l.get('settings.fields.domain_hint')) + '<a href="' + _l.get('settings.fields.domain_help_link')+ '" target="_blank">' + _l.get('settings.fields.domain_help')+ '</a>',
+                emptyText: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
+                value: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
                 allowBlank: false,
 
                 minLength: 2,
@@ -533,12 +601,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'locale',
                 xtype: 'localefield',
-                fieldLabel: _l.get('settings.fields.locale')
+                fieldLabel: _l.get('settings.fields.locale') + this.getHintSymbol(_l.get('settings.fields.locale_hint'))
             },
             {
                 name: 'currency',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.currency'),
+                fieldLabel: _l.get('settings.fields.currency') + this.getHintSymbol(_l.get('settings.fields.currency_hint')),
                 store: Ext.getStore('Currencies'),
                 editable: false,
                 queryMode: 'local',
@@ -553,17 +621,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'allow_registration',
                 xtype: 'checkbox',
                 role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.allow_registration')
+                boxLabel: _l.get('settings.fields.allow_registration') + this.getHintSymbol(_l.get('settings.fields.allow_registration_hint'))
             },
             {
                 name: 'show_mobile_apps',
                 xtype: 'checkbox',
                 role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.show_mobile_apps')
+                boxLabel: _l.get('settings.edit_form.show_mobile_apps') + this.getHintSymbol(_l.get('settings.fields.show_mobile_apps_hint'))
             },
             {
                 name: 'demo_login',
                 fieldLabel: _l.get('settings.fields.demo_login') + this.getHintSymbol(_l.get('settings.edit_form.demo_hint')),
+                emptyText: _l.get('settings.fields.demo_login_ph'),
 
                 minLength: 2,
                 maxLength: 100
@@ -571,19 +640,42 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'demo_password',
                 fieldLabel: _l.get('settings.fields.demo_password'),
+                emptyText: _l.get('settings.fields.demo_password_ph'),
 
                 minLength: 2,
                 maxLength: 100
+            },
+                //TODO: API w8
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.service_additional_title')
+            },
+            {
+                name: 'email_newsletters',
+                fieldLabel: _l.get('settings.fields.newsletters') + this.getHintSymbol(_l.get('settings.fields.newsletters_hint')),
+                emptyText: _l.get('settings.fields.daily_reports_ph'),
+                minLength: 2,
+                maxLength: 100,
+                allowBlank: true
+            },
+            {
+                name: 'email_special',
+                fieldLabel: _l.get('settings.fields.daily_reports') + this.getHintSymbol(_l.get('settings.fields.daily_reports_hint')),
+                emptyText: _l.get('settings.fields.daily_reports_ph'),
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field',
+                allowBlank: true
+            },
+            {
+                name: 'email_invoices',
+                fieldLabel: _l.get('settings.fields.invoices') + this.getHintSymbol(_l.get('settings.fields.invoices_hint')),
+                emptyText: _l.get('settings.fields.daily_reports_ph'),
+                minLength: 2,
+                maxLength: 100,
+                role: 'permission-field',
+                allowBlank: true
             }
-            //    TODO: API w8
-            //{
-            //    xtype: 'blockheader',
-            //    html: _l.get('settings.edit_form.service_additional_title')
-            //},
-            //{
-            //    fieldLabel: _l.get('settings.fields.alerts_email'),
-            //    allowBlank: true
-            //}
         ]
     },
 
@@ -605,7 +697,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 xtype: 'blockheader',
-                html: _l.get('settings.edit_form.service_maps_defaults_title')
+                html: _l.get('settings.edit_form.service_maps_defaults_title') + this.getHintSymbol(_l.get('settings.edit_form.maps_defaults_hint'))
             },
             {
                 name: 'map_type',
@@ -639,7 +731,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
-            },
+            }
 //            {
 //                name: 'google_client_id',
 //                fieldLabel: _l.get('settings.fields.google_client_id'),
@@ -655,28 +747,28 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.accounts_regional_title')
             },
-            //    TODO: API w8
-            //{
-            //    xtype: 'timezoneselect',
-            //    fieldLabel: _l.get('settings.fields.time_zone'),
-            //    name: 'time_zone'
-            //},
             {
                 name: 'measurement_system',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.measurement_system'),
+                fieldLabel: _l.get('settings.fields.measurement_system') + this.getHintSymbol(_l.get('settings.fields.measurement_system_hint')),
                 store: Ext.getStore('MeasurementSystems'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
             },
+            //TODO: API w8
+            {
+                xtype: 'timezoneselect',
+                fieldLabel: _l.get('settings.fields.time_zone') + this.getHintSymbol(_l.get('settings.fields.time_zone_hint')),
+                name: 'time_zone'
+            },
             {
                 name: 'translit',
                 xtype: 'checkbox',
                 role: 'checkbox',
                 margin: '20 0 0 10',
-                boxLabel: _l.get('settings.fields.translit')
+                boxLabel: _l.get('settings.fields.translit') + this.getHintSymbol(_l.get('settings.fields.translit_hint'))
             }
         ]
     },
@@ -690,7 +782,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'geocoder',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geocoder'),
+                fieldLabel: _l.get('settings.fields.geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
                 store: Ext.getStore('Geocoders'),
                 editable: false,
                 queryMode: 'local',
@@ -700,12 +792,45 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'route_provider',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.route_provider'),
+                fieldLabel: _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint')),
                 store: Ext.getStore('RouteProviders'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
+            },
+            {
+                name: 'geolocation',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
+                store: Ext.getStore('Geolocation'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: "disabled"
+            },
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.account_roads_title')
+            },
+            {
+                name: 'speed_restriction',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.speed_restriction') + this.getHintSymbol(_l.get('settings.fields.speed_restriction_hint')),
+                store: Ext.getStore('SpeedRestriction'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: "disabled"
+            },
+            {
+                name: 'google_roads',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                margin: '10 0 0 10',
+                boxLabel: _l.get('settings.fields.google_roads') + this.getHintSymbol(_l.get('settings.fields.google_roads_hint'))
             }
         ]
     },
@@ -713,9 +838,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getEmailsItems: function () {
         return [
             {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.emails_main_title')
+            },
+            {
                 name: 'email_from',
                 fieldLabel: _l.get('settings.fields.email_from'),
-                labelAlign: 'top',
                 minLength: 2,
                 maxLength: 100,
                 role: 'permission-field'
@@ -724,42 +852,84 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'email_footer',
                 xtype: 'textarea',
                 fieldLabel: _l.get('settings.fields.email_footer'),
-                labelAlign: 'top',
                 width: 450,
                 rows: 10,
 
                 maxLength: 450,
                 role: 'permission-field'
-            },
-            {
-                name: 'email_special',
-                fieldLabel: _l.get('settings.fields.email_special'),
-                labelAlign: 'top',
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field'
             }
         ]
     },
 
-    getSMSItems: function () {
+    getSMSUserItems: function () {
         return [
             {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.sms_user_title')
+            },
+            {
+                xtype: 'component',
+                cls: 'block_hint',
+                margin: '10 20 10 10',
+                html: _l.get('settings.edit_form.sms_user_info')
+            },
+            {
                 name: 'sms_originator',
-                fieldLabel: _l.get('settings.fields.sms_originator'),
-                labelAlign: 'top',
-                allowBlank: false,
-                maxLength: 20,
-                role: 'permission-field'
+                fieldLabel: _l.get('settings.fields.sms_inbound') + this.getHintSymbol(_l.get('settings.fields.sms_inbound_hint')),
+                emptyText: _l.get('settings.fields.sms_inbound_ph'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
+            },
+            {
+                xtype: 'smsgateway',
+                fieldLabel: _l.get('settings.fields.user_sms_gateway') + this.getHintSymbol(_l.get('settings.fields.user_sms_gateway_hint')),
+                emptyText: _l.get('settings.fields.user_sms_gateway_ph')
+            }
+        ]
+    },
+
+    getSMSM2MItems: function () {
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.sms_m2m_title')
+            },
+            {
+                xtype: 'component',
+                cls: 'block_hint',
+                margin: '10 20 10 10',
+                html: _l.get('settings.edit_form.sms_m2m_info')
             },
             {
                 name: 'caller_id',
-                fieldLabel: _l.get('settings.fields.caller_id'),
-                labelAlign: 'top',
-                allowBlank: false,
-                maxLength: 20,
-                role: 'permission-field'
+                fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_hint')),
+                emptyText: _l.get('settings.fields.sms_sender_id_ph'),
+                allowBlank: true,
+                vtype: 'numeric',
+                minLength: 0,
+                maxLength: 100
             },
+            {
+                xtype: 'smsgateway',
+                fieldLabel: _l.get('settings.fields.sms_gateway') + this.getHintSymbol(_l.get('settings.fields.sms_gateway_hint')),
+                emptyText: _l.get('settings.fields.sms_gateway_ph')
+            }
+            //{
+            //    name: 'sms_originator',
+            //    fieldLabel: _l.get('settings.fields.sms_originator'),
+            //    allowBlank: false,
+            //    maxLength: 20,
+            //    role: 'permission-field'
+            //},
+            //{
+            //    name: 'caller_id',
+            //    fieldLabel: _l.get('settings.fields.caller_id'),
+            //    allowBlank: false,
+            //    maxLength: 20,
+            //    role: 'permission-field'
+            //},
         ]
     },
 

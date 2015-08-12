@@ -9,7 +9,7 @@ Ext.define('NavixyPanel.view.settings.BlockHeader', {
     alias: 'widget.blockheader',
     cls: 'block_header',
     padding: '30 0 10 0',
-    margin: '0 0 0 0',
+    margin: 0,
     style: 'border-bottom: 1px solid #eee',
 
     initComponent: function () {
