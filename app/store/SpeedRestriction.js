@@ -18,8 +18,8 @@ Ext.define('NavixyPanel.store.SpeedRestriction', {
                 name: _l.get('speed_restriction.google')
             },
             {
-                type: 'cityguide',
-                name: _l.get('speed_restriction.cityguide')
+                type: 'quazar',
+                name: _l.get('speed_restriction.quazar')
             }
         ];
 

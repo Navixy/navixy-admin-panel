@@ -806,10 +806,10 @@ Ext.define('Locale.locale-ru',{
             "geolocation_hint": "Резервная геолокация по базовым станциям сотовой связи позволяет определять примерное местонахождение отслеживаемых объектов в условиях, когда сигналы спутниковой навигации не могут быть приняты (например, на подземной парковке, в метро)..",
 
             "speed_restriction": "Скоростные ограничения ПДД",
-            "speed_restriction_hint": " ",
+            "speed_restriction_hint": "Сервис позволяет контролировать скоростные нарушения согласно правил дорожного движения и с учетом ограничений установленных дорожных знаков. При этом абсолютная полнота и точность информации о существующих в настоящее время скоростных ограничениях не гарантируется.",
 
             "google_roads": "Достраивать треки с учетом дорог Google Roads",
-            "google_roads_hint": " ",
+            "google_roads_hint": "Сервис визуально улучшает треки, полученные от GPS устройств, привязывая их к дорогам, по которым, скорее всего, осуществлялось движение автомобиля. Это помогает отображать траекторию движения так, чтобы она гладко повторяла геометрию дорог.",
 
             "daily_reports_ph": "email1@company.com, email2@company.com, ...",
 
@@ -1280,12 +1280,13 @@ Ext.define('Locale.locale-ru',{
     },
     "geolocation": {
         "disabled": "Отключена",
-        "navixy": "Navixy location services",
+        "navixy": "Mozilla location services / @Navixy Telehouse",
+        "mozilla": "Mozilla location services",
         "combain": "Combain"
     },
     "speed_restriction": {
         "disabled": "Отключена",
-        "google": "Google Roads",
-        "cityguide": "Cityguide"
+        "google": "Google Maps Roads",
+        "quazar": "Quazar"
     }
 });

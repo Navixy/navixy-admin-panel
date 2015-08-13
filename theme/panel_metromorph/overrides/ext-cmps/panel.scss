@@ -164,3 +164,7 @@ $light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%)
     border-style: dashed;
     border-color: $grayLighter;
 }
+
+.red-label {
+    color: red !important;
+}

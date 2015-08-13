@@ -24,11 +24,22 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
         this.callParent(arguments);
     },
 
+    afterRender: function () {
+        var select = this.down('[role=gateway-select]');
+        if (select) {
+            this.relayEvents(select, ['change']);
+        }
+
+        this.callParent(arguments);
+    },
+
+
     getItems: function () {
 
         var lp = _l.get('settings.sms_gateway');
         return [
             {
+                role: 'gateway-select',
                 fieldLabel: this.fieldLabel,
                 emptyText: this.emptyText,
                 margin: 0,

@@ -797,10 +797,10 @@ Ext.define('Locale.locale-en', {
             "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway).",
 
             "speed_restriction": "Speed restriction",
-            "speed_restriction_hint": " ",
+            "speed_restriction_hint": "Service allows to detect speed limits violations according to traffic regulations and road signs. The speed limit data accuracy is not guaranteed, however; the data may be estimated, incomplete or outdated. ",
 
             "google_roads": "Complete construction of the tracks with the roads Google Roads",
-            "google_roads_hint": " ",
+            "google_roads_hint": "Service visually improves the tracks received from GPS devices to the most likely roads the vehicle was traveling along. It helps to draw paths that smoothly follow the geometry of the road.",
 
             "daily_reports_ph": "email1@company.com, email2@company.com, ...",
 
@@ -994,7 +994,7 @@ Ext.define('Locale.locale-en', {
             "sms_main_title": "Main settings",
             "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
 
-            "sms_m2m_title": "M2M сообщения",
+            "sms_m2m_title": "M2M messages",
             "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
             "sms_user_title": "User notifications",
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
@@ -1271,12 +1271,13 @@ Ext.define('Locale.locale-en', {
     },
     "geolocation": {
         "disabled": "Disabled",
-        "navixy": "Navixy location services",
+        "navixy": "Mozilla location services / @Navixy Telehouse",
+        "mozilla": "Mozilla location services",
         "combain": "Combain"
     },
     "speed_restriction": {
         "disabled": "Disabled",
-        "google": "Google Roads",
-        "cityguide": "Cityguide"
+        "google": "Google Maps Roads",
+        "quazar": "Quazar"
     }
 });

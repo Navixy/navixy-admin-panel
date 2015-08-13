@@ -18,6 +18,10 @@ Ext.define('NavixyPanel.store.Geolocation', {
                 name: _l.get('geolocation.navixy')
             },
             {
+                type: 'mozilla',
+                name: _l.get('geolocation.mozilla')
+            },
+            {
                 type: 'combain',
                 name: _l.get('geolocation.combain')
             }
