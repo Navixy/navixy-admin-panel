@@ -657,7 +657,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: _l.get('settings.fields.daily_reports_ph'),
                 minLength: 2,
                 maxLength: 100,
-                allowBlank: true
+                allowBlank: true,
+                vtype: 'multiemail'
             },
             {
                 name: 'email_special',
@@ -831,12 +832,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 value: "google"
             },
             {
-                //name: 'google_roads',
+                //name: 'speed_restriction',
                 labelClsExtra: 'red-label',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                margin: '10 0 0 10',
-                boxLabel: _l.get('settings.fields.google_roads') + this.getHintSymbol(_l.get('settings.fields.google_roads_hint'))
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.roads_snap') + this.getHintSymbol(_l.get('settings.fields.roads_snap_hint')),
+                store: Ext.getStore('RoadsSnap'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: "google"
             }
         ]
     },
@@ -897,7 +902,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.sms_sender_id_ph'),
                 allowBlank: true,
-                vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
             },
@@ -958,7 +962,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
                 allowBlank: true,
-                vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100
             },

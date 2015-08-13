@@ -796,13 +796,13 @@ Ext.define('Locale.locale-en', {
             "geolocation": "Cell ID geolocation",
             "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway).",
 
-            "speed_restriction": "Speed restriction",
-            "speed_restriction_hint": "Service allows to detect speed limits violations according to traffic regulations and road signs. The speed limit data accuracy is not guaranteed, however; the data may be estimated, incomplete or outdated. ",
+            "speed_restriction": "Speed limits",
+            "speed_restriction_hint": "Service allows to detect speed limits violations according to traffic regulations and road signs. The speed limit data accuracy is not guaranteed, however; the data may be estimated, incomplete or outdated.",
 
-            "google_roads": "Complete construction of the tracks with the roads Google Roads",
-            "google_roads_hint": "Service visually improves the tracks received from GPS devices to the most likely roads the vehicle was traveling along. It helps to draw paths that smoothly follow the geometry of the road.",
+            "roads_snap": "Snap to roads",
+            "roads_snap_hint": "Service visually improves the tracks received from GPS devices to the most likely roads the vehicle was traveling along. It helps to draw paths that smoothly follow the geometry of the road.",
 
-            "daily_reports_ph": "email1@company.com, email2@company.com, ...",
+            "daily_reports_ph": "email1@company.com,email2@company.com,...",
 
             "newsletters": "Newsletters",
             "newsletters_hint": "Emails for newsletters and important updates. Use comma to separate multiple addresses.",

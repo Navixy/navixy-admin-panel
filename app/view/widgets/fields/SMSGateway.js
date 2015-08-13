@@ -57,7 +57,7 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
                 forceSelection: true,
                 tpl: Ext.create('Ext.XTemplate',
                     '<tpl for=".">',
-                    '<div class="x-boundlist-item"><b>{name}</b><br>{desc}</div>',
+                    '<div class="x-boundlist-item" style="padding: 5px; line-height: 14px; border-top: 1px solid #eee"><b>{name}</b><br>{desc}</div>',
                     '</tpl>'
                 ),
 
