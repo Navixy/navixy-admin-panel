@@ -157,3 +157,14 @@ $light-panel-header-tab-over-bg-color: lighten($light-panel-header-bg-color, 4%)
         border: 1px solid $baseBackgroundColor;
     }
 }
+
+.credentials {
+    background-color: lighten($ghosty, 3%);
+    border-width: 0 1px 1px 1px;
+    border-style: dashed;
+    border-color: $grayLighter;
+}
+
+.red-label {
+    color: red !important;
+}

@@ -199,6 +199,10 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
+        Ext.override(Ext.tip.QuickTip, {
+            dismissDelay: 0
+        });
+
         Ext.override(Ext.util.Format, {
 
             daysEncode: function (value) {
@@ -270,6 +274,22 @@ Ext.define('NavixyPanel.controller.Main', {
             numericText: _l.get('invalid_numeric_msg'),
             numericMask: /[\-\+0-9.]/,
             numericVal: /^[-+]?\d*\.?\d*$/i
+        });
+
+        Ext.apply(Ext.form.field.VTypes, {
+            multiemail : function(v) {
+                var array = v.split(',');
+                var valid = true;
+                Ext.each(array, function(value) {
+                    if (!this.email(value)) {
+                        valid = false;
+                        return false;
+                    }
+                }, this);
+                return valid;
+            },
+            multiemailText : 'This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format "user@domain.com,test@test.com"',            numericMask: /[\-\+0-9.]/,
+            multiemailMask : /[a-z0-9_\.\-@\,]/i
         });
 
 

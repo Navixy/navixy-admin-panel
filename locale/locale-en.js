@@ -729,7 +729,7 @@ Ext.define('Locale.locale-en', {
                 "zoom": "Default zoom"
             },
             "google_client_id": "Client ID for google maps",
-            "currency": "Default currency",
+            "currency": "Billing currency for users",
             "payment_link": "Payment system URL",
             "promo_url": "Promo website URL",
             "domain": "Domain",
@@ -745,10 +745,189 @@ Ext.define('Locale.locale-en', {
             "footer_email": "Company E-mail",
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
-            "geocoder": "Default geocoder",
+            "geocoder": "Geocoding",
             "route_provider": "Default route provider",
-            "translit": "SMS transliteration",
-            "measurement_system": "Measurement system"
+            "translit": "Transliteration for SMS",
+            "measurement_system": "Measurement system",
+
+            "payment_description": "Payment options and terms",
+            "support_email": "Email for customers support",
+            "alerts_email": "Email for important alerts and invoices",
+
+            "time_zone": "Time zone",
+
+            "service_title_ph": "marketing name",
+            "service_title_hint": "Used at the login page, in browser tab and in other places",
+
+            "footer_text_ph": "Some text you want to add into the footer of the login page",
+            "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and maito: will be active. Use plain text only, HTML tags are not supported.",
+
+            "promo_url_ph": "http://www.company.com",
+            "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
+
+            "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
+            "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
+            "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
+
+            "domain_ph": ".navixy.com",
+            "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
+            "domain_help": "How do I set up a CNAME-record",
+            "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
+
+            "locale_hint" : "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
+
+            "currency_hint" : "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
+
+            "allow_registration": "Allow users to create accounts",
+            "allow_registration_hint" : "By checking this checkbox you allow users to create user accounts on their own – from the login page and with mobile apps. If the checkbox is disabled, you will able to create new user accounts from this Admin Panel only (and with Admin Panel API).",
+
+            "show_mobile_apps_hint" : "If this checkbox is marked, the buttons for mobile apps downloading will be visible at the login page. Regardless this checkbox users will be able to use mobile version of the web interface.",
+
+            "measurement_system_hint" : "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system.",
+
+            "time_zone_hint" : "The most typical time zone for your users.",
+
+            "translit_hint" : "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones.",
+
+            "geocoder_hint" : "The service which transforms the address to coordinates and versa.",
+
+            "route_provider_hint" : "The service for finding optimal directions between start place and destinations.",
+
+            "geolocation": "Cell ID geolocation",
+            "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway).",
+
+            "speed_restriction": "Speed limits",
+            "speed_restriction_hint": "Service allows to detect speed limits violations according to traffic regulations and road signs. The speed limit data accuracy is not guaranteed, however; the data may be estimated, incomplete or outdated.",
+
+            "roads_snap": "Snap to roads",
+            "roads_snap_hint": "Service visually improves the tracks received from GPS devices to the most likely roads the vehicle was traveling along. It helps to draw paths that smoothly follow the geometry of the road.",
+
+            "daily_reports_ph": "email1@company.com,email2@company.com,...",
+
+            "newsletters": "Newsletters",
+            "newsletters_hint": "Emails for newsletters and important updates. Use comma to separate multiple addresses.",
+
+            "daily_reports": "Daily reports",
+            "daily_reports_hint": "Emails for daily reports about the revenues. Use comma to separate multiple addresses.",
+
+            "invoices": "Invoices",
+            "invoices_hint": "Emails for invoices and accounting documents. Use comma to separate multiple addresses.",
+
+            "demo_login_ph": "login",
+            "demo_password_ph": "password",
+
+            "sms_gateway": "SMS Gateway",
+            "sms_gateway_ph": "SMS Gateway not selected",
+            "sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
+
+            "sms_sender_id": "Sender ID ",
+            "sms_sender_id_ph": "Example: Navixy",
+            "sms_sender_id_hint": "It is highly recommended to use the number your lease for inbound messages as a Sender ID. In this case the service platform will be able to receive SMS from devices replies with the command confirmations and other valued data.",
+
+            "sms_inbound": "Number for inbound messages",
+            "sms_inbound_ph": "Example: 12162780905",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+
+            "user_sms_gateway": "SMS Gateway",
+            "user_sms_gateway_ph": "SMS Gateway not selected",
+            "user_sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
+
+            "user_sms_sender_id": "Sender ID ",
+            "user_sms_sender_id_ph": "Example: Navixy",
+            "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+
+            "user_sms_inbound": "Number for inbound messages",
+            "user_sms_inbound_ph": "Example: 12162780905",
+            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+        },
+        "sms_gateway": {
+            "navixy": {
+                "name": "Navixy",
+                "desc": "SMS-service, provided to you by Navixy for free while you are using Trial version."
+            },
+            "nexmo": {
+                "name": "Nexmo",
+                "desc": "One of the most popular services in the world (<a href=\"http://www.nexmo.com\" target=\"blank\">www.nexmo.com</a>)",
+                "credentials": {
+                    "key": "Key",
+                    "secret": "Secret"
+                }
+            },
+            "twilio": {
+                "name": "Twilio",
+                "desc": "One of the most popular services in the world (<a href=\"http://www.twilio.com\" target=\"blank\">www.twilio.com</a>)",
+                "credentials": {
+                    "sid": "Account SID",
+                    "token": "Auth token"
+                }
+            },
+            "smstraffic": {
+                "name": "SMSTraffic",
+                "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"blank\">www.smstraffic.ru</a>)",
+                "credentials": {
+                    "login": "Login",
+                    "password": "Password"
+                }
+            },
+            "yaestar": {
+                "name": "Yaestar NeoGate",
+                "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"blank\">www.yeastar.com</a>)",
+                "credentials": {
+                    "ip": "Server IP",
+                    "port": "Port",
+                    "login": "Login",
+                    "password": "Password"
+                }
+            },
+            "smpp": {
+                "name": "SMPP v.3.4",
+                "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"blank\">Wikipedia</a>)",
+                "credentials": {
+                    "ip": "Server IP",
+                    "port": "Port",
+                    "login": "Login (System ID)",
+                    "password": "Password",
+                    "source": "Source TON/NPI",
+                    "source_select": {
+                        "-1": "Auto",
+                        "0": "Unknown",
+                        "1": "International",
+                        "2": "National",
+                        "3": "Network Specific",
+                        "4": "Subscriber Number",
+                        "5": "Abbreviated",
+                        "6": "Alphanumeric",
+                        "7": "Reserverd"
+                    },
+                    "destination": "Destination TON/NPI",
+                    "destination_select": {
+                        "0": "Unknown",
+                        "1": "ISDN/telephone numbering plan (E163/E164)",
+                        "3": "Data numbering plan (X.121)",
+                        "4": "Telex numbering plan (F.69)",
+                        "6": "Land Mobile (E.212)",
+                        "8": "National numbering plan",
+                        "9": "Private numbering plan",
+                        "10": "ERMES numbering plan (ETSI DE/PS 3 01-3)",
+                        "13": "Internet (IP)",
+                        "18": "WAP Client Id (to be defined by WAP Forum)"
+                    },
+                    "charset": "Default charset",
+                    "charset_select": {
+                        "GSM8": "GSM8",
+                        "GSM7": "GSM7",
+                        "ISO-8859-1": "ISO-8859-1",
+                        "ISO-8859-15": "ISO-8859-15",
+                        "UTF-8": "UTF-8",
+                        "UCS-2": "UCS-2"
+                    },
+                    "long": "Long messages",
+                    "long_select": {
+                        "UDH": "UDH",
+                        "Payload": "Payload"
+                    }
+                }
+            }
         },
         "edit_form": {
             "title": "Service Settings",
@@ -761,12 +940,11 @@ Ext.define('Locale.locale-en', {
             "custom_fields": "Customization",
             "main_buttons_title": "Displaying buttons",
             "show_mobile_apps": "Show buttons for downloading mobile apps",
-            "allow_registration": "Allow user self registration",
             "main_texts_title": "Main texts",
             "footer_texts_title": "Text in the basement of the login page",
             "logo_title": "Logo",
             "favicon_title": "Favicon",
-            "login_wallpaper_title": "Authorization page background",
+            "login_wallpaper_title": "Login page background",
             "desktop_wallpaper_title": "Services page background",
             "upload_btn": "Upload",
             "update_btn": "Change",
@@ -781,14 +959,54 @@ Ext.define('Locale.locale-en', {
             "pass_hint": "Changes in other tabs will not be saved",
             "pass_save_msg": "Password changed successfully",
             "pass_save_btn": "Change Password",
-            "maps_hint": "Select available maps for your users. You can also limit the list of maps on specific plans – in plans options.<br><br>Using of the maps must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.",
             "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
             "user_notifications_title": "Notifications to users",
             "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
             "special_notifications_title": "Notifications to administrators",
             "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
-            "defaults_fields": "User default settings",
-            "defaults_hint": "Settings in this section will be automatically applied to all new users"
+
+
+            "branding_fields": "Branding",
+            "branding_main_title": "Branding main settings",
+            "branding_img_title": "Images and logo",
+            "branding_contacts_title": "Contact information for users",
+
+            "service_fields": "Service preferences",
+            "service_links_title": "Domain and URLs",
+            "service_regional_title": "Regional settings",
+            "service_login_title": "Login page",
+            "service_maps_title": "Maps",
+            "service_maps_defaults_title": "Map default settings",
+            "service_additional_title": "Email notifications",
+
+            "accounts_fields": "User defaults",
+            "accounts_regional_title": "Regional settings",
+            "accounts_geocoding_title": "Cartography and databases",
+            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
+            "account_roads_title": "Roads",
+
+
+            "emails_fields": "Email messages",
+            "emails_main_title": "Main settings",
+            "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
+
+            "sms_fields": "SMS messages",
+            "sms_main_title": "Main settings",
+            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
+
+            "sms_m2m_title": "M2M messages",
+            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
+            "sms_user_title": "User notifications",
+            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
+
+            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+
+            "service_info": "Define the preferences of your service.",
+
+            "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
+
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -802,9 +1020,9 @@ Ext.define('Locale.locale-en', {
                 "desktop_wallpaper": "Service page wallpaper"
             },
             "tips": {
-                "logo": "Recommended to load horizontally oriented image with transparent background and minimal width 200px.",
-                "favicon": "Recommended to load the image with transparent background and a minimum resolution of 32x32 pixels.",
-                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG."
+                "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
+                "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
+                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
@@ -926,7 +1144,7 @@ Ext.define('Locale.locale-en', {
             }
         },
         "scan": {
-            "clear_form": "Try again",
+            "clear_form": "To start over",
             "to_list": "A list of sets",
             "steps": {
                 "first": {
@@ -941,7 +1159,7 @@ Ext.define('Locale.locale-en', {
                 "title_add": "The SIM card is already linked!",
                 "title_add_changed": "The SIM card is changed",
                 "equip_add_changed": "The kit changed",
-                "id": "Kit ID",
+                "id": "Room set",
                 "imei": "IMEI",
                 "iccid": "ICCID",
                 "model_code": "The model",
@@ -1050,5 +1268,16 @@ Ext.define('Locale.locale-en', {
         "yandex": "Yandex",
         "progorod": "Progorod",
         "osm": "OpenStreetMap"
+    },
+    "geolocation": {
+        "disabled": "Disabled",
+        "navixy": "Mozilla location services / @Navixy Telehouse",
+        "mozilla": "Mozilla location services",
+        "combain": "Combain"
+    },
+    "speed_restriction": {
+        "disabled": "Disabled",
+        "google": "Google Maps Roads",
+        "quazar": "Quazar"
     }
 });
