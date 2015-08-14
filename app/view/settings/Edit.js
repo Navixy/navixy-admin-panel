@@ -450,9 +450,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     },
                     {
                         items: [
-                            {
-                                items: this.getSMSM2MItems()
-                            },
+                            //TODO: API w8
+                            //{
+                            //    items: this.getSMSM2MItems()
+                            //},
                             {
                                 items: this.getSMSUserItems()
                             }
@@ -645,21 +646,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 2,
                 maxLength: 100
             },
-                //TODO: API w8
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.service_additional_title')
             },
-            {
-                //name: 'email_newsletters',
-                labelClsExtra: 'red-label',
-                fieldLabel: _l.get('settings.fields.newsletters') + this.getHintSymbol(_l.get('settings.fields.newsletters_hint')),
-                emptyText: _l.get('settings.fields.daily_reports_ph'),
-                minLength: 2,
-                maxLength: 100,
-                allowBlank: true,
-                vtype: 'multiemail'
-            },
+            //TODO: API w8
+            //{
+            //    //name: 'email_newsletters',
+            //    labelClsExtra: 'red-label',
+            //    fieldLabel: _l.get('settings.fields.newsletters') + this.getHintSymbol(_l.get('settings.fields.newsletters_hint')),
+            //    emptyText: _l.get('settings.fields.daily_reports_ph'),
+            //    minLength: 2,
+            //    maxLength: 100,
+            //    allowBlank: true,
+            //    vtype: 'multiemail'
+            //},
             {
                 name: 'email_special',
                 fieldLabel: _l.get('settings.fields.daily_reports') + this.getHintSymbol(_l.get('settings.fields.daily_reports_hint')),
@@ -669,16 +670,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'permission-field',
                 allowBlank: true
             },
-            {
-                //name: 'email_invoices',
-                labelClsExtra: 'red-label',
-                fieldLabel: _l.get('settings.fields.invoices') + this.getHintSymbol(_l.get('settings.fields.invoices_hint')),
-                emptyText: _l.get('settings.fields.daily_reports_ph'),
-                minLength: 2,
-                maxLength: 100,
-                role: 'permission-field',
-                allowBlank: true
-            }
+            //TODO: API w8
+            //{
+            //    //name: 'email_invoices',
+            //    labelClsExtra: 'red-label',
+            //    fieldLabel: _l.get('settings.fields.invoices') + this.getHintSymbol(_l.get('settings.fields.invoices_hint')),
+            //    emptyText: _l.get('settings.fields.daily_reports_ph'),
+            //    minLength: 2,
+            //    maxLength: 100,
+            //    role: 'permission-field',
+            //    allowBlank: true
+            //}
         ]
     },
 
@@ -761,12 +763,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'type'
             },
             //TODO: API w8
-            {
-                xtype: 'timezoneselect',
-                labelClsExtra: 'red-label',
-                fieldLabel: _l.get('settings.fields.time_zone') + this.getHintSymbol(_l.get('settings.fields.time_zone_hint')),
-                name: 'time_zone'
-            },
+            //{
+            //    xtype: 'timezoneselect',
+            //    labelClsExtra: 'red-label',
+            //    fieldLabel: _l.get('settings.fields.time_zone') + this.getHintSymbol(_l.get('settings.fields.time_zone_hint')),
+            //    name: 'time_zone'
+            //},
             {
                 name: 'translit',
                 xtype: 'checkbox',
@@ -803,46 +805,49 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 displayField: 'name',
                 valueField: 'type'
             },
+            //TODO: API w8
             {
                 //name: 'geolocation',
-                labelClsExtra: 'red-label',
+                //labelClsExtra: 'red-label',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
                 store: Ext.getStore('Geolocation'),
+                readOnly: true,
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
                 value: "navixy"
             },
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.account_roads_title')
-            },
-            {
-                //name: 'speed_restriction',
-                labelClsExtra: 'red-label',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.speed_restriction') + this.getHintSymbol(_l.get('settings.fields.speed_restriction_hint')),
-                store: Ext.getStore('SpeedRestriction'),
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                value: "google"
-            },
-            {
-                //name: 'speed_restriction',
-                labelClsExtra: 'red-label',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.roads_snap') + this.getHintSymbol(_l.get('settings.fields.roads_snap_hint')),
-                store: Ext.getStore('RoadsSnap'),
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                value: "google"
-            }
+            //TODO: API w8
+            //{
+            //    xtype: 'blockheader',
+            //    html: _l.get('settings.edit_form.account_roads_title')
+            //},
+            //{
+            //    //name: 'speed_restriction',
+            //    labelClsExtra: 'red-label',
+            //    xtype: 'combobox',
+            //    fieldLabel: _l.get('settings.fields.speed_restriction') + this.getHintSymbol(_l.get('settings.fields.speed_restriction_hint')),
+            //    store: Ext.getStore('SpeedRestriction'),
+            //    editable: false,
+            //    queryMode: 'local',
+            //    displayField: 'name',
+            //    valueField: 'type',
+            //    value: "google"
+            //},
+            //{
+            //    //name: 'speed_restriction',
+            //    labelClsExtra: 'red-label',
+            //    xtype: 'combobox',
+            //    fieldLabel: _l.get('settings.fields.roads_snap') + this.getHintSymbol(_l.get('settings.fields.roads_snap_hint')),
+            //    store: Ext.getStore('RoadsSnap'),
+            //    editable: false,
+            //    queryMode: 'local',
+            //    displayField: 'name',
+            //    valueField: 'type',
+            //    value: "google"
+            //}
         ]
     },
 
@@ -938,33 +943,34 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.sms_user_title') + this.getHintSymbol(_l.get('settings.edit_form.sms_user_info'))
             },
-            {
-                xtype: 'smsgateway',
-                labelClsExtra: 'red-label',
-                fieldLabel: _l.get('settings.fields.user_sms_gateway') + this.getHintSymbol(_l.get('settings.fields.user_sms_gateway_hint')),
-                emptyText: _l.get('settings.fields.user_sms_gateway_ph'),
-                listeners: {
-                    change: function (cmp, type) {
-                        var originator = this.down('[name=sms_originator]');
-
-                        if (type === "navixy") {
-                            originator.setValue(Config.navixyInboundNumber || "79037976362");
-                            originator.setReadOnly(true);
-                        } else {
-                            originator.setReadOnly(false);
-                        }
-                    },
-                    scope: this
-                }
-            },
-            {
-                labelClsExtra: 'red-label',
-                fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
-                emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
-                allowBlank: true,
-                minLength: 0,
-                maxLength: 100
-            },
+            //TODO: API w8
+            //{
+            //    xtype: 'smsgateway',
+            //    labelClsExtra: 'red-label',
+            //    fieldLabel: _l.get('settings.fields.user_sms_gateway') + this.getHintSymbol(_l.get('settings.fields.user_sms_gateway_hint')),
+            //    emptyText: _l.get('settings.fields.user_sms_gateway_ph'),
+            //    listeners: {
+            //        change: function (cmp, type) {
+            //            var originator = this.down('[name=sms_originator]');
+            //
+            //            if (type === "navixy") {
+            //                originator.setValue(Config.navixyInboundNumber || "79037976362");
+            //                originator.setReadOnly(true);
+            //            } else {
+            //                originator.setReadOnly(false);
+            //            }
+            //        },
+            //        scope: this
+            //    }
+            //},
+            //{
+            //    labelClsExtra: 'red-label',
+            //    fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
+            //    emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
+            //    allowBlank: true,
+            //    minLength: 0,
+            //    maxLength: 100
+            //},
             {
                 name: 'sms_originator',
                 fieldLabel: _l.get('settings.fields.sms_inbound') + this.getHintSymbol(_l.get('settings.fields.sms_inbound_hint')),
