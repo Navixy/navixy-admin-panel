@@ -83,7 +83,7 @@ Ext.define('NavixyPanel.view.components.AbstractTabForm', {
         fields.each(function (field) {
             if (!field.isValid()) {
                 var cmp = field.up('[role="tab"]');
-                if (cmp.xtype !== 'tabpanel') {
+                if (cmp && cmp.xtype !== 'tabpanel') {
                     result.push(field.up('[role="tab"]'));
                 }
             }
