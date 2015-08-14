@@ -714,7 +714,7 @@ Ext.define('Locale.locale-en', {
         }
     },
     "settings": {
-        "menu_text": "Settings",
+        "menu_text": "Account management",
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",

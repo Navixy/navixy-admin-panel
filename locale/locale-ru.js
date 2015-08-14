@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-ru
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-ru',{
+ * @class Locale.locale-ru
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-ru', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -723,7 +723,7 @@ Ext.define('Locale.locale-ru',{
         }
     },
     "settings": {
-        "menu_text": "Настройки",
+        "menu_text": "Управление аккаунтом",
         "fields": {
             "service_title": "Название сервиса",
             "page_title": "Заголовок страниц",
@@ -757,7 +757,10 @@ Ext.define('Locale.locale-ru',{
             "geocoder": "Геокодер&nbsp;по&nbsp;умолчанию",
             "route_provider": "Провайдер&nbsp;маршрутов&nbsp;по&nbsp;умолчанию",
             "translit": "Транслитерация SMS уведомлений",
-            "measurement_system": "Система мер"
+            "measurement_system": "Система мер",
+            subscription: {
+                activation_hint: 'You are evaluating Navixy ServerMate trial version (valid till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:'
+            }
         },
         "edit_form": {
             "title": "Настройки сервиса",
