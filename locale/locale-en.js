@@ -715,6 +715,15 @@ Ext.define('Locale.locale-en', {
     },
     "settings": {
         "menu_text": "Account management",
+        subscription: {
+            activation_btn_text: 'Pay activation fee now (500 USD) online',
+            monthly_fee_btn_text: 'Pay online',
+            activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
+            monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
+            licence_balance: 'Pending amount {0}',
+            subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com'
+        },
+
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",
@@ -774,24 +783,24 @@ Ext.define('Locale.locale-en', {
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
 
-            "locale_hint" : "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
+            "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
 
-            "currency_hint" : "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
+            "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
 
             "allow_registration": "Allow users to create accounts",
-            "allow_registration_hint" : "By checking this checkbox you allow users to create user accounts on their own – from the login page and with mobile apps. If the checkbox is disabled, you will able to create new user accounts from this Admin Panel only (and with Admin Panel API).",
+            "allow_registration_hint": "By checking this checkbox you allow users to create user accounts on their own – from the login page and with mobile apps. If the checkbox is disabled, you will able to create new user accounts from this Admin Panel only (and with Admin Panel API).",
 
-            "show_mobile_apps_hint" : "If this checkbox is marked, the buttons for mobile apps downloading will be visible at the login page. Regardless this checkbox users will be able to use mobile version of the web interface.",
+            "show_mobile_apps_hint": "If this checkbox is marked, the buttons for mobile apps downloading will be visible at the login page. Regardless this checkbox users will be able to use mobile version of the web interface.",
 
-            "measurement_system_hint" : "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system.",
+            "measurement_system_hint": "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system.",
 
-            "time_zone_hint" : "The most typical time zone for your users.",
+            "time_zone_hint": "The most typical time zone for your users.",
 
-            "translit_hint" : "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones.",
+            "translit_hint": "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones.",
 
-            "geocoder_hint" : "The service which transforms the address to coordinates and versa.",
+            "geocoder_hint": "The service which transforms the address to coordinates and versa.",
 
-            "route_provider_hint" : "The service for finding optimal directions between start place and destinations.",
+            "route_provider_hint": "The service for finding optimal directions between start place and destinations.",
 
             "geolocation": "Cell ID geolocation",
             "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway).",
@@ -965,7 +974,6 @@ Ext.define('Locale.locale-en', {
             "special_notifications_title": "Notifications to administrators",
             "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
 
-
             "branding_fields": "Branding",
             "branding_main_title": "Branding main settings",
             "branding_img_title": "Images and logo",
@@ -984,7 +992,6 @@ Ext.define('Locale.locale-en', {
             "accounts_geocoding_title": "Cartography and databases",
             "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
             "account_roads_title": "Roads",
-
 
             "emails_fields": "Email messages",
             "emails_main_title": "Main settings",

@@ -36,7 +36,10 @@ Ext.onReady(function () {
              "November", "December"];
 
         Ext.Date.getShortMonthName = function (month) {
-            return Ext.Date.monthNames[month].substring(0, 3);
+            var monthName = Ext.Date.monthNames[month];
+            if (monthName) {
+                return monthName.substring(0, 3);
+            }
         };
 
         Ext.Date.monthNumbers = {

@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-ru
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-ru',{
+ * @class Locale.locale-ru
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-ru', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -724,6 +724,14 @@ Ext.define('Locale.locale-ru',{
     },
     "settings": {
         "menu_text": "Настройки площадки",
+        subscription: {
+            activation_btn_text: 'Pay activation fee now (500 USD) online',
+            monthly_fee_btn_text: 'Pay online',
+            activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
+            monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
+            licence_balance: 'Pending amount {0}',
+            subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com'
+        },
         "fields": {
             "service_title": "Название сервиса",
             "page_title": "Заголовок страниц",
@@ -783,24 +791,24 @@ Ext.define('Locale.locale-ru',{
             "domain_help": "Как настроить CNAME-запись",
             "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
 
-            "locale_hint" : "Язык, назначаемый по умолчанию для новых учетных записей пользователей. Пользователи также могут изменять языковые предпочтения самостоятельно, в настройках своей учетной записи.",
+            "locale_hint": "Язык, назначаемый по умолчанию для новых учетных записей пользователей. Пользователи также могут изменять языковые предпочтения самостоятельно, в настройках своей учетной записи.",
 
-            "currency_hint" : "Установите валюту, распространенную в вашем регионе. Биллинговая система площадки будет тарифицировать ваших пользователей согласно настроенных вами тарифных планов.",
+            "currency_hint": "Установите валюту, распространенную в вашем регионе. Биллинговая система площадки будет тарифицировать ваших пользователей согласно настроенных вами тарифных планов.",
 
             "allow_registration": "Разрешить самостоятельную регистрацию пользователей",
-            "allow_registration_hint" : "Отмечая эту галочку, вы разрешите пользователям самостоятельно регистрироваться в сервисе – на главной странице и с использвоанием мобильных приложений. Если галочка снята, то создавать новые учетные записи можно будет только из этой Панели администратора (и API Панели администратора).",
+            "allow_registration_hint": "Отмечая эту галочку, вы разрешите пользователям самостоятельно регистрироваться в сервисе – на главной странице и с использвоанием мобильных приложений. Если галочка снята, то создавать новые учетные записи можно будет только из этой Панели администратора (и API Панели администратора).",
 
-            "show_mobile_apps_hint" : "Если галочка установлена, внизу страницы входа будут отображены кнопки для загрузки мобильных приложений. В любом случае пользователи смогут входить в мобильную версию веб-интерфейса.",
+            "show_mobile_apps_hint": "Если галочка установлена, внизу страницы входа будут отображены кнопки для загрузки мобильных приложений. В любом случае пользователи смогут входить в мобильную версию веб-интерфейса.",
 
-            "measurement_system_hint" : "Все физические величины (длина, вес, объем и др.) будут представлены в выбранной системе мер.",
+            "measurement_system_hint": "Все физические величины (длина, вес, объем и др.) будут представлены в выбранной системе мер.",
 
-            "time_zone_hint" : "Временная зона, наиболее типичная для ваших пользователей.",
+            "time_zone_hint": "Временная зона, наиболее типичная для ваших пользователей.",
 
-            "translit_hint" : "Транслитерация позволяет сократить число символов в SMS путем замены символов национального алфавита на близкие латинские.",
+            "translit_hint": "Транслитерация позволяет сократить число символов в SMS путем замены символов национального алфавита на близкие латинские.",
 
-            "geocoder_hint" : "Система преобразования адреса в координаты и обратно.",
+            "geocoder_hint": "Система преобразования адреса в координаты и обратно.",
 
-            "route_provider_hint" : "Система для построения оптимальных маршрутов между отправной точкой и пунктами назначения.",
+            "route_provider_hint": "Система для построения оптимальных маршрутов между отправной точкой и пунктами назначения.",
 
             "geolocation": "Геолокация по базовым станциям",
             "geolocation_hint": "Резервная геолокация по базовым станциям сотовой связи позволяет определять примерное местонахождение отслеживаемых объектов в условиях, когда сигналы спутниковой навигации не могут быть приняты (например, на подземной парковке, в метро)..",
@@ -975,7 +983,6 @@ Ext.define('Locale.locale-ru',{
             "user_notifications_hint": "Настройки уведомлений, оптравляемых пользователям от вашей системы мониторинга: о гео-событиях, низком балансе, восстановлении пароля и т.д.",
             "special_notifications_title": "Оповещения администраторам",
             "special_notifications_hint": "Системные оповещения администраторам о состоянии работы сервиса, статистики и др.",
-
 
             "branding_fields": "Брендирование",
             "branding_main_title": "Основные параметры брендирования",
