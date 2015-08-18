@@ -80,7 +80,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                     },
                     {
                         xtype: 'container',
-                        padding: '5 0 20 0',
+                        padding: '5 0 0 0',
                         layout: {
                             type: 'vbox',
                             align: 'stretch',
@@ -106,10 +106,10 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
                             }
                         ]
                     },
-                    {
-                        name: 'locale',
-                        xtype: 'localecombo'
-                    }
+                    //{
+                    //    name: 'locale',
+                    //    xtype: 'localecombo'
+                    //}
                 ]
             }
         ];

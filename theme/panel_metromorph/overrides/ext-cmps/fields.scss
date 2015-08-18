@@ -91,3 +91,14 @@ $light-field-focus-border-color: $main-color;
 .x-form-file-wrap {
     background-color: transparent;
 }
+
+.settings-disabled.x-item-disabled input {
+    border: 1px solid silver !important;
+    color: #a5a8b5 !important;
+}
+.settings-combo-disabled.x-item-disabled {
+    opacity: 1 !important;
+    input {
+        color: #a5a8b5 !important;
+    }
+}

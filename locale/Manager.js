@@ -16,37 +16,37 @@ Ext.define('Locale.Manager', {
             text: 'English',
             alias: ['en', 'en_US', 'English']
         },
-        {
-            id: 'es_ES',
-            name: 'es',
-            text: 'Spanish - Español',
-            alias: ['es', 'es_ES', 'Español']
-        },
-        {
-            id: 'de_DE',
-            name: 'de',
-            text: 'German - Deutsch',
-            alias: ['de', 'de_DE', 'de_AT']
-        },
+        //{
+        //    id: 'es_ES',
+        //    name: 'es',
+        //    text: 'Spanish - Español',
+        //    alias: ['es', 'es_ES', 'Español']
+        //},
+        //{
+        //    id: 'de_DE',
+        //    name: 'de',
+        //    text: 'German - Deutsch',
+        //    alias: ['de', 'de_DE', 'de_AT']
+        //},
         {
             id: 'ru_RU',
             name: 'ru',
             text: 'Russian - Русский',
             alias: ['ru', 'ru_RU', 'Русский']
         },
-        {
-            id: 'uk_UA',
-            name: 'uk',
-            text: 'Ukrainian - Українська',
-            alias: ['ua', 'uk', 'uk_UA']
-        },
-        {
-            id: 'pt_PT',
-            name: 'pt',
-            text: 'Portuguese - Português',
-            alias: ['pt', 'pt_PT', 'Português'],
-            rtl: false
-        }
+        //{
+        //    id: 'uk_UA',
+        //    name: 'uk',
+        //    text: 'Ukrainian - Українська',
+        //    alias: ['ua', 'uk', 'uk_UA']
+        //},
+        //{
+        //    id: 'pt_PT',
+        //    name: 'pt',
+        //    text: 'Portuguese - Português',
+        //    alias: ['pt', 'pt_PT', 'Português'],
+        //    rtl: false
+        //}
 
     ],
 
