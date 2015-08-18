@@ -408,7 +408,7 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
             data: [
                 {
                     type: 'disabled',
-                    name: '---',
+                    name: _l.get('settings.fields.not_editable'),
                     desc: ''
                 },
                 {

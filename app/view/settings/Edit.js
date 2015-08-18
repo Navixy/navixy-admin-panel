@@ -806,18 +806,32 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             //TODO: API w8
             {
-                //name: 'geolocation',
-                //labelClsExtra: 'red-label',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
-                store: Ext.getStore('Geolocation'),
-                readOnly: true,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                value: "navixy"
-            },
+                xtype: 'container',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+
+                items: [
+                    {
+                        //name: 'geolocation',
+                        //labelClsExtra: 'red-label',
+                        xtype: 'combobox',
+                        fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
+                        store: Ext.getStore('Geolocation'),
+                        editable: false,
+                        queryMode: 'local',
+                        displayField: 'name',
+                        valueField: 'type',
+                        value: "navixy",
+                        margin: 0,
+                        labelAlign: 'top',
+                        labelSeparator: '',
+                        disabled: true,
+                        baseCls: 'settings-combo-disabled',
+                    },
+                ]
+            }
             //TODO: API w8
             //{
             //    xtype: 'blockheader',
@@ -888,7 +902,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: _l.get('settings.fields.sms_gateway_ph'),
                 listeners: {
                     change: function (cmp, type) {
-                        var originator = this.down('[name=sms_originator]');
+                        var originator = this.down('[name=m2m_sms_originator]');
 
                         if (type === "navixy") {
                             originator.setValue(Config.navixyInboundNumber || "79037976362");
@@ -901,13 +915,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
             {
-                name: 'sms_originator',
+                name: "m2m_sms_originator",
                 fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.sms_sender_id_ph'),
                 allowBlank: true,
                 minLength: 0,
-                maxLength: 100
-            },
+                maxLength: 100,
+                disabled: true,
+                value: _l.get('settings.fields.not_editable'),
+                cls: 'settings-disabled'
+            }
             //{
             //    name: 'sms_originator',
             //    labelClsExtra: 'red-label',
@@ -949,7 +966,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: _l.get('settings.fields.user_sms_gateway_ph'),
                 listeners: {
                     change: function (cmp, type) {
-                        var originator = this.down('[name=user_sms_originator]');
+                        var originator = this.down('[name=sms_originator]');
 
                         if (type === "navixy") {
                             originator.setValue(Config.navixyInboundNumber || "79037976362");
@@ -962,25 +979,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
             {
+                name: 'sms_originator',
                 fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
                 allowBlank: true,
                 minLength: 0,
-                maxLength: 100,
-                disabled: true,
-                value: '---',
-                cls: 'settings-disabled'
+                maxLength: 100
             },
             {
-                name: "user_sms_originator",
                 fieldLabel: _l.get('settings.fields.user_sms_inbound') + this.getHintSymbol(_l.get('settings.fields.user_sms_inbound_hint')),
                 emptyText: _l.get('settings.fields.user_sms_inbound_ph'),
                 allowBlank: true,
-                vtype: 'numeric',
                 minLength: 0,
                 maxLength: 100,
                 disabled: true,
-                value: '---',
+                value: _l.get('settings.fields.not_editable'),
                 cls: 'settings-disabled'
             }
         ]

@@ -94,9 +94,11 @@ $light-field-focus-border-color: $main-color;
 
 .settings-disabled.x-item-disabled input {
     border: 1px solid silver !important;
-    color: #818491;
+    color: #a5a8b5 !important;
 }
 .settings-combo-disabled.x-item-disabled {
     opacity: 1 !important;
-    color: #818491;
+    input {
+        color: #a5a8b5 !important;
+    }
 }
