@@ -6,7 +6,7 @@ Ext.define('Locale.Manager', {
 
     singleton: true,
 
-    _default: 'ru',
+    _default: 'en',
     _loaded: false,
     _locale: null,
     _locales: [
