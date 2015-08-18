@@ -11,6 +11,14 @@ module.exports = function (grunt) {
                     excludeClasses: [
                         'Config'
                     ],
+                    godBlessIE: [
+                        {
+                            name: 'ie-theme',
+                            root: 'theme',
+                            src: 'panel_metromorph.css',
+                            dest: 'panel_metromorph_ie.css'
+                        }
+                    ],
                     copyFiles: [
                         {
                             from: 'productionFiles/index.html',
@@ -54,9 +62,18 @@ module.exports = function (grunt) {
 
                     srcBasePath: "build/panel"
                 }
+            },
+
+            'bless': {
+                css: {
+                    dest: 'theme/panel_metromorph_ie.css',
+                    src: 'theme/panel_metromorph.css'
+                }
             }
         }
     );
+
+    grunt.loadNpmTasks('grunt-bless');
 
     grunt.loadTasks('tasks');
 };

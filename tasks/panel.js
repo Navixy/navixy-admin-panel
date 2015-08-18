@@ -21,6 +21,8 @@ module.exports = function (grunt) {
                 noSencha = options.noSencha || false,
                 senchaUrl = grunt.option('url') || '', //
 
+                godBlessIE = options.godBlessIE || false,
+                blessConfig = {},
 
                 senchaBuildConfig = {},
                 concatBuildConfig = {},
@@ -93,10 +95,23 @@ module.exports = function (grunt) {
 
             mainTaskSequence = mainTaskSequence.concat(taskSequence);
 
+            if (godBlessIE && godBlessIE.length) {
+                godBlessIE.forEach(function (part) {
+                    grunt.log.writeln([ buildDestination, appTemp, part.root, part.src ].join('/'));
+                    blessConfig[part.name] = {
+                        src: [ buildDestination, appTemp, part.root, part.src ].join('/'),
+                        dest: [ buildDestination, appTemp, part.root, part.dest ].join('/')
+                    };
+                });
+
+                mainTaskSequence.push('bless');
+            }
+
             var appBuildConfig = {pkg: grunt.file.readJSON('package.json'),
                 'sencha-build': senchaBuildConfig,
                 'concat': concatBuildConfig,
                 'uglify': uglifyBuildConfig,
+                'bless': blessConfig,
                 'copy': copyBuildConfig
             };
 
@@ -121,6 +136,7 @@ module.exports = function (grunt) {
             grunt.loadNpmTasks('grunt-contrib-concat');
             grunt.loadNpmTasks('grunt-contrib-uglify');
             grunt.loadNpmTasks('grunt-contrib-copy');
+            grunt.loadNpmTasks('grunt-bless');
 
             grunt.task.run(mainTaskSequence);
       }
