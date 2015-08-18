@@ -123,6 +123,11 @@ Ext.define('NavixyPanel.view.codes.List', {
                     },
                     '->',
                     {
+                        xtype: 'container',
+                        margin: '0 20 0 20',
+                        html: '<span class="icon-help" style="color:#0f5491;font-size:12px; padding: 5px"></span><a href="' + _l.get('codes.list.faq_link') + '" target="_blank">' + _l.get('codes.list.faq_text') + '</a>'
+                    },
+                    {
                         xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',
                         width: 200,
