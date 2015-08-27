@@ -50,6 +50,8 @@ Ext.define('Locale.Manager', {
 
     ],
 
+    ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo', 'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
+
     _ui_locales: [
         {
             id: 'en_US',
@@ -269,17 +271,15 @@ Ext.define('Locale.Manager', {
 
         function androidLocale() {
             var androidAgent = navigator.userAgent.match(/Android \d+(?:\.\d+){1,2}; [a-z]{2}-[a-z]{2}/),
-                localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false,
-                androidLocale = localeMath ? localeMath[0] || false : false;
+                localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false;
 
-            return androidLocale;
+            return localeMath ? localeMath[0] || false : false;
         }
 
-        var BrowserLocalesRu = ['ru', 'ru-RU', 'ru-ru'],
-            browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false,
-            defaultLocale = (browserLocale && BrowserLocalesRu.join(' ').indexOf(browserLocale) > -1) ? "ru" : "en";
+        var BrowserLocalesRu = this.ru_locales,
+            browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false;
 
-        return defaultLocale;
+        return (browserLocale && Ext.Array.indexOf(this.ru_locales, browserLocale) > -1) ? "ru" : "en";
     },
 
     _toCookie: function (locale) {
