@@ -83,13 +83,17 @@ Ext.define('NavixyPanel.api.ApiConnector', {
             args = config.args || [],
             scope = config.scope || this;
 
-        var interval = setInterval(function () {
-            if (stopCondition()) {
-                if (callback) {
-                    callback.apply(scope, args);
-                }
-                clearInterval(interval);
 
+        var interval = setInterval(function () {
+            try {
+                if (stopCondition()) {
+                    clearInterval(interval);
+                    if (callback) {
+                        callback.apply(scope, args);
+                    }
+                }
+            } catch (e) {
+                clearInterval(interval);
             }
         }, 50);
     },

@@ -61,13 +61,13 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                             pack: 'end'
                         },
                         items: [
-                            {
-                                xtype: 'localecombo',
-                                ui: 'light',
-                                fieldLabel: false,
-                                width: 170,
-                                margin: '0 10 0 0'
-                            },
+                            //{
+                            //    xtype: 'localecombo',
+                            //    ui: 'light',
+                            //    fieldLabel: false,
+                            //    width: 170,
+                            //    margin: '0 10 0 0'
+                            //},
                             {
                                 xtype: 'button',
                                 text: _l.get('old_version'),

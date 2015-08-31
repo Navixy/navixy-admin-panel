@@ -15,6 +15,7 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
 
     fieldLabel: '',
     emptyText: '',
+    value: 'disabled',
 
     initComponent: function () {
         this.initStore();
@@ -55,6 +56,10 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
                 displayField: 'desc',
                 valueField: 'type',
                 forceSelection: true,
+
+                value: this.value,
+                disabled: true,
+                baseCls: 'settings-combo-disabled',
                 tpl: Ext.create('Ext.XTemplate',
                     '<tpl for=".">',
                     '<div class="x-boundlist-item" style="padding: 5px; line-height: 14px; border-top: 1px solid #eee"><b>{name}</b><br>{desc}</div>',
@@ -401,6 +406,11 @@ Ext.define('NavixyPanel.view.widgets.fields.SMSGateway', {
         this.store = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'desc'],
             data: [
+                {
+                    type: 'disabled',
+                    name: _l.get('settings.fields.not_editable'),
+                    desc: ''
+                },
                 {
                     type: 'navixy',
                     name: lp.get('navixy.name'),

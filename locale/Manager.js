@@ -6,7 +6,7 @@ Ext.define('Locale.Manager', {
 
     singleton: true,
 
-    _default: 'ru',
+    _default: 'en',
     _loaded: false,
     _locale: null,
     _locales: [
@@ -16,39 +16,41 @@ Ext.define('Locale.Manager', {
             text: 'English',
             alias: ['en', 'en_US', 'English']
         },
-        {
-            id: 'es_ES',
-            name: 'es',
-            text: 'Spanish - Español',
-            alias: ['es', 'es_ES', 'Español']
-        },
-        {
-            id: 'de_DE',
-            name: 'de',
-            text: 'German - Deutsch',
-            alias: ['de', 'de_DE', 'de_AT']
-        },
+        //{
+        //    id: 'es_ES',
+        //    name: 'es',
+        //    text: 'Spanish - Español',
+        //    alias: ['es', 'es_ES', 'Español']
+        //},
+        //{
+        //    id: 'de_DE',
+        //    name: 'de',
+        //    text: 'German - Deutsch',
+        //    alias: ['de', 'de_DE', 'de_AT']
+        //},
         {
             id: 'ru_RU',
             name: 'ru',
             text: 'Russian - Русский',
             alias: ['ru', 'ru_RU', 'Русский']
         },
-        {
-            id: 'uk_UA',
-            name: 'uk',
-            text: 'Ukrainian - Українська',
-            alias: ['ua', 'uk', 'uk_UA']
-        },
-        {
-            id: 'pt_PT',
-            name: 'pt',
-            text: 'Portuguese - Português',
-            alias: ['pt', 'pt_PT', 'Português'],
-            rtl: false
-        }
+        //{
+        //    id: 'uk_UA',
+        //    name: 'uk',
+        //    text: 'Ukrainian - Українська',
+        //    alias: ['ua', 'uk', 'uk_UA']
+        //},
+        //{
+        //    id: 'pt_PT',
+        //    name: 'pt',
+        //    text: 'Portuguese - Português',
+        //    alias: ['pt', 'pt_PT', 'Português'],
+        //    rtl: false
+        //}
 
     ],
+
+    ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo', 'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
 
     _ui_locales: [
         {
@@ -269,17 +271,15 @@ Ext.define('Locale.Manager', {
 
         function androidLocale() {
             var androidAgent = navigator.userAgent.match(/Android \d+(?:\.\d+){1,2}; [a-z]{2}-[a-z]{2}/),
-                localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false,
-                androidLocale = localeMath ? localeMath[0] || false : false;
+                localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false;
 
-            return androidLocale;
+            return localeMath ? localeMath[0] || false : false;
         }
 
-        var BrowserLocalesRu = ['ru', 'ru-RU', 'ru-ru'],
-            browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false,
-            defaultLocale = (browserLocale && BrowserLocalesRu.join(' ').indexOf(browserLocale) > -1) ? "ru" : "en";
+        var BrowserLocalesRu = this.ru_locales,
+            browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false;
 
-        return defaultLocale;
+        return (browserLocale && Ext.Array.indexOf(this.ru_locales, browserLocale) > -1) ? "ru" : "en";
     },
 
     _toCookie: function (locale) {
