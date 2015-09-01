@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -310,6 +310,53 @@ Ext.define('Locale.locale-en',{
         "gel": "Georgian lari",
         "amd": "Armenian dram",
         "azn": "Azerbaijani manat"
+    },
+    "currencies_tpls": {
+        "GBP": "£{0}",
+        "BRL": "R${0}",
+        "HUF": "{0} Ft",
+        "HKD": "HK${0}",
+        "DKK": "kr {0}",
+        "EUR": "€{0}",
+        "ILS": "₪{0}",
+        "INR": "₹{0}",
+        "IDR": "Rp {0}",
+        "CAD": "С${0}",
+        "CNY": "¥{0}",
+        "KRW": "₩{0}",
+        "MYR": "RM{0}",
+        "MXN": "Mex${0}",
+        "NZD": "NZ${0}",
+        "NOK": "kr {0}",
+        "PKR": "Rs. {0}",
+        "PLN": "{0} zł",
+        "RUB": "{0} rub.",
+        "SGD": "S${0}",
+        "USD": "${0}",
+        "TWD": "NT${0}",
+        "THB": "฿{0}",
+        "TRY": "₺{0}",
+        "PHP": "{0} ₱",
+        "CZK": "{0} Kč",
+        "CLP": "${0}",
+        "SEK": "{0} kr",
+        "CHF": "{0} franc",
+        "ZAR": "R {0}",
+        "JPY": "¥{0}",
+        "KZT": "{0} tenge",
+        "BYR": "{0} rub.",
+        "AUD": "A${0}",
+        "TJS": "{0} som.",
+        "UAH": "{0} ₴",
+        "LTL": "{0} Lt",
+        "LVL": "Ls {0}",
+        "KGS": "{0} som",
+        "TMT": "{0} man.",
+        "UZS": "{0} som",
+        "MDL": "{0} lei",
+        "GEL": "{0} lari",
+        "AMD": "{0} dram",
+        "AZN": "{0} man."
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -722,7 +769,7 @@ Ext.define('Locale.locale-en',{
             monthly_fee_btn_text: 'Pay online',
             activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
             monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
-            licence_balance: 'Pending amount {0}',
+            license_balance: 'Pending amount {0}',
             subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com'
         },
 

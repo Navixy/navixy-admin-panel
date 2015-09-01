@@ -29,9 +29,8 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
     resolveItems: function () {
         var dealerData = Ext.getStore('Dealer').getAt(0).getData(),
-            demo_ends = Ext.Date.formatISO(dealerData.demo_ends, Ext.util.Format.dateFormat),
             localePart = _l.get('settings.subscription'),
-            currency = '$',
+            currencyTpl = _l.get('currencies_tpls')[dealerData.seller_currency],
             hintCmp = {
                 xtype: 'component',
                 cls: 'subscription_hint',
@@ -39,13 +38,15 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 html: localePart.get('subscription_hint')
             };
         console.log('TODO: add here a dealer seller currency');
-        console.log('TODO: add here a dealer licence_balance');
+        console.log('TODO: add here a dealer license_balance');
 
-        if (dealerData.demo_ends) {
+        if (dealerData.tracker_tariff_end_date && dealerData.paas_activation) {
+            var tracker_tariff_end_date = Ext.Date.formatISO(dealerData.tracker_tariff_end_date, Ext.util.Format.dateFormat);
+
             this.items = [{
                 xtype: 'component',
                 padding: '10 0',
-                html: Ext.String.format(localePart.get('activation_hint'), demo_ends)
+                html: Ext.String.format(localePart.get('activation_hint'), tracker_tariff_end_date)
             }, {
                 xtype: 'button',
                 height: 30,
@@ -55,15 +56,15 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 href: this.constructAvangateLink('activation')
             }, hintCmp];
         } else {
-            console.log(dealerData.licence_balance);
+            console.log(dealerData.license_balance);
             this.items = [{
                 xtype: 'component',
                 padding: '10 0',
-                html: Ext.String.format(localePart.get('monthly_fee_hint'), demo_ends)
+                html: localePart.get('monthly_fee_hint')
             }, {
                 xtype: 'component',
                 padding: '10 0',
-                html: Ext.String.format(localePart.get('licence_balance'), dealerData.licence_balance, currency)
+                html: Ext.String.format(localePart.get('license_balance'), Ext.String.format(currencyTpl, dealerData.license_balance))
             },
                 {
                     xtype: 'container',
@@ -75,14 +76,10 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                             xtype: 'numberfield',
                             name: 'qty',
                             minValue: 0,
-                            value: dealerData.licence_balance,
+                            value: dealerData.license_balance,
                             cls: 'x-field-light',
                             maxWidth: 150,
-                            margin: '0 5 0 0',
-                            plugins: [{
-                                ptype: 'fieldpostfix',
-                                postfix: currency
-                            }]
+                            margin: '0 5 0 0'
                         },
                         {
                             xtype: 'button',

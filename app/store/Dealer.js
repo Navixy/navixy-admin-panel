@@ -20,11 +20,11 @@ Ext.define('NavixyPanel.store.Dealer', {
         "favicon",
         "logo",
         "enable_cameras",
+        "seller_currency",
         {
-            name: "demo_ends",
-            //defaultValue: '2014-12-12'
+            name: "tracker_tariff_end_date"
         }, {
-            name: "licence_balance",
+            name: "license_balance",
             defaultValue: 500
         }
 
