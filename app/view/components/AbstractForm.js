@@ -20,6 +20,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     formCellsPadding: '0 0 0 100',
     formRowPadding: '20 0 0 0',
     fieldRequiredMark: false,
+    buttonsMargin: '10 5',
 
     record: null,
     applyRecord: true,
@@ -221,7 +222,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     scale: 'medium',
                     formBind: true,
                     disabled: true,
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.sendForm, this)
                 }
             );
@@ -233,7 +234,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     text: clearBtn,
                     scale: 'medium',
                     ui: 'gray',
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.doFormReset, this)
                 }
             );
@@ -245,7 +246,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     text: backBtn,
                     scale: 'medium',
                     ui: 'gray',
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.backFromForm, this)
                 }
             );

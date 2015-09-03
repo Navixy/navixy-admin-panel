@@ -101,11 +101,17 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         font-size: $card-header-title-font-size;
         font-weight: $card-header-title-font-weight;
         padding: 0 0 10px 0;
+        color: #4b4b4b !important;
 
         .title-add {
             font-weight: normal;
             margin-left: 15px;
         }
+    }
+
+    .sub_title {
+        color: #4b4b4b !important;
+        font-weight: bold;
     }
 
     span.icon {
@@ -147,6 +153,48 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     }
 }
 
+.options-table {
+    background-color: $card-body-bg-color;
+    padding: 5px;
+
+    table {
+        width: 100%
+    }
+
+    td.x-table-layout-cell {
+        padding: 5px;
+        vertical-align: middle;
+
+        &.form-cell {
+            padding: 1px 0;
+        }
+
+        &.right-align {
+            text-align: right;
+        }
+
+        &.disabled {
+            color: $card-header-table-title-font-color;
+            text-decoration: line-through;
+        }
+
+        &.hint {
+            color: $card-header-table-title-font-color;
+            font-size: $card-font-size - 1;
+        }
+
+        &.sub_title {
+            color: $baseFontColor !important;
+            font-weight: bold;
+        }
+
+
+        &.dots:after {
+            content: ':';
+        }
+    }
+}
+
 .links-collapser {
     position: absolute;
     padding: 10px !important;
@@ -180,3 +228,224 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         border-color: $main-color;
     }
 }
+
+
+.card-editor {
+    .header-table {
+        border-spacing: 0;
+
+        td.x-table-layout-cell  {
+            padding: 3px;
+
+            &.form-cell {
+                padding: 1px 0;
+
+                .x-item-disabled {
+                    opacity: 1 !important;
+                    .x-form-field {
+                        padding: 1px 5px;
+                    }
+                }
+                .x-form-item-body {
+                    opacity: 1 !important;
+                }
+            }
+
+            &.strong-height {
+                height: 30px;
+            }
+
+            &:first-child {
+                color: $card-header-table-title-font-color;
+            }
+
+            &:first-child + td {
+                color: lighten($card-header-table-font-color, 50%);
+                &:after {
+                    content: ':';
+                }
+
+                &.no_dots {
+                    height: $card-header-title-font-size;
+                    &:after {
+                        content: '';
+                    }
+                }
+            }
+
+            &:first-child + td + td {
+                padding-left: 15px;
+            }
+
+            &.status {
+                &.no {
+                    color: $invalid-color
+                }
+            }
+        }
+
+
+        span.pre_note {
+            width: 60px;
+            display: inline-table;
+        }
+
+        span.note {
+            color: $smoke;
+            cursor: pointer;
+            border-bottom: 1px dashed $smoke;
+        }
+    }
+
+    .options-table {
+        background-color: $card-body-bg-color;
+        padding: 5px;
+
+        table {
+            width: 100%
+        }
+
+        td.x-table-layout-cell {
+            padding: 5px;
+            vertical-align: middle;
+
+            &.form-cell {
+                padding: 1px 0;
+
+                .x-item-disabled {
+                    opacity: 1 !important;
+                    .x-form-field {
+                        padding: 1px 5px;
+                    }
+                }
+                .x-form-item-body {
+                    opacity: 1 !important;
+                }
+            }
+
+            &.strong-height {
+                height: 30px;
+            }
+
+            &.right-align {
+                text-align: right;
+            }
+
+            &.disabled {
+                color: $card-header-table-title-font-color;
+                text-decoration: line-through;
+            }
+
+            &.hint {
+                color: $card-header-table-title-font-color;
+                font-size: $card-font-size - 1;
+            }
+
+            &.sub_title {
+                color: $baseFontColor !important;
+                font-weight: bold;
+            }
+
+
+            &.dots:after {
+                content: ':';
+            }
+        }
+    }
+
+    .card-header-inner {
+        color: $card-font-size;
+        font-size: $card-header-font-color;
+
+        .title {
+            font-size: $card-header-title-font-size;
+            font-weight: $card-header-title-font-weight;
+            padding: 0 0 10px 0;
+            color: $baseFontColor !important;
+            height: 30px;
+
+            .title-add {
+                font-weight: normal;
+                margin-left: 15px;
+            }
+        }
+
+        .sub_title {
+            color: $baseFontColor !important;
+            font-weight: bold;
+        }
+
+        span.icon {
+            margin-right: 5px;
+            font-size: 10px;
+            color: $smoke;
+
+            &.sole_trader {
+                @extend .icon-sole-trader;
+            }
+            &.individual {
+                @extend .icon-user;
+            }
+            &.legal_entity {
+                @extend .icon-legal-entity;
+            }
+        }
+    }
+
+    .card-body-inner {
+        .title {
+            font-size: $card-font-size + 1;
+            padding: 3px 20px 5px;
+        }
+    }
+
+    .links-panel {
+        background-color: $card-links-bg-color;
+    }
+
+    .body-collapser {
+        font-size: $card-font-size + 2;
+        cursor: pointer;
+
+        background: url($img_dir + '/tools/collapse.png') no-repeat 15px 55% $card-links-collapser-bg-color;;
+
+        &.active {
+            background-image: url($img_dir + '/tools/expand.png');
+        }
+    }
+
+    .links-collapser {
+        position: absolute;
+        padding: 10px !important;
+        width: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+
+        background: url($img_dir + '/tools/arrow-right.png') no-repeat 50% 50% $card-links-collapser-bg-color;;
+
+        opacity: 0.7;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.active {
+            background-image: url($img_dir + '/tools/arrow-left.png');
+        }
+    }
+
+    .form-img {
+        padding: 5px;
+        border-width: 1px;
+        border-style: solid;
+        color: $grayLight;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $main-color;
+        }
+    }
+}
+

@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'id', type: 'int'},
         {name: 'group_id', type: 'int'},
 
-        {name: 'price', type: 'int'},
+        {name: 'price', type: 'float'},
         {name: 'device_limit', type: 'int'},
 
         {name: 'name', type: 'string'},
@@ -18,18 +18,29 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'store_period', type: 'string'},
         {name: 'type', type: 'string', defaultValue: 'monthly'},
 
+        {name: 'features', type: 'auto'},
+        {name: 'map_filter', type: 'auto'},
+        {name: 'maps', type: 'auto', convert: function (value, record) {return record.mapConverter(this, value);}},
+        {name: 'maps_exclusion', type: 'boolean', convert: function (value, record) {return record.mapConverter(this, value);}},
+
         {name: 'active', type: 'boolean'},
         {name: 'has_reports', type: 'boolean'},
         {name: 'proportional_charge', type: 'boolean'},
 
         {name: 'service_prices', type: 'auto'},
 
-        {name: 'incoming_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'outgoing_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'phone_call', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'service_sms', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'traffic', type: 'int', convert: function (value, record) {return record.pricesConverter(this, value);}}
+        {name: 'incoming_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
+        {name: 'outgoing_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
+        {name: 'phone_call', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
+        {name: 'service_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
+        {name: 'traffic', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
+
+        {name: 'currency'}
     ],
+
+    associationsMap: {
+        'currency': 'Settings'
+    },
 
     pricesMap: {
         incoming_sms: 'incoming_sms',
@@ -37,6 +48,11 @@ Ext.define('NavixyPanel.model.Tariff', {
         phone_call: 'phone_call',
         service_sms: 'service_sms',
         traffic: 'traffic'
+    },
+
+    mapsMap: {
+        maps: 'values',
+        maps_exclusion: 'exclusion'
     },
 
     typesMap : {
@@ -56,7 +72,11 @@ Ext.define('NavixyPanel.model.Tariff', {
             'outgoing_sms',
             'phone_call',
             'service_sms',
-            'traffic'
+            'traffic',
+            'features',
+            'maps',
+            'maps_exclusion',
+            'currency'
         ],
         'camera' : [
             'id',
@@ -71,7 +91,11 @@ Ext.define('NavixyPanel.model.Tariff', {
             'outgoing_sms',
             'phone_call',
             'service_sms',
-            'traffic'
+            'traffic',
+            'features',
+            'maps',
+            'maps_exclusion',
+            'currency'
         ],
         'socket' : [
             'id',
@@ -89,8 +113,17 @@ Ext.define('NavixyPanel.model.Tariff', {
             'outgoing_sms',
             'phone_call',
             'service_sms',
-            'traffic'
+            'traffic',
+            'features',
+            'maps',
+            'maps_exclusion',
+            'currency'
         ]
+    },
+
+
+    mapConverter: function (field, value) {
+        return value !== '' ? value : this.get('map_filter')[this.mapsMap[field.name]] || 0;
     },
 
     getViewData: function () {
@@ -128,6 +161,7 @@ Ext.define('NavixyPanel.model.Tariff', {
         }
 
         var service_prices = Ext.apply({}, this.get('service_prices')),
+            maps = Ext.apply({}, this.get('map_filter')),
             modified = false;
 
         Ext.iterate(fieldsObj, function (fieldName, fieldValue) {
@@ -135,10 +169,14 @@ Ext.define('NavixyPanel.model.Tariff', {
                 service_prices[this.pricesMap[fieldName]] = fieldValue;
                 modified = true;
             }
+            if (this.mapsMap[fieldName]) {
+                maps[this.mapsMap[fieldName]] = fieldValue;
+                modified = true;
+            }
         }, this);
 
         fieldsObj.service_prices = service_prices;
-
+        fieldsObj.map_filter = maps;
         return fieldsObj;
     },
 

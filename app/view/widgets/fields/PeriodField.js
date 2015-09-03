@@ -19,6 +19,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
     ui: null,
     numberWidth: 80,
     margin: '0 0 5 0',
+    initDisabled: false,
 
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
@@ -51,6 +52,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 width: this.width - this.numberWidth,
                 allowBlank: true,
                 minValue: 0,
+                disabled: this.initDisabled,
                 listeners: {
                     change: {
                         fn: this.updateField,
@@ -68,6 +70,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 ui: this.ui,
                 width: this.numberWidth - 5,
                 allowBlank: true,
+                disabled: this.initDisabled,
                 store: this.store,
 //                cls: 'second_trigger',
                 listeners: {
@@ -154,5 +157,5 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
         valueField.setValue(units.value);
         periodField.setValue(units.period);
-    },
+    }
 });

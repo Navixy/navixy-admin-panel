@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     views: [
         'tariffs.List',
         'tariffs.Card',
+        'tariffs.NewCard',
         'tariffs.Create',
         'tariffs.Edit',
         'tariffs.SetDefault'
@@ -23,7 +24,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         },
         {
             ref: 'tariffEdit',
-            selector: 'tariffedit'
+            selector: 'tariff-card'
         },
         {
             ref: 'tariffDefault',
@@ -35,7 +36,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         }
     ],
 
-    stores: ['Tariffs', 'TariffPrices', 'TariffDefaults'],
+    stores: ['Tariffs', 'TariffPrices', 'TariffDefaults', 'MapTypes', 'Features'],
     models: ['Tariff'],
     mainStore: 'Tariffs',
 
@@ -47,6 +48,11 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 tariffedit: this.handleTariffEditAction,
                 setdefault: this.onTariffDefault
             },
+            'tariff-card' : {
+                tariffedit: this.handleTariffEditAction,
+                setdefault: this.onTariffDefault,
+                formsubmit: this.handleTariffEditSubmit
+            },
             'tariffslist': {
                 actionclick: this.handleListAction,
                 editclick: this.handleTariffEditAction
@@ -57,9 +63,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             'tariffcreate' : {
                 formsubmit: this.handleTariffCreateSubmit
             },
-            'tariffedit' : {
-                formsubmit: this.handleTariffEditSubmit
-            },
+            //'tariffedit' : {
+            //    formsubmit: this.handleTariffEditSubmit
+            //},
             'defaulttariff' : {
                 formsubmit: this.handleTariffDefaultEdit
             }
@@ -133,7 +139,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     handleTariffCard: function (tariffRecord) {
         this.waitTariffPrices(function () {
             this.fireContent({
-                xtype: 'tariffcard',
+                xtype: 'tariff-card',
                 record: tariffRecord
             });
         });
@@ -142,7 +148,8 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     handleTariffEdit: function (tariffRecord) {
         this.waitTariffPrices(function () {
             this.fireContent({
-                xtype: 'tariffedit',
+                xtype: 'tariff-card',
+                mode: 'edit',
                 record: tariffRecord
             });
         });
@@ -212,7 +219,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 record.commit();
             } catch (e) {}
 
-            this.getTariffsList().store.load();
+            if (this.getTariffsList()) {
+                this.getTariffsList().store.load();
+            }
             this.getTariffEdit().afterSave();
         } else {
             record.reject(false);

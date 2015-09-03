@@ -298,20 +298,21 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
         }
     },
 
-    handBodyCollapseTool: function (forceState) {
-        this.toggleBody();
+    handBodyCollapseTool: function (forceState, bodyEl, collapserEl) {
+        this.toggleBody(forceState);
     },
 
-    toggleBody: function (forceState) {
+    toggleBody: function (forceState, bodyEl, collapserEl) {
         var direction = 'top',
-            bodyPanel = this.getBodyPanel(),
-            collapser = this.getBodyCollapser(),
+            bodyPanel = bodyEl || this.getBodyPanel(),
+            collapser = collapserEl || this.getBodyCollapser(),
             isForce = forceState !== undefined,
             collapsed;
 
         if (bodyPanel && collapser) {
             collapsed = !!bodyPanel.getCollapsed();
 
+            console.log(!isForce || (collapsed !== forceState));
             if (!isForce || (collapsed !== forceState)) {
                 bodyPanel[collapsed ? 'expand' : 'collapse'](collapsed ? false : direction, false);
                 collapser[collapsed ? 'removeCls' : 'addCls']('active');

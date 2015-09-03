@@ -19,7 +19,8 @@ Ext.define('NavixyPanel.store.Dealer', {
         "domain",
         "favicon",
         "logo",
-        "enable_cameras"
+        "enable_cameras",
+        "seller_currency"
     ],
 
     getImgUrl: function (field) {

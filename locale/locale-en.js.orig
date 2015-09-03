@@ -43,8 +43,6 @@ Ext.define('Locale.locale-en',{
     "back_form_btn": "Back",
     "select_form_btn": "Select",
     "close_form_btn": "Close",
-    "edit_form_btn": "Edit",
-    "cancel_form_btn": "Cancel",
     "yes": "yes",
     "no": "no",
     "show_btn": "Show",
@@ -257,7 +255,6 @@ Ext.define('Locale.locale-en',{
         "body": {
             "title": "Additional information:",
             "exptitle": "Additional information <a>(show)</a>",
-            "exptitle_show": "<a>(show)</a>",
             "collapser_tip": "Hide additional information",
             "collapser_exptip": "Show more"
         }
@@ -615,36 +612,25 @@ Ext.define('Locale.locale-en',{
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
             "device_type": "Device type",
-            "store_period": "Keep and show tracking history for",
+            "store_period": "Store history for",
             "active": "Available for user",
             "has_reports": "Table reports is available",
             "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
             "incoming_sms": "Incoming SMS",
-            "outgoing_sms": "Outgoing regular SMS",
-            "service_sms": "Outgoing service SMS",
-            "phone_call": "Phone calls (outgoing)",
-            "traffic": "GPRS Traffic",
+            "outgoing_sms": "Outgoing SMS",
+            "service_sms": "Service SMS",
+            "phone_call": "Phone calls",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "default plan for devices with type «{0}»",
             "default_short": "default",
             "service_price": "the amount charged for service usage",
-            "group_id_exp": "Plan belongs to Group No.",
-            "active_exp": "Users can switch to this plan on their own",
-            "device_limit_exp": "Maximum amount of assets available to user",
+            "group_id_exp": "Plan group",
+            "active_exp": "Users are allowed to select this plan",
+            "device_limit_exp": "Maximum devices",
             "activation_bonus": "Activation bonus",
             "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
-            "tariff_type_short": "Payment",
-
-            "rate": "Rate",
-            "users_price": "Price for users",
-            "client_costs": "Your costs",
-
-            "plan_options": "Plan options",
-            "plan_availability": "Plan availability",
-
-            "device_limit_postfix": "assets",
-            "available_maps": "Available maps",
-            "available_features": "Available features",
+            "tariff_type_short": "Payment"
         },
         "list": {
             "create_btn_text": "Add new plan",
@@ -659,20 +645,6 @@ Ext.define('Locale.locale-en',{
                 "trackers": {
                     "title": "Trackers on this plan"
                 }
-            },
-            "hints": {
-                "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
-                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
-                "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
-                "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
-                "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
-                "7": "If user reaches the limitation, he will not be available to add or track more assets in his account. In the case user has assets on different plans, the minimum value will be applied.",
-                "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
-                "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
-                "10": "Select options which are available for users who have assets on this plan.",
-                "11": "Select options which are available for users who have assets on this plan.",
-                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
-                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
             }
         },
         "combo_empty": "Select plan",
@@ -731,8 +703,6 @@ Ext.define('Locale.locale-en',{
             "select_req": "Select codes from list",
             "same_type_req": "You must specify one device type codes",
             "edited_tip": "changed",
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
-            "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activated",
                 "no_activated": "Not activated",
@@ -965,6 +935,10 @@ Ext.define('Locale.locale-en',{
             "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
             "special_notifications_title": "Notifications to administrators",
             "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
+<<<<<<< local
+            "defaults_fields": "User default settings",
+            "defaults_hint": "Settings in this section will be automatically applied to all new users"
+=======
             "branding_fields": "Branding",
             "branding_main_title": "Branding main settings",
             "branding_img_title": "Images and logo",
@@ -995,6 +969,7 @@ Ext.define('Locale.locale-en',{
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+>>>>>>> other
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -1132,7 +1107,7 @@ Ext.define('Locale.locale-en',{
             }
         },
         "scan": {
-            "clear_form": "To start over",
+            "clear_form": "Try again",
             "to_list": "A list of sets",
             "steps": {
                 "first": {
@@ -1147,7 +1122,7 @@ Ext.define('Locale.locale-en',{
                 "title_add": "The SIM card is already linked!",
                 "title_add_changed": "The SIM card is changed",
                 "equip_add_changed": "The kit changed",
-                "id": "Room set",
+                "id": "Kit ID",
                 "imei": "IMEI",
                 "iccid": "ICCID",
                 "model_code": "The model",
@@ -1267,72 +1242,5 @@ Ext.define('Locale.locale-en',{
         "disabled": "Disabled",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
-    },
-    "currencies_tpls": {
-        "GBP": "£{0}",
-        "BRL": "R${0}",
-        "HUF": "{0} Ft",
-        "HKD": "HK${0}",
-        "DKK": "kr {0}",
-        "EUR": "€{0}",
-        "ILS": "₪{0}",
-        "INR": "₹{0}",
-        "IDR": "Rp {0}",
-        "CAD": "С${0}",
-        "CNY": "¥{0}",
-        "KRW": "₩{0}",
-        "MYR": "RM{0}",
-        "MXN": "Mex${0}",
-        "NZD": "NZ${0}",
-        "NOK": "kr {0}",
-        "PKR": "Rs. {0}",
-        "PLN": "{0} zł",
-        "RUB": "{0} rub.",
-        "SGD": "S${0}",
-        "USD": "${0}",
-        "TWD": "NT${0}",
-        "THB": "฿{0}",
-        "TRY": "₺{0}",
-        "PHP": "{0} ₱",
-        "CZK": "{0} Kč",
-        "CLP": "${0}",
-        "SEK": "{0} kr",
-        "CHF": "{0} franc",
-        "ZAR": "R {0}",
-        "JPY": "¥{0}",
-        "KZT": "{0} tenge",
-        "BYR": "{0} rub.",
-        "AUD": "A${0}",
-        "TJS": "{0} som.",
-        "UAH": "{0} ₴",
-        "LTL": "{0} Lt",
-        "LVL": "Ls {0}",
-        "KGS": "{0} som",
-        "TMT": "{0} man.",
-        "UZS": "{0} som",
-        "MDL": "{0} lei",
-        "GEL": "{0} lari",
-        "AMD": "{0} dram",
-        "AZN": "{0} man."
-    },
-    "features": {
-        "api": "API",
-        "app_tasks": "Tasks app",
-        "app_fleet": "Fleet app",
-        "batch_operations": "Batch Operations",
-        "custom_maps": "Custom maps",
-        "event_notification": "Event notification",
-        "geocoding": "Geocoding",
-        "lbs": "Location by Cell ID",
-        "map_layers": "Map layers",
-        "multilevel_access": "Multilevel access",
-        "priority_support": "Priority support",
-        "retranslation": "Retranslation",
-        "report_xls": "Export reports to file",
-        "report_scheduled": "Report scheduled",
-        "routing": "Routing",
-        "ui_mobile": "User interface",
-        "weblocator": "Weblocator",
-        "chat": "Chat"
     }
 });
