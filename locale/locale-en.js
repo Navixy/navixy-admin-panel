@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -324,7 +324,9 @@ Ext.define('Locale.locale-en',{
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGIS Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps"
+        "mailru": "Mail.ru Maps",
+        here: 'HERE Maps',
+        bing: 'Bing Maps'
     },
     "dealer_info": {
         "first": "total",
