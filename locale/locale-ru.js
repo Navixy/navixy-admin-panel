@@ -376,7 +376,9 @@ Ext.define('Locale.locale-ru', {
         "navitel": "Карты Navitel",
         "doublegis": "Карты DoubleGis",
         "ovi": "Карты OVI",
-        "mailru": "Карты Mail.ru"
+        "mailru": "Карты Mail.ru",
+        here: 'Карты HERE',
+        bing: 'Карты Bing'
     },
     "dealer_info": {
         "first": "вcего",

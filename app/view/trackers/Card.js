@@ -239,18 +239,20 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         });
     },
 
-    sendTrackerCorrupt: function () {
-        Ext.API.setTrackerCorrupt({
-            params: {
-                tracker_id: this.record.getId()
-            },
-            callback: function () {
-                this.fireEvent('trackerremoved', this.record);
-            },
-            failure: function () {
-                this.fireEvent('trackerremovefailure', this.record, arguments[0]);
-            },
-            scope: this
-        });
+    sendTrackerCorrupt: function (result) {
+        if (result === "ok") {
+            Ext.API.setTrackerCorrupt({
+                params: {
+                    tracker_id: this.record.getId()
+                },
+                callback: function () {
+                    this.fireEvent('trackerremoved', this.record);
+                },
+                failure: function () {
+                    this.fireEvent('trackerremovefailure', this.record, arguments[0]);
+                },
+                scope: this
+            });
+        }
     }
 });

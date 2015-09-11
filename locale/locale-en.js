@@ -371,7 +371,9 @@ Ext.define('Locale.locale-en', {
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGIS Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps"
+        "mailru": "Mail.ru Maps",
+        here: 'HERE Maps',
+        bing: 'Bing Maps'
     },
     "dealer_info": {
         "first": "total",
