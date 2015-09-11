@@ -42,7 +42,6 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
         if (dealerData.tracker_tariff_end_date && dealerData.paas_activation) {
             var tracker_tariff_end_date = Ext.Date.formatISO(dealerData.tracker_tariff_end_date, Ext.util.Format.dateFormat);
-
             this.items = [{
                 xtype: 'component',
                 padding: '10 0',
@@ -56,7 +55,6 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 href: this.constructAvangateLink('activation')
             }, hintCmp];
         } else {
-            console.log(dealerData.license_balance);
             this.items = [{
                 xtype: 'component',
                 padding: '10 0',

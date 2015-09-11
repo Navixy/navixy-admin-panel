@@ -482,13 +482,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             }
                 : null,
-            {
+            Ext.checkPermission('paas_payments', 'create')
+                ? {
                 xtype: 'avangate-panel',
                 layout: {
                     type: 'auto'
                 },
                 role: 'not-settings-tab'
-            }
+            } : null
         ]
     },
 
