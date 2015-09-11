@@ -231,6 +231,26 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
 
 .card-editor {
+
+    .x-form-type-checkbox.shadow {
+        &.x-item-disabled {
+            .x-form-checkbox {
+                background-position: 0 -30px;
+            }
+            .x-form-cb-label {
+                color: lighten($baseFontColor, 40%);
+            }
+            &.x-form-cb-checked {
+                .x-form-checkbox {
+                    background-position: 0 -45px;
+                }
+                .x-form-cb-label {
+                    color: $baseFontColor;
+                }
+            }
+        }
+    }
+
     .header-table {
         border-spacing: 0;
 
@@ -298,7 +318,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     }
 
     .options-table {
-        background-color: $card-body-bg-color;
+        background-color: darken($card-body-bg-color, 2%);
         padding: 5px;
 
         table {

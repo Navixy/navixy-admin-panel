@@ -10,12 +10,15 @@ Ext.define('NavixyPanel.view.components.Card', {
     },
 
     bodyPadding: 0,
-    buttonsMargin: '5 0',
+    buttonsMargin: '0 10 0 0',
 
     mode: 'card',
+
+    createTarget: null,
     modeVisibleTable: {
         card: {
             'save-btn': false,
+            'create-btn': false,
             'clear-btn': false,
             'back-btn': false,
             'cancel-btn': false,
@@ -23,6 +26,15 @@ Ext.define('NavixyPanel.view.components.Card', {
         },
         edit: {
             'save-btn': true,
+            'create-btn': false,
+            'clear-btn': false,
+            'back-btn': false,
+            'cancel-btn': true,
+            'edit-btn': false
+        },
+        create: {
+            'save-btn': false,
+            'create-btn': true,
             'clear-btn': false,
             'back-btn': false,
             'cancel-btn': true,
@@ -31,8 +43,6 @@ Ext.define('NavixyPanel.view.components.Card', {
     },
 
     initComponent: function () {
-        //this.defaults = this.getRowDefaults();
-
         this.title = this.getTitle();
 
         this.items = this.getItems();
@@ -45,9 +55,24 @@ Ext.define('NavixyPanel.view.components.Card', {
         this.setMode(this.mode)
     },
 
-    afterSave: function () {
-        this.toCardMode();
+    afterSave: function (id) {
+
+        if (id && this.createTarget) {
+            Ext.Nav.shift(this.createTarget + id);
+        } else {
+            this.applyRecordData();
+            this.toCardMode();
+        }
     },
+
+    onFormCancel: function () {
+        if (this.mode === "create") {
+            this.backFromForm();
+        } else {
+            this.toCardMode();
+        }
+    },
+
 
     getMode: function () {
         return this.mode;
@@ -83,31 +108,47 @@ Ext.define('NavixyPanel.view.components.Card', {
                 this.disableForm();
             break;
             case 'edit':
-                this.enableForm();
+                this.enableForm(mode);
+            break;
+            case 'create':
+                this.enableForm(mode);
             break;
         }
 
         this.mode = mode;
     },
 
-    disableForm: function () {
-        this.iterateFields(function(field) {
-            if (!field.strictDisabled) {
-                field.disable();
+    iterateFields: function (fn, scope) {
+        this.getForm().getFields().each(function (field) {
+            if (!field.up("[role=tab-panel]")) {
+                fn.apply(this, arguments)
             }
+        }, scope || this);
+    },
+
+    disableForm: function () {
+        this.applyRecordData();
+        Ext.suspendLayouts();
+        this.iterateFields(function(field) {
+            field.disable();
             if (Ext.isFunction(field.disabledValue)) {
                 field.setValue(field.disabledValue.call(field));
             }
         });
+        Ext.resumeLayouts();
+        this.updateLayout();
     },
 
-    enableForm: function () {
+    enableForm: function (mode) {
         this.applyRecordData();
+        Ext.suspendLayouts();
         this.iterateFields(function(field) {
-            if (!field.strictDisabled) {
+            if (!(field.strictDisabled && field.strictDisabled === mode)) {
                 field.enable();
             }
         });
+        Ext.resumeLayouts();
+        this.updateLayout();
     },
 
     getFieldDefaults: function () {
@@ -139,6 +180,7 @@ Ext.define('NavixyPanel.view.components.Card', {
 
         var saveBtn = this.getSaveBtnTitle(),
             clearBtn = this.getClearBtnTitle(),
+            createBtn = this.getCreateBtnTitle(),
             backBtn = this.getBackBtnTitle(),
             editBtn = this.getEditBtnTitle(),
             cancelBtn = this.getCancelBtnTitle(),
@@ -149,9 +191,23 @@ Ext.define('NavixyPanel.view.components.Card', {
                 {
                     text: editBtn,
                     role: 'edit-btn',
-                    scale: 'medium',
+                    iconCls: 'edit-button',
                     margin: this.buttonsMargin,
                     handler: Ext.bind(this.toEditMode, this)
+                }
+            );
+        }
+
+        if (createBtn) {
+            result.push(
+                {
+                    text: createBtn,
+                    role: 'create-btn',
+                    iconCls: 'save-button',
+                    formBind: true,
+                    disabled: true,
+                    margin: this.buttonsMargin,
+                    handler: Ext.bind(this.sendFormCreate, this)
                 }
             );
         }
@@ -161,7 +217,7 @@ Ext.define('NavixyPanel.view.components.Card', {
                 {
                     text: saveBtn,
                     role: 'save-btn',
-                    scale: 'medium',
+                    iconCls: 'save-button',
                     formBind: true,
                     disabled: true,
                     margin: this.buttonsMargin,
@@ -175,7 +231,6 @@ Ext.define('NavixyPanel.view.components.Card', {
                 {
                     text: clearBtn,
                     role: 'clear-btn',
-                    scale: 'medium',
                     ui: 'gray',
                     margin: this.buttonsMargin,
                     handler: Ext.bind(this.doFormReset, this)
@@ -188,7 +243,6 @@ Ext.define('NavixyPanel.view.components.Card', {
                 {
                     text: backBtn,
                     role: 'back-btn',
-                    scale: 'medium',
                     ui: 'gray',
                     margin: this.buttonsMargin,
                     handler: Ext.bind(this.backFromForm, this)
@@ -201,10 +255,9 @@ Ext.define('NavixyPanel.view.components.Card', {
                 {
                     text: cancelBtn,
                     role: 'cancel-btn',
-                    scale: 'medium',
                     ui: 'gray',
                     margin: this.buttonsMargin,
-                    handler: Ext.bind(this.toCardMode, this)
+                    handler: Ext.bind(this.onFormCancel, this)
                 }
             );
         }
@@ -253,6 +306,7 @@ Ext.define('NavixyPanel.view.components.Card', {
             },
             tabPanelConfig = {
                 xtype: 'tabpanel',
+                role: 'tab-panel',
                 ui: 'light',
                 border: 0,
                 items: this.getTabPanelItems()
@@ -263,33 +317,28 @@ Ext.define('NavixyPanel.view.components.Card', {
             {
                 xtype: 'container',
                 layout: {
-                    type: 'hbox',
+                    type: 'vbox',
                     align: 'stretch'
                 },
                 items: [
-                    // Form header part
-                    this.getHeaderConfig(),
-                    {
-                        xtype: 'component',
-                        flex: 2
-                    },
 
                     // Buttons container
                     {
                         xtype: 'container',
                         layout: {
-                            type: 'vbox',
-                            align: 'stretch',
-                            pack: 'end'
+                            type: 'hbox',
+                            pack: 'start'
                         },
-                        flex: 1,
-                        padding: '20 20 0 0',
+                        padding: '10 0 0 10',
                         defaults: {
                             xtype: 'button',
-                            margin: 50
+                            minWidth: 70,
                         },
                         items: this.getButtons()
-                    }
+                    },
+
+                    // Form header part
+                    this.getHeaderConfig()
                 ]
             },
 
@@ -478,6 +527,25 @@ Ext.define('NavixyPanel.view.components.Card', {
     },
 
 // UTIL,
+
+    getProcessedValues: function () {
+        var values = this.getValues();
+
+        this.iterateFields(function(field) {
+            if (field.is('checkboxgroup')) {
+                var value = field.getValue(),
+                    name = field.items.first().name,
+                    data = value[name];
+
+                values[name] = Ext.isArray(data) ? data : [data];
+            }
+            if (field.role === 'checkbox') {
+                values[field.name] = field.getValue();
+            }
+        });
+
+        return values;
+    },
 
     getRecordId: function () {
         return this.record.getId();

@@ -126,6 +126,14 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         }
     },
 
+    sendFormCreate: function () {
+        var form = this.getForm();
+
+        if (form.isValid()) {
+            this.fireEvent('createsubmit', this, this.getProcessedValues(), this.record);
+        }
+    },
+
     getProcessedValues: function () {
         var values = this.getValues();
 
@@ -174,6 +182,10 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     getClearBtnTitle: function () {
         return _l.get('clear_form_btn');
+    },
+
+    getCreateBtnTitle: function () {
+        return _l.get('create_form_btn');
     },
 
     getBackBtnTitle: function () {

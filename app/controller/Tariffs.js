@@ -14,7 +14,10 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         'tariffs.NewCard',
         'tariffs.Create',
         'tariffs.Edit',
-        'tariffs.SetDefault'
+        'tariffs.SetDefault',
+
+        'widgets.fields.FakeField',
+        'widgets.fields.TariffPrice'
     ],
 
     refs: [
@@ -51,7 +54,8 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             'tariff-card' : {
                 tariffedit: this.handleTariffEditAction,
                 setdefault: this.onTariffDefault,
-                formsubmit: this.handleTariffEditSubmit
+                formsubmit: this.handleTariffEditSubmit,
+                createsubmit: this.handleTariffCreateSubmit
             },
             'tariffslist': {
                 actionclick: this.handleListAction,
@@ -78,6 +82,11 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff' : {
                 fn: this.handleTariffCard,
+                loadRecord: true,
+                access: 'read'
+            },
+            'tarifff' : {
+                fn: this.handleTariffCardOld,
                 loadRecord: true,
                 access: 'read'
             },
@@ -136,6 +145,15 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         });
     },
 
+    handleTariffCardOld: function (tariffRecord) {
+        this.waitTariffPrices(function () {
+            this.fireContent({
+                xtype: 'tariffcard',
+                record: tariffRecord
+            });
+        });
+    },
+
     handleTariffCard: function (tariffRecord) {
         this.waitTariffPrices(function () {
             this.fireContent({
@@ -158,8 +176,12 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     handleTariffCreate: function () {
         this.waitTariffPrices(function () {
             this.fireContent({
-                xtype: 'tariffcreate'
+                xtype: 'tariff-card',
+                mode: 'create'
             });
+            //this.fireContent({
+            //    xtype: 'tariffcreate'
+            //});
         });
     },
 
@@ -263,7 +285,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     afterTariffCreate: function (tariffId, record) {
         record.setId(tariffId);
         Ext.getStore('Tariffs').add(record);
-        this.getTariffCreate().afterSave(tariffId);
+        this.getTariffEdit().afterSave(tariffId);
     },
 
     afterTariffCreateFailure: function (response) {
@@ -272,7 +294,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             errCode = status.code,
             errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        this.getTariffCreate().showSubmitErrors(errCode, errors, errDescription);
+        this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
     },
 
     handleTariffDefaultEdit: function (cmp, formValues, record) {

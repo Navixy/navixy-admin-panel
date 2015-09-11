@@ -1,76 +1,90 @@
 Ext.define('NavixyPanel.view.tariffs.NewCard', {
     extend: 'NavixyPanel.view.components.Card',
+    requires: ['NavixyPanel.plugins.FieldPostfix'],
+
     alias: 'widget.tariff-card',
     stateful: true,
     stateId: 'tariffcard',
     singleColumnBody: true,
 
+    addTarget: 'tariff/create',
+    createTarget: 'tariff/',
+
     initComponent: function () {
-        Ext.apply(this.modeVisibleTable.edit, {
-            'sur-title': false,
-            'real-title': true
-        });
         Ext.apply(this.modeVisibleTable.card, {
             'edit-btn': Ext.checkPermission('tariffs', 'update'),
-            'sur-title': true,
-            'real-title': false
+            'add-btn': Ext.checkPermission('tariffs', 'create')
+        });
+        Ext.apply(this.modeVisibleTable.edit, {
+            'add-btn': false
+        });
+        Ext.apply(this.modeVisibleTable.create, {
+            'add-btn': false
         });
 
         this.callParent(arguments);
     },
-
-    disableForm: function () {
-        this.callParent(arguments);
-        this.updateSurrogateTitle();
-    },
-
-    updateSurrogateTitle: function () {
-
-        var surTitle = this.down('[role=sur-title]'),
-            recordData = this.record.getViewData();
-
-
-            if (surTitle) {
-            surTitle.update(this.checkDefault() ? [recordData.name, '<span class="title-add">', Ext.String.format(_l.get('tariffs.fields.default_tariff'), _l.get('devices')[recordData.device_type]), '</span>'].join('') : recordData.name)
-        }
-    },
-
 
     getRecordData: function () {
-        return this.record.getViewData();
+        return this.record && this.record.getViewData();
     },
 
-    getProcessedValues: function () {
-        var values = this.getValues();
+    applyRecordData: function () {
+        var recordData = this.getRecordData(),
+            fieldName, fieldValue, fieldType,
+            disableMaps = false;
 
-        this.iterateFields(function(field) {
-            if (field.is('checkboxgroup')) {
-                var value = field.getValue(),
-                    name = field.items.first().name,
-                    data = value[name];
-
-                values[name] = Ext.isArray(data) ? data : [data];
+        if (recordData) {
+            if (recordData.maps_exclusion) {
+                recordData["maps"] = this.reverseMaps(recordData["maps"]);
+                if (recordData["maps"].length) {
+                    disableMaps = true;
+                }
             }
-            if (field.role === 'checkbox') {
-                values[field.name] = field.getValue();
+
+            this.iterateFields(function(field) {
+                fieldName = field.name;
+                fieldType = field.getXType();
+                fieldValue = recordData[fieldName];
+
+                if (fieldValue !== undefined) {
+                    field.setValue(fieldValue);
+                }
+
+                if (fieldName === "maps") {
+                    field.strictDisabled = disableMaps ? "edit" : false;
+                }
+            });
+        }
+
+        this.getForm().isValid();
+    },
+
+    reverseMaps: function (maps) {
+        var result = [],
+            type;
+
+        Ext.getStore('MapTypes').each(function (mapRecord) {
+            type = mapRecord.get('type');
+            if (Ext.Array.indexOf(maps, type) < 0) {
+                result.push(type)
             }
-        });
+        }, this);
 
-        return values;
+        return result
     },
 
-    checkDefault: function () {
-        return this.getRecordData().isDefault;
-    },
 
     getLinks: function () {
+
         var me = this,
+            data = this.getRecordData(),
             result = [];
 
-        if (Ext.checkPermission('tariffs', 'update') && !this.checkDefault()) {
+        if (Ext.checkPermission('tariffs', 'update') && data && !data.isDefault) {
             result.unshift(
                 {
-                    html: '<a>' + _l.get('tariffs.card.links.make_default') + '</a>',
+                    html: '<a>' + _l.get('tariffs.card.links.make_default') + '</a>' + this.getHintSymbol(_l.get('tariffs.card.hints.14')),
                     listeners: {
                         click: {
                             fn: this.fireMakeDefault,
@@ -84,36 +98,88 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         return result;
     },
 
+    fireMakeDefault: function () {
+        this.fireEvent('setdefault', this.record);
+    },
+
+    getButtons: function () {
+        var result = this.callParent(arguments),
+            addBtn = this.getAddBtnTitle();
+
+        if (addBtn) {
+            result.push(
+                {
+                    text: addBtn,
+                    role: 'add-btn',
+                    iconCls: 'add-button',
+                    margin: this.buttonsMargin,
+                    handler: this.toTariffAdd,
+                    scope: this
+                }
+            );
+        }
+
+        return result;
+    },
+
+    toTariffAdd: function () {
+        Ext.Nav.shift(this.addTarget);
+    },
+
+    getAddBtnTitle: function () {
+        return _l.get('tariffs.card.add_form_btn');
+    },
+
+    getEditBtnTitle: function () {
+        return _l.get('tariffs.card.edit_form_btn');
+    },
+
+    getCreateBtnTitle: function () {
+        return _l.get('tariffs.card.create_form_btn');
+    },
+
+    getSaveBtnTitle: function () {
+        return _l.get('tariffs.card.save_form_btn');
+    },
+
     getHeaderItemsConfig: function () {
 
         var me = this,
-            deviceData = [
-                {type: "tracker", "name": _l.get('devices.tracker')}
-            ],
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
-            settings = this.record.getSettingsData(),
+            settings = false, //this.record.getSettingsData(),
             seller_currency = (dealer && dealer.get('seller_currency')) || 'USD',
             currency = (settings && settings.currency) || 'USD',
 
             recordData = this.getRecordData(),
-            isCamera = this.getRecordData().device_type !== "tracker",
-
+            isCamera = recordData && recordData.device_type !== "tracker",
+            hasCamera = !!dealer.get('enable_cameras'),
+            deviceData = [
+                {type: "tracker", "name": _l.get('devices.tracker')}
+            ],
 
             tariffPrices = Ext.getStore('TariffPrices').getPrices(),
             priceConfig = {
-                disabledValue: function () {
-                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.000'))
-                },
-                allowBlank: true,
-                width: 100,
+                xtype: 'tariffprice',
+                cellCls: 'form-cell',
+                tariffPrices: tariffPrices,
+                currency: currency,
+                fieldConfig: this.getFieldConfig({
 
-                minLength: 1,
-                maxLength: 10,
-                vtype: 'numeric',
+                    allowBlank: true,
+                    width: 100,
 
-                value: 0
+                    minLength: 1,
+                    maxLength: 10,
+                    vtype: 'numeric',
+
+                    value: 0
+                })
             };
+
+        if (!!dealer.get('enable_cameras')) {
+            deviceData.push({type: "camera", "name": _l.get('devices.camera')})
+        }
 
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
@@ -126,23 +192,40 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         });
 
         return [
+            // 0 --------------------------------------------------------------------- //
+            {html: _l.get('tariffs.fields.name')},
+            {},
             this.getFieldConfig({
-                //html: this.checkDefault() ? [recordData.name, '<span class="title-add">', Ext.String.format(_l.get('tariffs.fields.default_tariff'), _l.get('devices')[recordData.device_type]), '</span>'].join('') : recordData.name
                 name: 'name',
-                colspan: 4,
-                width: 384,
-                role: 'real-title'
+                value: _l.get('tariffs.fields.default_name')
             }),
+            {},
 
-            {
-                html: this.checkDefault() ? [recordData.name, '<span class="title-add">', Ext.String.format(_l.get('tariffs.fields.default_tariff'), _l.get('devices')[recordData.device_type]), '</span>'].join('') : recordData.name,
-                colspan: 4,
-                cellCls: 'title',
-                role: 'sur-title'
-            },
+            // 1 --------------------------------------------------------------------- //
+            {html: _l.get('tariffs.fields.device_type'), hidden: hasCamera},
+            {cellCls: 'strong-height', hidden: hasCamera},
+            this.getFieldConfig({
+                name: 'device_type',
+                xtype: 'combobox',
+                store: this.deviceTypesStore,
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: 'tracker',
+                disabled: true,
+                strictDisabled: 'edit',
+                listeners: {
+                    change: function() {
+                        me.changeDeviceType(this.getValue() !== "tracker");
+                    }
+                },
+                hidden: hasCamera
+            }),{hidden: hasCamera},
 
+            // 2 --------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.tariff_type'), hidden: isCamera},
-            {cellCls:'strong-height', hidden: isCamera},
+            {cellCls: 'strong-height', hidden: isCamera},
             this.getFieldConfig({
                 name: 'type',
                 xtype: 'combobox',
@@ -151,20 +234,37 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
+                value: "monthly",
+
                 hidden: isCamera
             }),{hidden: isCamera},
 
-            {html: _l.get('tariffs.price_type')[recordData.type || "monthly"]},
+            // 3 --------------------------------------------------------------------- //
+            {html: _l.get('tariffs.price_type')[recordData && recordData.type || "monthly"]},
             {},
-            this.getFieldConfig(priceConfig, {
-                name: 'price'
+            this.getFieldConfig({
+                disabledValue: function () {
+                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'))
+                },
+                name: 'price',
+                allowBlank: true,
+                width: 100,
+
+                minLength: 1,
+                maxLength: 10,
+                vtype: 'numeric',
+
+                value: 0
             }),
             {},
 
+            // 4 --------------------------------------------------------------------- //
             {html: '&nbsp'},
             {cellCls: 'no_dots'},
-            {colspan: 2},
+            {width: 220},
+            {},
 
+            // 5 --------------------------------------------------------------------- //
             {
                 html: _l.get('tariffs.fields.rate'),
                 cellCls: 'sub_title'
@@ -173,39 +273,45 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 cellCls: 'no_dots'
             },
             {
-                html: _l.get('tariffs.fields.users_price') + this.getHintSymbol(_l.get('tariffs.card.hints.7')),
+                html: [_l.get('tariffs.fields.users_price'), " ", Ext.String.format(_l.get('tariffs.card.currency_in'), Ext.String.format(_l.get('currencies_tpls')[currency], "").replace(" ", "")), this.getHintSymbol(_l.get('tariffs.card.hints.12'))].join(""),
                 cellCls: 'sub_title'
 
             },
             {
-                html: _l.get('tariffs.fields.client_costs') + this.getHintSymbol(_l.get('tariffs.card.hints.8')),
+                html: _l.get('tariffs.fields.client_costs') + this.getHintSymbol(_l.get('tariffs.card.hints.13')),
                 cellCls: 'sub_title'
             },
 
+            // 6 --------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.outgoing_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.2'))},
             {},
-            this.getFieldConfig(priceConfig, {name: 'outgoing_sms'}),
-            {html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.outgoing_sms, '0.000'))},
+            Ext.apply({name: 'outgoing_sms'}, priceConfig),
+            {html: this.getTariffPriceText("outgoing_sms", tariffPrices, seller_currency)},
 
+            // 7 --------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.service_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.3'))},
             {},
-            this.getFieldConfig(priceConfig, {name: 'service_sms'}),
-            {html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.service_sms, '0.000'))},
+            Ext.apply({name: 'service_sms'}, priceConfig),
+            //this.getFieldConfig(priceConfig, {name: 'service_sms'}),
+            {html: this.getTariffPriceText("service_sms", tariffPrices, seller_currency)},
 
+            // 8 --------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.incoming_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.4'))},
             {},
-            this.getFieldConfig(priceConfig, {name: 'incoming_sms'}),
-            {html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.incoming_sms, '0.000'))},
+            Ext.apply({name: 'incoming_sms'}, priceConfig),
+            {html: this.getTariffPriceText("incoming_sms", tariffPrices, seller_currency)},
 
+            // 9 --------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.traffic') + this.getHintSymbol(_l.get('tariffs.card.hints.5'))},
             {},
-            this.getFieldConfig(priceConfig, {name: 'traffic'}),
-            {html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.traffic, '0.000'))},
+            Ext.apply({name: 'traffic'}, priceConfig),
+            {html: this.getTariffPriceText("traffic", tariffPrices, seller_currency)},
 
+            // 10 -------------------------------------------------------------------- //
             {html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6'))},
             {},
-            this.getFieldConfig(priceConfig, {name: 'phone_call'}),
-            {html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.phone_call, '0.000'))}
+            Ext.apply({name: 'phone_call'}, priceConfig),
+            {html: this.getTariffPriceText("phone_call", tariffPrices, seller_currency)}
         ]
     },
 
@@ -285,8 +391,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     prepareOptionsItems: function () {
-        var recordData = this.getRecordData(),
-            mapList = [],
+        var mapList = [],
             featuresList = [];
 
         Ext.getStore('MapTypes').each(function (mapRecord) {
@@ -294,6 +399,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 boxLabel: mapRecord.get('name'),
                 name: 'maps',
                 inputValue: mapRecord.get('type'),
+                cls: 'shadow',
+                checked: true,
                 checkboxgroup: true
             });
         }, this);
@@ -303,6 +410,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 boxLabel: featureRecord.get('name'),
                 name: 'features',
                 inputValue: featureRecord.get('type'),
+                cls: 'shadow',
+                checked: true,
                 checkboxgroup: true
             });
         }, this);
@@ -310,28 +419,36 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         return [
             {
                 html: [_l.get('tariffs.fields.device_limit_exp'), this.getHintSymbol(_l.get('tariffs.card.hints.7')), ":"].join(" "),
-                colspan: 2
+                colspan: 2,
+                height: 25
             },
             this.getFieldConfig({
-                disabledValue: function () {
-                    return [this.getValue(), _l.get('tariffs.fields.device_limit_postfix')].join(" ")
-                },
+                xtype: 'numberfield',
+                plugins: [
+                    {
+                        ptype: 'fieldpostfix',
+                        units: "assets",
+                        allowZeroValues: true,
+                        useRaw: true
+                    }
+                ],
+                hideTrigger: true,
                 name: 'device_limit',
                 width: 200,
 
                 minLength: 1,
                 maxLength: 6,
-                vtype: 'numeric',
 
-                value: 0,
+                value: 5,
                 colspan: 2
             }),
             {
                 html: [_l.get('tariffs.fields.store_period'), this.getHintSymbol(_l.get('tariffs.card.hints.8')), ":"].join(" "),
-                colspan: 2
+                colspan: 2,
+                height: 25,
+                role: 'store_period_label'
             },
             {
-                //html: Ext.util.Format.unitsDecode(recordData.store_period),
                 fname: 'store_period',
                 xtype: 'periodfield',
                 role: 'store_period',
@@ -392,27 +509,37 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     prepareAvailabilityItems: function () {
-        var recordData = this.getRecordData();
-
         return [
             {
-                html: _l.get('tariffs.fields.group_id_exp') + ":"
+                html: _l.get('tariffs.fields.group_id_exp') + this.getHintSymbol(_l.get('tariffs.card.hints.15')) + ":",
+                cellCls:'strong-height'
             },
-            this.getFieldConfig({
-                disabledValue: function () {
-                    return this.getValue() !== "0" ? this.getValue() : _l.get('no')
-                },
-                name: 'group_id',
-                maxLength: 6,
-                vtype: 'numeric'
-            }),
             {
-                html: _l.get('tariffs.fields.active_exp') + ":"
+                xtype: 'fakefield',
+                cellCls: 'form-cell',
+                processText: function (value) {
+                    return value != "0" ? value : _l.get('no')
+                },
+                fieldConfig: this.getFieldConfig({
+                    name: 'group_id',
+                    maxLength: 6,
+                    vtype: 'numeric',
+                    allowBlank: true
+                })
             },
-            this.getFieldConfig({
-                xtype: 'checkbox',
-                name: 'active'
-            }),
+
+            {
+                html: _l.get('tariffs.fields.active_exp') + this.getHintSymbol(_l.get('tariffs.card.hints.16')) + ":",
+                cellCls:'strong-height'
+            },
+            {
+                xtype: 'fakefield',
+                cellCls: 'form-cell',
+                fieldConfig: this.getFieldConfig({
+                    xtype: 'checkbox',
+                    name: 'active'
+                })
+            },
             {
             },
             {
@@ -427,8 +554,21 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         ];
     },
 
+    changeDeviceType: function (type) {
+        var trackerFields = [
+            this.down('[role="options-collapser"]'),
+            this.down('[role="options-body"]')
+        ];
+
+        Ext.iterate(trackerFields, function (field) {
+            field[type ? 'hide' : 'show']();
+        }, this);
+    },
+
     getTabPanelItems: function () {
-        return this.getRecordData().device_type === 'tracker' && [
+        var data = this.getRecordData();
+
+        return data && data.device_type === 'tracker' && [
             {
                 xtype: 'trackerslist',
                 title: _l.get('tariffs.card.tab_panel.trackers.title'),
@@ -460,7 +600,9 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         return result.length ? result : empty_result;
     },
 
-    fireMakeDefault: function () {
-        this.fireEvent('setdefault', this.record);
+    getTariffPriceText: function (type, prices, currency) {
+        return prices[type]
+            ? Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(prices[type], '0.00'))
+            : _l.get("na")
     }
 });

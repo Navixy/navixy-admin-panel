@@ -176,7 +176,24 @@ Ext.define('NavixyPanel.model.Tariff', {
         }, this);
 
         fieldsObj.service_prices = service_prices;
-        fieldsObj.map_filter = maps;
+
+        if (maps.values.join("") === "") {
+            maps.values = []
+        }
+
+        if (this.get("maps_exclusion") && this.get("maps").length) {
+            delete fieldsObj.map_filter;
+            delete fieldsObj.maps;
+            delete fieldsObj.maps_exclusion;
+        } else {
+            fieldsObj.map_filter = {
+                maps_exclusion: false,
+                values : maps.values
+            };
+            fieldsObj.maps = maps.values;
+            fieldsObj.maps_exclusion = false;
+        }
+
         return fieldsObj;
     },
 

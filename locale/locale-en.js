@@ -47,6 +47,13 @@ Ext.define('Locale.locale-en',{
     "cancel_form_btn": "Cancel",
     "yes": "yes",
     "no": "no",
+    "na": "N/A",
+    "enable": 'enable',
+    "disable": 'disable',
+    "disabled": 'Disabled',
+    "forbid": 'forbid',
+    "allow": 'allow',
+    "forbidden": 'Forbidden',
     "show_btn": "Show",
     "wrong_period": "An invalid period",
     "required_fields": "* - required fields or sections",
@@ -220,6 +227,11 @@ Ext.define('Locale.locale-en',{
             "matches",
             "match",
             "matches"
+        ],
+        "assets": [
+            "assets",
+            "asset",
+            "assets"
         ]
     },
     "units_short": {
@@ -610,7 +622,7 @@ Ext.define('Locale.locale-en',{
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Label",
+            "name": "Plan name",
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
@@ -642,17 +654,23 @@ Ext.define('Locale.locale-en',{
             "plan_options": "Plan options",
             "plan_availability": "Plan availability",
 
-            "device_limit_postfix": "assets",
             "available_maps": "Available maps",
             "available_features": "Available features",
+
+            "default_name": "My plan"
         },
         "list": {
             "create_btn_text": "Add new plan",
             "empty_text": "No plans found"
         },
         "card": {
+            "edit_form_btn": "Edit plan",
+            "create_form_btn": "Create plan",
+            "add_form_btn": "Add new plan",
+            "save_form_btn": "Save plan",
+            "currency_in": "(in {0})",
             "links": {
-                "make_default": "Mark as default",
+                "make_default": "Set as default plan",
                 "tariff_edit": "Edit plan"
             },
             "tab_panel": {
@@ -671,6 +689,11 @@ Ext.define('Locale.locale-en',{
                 "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
                 "10": "Select options which are available for users who have assets on this plan.",
                 "11": "Select options which are available for users who have assets on this plan.",
+                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
+                "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
+                "16": "",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
             }
@@ -1331,7 +1354,7 @@ Ext.define('Locale.locale-en',{
         "report_xls": "Export reports to file",
         "report_scheduled": "Report scheduled",
         "routing": "Routing",
-        "ui_mobile": "User interface",
+        "ui_mobile": "Mobile interface",
         "weblocator": "Weblocator",
         "chat": "Chat"
     }
