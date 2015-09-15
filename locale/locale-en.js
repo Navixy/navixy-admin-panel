@@ -630,7 +630,7 @@ Ext.define('Locale.locale-en',{
             "store_period": "Keep and show tracking history for",
             "active": "Available for user",
             "has_reports": "Table reports is available",
-            "proportional_charge": "Proportional charge",
+            "proportional_charge": "Always charge as a full month",
             "incoming_sms": "Incoming SMS",
             "outgoing_sms": "Outgoing regular SMS",
             "service_sms": "Outgoing service SMS",
@@ -688,7 +688,6 @@ Ext.define('Locale.locale-en',{
                 }
             },
             "hints": {
-                "1": "Subscription fee for the partial month of proportion to the number of days to write off",
                 "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
                 "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
@@ -707,8 +706,9 @@ Ext.define('Locale.locale-en',{
                 "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
                 "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
-                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
+                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
         "combo_empty": "Select plan",
@@ -718,7 +718,7 @@ Ext.define('Locale.locale-en',{
         },
         "types": {
             "activeday": "Daily",
-            "monthly": "Monthly",
+            "monthly": "Monthly (on the 1st day)",
             "everyday": "Monthly (daily debit)"
         },
         "price_type": {

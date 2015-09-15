@@ -204,7 +204,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                 timeout: this.timeout,
                 params: params,
                 success: function (response) {
-                    //try {
+                    try {
                         var wrapProperty = me.apiProfiles[apiVersion].wrapProperty,
                             decodedResult = plain ? response.responseText : Ext.decode(response.responseText),
 
@@ -216,13 +216,13 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                             successFn.call(scope, rootProperty ? result[rootProperty] : result, requestParams, response);
                         }
 
-                    //} catch (e) {
-                    //    if (onErrorFn) {
-                    //        onErrorFn.call(scoperequestParams);
-                    //    } else {
-                    //        Ext.log('success callback error', e.stack);
-                    //    }
-                    //}
+                    } catch (e) {
+                        if (onErrorFn) {
+                            onErrorFn.call(scoperequestParams);
+                        } else {
+                            Ext.log('success callback error', e.stack);
+                        }
+                    }
 
                     if (requiredAction) {
                         requiredAction(response);

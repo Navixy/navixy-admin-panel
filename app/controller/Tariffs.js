@@ -47,10 +47,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         this.callParent(arguments);
 
         this.control({
-            'tariffcard': {
-                tariffedit: this.handleTariffEditAction,
-                setdefault: this.onTariffDefault
-            },
             'tariff-card' : {
                 tariffedit: this.handleTariffEditAction,
                 setdefault: this.onTariffDefault,
@@ -64,12 +60,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             'tariffslist button[role="create-btn"]' : {
                 click: this.handleTariffCreateAction
             },
-            'tariffcreate' : {
-                formsubmit: this.handleTariffCreateSubmit
-            },
-            //'tariffedit' : {
-            //    formsubmit: this.handleTariffEditSubmit
-            //},
             'defaulttariff' : {
                 formsubmit: this.handleTariffDefaultEdit
             }
@@ -82,11 +72,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             'tariff' : {
                 fn: this.handleTariffCard,
-                loadRecord: true,
-                access: 'read'
-            },
-            'tarifff' : {
-                fn: this.handleTariffCardOld,
                 loadRecord: true,
                 access: 'read'
             },

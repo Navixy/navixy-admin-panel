@@ -44,10 +44,10 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             recordData["free_days"] = isDefault ? defaultData['free_days']: 0;
 
             if (recordData.maps_exclusion) {
-                recordData["maps"] = this.reverseMaps(recordData["maps"]);
                 if (recordData["maps"].length) {
                     disableMaps = true;
                 }
+                recordData["maps"] = this.reverseMaps(recordData["maps"]);
             }
 
             this.iterateFields(function(field) {
@@ -62,15 +62,29 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 if (fieldName === "maps") {
                     field.strictDisabled = disableMaps ? "edit" : false;
                 }
+
+                if (fieldName === "proportional_charge") {
+                    field.setValue(!fieldValue);
+                }
             });
             if (isDefault) {
                 this.down("[name=tariff_is_default]").strictDisabled = "edit";
             }
             this.changeDefault(isDefault);
+            this.changePaymentType(recordData['type']);
         }
 
         this.getForm().isValid();
     },
+
+    enableForm: function (mode) {
+        this.callParent(arguments);
+        if (mode == "create") {
+            this.changeDefault(false);
+            this.changePaymentType("monthly");
+        }
+    },
+
 
     reverseMaps: function (maps) {
         var result = [],
@@ -112,6 +126,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         });
         if (values.type != "monthly") {
             values.proportional_charge = false;
+        } else {
+            values.proportional_charge = !values.proportional_charge;
         }
 
         return values;
@@ -215,6 +231,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             {html: _l.get('tariffs.fields.name'), width: 180},
             {},
             this.getFieldConfig({
+                width: 250,
                 name: 'name',
                 value: _l.get('tariffs.fields.default_name')
             }),
@@ -255,6 +272,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 valueField: 'type',
                 value: "monthly",
 
+                width: 250,
                 hidden: isCamera,
                 listeners: {
                     change: function() {
@@ -264,22 +282,22 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             }),{hidden: isCamera},
 
             // 2.1 --------------------------------------------------------------------- //
-            //{
-            //    html: [_l.get('tariffs.fields.proportional_charge'), this.getHintSymbol(_l.get('tariffs.card.hints.1'))].join(""),
-            //    role: "proportional_charge_label",
-            //    cellCls:'strong-height'
-            //},
-            //{role: "proportional_charge_empty1"},
-            //{
-            //    xtype: 'fakefield',
-            //    role: "proportional_charge",
-            //    textStyle: "padding: 0 0 0 5px",
-            //    fieldConfig: this.getFieldConfig({
-            //        xtype: 'checkbox',
-            //        name: 'proportional_charge'
-            //    })
-            //},
-            //{role: "proportional_charge_empty2"},
+            {
+                html: [_l.get('tariffs.fields.proportional_charge'), this.getHintSymbol(_l.get('tariffs.card.hints.20'))].join(""),
+                role: "proportional_charge_label",
+                cellCls:'strong-height'
+            },
+            {role: "proportional_charge_empty1"},
+            {
+                xtype: 'fakefield',
+                role: "proportional_charge",
+                textStyle: "padding: 0 0 0 5px",
+                fieldConfig: this.getFieldConfig({
+                    xtype: 'checkbox',
+                    name: 'proportional_charge'
+                })
+            },
+            {role: "proportional_charge_empty2"},
 
             // 3 --------------------------------------------------------------------- //
             {role: "price_label", html: _l.get('tariffs.price_type')[recordData && recordData.type || "monthly"]},
@@ -566,10 +584,12 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                         useRaw: true
                     }
                 ],
+                allowBlank: false,
                 hideTrigger: true,
                 name: 'device_limit',
                 width: 200,
 
+                minValue: 1,
                 minLength: 1,
                 maxLength: 6,
 
@@ -749,19 +769,19 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     changePaymentType: function (paymentType) {
-        var type = paymentType == "monthly",//;
+        var type = paymentType == "monthly";
 
-        //var trackerFields = [
-        //        this.down('[role="proportional_charge"]'),
-        //        this.down('[role="proportional_charge_label"]'),
-        //        this.down('[role="proportional_charge_empty1"]'),
-        //        this.down('[role="proportional_charge_empty2"]')
-        //    ],
+        var trackerFields = [
+                this.down('[role="proportional_charge"]'),
+                this.down('[role="proportional_charge_label"]'),
+                this.down('[role="proportional_charge_empty1"]'),
+                this.down('[role="proportional_charge_empty2"]')
+            ],
             price_label = this.down('[role="price_label"]');
 
-        //Ext.iterate(trackerFields, function (field) {
-        //    field[!type ? 'hide' : 'show']();
-        //}, this);
+        Ext.iterate(trackerFields, function (field) {
+            field[!type ? 'hide' : 'show']();
+        }, this);
 
         price_label.update(_l.get('tariffs.price_type')[paymentType]);
     },

@@ -23,6 +23,8 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
     textCls: null,
 
+    defaultVal: 3,
+
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
             fields: ['name', 'period'],
@@ -62,7 +64,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 allowBlank: true,
                 minValue: 0,
                 disabled: this.initDisabled,
-                value: 1,
+                value: this.defaultVal,
                 listeners: {
                     change: {
                         fn: this.updateField,
