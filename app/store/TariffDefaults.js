@@ -18,7 +18,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
         },
         {
             name: 'activation_bonus',
-            type: 'int'
+            type: 'float'
         },
         {
             name: 'free_days',

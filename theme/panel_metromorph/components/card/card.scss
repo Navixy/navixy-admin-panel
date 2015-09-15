@@ -233,6 +233,9 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 .card-editor {
 
     .x-form-type-checkbox.shadow {
+        a {
+            text-decoration: underline;
+        }
         &.x-item-disabled {
             .x-form-checkbox {
                 background-position: 0 -30px;
@@ -425,12 +428,16 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
     .body-collapser {
         font-size: $card-font-size + 2;
+        font-weight: bold;
         cursor: pointer;
 
-        background: url($img_dir + '/tools/collapse.png') no-repeat 15px 55% $card-links-collapser-bg-color;;
+        background: url($img_dir + '/tools/collapse_b.png') no-repeat 13px 12px darken($card-body-bg-color, 2%);;
 
+        a {
+            font-weight: normal;
+        }
         &.active {
-            background-image: url($img_dir + '/tools/expand.png');
+            background-image: url($img_dir + '/tools/expand_b.png');
         }
     }
 

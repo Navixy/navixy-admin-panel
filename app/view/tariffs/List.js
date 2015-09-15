@@ -80,11 +80,6 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 
         return [
             {
-                text: _l.get('tariffs.fields.tariff_id'),
-                dataIndex: 'id',
-                width: 60
-            },
-            {
                 text: _l.get('tariffs.fields.name'),
                 xtype: 'templatecolumn',
                 tpl: tariffLabelTpl,

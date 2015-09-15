@@ -16,8 +16,11 @@ Ext.define('NavixyPanel.view.widgets.fields.FakeField', {
     fieldConfig: null,
 
     textCls: null,
+    textStyle: null,
     onText: null,
     offText: null,
+
+    onChange: Ext.emptyFn,
 
     initComponent: function () {
         this.items = this.getItems();
@@ -32,6 +35,7 @@ Ext.define('NavixyPanel.view.widgets.fields.FakeField', {
                     listeners: {
                         disable: this.onDisable,
                         enable: this.onEnable,
+                        change: this.onChange,
                         scope: this
                     }
                 },
@@ -40,6 +44,7 @@ Ext.define('NavixyPanel.view.widgets.fields.FakeField', {
             {
                 xtype: 'component',
                 role: 'fake-text',
+                style: this.textStyle || "",
                 cls: this.textCls || "",
                 hidden: true
             }

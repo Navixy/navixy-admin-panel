@@ -215,6 +215,34 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         Ext.Nav.shift('tariff/' + tariffId);
     },
 
+    checkDefaultChange: function (formValues, record, callback, args) {
+        var device_type = record.get('device_type'),
+            defaultRecord = Ext.getStore('TariffDefaults').findRecord('id', device_type);
+
+        if (formValues["tariff_is_default"] &&
+            (
+                defaultRecord.get("tariff_id") != record.get("id")
+                ||
+                defaultRecord.get("free_days") != formValues["free_days"]
+                ||
+                defaultRecord.get("activation_bonus") != formValues["activation_bonus"]
+            )
+        ) {
+            this.handleTariffDefaultEdit(null, {
+                    tariff_id: record.get("id"),
+                    free_days: formValues["free_days"],
+                    activation_bonus: formValues["activation_bonus"]
+                },
+                record,
+                callback,
+                args
+            );
+            //callback.apply(this, args)
+        } else {
+            callback.apply(this, args)
+        }
+    },
+
     handleTariffEditSubmit: function (cmp, formValues, record) {
 
         record.set(formValues);
@@ -226,7 +254,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 tariff: Ext.encode(tariffData)
             },
             callback: function (response) {
-                this.afterTariffEdit(response, record);
+                this.checkDefaultChange(formValues, record, this.afterTariffEdit, [response, record]);
             },
             failure: function (response) {
                 this.afterTariffEditFailure(response, record);
@@ -275,7 +303,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 tariff: Ext.encode(tariffData)
             },
             callback: function (response) {
-                this.afterTariffCreate(response, record);
+                this.checkDefaultChange(formValues, record, this.afterTariffCreate, [response, record]);
             },
             failure: this.afterTariffCreateFailure,
             scope: this
@@ -297,7 +325,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
     },
 
-    handleTariffDefaultEdit: function (cmp, formValues, record) {
+    handleTariffDefaultEdit: function (cmp, formValues, record, callback, args) {
 
         var device_type = record.get('device_type'),
             defaultRecord = Ext.getStore('TariffDefaults').findRecord('id', device_type),
@@ -322,7 +350,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         Ext.API.updateTariffDefaults({
             params: params,
             callback: function (response) {
-                this.afterDefaultTariffEdit(response, record);
+                this.afterDefaultTariffEdit(response, record, defaultRecord, callback, args);
             },
             failure: function (response) {
                 this.afterDefaultTariffEditFailure(response, record);
@@ -332,14 +360,17 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     },
 
 
-    afterDefaultTariffEdit: function (success, record, defaultRecord) {
+    afterDefaultTariffEdit: function (success, record, defaultRecord, callback, args) {
         if (success) {
             try {
                 defaultRecord.commit();
             } catch (e) {}
 
-            this.getTariffsList().store.load();
-            this.getTariffDefault().afterSave();
+            if (Ext.isFunction(callback)) {
+                callback.apply(this, args)
+            }
+            //this.getTariffsList().store.load();
+            //this.getTariffDefault().afterSave();
         } else {
             defaultRecord.reject(false);
         }

@@ -630,7 +630,7 @@ Ext.define('Locale.locale-en',{
             "store_period": "Keep and show tracking history for",
             "active": "Available for user",
             "has_reports": "Table reports is available",
-            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
+            "proportional_charge": "Proportional charge",
             "incoming_sms": "Incoming SMS",
             "outgoing_sms": "Outgoing regular SMS",
             "service_sms": "Outgoing service SMS",
@@ -642,8 +642,8 @@ Ext.define('Locale.locale-en',{
             "group_id_exp": "Plan belongs to Group No.",
             "active_exp": "Users can switch to this plan on their own",
             "device_limit_exp": "Maximum amount of assets available to user",
-            "activation_bonus": "Activation bonus",
-            "free_days": "Number of free days",
+            "activation_bonus": "Complimentary bonus",
+            "free_days": "Complimentary days",
             "tariff_type": "Billing cycle",
             "tariff_type_short": "Payment",
 
@@ -657,7 +657,9 @@ Ext.define('Locale.locale-en',{
             "available_maps": "Available maps",
             "available_features": "Available features",
 
-            "default_name": "My plan"
+            "default_name": "My plan",
+
+            "tariff_is_default": "Use this plan as default"
         },
         "list": {
             "create_btn_text": "Add new plan",
@@ -678,7 +680,15 @@ Ext.define('Locale.locale-en',{
                     "title": "Trackers on this plan"
                 }
             },
+            "features": {
+                "groups": {
+                    "apps": "Apps",
+                    "features": "Features",
+                    "misc": "Miscellanous"
+                }
+            },
             "hints": {
+                "1": "Subscription fee for the partial month of proportion to the number of days to write off",
                 "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
                 "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
@@ -693,7 +703,10 @@ Ext.define('Locale.locale-en',{
                 "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
                 "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
-                "16": "",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
+                "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
+                "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
             }
@@ -1340,21 +1353,22 @@ Ext.define('Locale.locale-en',{
     },
     "features": {
         "api": "API",
-        "app_tasks": "Tasks app",
-        "app_fleet": "Fleet app",
-        "batch_operations": "Batch Operations",
+        "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
+        "app_fleet": "Fleet",
+        "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
+        "batch_operations": "Batch operations",
         "custom_maps": "Custom maps",
-        "event_notification": "Event notification",
+        "event_notification": "Event notifications",
         "geocoding": "Geocoding",
         "lbs": "Location by Cell ID",
         "map_layers": "Map layers",
-        "multilevel_access": "Multilevel access",
+        "multilevel_access": "Object clones",
         "priority_support": "Priority support",
         "retranslation": "Retranslation",
-        "report_xls": "Export reports to file",
-        "report_scheduled": "Report scheduled",
+        "report_xls": "Reports to file",
+        "report_scheduled": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
         "routing": "Routing",
-        "ui_mobile": "Mobile interface",
+        "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat"
     }

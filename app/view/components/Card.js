@@ -296,7 +296,7 @@ Ext.define('NavixyPanel.view.components.Card', {
                     ? this.getPanelItemsConfig()
                     : Ext.Array.merge(this.getPanelItemsConfig(), [linksCollapser])
             },
-            links
+            links ? links : {hidden: true}
         ];
     },
 
@@ -399,7 +399,7 @@ Ext.define('NavixyPanel.view.components.Card', {
             xtype: 'panel',
             ui: 'transparent',
             cls: 'card-body',
-            padding: '10',
+            padding: '0 10 10 10',
             collapseMode: 'mini',
             layout: {
                 type: 'vbox',
@@ -418,7 +418,8 @@ Ext.define('NavixyPanel.view.components.Card', {
             role: collapserRole,
             xtype: 'clickable',
             cls: 'body-collapser',
-            padding: '5 0 5 30',
+            margin: '5 10 0 10',
+            padding: '10 0 10 30',
 
             tip: _l.get('card.body.collapser_tip'),
             expTip: _l.get('card.body.collapser_exptip'),
@@ -458,6 +459,9 @@ Ext.define('NavixyPanel.view.components.Card', {
     },
 
 // LINKS
+
+    getLinks: Ext.emptyFn,
+
     getLinksCollapser: function () {
         return this.down("[role='links-collapser']");
     },
