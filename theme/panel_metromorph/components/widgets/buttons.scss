@@ -37,6 +37,11 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
+.save-button {
+    @extend .icon-save;
+    @include glyph-button;
+}
+
 .reload-button {
     @extend .icon-last-update;
     @include glyph-button;

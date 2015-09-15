@@ -20,6 +20,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     formCellsPadding: '0 0 0 100',
     formRowPadding: '20 0 0 0',
     fieldRequiredMark: false,
+    buttonsMargin: '10 5',
 
     record: null,
     applyRecord: true,
@@ -125,6 +126,14 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         }
     },
 
+    sendFormCreate: function () {
+        var form = this.getForm();
+
+        if (form.isValid()) {
+            this.fireEvent('createsubmit', this, this.getProcessedValues(), this.record);
+        }
+    },
+
     getProcessedValues: function () {
         var values = this.getValues();
 
@@ -175,6 +184,10 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         return _l.get('clear_form_btn');
     },
 
+    getCreateBtnTitle: function () {
+        return _l.get('create_form_btn');
+    },
+
     getBackBtnTitle: function () {
         return _l.get('back_form_btn');
     },
@@ -221,7 +234,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     scale: 'medium',
                     formBind: true,
                     disabled: true,
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.sendForm, this)
                 }
             );
@@ -233,7 +246,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     text: clearBtn,
                     scale: 'medium',
                     ui: 'gray',
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.doFormReset, this)
                 }
             );
@@ -245,7 +258,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     text: backBtn,
                     scale: 'medium',
                     ui: 'gray',
-                    margin: '10 5',
+                    margin: this.buttonsMargin,
                     handler: Ext.bind(this.backFromForm, this)
                 }
             );

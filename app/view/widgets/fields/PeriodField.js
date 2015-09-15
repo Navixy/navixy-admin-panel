@@ -19,6 +19,11 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
     ui: null,
     numberWidth: 80,
     margin: '0 0 5 0',
+    initDisabled: false,
+
+    textCls: null,
+
+    defaultVal: 3,
 
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
@@ -43,6 +48,13 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
         this.items = [
             {
+                xtype: 'component',
+                role: 'fake-text',
+                cls: this.textCls || "",
+                hidden: true,
+                padding: '1 0 0 5'
+            },
+            {
                 xtype: 'numberfield',
                 role: 'period_value',
                 ui: this.ui,
@@ -51,11 +63,16 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 width: this.width - this.numberWidth,
                 allowBlank: true,
                 minValue: 0,
+                disabled: this.initDisabled,
+                value: this.defaultVal,
                 listeners: {
                     change: {
                         fn: this.updateField,
                         scope: this
-                    }
+                    },
+                    disable: this.onDisable,
+                    enable: this.onEnable,
+                    scope: this
                 }
             },
             {
@@ -68,8 +85,8 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 ui: this.ui,
                 width: this.numberWidth - 5,
                 allowBlank: true,
+                disabled: this.initDisabled,
                 store: this.store,
-//                cls: 'second_trigger',
                 listeners: {
                     change: {
                         fn: this.changePeriodSize,
@@ -81,7 +98,8 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 autoSelect: true,
                 forceSelection: true,
                 displayField: 'name',
-                valueField: 'period'
+                valueField: 'period',
+                value: "m"
             },
             {
                 xtype: 'textfield',
@@ -97,6 +115,48 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
         ];
 
         this.callParent(arguments);
+    },
+
+    getText: function () {
+        return this.down('[role=fake-text]');
+    },
+
+    onDisable: function () {
+        this.updateText();
+        this.getPeriodSize().hide();
+        this.getPeriodValue().hide();
+        this.getPeriodResult().hide();
+
+        this.getText().show();
+    },
+
+    onEnable: function () {
+        this.getPeriodSize().show();
+        this.getPeriodValue().show();
+        this.getPeriodResult().show();
+        this.getText().hide();
+    },
+
+    updateText: function () {
+        var text = this.getText(),
+            field = this.getPeriodResult(),
+            periodField = this.getPeriodSize(),
+            valueField = this.getPeriodValue(),
+            size;
+
+        switch (periodField.getValue()) {
+            case 'd':
+                size = 'days';
+                break;
+            case 'm':
+                size = 'months';
+                break;
+            case 'y':
+                size = 'years';
+                break;
+        }
+
+        text.update(Ext.util.Format.units(valueField.getValue(), size, true));
     },
 
     getPeriodSize: function () {
@@ -154,5 +214,5 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
         valueField.setValue(units.value);
         periodField.setValue(units.period);
-    },
+    }
 });
