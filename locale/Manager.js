@@ -50,7 +50,8 @@ Ext.define('Locale.Manager', {
 
     ],
 
-    ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo', 'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
+    ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo',
+                 'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
 
     _ui_locales: [
         {
@@ -93,6 +94,12 @@ Ext.define('Locale.Manager', {
             name: 'pt',
             text: 'Português',
             alias: ['pt', 'pt_PT', 'Português'],
+            rtl: false
+        }, {
+            id: 'tr_TR',
+            name: 'tr',
+            text: 'Türk',
+            alias: ['tr', 'tr_TR', 'Türk'],
             rtl: false
         },
         {
