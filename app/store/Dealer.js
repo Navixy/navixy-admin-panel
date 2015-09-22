@@ -21,8 +21,15 @@ Ext.define('NavixyPanel.store.Dealer', {
         "logo",
         "enable_cameras",
         "seller_currency",
+        "demo_tariff",
         {
-            name: "tracker_tariff_end_date"
+            name: "paas_activation_date",
+            type: 'date',
+            format: 'Y-m-d'
+        }, {
+            name: "tracker_tariff_end_date",
+            type: 'date',
+            format: 'Y-m-d'
         }, {
             name: "license_balance",
             defaultValue: 500

@@ -37,10 +37,8 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 margin: '20 0 0 0',
                 html: localePart.get('subscription_hint')
             };
-        console.log('TODO: add here a dealer seller currency');
-        console.log('TODO: add here a dealer license_balance');
 
-        if (dealerData.tracker_tariff_end_date && dealerData.paas_activation) {
+        if (dealerData.demo_tariff && !dealerData.paas_activation_date) {
             var tracker_tariff_end_date = Ext.Date.formatISO(dealerData.tracker_tariff_end_date, Ext.util.Format.dateFormat);
             this.items = [{
                 xtype: 'component',
@@ -55,6 +53,8 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 href: this.constructAvangateLink('activation')
             }, hintCmp];
         } else {
+            var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0;
+
             this.items = [{
                 xtype: 'component',
                 padding: '10 0',
@@ -62,7 +62,8 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
             }, {
                 xtype: 'component',
                 padding: '10 0',
-                html: Ext.String.format(localePart.get('license_balance'), Ext.String.format(currencyTpl, dealerData.license_balance))
+                hidden: !pendingAmount,
+                html: Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount))
             },
                 {
                     xtype: 'container',
@@ -73,8 +74,9 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                         {
                             xtype: 'numberfield',
                             name: 'qty',
-                            minValue: 0,
-                            value: dealerData.license_balance,
+                            minValue: 100,
+                            step: 100,
+                            value: pendingAmount ? pendingAmount : 100,
                             cls: 'x-field-light',
                             maxWidth: 150,
                             margin: '0 5 0 0'
@@ -94,12 +96,16 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     },
 
     redirectToPayForm: function () {
-        window.open(this.constructAvangateLink('monthlyFee', {
-                    qty: this.down('numberfield[name=qty]').getValue(),
-                    dealer_id: Ext.getStore('Dealer').getAt(0).getId()
-                }
-            ),
-            '_blank')
+        var qtyField = this.down('numberfield[name=qty]');
+
+        if (qtyField.isValid()) {
+            window.open(this.constructAvangateLink('monthlyFee', {
+                        qty: qtyField.getValue(),
+                        dealer_id: Ext.getStore('Dealer').getAt(0).getId()
+                    }
+                ),
+                '_blank')
+        }
     }
 
 });
