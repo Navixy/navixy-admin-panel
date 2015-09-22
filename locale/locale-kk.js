@@ -1,40 +1,40 @@
 /**
-* @class Locale.locale-ar
+* @class Locale.locale-kk
 * @extends Locale.AbstractLocale
 */
-Ext.define('Locale.locale-ar',{
+Ext.define('Locale.locale-kk',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
-            "name": "Locale.ext.locale-ar",
+            "name": "Locale.ext.locale-kk",
             "history": false
         }
     ],
     "singleton": true,
-    "main_copyright": "© 2015 RusLink. All rights reserved.",
-    "panel_title": "NavixyPanel",
+    "main_copyright": "© Navixy. All rights reserved.",
+    "panel_title": "Navixy Admin Panel",
     "error": "Error",
     "loading": "Loading...",
     "conneting_loader": "Connecting to server",
     "access_denied": "Access denied",
     "access_denied_tip": "you do not have permission to access requested page",
-    "index_title": "Welcome to Control Panel",
+    "index_title": "Welcome to Admin Panel",
     "old_version": "Old version",
     "auth": {
-        "login": "Login or Email address",
+        "login": "Login",
         "password": "Password",
         "login_btn": "Login",
-        "locale_title": "Choose language",
+        "locale_title": "Select your language",
         "locale_title_short": "language",
         "auth_error": "Authentication error",
         "reloading_soon": "Reloading",
         "logout": "Logout",
         "title": "Admin panel"
     },
-    "no_path_found": "No page on this path",
+    "no_path_found": "No page - wrong URL",
     "phone_invalid_msg": "Please enter a valid phone number",
     "invalid_numeric_msg": "Not a valid number",
-    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal mark)",
+    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal point)",
     "searcher_empty_text": "Enter search query",
     "search_empty_text": "Enter search query",
     "searchTitle": "Search by category",
@@ -66,14 +66,14 @@ Ext.define('Locale.locale-ar',{
             }
         },
         "11": "Access denied",
-        "12": "The service platform is not found",
-        "101": "In demo mode this feature is disabled",
+        "12": "Service platform is not found",
+        "101": "This feature is not available in the Demo mode",
         "102": "Wrong username or password",
         "103": "The user has not activated",
         "111": "Wrong handler",
         "112": "Wrong method",
         "201": "No data found",
-        "202": "There are too many points in the area",
+        "202": "Too many points in the area",
         "203": "Related item has been deleted",
         "204": "Element not found",
         "205": "Invalid parameters",
@@ -82,34 +82,34 @@ Ext.define('Locale.locale-ar',{
         "208": "The device is locked",
         "209": "Failed to send message",
         "210": "Geocoding failed",
-        "211": "Requested time span is too big",
-        "212": "Requested limit is too big",
+        "211": "Requested time range is too large",
+        "212": "Requested limit is too large",
         "213": "The device is offline",
         "214": "Requested operation are not supported by the device",
         "215": "External service error",
         "216": "Group is not empty",
         "217": "List contains nonexistent entities",
         "218": "Malformed external service parameters",
-        "219": "The action is not allowed for the clone objects",
+        "219": "This action is not allowed for the cloned objects",
         "220": "Unknown device model",
-        "221": "Tariff restriction:</br> Device limit exceeded.",
+        "221": "Plan restriction:</br> Device limit exceeded.",
         "222": "Plugin not found",
         "223": "This phone number is already in use",
-        "224": "Device with this device-id is already in use",
-        "225": "Not allowed for this legal type",
+        "224": "Device with this ID already exists",
+        "225": "Not allowed for this legal entity type",
         "226": "Wrong ICCID",
         "227": "Invalid activation code",
         "228": "Not supported by sensor",
         "229": "Requested data is not ready yet",
-        "230": "Not supported for this entity type",
+        "230": "Not supported for this legal entity type",
         "231": "Entity type mismatch",
         "232": "Input already in use",
         "233": "No data file",
         "234": "Invalid data format",
         "235": "Missing calibration data",
-        "236": "Feature unavailable due to tariff restrictions",
-        "238": "Changing tariff is not allowed",
-        "240": "Not allowed to change tariff too frequently",
+        "236": "This feature is not available on current plan",
+        "238": "Changin plan is not allowed",
+        "240": "Not allowed to change plan too frequently",
         "242": "Validation error",
         "251": "Insufficient funds",
         "254": "Cannot save file",
@@ -118,17 +118,17 @@ Ext.define('Locale.locale-ar',{
         "service_not_respond": "The service is temporarily unavailable",
         "tracker": {
             "203": "Tracker has attached rules",
-            "237": "Invalid tariff",
-            "238": "Changing tariff is not allowed",
-            "239": "New tariff doesn't exist",
+            "237": "Plan invalid",
+            "238": "Changing plan is not allowed",
+            "239": "New plan does not exist",
             "246": "User is incorrect",
             "247": "Clone already exists",
             "249": "The operation is available only for the clones",
             "250": "Not allowed for deleted devices",
-            "253": "The operation can not be performed, the tracker has clones<br>Clones ID: {0}"
+            "253": "The operation can not be performed, the tracker has the following clones<br>Clones ID: {0}"
         },
         "tariff": {
-            "244": "Tariff with the same name already exists"
+            "244": "Plan with same name already exists"
         },
         "settings": {
             "225": "New password must be different",
@@ -139,8 +139,8 @@ Ext.define('Locale.locale-ar',{
             "242": "There were errors during content validation",
             "246": "Invalid user ID",
             "247": "Entity already exists",
-            "259": "Payments count not comply with summary",
-            "260": "Payments sum not comply with summary"
+            "259": "Payments amount does not correspond to the total sum",
+            "260": "Payments amount does not correspond to the total sum"
         }
     },
     "units_combination": {
@@ -227,7 +227,7 @@ Ext.define('Locale.locale-ar',{
         "square_meter": "sq. m",
         "ar": "ar",
         "hectare": "ha",
-        "kmh": "km / h",
+        "kmh": "km/h",
         "hour": "h",
         "minute": "m",
         "second": "s",
@@ -253,10 +253,10 @@ Ext.define('Locale.locale-ar',{
             "collapser_exptip": "Show links"
         },
         "body": {
-            "title": "Additional information:",
-            "exptitle": "Additional information <a>(show)</a>",
-            "collapser_tip": "Hide additional information",
-            "collapser_exptip": "Show additional information"
+            "title": "Plan options and details:",
+            "exptitle": "Plan options and details <a>(expand)</a>",
+            "collapser_tip": "Hide plan options and details",
+            "collapser_exptip": "Show more"
         }
     },
     "devices": {
@@ -265,41 +265,41 @@ Ext.define('Locale.locale-ar',{
         "socket": "Socket"
     },
     "currency": {
-        "rub": "Russian Rouble",
-        "usd": "U.S. Dollar",
-        "kzt": "Kazakhstan Tenge",
-        "byr": "Belarusian Ruble",
-        "eur": "Euro",
-        "jpy": "Japanese Yen",
-        "gbp": "Pound Sterling",
-        "chf": "Swiss Franc",
-        "cad": "Canadian Dollar",
-        "aud": "Australian Dollar",
-        "nzd": "New Zealand Dollar",
-        "tjs": "Tajik Somoni",
-        "php": "Philippine Peso",
+        "gbp": "Pound sterling",
         "brl": "Brazilian real",
         "huf": "Hungarian forint",
         "hkd": "Hong Kong dollar",
         "dkk": "Danish krone",
+        "eur": "Euro",
         "ils": "Israeli new shekel",
         "inr": "Indian rupee",
         "idr": "Indonesian rupiah",
+        "cad": "Canadian dollar",
         "cny": "Renminbi",
         "krw": "South Korean won",
         "myr": "Malaysian ringgit",
         "mxn": "Mexican peso",
+        "nzd": "New Zealand Dollar",
         "nok": "Norwegian krone",
         "pkr": "Pakistani rupee",
         "pln": "Polish złoty",
+        "rub": "Russian rouble",
         "sgd": "Singapore dollar",
+        "usd": "U.S. Dollar",
         "twd": "New Taiwan dollar",
         "thb": "Thai baht",
         "try": "Turkish lira",
+        "php": "Philippine Peso",
         "czk": "Czech koruna",
         "clp": "Chilean peso",
         "sek": "Swedish krona",
+        "chf": "Swiss Franc",
         "zar": "South African rand",
+        "jpy": "Japanese Yen",
+        "kzt": "Kazakhstan Tenge",
+        "byr": "Belarusian Ruble",
+        "aud": "Australian Dollar",
+        "tjs": "Tajik Somoni",
         "uah": "Ukrainian hryvnia",
         "ltl": "Lithuanian litas",
         "lvl": "Latvian lats",
@@ -311,18 +311,65 @@ Ext.define('Locale.locale-ar',{
         "amd": "Armenian dram",
         "azn": "Azerbaijani manat"
     },
+    "currencies_tpls": {
+        "GBP": "£{0}",
+        "BRL": "R${0}",
+        "HUF": "{0} Ft",
+        "HKD": "HK${0}",
+        "DKK": "kr {0}",
+        "EUR": "€{0}",
+        "ILS": "₪{0}",
+        "INR": "₹{0}",
+        "IDR": "Rp {0}",
+        "CAD": "С${0}",
+        "CNY": "¥{0}",
+        "KRW": "₩{0}",
+        "MYR": "RM{0}",
+        "MXN": "Mex${0}",
+        "NZD": "NZ${0}",
+        "NOK": "kr {0}",
+        "PKR": "Rs. {0}",
+        "PLN": "{0} zł",
+        "RUB": "{0} rub.",
+        "SGD": "S${0}",
+        "USD": "${0}",
+        "TWD": "NT${0}",
+        "THB": "฿{0}",
+        "TRY": "₺{0}",
+        "PHP": "{0} ₱",
+        "CZK": "{0} Kč",
+        "CLP": "${0}",
+        "SEK": "{0} kr",
+        "CHF": "{0} franc",
+        "ZAR": "R {0}",
+        "JPY": "¥{0}",
+        "KZT": "{0} tenge",
+        "BYR": "{0} rub.",
+        "AUD": "A${0}",
+        "TJS": "{0} som.",
+        "UAH": "{0} ₴",
+        "LTL": "{0} Lt",
+        "LVL": "Ls {0}",
+        "KGS": "{0} som",
+        "TMT": "{0} man.",
+        "UZS": "{0} som",
+        "MDL": "{0} lei",
+        "GEL": "{0} lari",
+        "AMD": "{0} dram",
+        "AZN": "{0} man."
+    },
     "maps": {
         "roadmap": "Google roadmap",
         "satellite": "Google satellite",
         "hybrid": "Google hybrid",
-        "yandex": "Yandes Maps",
-        "yandexpublic": "Yandex Narod Map",
+        "yandex": "Yandex Maps",
+        "yandexpublic": "Yandex Crowdsourcing",
         "cdcom": "ProGorod Maps",
         "osm": "OpenStreet Maps",
         "osmmapnik": "OpenStreet Maps 2",
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
-        "doublegis": "DoubleGis Maps",
+        "doublegis": "DoubleGIS Maps",
         "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
@@ -350,7 +397,7 @@ Ext.define('Locale.locale-ar',{
             "language": "Default language",
             "time_zone": "Time Zone",
             "save_btn": "Create User",
-            "clear_btn": "Clear form",
+            "clear_btn": "Reset form",
             "copy_address": "Copy from address"
         },
         "edit_form": {
@@ -369,7 +416,7 @@ Ext.define('Locale.locale-ar',{
             "activated": "Activated",
             "activated_t": "User active",
             "legal_type": "Legal status",
-            "tin": "TIN",
+            "tin": "Tax number",
             "legal_name": "Legal Name",
             "iec": "IEC",
             "phone": "Phone number",
@@ -411,8 +458,8 @@ Ext.define('Locale.locale-ar',{
             "empty_text": "No users found"
         },
         "session_alert": {
-            "error": "Cant create user session",
-            "title": "Your sessio code"
+            "error": "Can't create user session",
+            "title": "Your session code"
         },
         "card": {
             "tab_panel": {
@@ -424,7 +471,7 @@ Ext.define('Locale.locale-ar',{
                 }
             },
             "links": {
-                "session_text": "Go to monitoring",
+                "session_text": "Login as user",
                 "user_edit": "Edit user",
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
@@ -438,10 +485,10 @@ Ext.define('Locale.locale-ar',{
             },
             "fields": {
                 "description": "Operation",
-                "type": "Operation type",
+                "type": "Transaction type",
                 "subtype": "Subtype",
                 "date": "Date",
-                "amount": "Sum",
+                "amount": "Amount",
                 "old_balance": "Old",
                 "new_balance": "New",
                 "type_set": {
@@ -463,12 +510,12 @@ Ext.define('Locale.locale-ar',{
             "description": "Transaction description",
             "balance": "Balance changes",
             "bonus": "Bonus changes",
-            "value_sup": "* - amount of which will change the current value, can be negative"
+            "value_sup": "* Amount to add (positive) or subtract (negative)"
         },
-        "combo_empty": "Select an user",
-        "select_error": "Tracker or his clone is already bound to selected user",
+        "combo_empty": "Select user",
+        "select_error": "Tracker or clone was already bounded to selected user",
         "select": {
-            "title": "Select an user"
+            "title": "Select user"
         }
     },
     "trackers": {
@@ -478,16 +525,16 @@ Ext.define('Locale.locale-ar',{
             "label": "Title",
             "model": "Model",
             "phone": "Phone",
-            "device_id": "Device id",
-            "creation_date": "Date of registration",
-            "creation_date_short": "Registered",
+            "device_id": "Device ID",
+            "creation_date": "Tracker activation date",
+            "creation_date_short": "Activated",
             "connection_status": "Status",
             "tracker_id_exp": "Tracker number",
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
-            "tariff": "Tracker tariff",
-            "deleted": "Marked as deleted",
-            "blocked": "Service paused",
+            "tariff": "Tracker plan",
+            "deleted": "Tracker deleted",
+            "blocked": "Service suspended",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
@@ -505,13 +552,13 @@ Ext.define('Locale.locale-ar',{
             }
         },
         "edit_form": {
-            "main_fields": "Main information",
+            "main_fields": "General information",
             "title": "Edit tracker",
             "save_btn": "Save changes",
             "return_btn": "Back"
         },
         "clone_form": {
-            "title": "Crate clone of tracker",
+            "title": "Crate a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"
@@ -520,7 +567,7 @@ Ext.define('Locale.locale-ar',{
             "title": "Cloning group of trackers",
             "save_btn": "Clone",
             "grid_clone_label": "Clones will be added",
-            "grid_clone_tip": "You can change the label of the clone by double clicking on it in the list"
+            "grid_clone_tip": "Use double click to change the clone label"
         },
         "group_owner_form": {
             "title": "Changing owner for group of trackers",
@@ -528,11 +575,11 @@ Ext.define('Locale.locale-ar',{
             "grid_clone_label": "Trackers will be changed"
         },
         "tariff_form": {
-            "title": "Change tariff plan for tracker",
+            "title": "Change plan for tracker",
             "save_btn": "Save changes",
             "repay": "Repay remainder of current tariff payment",
-            "charge": "Charge payment for new tariff",
-            "charge_sup": "only for the tariff plans with monthly payment",
+            "charge": "Charge user now (according to the new plan)",
+            "charge_sup": "only for monthly based plans",
             "tariff_invalid": "must be different from current"
         },
         "list": {
@@ -540,9 +587,9 @@ Ext.define('Locale.locale-ar',{
             "owner_btn": "Change owner",
             "clone_btn": "Clone",
             "edit_btn": "Edit selected",
-            "empty_text": "No tracers found",
+            "empty_text": "No trackers found",
             "after_clone_success": "Cloned: {0}",
-            "after_clone_failure": "Cloned: {0}, {1} clone failed",
+            "after_clone_failure": "Cloned: {0} successfully, {1} failed",
             "after_owner_success": "Changed: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
@@ -552,20 +599,20 @@ Ext.define('Locale.locale-ar',{
             "links": {
                 "change_tracker_user": "Change owner",
                 "tracker_edit": "Edit tracker",
-                "tracker_tariff_edit": "Change tariff",
-                "tracker_clone_create": "Create clone of this tracker",
-                "tracker_clone_remove": "Delete this clone",
-                "tracker_tariff": "Tracker tariff",
+                "tracker_tariff_edit": "Change plan",
+                "tracker_clone_create": "Create clone",
+                "tracker_clone_remove": "Delete clone",
+                "tracker_tariff": "Tracker plan",
                 "tracker_owner": "Tracker owner",
-                "tracker_console": "GPRS-terminal",
+                "tracker_console": "Air console",
                 "tracker_corrupt": "Cancel registration"
             }
         },
         "console": {
-            "title": "GPRS-terminal for tracker",
+            "title": "Air console for tracker",
             "connect_btn": "Start connection",
-            "disconnect_btn": "Close connection",
-            "auto_scroll": "Auto-scrolling",
+            "disconnect_btn": "Terminate session",
+            "auto_scroll": "Auto-scroll",
             "clear": "Clear console",
             "send_btn": "Send",
             "send_empty": "Type the command",
@@ -584,28 +631,28 @@ Ext.define('Locale.locale-ar',{
         },
         "corrupt": {
             "alert": {
-                "title": "Remove tracker registration?",
-                "text": "The device will be permanently deleted from the database, all the data - not available!<br><br>You sure you want remove registration?"
+                "title": "Remove tracker?",
+                "text": "Device will be permanently removed from database. All retated data will be lost.<br><br>Are you to remove device?"
             },
             "success_msg": "Device {0} successfully removed"
         }
     },
     "tariffs": {
-        "menu_text": "Tariffs",
+        "menu_text": "Plans",
         "create_form": {
-            "title": "Create new tariff",
-            "main_fields": "Main information",
-            "save_btn": "Create tariff",
+            "title": "Create a new plan",
+            "main_fields": "General information",
+            "save_btn": "Create a plan",
             "clear_btn": "Clear form",
-            "options_fields": "Tariff options",
-            "prices_fields": "Tariff prices"
+            "options_fields": "Plan options",
+            "prices_fields": "Rates"
         },
         "edit_form": {
-            "title": "Edit tariff",
+            "title": "Edit plan",
             "save_btn": "Save changes"
         },
         "default_form": {
-            "title": "Default tariff settings"
+            "title": "Default plan settings"
         },
         "fields": {
             "tariff_id": "ID",
@@ -614,20 +661,20 @@ Ext.define('Locale.locale-ar',{
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
             "device_type": "Device type",
-            "store_period": "History storage period",
+            "store_period": "Store history for",
             "active": "Available for user",
-            "has_reports": "Table reports is available",
+            "has_reports": "Table reports available",
             "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
             "incoming_sms": "Incoming SMS",
             "outgoing_sms": "Outgoing SMS",
             "service_sms": "Service SMS",
             "phone_call": "Phone calls",
-            "traffic": "GPRS (for Mb)",
-            "default_tariff": "the default tariff for devices of type «{0}»",
+            "traffic": "GPRS rate (per Mb)",
+            "default_tariff": "default plan for devices with type «{0}»",
             "default_short": "default",
             "service_price": "the amount charged for service usage",
-            "group_id_exp": "Tariff group",
-            "active_exp": "Users can switch to this tariff on his own",
+            "group_id_exp": "Plan group",
+            "active_exp": "Users are allowed to select this plan",
             "device_limit_exp": "Maximum devices",
             "activation_bonus": "Activation bonus",
             "free_days": "Number of free days",
@@ -635,24 +682,24 @@ Ext.define('Locale.locale-ar',{
             "tariff_type_short": "Payment"
         },
         "list": {
-            "create_btn_text": "Add new tariff",
-            "empty_text": "Tariffs not found"
+            "create_btn_text": "Add new plan",
+            "empty_text": "No plans found"
         },
         "card": {
             "links": {
                 "make_default": "Mark as default",
-                "tariff_edit": "Edit tariff"
+                "tariff_edit": "Edit plan"
             },
             "tab_panel": {
                 "trackers": {
-                    "title": "Trackers at this tariff"
+                    "title": "Trackers on this plan"
                 }
             }
         },
-        "combo_empty": "Select tariff",
-        "select_error": "This tariff is not available",
+        "combo_empty": "Select plan",
+        "select_error": "This plan is not available",
         "select": {
-            "title": "Select tariff"
+            "title": "Select plan"
         },
         "types": {
             "activeday": "Daily",
@@ -676,8 +723,8 @@ Ext.define('Locale.locale-ar',{
             "device_type": "Device type",
             "free_days": "Free days",
             "money_amount": "Amount",
-            "tariff_id": "Tariff ID",
-            "tariff_name": "Tariff",
+            "tariff_id": "Plan ID",
+            "tariff_name": "Plan",
             "status": {
                 "activated": "activated",
                 "no_activated": "not activated"
@@ -687,7 +734,7 @@ Ext.define('Locale.locale-ar',{
             "title": "Edit activation codes",
             "save_btn": "Save changes",
             "selected_count": "Codes selected",
-            "device_type": "Codes selected for devices"
+            "device_type": "Type of devices for selected codes"
         },
         "create_form": {
             "title": "Create activation codes",
@@ -701,10 +748,12 @@ Ext.define('Locale.locale-ar',{
             "reload_btn": "Reload",
             "after_create_success": "Created: {0}",
             "after_edit_success": "Changes: {0}",
-            "after_edit_failure": "Changed: {0}, {1} change failed",
+            "after_edit_failure": "Changed: {0} successfully, {1} failed",
             "select_req": "Select codes from list",
             "same_type_req": "You must specify one device type codes",
             "edited_tip": "changed",
+            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activated",
                 "no_activated": "Not activated",
@@ -712,13 +761,19 @@ Ext.define('Locale.locale-ar',{
                 "cameras": "Cameras",
                 "sockets": "Sockets",
                 "toggle_all": "Show all"
-            },
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
-            "faq_text": "Activation codes FAQ"
+            }
         }
     },
     "settings": {
-        "menu_text": "Settings",
+        "menu_text": "Account management",
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
+        },
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",
@@ -728,12 +783,12 @@ Ext.define('Locale.locale-ar',{
             "maps_title": "Available maps",
             "maps_default": {
                 "type": "Default map",
-                "location_lat": "Latitude default",
-                "location_lng": "Longitude default",
+                "location_lat": "Default latitude",
+                "location_lng": "Default longitude",
                 "zoom": "Default zoom"
             },
             "google_client_id": "Client ID for google maps",
-            "currency": "Currency for users",
+            "currency": "Billing currency for users",
             "payment_link": "Payment system URL",
             "promo_url": "Promo website URL",
             "domain": "Domain",
@@ -749,10 +804,10 @@ Ext.define('Locale.locale-ar',{
             "footer_email": "Company E-mail",
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
-            "geocoder": "geocoder الافتراضي",
-            "route_provider": "افتراضي مزود الطريق",
-            "translit": "حرفي SMS",
-            "measurement_system": "نظام القياس",
+            "geocoder": "Geocoding",
+            "route_provider": "Default route provider",
+            "translit": "Transliteration for SMS",
+            "measurement_system": "Measurement system",
             "payment_description": "Payment options and terms",
             "support_email": "Email for customers support",
             "alerts_email": "Email for important alerts and invoices",
@@ -814,102 +869,6 @@ Ext.define('Locale.locale-ar',{
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
-        },
-        "edit_form": {
-            "title": "Service Settings",
-            "save_btn": "Save",
-            "save_msg": "Settings saved successfully",
-            "main_fields": "Basic Settings",
-            "map_fields": "Maps settings",
-            "permission_fields": "Notification dettings",
-            "domain_sup": "* - for domains like *{0} available map types limited",
-            "custom_fields": "Customization",
-            "main_buttons_title": "Displaying buttons",
-            "show_mobile_apps": "Show buttons for downloading mobile apps",
-            "allow_registration": "Allow user self registration",
-            "main_texts_title": "Main texts",
-            "footer_texts_title": "Text in the basement of the login page",
-            "logo_title": "Logo",
-            "favicon_title": "Favicon",
-            "login_wallpaper_title": "Authorization page background",
-            "desktop_wallpaper_title": "Services page background",
-            "upload_btn": "Upload",
-            "update_btn": "Change",
-            "remove_btn": "Remove",
-            "upload_loading": "Upload Image",
-            "domain_fields": "Domain",
-            "regional_fields": "Regional settings",
-            "maps_fields": "Maps",
-            "demo_fields": "Demo user",
-            "notifications_fields": "Notifications",
-            "password_fields": "Change password",
-            "pass_hint": "Changes in other tabs will not be saved",
-            "pass_save_msg": "Password changed successfully",
-            "pass_save_btn": "Change Password",
-            "maps_hint": "Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.",
-            "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
-            "user_notifications_title": "Notifications to users",
-            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
-            "special_notifications_title": "Notifications to administrators",
-            "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
-            "defaults_fields": "User default settings",
-            "defaults_hint": "Settings in this section will be automatically applied to all new users",
-            "branding_fields": "Branding",
-            "branding_main_title": "Branding main settings",
-            "branding_img_title": "Images and logo",
-            "branding_contacts_title": "Contact information for users",
-            "service_fields": "Service preferences",
-            "service_links_title": "Domain and URLs",
-            "service_regional_title": "Regional settings",
-            "service_login_title": "Login page",
-            "service_maps_title": "Maps",
-            "service_maps_defaults_title": "Map default settings",
-            "service_additional_title": "Email notifications",
-            "accounts_fields": "User defaults",
-            "accounts_regional_title": "Regional settings",
-            "accounts_geocoding_title": "Cartography and databases",
-            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
-            "account_roads_title": "Roads",
-            "emails_fields": "Email messages",
-            "emails_main_title": "Main settings",
-            "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
-            "sms_fields": "SMS messages",
-            "sms_main_title": "Main settings",
-            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
-            "sms_m2m_title": "M2M messages",
-            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
-            "sms_user_title": "User notifications",
-            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
-            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
-            "service_info": "Define the preferences of your service.",
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
-        },
-        "upload_form": {
-            "save_btn": "Upload",
-            "cancel_btn": "Cancel",
-            "upload_btn": "View",
-            "title": "Upload image. {0}",
-            "titles": {
-                "logo": "Logo",
-                "favicon": "Favicon",
-                "login_wallpaper": "Login page wallpaper",
-                "desktop_wallpaper": "Service page wallpaper"
-            },
-            "tips": {
-                "logo": "Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.",
-                "favicon": "Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.",
-                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG."
-            },
-            "img_title": "The image format {0} (the maximum size of {1} MB)",
-            "error_text": "Failed to load image"
-        },
-        "subscription": {
-            "activation_btn_text": "Pay activation fee now (500 USD) online",
-            "monthly_fee_btn_text": "Pay online",
-            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
-            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
-            "license_balance": "Pending amount {0}",
-            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         },
         "sms_gateway": {
             "navixy": {
@@ -999,6 +958,91 @@ Ext.define('Locale.locale-ar',{
                     }
                 }
             }
+        },
+        "edit_form": {
+            "title": "Service Settings",
+            "save_btn": "Save",
+            "save_msg": "Settings successfully saved",
+            "main_fields": "Basic Settings",
+            "map_fields": "Maps settings",
+            "permission_fields": "Notification dettings",
+            "domain_sup": "* Map choice is limited for subdomains of *{0}",
+            "custom_fields": "Customization",
+            "main_buttons_title": "Displaying buttons",
+            "show_mobile_apps": "Show buttons for downloading mobile apps",
+            "main_texts_title": "Main texts",
+            "footer_texts_title": "Text in the basement of the login page",
+            "logo_title": "Logo",
+            "favicon_title": "Favicon",
+            "login_wallpaper_title": "Login page background",
+            "desktop_wallpaper_title": "Services page background",
+            "upload_btn": "Upload",
+            "update_btn": "Change",
+            "remove_btn": "Remove",
+            "upload_loading": "Upload Image",
+            "domain_fields": "Domain",
+            "regional_fields": "Regional settings",
+            "maps_fields": "Maps",
+            "demo_fields": "Demo user",
+            "notifications_fields": "Notifications",
+            "password_fields": "Change password",
+            "pass_hint": "Changes in other tabs will not be saved",
+            "pass_save_msg": "Password changed successfully",
+            "pass_save_btn": "Change Password",
+            "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
+            "user_notifications_title": "Notifications to users",
+            "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
+            "special_notifications_title": "Notifications to administrators",
+            "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
+            "branding_fields": "Branding",
+            "branding_main_title": "Branding main settings",
+            "branding_img_title": "Images and logo",
+            "branding_contacts_title": "Contact information for users",
+            "service_fields": "Service preferences",
+            "service_links_title": "Domain and URLs",
+            "service_regional_title": "Regional settings",
+            "service_login_title": "Login page",
+            "service_maps_title": "Maps",
+            "service_maps_defaults_title": "Map default settings",
+            "service_additional_title": "Email notifications",
+            "accounts_fields": "User defaults",
+            "accounts_regional_title": "Regional settings",
+            "accounts_geocoding_title": "Cartography and databases",
+            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
+            "account_roads_title": "Roads",
+            "emails_fields": "Email messages",
+            "emails_main_title": "Main settings",
+            "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
+            "sms_fields": "SMS messages",
+            "sms_main_title": "Main settings",
+            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
+            "sms_m2m_title": "M2M messages",
+            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
+            "sms_user_title": "User notifications",
+            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
+            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+            "service_info": "Define the preferences of your service.",
+            "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+        },
+        "upload_form": {
+            "save_btn": "Upload",
+            "cancel_btn": "Cancel",
+            "upload_btn": "View",
+            "title": "Upload image. {0}",
+            "titles": {
+                "logo": "Logo",
+                "favicon": "Favicon",
+                "login_wallpaper": "Wallpaper for login page",
+                "desktop_wallpaper": "Service page wallpaper"
+            },
+            "tips": {
+                "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
+                "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
+                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
+            },
+            "img_title": "Image format {0} (max size {1} MB)",
+            "error_text": "Failed to load image"
         }
     },
     "accounting": {
@@ -1014,7 +1058,7 @@ Ext.define('Locale.locale-ar',{
                 "save_btn": "Get 1C data file",
                 "report_btn": "Submit deeds by email",
                 "fields": {
-                    "month": "Select a month",
+                    "month": "Select month",
                     "last_act": "Last deed number"
                 }
             },
@@ -1047,7 +1091,7 @@ Ext.define('Locale.locale-ar',{
             "upload_loading": "Uploading file",
             "error_text": "Failed to import payments",
             "fields": {
-                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+                "file_title": "Import {0} file (max size {1} Mb)"
             },
             "errors": {
                 "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
@@ -1227,67 +1271,20 @@ Ext.define('Locale.locale-ar',{
         }
     },
     "measurement_systems": {
-        "metric": "متري",
-        "imperial": "إمبراطوري",
-        "us": "الإمبراطورية الأمريكية"
+        "metric": "Metric",
+        "imperial": "Imperial",
+        "us": "US"
     },
     "route_providers": {
         "progorod": "Progorod",
-        "google": "جوجل",
+        "google": "Google",
         "osrm": "OSRM"
     },
     "geocoders": {
-        "google": "جوجل",
-        "yandex": "ياندكس",
+        "google": "Google",
+        "yandex": "Yandex",
         "progorod": "Progorod",
-        "osm": "أوبن ستريت ماب"
-    },
-    "currencies_tpls": {
-        "GBP": "£{0}",
-        "BRL": "R${0}",
-        "HUF": "{0} Ft",
-        "HKD": "HK${0}",
-        "DKK": "kr {0}",
-        "EUR": "€{0}",
-        "ILS": "₪{0}",
-        "INR": "₹{0}",
-        "IDR": "Rp {0}",
-        "CAD": "С${0}",
-        "CNY": "¥{0}",
-        "KRW": "₩{0}",
-        "MYR": "RM{0}",
-        "MXN": "Mex${0}",
-        "NZD": "NZ${0}",
-        "NOK": "kr {0}",
-        "PKR": "Rs. {0}",
-        "PLN": "{0} zł",
-        "RUB": "{0} rub.",
-        "SGD": "S${0}",
-        "USD": "${0}",
-        "TWD": "NT${0}",
-        "THB": "฿{0}",
-        "TRY": "₺{0}",
-        "PHP": "{0} ₱",
-        "CZK": "{0} Kč",
-        "CLP": "${0}",
-        "SEK": "{0} kr",
-        "CHF": "{0} franc",
-        "ZAR": "R {0}",
-        "JPY": "¥{0}",
-        "KZT": "{0} tenge",
-        "BYR": "{0} rub.",
-        "AUD": "A${0}",
-        "TJS": "{0} som.",
-        "UAH": "{0} ₴",
-        "LTL": "{0} Lt",
-        "LVL": "Ls {0}",
-        "KGS": "{0} som",
-        "TMT": "{0} man.",
-        "UZS": "{0} som",
-        "MDL": "{0} lei",
-        "GEL": "{0} lari",
-        "AMD": "{0} dram",
-        "AZN": "{0} man."
+        "osm": "OpenStreetMap"
     },
     "geolocation": {
         "disabled": "Disabled",

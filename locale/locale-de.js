@@ -323,7 +323,9 @@ Ext.define('Locale.locale-de',{
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps"
+        "mailru": "Mail.ru Maps",
+        "here": "HERE Maps",
+        "bing": "Bing Maps"
     },
     "dealer_info": {
         "first": "Gesamt",
@@ -709,7 +711,9 @@ Ext.define('Locale.locale-de',{
                 "cameras": "Kameras",
                 "sockets": "Sockets",
                 "toggle_all": "Alle anzeigen"
-            }
+            },
+            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_text": "Activation codes FAQ"
         }
     },
     "settings": {
@@ -807,7 +811,8 @@ Ext.define('Locale.locale-de',{
             "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_inbound": "Number for inbound messages",
             "user_sms_inbound_ph": "Example: 12162780905",
-            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "not_editable": "not editable"
         },
         "edit_form": {
             "title": "Diensteinstellungen",
@@ -983,6 +988,14 @@ Ext.define('Locale.locale-de',{
                     }
                 }
             }
+        },
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
@@ -1237,5 +1250,52 @@ Ext.define('Locale.locale-de',{
         "disabled": "Disabled",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
+    },
+    "currencies_tpls": {
+        "GBP": "£{0}",
+        "BRL": "R${0}",
+        "HUF": "{0} Ft",
+        "HKD": "HK${0}",
+        "DKK": "kr {0}",
+        "EUR": "€{0}",
+        "ILS": "₪{0}",
+        "INR": "₹{0}",
+        "IDR": "Rp {0}",
+        "CAD": "С${0}",
+        "CNY": "¥{0}",
+        "KRW": "₩{0}",
+        "MYR": "RM{0}",
+        "MXN": "Mex${0}",
+        "NZD": "NZ${0}",
+        "NOK": "kr {0}",
+        "PKR": "Rs. {0}",
+        "PLN": "{0} zł",
+        "RUB": "{0} rub.",
+        "SGD": "S${0}",
+        "USD": "${0}",
+        "TWD": "NT${0}",
+        "THB": "฿{0}",
+        "TRY": "₺{0}",
+        "PHP": "{0} ₱",
+        "CZK": "{0} Kč",
+        "CLP": "${0}",
+        "SEK": "{0} kr",
+        "CHF": "{0} franc",
+        "ZAR": "R {0}",
+        "JPY": "¥{0}",
+        "KZT": "{0} tenge",
+        "BYR": "{0} rub.",
+        "AUD": "A${0}",
+        "TJS": "{0} som.",
+        "UAH": "{0} ₴",
+        "LTL": "{0} Lt",
+        "LVL": "Ls {0}",
+        "KGS": "{0} som",
+        "TMT": "{0} man.",
+        "UZS": "{0} som",
+        "MDL": "{0} lei",
+        "GEL": "{0} lari",
+        "AMD": "{0} dram",
+        "AZN": "{0} man."
     }
 });

@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-en
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-en', {
+* @class Locale.locale-en
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-en',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -24,7 +24,7 @@ Ext.define('Locale.locale-en', {
         "login": "Login",
         "password": "Password",
         "login_btn": "Login",
-        "locale_title": "Select language",
+        "locale_title": "Select your language",
         "locale_title_short": "language",
         "auth_error": "Authentication error",
         "reloading_soon": "Reloading",
@@ -48,12 +48,12 @@ Ext.define('Locale.locale-en', {
     "yes": "yes",
     "no": "no",
     "na": "N/A",
-    "enable": 'enable',
-    "disable": 'disable',
-    "disabled": 'Disabled',
-    "forbid": 'forbid',
-    "allow": 'allow',
-    "forbidden": 'Forbidden',
+    "enable": "enable",
+    "disable": "disable",
+    "disabled": "Disabled",
+    "forbid": "forbid",
+    "allow": "allow",
+    "forbidden": "Forbidden",
     "show_btn": "Show",
     "wrong_period": "An invalid period",
     "required_fields": "* - required fields or sections",
@@ -76,13 +76,13 @@ Ext.define('Locale.locale-en', {
         },
         "11": "Access denied",
         "12": "Service platform is not found",
-        "101": "This feature is not available in Demo mode",
+        "101": "This feature is not available in the Demo mode",
         "102": "Wrong username or password",
         "103": "The user has not activated",
         "111": "Wrong handler",
         "112": "Wrong method",
         "201": "No data found",
-        "202": "There are too many points in the area",
+        "202": "Too many points in the area",
         "203": "Related item has been deleted",
         "204": "Element not found",
         "205": "Invalid parameters",
@@ -104,7 +104,7 @@ Ext.define('Locale.locale-en', {
         "221": "Plan restriction:</br> Device limit exceeded.",
         "222": "Plugin not found",
         "223": "This phone number is already in use",
-        "224": "Device with this device-id is already in use",
+        "224": "Device with this ID already exists",
         "225": "Not allowed for this legal entity type",
         "226": "Wrong ICCID",
         "227": "Invalid activation code",
@@ -241,7 +241,7 @@ Ext.define('Locale.locale-en', {
         "square_meter": "sq. m",
         "ar": "ar",
         "hectare": "ha",
-        "kmh": "km / h",
+        "kmh": "km/h",
         "hour": "h",
         "minute": "m",
         "second": "s",
@@ -267,10 +267,10 @@ Ext.define('Locale.locale-en', {
             "collapser_exptip": "Show links"
         },
         "body": {
-            "title": "Additional information:",
-            "exptitle": "Additional information <a>(show)</a>",
+            "title": "Plan options and details:",
+            "exptitle": "Plan options and details <a>(expand)</a>",
             "exptitle_show": "<a>(show)</a>",
-            "collapser_tip": "Hide additional information",
+            "collapser_tip": "Hide plan options and details",
             "collapser_exptip": "Show more"
         }
     },
@@ -280,7 +280,7 @@ Ext.define('Locale.locale-en', {
         "socket": "Socket"
     },
     "currency": {
-        "gbp": "Pound Sterling",
+        "gbp": "Pound sterling",
         "brl": "Brazilian real",
         "huf": "Hungarian forint",
         "hkd": "Hong Kong dollar",
@@ -289,7 +289,7 @@ Ext.define('Locale.locale-en', {
         "ils": "Israeli new shekel",
         "inr": "Indian rupee",
         "idr": "Indonesian rupiah",
-        "cad": "Canadian Dollar",
+        "cad": "Canadian dollar",
         "cny": "Renminbi",
         "krw": "South Korean won",
         "myr": "Malaysian ringgit",
@@ -340,8 +340,8 @@ Ext.define('Locale.locale-en', {
         "doublegis": "DoubleGIS Maps",
         "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
-        here: 'HERE Maps',
-        bing: 'Bing Maps'
+        "here": "HERE Maps",
+        "bing": "Bing Maps"
     },
     "dealer_info": {
         "first": "total",
@@ -493,7 +493,7 @@ Ext.define('Locale.locale-en', {
             "label": "Title",
             "model": "Model",
             "phone": "Phone",
-            "device_id": "Device id",
+            "device_id": "Device ID",
             "creation_date": "Tracker activation date",
             "creation_date_short": "Activated",
             "connection_status": "Status",
@@ -501,8 +501,8 @@ Ext.define('Locale.locale-en', {
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
             "tariff": "Tracker plan",
-            "deleted": "Marked as deleted",
-            "blocked": "Service paused",
+            "deleted": "Tracker deleted",
+            "blocked": "Service suspended",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
@@ -526,7 +526,7 @@ Ext.define('Locale.locale-en', {
             "return_btn": "Back"
         },
         "clone_form": {
-            "title": "Crate clone for the tracker",
+            "title": "Crate a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"
@@ -608,9 +608,9 @@ Ext.define('Locale.locale-en', {
     "tariffs": {
         "menu_text": "Plans",
         "create_form": {
-            "title": "Create new plan",
+            "title": "Create a new plan",
             "main_fields": "General information",
-            "save_btn": "Create plan",
+            "save_btn": "Create a plan",
             "clear_btn": "Clear form",
             "options_fields": "Plan options",
             "prices_fields": "Rates"
@@ -624,43 +624,38 @@ Ext.define('Locale.locale-en', {
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Plan name",
+            "name": "Label",
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
             "device_type": "Device type",
-            "store_period": "Keep and show tracking history for",
+            "store_period": "Store history for",
             "active": "Available for user",
-            "has_reports": "Table reports is available",
-            "proportional_charge": "Always charge as a full month",
+            "has_reports": "Table reports available",
+            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
             "incoming_sms": "Incoming SMS",
-            "outgoing_sms": "Outgoing regular SMS",
-            "service_sms": "Outgoing service SMS",
-            "phone_call": "Phone calls (outgoing)",
-            "traffic": "GPRS Traffic",
+            "outgoing_sms": "Outgoing SMS",
+            "service_sms": "Service SMS",
+            "phone_call": "Phone calls",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "default plan for devices with type «{0}»",
             "default_short": "default",
             "service_price": "the amount charged for service usage",
-            "group_id_exp": "Plan belongs to Group No.",
-            "active_exp": "Users can switch to this plan on their own",
-            "device_limit_exp": "Maximum amount of assets available to user",
-            "activation_bonus": "Complimentary bonus",
-            "free_days": "Complimentary days",
+            "group_id_exp": "Plan group",
+            "active_exp": "Users are allowed to select this plan",
+            "device_limit_exp": "Maximum devices",
+            "activation_bonus": "Activation bonus",
+            "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
             "tariff_type_short": "Payment",
-
             "rate": "Rate",
             "users_price": "Price for users",
             "client_costs": "Your costs",
-
             "plan_options": "Plan options",
             "plan_availability": "Plan availability",
-
             "available_maps": "Available maps",
             "available_features": "Available features",
-
             "default_name": "My plan",
-
             "tariff_is_default": "Use this plan as default"
         },
         "list": {
@@ -674,7 +669,7 @@ Ext.define('Locale.locale-en', {
             "save_form_btn": "Save plan",
             "currency_in": "(in {0})",
             "links": {
-                "make_default": "Set as default plan",
+                "make_default": "Mark as default",
                 "tariff_edit": "Edit plan"
             },
             "tab_panel": {
@@ -720,7 +715,7 @@ Ext.define('Locale.locale-en', {
         },
         "types": {
             "activeday": "Daily",
-            "monthly": "Monthly (on the 1st day)",
+            "monthly": "Monthly",
             "everyday": "Monthly (daily debit)"
         },
         "price_type": {
@@ -832,7 +827,7 @@ Ext.define('Locale.locale-en', {
             "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
             "domain_ph": ".navixy.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
-            "domain_help": "How do I set up a CNAME-record?",
+            "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
@@ -862,22 +857,22 @@ Ext.define('Locale.locale-en', {
             "sms_gateway": "SMS Gateway",
             "sms_gateway_ph": "SMS Gateway not selected",
             "sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
-            "sms_sender_id": "Sender ID and number for inbound messages",
-            "sms_sender_id_ph": "Example: 12162780905",
-            "sms_sender_id_hint": "It is highly recommended to use the number your lease for inbound messages as a Sender ID. In this case the service platform will be able to receive SMS from devices replies with the command confirmations and other valued data.<br /><br />We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
-            //"sms_inbound": "Number for inbound messages",
-            //"sms_inbound_ph": "Example: 12162780905",
-            //"sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "sms_sender_id": "Sender ID",
+            "sms_sender_id_ph": "Example: Navixy",
+            "sms_sender_id_hint": "It is highly recommended to use the number your lease for inbound messages as a Sender ID. In this case the service platform will be able to receive SMS from devices replies with the command confirmations and other valued data.",
             "user_sms_gateway": "SMS Gateway",
             "user_sms_gateway_ph": "SMS Gateway not selected",
             "user_sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
-            "user_sms_sender_id": "Sender ID ",
+            "user_sms_sender_id": "Sender ID",
             "user_sms_sender_id_ph": "Example: Navixy",
-            "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_inbound": "Number for inbound messages",
             "user_sms_inbound_ph": "Example: 12162780905",
             "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
-            "not_editable": "not editable"
+            "not_editable": "not editable",
+            "sms_inbound": "Number for inbound messages",
+            "sms_inbound_ph": "Example: 12162780905",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
         },
         "sms_gateway": {
             "navixy": {
@@ -1052,6 +1047,14 @@ Ext.define('Locale.locale-en', {
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
+        },
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
@@ -1247,7 +1250,7 @@ Ext.define('Locale.locale-en', {
                 "enter_list": "Enter or scan the list of IMEI-codes",
                 "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
                 "list_count": "Resposne codes: <b>{0}</b>",
-                "list_miss": "incorrect: <b>{0}</b> ",
+                "list_miss": "incorrect: <b>{0}</b>",
                 "list_rep": "introduced repetitions: <b>{0}</b>",
                 "import_success": "Successfully imported {0}",
                 "import_failure": "The list of devices to import failed",

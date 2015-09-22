@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-ru
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-ru', {
+* @class Locale.locale-ru
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-ru',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -49,12 +49,12 @@ Ext.define('Locale.locale-ru', {
     "yes": "да",
     "no": "нет",
     "na": "N/A",
-    "enable": 'включить',
-    "disable": 'отключить',
-    "disabled": 'Отключено',
-    "forbid": 'запретить',
-    "allow": 'разрешить',
-    "forbidden": 'Запрещено',
+    "enable": "включить",
+    "disable": "отключить",
+    "disabled": "Отключено",
+    "forbid": "запретить",
+    "allow": "разрешить",
+    "forbidden": "Запрещено",
     "show_btn": "Показать",
     "required_fields": "* - поля или разделы обязательные для заполнения",
     "wrong_period": "Указан недопустимый период",
@@ -345,8 +345,8 @@ Ext.define('Locale.locale-ru', {
         "doublegis": "Карты DoubleGis",
         "ovi": "Карты OVI",
         "mailru": "Карты Mail.ru",
-        here: 'Карты HERE',
-        bing: 'Карты Bing'
+        "here": "Карты HERE",
+        "bing": "Карты Bing"
     },
     "dealer_info": {
         "first": "вcего",
@@ -632,7 +632,7 @@ Ext.define('Locale.locale-ru', {
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Название тарифа",
+            "name": "Название",
             "group_id": "Группа",
             "price": "Месячный платеж",
             "device_limit": "Количество устройств",
@@ -640,7 +640,7 @@ Ext.define('Locale.locale-ru', {
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",
             "has_reports": "Доступны табличные отчеты",
-            "proportional_charge": "Всегда списывать как за полный месяц",
+            "proportional_charge": "Абонентскую плату за неполный месяц списывать пропорционально числу дней",
             "incoming_sms": "Входящее SMS",
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
@@ -656,19 +656,14 @@ Ext.define('Locale.locale-ru', {
             "free_days": "Кол-во бесплатных дней",
             "tariff_type": "Биллинговый период",
             "tariff_type_short": "Оплата",
-
             "rate": "Ставка",
             "users_price": "Цена для пользователей",
             "client_costs": "Вашы расходы",
-
             "plan_options": "Настройки тарифа",
             "plan_availability": "Настройки доступа",
-
             "available_maps": "Доступные карты",
             "available_features": "Доступные опции",
-
             "default_name": "Мой тарифный план",
-
             "tariff_is_default": "Использовать по умолчанию"
         },
         "list": {
@@ -682,7 +677,7 @@ Ext.define('Locale.locale-ru', {
             "save_form_btn": "Сохранить тариф",
             "currency_in": "(в {0})",
             "links": {
-                "make_default": "Установить планом по умолчанию",
+                "make_default": "Назначить тарифом по умолчанию",
                 "tariff_edit": "Редактировать тариф"
             },
             "tab_panel": {
@@ -727,9 +722,10 @@ Ext.define('Locale.locale-ru', {
             "title": "Выберите тарифный план"
         },
         "types": {
-            "activeday": "Сутки",
-            "monthly": "Месяц (ежемесячно 1-го числа)",
-            "everyday": "Месяц (посуточное списание)"
+            "activeday": "Посуточно",
+            "monthly": "Помесячно",
+            "everyday": "Помесячно (ежедневное списание)",
+            "empty": "Без биллинга"
         },
         "price_type": {
             "monthly": "Месячный платеж",
@@ -840,7 +836,7 @@ Ext.define('Locale.locale-ru', {
             "login_wallpaper_hint": "Используйте привлекательное изображение для страницы входа",
             "domain_ph": ".navixy.com",
             "domain_hint": "Запустите и предоставляйте ваш сервис на собственном доменном имени (напеример: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо настроить CNAME-запись на вашем DNS-сервере, ссылающуюся на адрес saas.navixy.com.",
-            "domain_help": "Как настроить CNAME-запись?",
+            "domain_help": "Как настроить CNAME-запись",
             "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
             "locale_hint": "Язык, назначаемый по умолчанию для новых учетных записей пользователей. Пользователи также могут изменять языковые предпочтения самостоятельно, в настройках своей учетной записи.",
             "currency_hint": "Установите валюту, распространенную в вашем регионе. Биллинговая система площадки будет тарифицировать ваших пользователей согласно настроенных вами тарифных планов.",
@@ -870,12 +866,9 @@ Ext.define('Locale.locale-ru', {
             "sms_gateway": "SMS шлюз",
             "sms_gateway_ph": "SMS шлюз не выбран",
             "sms_gateway_hint": "Выберите SMS шлюз, который будете использовать. У вас должен быть соответствующий аккаунт у оператора этого шлюза и вам необходимо предоставить параметры авторизации для безопасного соединения с ним.",
-            "sms_sender_id": "ID отправителя и номер для входящих сообщений",
-            "sms_sender_id_ph": "Пример: 79037976362",
-            "sms_sender_id_hint": "Настоятельно рекомендуется использовать арендованный вами номер для приема входящих сообщений. Это обеспечит платформе возможность приема от устройств SMS подтверждений о выполнении ими команд и других полезных данных.<br />Мы не рекомендуем, но вы также можете использовать иной цифровой или алфавитно-цифровой идентификатор отправителя, например, фирменное наименование сервиса. Однако в этом случае сервис-платформа скорее всего не сможет принимать сообщения от устройств. Также учтите, что требования к оригинатору могут дополнительно регламентироваться национальным законодательством в целях борьбы с SMS-спамом. Убедитесь, что указанный оригинатор соответствует этим требованиям, в противном случае SMS сообщения могут быть не доставлены.",
-            //"sms_inbound": "Номер для входящих сообщений",
-            //"sms_inbound_ph": "Пример: 79037976362",
-            //"sms_inbound_hint": "Мы не рекомендуем, но вы также можете использовать иной цифровой или алфавитно-цифровой идентификатор отправителя, например, фирменное наименование сервиса. Однако в этом случае сервис-платформа скорее всего не сможет принимать сообщения от устройств. Также учтите, что требования к оригинатору могут дополнительно регламентироваться национальным законодательством в целях борьбы с SMS-спамом. Убедитесь, что указанный оригинатор соответствует этим требованиям, в противном случае SMS сообщения могут быть не доставлены.",
+            "sms_sender_id": "ID отправителя",
+            "sms_sender_id_ph": "Пример: Navixy",
+            "sms_sender_id_hint": "Настоятельно рекомендуется использовать арендованный вами номер для приема входящих сообщений. Это обеспечит платформе возможность приема от устройств SMS подтверждений о выполнении ими команд и других полезных данных.",
             "user_sms_gateway": "SMS шлюз",
             "user_sms_gateway_ph": "SMS шлюз не выбран",
             "user_sms_gateway_hint": "Выберите SMS шлюз, который будете использовать. У вас должен быть соответствующий аккаунт у оператора этого шлюза и вам необходимо предоставить параметры авторизации для безопасного соединения с ним.",
@@ -885,7 +878,10 @@ Ext.define('Locale.locale-ru', {
             "user_sms_inbound": "Номер для входящих сообщений",
             "user_sms_inbound_ph": "Пример: 79037976362",
             "user_sms_inbound_hint": "Укажите арендованный номер для приема SMS-команд от пользвоателей. Оставьте это поле пустым, если не предлагаете пользователям такой возможности.",
-            "not_editable": "нельзя редактировать"
+            "not_editable": "нельзя редактировать",
+            "sms_inbound": "Номер для входящих сообщений",
+            "sms_inbound_ph": "Пример: 79037976362",
+            "sms_inbound_hint": "Мы не рекомендуем, но вы также можете использовать иной цифровой или алфавитно-цифровой идентификатор отправителя, например, фирменное наименование сервиса. Однако в этом случае сервис-платформа скорее всего не сможет принимать сообщения от устройств. Также учтите, что требования к оригинатору могут дополнительно регламентироваться национальным законодательством в целях борьбы с SMS-спамом. Убедитесь, что указанный оригинатор соответствует этим требованиям, в противном случае SMS сообщения могут быть не доставлены."
         },
         "sms_gateway": {
             "navixy": {
@@ -1061,6 +1057,14 @@ Ext.define('Locale.locale-ru', {
             },
             "img_title": "Изображение формата {0} (максимальный размер {1} мб)",
             "error_text": "Не удалось загрузить изображение"
+        },
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
@@ -1256,7 +1260,7 @@ Ext.define('Locale.locale-ru', {
                 "enter_list": "Введите или просканируйте список IMEI-кодов",
                 "enter_list_no_focus": "Введите или просканируйте список IMEI-кодов<br>К сканированию не готов<br>Установите фокус на поле",
                 "list_count": "Распозноно кодов: <b>{0}</b>",
-                "list_miss": "введено некорректно: <b>{0}</b> ",
+                "list_miss": "введено некорректно: <b>{0}</b>",
                 "list_rep": "введено повторов: <b>{0}</b>",
                 "import_success": "Успешно импортировано {0}",
                 "import_failure": "Список устройств импортировать не удалось",
