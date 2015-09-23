@@ -20,7 +20,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         }
     ],
 
-    stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation', 'SpeedRestriction', 'RoadsSnap'],
+    stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
+             'SpeedRestriction', 'RoadsSnap'],
     models: ['Settings'],
     mainStore: 'Settings',
 
@@ -39,6 +40,10 @@ Ext.define('NavixyPanel.controller.Settings', {
                 fn: this.handleEdit,
                 loadRecord: true,
                 access: 'read'
+            },
+
+            'avangate_payment_recieved': {
+                fn: this.showPaymentsRecieveMsg
             }
         });
 
@@ -46,6 +51,29 @@ Ext.define('NavixyPanel.controller.Settings', {
             text: _l.get('settings.menu_text'),
             target: 'settings'
         };
+    },
+
+    showPaymentsRecieveMsg: function () {
+        Ext.Msg.show({
+            msg: _l.get('settings.subscription.payment_recieved_msg'),
+            buttons: Ext.Msg.OK,
+            closable: false,
+            fn: function () {
+                Ext.Nav.shift('settings');
+                try {
+                    Ext.waitFor(function () {
+                        return Ext.getFirst('avangate-panel');
+                    }, function () {
+                        Ext.getFirst('avangate-panel').maybeInitActivationPaymentCheck();
+                    }, this);
+                } catch (e) {
+                    console.log(e.stack);
+                }
+
+            },
+            scope: this
+        });
+
     },
 
     handleEdit: function (settingsRecord) {

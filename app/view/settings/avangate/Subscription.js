@@ -9,11 +9,28 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     alias: 'widget.avangate-panel',
     padding: 20,
     requires: ['NavixyPanel.plugins.FieldPostfix'],
+    cls: 'avangate-subscription-panel',
     initComponent: function () {
         this.title = 'Subscription';
 
-        this.resolveItems();
+        if (!localStorage.getItem('activation_payment_check_needed')) {
+            this.items = this.resolveItems();
+        } else {
+            this.html = this.getAvaitMsg();
+
+        }
         this.callParent(arguments);
+    },
+
+    getAvaitMsg: function () {
+        return '<div class="loader"></div>' + _l.get('settings.subscription.waiting_activation_fee');
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+        if (localStorage.getItem('activation_payment_check_needed')) {
+            this.initActivationPaymentCheck();
+        }
     },
 
     constructAvangateLink: function (type, data) {
@@ -27,10 +44,43 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
         }
     },
 
+    maybeInitActivationPaymentCheck: function () {
+        var dealerData = Ext.getStore('Dealer').getAt(0).getData();
+
+        if (dealerData.demo_tariff && !dealerData.paas_activation_date) {
+            localStorage.setItem('activation_payment_check_needed', 1);
+            this.initActivationPaymentCheck();
+        }
+    },
+
+    initActivationPaymentCheck: function () {
+        this.removeAll();
+        this.update(this.getAvaitMsg());
+        var me = this,
+            checkInterval = setInterval(Ext.bind(function () {
+                Ext.API.getDealerInfo(function (dealerData) {
+                    if (dealerData.paas_activation_date) {
+                        try {
+                            clearInterval(checkInterval);
+                            me.update('');
+                            Ext.getStore('Dealer').loadData([dealerData]);
+                            me.removeAll();
+                            me.add(me.resolveItems());
+                            localStorage.removeItem('activation_payment_check_needed');
+                        } catch (e) {
+                            console.log(e.stack);
+                        }
+
+                    }
+                });
+            }, this), 10000);
+    },
+
     resolveItems: function () {
         var dealerData = Ext.getStore('Dealer').getAt(0).getData(),
             localePart = _l.get('settings.subscription'),
             currencyTpl = _l.get('currencies_tpls')[dealerData.seller_currency],
+            items = [],
             hintCmp = {
                 xtype: 'component',
                 cls: 'subscription_hint',
@@ -40,7 +90,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
         if (dealerData.demo_tariff && !dealerData.paas_activation_date) {
             var tracker_tariff_end_date = Ext.Date.formatISO(dealerData.tracker_tariff_end_date, Ext.util.Format.dateFormat);
-            this.items = [{
+            items = [{
                 xtype: 'component',
                 padding: '10 0',
                 html: Ext.String.format(localePart.get('activation_hint'), tracker_tariff_end_date)
@@ -50,12 +100,14 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 scale: 'small',
                 padding: 5,
                 text: localePart.get('activation_btn_text'),
+                handler: this.redirectToPayActivationForm,
+                hrefTarget: '_self',
                 href: this.constructAvangateLink('activation')
             }, hintCmp];
         } else {
             var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0;
 
-            this.items = [{
+            items = [{
                 xtype: 'component',
                 padding: '10 0',
                 html: localePart.get('monthly_fee_hint')
@@ -93,6 +145,8 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
                 }, hintCmp];
         }
+
+        return items;
     },
 
     redirectToPayForm: function () {

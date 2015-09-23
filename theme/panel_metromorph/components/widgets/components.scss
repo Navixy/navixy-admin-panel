@@ -2,3 +2,15 @@
     font-size: 11px;
     color: $gray;
 }
+
+.avangate-subscription-panel {
+    .loader {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-right: 5px;
+        background-size: 100%;
+        background-image: url($img_dir + '/grid/loading.gif');
+    }
+}
