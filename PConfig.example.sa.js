@@ -29,14 +29,5 @@ Config = {
     hasOptDelivery: false,
 
     // Номер приема входящих сообщений для sms-шлюза navixy
-    navixyInboundNumber: "79037976362",
-
-    avangateLinks: {
-        avangate_payment_page: 'https://secure.avangate.com/order/checkout.php',
-        linkTpls: {
-            activation: '{avangate_payment_page}?PRODS=4656455&INFO4656455={dealer_id}&QTY=1&{styleParams}&BACK_REF=http://panel.navixy.com/payment_gate/',
-            monthlyFee: '{avangate_payment_page}?PRODS=4656484&INFO4656484={dealer_id}&QTY={qty}&{styleParams}'
-        },
-        styleParams: 'CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
-    }
+    navixyInboundNumber: "79037976362"
 };
