@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -830,7 +830,8 @@ Ext.define('Locale.locale-en',{
             monthly_fee_btn_text: 'Pay online',
             activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
             monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
-            pending_amount: 'Pending amount {0}',
+            pending_amount: 'Pending amount: {0}',
+            current_balance: 'Current balance: {0}',
             subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com',
             payment_recieved_msg: 'Your payment was successfully executed and will be processed shortly.',
             waiting_activation_fee: 'Your payment was successfully executed and will be processed shortly.'

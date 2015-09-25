@@ -7,7 +7,7 @@
 Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     extend: 'Ext.Container',
     alias: 'widget.avangate-panel',
-    padding: 20,
+    padding: '30 300',
     requires: ['NavixyPanel.plugins.FieldPostfix'],
     cls: 'avangate-subscription-panel',
     initComponent: function () {
@@ -107,7 +107,10 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 })
             }, hintCmp];
         } else {
-            var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0;
+            var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0,
+                pedingOrBalanceText = dealerData.license_balance < 0 ?
+                                      Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount.toFixed(2))) :
+                                      Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2)));
 
             items = [{
                 xtype: 'component',
@@ -116,8 +119,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
             }, {
                 xtype: 'component',
                 padding: '10 0',
-                hidden: !pendingAmount,
-                html: Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount))
+                html: pedingOrBalanceText
             },
                 {
                     xtype: 'container',
@@ -132,6 +134,9 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                             step: 100,
                             value: pendingAmount ? pendingAmount : 100,
                             cls: 'x-field-light',
+                            valueToRaw: function (val) {
+                                return val.toFixed(2);
+                            },
                             maxWidth: 150,
                             margin: '0 5 0 0'
                         },
