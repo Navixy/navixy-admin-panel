@@ -73,7 +73,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
                     }
                 });
-            }, this), 10000);
+            }, this), 30000);
     },
 
     resolveItems: function () {
@@ -102,7 +102,9 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 text: localePart.get('activation_btn_text'),
                 handler: this.redirectToPayActivationForm,
                 hrefTarget: '_self',
-                href: this.constructAvangateLink('activation')
+                href: this.constructAvangateLink('activation', {
+                    dealer_id: dealerData.id
+                })
             }, hintCmp];
         } else {
             var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0;
