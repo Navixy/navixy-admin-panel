@@ -20,7 +20,21 @@ Ext.define('NavixyPanel.store.Dealer', {
         "favicon",
         "logo",
         "enable_cameras",
-        "seller_currency"
+        "seller_currency",
+        "demo_tariff",
+        {
+            name: "paas_activation_date",
+            type: 'date',
+            format: 'Y-m-d'
+        }, {
+            name: "tracker_tariff_end_date",
+            type: 'date',
+            format: 'Y-m-d'
+        }, {
+            name: "license_balance",
+            defaultValue: 500
+        }
+
     ],
 
     getImgUrl: function (field) {
@@ -30,8 +44,8 @@ Ext.define('NavixyPanel.store.Dealer', {
 
         return value
             ? isUrl
-                ? value
-                : Ext.API.getGlobalApiUrl({action: value})
+                   ? value
+                   : Ext.API.getGlobalApiUrl({action: value})
             : null
     },
 

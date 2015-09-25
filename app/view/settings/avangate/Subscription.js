@@ -1,0 +1,167 @@
+/**
+ * @class NavixyPanel.view.settings.avangate.Subscription
+ * @extends NavixyPanel.view.components.AbstractForm
+ * Description
+ */
+
+Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
+    extend: 'Ext.Container',
+    alias: 'widget.avangate-panel',
+    padding: 20,
+    requires: ['NavixyPanel.plugins.FieldPostfix'],
+    cls: 'avangate-subscription-panel',
+    initComponent: function () {
+        this.title = 'Subscription';
+
+        if (!localStorage.getItem('activation_payment_check_needed')) {
+            this.items = this.resolveItems();
+        } else {
+            this.html = this.getAvaitMsg();
+
+        }
+        this.callParent(arguments);
+    },
+
+    getAvaitMsg: function () {
+        return '<div class="loader"></div>' + _l.get('settings.subscription.waiting_activation_fee');
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+        if (localStorage.getItem('activation_payment_check_needed')) {
+            this.initActivationPaymentCheck();
+        }
+    },
+
+    constructAvangateLink: function (type, data) {
+        var avangateConfig = Config.avangateLinks;
+
+        try {
+            return new Ext.Template(avangateConfig.linkTpls[type]).apply(Ext.apply(avangateConfig, data || {}));
+        } catch (e) {
+            console.log('Link construction fail', e);
+            return null;
+        }
+    },
+
+    maybeInitActivationPaymentCheck: function () {
+        var dealerData = Ext.getStore('Dealer').getAt(0).getData();
+
+        if (dealerData.demo_tariff && !dealerData.paas_activation_date) {
+            localStorage.setItem('activation_payment_check_needed', 1);
+            this.initActivationPaymentCheck();
+        }
+    },
+
+    initActivationPaymentCheck: function () {
+        this.removeAll();
+        this.update(this.getAvaitMsg());
+        var me = this,
+            checkInterval = setInterval(Ext.bind(function () {
+                Ext.API.getDealerInfo(function (dealerData) {
+                    if (dealerData.paas_activation_date) {
+                        try {
+                            clearInterval(checkInterval);
+                            me.update('');
+                            Ext.getStore('Dealer').loadData([dealerData]);
+                            me.removeAll();
+                            me.add(me.resolveItems());
+                            localStorage.removeItem('activation_payment_check_needed');
+                        } catch (e) {
+                            console.log(e.stack);
+                        }
+
+                    }
+                });
+            }, this), 30000);
+    },
+
+    resolveItems: function () {
+        var dealerData = Ext.getStore('Dealer').getAt(0).getData(),
+            localePart = _l.get('settings.subscription'),
+            currencyTpl = _l.get('currencies_tpls')[dealerData.seller_currency],
+            items = [],
+            hintCmp = {
+                xtype: 'component',
+                cls: 'subscription_hint',
+                margin: '20 0 0 0',
+                html: localePart.get('subscription_hint')
+            };
+
+        if (dealerData.demo_tariff && !dealerData.paas_activation_date) {
+            var tracker_tariff_end_date = Ext.Date.formatISO(dealerData.tracker_tariff_end_date, Ext.util.Format.dateFormat);
+            items = [{
+                xtype: 'component',
+                padding: '10 0',
+                html: Ext.String.format(localePart.get('activation_hint'), tracker_tariff_end_date)
+            }, {
+                xtype: 'button',
+                height: 30,
+                scale: 'small',
+                padding: 5,
+                text: localePart.get('activation_btn_text'),
+                handler: this.redirectToPayActivationForm,
+                hrefTarget: '_self',
+                href: this.constructAvangateLink('activation', {
+                    dealer_id: dealerData.id
+                })
+            }, hintCmp];
+        } else {
+            var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0;
+
+            items = [{
+                xtype: 'component',
+                padding: '10 0',
+                html: localePart.get('monthly_fee_hint')
+            }, {
+                xtype: 'component',
+                padding: '10 0',
+                hidden: !pendingAmount,
+                html: Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount))
+            },
+                {
+                    xtype: 'container',
+                    layout: {
+                        type: 'hbox'
+                    },
+                    items: [
+                        {
+                            xtype: 'numberfield',
+                            name: 'qty',
+                            minValue: 100,
+                            step: 100,
+                            value: pendingAmount ? pendingAmount : 100,
+                            cls: 'x-field-light',
+                            maxWidth: 150,
+                            margin: '0 5 0 0'
+                        },
+                        {
+                            xtype: 'button',
+                            maxWidth: 120,
+                            padding: 3,
+                            text: localePart.get('monthly_fee_btn_text'),
+                            handler: this.redirectToPayForm,
+                            scope: this
+                        }
+                    ]
+
+                }, hintCmp];
+        }
+
+        return items;
+    },
+
+    redirectToPayForm: function () {
+        var qtyField = this.down('numberfield[name=qty]');
+
+        if (qtyField.isValid()) {
+            window.open(this.constructAvangateLink('monthlyFee', {
+                        qty: qtyField.getValue(),
+                        dealer_id: Ext.getStore('Dealer').getAt(0).getId()
+                    }
+                ),
+                '_blank')
+        }
+    }
+
+});

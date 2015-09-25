@@ -1,231 +1,233 @@
 /**
-* @class Locale.locale-de
+* @class Locale.locale-es
 * @extends Locale.AbstractLocale
 */
-Ext.define('Locale.locale-de',{
+Ext.define('Locale.locale-es',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
-            "name": "Locale.ext.locale-de",
+            "name": "Locale.ext.locale-es",
             "history": false
         }
     ],
     "singleton": true,
+    "main_copyright": "© 2015 RusLink. Todos los derechos reservados.",
     "panel_title": "NavixyPanel",
-    "error": "Fehler",
-    "loading": "Laden...",
-    "conneting_loader": "Verbindung mit dem Server",
-    "access_denied": "Zugriff abgelehnt",
-    "access_denied_tip": "Sie haben keine Berechtigung, um angeforderte Zugriffsseite",
-    "index_title": "Willkommen im Bedienfeld",
-    "old_version": "Alte version",
+    "error": "Error",
+    "loading": "Cargando...",
+    "conneting_loader": "Conectando con el servidor",
+    "access_denied": "Acceso denegado",
+    "access_denied_tip": "no tiene permiso para acceder la página solicitada",
+    "index_title": "Bienvenido al panel de control",
+    "index_tip": "",
+    "old_version": "Version Antigua",
     "auth": {
-        "login": "Login oder E-Mail-Adresse",
-        "password": "Passwort",
+        "login": "Login o correo electrónico",
+        "password": "Contraseña",
         "login_btn": "Login",
-        "locale_title": "Sprache der Schnittstelle",
-        "locale_title_short": "Sprache",
-        "auth_error": "Authentifizierungsfehler",
-        "reloading_soon": "Nachladen",
+        "locale_title": "Elegir idioma",
+        "locale_title_short": "Idioma",
+        "auth_error": "Error de autenticación",
+        "reloading_soon": "Recargando",
         "logout": "Logout",
-        "title": "Admin-panel"
+        "title": "Panel de administración"
     },
-    "no_path_found": "Keine Seite auf diesem Weg",
-    "phone_invalid_msg": "Bitte geben Sie eine gültige Telefonnummer",
-    "invalid_numeric_msg": "Nicht gültige Nummer",
-    "invalid_amount_msg": "Not a valid number <br>(2 Ziffern nach dem Dezimalzeichen)",
-    "searcher_empty_text": "Suchbegriff eingeben",
-    "search_empty_text": "Suchbegriff eingeben",
-    "searchTitle": "Suche nach Kategorie",
-    "clear_form_btn": "Klar",
-    "save_form_btn": "Speichern",
-    "back_form_btn": "Zurück",
-    "select_form_btn": "Wählen",
-    "close_form_btn": "Schließen",
-    "yes": "Ja",
-    "no": "Nein",
-    "show_btn": "Zeigen",
-    "wrong_period": "Ein ungültiger Zeitraum",
-    "required_fields": "* - erforderliche Felder oder Abschnitte",
-    "invalid_tab": "Ungültige ausgefüllten Felder",
-    "page_size": "Seitengröße",
+    "no_path_found": "No hay página en esta ruta",
+    "phone_invalid_msg": "Por favor introduzca un numero de telefono válido",
+    "invalid_numeric_msg": "No es un numero válido",
+    "invalid_amount_msg": "No es un numero valido<br>(2 dígitos después del separador decimal)",
+    "searcher_empty_text": "Introduce criterios de búsqueda",
+    "search_empty_text": "Introduce criterios de búsqueda",
+    "searchTitle": "Búsqueda por categoría",
+    "clear_form_btn": "Limpiar",
+    "save_form_btn": "Guardar",
+    "back_form_btn": "Regresar",
+    "select_form_btn": "Seleccionar",
+    "close_form_btn": "Cerrar",
+    "yes": "Sí",
+    "no": "No",
+    "show_btn": "Mostrar",
+    "wrong_period": "Un período inválido",
+    "required_fields": "* - campos requeridos o secciones",
+    "invalid_tab": "Campos llenos inválidos",
+    "page_size": "Tamaño de la página",
     "errors": {
-        "1": "Datenbank-Verbindungsfehler (001). Bitte kontaktieren Sie den Support oder versuchen Sie es später noch einmal.",
-        "2": "Autorisierung-Systemfehler (002).  Bitte kontaktieren Sie den Support oder versuchen Sie es später noch einmal.",
-        "3": "Falsche Sitzungs-Schlüssel (003).  Bitte neu einloggen. Wenn das Problem weiterhin besteht, wenden Sie sich an den Support.",
-        "4": "Benutzer kann nicht gefunden werden oder die Sitzung beendet (004).  Bitte neu einloggen.",
-        "5": "Falsche Anfrage (005). Bitte kontaktieren Sie den Support oder versuchen Sie es später noch einmal.",
-        "6": "Unerwarteter Fehler (006). Bitte kontaktieren Sie den Support oder versuchen Sie es später noch einmal.",
+        "1": "Error de conexión en la base de datos (001). Por favor, póngase en contacto con soporte o inténtelo de nuevo más tarde.",
+        "2": "Error del sistema de autorización (002). Por favor, póngase en contacto con soporte o inténtelo de nuevo más tarde.",
+        "3": "Clave de sesión incorrecto (003).  Por favor, volver a iniciar sesión. Si el problema persiste, póngase en contacto con soporte.",
+        "4": "El usuario no puede ser encontrado o sesión ha terminado (004).  Por favor, vuelva a iniciar sesión.",
+        "5": "Solicitud incorrecta (005). Por favor, póngase en contacto con soporte o inténtelo de nuevo más tarde.",
+        "6": "Error inesperado (006). Por favor, póngase en contacto con soporte o inténtelo de nuevo más tarde.",
         "7": {
-            "default_msg": "Falsche Anforderungsparameter. Überprüfen Sie die Daten.",
-            "title": "Falsche Parameter:",
+            "default_msg": "Parámetros de la petición incorrectas. Compruebe los datos.",
+            "title": "Parámetros incorrectos:",
             "errors": {
-                "login": "Muss eine gültige e-Mail-Adresse sein",
-                "domain": "Falsche Domain-Namen"
+                "login": "Debe ser una dirección válida de correo electrónico",
+                "domain": "Nombre de dominio incorrecto"
             }
         },
-        "11": "Zugriff verweigert",
-        "12": "Die Service-Plattform wurde nicht gefunden.",
-        "101": "Im Demo-Modus ist diese Funktion deaktiviert.",
-        "102": "Falscher Benutzername oder Passwort",
-        "103": "Der Benutzer wurde nicht aktiviert.",
-        "111": "Falsche handler",
-        "112": "Falsche Methode",
-        "201": "Keine Daten gefunden",
-        "202": "Es gibt zu viele Punkte im Bereich",
-        "203": "Verknüpftes Element wurde gelöscht",
-        "204": "Element nicht gefunden",
-        "205": "Ungültige Parameter",
-        "206": "Dieser Benutzername ist bereits im Gebrauch",
-        "207": "Ungültige captcha",
-        "208": "Das Gerät ist gesperrt",
-        "209": "Fehler beim Senden der Nachricht",
-        "210": "Geokodierung ist fehlgeschlagen",
-        "211": "Angeforderte Zeitspanne ist zu groß",
-        "212": "Angeforderte Grenzwert ist zu groß",
-        "213": "Das Gerät ist offline",
-        "214": "Der angeforderte Vorgang werden vom Gerät nicht unterstützt",
-        "215": "Externe Dienstleister Fehler",
-        "216": "Gruppe ist nicht leer",
-        "217": "Liste enthält nicht vorhandene Entitäten",
-        "218": "Falsch formatierte externe Service-Parameter",
-        "219": "Die Aktion ist für die Klon-Objekte nicht zulässig.",
-        "220": "Unbekanntes Gerät-Modell",
-        "221": "Tarif Einschränkung:</br> Gerät überschritten.",
-        "222": "Plugin nicht gefunden",
-        "223": "Diese Telefonnummer ist bereits im Gebrauch",
-        "224": "Gerät mit diesem Gerät-Id wird bereits verwendet",
-        "225": "Nicht erlaubt für diesen gesetzlichen Typ",
-        "226": "Falsche ICCID",
-        "227": "Ungültige Aktivierungs-code",
-        "228": "Vom Sensor unterstützt nicht",
-        "229": "Angeforderte Daten ist noch nicht fertig",
-        "230": "Nicht unterstützt für diesen Entitätstyp",
-        "231": "Entitätsunverträglichkeit der Typen",
-        "232": "Eingabe bereits im Einsatz",
-        "233": "Keine Datendatei",
-        "234": "Ungültiges Datenformat",
-        "235": "Fehlende Kalibrierdaten",
-        "236": "Feature ist nicht verfügbar wegen Tarif Beschränkungen",
-        "238": "Tarif Änderung ist nicht erlaubt",
-        "240": "Nicht erlaubt, Tarif zu oft zu ändern",
-        "242": "Fehler bei der Validierung",
-        "251": "Unzureichende Geldmittel",
-        "254": "Datei kann nicht gespeichert werden.",
-        "upload_exeption": "Datei-Hochladen-Fehler",
-        "no_hash": "Der Sitzungsschlüssel wird nicht gefunden",
-        "service_not_respond": "Der Dienst ist vorübergehend nicht verfügbar",
+        "11": "Acceso denegado",
+        "12": "La plataforma de servicios no se encuentra",
+        "101": "En el modo de demostración esta función está desactivada",
+        "102": "usuario o contraseña incorrecto",
+        "103": "El usuario no esta activado",
+        "111": "Controlador incorrecto",
+        "112": "Método incorrecto",
+        "201": "No se encontraron datos",
+        "202": "Hay demasiados puntos en el area",
+        "203": "Articulo relacionado ha sido borrado",
+        "204": "Elemento no encontrado",
+        "205": "Parametros invalidos",
+        "206": "Este nombre de usuario ya esta en uso",
+        "207": "Captcha Invalido",
+        "208": "El dispositivo esta bloqueado",
+        "209": "Error al enviar mensaje",
+        "210": "Geocodificación fallo",
+        "211": "Lapso de tiempo solicitado es demasiado grande",
+        "212": "Limite solicitado es demasiado grande",
+        "213": "El dispositivo esta desconectado",
+        "214": "La operacion solicitada no es soportada por el dispositivo",
+        "215": "Erro del servicio externo",
+        "216": "Grupo no está vacía",
+        "217": "Lista contiene entidades inexistentes",
+        "218": "Parámetros de servicios externos con formato incorrecto",
+        "219": "La acción no está permitida para los objetos de clon",
+        "220": "Modelo de dispositivo desconosido",
+        "221": "Restricción de la tarifa:</br> límite de dispositivo excedido.",
+        "222": "Plugin no encontrado",
+        "223": "Este número de teléfono ya está en uso",
+        "224": "Dispositivo con este id de dispositivo ya está en uso",
+        "225": "No se permite para este tipo legal",
+        "226": "ICCID incorrecto",
+        "227": "Código de activación inválido",
+        "228": "No es compatible con el sensor",
+        "229": "Datos solicitados aún no están listos",
+        "230": "No se admite para este tipo de entidad",
+        "231": "Tipo de entidad no coincide",
+        "232": "Entrada ya están en uso",
+        "233": "Ningún archivo de datos",
+        "234": "Formato de datos inválido",
+        "235": "Faltan datos de calibración",
+        "236": "Característica disponible debido a restricciones arancelarias",
+        "238": "No está permitido el cambio de tarifa",
+        "240": "No se permite cambiar de tarifas con demasiada frecuencia",
+        "242": "Error de validación",
+        "251": "Fondos insuficientes",
+        "254": "No se puede guardar archivo",
+        "upload_exeption": "Error de carga de archivos",
+        "no_hash": "La clave de sesión no se encuentra",
+        "service_not_respond": "El servicio no está disponible temporalmente",
         "tracker": {
-            "203": "Tracker hat Regeln verbunden.",
-            "237": "Ungültige Tarif",
-            "238": "Tarif Ändern ist nicht erlaubt",
-            "239": "Neuer Tarif existiert nicht",
-            "246": "Benutzer ist falsch",
-            "247": "Klon ist bereits vorhanden.",
-            "249": "Der Vorgang ist nur für die Klone verfügbar",
-            "250": "Nicht zulässig für gelöschte Geräte",
-            "253": "Die Operation kann nicht durchgeführt werden, der Tracker hat Klone<br>Klon-ID: {0}"
+            "203": "Tracker tiene reglas adjuntas",
+            "237": "Tarifa no válida",
+            "238": "Cambio de tarifa no se permite",
+            "239": "Nueva tarifa no existe",
+            "246": "Usuario incorrecto",
+            "247": "Ya existe clon",
+            "249": "La operación sólo está disponible para los clones",
+            "250": "No disponible para disposotivos borrados",
+            "253": "No se puede realizar la operación, el perseguidor tiene clones <br>Clones ID: {0}"
         },
         "tariff": {
-            "244": "Tarif mit dem gleichen Namen ist bereits vorhanden."
+            "244": "Tarifa con el mismo nombre ya existe"
         },
         "settings": {
-            "225": "Neues Passwort muss unterschiedlich sein.",
-            "248": "Falsches Passwort"
+            "225": "Nueva contraseña debe ser diferente",
+            "248": "Contraseña incorrecta"
         },
         "payment": {
-            "201": "In der Datenbank nicht gefunden",
-            "242": "Während Inhaltsüberprüfung gab es Störungen",
-            "246": "Ungültige Benutzer-ID",
-            "247": "Einheit ist bereits vorhanden.",
-            "259": "Anzahl der Zahlungen nicht nachkommt, Zusammenfassung",
-            "260": "Summe der Zahlungen nicht nachkommt, Zusammenfassung"
+            "201": "No encontrado en base de datos",
+            "242": "Hubo errores durante la validación de contenido",
+            "246": "ID de usuario inválido",
+            "247": "Entidad ya existe",
+            "259": "Conteo de pagos no cumplen con sumario",
+            "260": "Suma de pagos no cumplen con sumario"
         }
     },
     "units_combination": {
         "days": [
-            "Tage",
-            "Tag",
-            "Tage"
+            "días",
+            "día",
+            "días"
         ],
         "hours": [
-            "Stunden",
-            "Stunde",
-            "Stunden"
+            "horas",
+            "hora",
+            "horas"
         ],
         "minutes": [
-            "Minuten",
-            "Minute",
-            "Minuten"
+            "minutos",
+            "minuto",
+            "minutos"
         ],
         "seconds": [
-            "Sekunden",
-            "Sekunde",
-            "Sekunden"
+            "segundos",
+            "segundo",
+            "segundos"
         ],
         "everyminutes": [
-            "Minuten",
-            "Minute",
-            "Minuten"
+            "minutos",
+            "minuto",
+            "minutos"
         ],
         "everyseconds": [
-            "Sekunden",
-            "Sekunde",
-            "Sekunden"
+            "segundos",
+            "segundo",
+            "segundos"
         ],
         "meters": [
-            "Meter",
-            "Meter",
-            "Meter"
+            "metros",
+            "metro",
+            "metros"
         ],
         "degrees": [
-            "Grad",
-            "Grad",
-            "Grad"
+            "grados",
+            "grado",
+            "grados"
         ],
         "objects": [
-            "Objekte",
-            "Objekt",
-            "Objekte"
+            "objetos",
+            "objeto",
+            "objetos"
         ],
         "years": [
-            "Jahre",
-            "Jahr",
-            "Jahre"
+            "años",
+            "año",
+            "años"
         ],
         "months": [
-            "Monate",
-            "Monat",
-            "Monate"
+            "meses",
+            "mes",
+            "meses"
         ],
         "codes": [
-            "Codes",
-            "Code",
-            "Codes"
-        ],
-        "trackers": [
-            "Tracker",
-            "Tracker",
-            "Tracker"
+            "códigos",
+            "código",
+            "códigos"
         ],
         "devices": [
-            "Geräte",
-            "Gerät",
-            "Geräte"
+            "dispositivos",
+            "dispositivo",
+            "dispositivos"
         ],
         "entries": [
-            "Treffern",
-            "Übereinstimmung",
-            "Treffern"
+            "cumple",
+            "cumple",
+            "cumples"
+        ],
+        "trackers": [
+            "trackers",
+            "tracker",
+            "trackers"
         ]
     },
     "units_short": {
         "kilometer": "km",
         "meter": "m",
-        "square_kilometer": "qkm",
-        "square_meter": "qm",
+        "square_kilometer": "km²",
+        "square_meter": "sq. m",
         "ar": "ar",
-        "hectare": "ha",
+        "hectare": "ja",
         "kmh": "km / h",
         "hour": "h",
         "minute": "m",
@@ -234,85 +236,85 @@ Ext.define('Locale.locale-de',{
         "day": "d"
     },
     "search": {
-        "empty": "Suche nach Kategorie",
-        "btn": "Finden"
+        "empty": "busqueda por categoria",
+        "btn": "Encontrar"
     },
     "list": {
-        "edit_tool": "Bearbeiten",
-        "create_btn_text": "Erstellen",
-        "empty_text": "Keine Daten",
-        "search_title_tpl": "{0}: gefunden {1}",
-        "search_empty_title_tpl": "{0}: keine Treffer gefunden",
-        "search_title": "Suche",
-        "search_empty_title": "Keine Treffer gefunden"
+        "edit_tool": "editar",
+        "create_btn_text": "Crear",
+        "empty_text": "Sin datos",
+        "search_title_tpl": "{0}: encontrado {1}",
+        "search_empty_title_tpl": "{0}: No hay resultados",
+        "search_title": "Búsqueda",
+        "search_empty_title": "No hay resultados"
     },
     "card": {
         "links": {
-            "collapser_tip": "links ausblenden",
-            "collapser_exptip": "Links anzeigen"
+            "collapser_tip": "Ocultar enlaces",
+            "collapser_exptip": "Mostrar enlaces"
         },
         "body": {
-            "title": "Weitere Informationen:",
-            "exptitle": "Weitere Informationen <a>(zeigen)</a>",
-            "collapser_tip": "Zusätzliche Informationen ausblenden",
-            "collapser_exptip": "Weitere Informationen anzeigen"
+            "title": "Información adicional:",
+            "exptitle": "Informacion Adicional <a>(mostrar)</a>",
+            "collapser_tip": "Ocultar informacion adicional",
+            "collapser_exptip": "Mostrar informacion adicional"
         }
     },
     "devices": {
         "tracker": "Tracker",
-        "camera": "Kamera",
+        "camera": "Camara",
         "socket": "Socket"
     },
     "currency": {
-        "gbp": "Pfund sterling",
-        "brl": "Brasilianischer Real",
-        "huf": "Forint",
-        "hkd": "Hongkong-Dollar",
-        "dkk": "Dänische Krone",
+        "gbp": "Libra esterlina",
+        "brl": "Real brasileño",
+        "huf": "Forinto húngaro",
+        "hkd": "Dólar de Hong Kong",
+        "dkk": "Corona danesa",
         "eur": "Euro",
-        "ils": "Schekel",
-        "inr": "Indische Rupie",
-        "idr": "Indonesische Rupiah",
-        "cad": "Kanadischer dollar",
-        "cny": "Renminbi",
-        "krw": "Südkoreanischer Won",
+        "ils": "Nuevo shéquel",
+        "inr": "Rupia india",
+        "idr": "Rupia indonesia",
+        "cad": "Dólar canadiense",
+        "cny": "Yuan chino",
+        "krw": "Won surcoreano",
         "myr": "Ringgit",
-        "mxn": "Mexikanischer Peso",
-        "nzd": "Neuseeland-Dollar",
-        "nok": "Norwegische Krone",
-        "pkr": "Pakistanische Rupie",
+        "mxn": "Peso mexicano",
+        "nzd": "Dólar de Nueva Zelanda",
+        "nok": "Corona noruega",
+        "pkr": "Rupia pakistaní",
         "pln": "Złoty",
-        "rub": "Russischer Rubel",
-        "sgd": "Singapur-Dollar",
-        "usd": "US-Dollar",
-        "twd": "Neuer Taiwan-Dollar",
-        "thb": "Baht",
-        "try": "Türkische Lira",
-        "php": "Philippinischer Peso",
-        "czk": "Tschechische Krone",
-        "clp": "Chilenischer Peso",
-        "sek": "Schwedische Krone",
-        "chf": "Schweizer Franken",
-        "zar": "Südafrikanischer Rand",
-        "jpy": "Japanischer Yen",
-        "kzt": "Kasachstan Tenge",
-        "byr": "Weißrussischer Rubel",
-        "aud": "Australischer Dollar",
-        "tjs": "Tajik Somoni",
-        "uah": "Hrywnja",
-        "ltl": "Litas",
-        "lvl": "Lats",
-        "kgs": "Som",
-        "tmt": "Turkmenistan-Manat",
-        "uzs": "Soʻm",
-        "mdl": "Moldauischer Leu",
-        "gel": "Georgischer Lari",
-        "amd": "Armenischer Dram",
-        "azn": "Aserbaidschan-Manat"
+        "rub": "Rublo Ruso",
+        "sgd": "Dólar de Singapur",
+        "usd": "U.S. Dollar",
+        "twd": "Nuevo dólar taiwanés",
+        "thb": "Baht tailandés",
+        "try": "Lira turca",
+        "php": "Peso filipino",
+        "czk": "Corona checa",
+        "clp": "Peso (moneda de Chile)",
+        "sek": "Corona sueca",
+        "chf": "Franco suizo",
+        "zar": "Rand sudafricano",
+        "jpy": "Yen japonés",
+        "kzt": "Kazajstán Tenge",
+        "byr": "Rublo Bielorruso",
+        "aud": "Dólar australiano",
+        "tjs": "Somoni tayiko",
+        "uah": "Grivna",
+        "ltl": "Litas lituana",
+        "lvl": "Lats letón",
+        "kgs": "Som kirguís",
+        "tmt": "Manat turcomano",
+        "uzs": "Som uzbeko",
+        "mdl": "Leu moldavo",
+        "gel": "Lari georgiano",
+        "amd": "Dram armenio",
+        "azn": "Manat azerbaiyano"
     },
     "maps": {
-        "roadmap": "Google-Fahrplan",
-        "satellite": "Google Satellit",
+        "roadmap": "Google roadmap",
+        "satellite": "Google satellite",
         "hybrid": "Google hybrid",
         "yandex": "Yandex Maps",
         "yandexpublic": "Yandex Narod Map",
@@ -326,428 +328,432 @@ Ext.define('Locale.locale-de',{
         "mailru": "Mail.ru Maps"
     },
     "dealer_info": {
-        "first": "Gesamt",
-        "last": "von"
+        "first": "total",
+        "last": "de"
     },
     "index": {
-        "menu_text": "Startseite"
+        "menu_text": "Inicio"
     },
     "users": {
-        "menu_text": "Benutzer",
-        "create_btn": "Neuer Benutzer",
+        "menu_text": "Usuarios",
+        "create_btn": "Nuevo usuario",
         "create_form": {
-            "title": "Neuer Benutzer",
-            "main_fields": "Allgemeine Informationen",
-            "contact_fields": "Kontaktdaten",
-            "address_fields": "Adresse",
-            "legal_fields": "Juristische Person Informationen",
-            "password": "Passwort",
-            "password_repeat": "Passwort wiederholen",
-            "password_mismatched": "Passwörter stimmen nicht überein",
-            "language": "Standardsprache",
-            "time_zone": "Zeitzone",
-            "save_btn": "Benutzer erstellen",
-            "clear_btn": "Klare form",
-            "copy_address": "Kopieren von Adresse"
+            "title": "Nuevo usuario",
+            "main_fields": "Informacion general",
+            "contact_fields": "Datos de contacto",
+            "address_fields": "Dirección",
+            "legal_fields": "Informacion de la entidad legal",
+            "password": "Contraseña",
+            "password_repeat": "Repetir contraseña",
+            "password_mismatched": "Passwords no coincide",
+            "language": "Idioma predeterminado",
+            "time_zone": "Zona horaria",
+            "save_btn": "Crear Usuario",
+            "clear_btn": "Borrar forma",
+            "copy_address": "Copiar de dirección"
         },
         "edit_form": {
-            "title": "Benutzer bearbeiten",
-            "save_btn": "Änderungen speichern",
-            "return_btn": "Zurück"
+            "title": "Editar usuario",
+            "save_btn": "Guardar cambios",
+            "return_btn": "regresar"
         },
         "fields": {
-            "creation_date": "Datum der Registrierung",
-            "login": "E-Mail-Adresse",
+            "creation_date": "Fecha de registro",
+            "login": "Dirección de correo electrónico",
             "balance": "Balance",
             "bonus": "Bonus",
-            "first_name": "Name",
-            "middle_name": "Zweiter Vorname",
-            "last_name": "Nachname",
-            "activated": "Aktiviert",
-            "activated_t": "Benutzer aktiv",
-            "legal_type": "Rechtlicher Status",
+            "first_name": "Nombre",
+            "middle_name": "Segundo nombre",
+            "last_name": "Apellido",
+            "activated": "Activado",
+            "activated_t": "Usuario activo",
+            "legal_type": "Estado Legal",
             "tin": "TIN",
-            "legal_name": "Offizieller Name",
+            "legal_name": "Nombre legal",
             "iec": "IEC",
-            "phone": "Telefonnummer",
-            "post_country": "Land",
-            "post_index": "PLZ",
-            "post_region": "Region",
-            "post_city": "Stadt",
-            "post_street_address": "Straße, Adresse",
-            "registered_country": "Registrierung-Land",
-            "registered_index": "Registrierung-Postleitzahl",
-            "registered_region": "Registrierung-region",
-            "registered_city": "Registrierung-Stadt",
-            "registered_street_address": "Registrierung Adresse",
-            "sole_trader": "Einzelunternehmer",
-            "legal_entity": "Juristische Person",
-            "individual": "Individuelle",
-            "full_name": "Vollständiger Name",
+            "phone": "Numero de telefono",
+            "post_country": "País",
+            "post_index": "Código postal",
+            "post_region": "Región",
+            "post_city": "Ciudad",
+            "post_street_address": "Calle, dirección",
+            "registered_country": "País de registro",
+            "registered_index": "Registro de codigo postal",
+            "registered_region": "Región de registro",
+            "registered_city": "Ciudad de registro",
+            "registered_street_address": "Dirección de registro",
+            "sole_trader": "Empresario independiente",
+            "legal_entity": "Persona jurídica",
+            "individual": "Individuo",
+            "full_name": "Nombre Completo",
             "login_short": "Login",
             "user_id": "ID",
-            "user_id_exp": "Benutzernummer",
+            "user_id_exp": "Numero de usuario",
             "activated_short": {
-                "title": "Status",
-                "status_true": "Aktive",
-                "status_false": "Nicht aktiv"
+                "title": "estado",
+                "status_true": "Activo",
+                "status_false": "No activo"
             },
-            "registered_short": "rechtliche",
-            "password": "Neues Passwort",
-            "password_repeat": "Neues Passwort wiederholen",
-            "password_mismatched": "Passwörter stimmen nicht überein"
+            "registered_short": "legal",
+            "password": "Nueva contraseña",
+            "password_repeat": "Repetir nueva contraseña",
+            "password_mismatched": "Las contraseñas no coinciden"
         },
         "password_form": {
-            "title": "Passwort eines Benutzers ändern",
-            "save_btn": "Passwort festlegen",
-            "return_btn": "Abbrechen",
-            "success_msg": "Passwort erfolgreich geändert"
+            "title": "Cambiar contraseña de usuario",
+            "save_btn": "Fijar Contraseña",
+            "return_btn": "Cancelar",
+            "success_msg": "Contraseña cambiada con éxito"
         },
         "list": {
-            "create_btn_text": "Neuen Benutzer erstellen",
-            "empty_text": "Keine Benutzer gefunden"
+            "create_btn_text": "Crear nuevo usuario",
+            "empty_text": "Ningún usuario encontrado"
         },
         "session_alert": {
-            "error": "Benutzersitzung kann nicht erstellt werden.",
-            "title": "Ihre Sitzung Code"
+            "error": "No puede crear la sesion de usuario",
+            "title": "Su código sessio"
         },
         "card": {
             "tab_panel": {
                 "trackers": {
-                    "title": "Benutzer-Tracker"
+                    "title": "Trackers de usuario"
                 },
                 "transactions": {
-                    "title": "Transaktionen"
+                    "title": "Transacciones"
                 }
             },
             "links": {
-                "session_text": "Zum Monitoring",
-                "user_edit": "Benutzer bearbeiten",
-                "user_change_password": "Passwort ändern",
-                "transactions": "Transaktionen",
-                "create_transaction": "Balance ändern"
+                "session_text": "Ir a monitoreo",
+                "user_edit": "Editar usuario",
+                "user_change_password": "Cambiar contraseña",
+                "transactions": "Transacciones",
+                "create_transaction": "Cambiar balance"
             }
         },
         "transactions": {
             "list": {
-                "empty_text": "Keine Transaktionen gefunden",
-                "title": "Transaktionen für Benutzer"
+                "empty_text": "Transacciones no encontradas",
+                "title": "Transacciones por usuario"
             },
             "fields": {
-                "description": "Operation",
-                "type": "Operationstyp",
-                "subtype": "Subtyp",
-                "date": "Datum",
-                "amount": "Summe",
-                "old_balance": "Alte",
-                "new_balance": "Neu",
+                "description": "Operación",
+                "type": "Tipo de operación",
+                "subtype": "Subtipo",
+                "date": "Fecha",
+                "bonus_amount": "Prima:",
+                "old_bonus": "Viejo",
+                "new_bonus": "Nuevo",
+                "amount": "Suma:",
+                "old_balance": "Viejo",
+                "new_balance": "Nuevo",
                 "type_set": {
-                    "main_charge": "Abonnement",
-                    "payment": "Zahlung",
-                    "tariff_charge": "Telekom-Dienste",
-                    "bonus_charge": "Bonus nachfüllen"
+                    "main_charge": "suscripción",
+                    "payment": "pago",
+                    "tariff_charge": "servicios de telecomunicaciones",
+                    "bonus_charge": "recarga bono"
                 },
                 "subtype_set": {
-                    "monthly": "monatliche",
-                    "partner": "von einem Partner",
-                    "activeday": "aktiven Tag",
-                    "everyday": "monatlich bei Tag"
+                    "monthly": "mensual",
+                    "partner": "de un socio",
+                    "activeday": "día activo",
+                    "everyday": "mensualmente por día"
                 }
             }
         },
         "transaction_add": {
-            "title": "Ändern Balance (Hinzufügen Transaktion) von Benutzern",
-            "description": "Transaktionsbeschreibung",
-            "balance": "Balance-Änderungen",
-            "bonus": "Bonus-Änderungen",
-            "value_sup": "* - dessen Betrag den aktuellen Wert ändern wird, kann negativ sein"
+            "title": "Se cambia el balance (añadiendo transacción) de los usuarios",
+            "description": "Descripción de la transacción",
+            "balance": "Cambios de balance",
+            "bonus": "Cambio de Bonus",
+            "value_sup": "* - cantidad de la que va a cambiar el valor de la corriente, puede ser negativo"
         },
-        "combo_empty": "Einen Benutzer wählen",
-        "select_error": "Tracker oder sein Klon ist bereits an ausgewählte Benutzer gebunden.",
+        "combo_empty": "Seleccione un usuario",
+        "select_error": "Tracker o su clon ya esta ligado a usuario seleccionado",
         "select": {
-            "title": "Wählen Sie einen Benutzer"
+            "title": "Seleccione un usuario"
         }
     },
     "trackers": {
-        "menu_text": "Tracker",
+        "menu_text": "Trackers",
         "fields": {
             "tracker_id": "ID",
-            "label": "Titel",
-            "model": "Modell",
-            "phone": "Telefon",
-            "device_id": "Geräte-id",
-            "creation_date": "Datum der Registrierung",
-            "creation_date_short": "Registriert",
+            "label": "Titulo",
+            "model": "Modelo",
+            "phone": "Teléfono",
+            "device_id": "id de dispositivo",
+            "creation_date": "Fecha de registro",
+            "creation_date_short": "Registrado",
             "connection_status": "Status",
-            "tracker_id_exp": "Tracker-Nummer",
-            "phone_exp": "Telefonnummer",
-            "owner": "Tracker-Besitzer",
-            "tariff": "Tracker-Tarif",
-            "deleted": "Als gelöscht markiert",
-            "blocked": "Dienst angehalten",
-            "user_id": "Benutzer-ID",
-            "clone": "Klon",
-            "clone_owner": "Klon-Besitzer",
+            "tracker_id_exp": "Numero de tracker",
+            "phone_exp": "Número de teléfono",
+            "owner": "Propietario del tracker",
+            "tariff": "Tarifa del tracker",
+            "deleted": "Marcado como eliminado",
+            "blocked": "Servicio pausado",
+            "clone": "Clon",
+            "clone_owner": "Propietario del clon",
             "options": {
-                "clone": "Klon",
-                "deleted": "gelöscht",
-                "blocked": "blockiert"
+                "clone": "clon",
+                "deleted": "Borrado",
+                "blocked": "bloqueado"
             },
             "statuses": {
-                "active": "Online",
-                "signal_lost": "Verbindung verloren",
+                "online": "En linea",
                 "offline": "Offline",
-                "just_registered": "Gerade registriert",
-                "idle": "GPS nicht aktualisiert"
-            }
+                "just_registered": "Acaba de registrar",
+                "signal_lost": "No conectado",
+                "active": "Online",
+                "idle": "GPS no actualizado"
+            },
+            "user_id": "ID de usuario"
         },
         "edit_form": {
-            "main_fields": "Hauptinformationen",
-            "title": "Tracker bearbeiten",
-            "save_btn": "Änderungen speichern",
-            "return_btn": "Zurück"
+            "main_fields": "Informacion principal",
+            "title": "Editar tracker",
+            "save_btn": "Guardar cambios",
+            "return_btn": "Regresar"
         },
         "clone_form": {
-            "title": "Klon des Trackers erstellen",
-            "remove_failure_msg": "Fehler beim Entfernen von Klon",
-            "failure_msg": "Fehler beim Erstellen des Klon",
-            "remove_confirm": "Klon zu entfernen"
-        },
-        "group_clone_form": {
-            "title": "Klonen Gruppe von Tracker",
-            "save_btn": "Klon",
-            "grid_clone_label": "Klone werden hinzugefügt",
-            "grid_clone_tip": "Sie können das Label des Klons ändern mit einem Doppelklick darauf in der Liste"
-        },
-        "group_owner_form": {
-            "title": "Besitzer Ändern für Gruppe von Trackern",
-            "save_btn": "Besitzer ändern",
-            "grid_clone_label": "Tracker werden geändert"
+            "title": "Crear clon de tracker",
+            "remove_failure_msg": "No se pudo quitar clon",
+            "failure_msg": "Error al crear el clon",
+            "remove_confirm": "Quitar clon"
         },
         "tariff_form": {
-            "title": "Tarif für tracker ändern",
-            "save_btn": "Änderungen speichern",
-            "repay": "Rest des aktuellen Tarif Zahlung zurückzahlen",
-            "charge": "Zahlung berechnen für neuen Tarif",
-            "charge_sup": "nur für die Tarif-Pläne mit monatlichen Zahlungen",
-            "tariff_invalid": "muss von aktuell verschieden sein"
+            "title": "Cambio la tarifa para el tracker",
+            "save_btn": "Guardar cambios",
+            "repay": "Pagar el resto del pago actual de tarifas",
+            "charge": "Carga de pago para nueva tarifa",
+            "charge_sup": "Sólo para los planes de tarifas con pago mensual",
+            "tariff_invalid": "debe ser diferente de la actual"
         },
         "list": {
-            "create_btn_text": "Neuen tracker erstellen",
-            "owner_btn": "Besitzerwechsel",
-            "clone_btn": "Klon",
-            "edit_btn": "Ausgewählt bearbeiten",
-            "empty_text": "Keine Tracer gefunden",
-            "after_clone_success": "Geklont: {0}",
-            "after_clone_failure": "Geklonte: {0}, {1} Klon ist fehlgeschlagen",
-            "after_owner_success": "Geändert: {0}",
-            "after_owner_failure": "Geändert: {0}, {1} Änderung fehlgeschlagen",
-            "select_req": "Wählen Sie im Listenfeld die Option Tracker",
-            "select_clone_req": "Klone ausgewählt, Gruppenoperationen können nicht ausgeführt werden"
+            "create_btn_text": "Crear nuevo tracker",
+            "owner_btn": "Cambiar propietario",
+            "clone_btn": "Clon",
+            "edit_btn": "Editar seleccionado",
+            "empty_text": "No se han encontrado marcadores",
+            "after_clone_success": "clonada: {0}",
+            "after_clone_failure": "Clonado: {0}, {1} clon fracasado",
+            "after_owner_success": "Cambiado: {0}",
+            "after_owner_failure": "Cambiado: {0}, {1} cambio fallado",
+            "select_req": "Seleccione trackers de lista",
+            "select_clone_req": "Los clones seleccionados, las operaciones del grupo no se pueden realizar"
         },
         "card": {
             "links": {
-                "change_tracker_user": "Besitzerwechsel",
-                "tracker_edit": "Tracker bearbeiten",
-                "tracker_tariff_edit": "Tarif ändern",
-                "tracker_clone_create": "Erstellen Sie Klon von diesen tracker",
-                "tracker_clone_remove": "Dieser Klon zu löschen",
-                "tracker_tariff": "Tracker-Tarif",
-                "tracker_owner": "Tracker-Besitzer",
+                "change_tracker_user": "Cambio de propietario",
+                "tracker_edit": "Editar tracker",
+                "tracker_tariff_edit": "Cambiar tarifa",
+                "tracker_clone_create": "Crear clon de este tracker",
+                "tracker_clone_remove": "Borrar este clon",
+                "tracker_tariff": "Tarifa de tracker",
+                "tracker_owner": "Propietario de tracker",
                 "tracker_console": "GPRS-terminal",
-                "tracker_corrupt": "Abmelden"
+                "tracker_corrupt": "Cancelar registro"
             }
         },
         "console": {
-            "title": "GPRS-Terminal für tracker",
-            "connect_btn": "Verbindung starten",
-            "disconnect_btn": "Enge Verbindung",
-            "auto_scroll": "Automatisches Scrollen",
-            "clear": "Klar-Konsole",
-            "send_btn": "Senden",
-            "send_empty": "Geben Sie den Befehl",
-            "loading": "Verbinden mit einem Gerät",
-            "connect_init": "Verbindung wird hergestellt",
-            "show_time": "Nachricht-Zeit anzeigen",
-            "show_status": "Status anzeigen",
-            "disconnect_msg": "Verbindung beendet",
-            "connect_msg": "Verbindung wird hergestellt",
-            "error_msg": "Fehler bei der Verbindung zum Gerät",
-            "connection_failure": "Keine Verbindung zum Gerät",
-            "close_question": "Enge Verbindung?",
-            "status_title": "Gerätestatus",
-            "status_property_title": "Status",
-            "status_value_title": "Wert"
+            "title": "GPRS-terminal para tracker",
+            "connect_btn": "Inicie la conexión",
+            "disconnect_btn": "Cierra conexión",
+            "auto_scroll": "Auto-scrolling",
+            "clear": "Limpiar consola",
+            "send_btn": "Enviar",
+            "send_empty": "Escriba un comando",
+            "loading": "conectando a un dispositivo",
+            "connect_init": "La conexión establecida",
+            "show_time": "Muestra hora de mensaje",
+            "show_status": "Muesta status",
+            "disconnect_msg": "Conexión terminada",
+            "connect_msg": "Conexión establecida",
+            "error_msg": "Error al conectar el dispositivo",
+            "connection_failure": "No se puede conectar al dispositivo",
+            "close_question": "¿Cerrar conexión?",
+            "status_title": "Estado del dispositivo",
+            "status_property_title": "Estado",
+            "status_value_title": "Valor"
+        },
+        "group_clone_form": {
+            "title": "La reproducción de grupo de trackers",
+            "save_btn": "Clon",
+            "grid_clone_label": "Se agregarán clones",
+            "grid_clone_tip": "Puede cambiar la etiqueta del clon haciendo doble clic en él en la lista"
+        },
+        "group_owner_form": {
+            "title": "Cambio de propietario de grupo de trackers",
+            "save_btn": "Cambio de propietario",
+            "grid_clone_label": "Trackers serán cambiados"
         },
         "corrupt": {
             "alert": {
-                "title": "Tracker-Registrierung entfernen ?",
-                "text": "Das Gerät wird von der Datenbank dauerhaft gelöscht, alle Daten - nicht verfügbar!<br><br>Sind Sie sicher, dass Sie möchten Registrierung zu entfernen ?"
+                "title": "¿Eliminar registro de tracker?",
+                "text": "El dispositivo se eliminará permanentemente de la base de datos, todos los datos - no disponibles! <br><br>Estás seguro que quieres eliminar registro?"
             },
-            "success_msg": "Gerät {0} erfolgreich entfernt"
+            "success_msg": "Dispositivo {0} quitado con éxito"
         }
     },
     "tariffs": {
-        "menu_text": "Tarife",
+        "menu_text": "Tarifas",
         "create_form": {
-            "title": "Erstellen neuen Tarif",
-            "main_fields": "Hauptinformationen",
-            "save_btn": "Tarif erstellen",
-            "clear_btn": "Klare form",
-            "options_fields": "Tarifoptionen",
-            "prices_fields": "Tarif-Preise"
+            "title": "Crear nueva tarifa",
+            "main_fields": "Información principal",
+            "save_btn": "Crear tafira",
+            "clear_btn": "Borrar formulario",
+            "options_fields": "Opciones de tarifas",
+            "prices_fields": "Precio de tarifas"
         },
         "edit_form": {
-            "title": "Tarif bearbeiten",
-            "save_btn": "Änderungen speichern"
+            "title": "Editar tarifa",
+            "save_btn": "Guardar cambios"
         },
         "default_form": {
-            "title": "Standard-Tarif-Einstellungen"
+            "title": "Ajustes de tarifa de falta"
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Label",
-            "group_id": "Gruppe",
-            "price": "Monatliche Zahlung",
-            "device_limit": "Begrenzung von Geräten",
-            "device_type": "Gerätetyp",
-            "store_period": "Geschichte-Lagerzeit",
-            "active": "Verfügbar für Benutzer",
-            "has_reports": "Tabellenberichte sind verfügbar",
-            "proportional_charge": "Abonnementgebühren für den teilweisen Monat Verhältnis zur Anzahl der Tage, abzuschreiben",
-            "incoming_sms": "Eingehende SMS",
-            "outgoing_sms": "Ausgehende SMS",
-            "service_sms": "Service SMS",
-            "phone_call": "Telefonanrufe",
-            "traffic": "GPRS (für Mb)",
-            "default_tariff": "der Standard-Tarif für Geräte des Typs «{0}»",
-            "default_short": "Standard",
-            "service_price": "der Betrag für die Nutzung der Dienste",
-            "group_id_exp": "Tarif-Gruppe",
-            "active_exp": "Benutzer können auf diesen Zolltarif selbstständig umschalten",
-            "device_limit_exp": "Maximale Geräte",
-            "activation_bonus": "Aktivierung-bonus",
-            "free_days": "Anzahl der freien Tage",
-            "tariff_type": "Abrechnungszeitraum",
-            "tariff_type_short": "Zahlung"
+            "name": "Etiqueta",
+            "group_id": "Grupo",
+            "price": "Pago del mes",
+            "device_limit": "Limite de dispositivos",
+            "device_type": "Tipo de dispositivo",
+            "store_period": "Período de almacenaje de la historia",
+            "active": "Disponible para el usuario",
+            "has_reports": "Tabla de reportes esta disponible",
+            "proportional_charge": "Comisión de suscripción para el mes parcial de forma proporcional al número de días a cancelar",
+            "incoming_sms": "SMS entrante",
+            "outgoing_sms": "Saliente SMS",
+            "service_sms": "Servicio SMS",
+            "phone_call": "Llamadas telefónicas",
+            "traffic": "GPRS (para Mb)",
+            "default_tariff": "Tarifa predeterminada para los dispositivos de tipo «{0}»",
+            "default_short": "defecto",
+            "service_price": "La cantidad que se cobra por el uso del servicio",
+            "group_id_exp": "Grupo de la tarifa",
+            "active_exp": "Los usuarios pueden cambiar a esta tarifa por su cuenta",
+            "device_limit_exp": "Máximo de dispositivos",
+            "activation_bonus": "Bonus de activación",
+            "free_days": "Número de días libres",
+            "tariff_type": "Ciclo de facturación",
+            "tariff_type_short": "Pago"
         },
         "list": {
-            "create_btn_text": "Neuen Tarif hinzufügen",
-            "empty_text": "Tarife nicht gefunden"
+            "create_btn_text": "Agregar una nueva tarifa",
+            "empty_text": "Tarifas no encontradas"
         },
         "card": {
             "links": {
-                "make_default": "Mark als Standard",
-                "tariff_edit": "Tarif bearbeiten"
+                "make_default": "Marcar como predeterminado",
+                "tariff_edit": "Editar tarifa"
             },
             "tab_panel": {
                 "trackers": {
-                    "title": "Tracker bei diesem Tarif"
+                    "title": "Trackers a esta tarifa"
                 }
             }
         },
-        "combo_empty": "Tarif wählen",
-        "select_error": "Dieser Tarif ist nicht verfügbar",
+        "combo_empty": "Seleccione tarifa",
+        "select_error": "Esta tarifa no está disponible",
         "select": {
-            "title": "Tarif wählen"
+            "title": "Seleccione tarifa"
         },
         "types": {
-            "activeday": "Tägliche",
-            "monthly": "Monatliche",
-            "everyday": "Monatlich (tägliche Abbuchung)"
+            "activeday": "Diaria",
+            "monthly": "Mensual",
+            "everyday": "Mensual (débito diario)"
         },
         "price_type": {
-            "monthly": "Monatliche Gebühr",
-            "activeday": "Tagesgebühr",
-            "everyday": "Monatliche Gebühr"
+            "monthly": "Cuota mensual",
+            "activeday": "Tarifa diaria",
+            "everyday": "Cuota mensual"
         }
     },
     "codes": {
-        "menu_text": "Aktivierungscodes",
+        "menu_text": "Codigo de activacion",
         "fields": {
-            "activated": "Status",
-            "activation_date": "Aktivierungsdatum",
+            "activated": "estado",
+            "activation_date": "Fecha de activacion",
             "bonus_amount": "Bonus",
-            "code": "Code",
-            "device_id": "Geräte-ID",
-            "device_type": "Gerätetyp",
-            "free_days": "Freie Tage",
-            "money_amount": "Betrag",
-            "tariff_id": "Tarif-ID",
-            "tariff_name": "Tarif",
+            "code": "codigo",
+            "device_id": "ID de dispositivo",
+            "device_type": "Tipo de dispositivo",
+            "free_days": "Días sin costo",
+            "money_amount": "cantidad",
+            "tariff_id": "ID de tarifa",
+            "tariff_name": "Tarifa",
             "status": {
-                "activated": "aktiviert",
-                "no_activated": "nicht aktiviert"
+                "activated": "activado",
+                "no_activated": "no activado"
             }
         },
         "edit_form": {
-            "title": "Aktivierungscodes Bearbeiten",
-            "save_btn": "Änderungen speichern",
-            "selected_count": "Ausgewählten Codes",
-            "device_type": "Ausgewählte Codes für die Geräte"
+            "title": "Editar codigo de activacion",
+            "save_btn": "Guardar cambios",
+            "selected_count": "Codigos seleccionados",
+            "device_type": "Codigos seleccionados para dispositivos"
         },
         "create_form": {
-            "title": "Aktivierungs-Codes erstellen",
-            "save_btn": "Codes erstellen",
-            "new_codes_count": "Betrag von neuen Codes"
+            "title": "Crear códigos de activación",
+            "save_btn": "Crear codigos",
+            "new_codes_count": "Cantidad de nuevos codigos"
         },
         "list": {
-            "empty_text": "Keine Aktivierungscodes gefunden",
-            "create_btn": "Neu erstellen",
-            "edit_btn": "Bearbeiten ausgewählt",
-            "reload_btn": "Nachladen",
-            "after_create_success": "Erstellt: {0}",
-            "after_edit_success": "Änderungen: {0}",
-            "after_edit_failure": "Geändert: {0}, {1} Änderung fehlgeschlagen",
-            "select_req": "Wählen Sie im Listenfeld die Option codes",
-            "same_type_req": "Sie müssen eine Geräte-Typ-Codes angeben.",
-            "edited_tip": "geändert",
+            "empty_text": "Codigos de activacion no encontrados",
+            "create_btn": "Crear nuevo",
+            "edit_btn": "Editar seleccionado",
+            "reload_btn": "Recargar",
+            "after_create_success": "Crear: {0}",
+            "after_edit_success": "Cambios: {0}",
+            "after_edit_failure": "Cambiado: {0}, {1} Cambio fallo",
+            "select_req": "Seleccione los códigos de lista",
+            "same_type_req": "Debes de especificar un codigo de tipo de dispositivo",
+            "edited_tip": "cambiado",
             "filters": {
-                "activated": "Aktiviert",
-                "no_activated": "Nicht aktiviert",
-                "trackers": "Tracker",
-                "cameras": "Kameras",
+                "activated": "Activado",
+                "no_activated": "No activado",
+                "trackers": "Trackers",
+                "cameras": "Cámaras",
                 "sockets": "Sockets",
-                "toggle_all": "Alle anzeigen"
+                "toggle_all": "Mostrar todo"
             }
         }
     },
     "settings": {
-        "menu_text": "Einstellungen",
+        "menu_text": "Ajustes",
         "fields": {
-            "service_title": "Service-Titel",
-            "page_title": "Seitentitel",
-            "locale": "Überwachung Sprache",
-            "demo_login": "Demo-Benutzer",
-            "demo_password": "Demo Passwort",
-            "maps_title": "Verfügbare Karten",
+            "service_title": "Título de servicio",
+            "locale": "Monitoreo Idioma",
+            "demo_login": "Usuario demo",
+            "demo_password": "Demo contraseña",
+            "maps_title": "Mapas disponibles",
             "maps_default": {
-                "type": "Standard- Karte",
-                "location_lat": "Breitengrad Standard",
-                "location_lng": "Längengrad Standard",
-                "zoom": "Standardzoom"
+                "type": "Mapa predeterminada",
+                "location_lat": "latitud predeterminada",
+                "location_lng": "Longitud predeterminada",
+                "zoom": "Zoom predeterminado"
             },
-            "google_client_id": "Client-ID für GoogleMaps",
-            "currency": "Währung für Benutzer",
-            "payment_link": "Zahlung System URL",
-            "promo_url": "Promo-Website-URL",
-            "domain": "Domäne",
-            "email_from": "Absender E-Mail",
-            "email_special": "E-Mail für Benachrichtigungen",
-            "email_footer": "E-Mail-Fußzeile",
-            "sms_originator": "SMS-Absender",
-            "caller_id": "Voice- Mitteilung Absender",
-            "password": "Neues Passwort",
-            "password_repeat": "Neues Passwort wiederholen",
-            "password_old": "Aktuelle Passwort",
-            "password_mismatched": "Passwörter stimmen nicht überein",
-            "footer_email": "Firma E-mail",
-            "footer_site": "«Über uns» Link",
-            "footer_text": "Der Text am Ende der Seite",
-            "geocoder": "Standard Geocoder",
-            "route_provider": "Standard-Route-Anbieter",
-            "translit": "SMS-Transkription",
-            "measurement_system": "Messsystem",
+            "google_client_id": "Cliente ID para google maps",
+            "currency": "Moneda para los usuarios",
+            "payment_link": "URL del sistema de pago",
+            "promo_url": "Sitio de promoción URL",
+            "domain": "Dominio",
+            "email_from": "Remitente de  Email",
+            "email_special": "Correo electrónico para recibir alertas",
+            "email_footer": "Email de pie de pagina",
+            "sms_originator": "SMS originador",
+            "caller_id": "Aviso de voz originador",
+            "password": "Nueva contraseña",
+            "password_repeat": "Repetir nueva contraseña",
+            "password_old": "Contraseña actual",
+            "password_mismatched": "Las contraseñas no coinciden",
+            "footer_text": "El texto en la parte inferior de la página",
+            "page_title": "Título de la página",
+            "footer_email": "Correo electrónico de empresa",
+            "footer_site": "«Sobre nosotros» Link",
+            "geocoder": "Geocoder por defecto",
+            "route_provider": "Proveedor de ruta por defecto",
+            "translit": "SMS transcripción",
+            "measurement_system": "Sistema de medición",
             "payment_description": "Payment options and terms",
             "support_email": "Email for customers support",
             "alerts_email": "Email for important alerts and invoices",
@@ -810,45 +816,46 @@ Ext.define('Locale.locale-de',{
             "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
         },
         "edit_form": {
-            "title": "Diensteinstellungen",
-            "save_btn": "Speichern",
-            "save_msg": "Einstellungen erfolgreich gespeichert",
-            "main_fields": "Grundeinstellungen",
-            "map_fields": "Karten-Einstellungen",
-            "permission_fields": "Benachrichtigungs-Einstellungen",
-            "domain_sup": "* - für Domänen wie * {0} verfügbar Landkarte Typen beschränkt",
-            "custom_fields": "Anpassung",
-            "main_buttons_title": "Schaltflächen anzeigen",
-            "show_mobile_apps": "Zeigen Sie Schaltflächen für den Hochladen von mobile apps an",
-            "allow_registration": "Benutzer Selbstregistrierung zulassen",
-            "main_texts_title": "Wichtigsten Texte",
-            "footer_texts_title": "Text im Keller der Anmeldeseite",
+            "title": "Ajustes de servicio",
+            "save_btn": "guardar",
+            "save_msg": "Configuracion guardada con exito",
+            "main_fields": "Ajustes Basicos",
+            "map_fields": "Ajustes de mapas",
+            "permission_fields": "Ajustes de notificaciones",
+            "domain_sup": "* - para dominios como *{0} tipos de mapas disponibles limitados",
+            "custom_fields": "Personalización",
+            "main_buttons_title": "Mostrando botones",
+            "show_mobile_apps": "Mostrar botones para la descarga de aplicaciones móviles",
+            "allow_registration": "Permitir a usuario registrarse",
+            "main_texts_title": "Principales textos",
+            "footer_texts_title": "Texto en el sótano de la página de inicio de sesión",
             "logo_title": "Logo",
             "favicon_title": "Favicon",
-            "login_wallpaper_title": "Autorisierung Seitenhintergrund",
-            "desktop_wallpaper_title": "Hintergrund der Service-Seite",
-            "upload_btn": "Hochladen",
-            "update_btn": "Ändern",
-            "remove_btn": "Entfernen",
-            "upload_loading": "Bild hochladen",
-            "domain_fields": "Domäne",
-            "regional_fields": "Regionale Einstellungen",
-            "maps_fields": "Karten",
-            "demo_fields": "Demo-Benutzer",
-            "notifications_fields": "Benachrichtigungen",
-            "password_fields": "Passwort ändern",
-            "pass_hint": "Änderungen in anderen Registern werden nicht gespeichert",
-            "pass_save_msg": "Passwort wurde erfolgreich geändert",
-            "pass_save_btn": "Passwort ändern",
-            "maps_hint": "Bitte definieren Sie die Auswahl der Karten, die für die Kunden von Ihrem Service verfügbar sein wird. Die Liste der Karten für bestimmte Benutzer können mit ihren Tarif -Einstellungen beschränkt sein.<br><br>Der Gebrauch von Kartendienstleistungen, die Sie ausgewählt haben, muss Ihnen von ihren Rechteigentümern gewährt werden. NAVIXY ist nicht verantwortlich für ein Verstoß gegen die Lizenzbedingungen durch Sie oder Ihre Endbenutzer.",
-            "demo_hint": "Wählen Sie Benutzerkonto, das zu Demonstrationszwecken und auf Login-Seite verwendet werden soll (optional)",
-            "user_notifications_title": "Benachrichtigungen an Benutzer",
-            "user_notifications_hint": "Einstellungen für Benachrichtigungen von Ihrem Trackingsystem, Benutzer: über Geo-Veranstaltungen, niedrige, Gleichgewicht, Passwort wiederherstellen, etc..",
-            "special_notifications_title": "Benachrichtigungen an Administratoren",
-            "special_notifications_hint": "Systembenachrichtigungen an Administratoren über Service-Status, Statistiken und andere",
+            "favicon_desc": "no funciona en Internet Explorer",
+            "login_wallpaper_title": "La página de Autorización de fondo",
+            "desktop_wallpaper_title": "Servicios de la página de fondo",
+            "upload_btn": "Subir",
+            "update_btn": "Cambiar",
+            "remove_btn": "Eliminar",
+            "upload_loading": "Subir imagen",
+            "domain_fields": "Dominio",
+            "regional_fields": "Ajuste regional",
+            "maps_fields": "Mapas",
+            "demo_fields": "Usuario demo",
+            "notifications_fields": "Notificaciones",
+            "password_fields": "Cambiar contraseña",
+            "pass_hint": "No se guardarán los cambios en otras pestañas",
+            "pass_save_msg": "Contraseña cambiada con éxito",
+            "pass_save_btn": "Cambiar contraseña",
+            "maps_hint": "Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.",
+            "demo_hint": "Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)",
+            "user_notifications_title": "Notificaciones a los usuarios",
+            "user_notifications_hint": "Configuración de las notificaciones de su sistema de seguimiento a los usuarios: geo-acontecimientos, bajo balance, recuperación de contraseña, etc.",
+            "special_notifications_title": "Notificaciones a los administradores",
+            "special_notifications_hint": "Notificaciones del sistema a los administradores sobre el estado del servicio, estadísticas y otros",
 <<<<<<< local
-            "defaults_fields": "Benutzerdefinierte Einstellungen",
-            "defaults_hint": "Einstellungen in diesem Abschnitt wird automatisch auf alle neuen Benutzer angewendet werden"
+            "defaults_fields": "La configuración predeterminada del usuario",
+            "defaults_hint": "Ajustes en esta sección se aplicarán automáticamente a todos los nuevos usuarios"
 =======
             "branding_fields": "Branding",
             "branding_main_title": "Branding main settings",
@@ -882,23 +889,23 @@ Ext.define('Locale.locale-de',{
 >>>>>>> other
         },
         "upload_form": {
-            "save_btn": "Hochladen",
-            "cancel_btn": "Abbrechen",
-            "upload_btn": "Ansicht",
-            "title": "Bild hochladen. {0}",
+            "save_btn": "Subir",
+            "cancel_btn": "Cancelar",
+            "upload_btn": "Vista",
+            "title": "Subir imagen. {0}",
             "titles": {
                 "logo": "Logo",
                 "favicon": "Favicon",
-                "login_wallpaper": "Login Seite Tapete",
-                "desktop_wallpaper": "Service-Seite-Tapete"
+                "login_wallpaper": "Página de registro de papel tapiz",
+                "desktop_wallpaper": "Fondo de pantalla de servicio página"
             },
             "tips": {
-                "logo": "Empfohlene orientierte horizontal laden Bild mit einem transparenten Hintergrund und einer Breite von nicht weniger als 200 Punkte.",
-                "favicon": "Laden Sie das Bild mit einem transparenten Hintergrund und einer Mindestauflösung von 32 x 32 Pixel empfohlen.",
-                "login_wallpaper": "Empfohlen, um Hintergrund-Bilder mit einer Auflösung von mindestens 1920 x 1080 Pixel (FullHD) Format JPEG zu laden."
+                "logo": "Recomendado para cargar la imagen de orientación horizontal con un fondo transparente y una anchura no inferior a 200 puntos.",
+                "favicon": "Recomendado para cargar la imagen con un fondo transparente y una resolución mínima de 32x32 píxeles.",
+                "login_wallpaper": "Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG."
             },
-            "img_title": "Die Bild-Format {0} (die maximale Größe von {1} MB)",
-            "error_text": "Fehler beim Laden des Bildes"
+            "img_title": "El formato de imagen {0} (el tamaño máximo de {1} MB)",
+            "error_text": "Error al cargar la imagen"
         },
         "sms_gateway": {
             "navixy": {
@@ -991,31 +998,31 @@ Ext.define('Locale.locale-de',{
         }
     },
     "accounting": {
-        "menu_text": "Buchhaltung",
+        "menu_text": "Contabilidad",
         "report_msg": {
-            "title": "E-mail-Newsletter bestätigen",
-            "text": "Kunden alarmieren über Exportieren von Daten zu 1C <b>{0}</b>.Stellen <br>Sie sicher, dass Sie <b>e-mail-Newsletter</b> machen wollen?"
+            "title": "Confirme el correo informativo",
+            "text": "Alerte a los clientes acerca de la exportación de datos a 1C para <b>{0}</b>.<br>Y¿Seguro que quieres hacer <a> correo-informativo</b>?"
         },
         "form": {
-            "title": "«1C: Enterprise» Datenexport",
+            "title": "«1C:Enterprise» Datos exportados",
             "export1c": {
-                "tab_title": "Buchhaltung",
-                "save_btn": "1C-Daten-Datei erhalten",
-                "report_btn": "Taten per e-Mail senden",
+                "tab_title": "Contabilidad",
+                "save_btn": "Conseguir archivo de datos 1C",
+                "report_btn": "Presentar hechos por correo electrónico",
                 "fields": {
-                    "month": "Einen Monat wählen",
-                    "last_act": "Letzte Tat Nummer"
+                    "month": "Seleccione un mes",
+                    "last_act": "Último número de la escritura"
                 }
             },
             "payments": {
-                "tab_title": "Zahlungen",
-                "save_btn": "1C-Daten-Datei zu erhalten",
+                "tab_title": "Pagos",
+                "save_btn": "Obtener archivo de datos de 1C",
                 "fields": {
-                    "date": "Zeitintervall",
-                    "type": "Zahlungssystem"
+                    "date": "Intervalo de tiempo",
+                    "type": "Sistema de pago"
                 },
                 "ps": {
-                    "default": "Alle oben genannten",
+                    "default": "Todo lo anterior",
                     "cyberplat": "CyberPlat",
                     "deltapay": "DeltaPay",
                     "mobile": "Mobile",
@@ -1027,23 +1034,22 @@ Ext.define('Locale.locale-de',{
             }
         }
     },
-    "main_copyright": "© 2015 RusLink. Alle Rechte vorbehalten.",
     "payments": {
-        "menu_text": "Zahlungen",
+        "menu_text": "Pagos",
         "import_sberbank": {
-            "title": "Sberbank Zahlungen importieren",
-            "save_btn": "Import von Zahlungen",
-            "upload_btn": "Ansicht",
-            "upload_loading": "Datei hochladen",
-            "error_text": "Fehler beim Importieren von Zahlungen",
+            "title": "importación de pagos Sberbank",
+            "save_btn": "Importar pagos",
+            "upload_btn": "Vista",
+            "upload_loading": "Cargando Archivo",
+            "error_text": "Fallo en importación de archivos",
             "fields": {
-                "file_title": "Import-Datei Format {0} (maximale Größe {1} Mb)"
+                "file_title": "Importar archivo de formato {0} (tamaño máximo {1} Mb)"
             },
             "errors": {
-                "242": "Zeile {0}, Spalte {1}, Beschreibung: <br><i>{2}</i>"
+                "242": "Línea {0}, columna {1}, descripción:<br><i>{2}</i>"
             },
-            "success_msg": "Sberbank Zahlungen erfolgreich importiert",
-            "success_dsc": "Datum der Registrierung: <b>{0}</b> <br>Anzahl der geladenen Zahlungen: <b>{1}</b> <br>Summe geladen Zahlungen: <b>{2}</b>"
+            "success_msg": "Pagos de Sberbank importados satisfactoriamente",
+            "success_dsc": "Fecha de registro: <b>{0}</b><br>Conteo de pagos cargados: <b>{1}</b><br>Suma de pagos cargados: <b>{2}</b>"
         }
     },
     "bundles": {
@@ -1217,8 +1223,8 @@ Ext.define('Locale.locale-de',{
         }
     },
     "measurement_systems": {
-        "metric": "Metrisch",
-        "imperial": "Kaiserlich",
+        "metric": "Métrico",
+        "imperial": "Imperial",
         "us": "US"
     },
     "route_providers": {

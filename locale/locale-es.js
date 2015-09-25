@@ -855,6 +855,8 @@ Ext.define('Locale.locale-es',{
             "special_notifications_hint": "Notificaciones del sistema a los administradores sobre el estado del servicio, estadísticas y otros",
             "branding_fields": "Branding",
             "branding_main_title": "Branding main settings",
+            "defaults_fields": "La configuración predeterminada del usuario",
+            "defaults_hint": "Ajustes en esta sección se aplicarán automáticamente a todos los nuevos usuarios"
             "branding_img_title": "Images and logo",
             "branding_contacts_title": "Contact information for users",
             "service_fields": "Service preferences",

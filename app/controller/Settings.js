@@ -9,7 +9,8 @@ Ext.define('NavixyPanel.controller.Settings', {
     id: 'SettingsController',
 
     views: [
-        'settings.Edit'
+        'settings.Edit',
+        'settings.avangate.Subscription'
     ],
 
     refs: [
@@ -19,7 +20,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         }
     ],
 
-    stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation', 'SpeedRestriction', 'RoadsSnap'],
+    stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
+             'SpeedRestriction', 'RoadsSnap'],
     models: ['Settings'],
     mainStore: 'Settings',
 
@@ -27,17 +29,21 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.callParent(arguments);
 
         this.control({
-            'settingsedit' : {
+            'settingsedit': {
                 formsubmit: this.onEditSubmit,
                 formsubmitpassword: this.onPasswordEditSubmit
             }
         });
 
         this.handle({
-            'settings' : {
+            'settings': {
                 fn: this.handleEdit,
                 loadRecord: true,
                 access: 'read'
+            },
+
+            'avangate_payment_recieved': {
+                fn: this.showPaymentsRecieveMsg
             }
         });
 
@@ -47,15 +53,38 @@ Ext.define('NavixyPanel.controller.Settings', {
         };
     },
 
+    showPaymentsRecieveMsg: function () {
+        Ext.Msg.show({
+            msg: _l.get('settings.subscription.payment_recieved_msg'),
+            buttons: Ext.Msg.OK,
+            closable: false,
+            fn: function () {
+                Ext.Nav.shift('settings');
+                try {
+                    Ext.waitFor(function () {
+                        return Ext.getFirst('avangate-panel');
+                    }, function () {
+                        Ext.getFirst('avangate-panel').maybeInitActivationPaymentCheck();
+                    }, this);
+                } catch (e) {
+                    console.log(e.stack);
+                }
+
+            },
+            scope: this
+        });
+
+    },
+
     handleEdit: function (settingsRecord) {
         this.fireContent({
             xtype: 'settingsedit',
             record: settingsRecord,
             rights: {
-                serviceRead : Ext.checkPermission('service_settings', 'read'),
-                serviceEdit : Ext.checkPermission('service_settings', 'update'),
-                notificationRead : Ext.checkPermission('notification_settings', 'read'),
-                notificationEdit : Ext.checkPermission('notification_settings', 'update')
+                serviceRead: Ext.checkPermission('service_settings', 'read'),
+                serviceEdit: Ext.checkPermission('service_settings', 'update'),
+                notificationRead: Ext.checkPermission('notification_settings', 'read'),
+                notificationEdit: Ext.checkPermission('notification_settings', 'update')
             }
         });
     },
@@ -104,11 +133,11 @@ Ext.define('NavixyPanel.controller.Settings', {
             requestsCnt = 0;
 
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {
-            requestsCnt++ ;
+            requestsCnt++;
             Ext.API.updateSettingsSerivce({
                 params: record.getServiceFormatted(),
                 callback: function (response) {
-                    if (--requestsCnt === 0)  {
+                    if (--requestsCnt === 0) {
                         this.afterSettingsEdit(response, record);
                     }
                 },
@@ -120,11 +149,11 @@ Ext.define('NavixyPanel.controller.Settings', {
         }
 
         if (notificationChanges && Ext.checkPermission('notification_settings', 'update')) {
-            requestsCnt++ ;
+            requestsCnt++;
             Ext.API.updateSettingsNotification({
                 params: record.getNotificationFormatted(),
                 callback: function (response) {
-                    if (--requestsCnt === 0)  {
+                    if (--requestsCnt === 0) {
                         this.afterSettingsEdit(response, record);
                     }
                 },
@@ -142,7 +171,8 @@ Ext.define('NavixyPanel.controller.Settings', {
             Ext.API.getDealerInfo(this.updateDealerInfo, this.updateDealerInfo(), this);
             try {
                 record.commit();
-            } catch (e) {}
+            } catch (e) {
+            }
 
             this.getSettingsEdit().afterSave();
         } else {

@@ -853,6 +853,8 @@ Ext.define('Locale.locale-de',{
             "special_notifications_hint": "Systembenachrichtigungen an Administratoren über Service-Status, Statistiken und andere",
             "branding_fields": "Branding",
             "branding_main_title": "Branding main settings",
+            "defaults_fields": "Benutzerdefinierte Einstellungen",
+            "defaults_hint": "Einstellungen in diesem Abschnitt wird automatisch auf alle neuen Benutzer angewendet werden"
             "branding_img_title": "Images and logo",
             "branding_contacts_title": "Contact information for users",
             "service_fields": "Service preferences",

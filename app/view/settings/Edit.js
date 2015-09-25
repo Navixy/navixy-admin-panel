@@ -36,14 +36,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getHintSymbol: function (hint, cls) {
         return ['<span class="icon-help ',
                 cls || '',
-            '" style="color:#f89406;font-size:12px; padding: 10px" ',
-            'data-qtip="', Ext.String.htmlEncode(hint), '"',
-            'data-qclass="settings-tip"',
-            'data-qwidth="300"',
-            '></span>'].join('');
+                '" style="color:#f89406;font-size:12px; padding: 10px" ',
+                'data-qtip="', Ext.String.htmlEncode(hint), '"',
+                'data-qclass="settings-tip"',
+                'data-qwidth="300"',
+                '></span>'].join('');
     },
 
-    changeSaveBtn: function () {
+    changeSaveBtn: function (tabpanel, tab) {
 
         this.getForm().isValid();
 
@@ -60,6 +60,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
         }
         this.clearPasswords();
+
+        this.down('toolbar[dock=bottom]').setVisible(tab.role !== 'not-settings-tab');
     },
 
     getButtons: function () {
@@ -479,7 +481,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             }
-                : null
+                : null,
+            Ext.checkPermission('paas_payments', 'create')
+                ? {
+                xtype: 'avangate-panel',
+                layout: {
+                    type: 'auto'
+                },
+                role: 'not-settings-tab'
+            } : null
         ]
     },
 
@@ -517,17 +527,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 2,
                 maxLength: 100,
                 vtype: 'rurl'
-            //    TODO: API w8
-            //},
-            //{
-            //    name: 'payment_description',
-            //    fieldLabel: _l.get('settings.fields.payment_description'),
-            //    allowBlank: true
-            //},
-            //{
-            //    name: 'support_email',
-            //    fieldLabel: _l.get('settings.fields.support_email'),
-            //    allowBlank: true
+                //    TODO: API w8
+                //},
+                //{
+                //    name: 'payment_description',
+                //    fieldLabel: _l.get('settings.fields.payment_description'),
+                //    allowBlank: true
+                //},
+                //{
+                //    name: 'support_email',
+                //    fieldLabel: _l.get('settings.fields.support_email'),
+                //    allowBlank: true
             }
         ]
     },
@@ -540,7 +550,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 html: _l.get('settings.edit_form.branding_img_title')
             },
             {
-                xtype: 'container',
+                xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
                 padding: '0 0 10 0'
@@ -548,7 +558,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.getImgButtonConfig('favicon'),
             this.getImgConfig('favicon', {maxWidth: 28}),
             {
-                xtype: 'container',
+                xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
                 padding: '20 0 10 0'
@@ -556,7 +566,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.getImgButtonConfig('logo'),
             this.getImgConfig('logo'),
             {
-                xtype: 'container',
+                xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
                 padding: '20 0 10 0'
@@ -574,7 +584,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'domain',
-                fieldLabel: _l.get('settings.fields.domain') + this.getHintSymbol(_l.get('settings.fields.domain_hint')) + '<a href="' + _l.get('settings.fields.domain_help_link')+ '" target="_blank">' + _l.get('settings.fields.domain_help')+ '</a>',
+                fieldLabel: _l.get('settings.fields.domain') + this.getHintSymbol(_l.get('settings.fields.domain_hint')) + '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>',
                 emptyText: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
                 value: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
                 allowBlank: false,
@@ -1156,11 +1166,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
-
     getPassHint: function () {
         return [
             {
-                xtype: 'container',
+                xtype: 'component',
                 html: _l.get('settings.edit_form.pass_hint')
             }
         ];
