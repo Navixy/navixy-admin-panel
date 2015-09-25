@@ -1105,14 +1105,6 @@ Ext.define('Locale.locale-en',{
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
-        },
-        "subscription": {
-            "activation_btn_text": "Pay activation fee now (500 USD) online",
-            "monthly_fee_btn_text": "Pay online",
-            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
-            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
-            "license_balance": "Pending amount {0}",
-            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
