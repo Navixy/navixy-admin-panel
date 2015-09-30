@@ -243,6 +243,371 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "AZN",
                 "name": _l.get('currency.azn'),
                 priority: 5
+            },
+            {
+                type: "ALL",
+                "name": _l.get('currency.all'),
+                priority: 5
+            },
+            {
+                type: "AFN",
+                "name": _l.get('currency.afn'),
+                priority: 5
+            },
+            {
+                type: "ARS",
+                "name": _l.get('currency.ars'),
+                priority: 5
+            },
+            {
+                type: "AWG",
+                "name": _l.get('currency.awg'),
+                priority: 5
+            },
+            {
+                type: "BSD",
+                "name": _l.get('currency.bsd'),
+                priority: 5
+            },
+            {
+                type: "BBD",
+                "name": _l.get('currency.bbd'),
+                priority: 5
+            },
+            {
+                type: "BZD",
+                "name": _l.get('currency.bzd'),
+                priority: 5
+            },
+            {
+                type: "BMD",
+                "name": _l.get('currency.bmd'),
+                priority: 5
+            },
+            {
+                type: "BOB",
+                "name": _l.get('currency.bob'),
+                priority: 5
+            },
+            {
+                type: "BAM",
+                "name": _l.get('currency.bam'),
+                priority: 5
+            },
+            {
+                type: "BWP",
+                "name": _l.get('currency.bwp'),
+                priority: 5
+            },
+            {
+                type: "BGN",
+                "name": _l.get('currency.bgn'),
+                priority: 5
+            },
+            {
+                type: "BND",
+                "name": _l.get('currency.bnd'),
+                priority: 5
+            },
+            {
+                type: "KHR",
+                "name": _l.get('currency.khr'),
+                priority: 5
+            },
+            {
+                type: "KYD",
+                "name": _l.get('currency.kyd'),
+                priority: 5
+            },
+            {
+                type: "COP",
+                "name": _l.get('currency.cop'),
+                priority: 5
+            },
+            {
+                type: "CRC",
+                "name": _l.get('currency.crc'),
+                priority: 5
+            },
+            {
+                type: "HRK",
+                "name": _l.get('currency.hrk'),
+                priority: 5
+            },
+            {
+                type: "CUP",
+                "name": _l.get('currency.cup'),
+                priority: 5
+            },
+            {
+                type: "DOP",
+                "name": _l.get('currency.dop'),
+                priority: 5
+            },
+            {
+                type: "XCD",
+                "name": _l.get('currency.xcd'),
+                priority: 5
+            },
+            {
+                type: "EGP",
+                "name": _l.get('currency.egp'),
+                priority: 5
+            },
+            {
+                type: "SVC",
+                "name": _l.get('currency.svc'),
+                priority: 5
+            },
+            {
+                type: "EEK",
+                "name": _l.get('currency.eek'),
+                priority: 5
+            },
+            {
+                type: "FKP",
+                "name": _l.get('currency.fkp'),
+                priority: 5
+            },
+            {
+                type: "FJD",
+                "name": _l.get('currency.fjd'),
+                priority: 5
+            },
+            {
+                type: "GHC",
+                "name": _l.get('currency.ghc'),
+                priority: 5
+            },
+            {
+                type: "GIP",
+                "name": _l.get('currency.gip'),
+                priority: 5
+            },
+            {
+                type: "GTQ",
+                "name": _l.get('currency.gtq'),
+                priority: 5
+            },
+            {
+                type: "GGP",
+                "name": _l.get('currency.ggp'),
+                priority: 5
+            },
+            {
+                type: "GYD",
+                "name": _l.get('currency.gyd'),
+                priority: 5
+            },
+            {
+                type: "HNL",
+                "name": _l.get('currency.hnl'),
+                priority: 5
+            },
+            {
+                type: "ISK",
+                "name": _l.get('currency.isk'),
+                priority: 5
+            },
+            {
+                type: "IRR",
+                "name": _l.get('currency.irr'),
+                priority: 5
+            },
+            {
+                type: "IMP",
+                "name": _l.get('currency.imp'),
+                priority: 5
+            },
+            {
+                type: "JMD",
+                "name": _l.get('currency.jmd'),
+                priority: 5
+            },
+            {
+                type: "JEP",
+                "name": _l.get('currency.jep'),
+                priority: 5
+            },
+            {
+                type: "KPW",
+                "name": _l.get('currency.kpw'),
+                priority: 5
+            },
+            {
+                type: "LAK",
+                "name": _l.get('currency.lak'),
+                priority: 5
+            },
+            {
+                type: "LBP",
+                "name": _l.get('currency.lbp'),
+                priority: 5
+            },
+            {
+                type: "LRD",
+                "name": _l.get('currency.lrd'),
+                priority: 5
+            },
+            {
+                type: "MKD",
+                "name": _l.get('currency.mkd'),
+                priority: 5
+            },
+            {
+                type: "MUR",
+                "name": _l.get('currency.mur'),
+                priority: 5
+            },
+            {
+                type: "MNT",
+                "name": _l.get('currency.mnt'),
+                priority: 5
+            },
+            {
+                type: "MZN",
+                "name": _l.get('currency.mzn'),
+                priority: 5
+            },
+            {
+                type: "NAD",
+                "name": _l.get('currency.nad'),
+                priority: 5
+            },
+            {
+                type: "NPR",
+                "name": _l.get('currency.npr'),
+                priority: 5
+            },
+            {
+                type: "ANG",
+                "name": _l.get('currency.ang'),
+                priority: 5
+            },
+            {
+                type: "NIO",
+                "name": _l.get('currency.nio'),
+                priority: 5
+            },
+            {
+                type: "NGN",
+                "name": _l.get('currency.ngn'),
+                priority: 5
+            },
+            {
+                type: "OMR",
+                "name": _l.get('currency.omr'),
+                priority: 5
+            },
+            {
+                type: "PAB",
+                "name": _l.get('currency.pab'),
+                priority: 5
+            },
+            {
+                type: "PYG",
+                "name": _l.get('currency.pyg'),
+                priority: 5
+            },
+            {
+                type: "PEN",
+                "name": _l.get('currency.pen'),
+                priority: 5
+            },
+            {
+                type: "QAR",
+                "name": _l.get('currency.qar'),
+                priority: 5
+            },
+            {
+                type: "RON",
+                "name": _l.get('currency.ron'),
+                priority: 5
+            },
+            {
+                type: "SHP",
+                "name": _l.get('currency.shp'),
+                priority: 5
+            },
+            {
+                type: "SAR",
+                "name": _l.get('currency.sar'),
+                priority: 5
+            },
+            {
+                type: "RSD",
+                "name": _l.get('currency.rsd'),
+                priority: 5
+            },
+            {
+                type: "SCR",
+                "name": _l.get('currency.scr'),
+                priority: 5
+            },
+            {
+                type: "SBD",
+                "name": _l.get('currency.sbd'),
+                priority: 5
+            },
+            {
+                type: "SOS",
+                "name": _l.get('currency.sos'),
+                priority: 5
+            },
+            {
+                type: "LKR",
+                "name": _l.get('currency.lkr'),
+                priority: 5
+            },
+            {
+                type: "SRD",
+                "name": _l.get('currency.srd'),
+                priority: 5
+            },
+            {
+                type: "SYP",
+                "name": _l.get('currency.syp'),
+                priority: 5
+            },
+            {
+                type: "TTD",
+                "name": _l.get('currency.ttd'),
+                priority: 5
+            },
+            {
+                type: "TRL",
+                "name": _l.get('currency.trl'),
+                priority: 5
+            },
+            {
+                type: "TVD",
+                "name": _l.get('currency.tvd'),
+                priority: 5
+            },
+            {
+                type: "UYU",
+                "name": _l.get('currency.uyu'),
+                priority: 5
+            },
+            {
+                type: "VEF",
+                "name": _l.get('currency.vef'),
+                priority: 5
+            },
+            {
+                type: "VND",
+                "name": _l.get('currency.vnd'),
+                priority: 5
+            },
+            {
+                type: "YER",
+                "name": _l.get('currency.yer'),
+                priority: 5
+            },
+            {
+                type: "ZWD",
+                "name": _l.get('currency.zwd'),
+                priority: 5
             }
         ];
 
