@@ -405,53 +405,6 @@ Ext.define('Locale.locale-ru',{
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar"
     },
-    "currencies_tpls": {
-        "GBP": "£{0}",
-        "BRL": "R${0}",
-        "HUF": "{0} Ft",
-        "HKD": "HK${0}",
-        "DKK": "{0} kr.",
-        "EUR": "€{0}",
-        "ILS": "₪{0}",
-        "INR": "₹{0}",
-        "IDR": "Rp {0}",
-        "CAD": "С${0}",
-        "CNY": "¥{0}",
-        "KRW": "₩{0}",
-        "MYR": "RM{0}",
-        "MXN": "Mex${0}",
-        "NZD": "NZ${0}",
-        "NOK": "{0} kr",
-        "PKR": "Rs. {0}",
-        "PLN": "{0} zł",
-        "RUB": "{0} руб.",
-        "SGD": "S${0}",
-        "USD": "${0}",
-        "TWD": "NT${0}",
-        "THB": "฿{0}",
-        "TRY": "₺{0}",
-        "PHP": "{0} ₱",
-        "CZK": "{0} Kč",
-        "CLP": "${0}",
-        "SEK": "{0} kr",
-        "CHF": "{0} франк",
-        "ZAR": "R {0}",
-        "JPY": "¥{0}",
-        "KZT": "{0} тенге",
-        "BYR": "{0} руб.",
-        "AUD": "A${0}",
-        "TJS": "{0} смн",
-        "UAH": "{0} грн.",
-        "LTL": "{0} Lt",
-        "LVL": "Ls {0}",
-        "KGS": "{0} сом",
-        "TMT": "{0} ман.",
-        "UZS": "{0} сум",
-        "MDL": "{0} лей",
-        "GEL": "{0} лари",
-        "AMD": "{0} драм",
-        "AZN": "{0} ман."
-    },
     "maps": {
         "roadmap": "Google дорожная карта",
         "satellite": "Google спутник",
@@ -753,7 +706,7 @@ Ext.define('Locale.locale-ru',{
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Название",
+            "name": "Название тарифа",
             "group_id": "Группа",
             "price": "Месячный платеж",
             "device_limit": "Количество устройств",
@@ -761,7 +714,7 @@ Ext.define('Locale.locale-ru',{
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",
             "has_reports": "Доступны табличные отчеты",
-            "proportional_charge": "Абонентскую плату за неполный месяц списывать пропорционально числу дней",
+            "proportional_charge": "Всегда списывать как за полный месяц",
             "incoming_sms": "Входящее SMS",
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
@@ -777,14 +730,19 @@ Ext.define('Locale.locale-ru',{
             "free_days": "Кол-во бесплатных дней",
             "tariff_type": "Биллинговый период",
             "tariff_type_short": "Оплата",
+
             "rate": "Ставка",
             "users_price": "Цена для пользователей",
             "client_costs": "Вашы расходы",
+
             "plan_options": "Настройки тарифа",
             "plan_availability": "Настройки доступа",
+
             "available_maps": "Доступные карты",
             "available_features": "Доступные опции",
+
             "default_name": "Мой тарифный план",
+
             "tariff_is_default": "Использовать по умолчанию"
         },
         "list": {
@@ -798,7 +756,7 @@ Ext.define('Locale.locale-ru',{
             "save_form_btn": "Сохранить тариф",
             "currency_in": "(в {0})",
             "links": {
-                "make_default": "Назначить тарифом по умолчанию",
+                "make_default": "Установить планом по умолчанию",
                 "tariff_edit": "Редактировать тариф"
             },
             "tab_panel": {
@@ -843,10 +801,9 @@ Ext.define('Locale.locale-ru',{
             "title": "Выберите тарифный план"
         },
         "types": {
-            "activeday": "Посуточно",
-            "monthly": "Помесячно",
-            "everyday": "Помесячно (ежедневное списание)",
-            "empty": "Без биллинга"
+            "activeday": "Сутки",
+            "monthly": "Месяц (ежемесячно 1-го числа)",
+            "everyday": "Месяц (посуточное списание)"
         },
         "price_type": {
             "monthly": "Месячный платеж",
