@@ -21,6 +21,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     bodyPadding: '0 0 60 0',
     formRowPadding: '50 0 0 0',
 
+    paymentCurrency: 'USD',
+
     initComponent: function () {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.getRecordData().allowed_maps || []);
@@ -189,6 +191,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
 
         return isDomain || false
+    },
+
+    getCurrencyValue: function () {
+        var currencyField = this.down('[name="currency"]');
+
+        return currencyField && currencyField.getValue();
+    },
+
+    updatePaymentTab: function () {
+        var hasPayments = this.getCurrencyValue() === this.paymentCurrency,
+            part = this.down("[role=not-settings-tab]"),
+            tab = part && part.tab;
+        if (tab) {
+            tab[hasPayments ? 'show' : 'hide']();
+        }
     },
 
     updateFreeMaps: function () {
@@ -621,7 +638,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type'
+                valueField: 'type',
+                listeners: {
+                    change: this.updatePaymentTab,
+                    scope: this
+                }
             },
             {
                 xtype: 'blockheader',
