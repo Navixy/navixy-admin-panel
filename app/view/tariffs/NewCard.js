@@ -182,7 +182,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         var me = this,
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
-            settings = this.record.getSettingsData(),
+            settings = this.record && this.record.getSettingsData(),
             seller_currency = (dealer && dealer.get('seller_currency')) || 'USD',
             currency = (settings && settings.currency) || 'USD',
 
