@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                 concatBuildConfig = {},
                 uglifyBuildConfig = {},
                 copyBuildConfig = {},
-                mainTaskSequence = [];
+                mainTaskSequence = ['buildbump'];
 
             function getAppPath(filePath)  {
                 return notRoot
