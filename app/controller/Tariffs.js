@@ -122,6 +122,14 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         }
     },
 
+    // TODO: dirty hack
+    waitSettingsStore: function (callback, scope) {
+        var me = this,
+            pricesStore = Ext.getStore('Settings');
+
+        Ext.getStore('Settings').loadRecord(null, function (record) {callback.call(scope || me, record)})
+    },
+
     handleTariffs: function () {
         this.fireContent({
             xtype: 'tariffslist',
@@ -159,14 +167,14 @@ Ext.define('NavixyPanel.controller.Tariffs', {
     },
 
     handleTariffCreate: function () {
-        this.waitTariffPrices(function () {
-            this.fireContent({
-                xtype: 'tariff-card',
-                mode: 'create'
+        this.waitSettingsStore(function (settings) {
+            this.waitTariffPrices(function () {
+                this.fireContent({
+                    xtype: 'tariff-card',
+                    mode: 'create',
+                    settings: settings.getData()
+                });
             });
-            //this.fireContent({
-            //    xtype: 'tariffcreate'
-            //});
         });
     },
 
