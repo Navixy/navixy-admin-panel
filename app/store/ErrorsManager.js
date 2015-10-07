@@ -122,7 +122,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                     return callback.call(this, code, requestConfig, response);
                 }
             } catch (e) {
-                Ext.log(e.stack);
+                Ext.logger(e.stack);
             }
         }
     },

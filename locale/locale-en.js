@@ -236,6 +236,7 @@ Ext.define('Locale.locale-en', {
     },
     "units_short": {
         "kilometer": "km",
+        "mile": "mi",
         "meter": "m",
         "square_kilometer": "sq. km",
         "square_meter": "sq. m",
@@ -1118,7 +1119,10 @@ Ext.define('Locale.locale-en', {
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
+
+            "service_maps_preview": "Map default settings preview",
+            "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map."
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -1533,5 +1537,10 @@ Ext.define('Locale.locale-en', {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat"
-    }
+    },
+    map: {
+        "zoom_in": "Zoom in",
+        "zoom_out": "Zoom out"
+    },
+    map_type_label: 'Map'
 });

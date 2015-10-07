@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.plugins.PhoneMask', {
                     me.cmp.fireEvent('maskcomplete', me.cmp, $(cmpInput).val());
                 });
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.logger(e.stack);
         }
     }
 

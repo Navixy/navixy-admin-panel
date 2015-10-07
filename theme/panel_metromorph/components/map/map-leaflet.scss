@@ -1,0 +1,33 @@
+.leaflet-marker-icon {
+    direction: ltr !important;
+}
+
+.leaflet-container {
+    svg {
+        direction: ltr !important;
+    }
+}
+
+.leaflet-marker-icon-scaled {
+    overflow: hidden;
+}
+
+.leaflet-editing-icon {
+    //border: 1px solid #27A9E3 !important;
+    -webkit-border-radius: 100px !important;
+    -moz-border-radius: 100px !important;
+    -ms-border-radius: 100px !important;
+    -o-border-radius: 100px !important;
+    border-radius: 100px !important;
+}
+
+.leaflet-container,
+.leaflet-map-pane {
+    font-family: 'Open Sans', Arial,sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.leaflet-crosshair {
+    cursor: crosshair;
+}

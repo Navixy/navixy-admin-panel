@@ -59,7 +59,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                 this.fatalError = this.errorsManager.fireError(response.status.code, requestConfig.params, response);
             }
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.logger(e.stack);
         }
     },
 
@@ -220,7 +220,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                         if (onErrorFn) {
                             onErrorFn.call(scoperequestParams);
                         } else {
-                            Ext.log('success callback error', e.stack);
+                            Ext.logger('success callback error', e.stack);
                         }
                     }
 
@@ -237,7 +237,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                     try {
                         me.checkCode(Ext.decode(response.responseText), config);
                     } catch (e) {
-                        Ext.log(e.stack);
+                        Ext.logger(e.stack);
                     }
 
                     if (requiredAction) {
@@ -246,13 +246,13 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                     if (failureFn) {
                         failureFn.call(scope, Ext.decode(response.responseText), requestParams, response);
                     } else {
-                        Ext.log('request failure', config);
+                        Ext.logger('request failure', config);
                     }
                 }
             });
 
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.logger(e.stack);
         }
 
     },

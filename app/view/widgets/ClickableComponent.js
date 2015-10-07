@@ -25,7 +25,7 @@ Ext.define('NavixyPanel.view.widgets.ClickableComponent', {
             try {
                 this.handler.call(me.scope || this, me);
             } catch (e) {
-                Ext.log(e.stack);
+                Ext.logger(e.stack);
             }
         }, this);
 

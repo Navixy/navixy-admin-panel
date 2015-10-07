@@ -44,7 +44,7 @@ Ext.define('NavixyPanel.view.widgets.ListFilter', {
             try {
                 me.search(val);
             } catch (e) {
-                Ext.log(e.stack);
+                Ext.logger(e.stack);
             }
 
             if (me.onsearch) {

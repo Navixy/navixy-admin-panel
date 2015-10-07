@@ -116,7 +116,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             this.unToggleAll();
             Ext.Nav.shift(Ext.Nav.getSearch(searchString));
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.logger(e.stack);
         }
     },
 
@@ -146,7 +146,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             this.toggleSectionButton(section, true, false);
             Ext.Nav.shift(target);
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.logger(e.stack);
         }
 
         this.fireEvent('tabchanged', this, section);

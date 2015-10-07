@@ -10,7 +10,16 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     views: [
         'settings.Edit',
-        'settings.avangate.Subscription'
+        'settings.avangate.Subscription',
+
+        'widgets.map.Map',
+        'widgets.map.MapControls',
+        'widgets.map.MapPanel',
+        'widgets.map.MapScaleControl'
+    ],
+    requires: [
+        'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
+        'NavixyPanel.utils.mapProvider.LeafletMapsProvider'
     ],
 
     refs: [
@@ -21,17 +30,32 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps'],
+
     models: ['Settings'],
     mainStore: 'Settings',
 
     init: function () {
         this.callParent(arguments);
+        this.initMapApi();
 
         this.control({
             'settingsedit': {
                 formsubmit: this.onEditSubmit,
-                formsubmitpassword: this.onPasswordEditSubmit
+                formsubmitpassword: this.onPasswordEditSubmit,
+                mapchanged: this.onMapSettingsChange
+            },
+
+            //'maptype': {
+            //    beforeselect: this.changeMapType
+            //}
+
+            'mapscale': {
+                zoomchange: this.updateMapSettings
+            },
+
+            'map': {
+                centerchange: this.updateMapSettings
             }
         });
 
@@ -52,6 +76,45 @@ Ext.define('NavixyPanel.controller.Settings', {
             target: 'settings'
         };
     },
+
+    initMapApi: function () {
+        this.availableMapTypesLoad();
+        Ext.Map = Ext.create('NavixyPanel.utils.mapProvider.LeafletMapsProvider', {});
+    },
+
+    availableMapTypesLoad: function () {
+        var defaultStore = Ext.getStore("MapTypes"),
+            mapsStore = Ext.getStore("leMaps"),
+            list = [];
+
+        defaultStore.each(function (record) {
+            list.push(record.get("type"))
+        });
+
+        mapsStore.availableLoad(list);
+    },
+
+    onMapSettingsChange: function (settings) {
+        var mapCmp = Ext.getFirst("map");
+
+        if (mapCmp) {
+            mapCmp.updateSettings(settings)
+        }
+    },
+
+    updateMapSettings: function () {
+        var mapCmp = Ext.getFirst('map'),
+            editCmp = Ext.getFirst('settingsedit');
+
+        if (mapCmp && editCmp) {
+            editCmp.updateSettingsFromMap({
+                map_zoom: mapCmp.getZoom(),
+                map_location_lat: mapCmp.getMarkerPosition().lat,
+                map_location_lng: mapCmp.getMarkerPosition().lng
+            })
+        }
+    },
+
 
     showPaymentsRecieveMsg: function () {
         Ext.Msg.show({
