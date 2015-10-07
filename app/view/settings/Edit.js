@@ -193,21 +193,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return isDomain || false
     },
 
-    getCurrencyValue: function () {
-        var currencyField = this.down('[name="currency"]');
-
-        return currencyField && currencyField.getValue();
-    },
-
-    updatePaymentTab: function () {
-        var hasPayments = this.getCurrencyValue() === this.paymentCurrency,
-            part = this.down("[role=not-settings-tab]"),
-            tab = part && part.tab;
-        if (tab) {
-            tab[hasPayments ? 'show' : 'hide']();
-        }
-    },
-
     updateFreeMaps: function () {
         var isFree = this.checkFreeDomain();
 
@@ -361,8 +346,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getTabs: function () {
 
-        var lp = _l.get('settings.edit_form');
+        var lp = _l.get('settings.edit_form'),
+            dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first(),
+            seller_currency = dealer && dealer.get('seller_currency');
 
+        console.log(seller_currency);
         return [
             {
                 title: lp.get('branding_fields'),
@@ -499,7 +488,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             }
                 : null,
-            Ext.checkPermission('paas_payments', 'create')
+            Ext.checkPermission('paas_payments', 'create') && seller_currency === this.paymentCurrency
                 ? {
                 xtype: 'avangate-panel',
                 layout: {
@@ -638,11 +627,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type',
-                listeners: {
-                    change: this.updatePaymentTab,
-                    scope: this
-                }
+                valueField: 'type'
             },
             {
                 xtype: 'blockheader',
