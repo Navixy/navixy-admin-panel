@@ -351,7 +351,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             dealer = dealer_store && dealer_store.first(),
             seller_currency = dealer && dealer.get('seller_currency');
 
-        console.log(seller_currency);
         return [
             {
                 title: lp.get('branding_fields'),
