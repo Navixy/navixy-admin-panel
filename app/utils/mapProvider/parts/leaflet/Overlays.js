@@ -201,7 +201,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Overlays', {
                 try {
                     Ext.Map[allowToUpdate[key]](marker, value);
                 } catch (e) {
-                    Ext.logger(e.stack);
+                    Ext.log(e.stack);
                 }
 
             }
@@ -323,7 +323,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Overlays', {
         try {
             polygon.editing[editable ? 'enable' : 'disable']();
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
         }
     },
 
@@ -331,7 +331,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Overlays', {
         try {
             polygon.dragging[draggable ? 'enable' : 'disable']();
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
         }
 
     },
@@ -353,7 +353,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Overlays', {
             }
             return poitns;
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
         }
     },
 

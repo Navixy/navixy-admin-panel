@@ -202,7 +202,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Base', {
         try {
             return Ext.Map.getLatLng(firstLocation).equals(Ext.Map.getLatLng(secondLocation));
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
             return null;
         }
 

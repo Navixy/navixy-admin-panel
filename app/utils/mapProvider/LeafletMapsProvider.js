@@ -122,7 +122,7 @@ Ext.define('NavixyPanel.utils.mapProvider.LeafletMapsProvider', {
             return this.callNavixyProvider([map]);
 
         //} catch (e) {
-        //    Ext.logger('Problems with maps', e.stack);
+        //    Ext.log('Problems with maps', e.stack);
         //}
 
         return null;

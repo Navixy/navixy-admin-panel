@@ -14,6 +14,7 @@ module.exports = function (grunt) {
                 notRoot = appPath.length ? true : false,
                 excludeClasses = options.excludeClasses || true,
                 destinationFileName = options.targetFileName || 'app.js',
+                noUglify = grunt.option('lovely') || false,
 
                 productionFiles = options.productionFiles || false,
                 copyFiles = options.copyFiles || false,
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
                 dest: buildDesinationFilePath
             };
 
-            uglifyBuildConfig[appName] = {
+            uglifyBuildConfig[appName] = noUglify ? {} : {
                 src: buildDesinationFilePath,
                 dest: buildDesinationFilePath
             };

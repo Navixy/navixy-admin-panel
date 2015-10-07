@@ -44,7 +44,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
                     typeObj: type
                 });
             } catch (e) {
-                Ext.logger('Can`t init map type', e.stack, mapTypeRecord);
+                Ext.log('Can`t init map type', e.stack, mapTypeRecord);
             }
 
         });
@@ -298,7 +298,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
             this.fireMapTypeChanged(map);
             map.currentMapType = mapTypeId;
         } else {
-            Ext.logger('Map type', mapTypeId, 'is not defined(change)');
+            Ext.log('Map type', mapTypeId, 'is not defined(change)');
         }
     },
 
@@ -315,7 +315,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
             this.addTypeLayer(map, this.getMapTypeByName(map, mapTypeId));
             map.fire('traffic_showd');
         } else {
-            Ext.logger('Map type', mapTypeId, 'is not defined(traffic)');
+            Ext.log('Map type', mapTypeId, 'is not defined(traffic)');
         }
     },
 
@@ -477,7 +477,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
             return map.getZoom();
 
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
             return null;
         }
     },
@@ -630,7 +630,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
 
             } catch (e) {
 
-                Ext.logger('Can`t panTo point', e.stack);
+                Ext.log('Can`t panTo point', e.stack);
             }
         }
 
@@ -653,7 +653,7 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
                 try {
                     resultBounds = resultBounds.extend(boundsArray[i]);
                 } catch (e) {
-                    Ext.logger(e.stack);
+                    Ext.log(e.stack);
                 }
             }
 

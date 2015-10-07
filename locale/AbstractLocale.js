@@ -49,7 +49,7 @@ Ext.define('Locale.AbstractLocale', {
                 }
 
             } catch (e) {
-                Ext.logger(e.stack);
+                Ext.log(e.stack);
                 return target;
             }
 

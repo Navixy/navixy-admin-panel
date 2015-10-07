@@ -75,7 +75,7 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
                 this.fireEvent('maptypechange');
             }, this);
         } catch (e) {
-            Ext.logger(e.stack);
+            Ext.log(e.stack);
             return false;
         }
     },
@@ -136,7 +136,7 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
 
             controlPanel.bindMap(this.map);
         } catch (e) {
-            Ext.logger('controls bind problem', e.stack);
+            Ext.log('controls bind problem', e.stack);
         }
     },
 

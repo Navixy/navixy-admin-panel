@@ -521,7 +521,7 @@ Ext.define('NavixyPanel.utils.mapProvider.NavixyMapsProvider', {
     isValidLocation: function (location) {
         var result = location && (location.lat || location.lng);
         if (!result) {
-            Ext.logger('Invalid location');
+            Ext.log('Invalid location');
         }
         return result;
     }

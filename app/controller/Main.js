@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.controller.Main', {
     // Overrides
     initOverrides: function () {
         Ext.override(Ext, {
-            logger: function () {
+            log: function () {
                 try {
                     if (Ext.debug) {
                         console.log.apply(console, arguments);
@@ -85,7 +85,7 @@ Ext.define('NavixyPanel.controller.Main', {
                         doc.write(result.response);
                     }
                 } catch (e) {
-                    Ext.logger(e.stack);
+                    Ext.log(e.stack);
                 }
                 return this.callParent(arguments);
             }
@@ -110,7 +110,7 @@ Ext.define('NavixyPanel.controller.Main', {
                                 return false;
                             }
                         } catch (e) {
-                            Ext.logger(e.stack);
+                            Ext.log(e.stack);
                         }
                     }, this);
                 }
@@ -690,7 +690,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
             failure: function () {
                 Ext.getBody().unmask();
-                Ext.logger('request failure');
+                Ext.log('request failure');
             }
         });
 
@@ -709,7 +709,7 @@ Ext.define('NavixyPanel.controller.Main', {
                 storeInstance.storeLoaded = true;
                 storeInstance.loadData(list);
             } catch (e) {
-                Ext.logger('result handler error', e.stack);
+                Ext.log('result handler error', e.stack);
             }
         });
 
