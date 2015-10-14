@@ -37,12 +37,16 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
     },
 
     updateSettings: function (settings) {
+        if (!this.mapReady) {
+            return false;
+        }
+
         var center = {lat: settings.map_location_lat, lng: settings.map_location_lng},
             zoom = settings.map_zoom,
             typesStore = Ext.getStore("leMaps"),
             type = typesStore.getMapCode(settings.map_type);
 
-        if (!Ext.isEmpty(center)) {
+        if (Ext.Map.isValidLocation(center)) {
             this.setCenter(center);
             this.updateMarker(center);
         }
@@ -52,7 +56,6 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
         if (!Ext.isEmpty(type)) {
             this.changeMap(type);
         }
-        this.getMap().silent = false;
     },
 
 
@@ -113,8 +116,6 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
             lineScalePosition: this.lineScalePosition
         });
 
-        this.map.silent = true;
-
         Ext.Map.on(this.map, {
             'bounds_changed': function () {
                 this.fireEvent('bounds_changed', this);
@@ -159,11 +160,9 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
 
     getMarker: function () {
 
-        var marker = Ext.Map.getSpecialMarker(
-            'simple',
+        var marker = Ext.Map.getCrosshairMarker(
             this.getCenter(),
-            this.map,
-            "808000"
+            this.map
         );
 
         Ext.Map.setOverlayOptions(marker, {

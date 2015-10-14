@@ -13,9 +13,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         'settings.avangate.Subscription',
 
         'widgets.map.Map',
-        'widgets.map.MapControls',
-        'widgets.map.MapPanel',
-        'widgets.map.MapScaleControl'
+        'settings.components.MapWindow'
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
@@ -46,16 +44,12 @@ Ext.define('NavixyPanel.controller.Settings', {
                 mapchanged: this.onMapSettingsChange
             },
 
-            //'maptype': {
-            //    beforeselect: this.changeMapType
-            //}
-
-            'mapscale': {
-                zoomchange: this.updateMapSettings
+            'settings-map': {
+                'map-edit': this.showMapSettingsWindow
             },
 
-            'map': {
-                centerchange: this.updateMapSettings
+            'map-edit-window': {
+                'formsubmit': this.updateMapSettings
             }
         });
 
@@ -94,27 +88,17 @@ Ext.define('NavixyPanel.controller.Settings', {
         mapsStore.availableLoad(list);
     },
 
-    onMapSettingsChange: function (settings) {
-        var mapCmp = Ext.getFirst("map");
+    updateMapSettings: function (cmp, settings, record) {
+        var editCmp = Ext.getFirst('settings-map');
 
-        if (mapCmp) {
-            mapCmp.updateSettings(settings)
+        if (editCmp) {
+            editCmp.updateSettingsFromMap(settings)
         }
     },
 
-    updateMapSettings: function () {
-        var mapCmp = Ext.getFirst('map'),
-            editCmp = Ext.getFirst('settingsedit');
-
-        if (mapCmp && editCmp) {
-            editCmp.updateSettingsFromMap({
-                map_zoom: mapCmp.getZoom(),
-                map_location_lat: mapCmp.getMarkerPosition().lat,
-                map_location_lng: mapCmp.getMarkerPosition().lng
-            })
-        }
+    showMapSettingsWindow: function (cmp, record) {
+        Ext.widget('map-edit-window', {record: record}).show();
     },
-
 
     showPaymentsRecieveMsg: function () {
         Ext.Msg.show({

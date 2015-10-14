@@ -1122,7 +1122,13 @@ Ext.define('Locale.locale-en', {
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
 
             "service_maps_preview": "Map default settings preview",
-            "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map."
+            "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
+
+            "map_edit_btn": "Visual editor",
+            "map_window": {
+                "title": "Map default settings – Visual editor",
+                "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons."
+            }
         },
         "upload_form": {
             "save_btn": "Upload",

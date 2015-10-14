@@ -12,7 +12,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.view.widgets.fields.TimeZoneCombo',
         'NavixyPanel.view.widgets.fields.SMSGateway',
         'NavixyPanel.view.settings.UploadWindow',
-        'NavixyPanel.view.settings.BlockHeader'
+        'NavixyPanel.view.settings.BlockHeader',
+
+        'NavixyPanel.view.settings.components.Map'
     ],
 
     default_paas_domain: '.navixy.ru',
@@ -26,8 +28,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     mapSettingsReady: false,
 
     initComponent: function () {
-        this.mapsStore = Ext.getStore('MapTypes');
-        this.mapsStore.setAllowedMaps(this.getRecordData().allowed_maps || []);
+        //this.mapsStore = Ext.getStore('MapTypes');
+        //this.mapsStore.setAllowedMaps(this.getRecordData().allowed_maps || []);
         this.callParent(arguments);
     },
 
@@ -165,7 +167,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     applyRecordData: function () {
         this.callParent(arguments);
         this.mapSettingsReady = true;
-        this.down('map').on('mapready', this.onMapsSettingsChange, this);
+        //this.down('map').on('mapready', this.onMapsSettingsChange, this);
     },
 
     getDomainValue: function () {
@@ -174,17 +176,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return domainField && domainField.getValue();
     },
 
-    getDefaultMapField: function () {
-        return this.down('[name="map_type"]');
-    },
-
     getGoogleIdField: function () {
         return this.down('[name="google_client_id"]');
-    },
-
-    getUnFreeMaps: function () {
-
-        return this.query('[role="map-unfree"]');
     },
 
     checkFreeDomain: function () {
@@ -202,35 +195,38 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     updateFreeMaps: function () {
-        var isFree = this.checkFreeDomain();
+        var isFree = this.checkFreeDomain(),
+            mapSettings = this.down('settings-map');
 
-        this[isFree ? 'setFreeMaps' : 'unSetFreeMaps']();
-    },
-
-    setFreeMaps: function () {
-        var store = this.mapsStore,
-            defMap = this.getDefaultMapField();
-
-        store.filter('free', true);
-
-        if (!store.findRecord('type', defMap.getValue())) {
-            this.getDefaultMapField().setValue(store.first().get('type'))
+        if (mapSettings) {
+            mapSettings[isFree ? 'setFreeMaps' : 'unSetFreeMaps']();
         }
-
-        Ext.iterate(this.getUnFreeMaps(), function (field) {
-            field.hide();
-        }, this);
     },
 
-    unSetFreeMaps: function () {
-        var store = this.mapsStore;
+    //setFreeMaps: function () {
+    //    var store = this.mapsStore,
+    //        defMap = this.getDefaultMapField();
+    //
+    //    store.filter('free', true);
+    //
+    //    if (!store.findRecord('type', defMap.getValue())) {
+    //        this.getDefaultMapField().setValue(store.first().get('type'))
+    //    }
+    //
+    //    Ext.iterate(this.getUnFreeMaps(), function (field) {
+    //        field.hide();
+    //    }, this);
+    //},
 
-        store.removeFilter();
-
-        Ext.iterate(this.getUnFreeMaps(), function (field) {
-            field.show();
-        }, this);
-    },
+    //unSetFreeMaps: function () {
+    //    var store = this.mapsStore;
+    //
+    //    store.removeFilter();
+    //
+    //    Ext.iterate(this.getUnFreeMaps(), function (field) {
+    //        field.show();
+    //    }, this);
+    //},
 
     afterSave: function () {
         this.applyRecordData();
@@ -403,7 +399,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                                 items: this.getServiceItemsLeft()
                             },
                             {
-                                items: this.getServiceItemsRight()
+                                xtype: 'settings-map',
+                                record: this.record
                             }
                         ]
                     }
@@ -705,132 +702,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //}
         ]
     },
-
-    getServiceItemsRight: function () {
-        return [
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.service_maps_title')
-            },
-            {
-                xtype: 'checkboxgroup',
-                role: 'map_types_select',
-                fieldLabel: _l.get('settings.fields.maps_title') + this.getHintSymbol(_l.get('settings.edit_form.maps_hint')),
-                allowBlank: false,
-                columns: 1,
-                vertical: true,
-                margin: '0 0 50 10',
-                ui: 'light',
-                items: this.getMapsList(),
-                listeners: {
-                    change: this.onMapsSettingsChange,
-                    scope: this
-                }
-            },
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.service_maps_defaults_title') + this.getHintSymbol(_l.get('settings.edit_form.maps_defaults_hint'))
-            },
-            {
-                name: 'map_type',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.maps_default.type'),
-                store: this.mapsStore,
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                listeners: {
-                    change: this.onMapsSettingsChange,
-                    scope: this
-                }
-            },
-            {
-                name: 'map_zoom',
-                fieldLabel: _l.get('settings.fields.maps_default.zoom'),
-                xtype: 'numberfield',
-                allowBlank: true,
-                maxValue: 17,
-                listeners: {
-                    change: this.onMapsSettingsChange,
-                    scope: this
-                }
-            },
-            {
-                name: 'map_location_lat',
-                fieldLabel: _l.get('settings.fields.maps_default.location_lat'),
-                allowBlank: true,
-                vtype: 'numeric',
-                minLength: 0,
-                maxLength: 100,
-                maxValue: 180,
-                value: 0,
-                listeners: {
-                    change: this.onMapsSettingsChange,
-                    scope: this
-                }
-            },
-            {
-                name: 'map_location_lng',
-                fieldLabel: _l.get('settings.fields.maps_default.location_lng'),
-                allowBlank: true,
-                vtype: 'numeric',
-                minLength: 0,
-                maxLength: 100,
-                maxValue: 180,
-                value: 0,
-                listeners: {
-                    change: this.onMapsSettingsChange,
-                    scope: this
-                }
-            },
-//            {
-//                name: 'google_client_id',
-//                fieldLabel: _l.get('settings.fields.google_client_id'),
-//                minLength: 2,
-//                maxLength: 100
-//            }
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.service_maps_preview') + this.getHintSymbol(_l.get('settings.edit_form.service_maps_preview_info'))
-            },
-            {
-                xtype: 'mappanel',
-                width: 450,
-                height: 300,
-                style: 'border: 1px solid silver'
-            }
-        ];
-    },
-
-    onMapsSettingsChange: function () {
-        var values = this.getProcessedValues();
-
-        if (this.mapSettingsReady) {
-            this.fireEvent('mapchanged', {
-                map_zoom: values.map_zoom,
-                map_location_lat: values.map_location_lat,
-                map_location_lng: values.map_location_lng,
-                map_type: values.map_type
-            });
-        }
-    },
-
-    updateSettingsFromMap: function (settings) {
-        var fieldsMap = ['map_type', 'map_zoom', 'map_location_lat', 'map_location_lng'],
-            field;
-
-        Ext.Array.each(fieldsMap, function(value, key) {
-            field = this.down("[name=" + value + "]");
-
-            if (field && !Ext.isEmpty(settings[value])) {
-                field.suspendEvents(false);
-                field.setValue(settings[value]);
-                field.resumeEvents();
-            }
-        }, this);
-    },
-
 
     getAccountItemsLeft: function () {
         return [
@@ -1282,22 +1153,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 inputType: 'password'
             }
         ];
-    },
-
-    getMapsList: function () {
-
-        var result = [];
-
-        this.mapsStore.each(function (mapRecord) {
-            result.push({
-                boxLabel: mapRecord.get('name'),
-                name: 'maps',
-                inputValue: mapRecord.get('type'),
-                role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
-            });
-        }, this);
-
-        return result;
     },
 
     isPassTab: function () {

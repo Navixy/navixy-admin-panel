@@ -279,6 +279,10 @@ Ext.define('NavixyPanel.utils.mapProvider.NavixyMapsProvider', {
             shadow: {
                 url: this.getMapImagesPath('markers/circles.png'),
                 offset: [0, 0]
+            },
+            crosshair: {
+                url: this.getMapImagesPath('markers/crosshair.png'),
+                offset: [0, 0]
             }
         };
     },
@@ -443,37 +447,67 @@ Ext.define('NavixyPanel.utils.mapProvider.NavixyMapsProvider', {
     //    return marker;
     //},
 
-    //getLbsMarker: function (position, map, noOptimization) {
-    //
-    //    var markerWidth = 22,
-    //        markerHeight = 50,
-    //        centerX = Math.round(markerWidth / 2),
-    //        centerY = markerHeight - 5,
-    //        imageConfig = this.getMarkersUrls().lbs,
-    //
-    //        markerConfigArgs = [
-    //            {
-    //                url: imageConfig.url,
-    //                position: position,
-    //                optimized: !noOptimization
-    //            },
-    //            {
-    //                size: [markerWidth, markerHeight],
-    //                offset: imageConfig.offset,
-    //                center: [centerX, centerY],
-    //                scaleSize: [markerWidth * 2, markerHeight]
-    //            }
-    //        ];
-    //
-    //    var marker = Ext.Map.getMarker.apply(this, markerConfigArgs);
-    //
-    //    if (map) {
-    //        Ext.Map.showOnMap(map, marker);
-    //    }
-    //
-    //    return marker;
-    //
-    //},
+    getLbsMarker: function (position, map, noOptimization) {
+
+        var markerWidth = 22,
+            markerHeight = 50,
+            centerX = Math.round(markerWidth / 2),
+            centerY = markerHeight - 5,
+            imageConfig = this.getMarkersUrls().lbs,
+
+            markerConfigArgs = [
+                {
+                    url: imageConfig.url,
+                    position: position,
+                    optimized: !noOptimization
+                },
+                {
+                    size: [markerWidth, markerHeight],
+                    offset: imageConfig.offset,
+                    center: [centerX, centerY],
+                    scaleSize: [markerWidth * 2, markerHeight]
+                }
+            ];
+
+        var marker = Ext.Map.getMarker.apply(this, markerConfigArgs);
+
+        if (map) {
+            Ext.Map.showOnMap(map, marker);
+        }
+
+        return marker;
+    },
+
+    getCrosshairMarker: function (position, map, noOptimization) {
+
+        var markerWidth = 65,
+            markerHeight = 65,
+            centerX = Math.round(markerWidth / 2),
+            centerY = Math.round(markerHeight / 2),
+            imageConfig = this.getMarkersUrls().crosshair,
+
+            markerConfigArgs = [
+                {
+                    url: imageConfig.url,
+                    position: position,
+                    optimized: !noOptimization
+                },
+                {
+                    size: [markerWidth, markerHeight],
+                    offset: imageConfig.offset,
+                    center: [centerX, centerY],
+                    scaleSize: [markerWidth, markerHeight]
+                }
+            ];
+
+        var marker = Ext.Map.getMarker.apply(this, markerConfigArgs);
+
+        if (map) {
+            Ext.Map.showOnMap(map, marker);
+        }
+
+        return marker;
+    },
 
     //initInfoWindowsStore: function (map) {
     //    map.infoWindowsStore = new Ext.data.Store({
