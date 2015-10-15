@@ -12,6 +12,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     record: null,
 
+    fieldsMap: ['map_type', 'map_zoom', 'map_location_lat', 'map_location_lng'],
+
     initComponent: function () {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.record.get('allowed_maps') || []);
@@ -99,7 +101,9 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type'
+                valueField: 'type',
+                disabled: true,
+                cls: 'shadow-disabled'
             },
             {
                 xtype: 'container',
@@ -118,7 +122,9 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         margin: '5 10 0 0',
                         labelAlign: 'top',
                         labelSeparator: '',
-                        flex: 2
+                        width: 175,
+                        disabled: true,
+                        cls: 'shadow-disabled'
                     },
                     {
                         name: 'map_location_lng',
@@ -133,7 +139,9 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         margin: '5 10 0 0',
                         labelAlign: 'top',
                         labelSeparator: '',
-                        flex: 2
+                        flex: 2,
+                        disabled: true,
+                        cls: 'shadow-disabled'
                     },
                     {
                         name: 'map_zoom',
@@ -144,15 +152,18 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         margin: '5 0 0 0',
                         labelAlign: 'top',
                         labelSeparator: '',
-                        flex: 1
+                        flex: 1,
+                        disabled: true,
+                        cls: 'shadow-disabled'
                     }
                 ]
             },
             {
                 xtype: 'button',
                 ui: 'default',
-
+                iconCls: 'edit-button',
                 padding: 3,
+                width: 175,
                 margin: '20 0 0 10',
                 text: _l.get('settings.edit_form.map_edit_btn'),
                 scope: this,
@@ -162,14 +173,21 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     fireEditMap: function () {
-        this.fireEvent('map-edit', this, this.record)
+        var values = {},
+            field;
+
+        Ext.Array.each(this.fieldsMap, function(name) {
+            field = this.down("[name=" + name + "]");
+            values[name] = field.getValue();
+        }, this);
+
+        this.fireEvent('map-edit', this, this.record, values)
     },
 
     updateSettingsFromMap: function (settings) {
-        var fieldsMap = ['map_type', 'map_zoom', 'map_location_lat', 'map_location_lng'],
-            field;
+        var field;
 
-        Ext.Array.each(fieldsMap, function(value, key) {
+        Ext.Array.each(this.fieldsMap, function(value, key) {
             field = this.down("[name=" + value + "]");
 
             if (field && !Ext.isEmpty(settings[value])) {

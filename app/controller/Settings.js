@@ -96,8 +96,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         }
     },
 
-    showMapSettingsWindow: function (cmp, record) {
-        Ext.widget('map-edit-window', {record: record}).show();
+    showMapSettingsWindow: function (cmp, record, values) {
+        Ext.widget('map-edit-window', {record: record, formValues: values}).show();
     },
 
     showPaymentsRecieveMsg: function () {

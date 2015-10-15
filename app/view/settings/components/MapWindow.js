@@ -17,6 +17,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
 
     mapWait: null,
     firstUpdate: false,
+    formValues: null,
 
     initComponent: function () {
 
@@ -152,7 +153,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
         this.callParent(arguments);
 
         this.firstUpdate = true;
-        this.getForm().loadRecord(this.record);
+        this.getForm().setValues(this.formValues);
         this.waitMapInit(function () {
             this.updateMap();
             this.applyMapListeners();
@@ -182,7 +183,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
         return [
             '->',
             {
-                text: _l.get('save_form_btn'),
+                text: this.texts.saveBtn,
                 scale: 'medium',
                 formBind: true,
                 margin: '0 5',
@@ -214,7 +215,8 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
         var lp = _l.get("settings.edit_form.map_window");
         return {
             windowTitle: lp.get("title"),
-            header: lp.get("header")
+            header: lp.get("header"),
+            saveBtn: lp.get("save_btn")
         };
     }
 });

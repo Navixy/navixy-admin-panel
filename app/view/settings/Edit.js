@@ -153,7 +153,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getClearBtnTitle: function () {
-        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('clear_form_btn');
+        return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('settings.edit_form.clear_btn');
     },
 
     getBackBtnTitle: function () {

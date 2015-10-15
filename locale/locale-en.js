@@ -1127,8 +1127,10 @@ Ext.define('Locale.locale-en', {
             "map_edit_btn": "Visual editor",
             "map_window": {
                 "title": "Map default settings – Visual editor",
-                "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons."
-            }
+                "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
+                "save_btn": "Choose"
+            },
+            clear_btn: "Reset"
         },
         "upload_form": {
             "save_btn": "Upload",
