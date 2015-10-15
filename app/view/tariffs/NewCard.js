@@ -835,7 +835,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     getTariffPriceText: function (type, prices, currency) {
-        return prices[type]
+        return prices[type] !== null
             ? Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(prices[type], '0.00'))
             : _l.get("na")
     }
