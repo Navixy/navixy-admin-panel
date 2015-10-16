@@ -10,7 +10,14 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     views: [
         'settings.Edit',
-        'settings.avangate.Subscription'
+        'settings.avangate.Subscription',
+
+        'widgets.map.Map',
+        'settings.components.MapWindow'
+    ],
+    requires: [
+        'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
+        'NavixyPanel.utils.mapProvider.LeafletMapsProvider'
     ],
 
     refs: [
@@ -21,17 +28,28 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps'],
+
     models: ['Settings'],
     mainStore: 'Settings',
 
     init: function () {
         this.callParent(arguments);
+        this.initMapApi();
 
         this.control({
             'settingsedit': {
                 formsubmit: this.onEditSubmit,
-                formsubmitpassword: this.onPasswordEditSubmit
+                formsubmitpassword: this.onPasswordEditSubmit,
+                mapchanged: this.onMapSettingsChange
+            },
+
+            'settings-map': {
+                'map-edit': this.showMapSettingsWindow
+            },
+
+            'map-edit-window': {
+                'formsubmit': this.updateMapSettings
             }
         });
 
@@ -51,6 +69,35 @@ Ext.define('NavixyPanel.controller.Settings', {
             text: _l.get('settings.menu_text'),
             target: 'settings'
         };
+    },
+
+    initMapApi: function () {
+        this.availableMapTypesLoad();
+        Ext.Map = Ext.create('NavixyPanel.utils.mapProvider.LeafletMapsProvider', {});
+    },
+
+    availableMapTypesLoad: function () {
+        var defaultStore = Ext.getStore("MapTypes"),
+            mapsStore = Ext.getStore("leMaps"),
+            list = [];
+
+        defaultStore.each(function (record) {
+            list.push(record.get("type"))
+        });
+
+        mapsStore.availableLoad(list);
+    },
+
+    updateMapSettings: function (cmp, settings, record) {
+        var editCmp = Ext.getFirst('settings-map');
+
+        if (editCmp) {
+            editCmp.updateSettingsFromMap(settings)
+        }
+    },
+
+    showMapSettingsWindow: function (cmp, record, values) {
+        Ext.widget('map-edit-window', {record: record, formValues: values}).show();
     },
 
     showPaymentsRecieveMsg: function () {

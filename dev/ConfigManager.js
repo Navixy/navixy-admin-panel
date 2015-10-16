@@ -31,7 +31,7 @@ Ext.define('Dev.ConfigManager', {
             try {
                 Config.custom_code();
             } catch (e) {
-                Ext.logger(e.stack);
+                Ext.log(e.stack);
             }
         }
     },

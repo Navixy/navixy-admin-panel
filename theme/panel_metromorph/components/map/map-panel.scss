@@ -1,0 +1,601 @@
+$mapToolSize: 32px;
+$mapToolIconSize: 20px;
+$mapControlPanelHeight: 40px;
+$mapTypeLineHeight: 12px;
+$mapControlPanelPadding: 3px;
+$mapToolPlainOnHover: #80838C;
+$mapToolPlainActive: #A0A3AC;
+
+$mapToolPanelBackgroundColor: #F5F5F5;
+$mapToolPanelFontColor: $baseFontColor;
+$mapToolPanelBorderColor: #bbb;
+
+$zoomInSize: 25px;
+$zoomOutSize: 18px;
+$scaleSliderSize: 9px;
+$addressSearchFieldHeight: 24px;
+$addressOnHover: #80838C;
+$trafficOnHover: $addressOnHover;
+$trafficSelected: #A0A3AC;
+
+.maptool {
+
+    width: $mapToolSize;
+    height: $mapToolSize;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    @extend .base-font-color-border;
+    margin: 1px;
+
+    @include border-radius(1000px);
+
+    &:hover {
+        @extend .base-font-color-active-border;
+        @extend .base-font-color-active;
+    }
+    &.active {
+        @extend .base-font-color-active-border;
+        @extend .base-font-color-active;
+    }
+    &.disabled {
+        border-color: $gray !important;
+        color: $gray !important;
+        cursor: default;
+    }
+
+    /*IconMoon adjustments*/
+
+    font-size: $mapToolIconSize;
+    text-align: center;
+    padding: (($mapToolSize - $mapToolIconSize) / 2) - 1px;
+
+}
+
+.maptool-plain {
+    cursor: pointer;
+    background-color: $baseElementColor;
+    color: $baseElementFontColorActive;
+    padding: 5px 10px 5px 8px;
+
+    &:hover {
+        color: $baseElementFontColorActive !important;
+        background-color: $mapToolPlainOnHover;
+    }
+    &.active {
+        color: $baseElementFontColorActive !important;
+        background-color: $mapToolPlainActive;
+    }
+
+    &.disabled {
+        color: $gray !important;
+        cursor: default;
+    }
+
+    span {
+        width: 18px;
+        display: inline-block;
+        font-size: 11px;
+
+        &.deselector {
+            @extend .icon-close;
+            font-size: 8px;
+            padding-left: 1px;
+        }
+    }
+}
+
+.ruler_title {
+    background-color: #FFF;
+    border-radius: 0 5px 5px 5px;
+    cursor: default !important;
+
+    div {
+        padding: 5px 8px 5px 7px;
+        color: #333;
+        font-size: 10px;
+        line-height: 11px;
+        background-color: #FFF;
+
+        &.inner {
+            border-radius: 0 5px 5px 0;
+        }
+        &.closer {
+            display: none;
+            padding-top: 0px;
+            border-radius: 0 0 5px 5px;
+            font-size: 9px;
+            text-align: right;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        &.closer:hover {
+            text-decoration: none;
+        }
+    }
+
+    &:hover .closer {
+        display: block;
+    }
+}
+
+.ruler_area_title {
+    background-color: #FFF;
+    border-radius: 0 5px 5px 0;
+    cursor: default !important;
+
+    .zone_label_content {
+        border-radius: 0 5px 5px 0;
+        padding: 2px 8px 4px 7px;
+        color: #333;
+        font-size: 10px;
+        line-height: 11px;
+        background-color: #FFF;
+    }
+}
+
+.traffic_list {
+    @extend .base-color-bg;
+    @extend .base-font-color-active;
+    position: absolute;
+    z-index: 110;
+    padding: 0 0 0 0;
+
+    border-width: 1px;
+    border-color: $gray;
+    border-style: solid;
+
+    div {
+        padding: 5px 10px 5px 8px;
+    }
+
+    .types_empty {
+
+    }
+
+    .map_type {
+        cursor: pointer;
+        &:hover {
+            @extend .base-font-color-active;
+
+            background-color: $trafficOnHover;
+        }
+        &.selectedType {
+            @extend .base-font-color-active;
+            background-color: $trafficSelected !important;
+        }
+
+        & span {
+            width: 18px;
+            display: inline-block;
+            font-size: 11px;
+        }
+        &.default_type span {
+            background-image: url(#{$img_dir}/tools/toggle-white.png);
+            background-repeat: no-repeat;
+            background-position: -2px 50%;
+            height: 9px;
+        }
+        &.disabled_type {
+
+            opacity: 0.7;
+            span {
+                @extend .icon-close;
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+.mappanel {
+
+    .address_result {
+        &, .mCSB_container {
+            @extend .base-color-bg;
+            @extend .base-font-color-active;
+        }
+
+        .place_item {
+            color: lighten($yellow, 30%);
+            background-color: lighten($baseElementColor, 8%);
+        }
+
+        .place_item.last {
+            border-bottom: 2px solid #eee;
+        }
+
+        position: absolute;
+        z-index: 110;
+        .empty_text {
+            padding: 5px;
+        }
+
+        .address {
+            cursor: pointer;
+            padding: 5px;
+            &:hover {
+                background-color: $addressOnHover;
+            }
+        }
+
+        .close_results {
+            @extend .icon-close;
+            position: absolute;
+            top: 5px;
+            right: 12px;
+            font-size: 8px;
+            cursor: pointer;
+        }
+
+        padding: 0px 0 8px 0;
+    }
+
+    .minimap_pane {
+        @extend .base-color-bg;
+        position: absolute;
+        z-index: 110;
+        overflow: hidden;
+        border: 3px solid $white;
+
+        .hidecopy {
+            position: absolute;
+        }
+
+        .normal_point {
+            border: 1px solid transparent;
+            border-radius: 100%;
+        }
+    }
+
+    .map {
+        * {
+            @include box-sizing(content-box);
+
+        }
+
+        .crosshair {
+            width: 17px;
+            height: 17px;
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            margin: -8px 0 0 -8px;
+            padding: 0;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            opacity: .65;
+            background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARBAMAAADJQ1rJAAAAMFBMVEUAAAAAAIAAgAAAgICAAACAAICAgADAwMCAgIAAAP8A/wAA////AAD/AP///wAAAACqmwKpAAAAAXRSTlMAQObYZgAAACdJREFUeJxjYGBgYC9ngAL272SyyoHgOxAXMNT/h4ACJDFKTIa7DwABYh4dXZ445gAAAABJRU5ErkJggg==') no-repeat 50%;
+            border-radius: 8px;
+            -moz-border-radius: 8px;
+        }
+
+        background-image: url(#{$img_dir}/background/tiny_grid.png);
+
+    }
+
+    .mapcontrols {
+
+        @extend .base-color-bg;
+        padding: $mapControlPanelPadding 10px;
+        @extend .base-font-color;
+
+
+        .scale {
+
+            .scale_slider {
+                height: $mapToolSize;
+                padding: ($mapControlPanelHeight - 20px) / 2 0;
+                top: 0 !important;
+
+                .x-slider {
+                    @extend .base-font-color-bg;
+                    height: $scaleSliderSize;
+                    padding: 0;
+
+                    .x-slider-inner, .x-slider-end {
+                        background-image: none;
+                    }
+
+                    .x-slider-thumb {
+                        height: $scaleSliderSize;
+                        width: $scaleSliderSize - 3px;
+                        @extend .base-font-color-active-bg;
+                        background-image: none;
+                        margin: 0;
+                    }
+                }
+
+            }
+
+            .zoom_out, .zoom_in {
+                height: $mapToolSize;
+                cursor: pointer;
+
+                &:hover {
+                    @extend .base-font-color;
+                }
+                &:active {
+                    @extend .main-color-font;
+                }
+            }
+
+            .zoom_out {
+                // TODO: MAP CONTROL ICONS
+                //@extend .icon-zoom-out;
+                @extend .icon-search;
+                font-size: $zoomOutSize;
+                text-align: center;
+                padding: round(($mapToolSize - $zoomOutSize) / 2);
+            }
+
+            .zoom_in {
+                // TODO: MAP CONTROL ICONS
+                //@extend .icon-zoom-in;
+                @extend .icon-search;
+                width: $mapToolSize;
+                font-size: $zoomInSize;
+                text-align: center;
+                padding: round(($mapToolSize - $zoomInSize) / 2);
+            }
+        }
+
+        .maptool {
+            margin: 1px 10px;
+
+
+        }
+
+        .types_container {
+
+            .x-box-scroller {
+                color: white;
+                width: 10px;
+                margin: 0 5px;
+                cursor: pointer;
+                font-size: 21px;
+                line-height: 14px !important;
+            }
+
+            .x-box-scroller-left {
+                .x-box-scroller:before {
+                    content: "\2039";
+                }
+            }
+
+            .x-box-scroller-right {
+                .x-box-scroller:before {
+                    content: "\203A";
+                }
+            }
+
+            .x-box-scroller-disabled {
+                opacity: 0.5;
+            }
+        }
+
+        .types {
+            .name {
+                .label {
+                    display: none;
+                }
+
+                &:hover {
+                    @extend .base-font-color-active;
+                }
+
+                &.active_map {
+                    .label {
+                        display: inline;
+                    }
+                    @extend .base-font-color-active;
+                }
+
+                font-size: $mapTypeLineHeight;
+                line-height: $mapTypeLineHeight;
+                cursor: pointer;
+                display: inline-block;
+                padding: 2px 5px;
+            }
+        }
+
+        &.vertical {
+            position: absolute;
+            z-index: 110;
+            padding: 0 6px;
+
+            border-width: 1px;
+            border-color: adjust-color($baseElementColor, $lightness: +5%);
+            border-style: solid;
+
+            .maptool {
+                margin: 4px 0;
+            }
+
+            &.plain {
+                padding: 0;
+            }
+        }
+    }
+
+    .tracker-arrow-title {
+        position: absolute;
+        border: 1px solid #f6f6f6;
+        font-size: 10px;
+        text-align: center;
+        color: white;
+        padding: 2px;
+    }
+
+    .map-arrow {
+        will-change: transform;
+    }
+
+    .tracker-arrow-title, .map-arrow {
+        @include transform(translate3d(0, 0, 0));
+        cursor: pointer;
+    }
+}
+
+.tool-panel {
+    .x-panel-body {
+        @include box-sizing(border-box);
+
+        border-width: 0 1px 1px 1px !important;
+        border-color: $mapToolPanelBorderColor;
+        background-color: $mapToolPanelBackgroundColor;
+    }
+
+    .radio-item label {
+        color: $mapToolPanelFontColor;
+    }
+
+    .tool-label {
+        color: $mapToolPanelFontColor;
+        font-size: 14px;
+    }
+    .tool-text {
+        color: adjust-color($mapToolPanelFontColor, $lightness: +5%);
+        font-size: 11px;
+    }
+
+    .item-disabled {
+        opacity: 0.7 !important;
+    }
+
+    .loader {
+        background-image: url($img_dir + '/loader/loader_light_gray.gif') !important;
+        background-size: 16px;
+        background-position: 1px 11px;
+        background-repeat: no-repeat;
+
+        padding: 10px 10px 10px 27px;
+        color: $mapToolPanelFontColor;
+        font-size: 13px;
+        text-align: left;
+    }
+
+}
+
+.layer-create-window {
+    .red-text {
+        color: $invalid-color;
+    }
+    .white-text {
+        color: $grayer;
+
+        ul {
+            list-style-type: decimal;
+            margin: 3px 0;
+            padding: 0 0 0 25px;
+            font-size: 10px;
+        }
+    }
+}
+
+
+.place_icon {
+    display: inline-block;
+    border: 1px solid $gray;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    &:hover {
+        border-color: $main-color;
+    }
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.place-marker-infowin {
+    .label {
+        font-size: 14px;
+    }
+    .address {
+        color: $grayLighter;
+    }
+}
+
+.place_icon, .place-marker {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.place-marker {
+    width: 32px;
+    height: 32px;
+}
+
+.place-marker-wrapper {
+    background-color: transparent;
+    border: none;
+    .place-marker {
+        border: 2px solid $orange;
+        background-color: $white;
+        &:before {
+            position: absolute;
+            content: '1';
+            border: solid transparent;
+            font-size: 0;
+            border-top-color: inherit;
+            top: 35px;
+            z-index: -1;
+            left: 10px;
+            border-width: 7px;
+        }
+    }
+
+    &.editable {
+        //@extend .icon-drag;
+        &:before {
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 6px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+    }
+}
+
+.address-list {
+    .place_item {
+        background-color: #f3f3f3;
+        border-color: #f3f3f3;
+        &.x-boundlist-item-over {
+            background-color: #e3e3e5;
+            border-color: #e3e3e5;
+        }
+    }
+    .x-boundlist-item {
+        white-space: normal;
+    }
+}
+
+.places-list {
+    .editing {
+        .tag-container {
+            display: none;
+        }
+    }
+
+    .tag-container {
+        padding: 5px 19px 1px 3px;
+    }
+}
+
+.place-form {
+    .tag-editor {
+        border: 1px solid #787a88;
+        color: $white;
+        background: $baseElementColor;
+    }
+
+    .tag-editor input {
+        color: $white;
+    }
+}

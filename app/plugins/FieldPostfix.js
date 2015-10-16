@@ -69,7 +69,7 @@ Ext.define('NavixyPanel.plugins.FieldPostfix', {
                     el.hide();
                 }
             } catch (e) {
-                Ext.logger(e.stack);
+                Ext.log(e.stack);
             }
         }
     },

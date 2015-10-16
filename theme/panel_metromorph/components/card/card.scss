@@ -229,6 +229,10 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     }
 }
 
+.shadow-disabled {
+    opacity: 0.8;
+}
+
 
 .card-editor {
 

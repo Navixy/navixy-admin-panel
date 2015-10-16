@@ -63,6 +63,17 @@ Ext.define('NavixyPanel.controller.Main', {
 
     // Overrides
     initOverrides: function () {
+        Ext.override(Ext, {
+            getHintSymbol: function (hint, cls) {
+                return ['<span class="icon-help ',
+                    cls || '',
+                    '" style="color:#f89406;font-size:12px; padding: 10px" ',
+                    'data-qtip="', Ext.String.htmlEncode(hint), '"',
+                    'data-qclass="settings-tip"',
+                    'data-qwidth="300"',
+                    '></span>'].join('');
+            }
+        });
 
         Ext.override(Ext.data.Connection, {
             onUploadComplete: function (frame, options) {
@@ -75,7 +86,7 @@ Ext.define('NavixyPanel.controller.Main', {
                         doc.write(result.response);
                     }
                 } catch (e) {
-                    Ext.logger(e.stack);
+                    Ext.log(e.stack);
                 }
                 return this.callParent(arguments);
             }
