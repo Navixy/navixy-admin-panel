@@ -37,6 +37,6 @@ Config = {
             activation: '{avangate_payment_page}?PRODS=4656455&INFO4656455={dealer_id}&QTY=1&{styleParams}&BACK_REF=http://panel.navixy.com/payment_gate/',
             monthlyFee: '{avangate_payment_page}?PRODS=4656484&INFO4656484={dealer_id}&QTY={qty}&{styleParams}'
         },
-        styleParams: 'CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
+        styleParams: 'CLEAN_CART=ALL&CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
     }
 };
