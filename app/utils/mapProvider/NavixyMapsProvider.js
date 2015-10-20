@@ -281,7 +281,7 @@ Ext.define('NavixyPanel.utils.mapProvider.NavixyMapsProvider', {
                 offset: [0, 0]
             },
             crosshair: {
-                url: this.getMapImagesPath('markers/crosshair.png'),
+                url: this.getMapImagesPath('markers/crosshair.png?1'),
                 offset: [0, 0]
             }
         };
@@ -480,8 +480,8 @@ Ext.define('NavixyPanel.utils.mapProvider.NavixyMapsProvider', {
 
     getCrosshairMarker: function (position, map, noOptimization) {
 
-        var markerWidth = 65,
-            markerHeight = 65,
+        var markerWidth = 50,
+            markerHeight = 50,
             centerX = Math.round(markerWidth / 2),
             centerY = Math.round(markerHeight / 2),
             imageConfig = this.getMarkersUrls().crosshair,
