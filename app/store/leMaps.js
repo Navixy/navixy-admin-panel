@@ -45,7 +45,8 @@ Ext.define('NavixyPanel.store.leMaps', {
                 maxZoom: 17,
                 minZoom: 2,
 //            urlTpl: '//mtile0{serv}.mqcdn.com/tiles/1.0.0/vx/map/{z}/{x}/{y}.png',
-                urlTpl: '//otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+//                urlTpl: '//otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+                urlTpl: 'http://otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
                 attribution: _l.get('map.mapAttiributes.osm'),
                 tplFns: {
                     serv: function (data) {
@@ -73,7 +74,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 18,
                 minZoom: 2,
-                urlTpl: '//i{serv}.wikimapia.org/?zoom={z}&x={x}&y={y}&lng=' + langCode,
+                urlTpl: 'http://i{serv}.wikimapia.org/?zoom={z}&x={x}&y={y}&lng=' + langCode,
                 tplFns: {
                     serv: function (data) {
                         return (data.x % 4) + (data.y % 4) * 4;
@@ -86,7 +87,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 16,
                 minZoom: 2,
-                urlTpl: '//tile{serv}.maps.2gis.ru/tiles?z={z}&x={x}&y={y}&lng=' + langCode,
+                urlTpl: 'http://tile{serv}.maps.2gis.ru/tiles?z={z}&x={x}&y={y}&lng=' + langCode,
                 tplFns: {
                     serv: function (data) {
                         return Math.floor(Math.random() * 3 + 1);
@@ -99,7 +100,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 18,
                 minZoom: 2,
-                urlTpl: '//{serv}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?lg=' + locale + '&token=&appId=',
+                urlTpl: 'http://{serv}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?lg=' + locale + '&token=&appId=',
                 tplFns: {
                     serv: function () {
                         return Math.floor(Math.random() * 3 + 1);
@@ -214,7 +215,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 17,
                 minZoom: 2,
-                urlTpl: '//h0{serv}.tiles.tmcrussia.com/lv{z}/{coords}.png',
+                urlTpl: 'http://h0{serv}.tiles.tmcrussia.com/lv{z}/{coords}.png',
                 tplFns: {
                     coords: function (data) {
 
@@ -248,7 +249,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 16,
                 minZoom: 9,
-                urlTpl: '//h0{serv}.tiles.tmcrussia.com/traffic/lv{z}/{coords}.png',
+                urlTpl: 'http://h0{serv}.tiles.tmcrussia.com/traffic/lv{z}/{coords}.png',
                 tplFns: {
                     coords: function (data) {
 
