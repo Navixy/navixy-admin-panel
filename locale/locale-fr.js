@@ -218,6 +218,11 @@ Ext.define('Locale.locale-fr',{
             "matches",
             "match",
             "matches"
+        ],
+        "assets": [
+            "assets",
+            "asset",
+            "assets"
         ]
     },
     "units_short": {
@@ -256,7 +261,8 @@ Ext.define('Locale.locale-fr',{
             "title": "Additional information:",
             "exptitle": "Additional information <a>(show)</a>",
             "collapser_tip": "Hide additional information",
-            "collapser_exptip": "Show additional information"
+            "collapser_exptip": "Show additional information",
+            "exptitle_show": "<a>(show)</a>"
         }
     },
     "devices": {
@@ -324,7 +330,9 @@ Ext.define('Locale.locale-fr',{
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps"
+        "mailru": "Mail.ru Maps",
+        "here": "HERE Maps",
+        "bing": "Bing Maps"
     },
     "dealer_info": {
         "first": "total",
@@ -630,7 +638,16 @@ Ext.define('Locale.locale-fr',{
             "activation_bonus": "Activation bonus",
             "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
-            "tariff_type_short": "Payment"
+            "tariff_type_short": "Payment",
+            "rate": "Rate",
+            "users_price": "Price for users",
+            "client_costs": "Your costs",
+            "plan_options": "Plan options",
+            "plan_availability": "Plan availability",
+            "available_maps": "Available maps",
+            "available_features": "Available features",
+            "default_name": "My plan",
+            "tariff_is_default": "Use this plan as default"
         },
         "list": {
             "create_btn_text": "Add new tariff",
@@ -645,6 +662,41 @@ Ext.define('Locale.locale-fr',{
                 "trackers": {
                     "title": "Trackers at this tariff"
                 }
+            },
+            "edit_form_btn": "Edit plan",
+            "create_form_btn": "Create plan",
+            "add_form_btn": "Add new plan",
+            "save_form_btn": "Save plan",
+            "currency_in": "(in {0})",
+            "features": {
+                "groups": {
+                    "apps": "Apps",
+                    "features": "Features",
+                    "misc": "Miscellanous"
+                }
+            },
+            "hints": {
+                "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
+                "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
+                "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
+                "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
+                "7": "If user reaches the limitation, he will not be available to add or track more assets in his account. In the case user has assets on different plans, the minimum value will be applied.",
+                "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
+                "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
+                "10": "Select options which are available for users who have assets on this plan.",
+                "11": "Select options which are available for users who have assets on this plan.",
+                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
+                "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
+                "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
+                "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
+                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
+                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
         "combo_empty": "Select tariff",
@@ -710,7 +762,9 @@ Ext.define('Locale.locale-fr',{
                 "cameras": "Cameras",
                 "sockets": "Sockets",
                 "toggle_all": "Show all"
-            }
+            },
+            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_text": "Activation codes FAQ"
         }
     },
     "settings": {
@@ -808,7 +862,8 @@ Ext.define('Locale.locale-fr',{
             "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_inbound": "Number for inbound messages",
             "user_sms_inbound_ph": "Example: 12162780905",
-            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "not_editable": "not editable"
         },
         "edit_form": {
             "title": "Service Settings",
@@ -986,6 +1041,14 @@ Ext.define('Locale.locale-fr',{
                     }
                 }
             }
+        },
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
@@ -1239,5 +1302,82 @@ Ext.define('Locale.locale-fr',{
         "disabled": "Disabled",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
+    },
+    "edit_form_btn": "Edit",
+    "cancel_form_btn": "Cancel",
+    "na": "N/A",
+    "enable": "enable",
+    "disable": "disable",
+    "disabled": "Disabled",
+    "forbid": "forbid",
+    "allow": "allow",
+    "forbidden": "Forbidden",
+    "currencies_tpls": {
+        "GBP": "£{0}",
+        "BRL": "R${0}",
+        "HUF": "{0} Ft",
+        "HKD": "HK${0}",
+        "DKK": "kr {0}",
+        "EUR": "€{0}",
+        "ILS": "₪{0}",
+        "INR": "₹{0}",
+        "IDR": "Rp {0}",
+        "CAD": "С${0}",
+        "CNY": "¥{0}",
+        "KRW": "₩{0}",
+        "MYR": "RM{0}",
+        "MXN": "Mex${0}",
+        "NZD": "NZ${0}",
+        "NOK": "kr {0}",
+        "PKR": "Rs. {0}",
+        "PLN": "{0} zł",
+        "RUB": "{0} rub.",
+        "SGD": "S${0}",
+        "USD": "${0}",
+        "TWD": "NT${0}",
+        "THB": "฿{0}",
+        "TRY": "₺{0}",
+        "PHP": "{0} ₱",
+        "CZK": "{0} Kč",
+        "CLP": "${0}",
+        "SEK": "{0} kr",
+        "CHF": "{0} franc",
+        "ZAR": "R {0}",
+        "JPY": "¥{0}",
+        "KZT": "{0} tenge",
+        "BYR": "{0} rub.",
+        "AUD": "A${0}",
+        "TJS": "{0} som.",
+        "UAH": "{0} ₴",
+        "LTL": "{0} Lt",
+        "LVL": "Ls {0}",
+        "KGS": "{0} som",
+        "TMT": "{0} man.",
+        "UZS": "{0} som",
+        "MDL": "{0} lei",
+        "GEL": "{0} lari",
+        "AMD": "{0} dram",
+        "AZN": "{0} man."
+    },
+    "features": {
+        "api": "API",
+        "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
+        "app_fleet": "Fleet",
+        "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
+        "batch_operations": "Batch operations",
+        "custom_maps": "Custom maps",
+        "event_notification": "Event notifications",
+        "geocoding": "Geocoding",
+        "lbs": "Location by Cell ID",
+        "map_layers": "Map layers",
+        "multilevel_access": "Object clones",
+        "priority_support": "Priority support",
+        "retranslation": "Retranslation",
+        "report_xls": "Reports to file",
+        "report_scheduled": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
+        "routing": "Routing",
+        "ui_mobile": "Mobile web interface",
+        "weblocator": "Web-locator",
+        "chat": "Chat"
     }
 });

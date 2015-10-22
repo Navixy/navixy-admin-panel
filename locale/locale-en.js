@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-en
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-en', {
+* @class Locale.locale-en
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-en',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -326,7 +326,6 @@ Ext.define('Locale.locale-en', {
         "gel": "Georgian lari",
         "amd": "Armenian dram",
         "azn": "Azerbaijani manat",
-
         "all": "Albania Lek",
         "afn": "Afghanistan Afghani",
         "ars": "Argentina Peso",
@@ -683,9 +682,9 @@ Ext.define('Locale.locale-en', {
     "tariffs": {
         "menu_text": "Plans",
         "create_form": {
-            "title": "Create new plan",
+            "title": "Create a new plan",
             "main_fields": "General information",
-            "save_btn": "Create plan",
+            "save_btn": "Create a plan",
             "clear_btn": "Clear form",
             "options_fields": "Plan options",
             "prices_fields": "Rates"
@@ -699,43 +698,38 @@ Ext.define('Locale.locale-en', {
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Plan name",
+            "name": "Label",
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
             "device_type": "Device type",
-            "store_period": "Keep and show tracking history for",
+            "store_period": "Store history for",
             "active": "Available for user",
-            "has_reports": "Table reports is available",
-            "proportional_charge": "Always charge as a full month",
+            "has_reports": "Table reports available",
+            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
             "incoming_sms": "Incoming SMS",
-            "outgoing_sms": "Outgoing regular SMS",
-            "service_sms": "Outgoing service SMS",
-            "phone_call": "Phone calls (outgoing)",
-            "traffic": "GPRS Traffic",
+            "outgoing_sms": "Outgoing SMS",
+            "service_sms": "Service SMS",
+            "phone_call": "Phone calls",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "default plan for devices with type «{0}»",
             "default_short": "default",
             "service_price": "the amount charged for service usage",
-            "group_id_exp": "Plan belongs to Group No.",
-            "active_exp": "Users can switch to this plan on their own",
-            "device_limit_exp": "Maximum amount of assets available to user",
-            "activation_bonus": "Complimentary bonus",
-            "free_days": "Complimentary days",
+            "group_id_exp": "Plan group",
+            "active_exp": "Users are allowed to select this plan",
+            "device_limit_exp": "Maximum devices",
+            "activation_bonus": "Activation bonus",
+            "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
             "tariff_type_short": "Payment",
-
             "rate": "Rate",
             "users_price": "Price for users",
             "client_costs": "Your costs",
-
             "plan_options": "Plan options",
             "plan_availability": "Plan availability",
-
             "available_maps": "Available maps",
             "available_features": "Available features",
-
             "default_name": "My plan",
-
             "tariff_is_default": "Use this plan as default"
         },
         "list": {
@@ -749,7 +743,7 @@ Ext.define('Locale.locale-en', {
             "save_form_btn": "Save plan",
             "currency_in": "(in {0})",
             "links": {
-                "make_default": "Set as default plan",
+                "make_default": "Mark as default",
                 "tariff_edit": "Edit plan"
             },
             "tab_panel": {
@@ -765,12 +759,12 @@ Ext.define('Locale.locale-en', {
                 }
             },
             "hints": {
-                "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
-                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
+                "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
-                "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
-                "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
-                "7": "If user reaches the limitation, he will not be available to add or track more assets in his account. In the case user has assets on different plans, the minimum value will be applied.",
+                "5": "If you use Navixy SIM cards in devices, you can set up a fee for its usage based on traffic volume (traffic in both directions is billed).",
+                "6": "User notifications by automatic phone calls are currently supported for limited number of regions and limited number of languages.",
+                "7": "If user reaches the limit, he will not be able to add or track more assets in his account. In case user has assets on different plans, the minimum value will be applied.",
                 "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
                 "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
                 "10": "Select options which are available for users who have assets on this plan.",
@@ -780,9 +774,9 @@ Ext.define('Locale.locale-en', {
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
                 "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
                 "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
-                "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
+                "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
-                "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
+                "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
                 "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
@@ -795,7 +789,7 @@ Ext.define('Locale.locale-en', {
         },
         "types": {
             "activeday": "Daily",
-            "monthly": "Monthly (on the 1st day)",
+            "monthly": "Monthly",
             "everyday": "Monthly (daily debit)"
         },
         "price_type": {
@@ -858,18 +852,18 @@ Ext.define('Locale.locale-en', {
     },
     "settings": {
         "menu_text": "Account management",
-        subscription: {
-            activation_btn_text: 'Pay activation fee now (500 USD) online',
-            monthly_fee_btn_text: 'Pay online',
-            activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
-            monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
-            pending_amount: 'Pending amount: {0}',
-            current_balance: 'Current balance: {0}',
-            subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com',
-            payment_recieved_msg: 'Your payment was successfully executed and will be processed shortly.',
-            waiting_activation_fee: 'Your payment was successfully executed and will be processed shortly.'
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "pending_amount": "Pending amount: {0}",
+            "current_balance": "Current balance: {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
+            "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
+            "license_balance": "Pending amount {0}"
         },
-
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",
@@ -1120,17 +1114,15 @@ Ext.define('Locale.locale-en', {
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
-
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
-
             "map_edit_btn": "Visual editor",
             "map_window": {
                 "title": "Map default settings – Visual editor",
                 "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
                 "save_btn": "Choose"
             },
-            clear_btn: "Reset"
+            "clear_btn": "Reset"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -1450,7 +1442,6 @@ Ext.define('Locale.locale-en', {
         "GEL": "{0} lari",
         "AMD": "{0} dram",
         "AZN": "{0} man.",
-
         "ALL": "{0} Lek",
         "AFN": "{0} ؋",
         "ARS": "{0} $",
@@ -1546,9 +1537,9 @@ Ext.define('Locale.locale-en', {
         "weblocator": "Weblocator",
         "chat": "Chat"
     },
-    map: {
+    "map": {
         "zoom_in": "Zoom in",
         "zoom_out": "Zoom out"
     },
-    map_type_label: 'Map'
+    "map_type_label": "Map"
 });

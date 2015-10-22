@@ -218,6 +218,11 @@ Ext.define('Locale.locale-tr',{
             "eşleşti",
             "eşleşme",
             "eşleşti"
+        ],
+        "assets": [
+            "varlıklar",
+            "varlık",
+            "varlıklar"
         ]
     },
     "units_short": {
@@ -256,7 +261,8 @@ Ext.define('Locale.locale-tr',{
             "title": "Plan options and details:",
             "exptitle": "Plan options and details <a>(expand)</a>",
             "collapser_tip": "Hide plan options and details",
-            "collapser_exptip": "Daha fazla göster"
+            "collapser_exptip": "Daha fazla göster",
+            "exptitle_show": "<a>(göster)</a>"
         }
     },
     "devices": {
@@ -624,7 +630,7 @@ Ext.define('Locale.locale-tr',{
             "connect_msg": "Bağlantı kuruldu",
             "error_msg": "Cihaz bağlantı hatası",
             "connection_failure": "Cihaza bağlanılamıyor",
-            "close_question": "Bağlantı kapatılsınmı? ",
+            "close_question": "Bağlantı kapatılsınmı?",
             "status_title": "Cihaz durumu",
             "status_property_title": "Durum",
             "status_value_title": "Değer"
@@ -670,7 +676,7 @@ Ext.define('Locale.locale-tr',{
             "service_sms": "Servis SMS",
             "phone_call": "Telefon aramaları",
             "traffic": "GPRS ücreti (1 Mb)",
-            "default_tariff": " «{0}» tip cihazlar için varsayılan tarife",
+            "default_tariff": "«{0}» tip cihazlar için varsayılan tarife",
             "default_short": "varsayılan",
             "service_price": "servis kullanımı için fatura edilen tutar",
             "group_id_exp": "Tarife planı grubu",
@@ -679,7 +685,16 @@ Ext.define('Locale.locale-tr',{
             "activation_bonus": "Aktivasyon bonusu",
             "free_days": "Ücretsiz gün sayısı",
             "tariff_type": "Faturalandırma peryodu",
-            "tariff_type_short": "Ödeme"
+            "tariff_type_short": "Ödeme",
+            "rate": "Ücretler",
+            "users_price": "Kullanıcı fiyatları",
+            "client_costs": "Maliyet",
+            "plan_options": "Tarife Planı Seçenekleri",
+            "plan_availability": "Tarife Planı Kullanılabilirliği",
+            "available_maps": "Mevcut haritalar",
+            "available_features": "Kullanılabilir özellikler",
+            "default_name": "Tarife planım",
+            "tariff_is_default": "Varsayılan olarak bu planı kullan"
         },
         "list": {
             "create_btn_text": "Yeni tarife planı ekle",
@@ -694,6 +709,41 @@ Ext.define('Locale.locale-tr',{
                 "trackers": {
                     "title": "Bu plandaki cihazlar"
                 }
+            },
+            "edit_form_btn": "Planı düzenle",
+            "create_form_btn": "Plan oluştur",
+            "add_form_btn": "Yeni tarife planı ekle",
+            "save_form_btn": "Planı Kaydet",
+            "currency_in": "( {0})",
+            "features": {
+                "groups": {
+                    "apps": "Uygulamalar",
+                    "features": "Özellikler",
+                    "misc": "Çeşitli"
+                }
+            },
+            "hints": {
+                "2": "Cihazlara yada kullanıcılara gönderilen sms mesajları belirlediğiniz sms servisi ile servis platformu üzerinden gönderilmektedir.<br /><br />Örneğin:<br />Kullanıcı olay bildirimleri<br /> – Cihazlar ile haberleşme için kullanılan M2M komutları (bazı modeller için), SMS ile konum sorgulama (bu özelliği destekleyen modeller için).",
+                "3": "Hizmet ve bakım sms komutları platform tarafından kullanıcılardan izin istemeden yada bir uyarı vermeksizin cihazlara gönderilmektedir. örneğin : otomatik cihaz aktivasyonu için cihaza sms komutu gönderilir (apn, sunucu ipsi vb. konfigurasyon)",
+                "4": "Aygıt içinde GP-S SIM kartlar kullanıyorsanız, Ayrıca kullanıcıları bu SIM kartlardaki sms kullanımı için ücretlendirebilirsiniz. (örneğin komutlara gönderilen teyid mesajları gibi)",
+                "5": "Cihazlarda GP-S sim kart kullanıyorsanız, oluşan trafik için ücret oluşturabilirsiniz (çift yönlü trafik baz alınacaktır)",
+                "6": "Otomatik telefon aramaları ile kullanıcı bildirimi sadece belli bölgeler için geçerli ve bazı diller ile sınırlıdır.",
+                "7": "Kullanıcı sınıra ulaşırsa, daha fazla cihaz ekleyemez yada takip edemez. Bu durumda kullanıcının farklı tarifelerde cihazları varsa en küçük değer uygulanacaktır.",
+                "8": "Sistem log ve verileri (konumlar, olay kayıtları, vb.) belli zaman dilimi içinde tutar cihaz verilerinin saklanacağı peryodu bu kısımdan belirleyebilirsiniz.",
+                "9": "Kullanıcıların bu tarife planı içerisinde kullanabilecekleri haritaları seçiniz. Liste servis tercihlerinizde belirlenen tüm kullanılabilir harita sağlayıcıları içermektedir.",
+                "10": "Bu tarifede cihazları olan kullanıcılar için hangi seçeneklerin kullanılabilir olacağını seçin",
+                "11": "Bu tarifede cihazları olan kullanıcılar için hangi seçeneklerin kullanılabilir olacağını seçin",
+                "12": "Servis sağlayıcısı olarak kullanıcının size ödediği ücret, Faturalandırma sistemi hesap ayarlarındaki para birimini kullanır. <br /><br />Eğer değer yerine \"N/A\" görüyorsanız, Bu hizmet kullanılamıyor yada faturalandırma sistemine dahil değildir.",
+                "13": "Servisler için navixy e ödenen ücret, eğer bir değer yerine \"N/A\" görüyorsanız bu servis sizin için geçerli değildir. (sipariş verilmemiş olabilir)",
+                "14": "Kullanıcı yeni bir aygıt etkinleştirdiğinde bu tarife planı varsayılan olarak kullanılır. Not: Etkinleştirme kodu parametrelerinde tanımlanan farklı bir plansa onun yerine geçemeyecektir.",
+                "15": "Bu planın ait olduğu grubun numarasını sayı cinsinden girmelisiniz örn:  (0, 1, 2, …) ",
+                "16": "Eğer kullanıcıların kendi cihazlarını bu plana (aynı gruptaki planlardan birinden) dahil edebilmelerine  izin vermek istiyorsanız lütfen kutucuğu işaretleyin ",
+                "17": "Tarife planı kullanıcı tarafından aktivasyon kodu kullanılmadan  eklenmiş tüm cihazlar için varsayılan olarak ayarlanacaktır.<br /><br /> Kullanıcı aktivasyon kodu kullandığında ise o ayarlar öncelikli olacaktır.",
+                "18": "Kullanıcı cihazı ekledikten sonra kullanabileceği ücretsiz gün sayısı (cihaz ekleme tarihi dahil)",
+                "19": "Kullanıcı yeni bir cihaz eklediğinde hesabına eklenecek hediye bakiye<br /><br />Bu nezaket yüklemesi genel servis bedeli olarak kullanılamaz, sadece SMS bildirimleri vb. ek servisler için geçerlidir.",
+                "20": "Eğer kutucuk işaretli ise, Kullanıcı her zaman tüm ay için ücretlendirilir. Örneğin kullanıcı ayın 1. günü ödeme yapmayı geciktirdi ve 10. günü ödeme yaptı ise tüm ayın ücreti faturalandırılır.<br /><br />Eğer kutucuk işaretli değilse sadece kalan günler için faturalandırılır.",
+                "plan_options": "<b>Tarife planı uyumluluğu hakkında duyuru</b> \nAynı kullanıcıı hesabı içinde farklı tarife planları kullanan cihazlar varsa, bazı haritalar ve özellikler (tüm planlarda olmayanlar) o kullanıcı için kullanılamaz, bu nedenle benzer tarife planlarını gruplayarak bu tür çakışma ve kötüye kullanıma sebebiyet vermeyecek şekilde tarife planlarınızı oluşturmalısınız.",
+                "plan_availability": "Planları gruplar halinde birleştirerek planlarınızı daha iyi organize edebilir ve kullanıcılarınızın  planlar arasında geçiş yapmasına izin verebilirsiniz. Yönetici paneli üzerinden istediğiniz kullanıcıyı istediğiniz tarifeye geçirebilirken, kullanıcılar sadece izin verilen tarifelere geçiş yapabilir."
             }
         },
         "combo_empty": "Plan seç",
@@ -858,7 +908,7 @@ Ext.define('Locale.locale-tr',{
             "sms_sender_id_hint": "Gönderen ID olarak kiraladığınız numarayı belirtmeniz şiddetle tavsiye edilir. Bu durumda hizmet platformunun komut onayları ve diğer verileri cihazlardan SMS yoluyla alması mümkün olacaktır.",
             "user_sms_gateway": "SMS Gateway",
             "user_sms_gateway_ph": "SMS Gateway seçilmemiş",
-            "user_sms_gateway_hint": "Kullandığınız SMS gateway' i seçin. Uygun bir hesaba ihtiyacınız olacak ve gateway ile güvenli bağlantı için kimlik bilgilerini sağlamanız gerekecektir. ",
+            "user_sms_gateway_hint": "Kullandığınız SMS gateway' i seçin. Uygun bir hesaba ihtiyacınız olacak ve gateway ile güvenli bağlantı için kimlik bilgilerini sağlamanız gerekecektir.",
             "user_sms_sender_id": "Gönderen ID",
             "user_sms_sender_id_ph": "Örnek: Aksu",
             "user_sms_sender_id_hint": "SMS gönderildiğinde kullanıcının alacağı mesajda gönderen hanesinde yazan nümerik yada alfanümerik gönderen kimliğidir. (Lütfen yerel yasalara uygun bir gönderici kimliği seçiniz)",
@@ -873,7 +923,7 @@ Ext.define('Locale.locale-tr',{
         "sms_gateway": {
             "navixy": {
                 "name": "Aksu",
-                "desc": "SMS-servisi, deneme hesabında satlink tarafından ücretsiz sağlanacaktır"
+                "desc": "SMS-servisi, deneme hesabında gp-s.net tarafından ücretsiz sağlanacaktır"
             },
             "nexmo": {
                 "name": "Nexmo",
@@ -1296,5 +1346,35 @@ Ext.define('Locale.locale-tr',{
         "disabled": "Devre dışı",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
+    },
+    "edit_form_btn": "Düzenle",
+    "cancel_form_btn": "İptal",
+    "na": "N/A",
+    "enable": "Etkinleştir",
+    "disable": "Etkisizleştir",
+    "disabled": "Devredışı",
+    "forbid": "yasakla",
+    "allow": "izin ver",
+    "forbidden": "Yasak",
+    "features": {
+        "api": "API",
+        "app_tasks": "<a href='http://www.gp-s.net/docs/user/web-interface-docs/tasks/' target='_blank'>Görevler</a>",
+        "app_fleet": "Filo",
+        "app_reports": "<a href='http://www.gp-s.net/docs/user/web-interface-docs/reports-docs/' target='_blank'>Raporlar</a>",
+        "batch_operations": "Toplu işlemler",
+        "custom_maps": "Özel haritalar",
+        "event_notification": "Olay bildirimleri",
+        "geocoding": "Geocoding",
+        "lbs": "CELL ID ile konumlandırma",
+        "map_layers": "Harita katmanları",
+        "multilevel_access": "Cihaz klonlama",
+        "priority_support": "Öncelikli destek",
+        "retranslation": "Yansıtıcı",
+        "report_xls": "XLS-PDF raporlar",
+        "report_scheduled": "<a href='http://www.gp-s.net/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Zamanlanmış Raporlar</a>",
+        "routing": "Rota",
+        "ui_mobile": "Mobil web arayüzü",
+        "weblocator": "Weblocator",
+        "chat": "Chat"
     }
 });

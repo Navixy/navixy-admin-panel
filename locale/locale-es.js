@@ -10,7 +10,6 @@ Ext.define('Locale.locale-es',{
             "history": false
         }
     ],
-    "singleton": true,
     "main_copyright": "© 2015 RusLink. Todos los derechos reservados.",
     "panel_title": "NavixyPanel",
     "error": "Error",
@@ -19,7 +18,6 @@ Ext.define('Locale.locale-es',{
     "access_denied": "Acceso denegado",
     "access_denied_tip": "no tiene permiso para acceder la página solicitada",
     "index_title": "Bienvenido al panel de control",
-    "index_tip": "",
     "old_version": "Version Antigua",
     "auth": {
         "login": "Login o correo electrónico",
@@ -44,8 +42,17 @@ Ext.define('Locale.locale-es',{
     "back_form_btn": "Regresar",
     "select_form_btn": "Seleccionar",
     "close_form_btn": "Cerrar",
+    "edit_form_btn": "Editar",
+    "cancel_form_btn": "Cancelar",
     "yes": "Sí",
     "no": "No",
+    "na": "N/A",
+    "enable": "enable",
+    "disable": "disable",
+    "disabled": "Discapacitado",
+    "forbid": "forbid",
+    "allow": "allow",
+    "forbidden": "Forbidden",
     "show_btn": "Mostrar",
     "wrong_period": "Un período inválido",
     "required_fields": "* - campos requeridos o secciones",
@@ -205,6 +212,11 @@ Ext.define('Locale.locale-es',{
             "código",
             "códigos"
         ],
+        "trackers": [
+            "trackers",
+            "tracker",
+            "trackers"
+        ],
         "devices": [
             "dispositivos",
             "dispositivo",
@@ -215,10 +227,10 @@ Ext.define('Locale.locale-es',{
             "cumple",
             "cumples"
         ],
-        "trackers": [
-            "trackers",
-            "tracker",
-            "trackers"
+        "assets": [
+            "assets",
+            "asset",
+            "assets"
         ]
     },
     "units_short": {
@@ -256,6 +268,7 @@ Ext.define('Locale.locale-es',{
         "body": {
             "title": "Información adicional:",
             "exptitle": "Informacion Adicional <a>(mostrar)</a>",
+            "exptitle_show": "<a>(show)</a>",
             "collapser_tip": "Ocultar informacion adicional",
             "collapser_exptip": "Mostrar informacion adicional"
         }
@@ -325,7 +338,9 @@ Ext.define('Locale.locale-es',{
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps"
+        "mailru": "Mail.ru Maps",
+        "here": "HERE Maps",
+        "bing": "Bing Maps"
     },
     "dealer_info": {
         "first": "total",
@@ -440,9 +455,6 @@ Ext.define('Locale.locale-es',{
                 "type": "Tipo de operación",
                 "subtype": "Subtipo",
                 "date": "Fecha",
-                "bonus_amount": "Prima:",
-                "old_bonus": "Viejo",
-                "new_bonus": "Nuevo",
                 "amount": "Suma:",
                 "old_balance": "Viejo",
                 "new_balance": "Nuevo",
@@ -490,6 +502,7 @@ Ext.define('Locale.locale-es',{
             "tariff": "Tarifa del tracker",
             "deleted": "Marcado como eliminado",
             "blocked": "Servicio pausado",
+            "user_id": "ID de usuario",
             "clone": "Clon",
             "clone_owner": "Propietario del clon",
             "options": {
@@ -498,14 +511,12 @@ Ext.define('Locale.locale-es',{
                 "blocked": "bloqueado"
             },
             "statuses": {
-                "online": "En linea",
+                "active": "Online",
+                "signal_lost": "No conectado",
                 "offline": "Offline",
                 "just_registered": "Acaba de registrar",
-                "signal_lost": "No conectado",
-                "active": "Online",
                 "idle": "GPS no actualizado"
-            },
-            "user_id": "ID de usuario"
+            }
         },
         "edit_form": {
             "main_fields": "Informacion principal",
@@ -518,6 +529,17 @@ Ext.define('Locale.locale-es',{
             "remove_failure_msg": "No se pudo quitar clon",
             "failure_msg": "Error al crear el clon",
             "remove_confirm": "Quitar clon"
+        },
+        "group_clone_form": {
+            "title": "La reproducción de grupo de trackers",
+            "save_btn": "Clon",
+            "grid_clone_label": "Se agregarán clones",
+            "grid_clone_tip": "Puede cambiar la etiqueta del clon haciendo doble clic en él en la lista"
+        },
+        "group_owner_form": {
+            "title": "Cambio de propietario de grupo de trackers",
+            "save_btn": "Cambio de propietario",
+            "grid_clone_label": "Trackers serán cambiados"
         },
         "tariff_form": {
             "title": "Cambio la tarifa para el tracker",
@@ -574,17 +596,6 @@ Ext.define('Locale.locale-es',{
             "status_property_title": "Estado",
             "status_value_title": "Valor"
         },
-        "group_clone_form": {
-            "title": "La reproducción de grupo de trackers",
-            "save_btn": "Clon",
-            "grid_clone_label": "Se agregarán clones",
-            "grid_clone_tip": "Puede cambiar la etiqueta del clon haciendo doble clic en él en la lista"
-        },
-        "group_owner_form": {
-            "title": "Cambio de propietario de grupo de trackers",
-            "save_btn": "Cambio de propietario",
-            "grid_clone_label": "Trackers serán cambiados"
-        },
         "corrupt": {
             "alert": {
                 "title": "¿Eliminar registro de tracker?",
@@ -635,13 +646,27 @@ Ext.define('Locale.locale-es',{
             "activation_bonus": "Bonus de activación",
             "free_days": "Número de días libres",
             "tariff_type": "Ciclo de facturación",
-            "tariff_type_short": "Pago"
+            "tariff_type_short": "Pago",
+            "rate": "Rate",
+            "users_price": "Price for users",
+            "client_costs": "Your costs",
+            "plan_options": "Plan options",
+            "plan_availability": "Plan availability",
+            "available_maps": "Available maps",
+            "available_features": "Available features",
+            "default_name": "My plan",
+            "tariff_is_default": "Use this plan as default"
         },
         "list": {
             "create_btn_text": "Agregar una nueva tarifa",
             "empty_text": "Tarifas no encontradas"
         },
         "card": {
+            "edit_form_btn": "Edit plan",
+            "create_form_btn": "Create plan",
+            "add_form_btn": "Add new plan",
+            "save_form_btn": "Save plan",
+            "currency_in": "(in {0})",
             "links": {
                 "make_default": "Marcar como predeterminado",
                 "tariff_edit": "Editar tarifa"
@@ -650,6 +675,36 @@ Ext.define('Locale.locale-es',{
                 "trackers": {
                     "title": "Trackers a esta tarifa"
                 }
+            },
+            "features": {
+                "groups": {
+                    "apps": "Apps",
+                    "features": "Features",
+                    "misc": "Miscellanous"
+                }
+            },
+            "hints": {
+                "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
+                "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
+                "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
+                "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
+                "7": "If user reaches the limitation, he will not be available to add or track more assets in his account. In the case user has assets on different plans, the minimum value will be applied.",
+                "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
+                "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
+                "10": "Select options which are available for users who have assets on this plan.",
+                "11": "Select options which are available for users who have assets on this plan.",
+                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
+                "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
+                "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
+                "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
+                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
+                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
         "combo_empty": "Seleccione tarifa",
@@ -708,6 +763,8 @@ Ext.define('Locale.locale-es',{
             "select_req": "Seleccione los códigos de lista",
             "same_type_req": "Debes de especificar un codigo de tipo de dispositivo",
             "edited_tip": "cambiado",
+            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activado",
                 "no_activated": "No activado",
@@ -722,6 +779,7 @@ Ext.define('Locale.locale-es',{
         "menu_text": "Ajustes",
         "fields": {
             "service_title": "Título de servicio",
+            "page_title": "Título de la página",
             "locale": "Monitoreo Idioma",
             "demo_login": "Usuario demo",
             "demo_password": "Demo contraseña",
@@ -746,10 +804,9 @@ Ext.define('Locale.locale-es',{
             "password_repeat": "Repetir nueva contraseña",
             "password_old": "Contraseña actual",
             "password_mismatched": "Las contraseñas no coinciden",
-            "footer_text": "El texto en la parte inferior de la página",
-            "page_title": "Título de la página",
             "footer_email": "Correo electrónico de empresa",
             "footer_site": "«Sobre nosotros» Link",
+            "footer_text": "El texto en la parte inferior de la página",
             "geocoder": "Geocoder por defecto",
             "route_provider": "Proveedor de ruta por defecto",
             "translit": "SMS transcripción",
@@ -802,9 +859,6 @@ Ext.define('Locale.locale-es',{
             "sms_sender_id": "Sender ID",
             "sms_sender_id_ph": "Example: Navixy",
             "sms_sender_id_hint": "It is highly recommended to use the number your lease for inbound messages as a Sender ID. In this case the service platform will be able to receive SMS from devices replies with the command confirmations and other valued data.",
-            "sms_inbound": "Number for inbound messages",
-            "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_gateway": "SMS Gateway",
             "user_sms_gateway_ph": "SMS Gateway not selected",
             "user_sms_gateway_hint": "Select the SMS gateway you use. You need to have an appropriate account and provide credentials for the secure connection with that gateway.",
@@ -813,96 +867,11 @@ Ext.define('Locale.locale-es',{
             "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_inbound": "Number for inbound messages",
             "user_sms_inbound_ph": "Example: 12162780905",
-            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
-        },
-        "edit_form": {
-            "title": "Ajustes de servicio",
-            "save_btn": "guardar",
-            "save_msg": "Configuracion guardada con exito",
-            "main_fields": "Ajustes Basicos",
-            "map_fields": "Ajustes de mapas",
-            "permission_fields": "Ajustes de notificaciones",
-            "domain_sup": "* - para dominios como *{0} tipos de mapas disponibles limitados",
-            "custom_fields": "Personalización",
-            "main_buttons_title": "Mostrando botones",
-            "show_mobile_apps": "Mostrar botones para la descarga de aplicaciones móviles",
-            "allow_registration": "Permitir a usuario registrarse",
-            "main_texts_title": "Principales textos",
-            "footer_texts_title": "Texto en el sótano de la página de inicio de sesión",
-            "logo_title": "Logo",
-            "favicon_title": "Favicon",
-            "favicon_desc": "no funciona en Internet Explorer",
-            "login_wallpaper_title": "La página de Autorización de fondo",
-            "desktop_wallpaper_title": "Servicios de la página de fondo",
-            "upload_btn": "Subir",
-            "update_btn": "Cambiar",
-            "remove_btn": "Eliminar",
-            "upload_loading": "Subir imagen",
-            "domain_fields": "Dominio",
-            "regional_fields": "Ajuste regional",
-            "maps_fields": "Mapas",
-            "demo_fields": "Usuario demo",
-            "notifications_fields": "Notificaciones",
-            "password_fields": "Cambiar contraseña",
-            "pass_hint": "No se guardarán los cambios en otras pestañas",
-            "pass_save_msg": "Contraseña cambiada con éxito",
-            "pass_save_btn": "Cambiar contraseña",
-            "maps_hint": "Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.",
-            "demo_hint": "Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)",
-            "user_notifications_title": "Notificaciones a los usuarios",
-            "user_notifications_hint": "Configuración de las notificaciones de su sistema de seguimiento a los usuarios: geo-acontecimientos, bajo balance, recuperación de contraseña, etc.",
-            "special_notifications_title": "Notificaciones a los administradores",
-            "special_notifications_hint": "Notificaciones del sistema a los administradores sobre el estado del servicio, estadísticas y otros",
-            "branding_fields": "Branding",
-            "branding_main_title": "Branding main settings",
-            "defaults_fields": "La configuración predeterminada del usuario",
-            "defaults_hint": "Ajustes en esta sección se aplicarán automáticamente a todos los nuevos usuarios"
-            "branding_img_title": "Images and logo",
-            "branding_contacts_title": "Contact information for users",
-            "service_fields": "Service preferences",
-            "service_links_title": "Domain and URLs",
-            "service_regional_title": "Regional settings",
-            "service_login_title": "Login page",
-            "service_maps_title": "Maps",
-            "service_maps_defaults_title": "Map default settings",
-            "service_additional_title": "Email notifications",
-            "accounts_fields": "User defaults",
-            "accounts_regional_title": "Regional settings",
-            "accounts_geocoding_title": "Cartography and databases",
-            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
-            "account_roads_title": "Roads",
-            "emails_fields": "Email messages",
-            "emails_main_title": "Main settings",
-            "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
-            "sms_fields": "SMS messages",
-            "sms_main_title": "Main settings",
-            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
-            "sms_m2m_title": "M2M messages",
-            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
-            "sms_user_title": "User notifications",
-            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
-            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
-            "service_info": "Define the preferences of your service.",
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
-        },
-        "upload_form": {
-            "save_btn": "Subir",
-            "cancel_btn": "Cancelar",
-            "upload_btn": "Vista",
-            "title": "Subir imagen. {0}",
-            "titles": {
-                "logo": "Logo",
-                "favicon": "Favicon",
-                "login_wallpaper": "Página de registro de papel tapiz",
-                "desktop_wallpaper": "Fondo de pantalla de servicio página"
-            },
-            "tips": {
-                "logo": "Recomendado para cargar la imagen de orientación horizontal con un fondo transparente y una anchura no inferior a 200 puntos.",
-                "favicon": "Recomendado para cargar la imagen con un fondo transparente y una resolución mínima de 32x32 píxeles.",
-                "login_wallpaper": "Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG."
-            },
-            "img_title": "El formato de imagen {0} (el tamaño máximo de {1} MB)",
-            "error_text": "Error al cargar la imagen"
+            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "not_editable": "not editable",
+            "sms_inbound": "Number for inbound messages",
+            "sms_inbound_ph": "Example: 12162780905",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
         },
         "sms_gateway": {
             "navixy": {
@@ -992,6 +961,99 @@ Ext.define('Locale.locale-es',{
                     }
                 }
             }
+        },
+        "edit_form": {
+            "title": "Ajustes de servicio",
+            "save_btn": "guardar",
+            "save_msg": "Configuracion guardada con exito",
+            "main_fields": "Ajustes Basicos",
+            "map_fields": "Ajustes de mapas",
+            "permission_fields": "Ajustes de notificaciones",
+            "domain_sup": "* - para dominios como *{0} tipos de mapas disponibles limitados",
+            "custom_fields": "Personalización",
+            "main_buttons_title": "Mostrando botones",
+            "show_mobile_apps": "Mostrar botones para la descarga de aplicaciones móviles",
+            "main_texts_title": "Principales textos",
+            "footer_texts_title": "Texto en el sótano de la página de inicio de sesión",
+            "logo_title": "Logo",
+            "favicon_title": "Favicon",
+            "login_wallpaper_title": "La página de Autorización de fondo",
+            "desktop_wallpaper_title": "Servicios de la página de fondo",
+            "upload_btn": "Subir",
+            "update_btn": "Cambiar",
+            "remove_btn": "Eliminar",
+            "upload_loading": "Subir imagen",
+            "domain_fields": "Dominio",
+            "regional_fields": "Ajuste regional",
+            "maps_fields": "Mapas",
+            "demo_fields": "Usuario demo",
+            "notifications_fields": "Notificaciones",
+            "password_fields": "Cambiar contraseña",
+            "pass_hint": "No se guardarán los cambios en otras pestañas",
+            "pass_save_msg": "Contraseña cambiada con éxito",
+            "pass_save_btn": "Cambiar contraseña",
+            "demo_hint": "Seleccione la cuenta de usuario que se utilizará para fines de demostración y disponible en la página de inicio de sesión (opcional)",
+            "user_notifications_title": "Notificaciones a los usuarios",
+            "user_notifications_hint": "Configuración de las notificaciones de su sistema de seguimiento a los usuarios: geo-acontecimientos, bajo balance, recuperación de contraseña, etc.",
+            "special_notifications_title": "Notificaciones a los administradores",
+            "special_notifications_hint": "Notificaciones del sistema a los administradores sobre el estado del servicio, estadísticas y otros",
+            "branding_fields": "Branding",
+            "branding_main_title": "Branding main settings",
+            "branding_img_title": "Images and logo",
+            "branding_contacts_title": "Contact information for users",
+            "service_fields": "Service preferences",
+            "service_links_title": "Domain and URLs",
+            "service_regional_title": "Regional settings",
+            "service_login_title": "Login page",
+            "service_maps_title": "Maps",
+            "service_maps_defaults_title": "Map default settings",
+            "service_additional_title": "Email notifications",
+            "accounts_fields": "User defaults",
+            "accounts_regional_title": "Regional settings",
+            "accounts_geocoding_title": "Cartography and databases",
+            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
+            "account_roads_title": "Roads",
+            "emails_fields": "Email messages",
+            "emails_main_title": "Main settings",
+            "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
+            "sms_fields": "SMS messages",
+            "sms_main_title": "Main settings",
+            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
+            "sms_m2m_title": "M2M messages",
+            "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
+            "sms_user_title": "User notifications",
+            "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
+            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+            "service_info": "Define the preferences of your service.",
+            "maps_hint": "Por favor, defina la selección de mapas que estará disponible para los clientes de su servicio. La lista de mapas para usuarios específicos se puede limitar con sus configuración del plan tarifario.<br><br>El uso de los servicios de mapas que ha seleccionado se debe conceder a usted por sus titulares de derechos. NAVIXY no se hace responsable por cualquier violación de los términos de la licencia por usted o sus usuarios finales.",
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+        },
+        "upload_form": {
+            "save_btn": "Subir",
+            "cancel_btn": "Cancelar",
+            "upload_btn": "Vista",
+            "title": "Subir imagen. {0}",
+            "titles": {
+                "logo": "Logo",
+                "favicon": "Favicon",
+                "login_wallpaper": "Página de registro de papel tapiz",
+                "desktop_wallpaper": "Fondo de pantalla de servicio página"
+            },
+            "tips": {
+                "logo": "Recomendado para cargar la imagen de orientación horizontal con un fondo transparente y una anchura no inferior a 200 puntos.",
+                "favicon": "Recomendado para cargar la imagen con un fondo transparente y una resolución mínima de 32x32 píxeles.",
+                "login_wallpaper": "Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG."
+            },
+            "img_title": "El formato de imagen {0} (el tamaño máximo de {1} MB)",
+            "error_text": "Error al cargar la imagen"
+        },
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "license_balance": "Pending amount {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
         }
     },
     "accounting": {
@@ -1245,5 +1307,74 @@ Ext.define('Locale.locale-es',{
         "disabled": "Disabled",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
-    }
+    },
+    "currencies_tpls": {
+        "GBP": "£{0}",
+        "BRL": "R${0}",
+        "HUF": "{0} Ft",
+        "HKD": "HK${0}",
+        "DKK": "kr {0}",
+        "EUR": "€{0}",
+        "ILS": "₪{0}",
+        "INR": "₹{0}",
+        "IDR": "Rp {0}",
+        "CAD": "С${0}",
+        "CNY": "¥{0}",
+        "KRW": "₩{0}",
+        "MYR": "RM{0}",
+        "MXN": "Mex${0}",
+        "NZD": "NZ${0}",
+        "NOK": "kr {0}",
+        "PKR": "Rs. {0}",
+        "PLN": "{0} zł",
+        "RUB": "{0} RUB.",
+        "SGD": "S${0}",
+        "USD": "${0}",
+        "TWD": "NT${0}",
+        "THB": "฿{0}",
+        "TRY": "₺{0}",
+        "PHP": "{0} ₱",
+        "CZK": "{0} Kč",
+        "CLP": "${0}",
+        "SEK": "{0} kr",
+        "CHF": "{0} franc",
+        "ZAR": "R {0}",
+        "JPY": "¥{0}",
+        "KZT": "{0} tenge",
+        "BYR": "{0} RUB.",
+        "AUD": "A${0}",
+        "TJS": "{0} som.",
+        "UAH": "{0} ₴",
+        "LTL": "{0} Lt",
+        "LVL": "Ls {0}",
+        "KGS": "{0} som",
+        "TMT": "{0} man.",
+        "UZS": "{0} som",
+        "MDL": "{0} lei",
+        "GEL": "{0} lari",
+        "AMD": "{0} dram",
+        "AZN": "{0} man."
+    },
+    "features": {
+        "api": "API",
+        "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
+        "app_fleet": "Flota",
+        "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
+        "batch_operations": "Batch operations",
+        "custom_maps": "Custom maps",
+        "event_notification": "Event notifications",
+        "geocoding": "Geocoding",
+        "lbs": "Location by Cell ID",
+        "map_layers": "Capas de mapa",
+        "multilevel_access": "Object clones",
+        "priority_support": "Priority support",
+        "retranslation": "Retranslation",
+        "report_xls": "Reports to file",
+        "report_scheduled": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
+        "routing": "Enrutamiento",
+        "ui_mobile": "Mobile web interface",
+        "weblocator": "Weblocator",
+        "chat": "Chat"
+    },
+    "singleton": true
 });

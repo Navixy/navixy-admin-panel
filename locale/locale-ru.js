@@ -17,7 +17,7 @@ Ext.define('Locale.locale-ru',{
     "loading": "Загрузка...",
     "conneting_loader": "Соединение с сервером",
     "access_denied": "Доступ запрещен",
-    "access_denied_tip": "у вас нет парв для доступа к запрашиваемой странице",
+    "access_denied_tip": "у вас нет прав для доступа к запрашиваемой странице",
     "index_title": "Добро пожаловать в панель управления",
     "index_tip": "",
     "old_version": "Старая версия",
@@ -331,7 +331,6 @@ Ext.define('Locale.locale-ru',{
         "gel": "Грузинский лари",
         "amd": "Армянский драм",
         "azn": "Азербайджанский манат",
-
         "all": "Albania Lek",
         "afn": "Afghanistan Afghani",
         "ars": "Argentina Peso",
@@ -707,7 +706,7 @@ Ext.define('Locale.locale-ru',{
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Название тарифа",
+            "name": "Название",
             "group_id": "Группа",
             "price": "Месячный платеж",
             "device_limit": "Количество устройств",
@@ -715,7 +714,7 @@ Ext.define('Locale.locale-ru',{
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",
             "has_reports": "Доступны табличные отчеты",
-            "proportional_charge": "Всегда списывать как за полный месяц",
+            "proportional_charge": "Абонентскую плату за неполный месяц списывать пропорционально числу дней",
             "incoming_sms": "Входящее SMS",
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
@@ -731,19 +730,14 @@ Ext.define('Locale.locale-ru',{
             "free_days": "Кол-во бесплатных дней",
             "tariff_type": "Биллинговый период",
             "tariff_type_short": "Оплата",
-
             "rate": "Ставка",
             "users_price": "Цена для пользователей",
             "client_costs": "Вашы расходы",
-
             "plan_options": "Настройки тарифа",
             "plan_availability": "Настройки доступа",
-
             "available_maps": "Доступные карты",
             "available_features": "Доступные опции",
-
             "default_name": "Мой тарифный план",
-
             "tariff_is_default": "Использовать по умолчанию"
         },
         "list": {
@@ -757,7 +751,7 @@ Ext.define('Locale.locale-ru',{
             "save_form_btn": "Сохранить тариф",
             "currency_in": "(в {0})",
             "links": {
-                "make_default": "Установить планом по умолчанию",
+                "make_default": "Назначить тарифом по умолчанию",
                 "tariff_edit": "Редактировать тариф"
             },
             "tab_panel": {
@@ -774,7 +768,7 @@ Ext.define('Locale.locale-ru',{
             },
             "hints": {
                 "2": "Сообщения, отправляемые с ведома пользователя или по его запросу. Такие SMS отправляются с сервис-платформы пользователям и устройствам, через указанный вами SMS шлюз.<br /><br />К ним относятся:<br /> – Уведомления пользователям о настроенных ими геособытиях<br /> – M2M команды для тех моделей устройств, которые могут управляться только через SMS-канал (конфигурация устройства, изменение выхода), а также принудительный запрос местоположения через SMS (для устройств с поддержкой данной функции)",
-                "3": "Служебные SMS команды устройствам, отправляемые с сервис-платформы, обычно, без дополнительного согласия пользователя. Например, используются при автоматической активации ",
+                "3": "Служебные SMS команды устройствам, отправляемые с сервис-платформы, обычно, без дополнительного согласия пользователя. Например, используются при автоматической активации",
                 "4": "Если вы используете в устройствах комплектные SIM-карты Navixy, то можете дополнительно тарифицировать входящие на сервис-платформу SMS сообщения с этих SIM-карт (например, ответы от устройств о выполнении команд).",
                 "5": "Если вы используете в устройствах SIM-карты Navixy, то вы можете установить отдельную плату за ее использование на основе объема трафика (учитывается трафик в обе стороны).",
                 "6": "Уведомления пользователей о гео-событиях автоматическим телефонным звонком в настоящее время поддерживаются только в ряде регионов и на ограниченном списке языков.",
@@ -789,7 +783,7 @@ Ext.define('Locale.locale-ru',{
                 "15": "Целое число (0, 1, 2, …), определяющее номер группы, которому принадлежит тарифный план.",
                 "16": "Установите галочку, если хотите, чтобы пользователи имели возможность самостоятельно переключать свои устройства на этот тарифный план (с других планов в пределах той же группы).",
                 "17": "Тарифный план будет назначаться по умолчанию при добавлении пользователем нового устройства, если для этого не используется актвиационный код.<br /><br />Когда пользователь вводит активационный код, приоритетно используются параметры кода.",
-                "18": "Колчичество дней, предоставляемых пользователю “в подарок” после добавления устройства (включая день, когда устройство было доабвлено).",
+                "18": "Количество дней, предоставляемых пользователю “в подарок” после добавления устройства (включая день, когда устройство было добавлено).",
                 "19": "Сумма, которая зачисляется в “подарок” на бонусный счет пользователя.<br /><br />Она не может быть использована для оплаты периода (абонентской платы), а только для дополнительных услуг, например, SMS уведомлений.",
                 "20": "Если галочка установлена, то при продлении услуг с баланса пользователя всегда списывается абонентская плата за целый месяц. Например, если пользователь просрочил оплату и пополнил баланс 10-го числа, с баланса все равно будет списана сумма за весь месяц.<br /><br />Если галочка снята, то списание будет произведено пропорционально числу дней, оставшихся со дня оплаты до конца месяца.",
                 "plan_options": "<b>Примечание о совместимости тарифных планов.</b> Если в одной учетной записи наблюдаются устройства на разных тарифных планах, то некоторые карты и опции (которые не включены во все планы), могут стать недоступны для пользователя. Вы можете избежать данной коллизии, объединяя тарифные планы в группы и, таким образом, делая невозможным использование пользователями несовместимых тарифных планов. Пожалуй, это единственный способ предоставить вам гибкие возможности по конфигурированию тарифных планов и, вместе с тем, предотвратить хитрости с прицелом на экономию со стороны пользователей.",
@@ -802,9 +796,9 @@ Ext.define('Locale.locale-ru',{
             "title": "Выберите тарифный план"
         },
         "types": {
-            "activeday": "Сутки",
-            "monthly": "Месяц (ежемесячно 1-го числа)",
-            "everyday": "Месяц (посуточное списание)"
+            "activeday": "Посуточно",
+            "monthly": "Помесячно",
+            "everyday": "Помесячно (ежедневное списание)"
         },
         "price_type": {
             "monthly": "Месячный платеж",
@@ -866,16 +860,17 @@ Ext.define('Locale.locale-ru',{
     },
     "settings": {
         "menu_text": "Настройки площадки",
-        subscription: {
-            activation_btn_text: 'Pay activation fee now (500 USD) online',
-            monthly_fee_btn_text: 'Pay online',
-            activation_hint: 'You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:',
-            monthly_fee_hint: 'Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.',
-            pending_amount: 'Pending amount: {0}',
-            current_balance: 'Current balance: {0}',
-            subscription_hint: 'To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com',
-            payment_recieved_msg: 'Your payment was successfully executed and will be processed shortly.',
-            waiting_activation_fee: 'Your payment was successfully executed and will be processed shortly.'
+        "subscription": {
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "monthly_fee_btn_text": "Pay online",
+            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
+            "pending_amount": "Pending amount: {0}",
+            "current_balance": "Current balance: {0}",
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
+            "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
+            "license_balance": "Pending amount {0}"
         },
         "fields": {
             "service_title": "Название сервиса",
@@ -888,7 +883,7 @@ Ext.define('Locale.locale-ru',{
                 "type": "Карта по умолчанию",
                 "location_lat": "Широта по умолчанию",
                 "location_lng": "Долгота по умолчанию",
-                "zoom": "Масштаб"
+                "zoom": "Масштаб по умолчанию"
             },
             "google_client_id": "Client ID для карт google",
             "currency": "Валюта для биллинга пользователей",
@@ -1128,17 +1123,15 @@ Ext.define('Locale.locale-ru',{
             "service_info": "Определите настройки сервиса.",
             "maps_hint": "Выберите карты, которые будут доступны на вашей сервис-платформе. Список карт, доступных отдельным пользователям, может быть дополнительно ограничен настройками их тарифных планов.<br><br>Использование выбранных картографических сервисов должно производиться вами в соответствии с условиями соглашений с их правообладателями. Компания Navixy не несет ответственности за нарушения условий лицензий на сервисы Web-картографии вами или вашими конечными пользователями.",
             "maps_defaults_hint": "Определите карту и ее параметры, которые будут использованы при первом входе пользователя в Web-интерфейс.",
-
             "service_maps_preview": "Просмотр параметров карты по умолчанию",
             "service_maps_preview_info": "Вам представлен пример отображения первоначального вида карты в интерфейсе пользователя. Вы можете изменить настройки центра карты переместив маркер, и масштаб воспользовавшись инструментов или колесом мыши на карте.",
-
             "map_edit_btn": "Визуальный редактор",
             "map_window": {
                 "title": "Настройки карты по умолчанию – Визуальный редактор",
                 "header": "Выберите центр карты по умолчанию, двигая перекрестие с помощью мыши. Чтобы выбрать по умолчанию масштаб карты используйте колесо прокрутки или кнопки изменения масштаба.",
                 "save_btn": "Выбрать"
             },
-            clear_btn: "Сбросить"
+            "clear_btn": "Сбросить"
         },
         "upload_form": {
             "save_btn": "Загрузить",
@@ -1458,7 +1451,6 @@ Ext.define('Locale.locale-ru',{
         "GEL": "{0} лари",
         "AMD": "{0} драм",
         "AZN": "{0} ман.",
-
         "ALL": "{0} Lek",
         "AFN": "{0} ؋",
         "ARS": "{0} $",
@@ -1554,9 +1546,9 @@ Ext.define('Locale.locale-ru',{
         "weblocator": "Веб-локатор",
         "chat": "Чат"
     },
-    map: {
+    "map": {
         "zoom_in": "Увеличить масштаб",
         "zoom_out": "Уменьшить масштаб"
     },
-    map_type_label: 'Карта'
+    "map_type_label": "Карта"
 });
