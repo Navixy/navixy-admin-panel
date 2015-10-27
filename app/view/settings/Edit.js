@@ -27,12 +27,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     mapSettingsReady: false,
 
-    initComponent: function () {
-        //this.mapsStore = Ext.getStore('MapTypes');
-        //this.mapsStore.setAllowedMaps(this.getRecordData().allowed_maps || []);
-        this.callParent(arguments);
-    },
-
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
@@ -167,7 +161,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     applyRecordData: function () {
         this.callParent(arguments);
         this.mapSettingsReady = true;
-        //this.down('map').on('mapready', this.onMapsSettingsChange, this);
     },
 
     getDomainValue: function () {
@@ -202,31 +195,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             mapSettings[isFree ? 'setFreeMaps' : 'unSetFreeMaps']();
         }
     },
-
-    //setFreeMaps: function () {
-    //    var store = this.mapsStore,
-    //        defMap = this.getDefaultMapField();
-    //
-    //    store.filter('free', true);
-    //
-    //    if (!store.findRecord('type', defMap.getValue())) {
-    //        this.getDefaultMapField().setValue(store.first().get('type'))
-    //    }
-    //
-    //    Ext.iterate(this.getUnFreeMaps(), function (field) {
-    //        field.hide();
-    //    }, this);
-    //},
-
-    //unSetFreeMaps: function () {
-    //    var store = this.mapsStore;
-    //
-    //    store.removeFilter();
-    //
-    //    Ext.iterate(this.getUnFreeMaps(), function (field) {
-    //        field.show();
-    //    }, this);
-    //},
 
     afterSave: function () {
         this.applyRecordData();
@@ -269,14 +237,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             };
         } else {
             this.iterateFields(function (field) {
-                if (field.isDisabled()) {
+                if (field.isDisabled() && !field.shadowField) {
                     delete values[field.name];
+                } else if (field.shadowField) {
+                    values[field.name] = field.getValue()
                 }
                 if (field.is('checkboxgroup')) {
                     var value = field.getValue(),
                         name = field.items.first().name,
                         data = value[name];
-
                     values[name] = Ext.isArray(data) ? data : [data];
                 }
                 if (field.role === 'checkbox') {
