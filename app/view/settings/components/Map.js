@@ -103,6 +103,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 displayField: 'name',
                 valueField: 'type',
                 disabled: true,
+                shadowField: true,
                 cls: 'shadow-disabled'
             },
             {
@@ -124,6 +125,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         labelSeparator: '',
                         width: 175,
                         disabled: true,
+                        shadowField: true,
                         cls: 'shadow-disabled'
                     },
                     {
@@ -141,6 +143,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         labelSeparator: '',
                         flex: 2,
                         disabled: true,
+                        shadowField: true,
                         cls: 'shadow-disabled'
                     },
                     {
@@ -154,6 +157,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                         labelSeparator: '',
                         flex: 1,
                         disabled: true,
+                        shadowField: true,
                         cls: 'shadow-disabled'
                     }
                 ]
