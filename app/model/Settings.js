@@ -40,6 +40,7 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'login_wallpaper', type: 'string'},
 
         {name: 'login_footer', type: 'string'},
+        {name: 'display_model_features_link', type: 'boolean'},
 
         {name: 'map_type', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
         {name: 'map_zoom', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},

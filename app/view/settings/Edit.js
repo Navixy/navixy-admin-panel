@@ -658,6 +658,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'permission-field',
                 allowBlank: true
             },
+
             //TODO: API w8
             //{
             //    //name: 'email_invoices',
@@ -669,6 +670,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //    role: 'permission-field',
             //    allowBlank: true
             //}
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.misc_header')
+            },
+            {
+                xtype: 'checkbox',
+                boxLabel: _l.get('settings.fields.display_model_features_link') + this.getHintSymbol(_l.get('settings.fields.display_model_features_link_hint')),
+                name: 'display_model_features_link'
+            }
         ]
     },
 
