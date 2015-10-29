@@ -19,8 +19,8 @@ Ext.define('Locale.Manager', {
         {
             id: 'tr_TR',
             name: 'tr',
-            text: 'Türk',
-            alias: ['tr', 'tr_TR', 'Türk']
+            text: 'Türkçeçe',
+            alias: ['tr', 'tr_TR', 'Türkçeçe']
         },
         //{
         //    id: 'es_ES',
@@ -106,8 +106,8 @@ Ext.define('Locale.Manager', {
         }, {
             id: 'tr_TR',
             name: 'tr',
-            text: 'Türk',
-            alias: ['tr', 'tr_TR', 'Türk'],
+            text: 'Türkçeçe',
+            alias: ['tr', 'tr_TR', 'Türkçeçe'],
             rtl: false
         },
         {
