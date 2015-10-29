@@ -16,6 +16,12 @@ Ext.define('Locale.Manager', {
             text: 'English',
             alias: ['en', 'en_US', 'English']
         },
+        {
+            id: 'tr_TR',
+            name: 'tr',
+            text: 'Türk',
+            alias: ['tr', 'tr_TR', 'Türk']
+        },
         //{
         //    id: 'es_ES',
         //    name: 'es',
@@ -52,6 +58,8 @@ Ext.define('Locale.Manager', {
 
     ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo',
                  'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
+
+    other_locales: ['en', 'tr'],
 
     _ui_locales: [
         {
@@ -286,7 +294,13 @@ Ext.define('Locale.Manager', {
         var BrowserLocalesRu = this.ru_locales,
             browserLocale = androidLocale() || navigator.language || navigator.userLanguage || false;
 
-        return (browserLocale && Ext.Array.indexOf(this.ru_locales, browserLocale) > -1) ? "ru" : "en";
+        return browserLocale
+            ? Ext.Array.indexOf(this.ru_locales, browserLocale) > -1
+                ? "ru"
+                : Ext.Array.indexOf(this.other_locales, browserLocale) > -1
+                    ? browserLocale
+                    : "en"
+            : "en";
     },
 
     _toCookie: function (locale) {

@@ -227,6 +227,7 @@ Ext.define('Locale.locale-tr',{
     },
     "units_short": {
         "kilometer": "km",
+        "mile": "mi",
         "meter": "m",
         "square_kilometer": "km2",
         "square_meter": "m2",
@@ -1073,7 +1074,16 @@ Ext.define('Locale.locale-tr',{
             "branding_main_info": "Firma markanız, logonuz vb. seçenekler ile sistem görünümünü değiştirebilirsiniz.",
             "service_info": "Servis tercihlerinizi tanımlayın",
             "maps_hint": "Servis platformunuz için kullanmak istediğiniz haritaları işaretleyin. Tarife planları içerisinde özelleştirerek bazı kullanıcıların bazı haritalara erişmesinide engelleyebilirsiniz.",
-            "maps_defaults_hint": "Kullanıcıların web arayüzüne ilk defa girdiklerinde hangi harita açılmasını istiyorsanız lütfen o haritayı ve ilgili seçeneklerini seçiniz."
+            "maps_defaults_hint": "Kullanıcıların web arayüzüne ilk defa girdiklerinde hangi harita açılmasını istiyorsanız lütfen o haritayı ve ilgili seçeneklerini seçiniz.",
+            "service_maps_preview": "Harita varsayılan ayarları önizleme",
+            "service_maps_preview_info": "Kullanıcı arayüzünde harita görünümü başlangıç ekranı örneği. Sen aracını kullanarak veya harita üzerinde fare tekerleğini kullanarak işaretleyici ve zoom hareket ettirerek haritanın merkezini değiştirebilirsiniz.",
+            "map_edit_btn": "Görsel editör",
+            "map_window": {
+                "title": "Harita varsayılan ayarları - Görsel editör",
+                "header": "Farenizle crosshair hareket ettirerek varsayılan harita merkezini seçin. Seçmek için Varsayılan haritası yakınlaştırma kaydırma tekerleğini kullanın veya giriş / çıkış düğmelerini yakınlaştırmak.",
+                "save_btn": "Seçin"
+            },
+            "clear_btn": "Reset"
         },
         "upload_form": {
             "save_btn": "Karşıya yükle",
