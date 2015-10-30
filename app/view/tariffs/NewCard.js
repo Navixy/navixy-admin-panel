@@ -296,6 +296,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 textStyle: "padding: 0 0 0 5px",
                 fieldConfig: this.getFieldConfig({
                     xtype: 'checkbox',
+                    checked: true,
                     name: 'proportional_charge'
                 })
             },

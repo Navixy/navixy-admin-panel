@@ -706,7 +706,7 @@ Ext.define('Locale.locale-en',{
             "store_period": "Store history for",
             "active": "Available for user",
             "has_reports": "Table reports available",
-            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
+            "proportional_charge": "Proportional charge",
             "incoming_sms": "Incoming SMS",
             "outgoing_sms": "Outgoing SMS",
             "service_sms": "Service SMS",
