@@ -43,15 +43,19 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                         230, 231, 232, 233, 234, 235, 236,
                         238, 240,
                         "upload_exeption"],
-                callback: this.showCornerMessage
+                callback: this.showErrorMessage
             },
             {
                 codes: [2, 3, 4, 11, 103, 'no_hash'],
                 callback: this.redirectToAuth
             },
             {
+                codes: [13],
+                callback: Ext.emptyFn
+            },
+            {
                 codes: [7],
-                callback: this.showInvalidParameterMsg
+                callback: this.showErrorMessage
             }
         ];
     },
@@ -124,7 +128,19 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
             } catch (e) {
                 Ext.log(e.stack);
             }
+        } else {
+            this.showErrorMessage(code, requestConfig, response);
         }
+    },
+
+    showErrorMessage: function (code, parameters, response) {
+        var desc = response && response.status && response.status.description,
+            message = {
+                title: _l.get('error'),
+                msg: [_l.get('errors')[code] || desc].join('')
+            };
+
+        Ext.MessageBox.show(message);
     },
 
     showInvalidParameterMsg: function (code, parameters, response) {

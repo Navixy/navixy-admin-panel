@@ -79,7 +79,12 @@ Ext.define('NavixyPanel.controller.Accounting', {
             width: 600,
             buttons: Ext.MessageBox.OKCANCEL,
             icon: Ext.MessageBox.QUESTION,
-            fn: Ext.bind(this.sendClientsReport, this, [formValues])
+            fn: function (result) {
+                if (result == "ok") {
+                    this.sendClientsReport(formValues);
+                }
+            },
+            scope: this
         });
     },
 
