@@ -400,6 +400,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
     doExportDelivery: function (date) {
+        var me = this;
         if (Ext.isDate(date) && Config.optUrl && Config.hasOptDelivery) {
 
             Ext.Ajax.request({
@@ -411,7 +412,9 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                     todate: Ext.Date.format(date, 'Y-m')
                 },
                 success: Ext.emptyFn,
-                failure: Ext.emptyFn
+                failure: function (response) {
+                    me.checkCode({"success":false,"status":{"code":404, "description": "Delivery error"}}, {"params": {}});
+                }
             });
 
         }
