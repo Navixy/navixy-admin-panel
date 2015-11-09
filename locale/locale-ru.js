@@ -714,7 +714,7 @@ Ext.define('Locale.locale-ru', {
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",
             "has_reports": "Доступны табличные отчеты",
-            "proportional_charge": "Пропорциональное списание",
+            "proportional_charge": "Абонентскую плату за неполный месяц списывать пропорционально числу дней",
             "incoming_sms": "Входящее SMS",
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
