@@ -236,7 +236,10 @@ Ext.define('Locale.locale-ru', {
         "assets": [
             "устройств",
             "устройство",
-            "устройства"
+            "устройства",
+            "устройства",
+            "устройства",
+            "устройств"
         ]
     },
     "units_short": {
@@ -714,7 +717,7 @@ Ext.define('Locale.locale-ru', {
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",
             "has_reports": "Доступны табличные отчеты",
-            "proportional_charge": "Абонентскую плату за неполный месяц списывать пропорционально числу дней",
+            "proportional_charge": "Пропорциональное списание",
             "incoming_sms": "Входящее SMS",
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
@@ -732,7 +735,7 @@ Ext.define('Locale.locale-ru', {
             "tariff_type_short": "Оплата",
             "rate": "Ставка",
             "users_price": "Цена для пользователей",
-            "client_costs": "Вашы расходы",
+            "client_costs": "Ваши расходы",
             "plan_options": "Настройки тарифа",
             "plan_availability": "Настройки доступа",
             "available_maps": "Доступные карты",
