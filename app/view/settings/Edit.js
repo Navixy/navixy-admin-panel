@@ -676,6 +676,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 xtype: 'checkbox',
+                role: 'checkbox',
                 boxLabel: _l.get('settings.fields.display_model_features_link') + this.getHintSymbol(_l.get('settings.fields.display_model_features_link_hint')),
                 name: 'display_model_features_link'
             }
