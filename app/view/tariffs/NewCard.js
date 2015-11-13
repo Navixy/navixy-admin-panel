@@ -64,10 +64,6 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 if (fieldName === "maps") {
                     field.strictDisabled = disableMaps ? "edit" : false;
                 }
-
-                if (fieldName === "proportional_charge") {
-                    field.setValue(!fieldValue);
-                }
             });
             if (isDefault) {
                 this.down("[name=tariff_is_default]").strictDisabled = "edit";
@@ -128,10 +124,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         });
         if (values.type != "monthly") {
             values.proportional_charge = false;
-        } else {
-            values.proportional_charge = !values.proportional_charge;
         }
-
         return values;
     },
 

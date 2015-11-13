@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-en
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-en', {
+* @class Locale.locale-en
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-en',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -777,7 +777,7 @@ Ext.define('Locale.locale-en', {
                 "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
                 "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
-                "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
+                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
@@ -959,8 +959,8 @@ Ext.define('Locale.locale-en', {
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
-            display_model_features_link: 'Show a link to a website with information about the model',
-            display_model_features_link_hint: 'Гser can be provided with additional information about the model of the device activated'
+            "display_model_features_link": "Show a link to a website with information about the model",
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
         },
         "sms_gateway": {
             "navixy": {
@@ -1125,7 +1125,7 @@ Ext.define('Locale.locale-en', {
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            misc_header: 'Optional features'
+            "misc_header": "Optional features"
         },
         "upload_form": {
             "save_btn": "Upload",
