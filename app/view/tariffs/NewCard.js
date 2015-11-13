@@ -590,7 +590,15 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 maxLength: 6,
 
                 value: 5,
-                colspan: 2
+                colspan: 2,
+                listeners: {
+                    change: function (cmp, value) {
+                        cmp.suspendEvent('change');
+                        cmp.setValue(0);
+                        cmp.setValue(value);
+                        cmp.resumeEvent('change');
+                    }
+                }
             }),
             {
                 html: [_l.get('tariffs.fields.store_period'), this.getHintSymbol(_l.get('tariffs.card.hints.8')), ":"].join(" "),
