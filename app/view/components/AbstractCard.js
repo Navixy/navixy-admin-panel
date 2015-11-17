@@ -312,7 +312,6 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
         if (bodyPanel && collapser) {
             collapsed = !!bodyPanel.getCollapsed();
 
-            console.log(!isForce || (collapsed !== forceState));
             if (!isForce || (collapsed !== forceState)) {
                 bodyPanel[collapsed ? 'expand' : 'collapse'](collapsed ? false : direction, false);
                 collapser[collapsed ? 'removeCls' : 'addCls']('active');

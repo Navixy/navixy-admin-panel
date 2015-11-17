@@ -135,12 +135,18 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
 
     showErrorMessage: function (code, parameters, response) {
         var desc = response && response.status && response.status.description,
-            message = {
-                title: _l.get('error'),
-                msg: [_l.get('errors')[code] || desc].join('')
-            };
+            localeErrorPart = _l.get('errors')[code],
+            msg = [localeErrorPart && localeErrorPart["title"] ? localeErrorPart["title"]: ""],
+            needToShow = false;
 
-        Ext.MessageBox.show(message);
+        Ext.each(response.errors, function (error) {
+            msg.push('<p>', localeErrorPart.errors[error.parameter] || [error.parameter, ':', error.error].join(" "), '</p>');
+        }, this);
+
+        Ext.MessageBox.show({
+            title: _l.get('error'),
+            msg: [ ( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('')
+        });
     },
 
     showInvalidParameterMsg: function (code, parameters, response) {
