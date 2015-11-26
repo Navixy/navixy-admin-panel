@@ -528,7 +528,9 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             }],
             miscList = [],
             featuresList = [],
-            listItem;
+            listItem,
+            dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first();
 
         Ext.getStore('MapTypes').each(function (mapRecord) {
             mapList.push({
@@ -616,7 +618,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 allowBlank: true,
                 cellCls: 'form-cell',
                 colspan: 2,
-                initDisabled: this.isFormDisabled()
+                initDisabled: this.isFormDisabled(),
+                limit: dealer.get('store_period')
             },
             {
                 html: "&nbsp;",

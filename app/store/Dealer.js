@@ -22,6 +22,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "enable_cameras",
         "seller_currency",
         "demo_tariff",
+        "store_period",
         {
             name: "paas_activation_date",
             type: 'date',

@@ -12,7 +12,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
     fname: null,
     allowBlank: true,
-    yearsLimit: 3,
+    yearsLimit: 100,
 
     fieldLabel: null,
     labelWidth: 200,
@@ -24,6 +24,8 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
     textCls: null,
 
     defaultVal: 3,
+
+    limit: null,
 
     initComponent: function () {
         this.store = Ext.create('Ext.data.Store', {
@@ -73,7 +75,8 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                     disable: this.onDisable,
                     enable: this.onEnable,
                     scope: this
-                }
+                },
+                validator: this.validatePeriod
             },
             {
                 xtype: 'container',
@@ -116,6 +119,24 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
         this.callParent(arguments);
     },
+
+    validatePeriod: function (value) {
+        var me = this.up('periodfield'),
+            result = true;
+
+        if (me.limit) {
+            var size_value = me.getPeriodSize().getValue(),
+                size = size_value && size_value.toUpperCase(),
+                duration = moment.duration(["P", value, size].join("")),
+                duration_days = duration && duration.asDays(),
+                limit_days = moment.duration(me.limit).asDays();
+
+            result = limit_days - duration_days < 0 ? _l.get("wrong_period") : true;
+        }
+
+        return result;
+    },
+
 
     getText: function () {
         return this.down('[role=fake-text]');
