@@ -29,14 +29,14 @@ module.exports = function (grunt) {
                 concatBuildConfig = {},
                 uglifyBuildConfig = {},
                 copyBuildConfig = {},
-                mainTaskSequence = ['buildbump'];
+                mainTaskSequence = ['file-creator:basic'];
 
-            function getAppPath(filePath)  {
+
+            function getAppPath(filePath) {
                 return notRoot
                     ? [appPath, filePath].join('/')
                     : filePath;
             }
-
 
             senchaBuildConfig[appName] = {
                 options: {
@@ -98,22 +98,48 @@ module.exports = function (grunt) {
 
             if (godBlessIE && godBlessIE.length) {
                 godBlessIE.forEach(function (part) {
-                    grunt.log.writeln([ buildDestination, appTemp, part.root, part.src ].join('/'));
+                    grunt.log.writeln([buildDestination, appTemp, part.root, part.src].join('/'));
                     blessConfig[part.name] = {
-                        src: [ buildDestination, appTemp, part.root, part.src ].join('/'),
-                        dest: [ buildDestination, appTemp, part.root, part.dest ].join('/')
+                        src: [buildDestination, appTemp, part.root, part.src].join('/'),
+                        dest: [buildDestination, appTemp, part.root, part.dest].join('/')
                     };
                 });
 
                 mainTaskSequence.push('bless');
             }
 
-            var appBuildConfig = {pkg: grunt.file.readJSON('package.json'),
+            var appBuildConfig = {
+                pkg: grunt.file.readJSON('package.json'),
                 'sencha-build': senchaBuildConfig,
                 'concat': concatBuildConfig,
                 'uglify': uglifyBuildConfig,
                 'bless': blessConfig,
-                'copy': copyBuildConfig
+                'copy': copyBuildConfig,
+                'file-creator': {
+                    options: {
+                        openFlags: 'w'
+                    },
+                    "basic": {
+                        "VERSION": function (fs, fd, done) {
+                            var sys = require('sys'),
+                                exec = require('child_process').exec;
+
+                            exec('hg id -i', function (error, stdout, stderr) {
+                                sys.print('stdout: ' + stdout);
+                                sys.print('stderr: ' + stderr);
+                                var packageJSONFile = grunt.file.readJSON('package.json'),
+                                    version = packageJSONFile.version,
+                                    msg = [new Date().toISOString(), stdout.substr(0, stdout.length - 2),
+                                           packageJSONFile.name, 'realese',
+                                           version].join(' ');
+
+                                fs.writeSync(fd, msg);
+                                done();
+                            });
+
+                        }
+                    }
+                }
             };
 
             if (appDest) {
@@ -134,12 +160,13 @@ module.exports = function (grunt) {
             }
 
             grunt.initConfig(appBuildConfig);
+            grunt.loadNpmTasks('grunt-file-creator');
             grunt.loadNpmTasks('grunt-contrib-concat');
             grunt.loadNpmTasks('grunt-contrib-uglify');
             grunt.loadNpmTasks('grunt-contrib-copy');
             grunt.loadNpmTasks('grunt-bless');
 
             grunt.task.run(mainTaskSequence);
-      }
+        }
     );
 };
