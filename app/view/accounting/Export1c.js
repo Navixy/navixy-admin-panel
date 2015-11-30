@@ -99,7 +99,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 margin: '30 0 10 0',
                 fieldLabel: _l.get('accounting.form.export1c.fields.last_act'),
                 name: 'last_act_id',
-
+                allowBlank: true,
                 vtype: 'numeric',
                 minLength: 1,
                 maxLength: 20
