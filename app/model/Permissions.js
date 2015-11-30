@@ -42,6 +42,11 @@ Ext.define('NavixyPanel.model.Permissions', {
             defaultValue: false
         },
         {
+            name: 'send_email',
+            type: 'boolean',
+            defaultValue: false
+        },
+        {
             name: 'import_payments',
             type: 'boolean',
             defaultValue: false

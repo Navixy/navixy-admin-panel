@@ -1153,6 +1153,7 @@ Ext.define('Locale.locale-en',{
             "title": "Confirm email-newsletter",
             "text": "Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?"
         },
+        "report_success": "Email-newsletter successful",
         "form": {
             "title": "«1C:Enterprise» Data exporting",
             "export1c": {

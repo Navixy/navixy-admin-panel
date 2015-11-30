@@ -90,9 +90,33 @@ Ext.define('NavixyPanel.controller.Accounting', {
 
     sendClientsReport: function (values) {
         if (values.date) {
-            Ext.API.doExportDelivery(values.date);
+            Ext.API.doExportDelivery({
+                params: {
+                    year: Ext.Date.format(values.date, 'Y'),
+                    month: Ext.Date.format(values.date, 'm')
+                },
+                callback: this.afterSendReportsSuccess,
+                failure: this.afterSendReportsFailure
+            });
         }
     },
+
+    afterSendReportsSuccess: function (response) {
+        Ext.MessageBox.show({
+            msg: _l.get('accounting.report_success'),
+            buttons: Ext.MessageBox.OK
+        });
+    },
+
+    afterSendReportsFailure: function (response) {
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.get('errors')[errCode] || status.description || false;
+
+        this.getExport1c().showSubmitErrors(errCode, errors, errDescription);
+    },
+
 
     onPayments2cSubmit: function (form, formValues) {
         Ext.API.doPaymentExport({

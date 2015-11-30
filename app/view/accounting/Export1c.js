@@ -27,6 +27,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
 
         var saveBtn = this.getSaveBtnTitle(),
             reportBtn = this.getReportBtnTitle(),
+            canSendReports = Ext.checkPermission('accounting', 'send_email'),
             result = [];
 
         if (saveBtn) {
@@ -42,7 +43,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
             );
         }
 
-        if (reportBtn && Config.optUrl && Config.hasOptDelivery) {
+        if (reportBtn && canSendReports) {
             result.push(
                 {
                     text: reportBtn,

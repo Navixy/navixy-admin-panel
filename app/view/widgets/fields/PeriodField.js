@@ -215,6 +215,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
             valueField.setValue(maxValue);
         }
 
+        valueField.validate();
         this.updateField();
     },
 
