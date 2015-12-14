@@ -130,14 +130,16 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                         {
                             xtype: 'numberfield',
                             name: 'qty',
-                            minValue: 100,
+                            minValue: 99,
                             step: 100,
-                            value: pendingAmount ? pendingAmount : 100,
+                            decimalPrecision: 0,
+                            value: pendingAmount ? pendingAmount : 99,
                             cls: 'x-field-light',
-                            valueToRaw: function (val) {
-                                return val.toFixed(2);
-                            },
+                            allowDecimals: false,
                             maxWidth: 150,
+                            fixPrecision: function (value) {
+                                return Math.ceil(value);
+                            },
                             margin: '0 5 0 0'
                         },
                         {
