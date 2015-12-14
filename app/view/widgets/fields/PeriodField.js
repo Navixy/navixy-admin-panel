@@ -110,6 +110,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 hidden: true,
                 name: this.fname,
                 allowBlank: this.allowBlank,
+                value: this.defaultVal + 'm',
                 listeners: {
                     change: this.setValues,
                     scope: this
@@ -136,7 +137,6 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
 
         return result;
     },
-
 
     getText: function () {
         return this.down('[role=fake-text]');
