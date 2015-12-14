@@ -143,88 +143,7 @@ Ext.define('Locale.locale-tr',{
             "260": "Ödeme tutarı toplam tutarı karşılamamaktadır"
         }
     },
-    "units_combination": {
-        "days": [
-            "gün",
-            "gün",
-            "gün"
-        ],
-        "hours": [
-            "saat",
-            "saat",
-            "saat"
-        ],
-        "minutes": [
-            "dakika",
-            "dakika",
-            "dakika"
-        ],
-        "seconds": [
-            "saniye",
-            "saniye",
-            "saniye"
-        ],
-        "everyminutes": [
-            "dakika",
-            "dakika",
-            "dakika"
-        ],
-        "everyseconds": [
-            "saniye",
-            "saniye",
-            "saniye"
-        ],
-        "meters": [
-            "metre",
-            "metre",
-            "metre"
-        ],
-        "degrees": [
-            "derece",
-            "derece",
-            "derece"
-        ],
-        "objects": [
-            "cihazlar",
-            "cihaz",
-            "cihazlar"
-        ],
-        "years": [
-            "yıl",
-            "yıl",
-            "yıl"
-        ],
-        "months": [
-            "ay",
-            "ay",
-            "ay"
-        ],
-        "codes": [
-            "kodlar",
-            "kod",
-            "kodlar"
-        ],
-        "trackers": [
-            "cihazlar",
-            "cihaz",
-            "cihazlar"
-        ],
-        "devices": [
-            "cihazlar",
-            "cihaz",
-            "cihazlar"
-        ],
-        "entries": [
-            "eşleşti",
-            "eşleşme",
-            "eşleşti"
-        ],
-        "assets": [
-            "varlıklar",
-            "varlık",
-            "varlıklar"
-        ]
-    },
+    "units_combination": {"days":"gün|gün|gün","hours":"saat|saat|saat","minutes":"dakika|dakika|dakika","seconds":"saniye|saniye|saniye","everyminutes":"dakika|dakika|dakika","everyseconds":"saniye|saniye|saniye","meters":"metre|metre|metre","degrees":"derece|derece|derece","objects":"cihazlar|cihaz|cihazlar","years":"yıl|yıl|yıl","months":"ay|ay|ay","codes":"kodlar|kod|kodlar","trackers":"cihazlar|cihaz|cihazlar","devices":"cihazlar|cihaz|cihazlar","entries":"eşleşti|eşleşme|eşleşti","assets":"varlıklar|varlık|varlıklar"},
     "units_short": {
         "kilometer": "km",
         "mile": "mi",
@@ -1069,7 +988,9 @@ Ext.define('Locale.locale-tr',{
             "not_editable": "not editable",
             "sms_inbound": "Gelen mesaj numarası",
             "sms_inbound_ph": "Örnek: 12162780905",
-            "sms_inbound_hint": "Önermiyoruz fakat dilerseniz nümerik yada alfanümerik bir Gönderen ID belirtebilirsiniz, bu durumda sistem cihazlardan SMS mesajlarını alamayacaktır. Bu durum sms servisinin düzgün çalışmamasına sebebiyet verebilir."
+            "sms_inbound_hint": "Önermiyoruz fakat dilerseniz nümerik yada alfanümerik bir Gönderen ID belirtebilirsiniz, bu durumda sistem cihazlardan SMS mesajlarını alamayacaktır. Bu durum sms servisinin düzgün çalışmamasına sebebiyet verebilir.",
+            "display_model_features_link": "Model hakkında bilgi içeren web bağlantısını göster",
+            "display_model_features_link_hint": "Kullanıcı aktif ettiği cihaz ile ilgili ayrıntılı bilgi edinebilir"
         },
         "sms_gateway": {
             "navixy": {
@@ -1233,7 +1154,8 @@ Ext.define('Locale.locale-tr',{
                 "header": "Farenizle crosshair hareket ettirerek varsayılan harita merkezini seçin. Seçmek için Varsayılan haritası yakınlaştırma kaydırma tekerleğini kullanın veya giriş / çıkış düğmelerini yakınlaştırmak.",
                 "save_btn": "Seçin"
             },
-            "clear_btn": "Reset"
+            "clear_btn": "Reset",
+            "misc_header": "Opsiyonel özellikler"
         },
         "upload_form": {
             "save_btn": "Karşıya yükle",

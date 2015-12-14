@@ -33,15 +33,15 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
             data: [
 
                 {
-                    "name": _l.get('units_combination.days')[1],
+                    "name": Ext.util.Format.units(1, 'days'),
                     "period": "d"
                 },
                 {
-                    "name": _l.get('units_combination.months')[1],
+                    "name": Ext.util.Format.units(1, 'months'),
                     "period": "m"
                 },
                 {
-                    "name": _l.get('units_combination.years')[1],
+                    "name": Ext.util.Format.units(1, 'years'),
                     "period": "y"
                 }
 

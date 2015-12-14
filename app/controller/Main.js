@@ -66,12 +66,12 @@ Ext.define('NavixyPanel.controller.Main', {
         Ext.override(Ext, {
             getHintSymbol: function (hint, cls) {
                 return ['<span class="icon-help ',
-                    cls || '',
-                    '" style="color:#f89406;font-size:12px; padding: 10px" ',
-                    'data-qtip="', Ext.String.htmlEncode(hint), '"',
-                    'data-qclass="settings-tip"',
-                    'data-qwidth="300"',
-                    '></span>'].join('');
+                        cls || '',
+                        '" style="color:#f89406;font-size:12px; padding: 10px" ',
+                        'data-qtip="', Ext.String.htmlEncode(hint), '"',
+                        'data-qclass="settings-tip"',
+                        'data-qwidth="300"',
+                        '></span>'].join('');
             }
         });
 
@@ -120,7 +120,7 @@ Ext.define('NavixyPanel.controller.Main', {
                     result = this.toDate(stringDate);
                 }
 
-                return  result;
+                return result;
             },
 
             delta: function (date1, date2, format) {
@@ -138,10 +138,10 @@ Ext.define('NavixyPanel.controller.Main', {
                 'hours-minutes': function () {
                     var hours = this.getHours(),
                         minutes = this.getMinutes(),
-                        hours_postfix = _l.get('units_combination.hours')[ hours <= 10 || hours > 19 ? hours % 10 : 10] ,
-                        minutes_postfix = _l.get('units_combination.minutes')[ minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
+                        hours_postfix = _l.get('units_combination.hours').split('|')[hours <= 10 || hours > 19 ? hours % 10 : 10],
+                        minutes_postfix = _l.get('units_combination.minutes').split('|')[minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
 
-                    return  [hours, hours_postfix, minutes, minutes_postfix].join(' ');
+                    return [hours, hours_postfix, minutes, minutes_postfix].join(' ');
                 }
             },
 
@@ -182,13 +182,12 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
-
         Ext.override(Ext.picker.Month, {
-            initCls: function() {
+            initCls: function () {
 
                 var me = this,
                     baseCls = me.single ? 'x-monthpicker-single' : me.baseCls,
-                    cls = [ baseCls, me.getComponentLayout().targetCls ];
+                    cls = [baseCls, me.getComponentLayout().targetCls];
 
                 //<deprecated since=0.99>
                 if (Ext.isDefined(me.cmpCls)) {
@@ -219,24 +218,31 @@ Ext.define('NavixyPanel.controller.Main', {
             daysEncode: function (value) {
                 return Ext.util.Format.units(value, 'days', true);
             },
+            units: function (value, unit, withValue, format) {
+                var result, index;
 
-            units: function (value, unit, withValue) {
-                var result;
+                value = Math.abs(value);
+
+                var unitsCombination = _l.get('units_combination')[unit].split('|');
 
                 if (_l.get('units_combination')[unit]) {
-                    var tmp = value % 100,
-                        index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10,
-                        len = _l.get('units_combination')[unit].length;
+                    var tmp = Math.ceil(value) % 100,
+                        len = unitsCombination.length;
 
-                    if (_l.get('units_combination')[unit][index]) {
-                        result = _l.get('units_combination')[unit][index];
+                        index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10;
+
+                    if (unitsCombination[index]) {
+                        result = unitsCombination[index];
                     } else {
-                        result = _l.get('units_combination')[unit][len - 1];
+                        result = unitsCombination[len - 1];
                     }
-
                 }
 
-                return result ? withValue ? value + ' ' + result : result : '';
+                return result
+                    ? withValue
+                           ? value + ' ' + result
+                           : result
+                    : '';
             },
 
             unitsDecode: function (value) {
@@ -256,20 +262,19 @@ Ext.define('NavixyPanel.controller.Main', {
 
                 return value
                     ? {
-                        value: parseInt(value.substr(0, value.length - 1)),
-                        period: value.substr(value.length - 1, 1)
-                    }
+                    value: parseInt(value.substr(0, value.length - 1)),
+                    period: value.substr(value.length - 1, 1)
+                }
                     : {
-                        value: null,
-                        period: null
-                    };
+                    value: null,
+                    period: null
+                };
             }
         });
 
-
         // Fix view mask shadow layout
         Ext.override(Ext.LoadMask, {
-            onHide: function() {
+            onHide: function () {
                 this.callParent();
                 if (this.maskEl) {
                     this.maskEl.remove();
@@ -279,7 +284,7 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.apply(Ext.form.field.VTypes, {
-            numeric: function(v) {
+            numeric: function (v) {
                 return Ext.form.VTypes['numericVal'].test(v);
             },
             numericText: _l.get('invalid_numeric_msg'),
@@ -288,10 +293,10 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.apply(Ext.form.field.VTypes, {
-            multiemail : function(v) {
+            multiemail: function (v) {
                 var array = v.split(',');
                 var valid = true;
-                Ext.each(array, function(value) {
+                Ext.each(array, function (value) {
                     if (!this.email(value)) {
                         valid = false;
                         return false;
@@ -299,13 +304,13 @@ Ext.define('NavixyPanel.controller.Main', {
                 }, this);
                 return valid;
             },
-            multiemailText : 'This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format "user@domain.com,test@test.com"',            numericMask: /[\-\+0-9.]/,
-            multiemailMask : /[a-z0-9_\.\-@\,]/i
+            multiemailText: 'This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format "user@domain.com,test@test.com"',
+            numericMask: /[\-\+0-9.]/,
+            multiemailMask: /[a-z0-9_\.\-@\,]/i
         });
 
-
         Ext.apply(Ext.form.field.VTypes, {
-            amount: function(v) {
+            amount: function (v) {
                 return Ext.form.VTypes['amountVal'].test(v);
             },
             amountText: _l.get('invalid_amount_msg'),
@@ -314,7 +319,7 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.apply(Ext.form.field.VTypes, {
-            rurl: function(v) {
+            rurl: function (v) {
                 return Ext.form.VTypes['rurlVal'].test(v);
             },
             rurlText: Ext.form.field.VTypes.urlText,
@@ -391,8 +396,8 @@ Ext.define('NavixyPanel.controller.Main', {
                             section = store && store.getById(name);
                             result = Ext.isString(right)
                                 ? section
-                                ? !!section.get(right)
-                                : false
+                                         ? !!section.get(right)
+                                         : false
                                 : !!section;
                             if (result) {
                                 return false;
@@ -403,8 +408,8 @@ Ext.define('NavixyPanel.controller.Main', {
                         section = store && store.getById(name);
                         result = Ext.isString(right)
                             ? section
-                            ? !!section.get(right)
-                            : false
+                                     ? !!section.get(right)
+                                     : false
                             : !!section;
                     }
                 }
@@ -429,7 +434,7 @@ Ext.define('NavixyPanel.controller.Main', {
                     Ext.getBody().mask(_l.get('loading'));
                     store.loadRecord(
                         recordId,
-                        function() {
+                        function () {
                             Ext.getBody().unmask();
                             callback.apply(scope, arguments);
                         },
@@ -522,8 +527,8 @@ Ext.define('NavixyPanel.controller.Main', {
                 return !value
                     ? '<span class="gray nopad">' + value + '</span>'
                     : value > 0
-                        ? Ext.Number.toFixed(value, 2)
-                        : '<span class="red nopad">' + value + '</span>'
+                           ? Ext.Number.toFixed(value, 2)
+                           : '<span class="red nopad">' + value + '</span>'
             },
 
             bonusEncode: function (value) {
@@ -568,15 +573,14 @@ Ext.define('NavixyPanel.controller.Main', {
     onHandlerFound: function (handle) {
         if (
             this.notFoundHandlerErrorDelay
-            ) {
+        ) {
             clearTimeout(this.notFoundHandlerErrorDelay);
         }
     },
 
-
     // Authentication
     checkAuth: function () {
-        this[Ext.API.hasAuthKey() ? 'loadPermissions': 'showAuth']();
+        this[Ext.API.hasAuthKey() ? 'loadPermissions' : 'showAuth']();
     },
 
     showAuth: function () {

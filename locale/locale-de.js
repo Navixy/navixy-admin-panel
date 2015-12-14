@@ -151,88 +151,7 @@ Ext.define('Locale.locale-de',{
             "260": "Summe der Zahlungen nicht nachkommt, Zusammenfassung"
         }
     },
-    "units_combination": {
-        "days": [
-            "Tage",
-            "Tag",
-            "Tage"
-        ],
-        "hours": [
-            "Stunden",
-            "Stunde",
-            "Stunden"
-        ],
-        "minutes": [
-            "Minuten",
-            "Minute",
-            "Minuten"
-        ],
-        "seconds": [
-            "Sekunden",
-            "Sekunde",
-            "Sekunden"
-        ],
-        "everyminutes": [
-            "Minuten",
-            "Minute",
-            "Minuten"
-        ],
-        "everyseconds": [
-            "Sekunden",
-            "Sekunde",
-            "Sekunden"
-        ],
-        "meters": [
-            "Meter",
-            "Meter",
-            "Meter"
-        ],
-        "degrees": [
-            "Grad",
-            "Grad",
-            "Grad"
-        ],
-        "objects": [
-            "Objekte",
-            "Objekt",
-            "Objekte"
-        ],
-        "years": [
-            "Jahre",
-            "Jahr",
-            "Jahre"
-        ],
-        "months": [
-            "Monate",
-            "Monat",
-            "Monate"
-        ],
-        "codes": [
-            "Codes",
-            "Code",
-            "Codes"
-        ],
-        "trackers": [
-            "Tracker",
-            "Tracker",
-            "Tracker"
-        ],
-        "devices": [
-            "Geräte",
-            "Gerät",
-            "Geräte"
-        ],
-        "entries": [
-            "Treffern",
-            "Übereinstimmung",
-            "Treffern"
-        ],
-        "assets": [
-            "assets",
-            "asset",
-            "assets"
-        ]
-    },
+    "units_combination": {"days":"Tage|Tag|Tage","hours":"Stunden|Stunde|Stunden","minutes":"Minuten|Minute|Minuten","seconds":"Sekunden|Sekunde|Sekunden","everyminutes":"Minuten|Minute|Minuten","everyseconds":"Sekunden|Sekunde|Sekunden","meters":"Meter|Meter|Meter","degrees":"Grad|Grad|Grad","objects":"Objekte|Objekt|Objekte","years":"Jahre|Jahr|Jahre","months":"Monate|Monat|Monate","codes":"Codes|Code|Codes","trackers":"Tracker|Tracker|Tracker","devices":"Geräte|Gerät|Geräte","entries":"Treffern|Übereinstimmung|Treffern","assets":"assets|asset|assets"},
     "units_short": {
         "kilometer": "km",
         "meter": "m",
@@ -245,7 +164,8 @@ Ext.define('Locale.locale-de',{
         "minute": "m",
         "second": "s",
         "litres": "l",
-        "day": "d"
+        "day": "d",
+        "mile": "mi"
     },
     "search": {
         "empty": "Suche nach Kategorie",
@@ -323,7 +243,80 @@ Ext.define('Locale.locale-de',{
         "mdl": "Moldauischer Leu",
         "gel": "Georgischer Lari",
         "amd": "Armenischer Dram",
-        "azn": "Aserbaidschan-Manat"
+        "azn": "Aserbaidschan-Manat",
+        "all": "Albania Lek",
+        "afn": "Afghanistan Afghani",
+        "ars": "Argentina Peso",
+        "awg": "Aruba Guilder",
+        "bsd": "Bahamas Dollar",
+        "bbd": "Barbados Dollar",
+        "bzd": "Belize Dollar",
+        "bmd": "Bermuda Dollar",
+        "bob": "Bolivia Boliviano",
+        "bam": "Bosnia and Herzegovina Convertible Marka",
+        "bwp": "Botswana Pula",
+        "bgn": "Bulgaria Lev",
+        "bnd": "Brunei Darussalam Dollar",
+        "khr": "Cambodia Riel",
+        "kyd": "Cayman Islands Dollar",
+        "cop": "Colombia Peso",
+        "crc": "Costa Rica Colon",
+        "hrk": "Croatia Kuna",
+        "cup": "Cuba Peso",
+        "dop": "Dominican Republic Peso",
+        "xcd": "East Caribbean Dollar",
+        "egp": "Egypt Pound",
+        "svc": "El Salvador Colon",
+        "eek": "Estonia Kroon",
+        "fkp": "Falkland Islands (Malvinas) Pound",
+        "fjd": "Fiji Dollar",
+        "ghc": "Ghana Cedi",
+        "gip": "Gibraltar Pound",
+        "gtq": "Guatemala Quetzal",
+        "ggp": "Guernsey Pound",
+        "gyd": "Guyana Dollar",
+        "hnl": "Honduras Lempira",
+        "isk": "Iceland Krona",
+        "irr": "Iran Rial",
+        "imp": "Isle of Man Pound",
+        "jmd": "Jamaica Dollar",
+        "jep": "Jersey Pound",
+        "kpw": "Korea (North) Won",
+        "lak": "Laos Kip",
+        "lbp": "Lebanon Pound",
+        "lrd": "Liberia Dollar",
+        "mkd": "Macedonia Denar",
+        "mur": "Mauritius Rupee",
+        "mnt": "Mongolia Tughrik",
+        "mzn": "Mozambique Metical",
+        "nad": "Namibia Dollar",
+        "npr": "Nepal Rupee",
+        "ang": "Netherlands Antilles Guilder",
+        "nio": "Nicaragua Cordoba",
+        "ngn": "Nigeria Naira",
+        "omr": "Oman Rial",
+        "pab": "Panama Balboa",
+        "pyg": "Paraguay Guarani",
+        "pen": "Peru Nuevo Sol",
+        "qar": "Qatar Riyal",
+        "ron": "Romania New Leu",
+        "shp": "Saint Helena Pound",
+        "sar": "Saudi Arabia Riyal",
+        "rsd": "Serbia Dinar",
+        "scr": "Seychelles Rupee",
+        "sbd": "Solomon Islands Dollar",
+        "sos": "Somalia Shilling",
+        "lkr": "Sri Lanka Rupee",
+        "srd": "Suriname Dollar",
+        "syp": "Syria Pound",
+        "ttd": "Trinidad and Tobago Dollar",
+        "trl": "Turkey Lira",
+        "tvd": "Tuvalu Dollar",
+        "uyu": "Uruguay Peso",
+        "vef": "Venezuela Bolivar",
+        "vnd": "Viet Nam Dong",
+        "yer": "Yemen Rial",
+        "zwd": "Zimbabwe Dollar"
     },
     "maps": {
         "roadmap": "Google-Fahrplan",
@@ -871,7 +864,9 @@ Ext.define('Locale.locale-de',{
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "display_model_features_link": "Show a link to a website with information about the model",
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
         },
         "sms_gateway": {
             "navixy": {
@@ -1026,7 +1021,17 @@ Ext.define('Locale.locale-de',{
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Bitte definieren Sie die Auswahl der Karten, die für die Kunden von Ihrem Service verfügbar sein wird. Die Liste der Karten für bestimmte Benutzer können mit ihren Tarif -Einstellungen beschränkt sein.<br><br>Der Gebrauch von Kartendienstleistungen, die Sie ausgewählt haben, muss Ihnen von ihren Rechteigentümern gewährt werden. NAVIXY ist nicht verantwortlich für ein Verstoß gegen die Lizenzbedingungen durch Sie oder Ihre Endbenutzer.",
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
+            "service_maps_preview": "Map default settings preview",
+            "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
+            "map_edit_btn": "Visual editor",
+            "map_window": {
+                "title": "Map default settings – Visual editor",
+                "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
+                "save_btn": "Choose"
+            },
+            "clear_btn": "Reset",
+            "misc_header": "Optional features"
         },
         "upload_form": {
             "save_btn": "Hochladen",
@@ -1053,7 +1058,11 @@ Ext.define('Locale.locale-de',{
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
             "license_balance": "Pending amount {0}",
-            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "pending_amount": "Pending amount: {0}",
+            "current_balance": "Current balance: {0}",
+            "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
+            "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly."
         }
     },
     "accounting": {
@@ -1353,7 +1362,80 @@ Ext.define('Locale.locale-de',{
         "MDL": "{0} lei",
         "GEL": "{0} lari",
         "AMD": "{0} dram",
-        "AZN": "{0} man."
+        "AZN": "{0} man.",
+        "ALL": "{0} Lek",
+        "AFN": "{0} ؋",
+        "ARS": "{0} $",
+        "AWG": "{0} ƒ",
+        "BSD": "{0} $",
+        "BBD": "{0} $",
+        "BZD": "{0} BZ$",
+        "BMD": "{0} $",
+        "BOB": "{0} $b",
+        "BAM": "{0} KM",
+        "BWP": "{0} P",
+        "BGN": "{0} лв",
+        "BND": "{0} $",
+        "KHR": "{0} ៛",
+        "KYD": "{0} $",
+        "COP": "{0} $",
+        "CRC": "{0} ₡",
+        "HRK": "{0} kn",
+        "CUP": "{0} ₱",
+        "DOP": "{0} RD$",
+        "XCD": "{0} $",
+        "EGP": "{0} £",
+        "SVC": "{0} $",
+        "EEK": "{0} kr",
+        "FKP": "{0} £",
+        "FJD": "{0} $",
+        "GHC": "{0} ¢",
+        "GIP": "{0} £",
+        "GTQ": "{0} Q",
+        "GGP": "{0} £",
+        "GYD": "{0} $",
+        "HNL": "{0} L",
+        "ISK": "{0} kr",
+        "IRR": "{0} ﷼",
+        "IMP": "{0} £",
+        "JMD": "{0} J$",
+        "JEP": "{0} £",
+        "KPW": "{0} ₩",
+        "LAK": "{0} ₭",
+        "LBP": "{0} £",
+        "LRD": "{0} $",
+        "MKD": "{0} ден",
+        "MUR": "{0} ₨",
+        "MNT": "{0} ₮",
+        "MZN": "{0} MT",
+        "NAD": "{0} $",
+        "NPR": "{0} ₨",
+        "ANG": "{0} ƒ",
+        "NIO": "{0} C$",
+        "NGN": "{0} ₦",
+        "OMR": "{0} ﷼",
+        "PAB": "{0} B/.",
+        "PYG": "{0} Gs",
+        "PEN": "{0} S/.",
+        "QAR": "{0} ﷼",
+        "RON": "{0} lei",
+        "SHP": "{0} £",
+        "SAR": "{0} ﷼",
+        "RSD": "{0} Дин.",
+        "SCR": "{0} ₨",
+        "SBD": "{0} $",
+        "SOS": "{0} S",
+        "LKR": "{0} ₨",
+        "SRD": "{0} $",
+        "SYP": "{0} £",
+        "TTD": "{0} TT$",
+        "TRL": "{0} ₤",
+        "TVD": "{0} $",
+        "UYU": "{0} $U",
+        "VEF": "{0} Bs",
+        "VND": "{0} ₫",
+        "YER": "{0} ﷼",
+        "ZWD": "{0} Z$"
     },
     "features": {
         "api": "API",
@@ -1376,5 +1458,10 @@ Ext.define('Locale.locale-de',{
         "weblocator": "Weblocator",
         "chat": "Chat"
     },
-    "singleton": true
+    "singleton": true,
+    "map": {
+        "zoom_in": "Zoom in",
+        "zoom_out": "Zoom out"
+    },
+    "map_type_label": "Map"
 });

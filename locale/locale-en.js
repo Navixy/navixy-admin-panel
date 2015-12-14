@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -153,86 +153,22 @@ Ext.define('Locale.locale-en',{
         }
     },
     "units_combination": {
-        "days": [
-            "days",
-            "day",
-            "days"
-        ],
-        "hours": [
-            "hours",
-            "hour",
-            "hours"
-        ],
-        "minutes": [
-            "minutes",
-            "minute",
-            "minutes"
-        ],
-        "seconds": [
-            "seconds",
-            "second",
-            "seconds"
-        ],
-        "everyminutes": [
-            "minutes",
-            "minute",
-            "minutes"
-        ],
-        "everyseconds": [
-            "seconds",
-            "second",
-            "seconds"
-        ],
-        "meters": [
-            "meters",
-            "meter",
-            "meters"
-        ],
-        "degrees": [
-            "degrees",
-            "degree",
-            "degrees"
-        ],
-        "objects": [
-            "objects",
-            "object",
-            "objects"
-        ],
-        "years": [
-            "years",
-            "year",
-            "years"
-        ],
-        "months": [
-            "months",
-            "month",
-            "months"
-        ],
-        "codes": [
-            "codes",
-            "code",
-            "codes"
-        ],
-        "trackers": [
-            "trackers",
-            "tracker",
-            "trackers"
-        ],
-        "devices": [
-            "devices",
-            "device",
-            "devices"
-        ],
-        "entries": [
-            "matches",
-            "match",
-            "matches"
-        ],
-        "assets": [
-            "assets",
-            "asset",
-            "assets"
-        ]
+        "days": "days|day|days",
+        "hours": "hours|hour|hours",
+        "minutes": "minutes|minute|minutes",
+        "seconds": "seconds|second|seconds",
+        "everyminutes": "minutes|minute|minutes",
+        "everyseconds": "seconds|second|seconds",
+        "meters": "meters|meter|meters",
+        "degrees": "degrees|degree|degrees",
+        "objects": "objects|object|objects",
+        "years": "years|year|years",
+        "months": "months|month|months",
+        "codes": "codes|code|codes",
+        "trackers": "trackers|tracker|trackers",
+        "devices": "devices|device|devices",
+        "entries": "matches|match|matches",
+        "assets": "assets|asset|assets"
     },
     "units_short": {
         "kilometer": "km",
@@ -543,7 +479,8 @@ Ext.define('Locale.locale-en',{
                     "monthly": "monthly",
                     "partner": "from a partner",
                     "activeday": "active day",
-                    "everyday": "monthly by day"
+                    "everyday": "monthly by day",
+                    "sms": "SMS message"
                 }
             }
         },

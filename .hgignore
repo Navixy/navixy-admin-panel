@@ -10,6 +10,7 @@ theme/metromorph.css
 PConfig.js
 
 .tx/config
+VERSION
 syntax: regexp
 ^ext/
 ^transifex/
