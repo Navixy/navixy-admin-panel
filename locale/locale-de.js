@@ -151,7 +151,24 @@ Ext.define('Locale.locale-de',{
             "260": "Summe der Zahlungen nicht nachkommt, Zusammenfassung"
         }
     },
-    "units_combination": {"days":"Tage|Tag|Tage","hours":"Stunden|Stunde|Stunden","minutes":"Minuten|Minute|Minuten","seconds":"Sekunden|Sekunde|Sekunden","everyminutes":"Minuten|Minute|Minuten","everyseconds":"Sekunden|Sekunde|Sekunden","meters":"Meter|Meter|Meter","degrees":"Grad|Grad|Grad","objects":"Objekte|Objekt|Objekte","years":"Jahre|Jahr|Jahre","months":"Monate|Monat|Monate","codes":"Codes|Code|Codes","trackers":"Tracker|Tracker|Tracker","devices":"Geräte|Gerät|Geräte","entries":"Treffern|Übereinstimmung|Treffern","assets":"assets|asset|assets"},
+    "units_combination": {
+        "days": "Tage|Tag|Tage",
+        "hours": "Stunden|Stunde|Stunden",
+        "minutes": "Minuten|Minute|Minuten",
+        "seconds": "Sekunden|Sekunde|Sekunden",
+        "everyminutes": "Minuten|Minute|Minuten",
+        "everyseconds": "Sekunden|Sekunde|Sekunden",
+        "meters": "Meter|Meter|Meter",
+        "degrees": "Grad|Grad|Grad",
+        "objects": "Objekte|Objekt|Objekte",
+        "years": "Jahre|Jahr|Jahre",
+        "months": "Monate|Monat|Monate",
+        "codes": "Codes|Code|Codes",
+        "trackers": "Tracker|Tracker|Tracker",
+        "devices": "Geräte|Gerät|Geräte",
+        "entries": "Treffern|Übereinstimmung|Treffern",
+        "assets": "assets|asset|assets"
+    },
     "units_short": {
         "kilometer": "km",
         "meter": "m",

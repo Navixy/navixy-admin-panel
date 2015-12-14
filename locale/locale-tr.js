@@ -143,7 +143,24 @@ Ext.define('Locale.locale-tr',{
             "260": "Ödeme tutarı toplam tutarı karşılamamaktadır"
         }
     },
-    "units_combination": {"days":"gün|gün|gün","hours":"saat|saat|saat","minutes":"dakika|dakika|dakika","seconds":"saniye|saniye|saniye","everyminutes":"dakika|dakika|dakika","everyseconds":"saniye|saniye|saniye","meters":"metre|metre|metre","degrees":"derece|derece|derece","objects":"cihazlar|cihaz|cihazlar","years":"yıl|yıl|yıl","months":"ay|ay|ay","codes":"kodlar|kod|kodlar","trackers":"cihazlar|cihaz|cihazlar","devices":"cihazlar|cihaz|cihazlar","entries":"eşleşti|eşleşme|eşleşti","assets":"varlıklar|varlık|varlıklar"},
+    "units_combination": {
+        "days": "gün|gün|gün",
+        "hours": "saat|saat|saat",
+        "minutes": "dakika|dakika|dakika",
+        "seconds": "saniye|saniye|saniye",
+        "everyminutes": "dakika|dakika|dakika",
+        "everyseconds": "saniye|saniye|saniye",
+        "meters": "metre|metre|metre",
+        "degrees": "derece|derece|derece",
+        "objects": "cihazlar|cihaz|cihazlar",
+        "years": "yıl|yıl|yıl",
+        "months": "ay|ay|ay",
+        "codes": "kodlar|kod|kodlar",
+        "trackers": "cihazlar|cihaz|cihazlar",
+        "devices": "cihazlar|cihaz|cihazlar",
+        "entries": "eşleşti|eşleşme|eşleşti",
+        "assets": "varlıklar|varlık|varlıklar"
+    },
     "units_short": {
         "kilometer": "km",
         "mile": "mi",

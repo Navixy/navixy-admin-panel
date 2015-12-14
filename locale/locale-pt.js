@@ -143,7 +143,24 @@ Ext.define('Locale.locale-pt',{
             "260": "Soma de pagamentos não cumprir com resumo"
         }
     },
-    "units_combination": {"days":"dias|dia|dias","hours":"horas|hora|horas","minutes":"minutos|minuto|minutos","seconds":"segundos|segundo|segundos","everyminutes":"minutos|minuto|minutos","everyseconds":"segundos|segundo|segundos","meters":"metros|medidor|metros","degrees":"graus|grau|graus","objects":"objetos|objeto|objetos","years":"anos|ano|anos","months":"meses|mês|meses","codes":"códigos|código|códigos","trackers":"rastreadores|rastreador|rastreadores","devices":"dispositivos|dispositivo|dispositivos","entries":"fósforos|fósforo|fósforos","assets":"assets|asset|assets"},
+    "units_combination": {
+        "days": "dias|dia|dias",
+        "hours": "horas|hora|horas",
+        "minutes": "minutos|minuto|minutos",
+        "seconds": "segundos|segundo|segundos",
+        "everyminutes": "minutos|minuto|minutos",
+        "everyseconds": "segundos|segundo|segundos",
+        "meters": "metros|medidor|metros",
+        "degrees": "graus|grau|graus",
+        "objects": "objetos|objeto|objetos",
+        "years": "anos|ano|anos",
+        "months": "meses|mês|meses",
+        "codes": "códigos|código|códigos",
+        "trackers": "rastreadores|rastreador|rastreadores",
+        "devices": "dispositivos|dispositivo|dispositivos",
+        "entries": "fósforos|fósforo|fósforos",
+        "assets": "assets|asset|assets"
+    },
     "units_short": {
         "kilometer": "km",
         "meter": "m",

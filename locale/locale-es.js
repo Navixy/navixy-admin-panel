@@ -151,7 +151,88 @@ Ext.define('Locale.locale-es',{
             "260": "Suma de pagos no cumplen con sumario"
         }
     },
-    "units_combination": {"days":"días|día|días","hours":"horas|hora|horas","minutes":"minutos|minuto|minutos","seconds":"segundos|segundo|segundos","everyminutes":"minutos|minuto|minutos","everyseconds":"segundos|segundo|segundos","meters":"metros|metro|metros","degrees":"grados|grado|grados","objects":"objetos|objeto|objetos","years":"años|año|años","months":"meses|mes|meses","codes":"códigos|código|códigos","trackers":"trackers|tracker|trackers","devices":"dispositivos|dispositivo|dispositivos","entries":"cumple|cumple|cumples","assets":"assets|asset|assets"},
+    "units_combination": {
+        "days": [
+            "días",
+            "día",
+            "días"
+        ],
+        "hours": [
+            "horas",
+            "hora",
+            "horas"
+        ],
+        "minutes": [
+            "minutos",
+            "minuto",
+            "minutos"
+        ],
+        "seconds": [
+            "segundos",
+            "segundo",
+            "segundos"
+        ],
+        "everyminutes": [
+            "minutos",
+            "minuto",
+            "minutos"
+        ],
+        "everyseconds": [
+            "segundos",
+            "segundo",
+            "segundos"
+        ],
+        "meters": [
+            "metros",
+            "metro",
+            "metros"
+        ],
+        "degrees": [
+            "grados",
+            "grado",
+            "grados"
+        ],
+        "objects": [
+            "objetos",
+            "objeto",
+            "objetos"
+        ],
+        "years": [
+            "años",
+            "año",
+            "años"
+        ],
+        "months": [
+            "meses",
+            "mes",
+            "meses"
+        ],
+        "codes": [
+            "códigos",
+            "código",
+            "códigos"
+        ],
+        "trackers": [
+            "trackers",
+            "tracker",
+            "trackers"
+        ],
+        "devices": [
+            "dispositivos",
+            "dispositivo",
+            "dispositivos"
+        ],
+        "entries": [
+            "cumple",
+            "cumple",
+            "cumples"
+        ],
+        "assets": [
+            "assets",
+            "asset",
+            "assets"
+        ]
+    },
     "units_short": {
         "kilometer": "km",
         "meter": "m",
@@ -864,7 +945,9 @@ Ext.define('Locale.locale-es',{
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "display_model_features_link": "Show a link to a website with information about the model",
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
         },
         "sms_gateway": {
             "navixy": {
@@ -1028,7 +1111,8 @@ Ext.define('Locale.locale-es',{
                 "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
                 "save_btn": "Choose"
             },
-            "clear_btn": "Reset"
+            "clear_btn": "Reset",
+            "misc_header": "Optional features"
         },
         "upload_form": {
             "save_btn": "Subir",
