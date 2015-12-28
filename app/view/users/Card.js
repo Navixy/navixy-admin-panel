@@ -27,6 +27,20 @@ Ext.define('NavixyPanel.view.users.Card', {
             );
         }
 
+        if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
+            result.push(
+                {
+                    html: '<a>' + _l.get('users.card.links.hash_text') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireSessionCreateHash,
+                            scope: me
+                        }
+                    }
+                }
+            );
+        }
+
         if (Ext.checkPermission('users', 'update')) {
             result.unshift(
                 {
@@ -234,6 +248,20 @@ Ext.define('NavixyPanel.view.users.Card', {
             },
             callback: function (hash) {
                 win.location = Ext.Nav.getMonitoring(hash);
+            },
+            failure: this.showUserSessionHashFailure
+        });
+    },
+
+    fireSessionCreateHash: function () {
+        var userId = this.record.getId();
+
+        Ext.API.createUserSession({
+            params: {
+                user_id: userId
+            },
+            callback: function (hash) {
+                Ext.MessageBox.alert(_l.get('users.session_hash.title'), hash);
             },
             failure: this.showUserSessionHashFailure
         });

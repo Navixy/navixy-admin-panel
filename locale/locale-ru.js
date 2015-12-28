@@ -443,6 +443,9 @@ Ext.define('Locale.locale-ru',{
             "error": "Не удалось создать сессию для пользователя",
             "title": "Ваш код сессии"
         },
+        "session_hash": {
+            "title": "Ключ сессии пользователя"
+        },
         "card": {
             "tab_panel": {
                 "trackers": {
@@ -454,6 +457,7 @@ Ext.define('Locale.locale-ru',{
             },
             "links": {
                 "session_text": "Перейти к мониторингу",
+                "hash_text": "Получить ключ сессии",
                 "user_edit": "Редактировать пользователя",
                 "user_change_password": "Изменить пароль",
                 "transactions": "Транзакции",
@@ -1471,6 +1475,7 @@ Ext.define('Locale.locale-ru',{
         "app_fleet": "Автопарк",
         "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Отчеты</a>",
         "batch_operations": "Пакетные операции",
+        "statuses": "Рабочие статусы",
         "custom_maps": "Настраиваемые карты",
         "event_notification": "Оповещения о событиях",
         "geocoding": "Гео-кодирование",

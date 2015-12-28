@@ -80,6 +80,11 @@ Ext.define('NavixyPanel.store.Features', {
                 group: "features"
             },
             {
+                type: "statuses",
+                "name": _l.get('features.statuses'),
+                group: "features"
+            },
+            {
                 type: "api",
                 "name": _l.get('features.api'),
                 group: "misñ"

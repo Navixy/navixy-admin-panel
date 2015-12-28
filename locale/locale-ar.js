@@ -430,6 +430,9 @@ Ext.define('Locale.locale-ar',{
             "error": "Cant create user session",
             "title": "Your sessio code"
         },
+        "session_hash": {
+            "title": "User session key"
+        },
         "card": {
             "tab_panel": {
                 "trackers": {
@@ -441,6 +444,7 @@ Ext.define('Locale.locale-ar',{
             },
             "links": {
                 "session_text": "Go to monitoring",
+                "hash_text": "Get session key",
                 "user_edit": "Edit user",
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
@@ -1464,6 +1468,7 @@ Ext.define('Locale.locale-ar',{
         "app_fleet": "أسطول",
         "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
         "batch_operations": "Batch operations",
+        "statuses": "Work statuses",
         "custom_maps": "Custom maps",
         "event_notification": "Event notifications",
         "geocoding": "Geocoding",
