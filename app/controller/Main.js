@@ -75,6 +75,29 @@ Ext.define('NavixyPanel.controller.Main', {
             }
         });
 
+        Ext.override(Ext.form.Basic, {
+            isValid: function() {
+                var me = this,
+                    invalid;
+                Ext.suspendLayouts();
+                invalid = me.getFields().filterBy(function(field) {
+                    return field.skipFormValidation ? false : !field.validate();
+                });
+                Ext.resumeLayouts(true);
+                return invalid.length < 1;
+            },
+            hasInvalidField: function() {
+                return !!this.getFields().findBy(function(field) {
+                    var preventMark = field.preventMark,
+                        isValid;
+                    field.preventMark = true;
+                    isValid = field.isValid();
+                    field.preventMark = preventMark;
+                    return field.skipFormValidation ? false : !isValid;
+                });
+            }
+        });
+
         Ext.override(Ext.data.Connection, {
             onUploadComplete: function (frame, options) {
                 try {

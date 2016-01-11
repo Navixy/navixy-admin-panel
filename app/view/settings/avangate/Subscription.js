@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     padding: '30 300',
     requires: ['NavixyPanel.plugins.FieldPostfix'],
     cls: 'avangate-subscription-panel',
+    minPaymentSum: 99,
     initComponent: function () {
         this.title = 'Subscription';
 
@@ -130,16 +131,17 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                         {
                             xtype: 'numberfield',
                             name: 'qty',
-                            minValue: 99,
+                            minValue: this.minPaymentSum,
                             step: 100,
                             decimalPrecision: 0,
-                            value: pendingAmount ? pendingAmount : 99,
+                            value: pendingAmount > this.minPaymentSum ? pendingAmount : this.minPaymentSum,
                             cls: 'x-field-light',
                             allowDecimals: false,
                             maxWidth: 150,
                             fixPrecision: function (value) {
                                 return Math.ceil(value);
                             },
+                            skipFormValidation: true,
                             margin: '0 5 0 0'
                         },
                         {
