@@ -208,8 +208,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.post_index'),
                 name: 'post_index',
-                minLength: 1,
-                vtype: 'numeric'
+                minLength: 1
             }
 
         ];
@@ -299,7 +298,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.registered_index'),
                 name: 'registered_index',
                 minLength: 1,
-                vtype: 'numeric',
                 allowBlank: true
             }
         ];
