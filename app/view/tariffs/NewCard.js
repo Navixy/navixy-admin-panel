@@ -21,7 +21,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             'add-btn': false
         });
         Ext.apply(this.modeVisibleTable.create, {
-            'add-btn': false
+            'add-btn': false,
+            'tariff-is-default-field': false,
+            'tariff-is-default-hint': false,
+            'tariff-is-default-empty1': false,
+            'tariff-is-default-empty2': false
         });
 
         this.callParent(arguments);
@@ -107,15 +111,17 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     name = field.items.first().name,
                     data = value[name];
 
-                if (!Ext.isArray(data) && !Ext.isEmpty(data)) {
-                    data = [data];
+                if (data) {
+                    if (!Ext.isArray(data) && !Ext.isEmpty(data)) {
+                        data = [data];
+                    }
+                    if (!Ext.isArray(values[name]) && !Ext.isEmpty(values[name])) {
+                        values[name] = [values[name]];
+                    }
+                    values[name] = values[name] && values[name].length
+                        ? Ext.Array.unique(values[name].concat(data))
+                        : data
                 }
-                if (!Ext.isArray(values[name]) && !Ext.isEmpty(values[name])) {
-                    values[name] = [values[name]];
-                }
-                values[name] = values[name] && values[name].length
-                    ? Ext.Array.unique(values[name].concat(data))
-                    : data
             }
 
             if (field.is('checkboxfield') && !field.checkboxgroup) {
@@ -125,6 +131,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         if (values.type != "monthly") {
             values.proportional_charge = false;
         }
+
         return values;
     },
 
@@ -317,12 +324,16 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             // -3.1i --------------------------------------------------------------------- //
             {
                 html: [_l.get('tariffs.fields.tariff_is_default'), this.getHintSymbol(_l.get('tariffs.card.hints.17'))].join(""),
-                cellCls:'strong-height'
+                cellCls:'strong-height',
+                role: 'tariff-is-default-hint'
             },
-            {},
+            {
+                role: 'tariff-is-default-empty1'
+            },
             {
                 xtype: 'fakefield',
                 textStyle: "padding: 0 0 0 5px",
+                role: 'tariff-is-default-field',
                 onChange: function (cmp, value) {
                     me.changeDefault(value);
                 },
@@ -332,7 +343,9 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     checked: false
                 })
             },
-            {},
+            {
+                role: 'tariff-is-default-empty2'
+            },
 
             // -3.2i --------------------------------------------------------------------- //
             {

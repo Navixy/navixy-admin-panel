@@ -346,7 +346,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 this.afterDefaultTariffEdit(response, record, defaultRecord, callback, args);
             },
             failure: function (response) {
-                this.afterDefaultTariffEditFailure(response, record);
+                this.afterDefaultTariffEditFailure(response, record, callback, args);
             },
             scope: this
         });
@@ -369,7 +369,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         }
     },
 
-    afterDefaultTariffEditFailure: function (response, record) {
+    afterDefaultTariffEditFailure: function (response, record, callback, args) {
         record.reject(false);
         var status = response.status,
             errors = response.errors || [],
@@ -377,5 +377,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             errDescription = _l.get('errors.tariff')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getTariffEdit().showSubmitErrors(errCode, errors, errDescription);
+
+        if (Ext.isFunction(callback)) {
+            callback.apply(this, args)
+        }
     }
 });
