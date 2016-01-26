@@ -296,6 +296,9 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 tariff: Ext.encode(tariffData)
             },
             callback: function (response) {
+                if (Ext.isNumber(response)) {
+                    record.set("id", response)
+                }
                 this.checkDefaultChange(formValues, record, this.afterTariffCreate, [response, record]);
             },
             failure: this.afterTariffCreateFailure,

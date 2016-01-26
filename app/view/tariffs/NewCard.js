@@ -21,11 +21,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             'add-btn': false
         });
         Ext.apply(this.modeVisibleTable.create, {
-            'add-btn': false,
-            'tariff-is-default-field': false,
-            'tariff-is-default-hint': false,
-            'tariff-is-default-empty1': false,
-            'tariff-is-default-empty2': false
+            'add-btn': false
         });
 
         this.callParent(arguments);
