@@ -419,7 +419,8 @@ Ext.define('Locale.locale-en',{
             "activated_short": {
                 "title": "Status",
                 "status_true": "Active",
-                "status_false": "Not active"
+                "status_false": "Not active",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "legal",
             "password": "New password",

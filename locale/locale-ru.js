@@ -423,7 +423,8 @@ Ext.define('Locale.locale-ru',{
             "activated_short": {
                 "title": "Статус",
                 "status_true": "Активен",
-                "status_false": "Не активен"
+                "status_false": "Не активен",
+                "status_no": "Активен, e-mail не подтвержден"
             },
             "registered_short": "юр",
             "password": "Новый пароль",

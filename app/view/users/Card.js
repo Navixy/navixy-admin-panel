@@ -130,8 +130,8 @@ Ext.define('NavixyPanel.view.users.Card', {
                 },
                 {
                     title: _l.get('users.fields.activated_short.title'),
-                    value: _l.get('users.fields.activated_short')[recordData.activated ? 'status_true' : 'status_false'],
-                    left_td_cls: recordData.activated ? 'status ok' : 'status no'
+                    value: _l.get('users.fields.activated_short')[recordData.activated ? recordData.verified ? 'status_true' : 'status_no' : 'status_false'],
+                    left_td_cls: recordData.activated ? recordData.verified ? 'status ok' : 'status not' : 'status no'
                 },
                 {
                     title: _l.get('users.fields.balance'),

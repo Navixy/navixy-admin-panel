@@ -27,14 +27,26 @@ Ext.define('NavixyPanel.view.users.List', {
                             '{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}',
                         '</tpl>',
                     '</a>',
-                '<tpl if="!activated"><span class="scaled red">{[_l.get("users.fields.activated_short.status_false")]}</span></tpl></a>'
+                '<tpl if="!activated">',
+                    '<span class="scaled red">{[_l.get("users.fields.activated_short.status_false")]}</span>',
+                '<tpl else>',
+                    '<tpl if="!verified">',
+                        '<span class="scaled green">{[_l.get("users.fields.activated_short.status_no")]}</span>',
+                    '</tpl>',
+                '</tpl>',
+                '</a>'
             ],
             userCityTpl = '{post_city:htmlEncode} <tpl if="registered_city"><span class="lighten">({registered_city:htmlEncode})</span></tpl>',
             balanceTpl = '{balance:balanceEncode}',
             bonusTpl = '{bonus:bonusEncode}',
             statusTpl = [
-                '<tpl if="activated">',
-                '{[_l.get("users.fields.activated_short.status_true")]}',
+                '<tpl if="verified">',
+                    '<tpl if="verified">',
+                        '{[_l.get("users.fields.activated_short.status_true")]}',
+                    '<tpl else>',
+                        '{[_l.get("users.fields.activated_short.status_no")]}',
+                    '</tpl>',
+
                 '<tpl else>',
                 '<span class="gray nopad">{[_l.get("users.fields.activated_short.status_false")]}</span>',
                 '</tpl>'

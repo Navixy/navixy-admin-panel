@@ -39,6 +39,9 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         &.no {
             color: $invalid-color
         }
+        &.not {
+            color: $green
+        }
     }
 
     span.pre_note {

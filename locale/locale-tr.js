@@ -531,7 +531,8 @@ Ext.define('Locale.locale-tr',{
             "activated_short": {
                 "title": "Durum",
                 "status_true": "Aktif",
-                "status_false": "Aktif değil"
+                "status_false": "Aktif değil",
+                "status_no": "Aktif e-posta teyit edilmemiş"
             },
             "registered_short": "kurumsal",
             "password": "Yeni şifre",
