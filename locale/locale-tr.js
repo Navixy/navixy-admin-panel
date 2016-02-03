@@ -325,7 +325,8 @@ Ext.define('Locale.locale-tr',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "currencies_tpls": {
         "GBP": "£{0}",
@@ -445,7 +446,8 @@ Ext.define('Locale.locale-tr',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "maps": {
         "roadmap": "Google yol haritası",
