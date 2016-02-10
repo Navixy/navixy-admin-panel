@@ -903,7 +903,9 @@ Ext.define('Locale.locale-en',{
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
-            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "show_call_notifications_hint": ""
         },
         "sms_gateway": {
             "navixy": {

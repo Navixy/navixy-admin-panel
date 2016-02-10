@@ -1010,7 +1010,9 @@ Ext.define('Locale.locale-tr',{
             "sms_inbound_ph": "Örnek: 12162780905",
             "sms_inbound_hint": "Önermiyoruz fakat dilerseniz nümerik yada alfanümerik bir Gönderen ID belirtebilirsiniz, bu durumda sistem cihazlardan SMS mesajlarını alamayacaktır. Bu durum sms servisinin düzgün çalışmamasına sebebiyet verebilir.",
             "display_model_features_link": "Model hakkında bilgi içeren web bağlantısını göster",
-            "display_model_features_link_hint": "Kullanıcı aktif ettiği cihaz ile ilgili ayrıntılı bilgi edinebilir"
+            "display_model_features_link_hint": "Kullanıcı aktif ettiği cihaz ile ilgili ayrıntılı bilgi edinebilir",
+            "show_call_notifications": "Ses bildirimleri konfigürasyonuna izin",
+            "show_call_notifications_hint": ""
         },
         "sms_gateway": {
             "navixy": {
