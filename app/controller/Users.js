@@ -207,7 +207,7 @@ Ext.define('NavixyPanel.controller.Users', {
             record = Ext.create('NavixyPanel.model.User', formValues),
             userData = Ext.apply({}, record.getData());
 
-        delete userData.id; delete userData.dealer_id;
+        delete userData.id; delete userData.dealer_id; delete userData.verified;
 
         Ext.API.createUser({
             params: {
@@ -242,6 +242,8 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserEditSubmit: function (cmp, formValues, record) {
         var userData = Ext.apply({}, formValues, record.getData());
+
+        delete userData.verified;
 
         Ext.API.updateUser({
             params: {
