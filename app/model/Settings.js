@@ -38,6 +38,7 @@ Ext.define('NavixyPanel.model.Settings', {
         {name: 'favicon', type: 'string'},
         {name: 'logo', type: 'string'},
         {name: 'login_wallpaper', type: 'string'},
+        {name: 'monitoring_logo', type: 'string'},
 
         {name: 'login_footer', type: 'string'},
         {name: 'display_model_features_link', type: 'boolean'},

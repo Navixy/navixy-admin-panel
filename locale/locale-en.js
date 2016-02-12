@@ -853,6 +853,7 @@ Ext.define('Locale.locale-en',{
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
             "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
             "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
+            "monitoring_logo_hint": "The logo is shown in main menu of main monitoring application.",
             "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
             "domain_ph": ".navixy.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
@@ -1010,6 +1011,7 @@ Ext.define('Locale.locale-en',{
             "main_texts_title": "Main texts",
             "footer_texts_title": "Text in the basement of the login page",
             "logo_title": "Logo",
+            "monitoring_logo_title": "Additional logo",
             "favicon_title": "Favicon",
             "login_wallpaper_title": "Login page background",
             "desktop_wallpaper_title": "Services page background",
@@ -1079,12 +1081,14 @@ Ext.define('Locale.locale-en',{
             "title": "Upload image. {0}",
             "titles": {
                 "logo": "Logo",
+                "monitoring_logo": "Additional logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
                 "desktop_wallpaper": "Service page wallpaper"
             },
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
                 "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
             },

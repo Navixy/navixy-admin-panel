@@ -547,6 +547,14 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'component',
                 cls: 'block_header',
+                html: _l.get('settings.edit_form.monitoring_logo_title') + this.getHintSymbol(_l.get('settings.fields.monitoring_logo_hint')),
+                padding: '20 0 10 0'
+            },
+            this.getImgButtonConfig('monitoring_logo'),
+            this.getImgConfig('monitoring_logo'),
+            {
+                xtype: 'component',
+                cls: 'block_header',
                 html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
                 padding: '20 0 10 0'
             },

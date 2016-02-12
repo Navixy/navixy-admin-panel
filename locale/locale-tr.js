@@ -960,6 +960,7 @@ Ext.define('Locale.locale-tr',{
             "promo_url_hint": "Web sitenizin linki http:// ile başlamalıdır. eğer bu alanı doldurursanız giriş sayfasındaki \"Hakkımızda\" kısmında linklenecektir.",
             "favicon_hint": "Belirlediğiniz icon browser sekmesinde görüntülenir (bu özellik internet explorer tarafından desteklenmemektedir)",
             "logo_hint": "Belirlediğiniz logo,  giriş sayfası, pdf formatındaki raporlar ve kullanıcılara yapılan eposta bildirimlerinde kullanılmaktadır",
+            "monitoring_logo_hint": "Logo ana izleme uygulamasının ana menüde gösterilir.",
             "login_wallpaper_hint": "Giriş sayfası arkaplan resmi yükleme",
             "domain_ph": ".gp-s.net",
             "domain_hint": "Sistemi kendi domain adınız ile kullanın (takip.firma.com) bu alt domaini buraya tanımlamadan önce dns sunucunuzun C-NAME kayıtlarınız düzenleyin ve gp-s.net adresine yönlendirin",
@@ -1117,6 +1118,7 @@ Ext.define('Locale.locale-tr',{
             "main_texts_title": "Ana metin",
             "footer_texts_title": "Giriş sayfası footer metni",
             "logo_title": "Logo",
+            "monitoring_logo_title": "Ek logo",
             "favicon_title": "Favicon",
             "login_wallpaper_title": "Giriş sayfası arka planı",
             "desktop_wallpaper_title": "Hizmet sayfası arkaplanı",
@@ -1186,12 +1188,14 @@ Ext.define('Locale.locale-tr',{
             "title": "Resim yükleme. {0}",
             "titles": {
                 "logo": "Logo",
+                "monitoring_logo": "Ek logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Giriş sayfası duvar kağıdı",
                 "desktop_wallpaper": "Hizmet sayfası arkaplan resmi"
             },
             "tips": {
                 "logo": "Transparan arka plana sahip (PNG biçimi) ve minimum genişlik 200px olan bir logo yüklemenizi tavsiye ederiz.",
+                "monitoring_logo": "Transparan arka plana sahip (PNG biçimi) ve minimum genişlik 200px olan bir logo yüklemenizi tavsiye ederiz.",
                 "favicon": "Transparan arkaplanlı 32x32 px bir logo kullanmanız tavsiye edilir",
                 "login_wallpaper": "En az 1920 x 1080 piksel (FullHD) çözünürlükte ve JPEG formatında yatay olarak yönlendirilmiş bir arka plan resmi kullanmanız tavsiye edilir."
             },
