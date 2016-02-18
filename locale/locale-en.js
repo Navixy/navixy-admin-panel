@@ -906,7 +906,9 @@ Ext.define('Locale.locale-en',{
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
             "show_call_notifications": "Allow configuration of voice notifications",
-            "show_call_notifications_hint": ""
+            "show_call_notifications_hint": "",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
+            "monitoring_logo_clickable_hint": ""
         },
         "sms_gateway": {
             "navixy": {

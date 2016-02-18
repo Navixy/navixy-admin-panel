@@ -913,7 +913,9 @@ Ext.define('Locale.locale-ru',{
             "display_model_features_link": "Отображать ссылку на сайт с информацией о модели",
             "display_model_features_link_hint": "При активации устройства, пользователю может быть предоставлена дополнительная информация о модели активируемого устройства",
             "show_call_notifications": "Разрешить настройку голосовых уведомлений",
-            "show_call_notifications_hint": ""
+            "show_call_notifications_hint": "",
+            "monitoring_logo_clickable": "Клик по логотипу в интерфейсе открывает промо web-сайт",
+            "monitoring_logo_clickable_hint": ""
         },
         "sms_gateway": {
             "navixy": {

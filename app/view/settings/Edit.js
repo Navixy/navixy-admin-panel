@@ -517,6 +517,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 //    name: 'support_email',
                 //    fieldLabel: _l.get('settings.fields.support_email'),
                 //    allowBlank: true
+            },
+            {
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
+                name: 'monitoring_logo_clickable'
             }
         ]
     },
@@ -532,34 +538,34 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
-                padding: '0 0 10 0'
+                padding: '0 0 5 0'
             },
-            this.getImgButtonConfig('favicon'),
             this.getImgConfig('favicon', {maxWidth: 28}),
+            this.getImgButtonConfig('favicon'),
             {
                 xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
-                padding: '20 0 10 0'
+                padding: '20 0 5 0'
             },
-            this.getImgButtonConfig('logo'),
             this.getImgConfig('logo'),
+            this.getImgButtonConfig('logo'),
             {
                 xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.monitoring_logo_title') + this.getHintSymbol(_l.get('settings.fields.monitoring_logo_hint')),
-                padding: '20 0 10 0'
+                padding: '20 0 5 0'
             },
-            this.getImgButtonConfig('monitoring_logo'),
             this.getImgConfig('monitoring_logo'),
+            this.getImgButtonConfig('monitoring_logo'),
             {
                 xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
-                padding: '20 0 10 0'
+                padding: '20 0 5 0'
             },
-            this.getImgButtonConfig('login_wallpaper'),
-            this.getImgConfig('login_wallpaper')
+            this.getImgConfig('login_wallpaper'),
+            this.getImgButtonConfig('login_wallpaper')
         ]
     },
 
@@ -1007,7 +1013,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     role: role,
                     xtype: 'button',
                     text: text,
-                    margin: '0 0 10 0',
+                    margin: '5 0 10 0',
                     ui: 'default',
                     scale: 'medium',
                     width: 140,
@@ -1025,7 +1031,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     role: delRole,
                     xtype: 'button',
                     text: _l.get('settings.edit_form.remove_btn'),
-                    margin: '0 0 10 10',
+                    margin: '5 0 10 10',
                     hidden: hidden,
                     ui: 'gray',
                     scale: 'medium',

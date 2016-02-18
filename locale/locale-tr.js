@@ -1013,7 +1013,9 @@ Ext.define('Locale.locale-tr',{
             "display_model_features_link": "Model hakkında bilgi içeren web bağlantısını göster",
             "display_model_features_link_hint": "Kullanıcı aktif ettiği cihaz ile ilgili ayrıntılı bilgi edinebilir",
             "show_call_notifications": "Ses bildirimleri konfigürasyonuna izin",
-            "show_call_notifications_hint": ""
+            "show_call_notifications_hint": "",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
+            "monitoring_logo_clickable_hint": ""
         },
         "sms_gateway": {
             "navixy": {
