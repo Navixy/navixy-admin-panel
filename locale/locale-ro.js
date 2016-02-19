@@ -11,73 +11,73 @@ Ext.define('Locale.locale-ro',{
         }
     ],
     "singleton": true,
-    "main_copyright": "© 2015 RusLink. All rights reserved.",
-    "panel_title": "NavixyPanel",
-    "error": "Error",
-    "loading": "Loading...",
-    "conneting_loader": "Connecting to server",
-    "access_denied": "Access denied",
-    "access_denied_tip": "you do not have permission to access requested page",
-    "index_title": "Welcome to Control Panel",
-    "old_version": "Old version",
+    "main_copyright": "© Navixy. Toate drepturile rezervate.",
+    "panel_title": "Panou de administrare Navixy",
+    "error": "Eroare",
+    "loading": "Încărcare...",
+    "conneting_loader": "Conectare la server",
+    "access_denied": "Acces interzis",
+    "access_denied_tip": "Nu aveți permisiunea de a accesa pagina solicitată",
+    "index_title": "Bine ați venit la Panoul de control",
+    "old_version": "Versiune veche",
     "auth": {
-        "login": "Login or Email address",
-        "password": "Password",
-        "login_btn": "Login",
-        "locale_title": "Choose language",
-        "locale_title_short": "language",
-        "auth_error": "Authentication error",
-        "reloading_soon": "Reloading",
-        "logout": "Logout",
-        "title": "Admin panel"
+        "login": "Logare sau adresa de email ",
+        "password": "Parola",
+        "login_btn": "Logare",
+        "locale_title": "Alegeți limba",
+        "locale_title_short": "limba",
+        "auth_error": "Eroare de autentificare",
+        "reloading_soon": "Reîncărcare",
+        "logout": "Ieşire",
+        "title": "Panoul Administratorului"
     },
-    "no_path_found": "No page on this path",
-    "phone_invalid_msg": "Please enter a valid phone number",
-    "invalid_numeric_msg": "Not a valid number",
-    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal mark)",
-    "searcher_empty_text": "Enter search query",
-    "search_empty_text": "Enter search query",
-    "searchTitle": "Search by category",
-    "clear_form_btn": "Clear",
-    "save_form_btn": "Save",
-    "back_form_btn": "Back",
-    "select_form_btn": "Select",
-    "close_form_btn": "Close",
-    "yes": "yes",
-    "no": "no",
-    "show_btn": "Show",
-    "wrong_period": "An invalid period",
-    "required_fields": "* - required fields or sections",
-    "invalid_tab": "Invalid filled fields",
-    "page_size": "Page size",
+    "no_path_found": "Nu există o pagină în această direcție",
+    "phone_invalid_msg": "Vă rugăm să introduceți un număr de telefon valid",
+    "invalid_numeric_msg": "Nu este un număr valid",
+    "invalid_amount_msg": "Nu este un număr valid<br>(2 cifre după virgulă)",
+    "searcher_empty_text": "Introduceţi cuvîntul cheie de căutare",
+    "search_empty_text": "Introduceţi cuvîntul cheie de căutare",
+    "searchTitle": "Căutare după categorie",
+    "clear_form_btn": "Golire",
+    "save_form_btn": "Salvare",
+    "back_form_btn": "Înapoi",
+    "select_form_btn": "Selectare",
+    "close_form_btn": "Închidere",
+    "yes": "Da",
+    "no": "Nu",
+    "show_btn": "Afişare",
+    "wrong_period": "O prioadă nevalidă",
+    "required_fields": "* - domenii sau secțiuni obligatorii",
+    "invalid_tab": "Cîmpuri completate nevalid",
+    "page_size": "Dimensiunea paginii",
     "errors": {
-        "1": "Database connection error (001). Please contact support or try again later.",
-        "2": "Authorization system error (002).  Please contact support or try again later.",
-        "3": "Wrong session key (003).  Please re-login. If the problem persists, contact support.",
-        "4": "User can not be found or session has ended (004).  Please re-login.",
-        "5": "Incorrect request (005). Please contact support or try again later.",
-        "6": "Unexpected error (006). Please contact support or try again later.",
+        "1": "Eroare conexiune de date (001). Vă rugăm să contactați suportul sau încercați din nou mai târziu.",
+        "2": "Eroare a sistemului de de autorizare (002). Vă rugăm să contactați suportul sau încercați din nou mai târziu.",
+        "3": "Cheie de sesiune greșită (003).  Vă rugăm să vă conectaţi din nou. Dacă problema persistă, contactați asistența.",
+        "4": "Utilizatorul nu poate fi găsit sau sesiunea sa încheiat (004).  Vă rugăm să vă conectaţi din nou.",
+        "5": "Cerere incorectă(005). Vă rugăm să contactați suportul sau încercați din nou mai târziu.",
+        "6": "Eroare neașteptată (006). Vă rugăm să contactați suportul sau încercați din nou mai tîrziu.",
         "7": {
-            "default_msg": "Incorrect request parameters. Check the data.",
-            "title": "Incorrect parameters:",
+            "default_msg": "Parametrii de cerere incorecți. Verificați datele.",
+            "title": "Parametri incorecți:\n",
             "errors": {
-                "login": "Must be a valid email address",
-                "domain": "Incorrect domain name"
+                "login": "Trebuie sa fie  validă o adresa de email ",
+                "domain": "Nume de domeniu incorect"
             }
         },
-        "11": "Access denied",
-        "12": "The service platform is not found",
-        "101": "In demo mode this feature is disabled",
-        "102": "Wrong username or password",
-        "103": "The user has not activated",
-        "111": "Wrong handler",
-        "112": "Wrong method",
-        "201": "No data found",
-        "202": "There are too many points in the area",
-        "203": "Related item has been deleted",
-        "204": "Element not found",
-        "205": "Invalid parameters",
-        "206": "This username is already in use",
+        "11": "Acces interzis",
+        "12": "Platforma de serviciu nu a fost găsită",
+        "101": "În modul demo această funcție este dezactivată",
+        "102": "Nume utilizator sau parolă greșită",
+        "103": "Utilizatorul nu a activat",
+        "111": "Handler greșit",
+        "112": "Metodă greșită",
+        "201": "Nu s-au gasit date",
+        "202": "Prea multe puncte din zonă",
+        "203": "Elementul similar a fost șters",
+        "204": "Elementul nu a fost găsit",
+        "205": "Parametri nevalizi",
+        "206": "Acest nume de utilizator este deja utilizat",
         "207": "Invalid captcha",
         "208": "The device is locked",
         "209": "Failed to send message",
@@ -144,29 +144,29 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "units_combination": {
-        "days": "days|day|days",
-        "hours": "hours|hour|hours",
-        "minutes": "minutes|minute|minutes",
+        "days": "zile|zi|zile",
+        "hours": "ore|oră|ore",
+        "minutes": "minute|minut|minute",
         "seconds": "seconds|second|seconds",
-        "everyminutes": "minutes|minute|minutes",
-        "everyseconds": "seconds|second|seconds",
-        "meters": "meters|meter|meters",
-        "degrees": "degrees|degree|degrees",
-        "objects": "objects|object|objects",
-        "years": "years|year|years",
-        "months": "months|month|months",
-        "codes": "codes|code|codes",
-        "trackers": "trackers|tracker|trackers",
-        "devices": "devices|device|devices",
-        "entries": "matches|match|matches",
-        "assets": "assets|asset|assets"
+        "everyminutes": "minute|minut|minute",
+        "everyseconds": "secunde|secundă|secunde",
+        "meters": "metri|metru|metri",
+        "degrees": "grade|grad|grade",
+        "objects": "obiecte|obiect|obiecte",
+        "years": "ani|an|ani",
+        "months": "luni|lună|luni",
+        "codes": "coduri|cod|coduri",
+        "trackers": "trackeri|tracker|trackeri",
+        "devices": "dispozitive|dispozitiv|dispozitive",
+        "entries": "partide|partidă|partide",
+        "assets": "active|aciv|active"
     },
     "units_short": {
         "kilometer": "km",
         "meter": "m",
         "square_kilometer": "sq. km",
         "square_meter": "sq. m",
-        "ar": "ar",
+        "ar": "creanţe de încasat.",
         "hectare": "ha",
         "kmh": "km / h",
         "hour": "h",
@@ -177,35 +177,35 @@ Ext.define('Locale.locale-ro',{
         "mile": "mi"
     },
     "search": {
-        "empty": "Search by category",
-        "btn": "Find"
+        "empty": "Căutare după categorie",
+        "btn": "Găsire"
     },
     "list": {
-        "edit_tool": "edit",
-        "create_btn_text": "Create",
-        "empty_text": "No data",
-        "search_title_tpl": "{0}: found {1}",
-        "search_empty_title_tpl": "{0}: no matches found",
-        "search_title": "Search",
-        "search_empty_title": "No matches found"
+        "edit_tool": "editare",
+        "create_btn_text": "Creare",
+        "empty_text": "Nu există date",
+        "search_title_tpl": "{0}: găsite {1}",
+        "search_empty_title_tpl": "{0}: nici o potrivire găsită",
+        "search_title": "Căutare",
+        "search_empty_title": "Nici o potrivire găsită"
     },
     "card": {
         "links": {
-            "collapser_tip": "Hide links",
-            "collapser_exptip": "Show links"
+            "collapser_tip": "Ascundere link-uri",
+            "collapser_exptip": "Afișare link-uri"
         },
         "body": {
-            "title": "Additional information:",
-            "exptitle": "Additional information <a>(show)</a>",
-            "collapser_tip": "Hide additional information",
-            "collapser_exptip": "Show additional information",
-            "exptitle_show": "<a>(show)</a>"
+            "title": "Opțiunile de abonament și detalii::",
+            "exptitle": "Opțiunile de abonament și detalii <a>(extidere)</a>",
+            "collapser_tip": "Ascundere informații suplimentare",
+            "collapser_exptip": "Afișare mai multe",
+            "exptitle_show": "<a>(afișare)</a>"
         }
     },
     "devices": {
         "tracker": "Tracker",
         "camera": "Camera",
-        "socket": "Socket"
+        "socket": "Muftă"
     },
     "currency": {
         "rub": "Russian Rouble",
@@ -214,23 +214,23 @@ Ext.define('Locale.locale-ro',{
         "byr": "Belarusian Ruble",
         "eur": "Euro",
         "jpy": "Japanese Yen",
-        "gbp": "Pound Sterling",
+        "gbp": "Liră sterlină",
         "chf": "Swiss Franc",
-        "cad": "Canadian Dollar",
+        "cad": "Dolar Canadian ",
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
         "tjs": "Tajik Somoni",
         "php": "Philippine Peso",
         "uah": "Ukrainian hryvnia",
-        "brl": "Brazilian real",
-        "huf": "Hungarian forint",
-        "hkd": "Hong Kong dollar",
-        "dkk": "Danish krone",
-        "ils": "Israeli new shekel",
-        "inr": "Indian rupee",
-        "idr": "Indonesian rupiah",
+        "brl": "imobiliare braziliană",
+        "huf": "forintul din Ungaria",
+        "hkd": "dolar Hong Kong",
+        "dkk": "Croane Daneze",
+        "ils": "shekel nou Israelian",
+        "inr": "Rupii Indiene",
+        "idr": "rupie Indoneziană",
         "cny": "Renminbi",
-        "krw": "South Korean won",
+        "krw": "won din Coreea de Sud",
         "myr": "Malaysian ringgit",
         "mxn": "Mexican peso",
         "nok": "Norwegian krone",
@@ -328,40 +328,40 @@ Ext.define('Locale.locale-ro',{
         "zwd": "Zimbabwe Dollar"
     },
     "maps": {
-        "roadmap": "Google roadmap",
-        "satellite": "Google satellite",
-        "hybrid": "Google hybrid",
-        "yandex": "Yandes Maps",
-        "yandexpublic": "Yandex Narod Map",
-        "cdcom": "ProGorod Maps",
-        "osm": "OpenStreet Maps",
-        "osmmapnik": "OpenStreet Maps 2",
+        "roadmap": "Foaia de parcurs google",
+        "satellite": "Satelit google",
+        "hybrid": "Hibrid google",
+        "yandex": "Hărți Yandes",
+        "yandexpublic": "Harta Yandex Narod ",
+        "cdcom": "Hărți ProGorod",
+        "osm": "Deschidere hărțile strrăzilor",
+        "osmmapnik": "Deschidere hărțile străzilor 2",
         "wikimapia": "Wikimapia",
-        "navitel": "Navitel Maps",
-        "doublegis": "DoubleGis Maps",
-        "ovi": "OVI Maps",
+        "navitel": "Hărți Navitel ",
+        "doublegis": "Hărți DoubleGis ",
+        "ovi": "Hărți OVI ",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"
     },
     "dealer_info": {
-        "first": "total",
-        "last": "of"
+        "first": "Total",
+        "last": "al"
     },
     "index": {
-        "menu_text": "Home"
+        "menu_text": "Acasă"
     },
     "users": {
-        "menu_text": "Users",
-        "create_btn": "New user",
+        "menu_text": "Utilizatori",
+        "create_btn": "Utilizator nou",
         "create_form": {
-            "title": "New user",
-            "main_fields": "General information",
-            "contact_fields": "Contact details",
-            "address_fields": "Address",
-            "legal_fields": "Legal entity information",
-            "password": "Password",
-            "password_repeat": "Repeat password",
+            "title": "Utiliztor nou",
+            "main_fields": "Inforrmație generală",
+            "contact_fields": "Detalii de contact",
+            "address_fields": "Adresă",
+            "legal_fields": "Informații persoană juridică",
+            "password": "Parola",
+            "password_repeat": "Repetare parolă",
             "password_mismatched": "Passwords do not match",
             "language": "Default language",
             "time_zone": "Time Zone",
@@ -370,16 +370,16 @@ Ext.define('Locale.locale-ro',{
             "copy_address": "Copy from address"
         },
         "edit_form": {
-            "title": "Edit user",
-            "save_btn": "Save changes",
-            "return_btn": "Back"
+            "title": "Editare utilizator",
+            "save_btn": "Salvare modificări",
+            "return_btn": "Înapoi"
         },
         "fields": {
-            "creation_date": "Date of registration",
-            "login": "Email address",
-            "balance": "Balance",
+            "creation_date": "Data de înregistrare",
+            "login": "Adresa de email",
+            "balance": "Balanță",
             "bonus": "Bonus",
-            "first_name": "Name",
+            "first_name": "Nume",
             "middle_name": "Middle name",
             "last_name": "Surname",
             "activated": "Activated",
@@ -417,23 +417,23 @@ Ext.define('Locale.locale-ro',{
             "password_mismatched": "Passwords do not match"
         },
         "password_form": {
-            "title": "Changing password of user",
-            "save_btn": "Set Password",
-            "return_btn": "Cancel",
-            "success_msg": "Password successfully changed"
+            "title": "Schimbarea parolei de utilizator",
+            "save_btn": "Setare parolă",
+            "return_btn": "Anulare",
+            "success_msg": "Parola a fost modificată cu succes"
         },
         "list": {
-            "create_btn_text": "Create new user",
-            "empty_text": "No users found"
+            "create_btn_text": "Creare utilizator nou",
+            "empty_text": "Nici un utilizator găsit"
         },
         "session_alert": {
-            "error": "Cant create user session",
-            "title": "Your sessio code"
+            "error": "Nu se poate crea sesiunea de utilizator",
+            "title": "Codul Dvs de sesiune "
         },
         "card": {
             "tab_panel": {
                 "trackers": {
-                    "title": "User trackers"
+                    "title": "Utilizare trackeri"
                 },
                 "transactions": {
                     "title": "Transactions"
@@ -470,7 +470,8 @@ Ext.define('Locale.locale-ro',{
                     "monthly": "monthly",
                     "partner": "from a partner",
                     "activeday": "active day",
-                    "everyday": "monthly by day"
+                    "everyday": "monthly by day",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -488,15 +489,15 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "trackers": {
-        "menu_text": "Trackers",
+        "menu_text": "Trackeri",
         "fields": {
-            "tracker_id": "ID",
-            "label": "Title",
+            "tracker_id": "ID-ul",
+            "label": "Titlul",
             "model": "Model",
-            "phone": "Phone",
-            "device_id": "Device id",
-            "creation_date": "Date of registration",
-            "creation_date_short": "Registered",
+            "phone": "Telefon",
+            "device_id": "ID-ul dipozitivului",
+            "creation_date": "Data activării Tracker-ului",
+            "creation_date_short": "Activat",
             "connection_status": "Status",
             "tracker_id_exp": "Tracker number",
             "phone_exp": "Phone number",
@@ -521,30 +522,30 @@ Ext.define('Locale.locale-ro',{
             }
         },
         "edit_form": {
-            "main_fields": "Main information",
-            "title": "Edit tracker",
-            "save_btn": "Save changes",
-            "return_btn": "Back"
+            "main_fields": "Informația principală",
+            "title": "Editare tracker",
+            "save_btn": "Salvre schimbări",
+            "return_btn": "Înapoi"
         },
         "clone_form": {
-            "title": "Crate clone of tracker",
-            "remove_failure_msg": "Removing clone failed",
-            "failure_msg": "Creating clone failed",
-            "remove_confirm": "Remove clone"
+            "title": "Creare clone de tracker",
+            "remove_failure_msg": "Eliminarea clona a eșuat",
+            "failure_msg": "Crearea clona a eșuat",
+            "remove_confirm": "Eliminați clona"
         },
         "group_clone_form": {
-            "title": "Cloning group of trackers",
-            "save_btn": "Clone",
-            "grid_clone_label": "Clones will be added",
-            "grid_clone_tip": "You can change the label of the clone by double clicking on it in the list"
+            "title": "Grup clonarea de trackere",
+            "save_btn": "Clona",
+            "grid_clone_label": "Clonele vor fi adăugate",
+            "grid_clone_tip": "Utilizați dublu clic pentru a schimba eticheta clona"
         },
         "group_owner_form": {
-            "title": "Changing owner for group of trackers",
-            "save_btn": "Changing owner",
+            "title": "Schimbare proprietar pentru un grup de trackeri",
+            "save_btn": "Modificare proprietar",
             "grid_clone_label": "Trackers will be changed"
         },
         "tariff_form": {
-            "title": "Change tariff plan for tracker",
+            "title": "Modificare plan pentru tracker",
             "save_btn": "Save changes",
             "repay": "Repay remainder of current tariff payment",
             "charge": "Charge payment for new tariff",
@@ -607,25 +608,25 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "tariffs": {
-        "menu_text": "Tariffs",
+        "menu_text": "Tarife",
         "create_form": {
-            "title": "Create new tariff",
-            "main_fields": "Main information",
-            "save_btn": "Create tariff",
-            "clear_btn": "Clear form",
-            "options_fields": "Tariff options",
+            "title": "Creare tarif nou",
+            "main_fields": "Informația principală",
+            "save_btn": "Creare plan",
+            "clear_btn": "Formă clară",
+            "options_fields": "Opțiuni tarifare",
             "prices_fields": "Tariff prices"
         },
         "edit_form": {
-            "title": "Edit tariff",
-            "save_btn": "Save changes"
+            "title": "Editare tarif",
+            "save_btn": "Salvare schimbări"
         },
         "default_form": {
-            "title": "Default tariff settings"
+            "title": "Setări tarifare implicit"
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Label",
+            "name": "Etichetă",
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
@@ -660,7 +661,7 @@ Ext.define('Locale.locale-ro',{
             "tariff_is_default": "Use this plan as default"
         },
         "list": {
-            "create_btn_text": "Add new tariff",
+            "create_btn_text": "Adăugare tarif nou",
             "empty_text": "Tariffs not found"
         },
         "card": {
@@ -726,12 +727,12 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "codes": {
-        "menu_text": "Activation codes",
+        "menu_text": "Coduri de activare",
         "fields": {
             "activated": "status",
-            "activation_date": "Activation date",
+            "activation_date": "Activare date",
             "bonus_amount": "Bonus",
-            "code": "code",
+            "code": "cod",
             "device_id": "Device ID",
             "device_type": "Device type",
             "free_days": "Free days",
@@ -744,18 +745,18 @@ Ext.define('Locale.locale-ro',{
             }
         },
         "edit_form": {
-            "title": "Edit activation codes",
-            "save_btn": "Save changes",
-            "selected_count": "Codes selected",
+            "title": "Editare coduri de activare",
+            "save_btn": "Salvare schimbare",
+            "selected_count": "Codurile selectate",
             "device_type": "Codes selected for devices"
         },
         "create_form": {
-            "title": "Create activation codes",
-            "save_btn": "Create codes",
+            "title": "Creare coduri de activare",
+            "save_btn": "Creare coduri",
             "new_codes_count": "Amount of new codes"
         },
         "list": {
-            "empty_text": "No activation codes found",
+            "empty_text": "Coduri de activare nu au fost găsite",
             "create_btn": "Create new",
             "edit_btn": "Edit selected",
             "reload_btn": "Reload",
@@ -778,10 +779,10 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "settings": {
-        "menu_text": "Settings",
+        "menu_text": "Setări",
         "fields": {
-            "service_title": "Service title",
-            "page_title": "Page title",
+            "service_title": "Titlul service",
+            "page_title": "Titlul pagină",
             "locale": "User interface language",
             "demo_login": "Demo user",
             "demo_password": "Demo password",
@@ -829,7 +830,7 @@ Ext.define('Locale.locale-ro',{
             "domain_ph": ".navixy.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
             "domain_help": "How do I set up a CNAME-record",
-            "domain_help_link": "http://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
+            "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
@@ -976,9 +977,9 @@ Ext.define('Locale.locale-ro',{
             "error_text": "Failed to load image"
         },
         "subscription": {
-            "activation_btn_text": "Pay activation fee now (500 USD) online",
-            "monthly_fee_btn_text": "Pay online",
-            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
+            "activation_btn_text": "Achitare taxă de activare acum (500 USD) on-line",
+            "monthly_fee_btn_text": "Plată online",
+            "activation_hint": "Evaluați versiunea de încercare Navixy ServerMate (pînă{0}). Pentru a continua cu versiunea comercială, vă rugăm să alegeți opțiunile de abonament, și să continuați cu plata de activare:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
             "license_balance": "Pending amount {0}",
             "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
@@ -1078,10 +1079,10 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "accounting": {
-        "menu_text": "Accounting",
+        "menu_text": "Contabilitate",
         "report_msg": {
-            "title": "Confirm email-newsletter",
-            "text": "Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?"
+            "title": "Confirmare email-buletin informativ",
+            "text": " Alertă pentru clienți referitor la exportul datelor la 1C pentru <b>{0}</b>.<br>Sigur doriți să efectuați<b>buletinul informativ pe e-mail</b>?"
         },
         "form": {
             "title": "«1C:Enterprise» Data exporting",
@@ -1112,12 +1113,13 @@ Ext.define('Locale.locale-ro',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Buletinul informativ pe email a reușit"
     },
     "payments": {
-        "menu_text": "Payments",
+        "menu_text": "Plăți",
         "import_sberbank": {
-            "title": "Sberbank payments import",
+            "title": "Importul plăților Sberbank",
             "save_btn": "Import payments",
             "upload_btn": "View",
             "upload_loading": "Uploading file",
@@ -1133,7 +1135,7 @@ Ext.define('Locale.locale-ro',{
         }
     },
     "bundles": {
-        "menu_text": "Package contents",
+        "menu_text": "Conținutul pachetului",
         "title": "Working with sets of equipment",
         "menu": {
             "list": "A list of sets",
@@ -1449,15 +1451,15 @@ Ext.define('Locale.locale-ro',{
         "google": "Google Maps Roads",
         "quazar": "Quazar"
     },
-    "edit_form_btn": "Edit",
-    "cancel_form_btn": "Cancel",
+    "edit_form_btn": "Editare",
+    "cancel_form_btn": "Anulare",
     "na": "N/A",
-    "enable": "enable",
-    "disable": "disable",
-    "disabled": "Disabled",
-    "forbid": "forbid",
-    "allow": "allow",
-    "forbidden": "Forbidden",
+    "enable": "Activare",
+    "disable": "Dezactivare",
+    "disabled": "Dezactivat",
+    "forbid": "Interzicţi",
+    "allow": "Permiteţi",
+    "forbidden": "Interzis",
     "features": {
         "api": "API",
         "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",

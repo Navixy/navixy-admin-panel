@@ -152,86 +152,22 @@ Ext.define('Locale.locale-es',{
         }
     },
     "units_combination": {
-        "days": [
-            "días",
-            "día",
-            "días"
-        ],
-        "hours": [
-            "horas",
-            "hora",
-            "horas"
-        ],
-        "minutes": [
-            "minutos",
-            "minuto",
-            "minutos"
-        ],
-        "seconds": [
-            "segundos",
-            "segundo",
-            "segundos"
-        ],
-        "everyminutes": [
-            "minutos",
-            "minuto",
-            "minutos"
-        ],
-        "everyseconds": [
-            "segundos",
-            "segundo",
-            "segundos"
-        ],
-        "meters": [
-            "metros",
-            "metro",
-            "metros"
-        ],
-        "degrees": [
-            "grados",
-            "grado",
-            "grados"
-        ],
-        "objects": [
-            "objetos",
-            "objeto",
-            "objetos"
-        ],
-        "years": [
-            "años",
-            "año",
-            "años"
-        ],
-        "months": [
-            "meses",
-            "mes",
-            "meses"
-        ],
-        "codes": [
-            "códigos",
-            "código",
-            "códigos"
-        ],
-        "trackers": [
-            "trackers",
-            "tracker",
-            "trackers"
-        ],
-        "devices": [
-            "dispositivos",
-            "dispositivo",
-            "dispositivos"
-        ],
-        "entries": [
-            "cumple",
-            "cumple",
-            "cumples"
-        ],
-        "assets": [
-            "assets",
-            "asset",
-            "assets"
-        ]
+        "days": "days|day|days",
+        "hours": "hours|hour|hours",
+        "minutes": "minutes|minute|minutes",
+        "seconds": "seconds|second|seconds",
+        "everyminutes": "minutes|minute|minutes",
+        "everyseconds": "seconds|second|seconds",
+        "meters": "meters|meter|meters",
+        "degrees": "degrees|degree|degrees",
+        "objects": "objects|object|objects",
+        "years": "years|year|years",
+        "months": "months|month|months",
+        "codes": "codes|code|codes",
+        "trackers": "trackers|tracker|trackers",
+        "devices": "devices|device|devices",
+        "entries": "matches|match|matches",
+        "assets": "assets|asset|assets"
     },
     "units_short": {
         "kilometer": "km",
@@ -542,7 +478,8 @@ Ext.define('Locale.locale-es',{
                     "monthly": "mensual",
                     "partner": "de un socio",
                     "activeday": "día activo",
-                    "everyday": "mensualmente por día"
+                    "everyday": "mensualmente por día",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -901,7 +838,7 @@ Ext.define('Locale.locale-es',{
             "domain_ph": ".navixy.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
             "domain_help": "How do I set up a CNAME-record",
-            "domain_help_link": "http://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
+            "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
@@ -1181,7 +1118,8 @@ Ext.define('Locale.locale-es',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Email-newsletter successful"
     },
     "payments": {
         "menu_text": "Pagos",
