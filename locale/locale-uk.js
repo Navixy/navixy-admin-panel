@@ -324,7 +324,8 @@ Ext.define('Locale.locale-uk',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -408,7 +409,8 @@ Ext.define('Locale.locale-uk',{
             "activated_short": {
                 "title": "Статус",
                 "status_true": "Активний",
-                "status_false": "Не активний"
+                "status_false": "Не активний",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "юридичні",
             "password": "Новий пароль",
@@ -443,7 +445,8 @@ Ext.define('Locale.locale-uk',{
                 "user_edit": "Редагувати користувача",
                 "user_change_password": "Змінити пароль",
                 "transactions": "Транзакції",
-                "create_transaction": "Змінити баланс"
+                "create_transaction": "Змінити баланс",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -469,7 +472,8 @@ Ext.define('Locale.locale-uk',{
                     "monthly": "щомісяця",
                     "partner": "від партнера",
                     "activeday": "активний день",
-                    "everyday": "щомісячно по дням"
+                    "everyday": "щомісячно по дням",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -484,6 +488,9 @@ Ext.define('Locale.locale-uk',{
         "select_error": "Трекер або його клон вже прив'язано до вибраного користувача",
         "select": {
             "title": "Виберіть користувача"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -872,7 +879,12 @@ Ext.define('Locale.locale-uk',{
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "display_model_features_link": "Show a link to a website with information about the model",
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {
             "title": "Параметри служби",
@@ -950,7 +962,9 @@ Ext.define('Locale.locale-uk',{
                 "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
                 "save_btn": "Choose"
             },
-            "clear_btn": "Reset"
+            "clear_btn": "Reset",
+            "monitoring_logo_title": "User interface logo",
+            "misc_header": "Optional features"
         },
         "upload_form": {
             "save_btn": "Завантажити",
@@ -961,12 +975,14 @@ Ext.define('Locale.locale-uk',{
                 "logo": "Логотип",
                 "favicon": "Favicon",
                 "login_wallpaper": "Шпалери сторінки логіна",
-                "desktop_wallpaper": "Шпалери сервісної сторінки"
+                "desktop_wallpaper": "Шпалери сервісної сторінки",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Рекомендується завантажити горизонтально орієнтоване зображення з прозорим фоном і шириною не менше 200 точок.",
                 "favicon": "Рекомендовано завантажувати зображення з прозорим фоном і мінімальним дозволом 32x32 пікселі.",
-                "login_wallpaper": "Рекомендується завантажити фонові рисунки з роздільною здатністю не менше 1920х1080 пікселів (FullHD) формат JPEG."
+                "login_wallpaper": "Рекомендується завантажити фонові рисунки з роздільною здатністю не менше 1920х1080 пікселів (FullHD) формат JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "Зображення формату {0} (максимальний розмір {1} МБ)",
             "error_text": "Не вдалося завантажити зображення"
@@ -1108,7 +1124,8 @@ Ext.define('Locale.locale-uk',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Email-newsletter successful"
     },
     "main_copyright": "© 2015 RusLink. Всі права захищені.",
     "payments": {
@@ -1433,7 +1450,8 @@ Ext.define('Locale.locale-uk',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "geolocation": {
         "disabled": "Disabled",
@@ -1474,7 +1492,8 @@ Ext.define('Locale.locale-uk',{
         "routing": "Призначення маршруту",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Веблокатор",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "map": {
         "zoom_in": "Zoom in",

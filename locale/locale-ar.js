@@ -11,69 +11,69 @@ Ext.define('Locale.locale-ar',{
         }
     ],
     "singleton": true,
-    "main_copyright": "© 2015 RusLink. All rights reserved.",
-    "panel_title": "NavixyPanel",
-    "error": "Error",
-    "loading": "Loading...",
-    "conneting_loader": "Connecting to server",
-    "access_denied": "Access denied",
-    "access_denied_tip": "you do not have permission to access requested page",
-    "index_title": "Welcome to Control Panel",
-    "old_version": "Old version",
+    "main_copyright": "نافيكسي . كل الحقوق محفوظة",
+    "panel_title": "لوحة المدير",
+    "error": "خطأ",
+    "loading": "تحميل ...",
+    "conneting_loader": "الاتصال بالخادم",
+    "access_denied": "تم الرفض",
+    "access_denied_tip": "ليس  لديك إذن للوصول إلى طلب الصفحة",
+    "index_title": "اهلا بك في لوحة المدير",
+    "old_version": "نسخة قديمة",
     "auth": {
-        "login": "Login or Email address",
-        "password": "Password",
-        "login_btn": "Login",
-        "locale_title": "Choose language",
-        "locale_title_short": "language",
-        "auth_error": "Authentication error",
-        "reloading_soon": "Reloading",
-        "logout": "Logout",
-        "title": "Admin panel"
+        "login": "تسجيل الدخول",
+        "password": "كلمة المرور",
+        "login_btn": "تسجيل الدخول",
+        "locale_title": "اختر اللغة ",
+        "locale_title_short": "اللغة",
+        "auth_error": "خطأ في المصادقة",
+        "reloading_soon": "إعادة تحميل",
+        "logout": "تسجيل الخروج",
+        "title": "لوحة المدير"
     },
-    "no_path_found": "No page on this path",
-    "phone_invalid_msg": "Please enter a valid phone number",
-    "invalid_numeric_msg": "Not a valid number",
-    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal mark)",
-    "searcher_empty_text": "Enter search query",
-    "search_empty_text": "Enter search query",
-    "searchTitle": "Search by category",
-    "clear_form_btn": "Clear",
-    "save_form_btn": "Save",
-    "back_form_btn": "Back",
-    "select_form_btn": "Select",
-    "close_form_btn": "Close",
-    "yes": "yes",
+    "no_path_found": "لا يوجد صفحة للURL غير صحيح",
+    "phone_invalid_msg": "يرجى إدخال رقم هاتف فعال",
+    "invalid_numeric_msg": "الرقم غير صحيح ",
+    "invalid_amount_msg": "رقم غير صحيح ",
+    "searcher_empty_text": "أدخل طلب البحث",
+    "search_empty_text": "أدخل طلب البحث",
+    "searchTitle": "البحث حسب التصنيف",
+    "clear_form_btn": "نظيف",
+    "save_form_btn": "حفظ",
+    "back_form_btn": "رجوع",
+    "select_form_btn": "اختار",
+    "close_form_btn": "اغلاق",
+    "yes": "نعم",
     "no": "no",
-    "show_btn": "Show",
-    "wrong_period": "An invalid period",
-    "required_fields": "* - required fields or sections",
-    "invalid_tab": "Invalid filled fields",
-    "page_size": "Page size",
+    "show_btn": "عرض",
+    "wrong_period": "الفترة غير صالحة",
+    "required_fields": "مقاطع مطلوبة ",
+    "invalid_tab": "المقاطع المعبأة غير صالحة",
+    "page_size": "حجم الصفحة",
     "errors": {
-        "1": "Database connection error (001). Please contact support or try again later.",
-        "2": "Authorization system error (002).  Please contact support or try again later.",
-        "3": "Wrong session key (003).  Please re-login. If the problem persists, contact support.",
-        "4": "User can not be found or session has ended (004).  Please re-login.",
-        "5": "Incorrect request (005). Please contact support or try again later.",
-        "6": "Unexpected error (006). Please contact support or try again later.",
+        "1": "خطأ في الاتصال بقاعدة البيانات (001). الرجاء الاتصال بالدعم أو المحاولة مرة أخرى في وقت لاحق.",
+        "2": "خطأ في ترخيص النظام (002).  الرجاء الاتصال بالدعم أو المحاولة مرة أخرى في وقت لاحق.",
+        "3": "مفتاح الجلسة خطأ (003).  يرجى إعادة تسجيل الدخول. إذا استمرت المشكلة، اتصل بالدعم.",
+        "4": "لا يمكن العثور على المستخدم  أو إن الدورة قد انتهت (004).  يرجى إعادة تسجيل الدخول.",
+        "5": "الطلب غير صحيح (005). الرجاء الاتصال بالدعم أو المحاولة مرة أخرى في وقت لاحق.",
+        "6": "خطأ غير متوقع (006). الرجاء الاتصال بالدعم أو المحاولة مرة أخرى في وقت لاحق.",
         "7": {
-            "default_msg": "Incorrect request parameters. Check the data.",
-            "title": "Incorrect parameters:",
+            "default_msg": "المعلومات عن طلب غير صحيحة. الرجاء التحقق من البيانات.",
+            "title": "معلمات غير صحيحة:",
             "errors": {
-                "login": "Must be a valid email address",
-                "domain": "Incorrect domain name"
+                "login": "يجب أن يكون الايميل مفعّل ",
+                "domain": "معلمات غير صحيحة:"
             }
         },
-        "11": "Access denied",
-        "12": "The service platform is not found",
-        "101": "In demo mode this feature is disabled",
-        "102": "Wrong username or password",
-        "103": "The user has not activated",
-        "111": "Wrong handler",
-        "112": "Wrong method",
-        "201": "No data found",
-        "202": "There are too many points in the area",
+        "11": "تم الرفض",
+        "12": "لم يتم العثور على منصة الخدمة",
+        "101": "ميزة غير متوفرة على الخطة الخاصة بك",
+        "102": "اسم المستخدم أو كلمة المرور خاطئة",
+        "103": "لم يتم تنشيط المستخدم",
+        "111": "معالج خطأ",
+        "112": "طريقة خاطئة",
+        "201": "لا توجد بيانات",
+        "202": "هناك نقاط كثيرة جدا في المنطقة",
         "203": "Related item has been deleted",
         "204": "Element not found",
         "205": "Invalid parameters",
@@ -144,89 +144,89 @@ Ext.define('Locale.locale-ar',{
         }
     },
     "units_combination": {
-        "days": "days|day|days",
-        "hours": "hours|hour|hours",
-        "minutes": "minutes|minute|minutes",
-        "seconds": "seconds|second|seconds",
-        "everyminutes": "minutes|minute|minutes",
-        "everyseconds": "seconds|second|seconds",
-        "meters": "meters|meter|meters",
-        "degrees": "degrees|degree|degrees",
-        "objects": "objects|object|objects",
-        "years": "years|year|years",
-        "months": "months|month|months",
-        "codes": "codes|code|codes",
-        "trackers": "trackers|tracker|trackers",
-        "devices": "devices|device|devices",
+        "days": "أيام",
+        "hours": "ساعات",
+        "minutes": "دقيقة",
+        "seconds": "ثواني",
+        "everyminutes": "دقيقة",
+        "everyseconds": "ثواني",
+        "meters": "متر",
+        "degrees": "درجة",
+        "objects": "الأجسام",
+        "years": "سنة",
+        "months": "الشهر",
+        "codes": "كود",
+        "trackers": "متعقب",
+        "devices": "جهاز/أجهزة",
         "entries": "matches|match|matches",
         "assets": "assets|asset|assets"
     },
     "units_short": {
-        "kilometer": "km",
-        "meter": "m",
-        "square_kilometer": "sq. km",
-        "square_meter": "sq. m",
-        "ar": "ar",
-        "hectare": "ha",
-        "kmh": "km / h",
-        "hour": "h",
-        "minute": "m",
-        "second": "s",
-        "litres": "l",
-        "day": "d",
-        "mile": "mi"
+        "kilometer": "كم",
+        "meter": "د",
+        "square_kilometer": "كم مربع",
+        "square_meter": "متر مربع",
+        "ar": "عربي",
+        "hectare": "هكتار",
+        "kmh": "كم / ساعة",
+        "hour": "ح",
+        "minute": "م",
+        "second": "س",
+        "litres": "ل",
+        "day": "د",
+        "mile": "ميل"
     },
     "search": {
-        "empty": "Search by category",
-        "btn": "Find"
+        "empty": "البحث حسب التصنيف",
+        "btn": "جد"
     },
     "list": {
-        "edit_tool": "edit",
-        "create_btn_text": "Create",
-        "empty_text": "No data",
-        "search_title_tpl": "{0}: found {1}",
-        "search_empty_title_tpl": "{0}: no matches found",
-        "search_title": "Search",
-        "search_empty_title": "No matches found"
+        "edit_tool": "تعديل",
+        "create_btn_text": "إنشاء",
+        "empty_text": "لا توجد بيانات",
+        "search_title_tpl": "{0} ح {1} م",
+        "search_empty_title_tpl": "لا المسارات وجدت",
+        "search_title": "بحث",
+        "search_empty_title": "لا توجد بيانات"
     },
     "card": {
         "links": {
-            "collapser_tip": "Hide links",
-            "collapser_exptip": "Show links"
+            "collapser_tip": "إخفاء الإعدادات",
+            "collapser_exptip": "إظهار الإعدادات"
         },
         "body": {
-            "title": "Additional information:",
-            "exptitle": "Additional information <a>(show)</a>",
-            "collapser_tip": "Hide additional information",
-            "collapser_exptip": "Show additional information",
-            "exptitle_show": "<a>(show)</a>"
+            "title": "التفاصيل وخيارات الخطة",
+            "exptitle": "التفاصيل وخيارات الخطة",
+            "collapser_tip": "اخفاء خيارات خطة وتفاصيل",
+            "collapser_exptip": "عرض المزيد",
+            "exptitle_show": "<a>(عربي)</a>"
         }
     },
     "devices": {
-        "tracker": "Tracker",
-        "camera": "Camera",
-        "socket": "Socket"
+        "tracker": "المقتفي",
+        "camera": "كاميرا",
+        "socket": "مأخذ التوصيل"
     },
     "currency": {
         "rub": "Russian Rouble",
         "usd": "U.S. Dollar",
         "kzt": "Kazakhstan Tenge",
         "byr": "Belarusian Ruble",
-        "eur": "Euro",
+        "eur": "يورو",
         "jpy": "Japanese Yen",
-        "gbp": "Pound Sterling",
+        "gbp": "الجنيه الإسترليني",
         "chf": "Swiss Franc",
         "cad": "Canadian Dollar",
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
         "tjs": "Tajik Somoni",
         "php": "Philippine Peso",
-        "brl": "Brazilian real",
-        "huf": "Hungarian forint",
-        "hkd": "Hong Kong dollar",
-        "dkk": "Danish krone",
-        "ils": "Israeli new shekel",
-        "inr": "Indian rupee",
+        "brl": "برازيلي حقيقي",
+        "huf": "الفورنت الهنغاري",
+        "hkd": "دولار هونغ كونغ",
+        "dkk": "الكرون الدنماركي",
+        "ils": "شيكل",
+        "inr": "روبية هندية",
         "idr": "Indonesian rupiah",
         "cny": "Renminbi",
         "krw": "South Korean won",
@@ -325,17 +325,18 @@ Ext.define('Locale.locale-ar',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
-        "roadmap": "Google roadmap",
-        "satellite": "Google satellite",
-        "hybrid": "Google hybrid",
-        "yandex": "Yandes Maps",
-        "yandexpublic": "Yandex Narod Map",
-        "cdcom": "ProGorod Maps",
-        "osm": "OpenStreet Maps",
-        "osmmapnik": "OpenStreet Maps 2",
+        "roadmap": "خارطة جوجل",
+        "satellite": "جوجل القمر الصناعي",
+        "hybrid": "جوجل الهجين",
+        "yandex": "خرائط ياندكس",
+        "yandexpublic": "ياندكس المشاركة الجماعية",
+        "cdcom": "خرائط بروجورود",
+        "osm": "خرائط OpenStreet",
+        "osmmapnik": "خرائط OpenStreet 2",
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
@@ -345,19 +346,19 @@ Ext.define('Locale.locale-ar',{
         "bing": "Bing Maps"
     },
     "dealer_info": {
-        "first": "total",
-        "last": "of"
+        "first": "مجموع",
+        "last": "من"
     },
     "index": {
-        "menu_text": "Home"
+        "menu_text": "الرئيسي"
     },
     "users": {
-        "menu_text": "Users",
-        "create_btn": "New user",
+        "menu_text": "المستخدمين",
+        "create_btn": "مستخدم جديد",
         "create_form": {
-            "title": "New user",
-            "main_fields": "General information",
-            "contact_fields": "Contact details",
+            "title": "مستخدم جديد",
+            "main_fields": "معلومات عامة",
+            "contact_fields": "تفاصيل المشترك",
             "address_fields": "Address",
             "legal_fields": "Legal entity information",
             "password": "Password",
@@ -370,8 +371,8 @@ Ext.define('Locale.locale-ar',{
             "copy_address": "Copy from address"
         },
         "edit_form": {
-            "title": "Edit user",
-            "save_btn": "Save changes",
+            "title": "تعديل المستخدم",
+            "save_btn": "حفظ التغييرات",
             "return_btn": "Back"
         },
         "fields": {
@@ -409,7 +410,8 @@ Ext.define('Locale.locale-ar',{
             "activated_short": {
                 "title": "Status",
                 "status_true": "Active",
-                "status_false": "Not active"
+                "status_false": "Not active",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "legal",
             "password": "New password",
@@ -493,10 +495,10 @@ Ext.define('Locale.locale-ar',{
         }
     },
     "trackers": {
-        "menu_text": "Trackers",
+        "menu_text": "المقتفي",
         "fields": {
-            "tracker_id": "ID",
-            "label": "Title",
+            "tracker_id": "الهوية",
+            "label": "عنوان",
             "model": "Model",
             "phone": "Phone",
             "device_id": "Device id",
@@ -526,7 +528,7 @@ Ext.define('Locale.locale-ar',{
             }
         },
         "edit_form": {
-            "main_fields": "Main information",
+            "main_fields": "معلومات عامة",
             "title": "Edit tracker",
             "save_btn": "Save changes",
             "return_btn": "Back"
@@ -612,9 +614,9 @@ Ext.define('Locale.locale-ar',{
         }
     },
     "tariffs": {
-        "menu_text": "Tariffs",
+        "menu_text": "مخطط",
         "create_form": {
-            "title": "Create new tariff",
+            "title": "انشاء خطة جديدة",
             "main_fields": "Main information",
             "save_btn": "Create tariff",
             "clear_btn": "Clear form",
@@ -731,7 +733,7 @@ Ext.define('Locale.locale-ar',{
         }
     },
     "codes": {
-        "menu_text": "Activation codes",
+        "menu_text": "رمز التفعيل",
         "fields": {
             "activated": "status",
             "activation_date": "Activation date",
@@ -880,7 +882,10 @@ Ext.define('Locale.locale-ar',{
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
-            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {
             "title": "Service Settings",
@@ -959,7 +964,8 @@ Ext.define('Locale.locale-ar',{
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+            "monitoring_logo_title": "User interface logo"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -970,12 +976,14 @@ Ext.define('Locale.locale-ar',{
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Login page wallpaper",
-                "desktop_wallpaper": "Service page wallpaper"
+                "desktop_wallpaper": "Service page wallpaper",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.",
                 "favicon": "Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.",
-                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG."
+                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "The image format {0} (the maximum size of {1} MB)",
             "error_text": "Failed to load image"
@@ -1442,7 +1450,8 @@ Ext.define('Locale.locale-ar',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "geolocation": {
         "disabled": "Disabled",
@@ -1455,15 +1464,15 @@ Ext.define('Locale.locale-ar',{
         "google": "Google Maps Roads",
         "quazar": "Quazar"
     },
-    "edit_form_btn": "Edit",
+    "edit_form_btn": "تعديل",
     "cancel_form_btn": "إلغاء",
-    "na": "N/A",
-    "enable": "enable",
-    "disable": "disable",
+    "na": "غير متوفر ",
+    "enable": "تمكين",
+    "disable": "تعطيل",
     "disabled": "تعطيل",
-    "forbid": "forbid",
-    "allow": "allow",
-    "forbidden": "Forbidden",
+    "forbid": "منع ",
+    "allow": "سماح",
+    "forbidden": "محظور",
     "features": {
         "api": "API",
         "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",

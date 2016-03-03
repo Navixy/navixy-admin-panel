@@ -492,7 +492,8 @@ Ext.define('Locale.locale-ru',{
                     "monthly": "ежемесячный",
                     "partner": "от партнера",
                     "activeday": "активный день",
-                    "everyday": "ежемесячный с посуточным списанием"
+                    "everyday": "ежемесячный с посуточным списанием",
+                    "sms": "SMS message"
                 }
             }
         },

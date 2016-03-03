@@ -21,7 +21,7 @@ Ext.define('Locale.locale-ro',{
     "index_title": "Bine ați venit la Panoul de control",
     "old_version": "Versiune veche",
     "auth": {
-        "login": "Logare sau adresa de email ",
+        "login": "Logare sau adresa de email",
         "password": "Parola",
         "login_btn": "Logare",
         "locale_title": "Alegeți limba",
@@ -59,9 +59,9 @@ Ext.define('Locale.locale-ro',{
         "6": "Eroare neașteptată (006). Vă rugăm să contactați suportul sau încercați din nou mai tîrziu.",
         "7": {
             "default_msg": "Parametrii de cerere incorecți. Verificați datele.",
-            "title": "Parametri incorecți:\n",
+            "title": "Parametri incorecți:",
             "errors": {
-                "login": "Trebuie sa fie  validă o adresa de email ",
+                "login": "Trebuie sa fie  validă o adresa de email",
                 "domain": "Nume de domeniu incorect"
             }
         },
@@ -216,7 +216,7 @@ Ext.define('Locale.locale-ro',{
         "jpy": "Japanese Yen",
         "gbp": "Liră sterlină",
         "chf": "Swiss Franc",
-        "cad": "Dolar Canadian ",
+        "cad": "Dolar Canadian",
         "aud": "Australian Dollar",
         "nzd": "New Zealand Dollar",
         "tjs": "Tajik Somoni",
@@ -325,21 +325,22 @@ Ext.define('Locale.locale-ro',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Foaia de parcurs google",
         "satellite": "Satelit google",
         "hybrid": "Hibrid google",
         "yandex": "Hărți Yandes",
-        "yandexpublic": "Harta Yandex Narod ",
+        "yandexpublic": "Harta Yandex Narod",
         "cdcom": "Hărți ProGorod",
         "osm": "Deschidere hărțile strrăzilor",
         "osmmapnik": "Deschidere hărțile străzilor 2",
         "wikimapia": "Wikimapia",
-        "navitel": "Hărți Navitel ",
-        "doublegis": "Hărți DoubleGis ",
-        "ovi": "Hărți OVI ",
+        "navitel": "Hărți Navitel",
+        "doublegis": "Hărți DoubleGis",
+        "ovi": "Hărți OVI",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"
@@ -409,7 +410,8 @@ Ext.define('Locale.locale-ro',{
             "activated_short": {
                 "title": "Status",
                 "status_true": "Active",
-                "status_false": "Not active"
+                "status_false": "Not active",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "legal",
             "password": "New password",
@@ -428,7 +430,7 @@ Ext.define('Locale.locale-ro',{
         },
         "session_alert": {
             "error": "Nu se poate crea sesiunea de utilizator",
-            "title": "Codul Dvs de sesiune "
+            "title": "Codul Dvs de sesiune"
         },
         "card": {
             "tab_panel": {
@@ -444,7 +446,8 @@ Ext.define('Locale.locale-ro',{
                 "user_edit": "Edit user",
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
-                "create_transaction": "Change balance"
+                "create_transaction": "Change balance",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -486,6 +489,9 @@ Ext.define('Locale.locale-ro',{
         "select_error": "Tracker or his clone is already bound to selected user",
         "select": {
             "title": "Select an user"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -876,7 +882,10 @@ Ext.define('Locale.locale-ro',{
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
-            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {
             "title": "Service Settings",
@@ -955,7 +964,8 @@ Ext.define('Locale.locale-ro',{
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+            "monitoring_logo_title": "User interface logo"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -966,12 +976,14 @@ Ext.define('Locale.locale-ro',{
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Login page wallpaper",
-                "desktop_wallpaper": "Service page wallpaper"
+                "desktop_wallpaper": "Service page wallpaper",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.",
                 "favicon": "Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.",
-                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG."
+                "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "The image format {0} (the maximum size of {1} MB)",
             "error_text": "Failed to load image"
@@ -1082,7 +1094,7 @@ Ext.define('Locale.locale-ro',{
         "menu_text": "Contabilitate",
         "report_msg": {
             "title": "Confirmare email-buletin informativ",
-            "text": " Alertă pentru clienți referitor la exportul datelor la 1C pentru <b>{0}</b>.<br>Sigur doriți să efectuați<b>buletinul informativ pe e-mail</b>?"
+            "text": "Alertă pentru clienți referitor la exportul datelor la 1C pentru <b>{0}</b>.<br>Sigur doriți să efectuați<b>buletinul informativ pe e-mail</b>?"
         },
         "form": {
             "title": "«1C:Enterprise» Data exporting",
@@ -1438,7 +1450,8 @@ Ext.define('Locale.locale-ro',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "geolocation": {
         "disabled": "Disabled",
@@ -1479,7 +1492,8 @@ Ext.define('Locale.locale-ro',{
         "routing": "Routing",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "map": {
         "zoom_in": "Zoom in",

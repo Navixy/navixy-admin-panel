@@ -333,7 +333,8 @@ Ext.define('Locale.locale-de',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Google-Fahrplan",
@@ -417,7 +418,8 @@ Ext.define('Locale.locale-de',{
             "activated_short": {
                 "title": "Status",
                 "status_true": "Aktive",
-                "status_false": "Nicht aktiv"
+                "status_false": "Nicht aktiv",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "rechtliche",
             "password": "Neues Passwort",
@@ -452,7 +454,8 @@ Ext.define('Locale.locale-de',{
                 "user_edit": "Benutzer bearbeiten",
                 "user_change_password": "Passwort ändern",
                 "transactions": "Transaktionen",
-                "create_transaction": "Balance ändern"
+                "create_transaction": "Balance ändern",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -478,7 +481,8 @@ Ext.define('Locale.locale-de',{
                     "monthly": "monatliche",
                     "partner": "von einem Partner",
                     "activeday": "aktiven Tag",
-                    "everyday": "monatlich bei Tag"
+                    "everyday": "monatlich bei Tag",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -493,6 +497,9 @@ Ext.define('Locale.locale-de',{
         "select_error": "Tracker oder sein Klon ist bereits an ausgewählte Benutzer gebunden.",
         "select": {
             "title": "Wählen Sie einen Benutzer"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -883,7 +890,10 @@ Ext.define('Locale.locale-de',{
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
-            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "sms_gateway": {
             "navixy": {
@@ -1048,7 +1058,8 @@ Ext.define('Locale.locale-de',{
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+            "monitoring_logo_title": "User interface logo"
         },
         "upload_form": {
             "save_btn": "Hochladen",
@@ -1059,12 +1070,14 @@ Ext.define('Locale.locale-de',{
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Login Seite Tapete",
-                "desktop_wallpaper": "Service-Seite-Tapete"
+                "desktop_wallpaper": "Service-Seite-Tapete",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Empfohlene orientierte horizontal laden Bild mit einem transparenten Hintergrund und einer Breite von nicht weniger als 200 Punkte.",
                 "favicon": "Laden Sie das Bild mit einem transparenten Hintergrund und einer Mindestauflösung von 32 x 32 Pixel empfohlen.",
-                "login_wallpaper": "Empfohlen, um Hintergrund-Bilder mit einer Auflösung von mindestens 1920 x 1080 Pixel (FullHD) Format JPEG zu laden."
+                "login_wallpaper": "Empfohlen, um Hintergrund-Bilder mit einer Auflösung von mindestens 1920 x 1080 Pixel (FullHD) Format JPEG zu laden.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "Die Bild-Format {0} (die maximale Größe von {1} MB)",
             "error_text": "Fehler beim Laden des Bildes"
@@ -1117,7 +1130,8 @@ Ext.define('Locale.locale-de',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Email-newsletter successful"
     },
     "payments": {
         "menu_text": "Zahlungen",
@@ -1452,7 +1466,8 @@ Ext.define('Locale.locale-de',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "features": {
         "api": "API",
@@ -1473,7 +1488,8 @@ Ext.define('Locale.locale-de',{
         "routing": "Routing",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "singleton": true,
     "map": {

@@ -567,7 +567,8 @@ Ext.define('Locale.locale-tr',{
                 "user_edit": "Kullanıcıyı düzenle",
                 "user_change_password": "Şifreyi değiştir",
                 "transactions": "Cari işlem hareketleri",
-                "create_transaction": "Cari işlem"
+                "create_transaction": "Cari işlem",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -593,7 +594,8 @@ Ext.define('Locale.locale-tr',{
                     "monthly": "aylık",
                     "partner": "İş ortağından",
                     "activeday": "aktif gün",
-                    "everyday": "Güne göre Aylık"
+                    "everyday": "Güne göre Aylık",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -608,6 +610,9 @@ Ext.define('Locale.locale-tr',{
         "select_error": "Cihaz yada klonu zaten seçili kullanıcıya bağlıdır",
         "select": {
             "title": "Kullanıcı seçimi"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -1240,7 +1245,8 @@ Ext.define('Locale.locale-tr',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Email-newsletter successful"
     },
     "payments": {
         "menu_text": "Ödemeler",
@@ -1485,7 +1491,8 @@ Ext.define('Locale.locale-tr',{
         "routing": "Rota",
         "ui_mobile": "Mobil web arayüzü",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "map": {
         "zoom_in": "Zoom in",

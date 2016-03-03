@@ -333,7 +333,8 @@ Ext.define('Locale.locale-es',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -417,7 +418,8 @@ Ext.define('Locale.locale-es',{
             "activated_short": {
                 "title": "estado",
                 "status_true": "Activo",
-                "status_false": "No activo"
+                "status_false": "No activo",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "legal",
             "password": "Nueva contraseña",
@@ -452,7 +454,8 @@ Ext.define('Locale.locale-es',{
                 "user_edit": "Editar usuario",
                 "user_change_password": "Cambiar contraseña",
                 "transactions": "Transacciones",
-                "create_transaction": "Cambiar balance"
+                "create_transaction": "Cambiar balance",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -494,6 +497,9 @@ Ext.define('Locale.locale-es',{
         "select_error": "Tracker o su clon ya esta ligado a usuario seleccionado",
         "select": {
             "title": "Seleccione un usuario"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -884,7 +890,10 @@ Ext.define('Locale.locale-es',{
             "sms_inbound_ph": "Example: 12162780905",
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
-            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated"
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "sms_gateway": {
             "navixy": {
@@ -1049,7 +1058,8 @@ Ext.define('Locale.locale-es',{
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+            "monitoring_logo_title": "User interface logo"
         },
         "upload_form": {
             "save_btn": "Subir",
@@ -1060,12 +1070,14 @@ Ext.define('Locale.locale-es',{
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Página de registro de papel tapiz",
-                "desktop_wallpaper": "Fondo de pantalla de servicio página"
+                "desktop_wallpaper": "Fondo de pantalla de servicio página",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Recomendado para cargar la imagen de orientación horizontal con un fondo transparente y una anchura no inferior a 200 puntos.",
                 "favicon": "Recomendado para cargar la imagen con un fondo transparente y una resolución mínima de 32x32 píxeles.",
-                "login_wallpaper": "Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG."
+                "login_wallpaper": "Recomendado para cargar las imágenes de fondo con una resolución de al menos 1920x1080 píxeles (FullHD) en formato JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "El formato de imagen {0} (el tamaño máximo de {1} MB)",
             "error_text": "Error al cargar la imagen"
@@ -1454,7 +1466,8 @@ Ext.define('Locale.locale-es',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "features": {
         "api": "API",
@@ -1475,7 +1488,8 @@ Ext.define('Locale.locale-es',{
         "routing": "Enrutamiento",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "singleton": true,
     "map": {

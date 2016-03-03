@@ -45,7 +45,7 @@ Ext.define('Locale.locale-fr',{
     "close_form_btn": "Fermer",
     "yes": "Oui",
     "no": "ne",
-    "show_btn": "Voir ",
+    "show_btn": "Voir",
     "wrong_period": "Une période non valide",
     "required_fields": "* - requis les champs ou sections",
     "invalid_tab": "Zones remplies non valides",
@@ -325,7 +325,8 @@ Ext.define('Locale.locale-fr',{
         "vef": "Venezuela Bolivar",
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
-        "zwd": "Zimbabwe Dollar"
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Carte routière Google",
@@ -409,7 +410,8 @@ Ext.define('Locale.locale-fr',{
             "activated_short": {
                 "title": "Statut",
                 "status_true": "Actif",
-                "status_false": "Pas actif"
+                "status_false": "Pas actif",
+                "status_no": "Active, e-mail non confirmé"
             },
             "registered_short": "juridiques",
             "password": "Nouveau mot de passe",
@@ -444,7 +446,8 @@ Ext.define('Locale.locale-fr',{
                 "user_edit": "Modifier utilisateur",
                 "user_change_password": "Changer mot de passe",
                 "transactions": "Transactions",
-                "create_transaction": "Modifier l'équilibre"
+                "create_transaction": "Modifier l'équilibre",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -486,6 +489,9 @@ Ext.define('Locale.locale-fr',{
         "select_error": "Tracker ou clone était déjà limité pour l'utilisateur sélectionné",
         "select": {
             "title": "Sélectionnez utilisateur"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -848,7 +854,7 @@ Ext.define('Locale.locale-fr',{
             "roads_snap": "S'aligner sur les routes",
             "roads_snap_hint": "Service améliore visuellement les pistes provenant d'appareils GPS sur les routes très probables que le véhicule circulait le long. Il permet de dessiner des chemins qui suivent en douceur la géométrie de la route.",
             "daily_reports_ph": "email1@company.com,email2@company.com,...",
-            "newsletters": "Newsletters\n",
+            "newsletters": "Newsletters",
             "newsletters_hint": "Courriels pour les bulletins et mises à jour importantes. Utiliser la virgule pour séparer plusieurs adresses.",
             "daily_reports": "Rapports quotidiens",
             "daily_reports_hint": "Courriels pour des rapports quotidiens sur les revenus. Utiliser la virgule pour séparer plusieurs adresses.",
@@ -876,7 +882,10 @@ Ext.define('Locale.locale-fr',{
             "user_sms_inbound_hint": "Identifiant d'expéditeur numérique ou alphanumérique qui un SMS semble provenir de ('adresse') quand les utilisateurs reçoivent un message sur son téléphone. Plus souvent c'est le numéro que vous bail pour les messages entrants ou votre service marketing nom. < br / > < br / &gt; spécificités peuvent être appliquées par les lois et règlements pour éviter le spam. Veillez à ce que l'ID de l'expéditeur vous entré répond à ces exigences, sinon les SMS service de messagerie peuvent ne pas fonctionner correctement.",
             "not_editable": "non modifiable",
             "display_model_features_link": "Afficher un lien vers un site Web avec des informations sur le modèle",
-            "display_model_features_link_hint": "L'utilisateur peut être fourni avec des informations supplémentaires sur le modèle de l'appareil activé"
+            "display_model_features_link_hint": "L'utilisateur peut être fourni avec des informations supplémentaires sur le modèle de l'appareil activé",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {
             "title": "Paramètres de service",
@@ -955,7 +964,8 @@ Ext.define('Locale.locale-fr',{
                 "save_btn": "Choisir"
             },
             "clear_btn": "Remise à zéro",
-            "misc_header": "Fonctions optionnelles"
+            "misc_header": "Fonctions optionnelles",
+            "monitoring_logo_title": "Logo d'interface utilisateur"
         },
         "upload_form": {
             "save_btn": "Télécharger",
@@ -966,12 +976,14 @@ Ext.define('Locale.locale-fr',{
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Fond d'écran pour la page de connexion",
-                "desktop_wallpaper": "Papier peint de page service"
+                "desktop_wallpaper": "Papier peint de page service",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Il est recommandé d'utiliser l'image du logo avec le fond transparent (PNG) et la largeur minimale de 200px.",
                 "favicon": "Il est recommandé d'utiliser l'image du logo avec le fond transparent et la taille de 32 x 32 px.",
-                "login_wallpaper": "Il est recommandé d'utiliser des images d'arrière-plan orientée horizontalement avec une résolution d'au moins 1920 x 1080 pixels (Full HD) et en format JPEG."
+                "login_wallpaper": "Il est recommandé d'utiliser des images d'arrière-plan orientée horizontalement avec une résolution d'au moins 1920 x 1080 pixels (Full HD) et en format JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "Image de format {0} (taille max {1} MB)",
             "error_text": "Échec de chargement d'image"
@@ -1135,7 +1147,7 @@ Ext.define('Locale.locale-fr',{
         }
     },
     "bundles": {
-        "menu_text": "Package contents",
+        "menu_text": "Contenu de l'emballage",
         "title": "Travailler avec des ensembles d'équipement",
         "menu": {
             "list": "Une liste des jeux",
@@ -1458,7 +1470,8 @@ Ext.define('Locale.locale-fr',{
         "VEF": "{0} Bs",
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
-        "ZWD": "{0} Z$"
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "features": {
         "api": "API",
@@ -1479,7 +1492,8 @@ Ext.define('Locale.locale-fr',{
         "routing": "Routage",
         "ui_mobile": "Interface web mobile",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "statuses": "Work statuses"
     },
     "map": {
         "zoom_in": "Effectuez un zoom avant",
