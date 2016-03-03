@@ -940,8 +940,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'sms_originator',
                 fieldLabel: _l.get('settings.fields.user_sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.user_sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.user_sms_sender_id_ph'),
-                allowBlank: true,
-                minLength: 0,
+                allowBlank: false,
+                minLength: 2,
                 maxLength: 100
             },
             {
