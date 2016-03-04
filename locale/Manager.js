@@ -109,6 +109,12 @@ Ext.define('Locale.Manager', {
             text: 'Türkçe',
             alias: ['tr', 'tr_TR', 'Türkçe'],
             rtl: false
+        }, {
+            id: 'ro_RO',
+            name: 'ro',
+            text: 'Românesc',
+            alias: ['ro', 'ro_RO', 'Românesc'],
+            rtl: false
         },
         {
             id: 'ar_AR',
@@ -296,10 +302,10 @@ Ext.define('Locale.Manager', {
 
         return browserLocale
             ? Ext.Array.indexOf(this.ru_locales, browserLocale) > -1
-                ? "ru"
-                : Ext.Array.indexOf(this.other_locales, browserLocale) > -1
-                    ? browserLocale
-                    : "en"
+                   ? "ru"
+                   : Ext.Array.indexOf(this.other_locales, browserLocale) > -1
+                  ? browserLocale
+                  : "en"
             : "en";
     },
 
