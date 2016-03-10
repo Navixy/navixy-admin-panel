@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     padding: '30 300',
     requires: ['NavixyPanel.plugins.FieldPostfix'],
     cls: 'avangate-subscription-panel',
-    minPaymentSum: 99,
+    minPaymentSum: 10,
     initComponent: function () {
         this.title = 'Subscription';
 
