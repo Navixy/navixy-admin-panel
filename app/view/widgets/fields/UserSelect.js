@@ -91,8 +91,10 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
     },
 
     showSelectWindow: function () {
+        var user = this.trackerRecord && this.trackerRecord.getUsersRecord();
         if (!this.window) {
             this.window = Ext.widget('userselectwindow', {
+                exclude_user_id: user && user.get("id"),
                 listeners: {
                     select: this.onSelect,
                     destroy: function () {
