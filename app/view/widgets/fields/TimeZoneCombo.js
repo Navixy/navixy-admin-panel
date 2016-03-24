@@ -23,7 +23,6 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
         '</tpl>',
         {
             getOffsetStr: function (offset) {
-                console.log(offset);
                 var int_offset = parseFloat(offset) || 0,
                     time = ("" + int_offset).split("."),
                     minutes = time[1] && time[1] / 100 * 60,
