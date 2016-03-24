@@ -23,8 +23,13 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
         '</tpl>',
         {
             getOffsetStr: function (offset) {
-                var int_offset = parseInt(offset) || 0;
-                return 'UTC' + (int_offset >= 0 ? "+" : '') + int_offset;
+                console.log(offset);
+                var int_offset = parseFloat(offset) || 0,
+                    time = ("" + int_offset).split("."),
+                    minutes = time[1] && time[1] / 100 * 60,
+                    date_str = time[0] + (minutes ? ":" + minutes + (minutes < 10 ? "0" : "") : "");
+
+                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str;
             }
         }
     ),
@@ -35,8 +40,12 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
         '</tpl>',
         {
             getOffsetStr: function (offset) {
-                var int_offset = parseInt(offset) || 0;
-                return 'UTC' + (int_offset >= 0 ? "+" : '') + int_offset;
+                var int_offset = parseFloat(offset) || 0,
+                    time = ("" + int_offset).split("."),
+                    minutes = time[1] && time[1] / 100 * 60,
+                    date_str = time[0] + (minutes ? ":" + minutes + (minutes < 10 ? "0" : "") : "");
+
+                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str;
             }
         }
     ),
