@@ -64,9 +64,6 @@ Ext.define('NavixyPanel.store.MapTypes', {
                 type: "ovi",
                 "name": _l.get('maps.ovi')
             }, {
-                type: "here",
-                "name": _l.get('maps.here')
-            }, {
                 type: "bing",
                 "name": _l.get('maps.bing')
             },
