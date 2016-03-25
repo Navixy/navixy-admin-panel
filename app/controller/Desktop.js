@@ -46,6 +46,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
             menuselect          : this.onMenuSelect,
             menudeselect        : this.onMenuDeselect,
             'section-search'    : this.onSearch,
+            'section-payment'    : this.onPayment,
             index               : this.onIndex,
             scope: this
         });
@@ -131,6 +132,15 @@ Ext.define('NavixyPanel.controller.Desktop', {
         }
     },
 
+    onPayment: function () {
+        if (Ext.checkPermission("paas_payments", "create")) {
+            this.application.fireEvent('handlefound');
+            this.application.fireEvent('contentchange', {
+                xtype: 'avangate-panel'
+            });
+        }
+    },
+
     onIndex: function () {
 
         this.application.fireEvent('handlefound');
@@ -147,5 +157,18 @@ Ext.define('NavixyPanel.controller.Desktop', {
             text: _l.get('index.menu_text'),
             target: ""
         });
+
+        this.registerPayments();
+    },
+
+    registerPayments: function () {
+        if (Ext.checkPermission("paas_payments", "create") && !Ext.checkPermission("service_settings", "read")) {
+            this.addMainMenuItem({
+                name: "payment",
+                text: _l.get('settings.subscription.title'),
+                target: "payment"
+            });
+        }
     }
+
 });

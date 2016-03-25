@@ -34,6 +34,9 @@ Ext.define('NavixyPanel.store.Dealer', {
         }, {
             name: "license_balance",
             defaultValue: 500
+        }, {
+            name: "block_status",
+            defaultValue: "NOT_BLOCKED"
         }
 
     ],

@@ -19,6 +19,12 @@ Ext.define('Locale.locale-en',{
     "access_denied": "Access denied",
     "access_denied_tip": "you do not have permission to access requested page",
     "index_title": "Welcome to Admin Panel",
+    "index_blocked": {
+        "inital_block": "Initial blocking.",
+        "block_login": "Control panel features are not available. It is necessary to replenish balance.",
+        "clients_blocked": "Client access to service and control panel functions are not available. It is necessary to replenish the balance."
+    },
+    "index_blocked_payment": "You can refill balance in \"Subscription\" partition",
     "old_version": "Old version",
     "auth": {
         "login": "Login",
@@ -796,6 +802,7 @@ Ext.define('Locale.locale-en',{
     "settings": {
         "menu_text": "Account management",
         "subscription": {
+            "title": "Subscription",
             "activation_btn_text": "Pay activation fee now (500 USD) online",
             "monthly_fee_btn_text": "Pay online",
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",

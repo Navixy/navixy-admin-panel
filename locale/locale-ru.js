@@ -19,6 +19,12 @@ Ext.define('Locale.locale-ru',{
     "access_denied": "Доступ запрещен",
     "access_denied_tip": "у вас нет прав для доступа к запрашиваемой странице",
     "index_title": "Добро пожаловать в панель управления",
+    "index_blocked": {
+        "inital_block": "Первичная блокировка.",
+        "block_login": "Функции панели управления недоступны. Необходимо пополнить баланс.",
+        "clients_blocked": "Клиентский доступ в сервис и функции панели управления недоступны. Необходимо пополнить баланс."
+    },
+    "index_blocked_payment": "Вы можете пополнить баланс в разделе \"Подписка\"",
     "index_tip": "",
     "old_version": "Старая версия",
     "auth": {
@@ -804,6 +810,7 @@ Ext.define('Locale.locale-ru',{
     "settings": {
         "menu_text": "Настройки площадки",
         "subscription": {
+            "title": "Подписка",
             "activation_btn_text": "Pay activation fee now (500 USD) online",
             "monthly_fee_btn_text": "Pay online",
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
