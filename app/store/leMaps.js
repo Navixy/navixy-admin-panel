@@ -106,19 +106,6 @@ Ext.define('NavixyPanel.store.leMaps', {
                         return Math.floor(Math.random() * 3 + 1);
                     }
                 }
-            }, {
-                name: 'here',
-                maxZoom: 18,
-                minZoom: 2,
-                urlTpl: '//{serv}.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?app_id=SqE1xcSngCd3m4a1zEGb&token=r0sR1DzqDkS6sDnh902FWQ&lg={lang}',
-                tplFns: {
-                    serv: function () {
-                        return Math.floor(Math.random() * 3 + 1);
-                    },
-                    lang: function () {
-                        return locale === 'ru' ? 'RUS' : 'ENG';
-                    }
-                }
             },
             {
                 name: 'bing',

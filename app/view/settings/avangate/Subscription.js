@@ -134,7 +134,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                             minValue: this.minPaymentSum,
                             step: 100,
                             decimalPrecision: 0,
-                            value: pendingAmount > this.minPaymentSum ? pendingAmount : this.minPaymentSum,
+                            value: pendingAmount > this.minPaymentSum ? pendingAmount : 100,
                             cls: 'x-field-light',
                             allowDecimals: false,
                             maxWidth: 150,
