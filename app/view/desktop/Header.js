@@ -49,7 +49,8 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         cls: 'dealer-info',
                         padding: '28 0 0 29',
                         height: 78,
-                        tpl: '<tpl if="legal_name">{legal_name}<div class="devices-info">{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.get("dealer_info.last")]} {active_limit}</tpl></div></tpl>',
+                        tpl: '<tpl if="legal_name">{legal_name}<div class="devices-info">{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} <tpl if="active_limit"> {[_l.get("dealer_info.last")]} {active_limit}</tpl></div></tpl>'+
+                            '<tpl if="block_status != \'NOT_BLOCKED\'"><div style="line-height: 22px; color: red">{[_l.get("header_blocked." + values.block_status.toLowerCase())]}</div></tpl>',
                         data: dealerStore.first().getData()
                     },
                     {

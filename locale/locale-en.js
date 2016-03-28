@@ -24,6 +24,11 @@ Ext.define('Locale.locale-en',{
         "block_login": "Control panel features are not available. It is necessary to replenish balance.",
         "clients_blocked": "Client access to service and control panel functions are not available. It is necessary to replenish the balance."
     },
+    "header_blocked": {
+        "inital_block": "Initial blocking",
+        "block_login": "Control panel blocked",
+        "clients_blocked": "Client access to service and control panel blocked"
+    },
     "index_blocked_payment": "You can refill balance in \"Subscription\" partition",
     "old_version": "Old version",
     "auth": {
