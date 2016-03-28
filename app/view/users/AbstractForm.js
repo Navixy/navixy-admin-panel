@@ -60,7 +60,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 minLength: 2,
                 maxLength: 100,
 
-                validateOnChange: false
+                validateOnChange: true
             },
             {
                 fieldLabel: _l.get('users.create_form.password'),
