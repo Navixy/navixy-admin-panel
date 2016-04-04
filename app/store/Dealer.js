@@ -37,6 +37,9 @@ Ext.define('NavixyPanel.store.Dealer', {
         }, {
             name: "block_status",
             defaultValue: "NOT_BLOCKED"
+        }, {
+            name: "tariff",
+            defaultValue: {}
         }
 
     ],

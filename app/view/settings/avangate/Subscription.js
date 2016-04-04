@@ -108,56 +108,67 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 })
             }, hintCmp];
         } else {
-            var pendingAmount = dealerData.license_balance < 0 ? -dealerData.license_balance : 0,
+            var pendingAmount = dealerData.tariff.min_license_pay ? dealerData.tariff.min_license_pay : 100,
                 pedingOrBalanceText = dealerData.license_balance < 0 ?
                                       Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount.toFixed(2))) :
-                                      Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2)));
+                                      Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2))),
 
-            items = [{
-                xtype: 'component',
-                padding: '10 0',
-                html: localePart.get('monthly_fee_hint')
-            }, {
-                xtype: 'component',
-                padding: '10 0',
-                html: pedingOrBalanceText
-            },
-                {
-                    xtype: 'container',
-                    layout: {
-                        type: 'hbox'
-                    },
-                    items: [
-                        {
-                            xtype: 'numberfield',
-                            name: 'qty',
-                            minValue: this.minPaymentSum,
-                            step: 100,
-                            decimalPrecision: 0,
-                            value: pendingAmount > this.minPaymentSum ? pendingAmount : 100,
-                            cls: 'x-field-light',
-                            allowDecimals: false,
-                            maxWidth: 150,
-                            fixPrecision: function (value) {
-                                return Math.ceil(value);
-                            },
-                            skipFormValidation: true,
-                            margin: '0 5 0 0'
+                items = [{
+                    xtype: 'component',
+                    padding: '10 0',
+                    html: localePart.get('monthly_fee_hint')
+                }, {
+                    xtype: 'component',
+                    padding: '10 0',
+                    html: pedingOrBalanceText
+                },
+                    {
+                        xtype: 'container',
+                        layout: {
+                            type: 'hbox'
                         },
-                        {
-                            xtype: 'button',
-                            maxWidth: 120,
-                            padding: 3,
-                            text: localePart.get('monthly_fee_btn_text'),
-                            handler: this.redirectToPayForm,
-                            scope: this
-                        }
-                    ]
+                        items: [
+                            {
+                                xtype: 'numberfield',
+                                name: 'qty',
+                                minValue: this.minPaymentSum,
+                                step: 100,
+                                decimalPrecision: 0,
+                                value: pendingAmount,
+                                cls: 'x-field-light',
+                                allowDecimals: false,
+                                maxWidth: 150,
+                                fixPrecision: function (value) {
+                                    return Math.ceil(value);
+                                },
+                                skipFormValidation: true,
+                                margin: '0 5 0 0',
+                                plugins: this.resolveFieldPlugin(currencyTpl)
+                            },
+                            {
+                                xtype: 'button',
+                                maxWidth: 120,
+                                padding: 3,
+                                text: localePart.get('monthly_fee_btn_text'),
+                                handler: this.redirectToPayForm,
+                                scope: this
+                            }
+                        ]
 
-                }, hintCmp];
+                    }, hintCmp];
         }
 
         return items;
+    },
+
+    resolveFieldPlugin: function (currencyTpl) {
+        return Ext.String.startsWith(currencyTpl, '{0}') ? {
+            ptype: 'fieldpostfix',
+            postfix: '$'
+        } : {
+            ptype: 'fieldprefix',
+            prefix: '$'
+        }
     },
 
     redirectToPayForm: function () {
