@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     extend: 'Ext.Container',
     alias: 'widget.avangate-panel',
     padding: '30 300',
-    requires: ['NavixyPanel.plugins.FieldPostfix'],
+    requires: ['NavixyPanel.plugins.FieldPostfix', 'NavixyPanel.plugins.FieldPrefix'],
     cls: 'avangate-subscription-panel',
     minPaymentSum: 10,
     initComponent: function () {
@@ -162,12 +162,13 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     },
 
     resolveFieldPlugin: function (currencyTpl) {
+        var currencySign = Ext.String.trim(currencyTpl.replace('{0}', ''));
         return Ext.String.startsWith(currencyTpl, '{0}') ? {
             ptype: 'fieldpostfix',
-            postfix: '$'
+            postfix: currencySign
         } : {
             ptype: 'fieldprefix',
-            prefix: '$'
+            prefix: currencySign
         }
     },
 
