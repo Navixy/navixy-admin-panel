@@ -163,6 +163,12 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 ]
             },
             {
+                name: 'google_client_id',
+                fieldLabel: _l.get('settings.fields.google_client_id'),
+                minLength: 2,
+                maxLength: 100
+            },
+            {
                 xtype: 'button',
                 ui: 'default',
                 iconCls: 'edit-button',
