@@ -109,9 +109,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
             }, hintCmp];
         } else {
             var pendingAmount = dealerData.tariff.min_license_pay ? dealerData.tariff.min_license_pay : 100,
-                pedingOrBalanceText = dealerData.license_balance < 0 ?
-                                      Ext.String.format(localePart.get('pending_amount'), Ext.String.format(currencyTpl, pendingAmount.toFixed(2))) :
-                                      Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2))),
+                balanceText = Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2)));
 
                 items = [{
                     xtype: 'component',
@@ -120,7 +118,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 }, {
                     xtype: 'component',
                     padding: '10 0',
-                    html: pedingOrBalanceText
+                    html: balanceText
                 },
                     {
                         xtype: 'container',
