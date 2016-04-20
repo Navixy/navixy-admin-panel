@@ -29,6 +29,15 @@ Ext.define('NavixyPanel.view.settings.smtpgate.TestEmailWindow', {
             labelAlign: 'top',
             width: 200,
             emptyText: 'example@example.com',
+            enableKeyEvents: true,
+            listeners: {
+                'keypress': function (field, ev) {
+                    if (Ext.Array.contains([10, 13], ev.getKey())) {
+                        this.sendTestEmail();
+                    }
+                },
+                scope: this
+            },
             allowBlank: false
         }, {
             xtype: 'button',
@@ -47,7 +56,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.TestEmailWindow', {
         this.down('textfield').focus();
     },
 
-    sendTestEmail: function (btn) {
+    sendTestEmail: function () {
         var email = this.down('textfield').getValue();
 
         if (email) {
@@ -56,8 +65,9 @@ Ext.define('NavixyPanel.view.settings.smtpgate.TestEmailWindow', {
                     to: email
                 },
                 callback: function () {
-                    btn.up().close();
-                }
+                    this.close();
+                },
+                scope: this
             })
         }
 
