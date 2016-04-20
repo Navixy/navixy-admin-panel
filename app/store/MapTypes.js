@@ -53,10 +53,6 @@ Ext.define('NavixyPanel.store.MapTypes', {
                 "name": _l.get('maps.cdcom')
             },
             {
-                type: "navitel",
-                "name": _l.get('maps.navitel')
-            },
-            {
                 type: "doublegis",
                 "name": _l.get('maps.doublegis')
             },
