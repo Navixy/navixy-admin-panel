@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -818,6 +818,39 @@ Ext.define('Locale.locale-en',{
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}"
+        },
+
+        email_gateways: {
+            title: 'Email Gateways',
+            description: 'To ensure the deliverability of emails from the platform to your users (notifications, alerts, invoices, etc.) and avoid anti-spam filters we offer several options on which email gateway to use.',
+            mandril_text: 'If you want to use your customised email address in the ‘From’ field, please configure SPF and DKIM records for your domain as described in our manual first, then send us your request to support@navixy.com with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request',
+            label: 'Server label',
+            default_label: 'Your SMTP server',
+            encryption: {
+                label: 'Encryption',
+                tls: 'TLS',
+                ssl: 'SSL',
+                none: "None"
+            },
+            auth: {
+                label: 'Authentication',
+                yes: 'Yes',
+                no: 'No'
+            },
+            host_label: 'SMTP host',
+            port_label: 'SMPT port',
+            host_placeholder: 'IP or domain name',
+            user: 'Username',
+            password: 'Password',
+            default_from_email: 'Default from',
+            save_btn_text: 'Save settings',
+            gateway_assing_success_msg: 'Email gate has been successfully assigned'
+        },
+        test_email: {
+            title: 'Send test email',
+            email_field: 'Target email',
+            send_test_email_btn: 'Send test email',
+            send_btn: 'Send'
         },
         "fields": {
             "service_title": "Service title",

@@ -5,7 +5,7 @@
  */
 
 Ext.define('NavixyPanel.view.settings.BlockHeader', {
-    extend: 'Ext.Container',
+    extend: 'Ext.Component',
     alias: 'widget.blockheader',
     cls: 'block_header',
     padding: '30 0 10 0',

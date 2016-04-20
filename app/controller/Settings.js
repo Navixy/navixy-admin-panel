@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     views: [
         'settings.Edit',
         'settings.avangate.Subscription',
-
+        'settings.smtpgate.GatePanel',
         'widgets.map.Map',
         'settings.components.MapWindow'
     ],
@@ -50,6 +50,10 @@ Ext.define('NavixyPanel.controller.Settings', {
 
             'map-edit-window': {
                 'formsubmit': this.updateMapSettings
+            },
+
+            'smtp-gate-panel': {
+                'smtp-settings-save-request': this.handleSmptpSettings
             }
         });
 
@@ -97,7 +101,10 @@ Ext.define('NavixyPanel.controller.Settings', {
     },
 
     showMapSettingsWindow: function (cmp, record, values) {
-        Ext.widget('map-edit-window', {record: record, formValues: values}).show();
+        Ext.widget('map-edit-window', {
+            record: record,
+            formValues: values
+        }).show();
     },
 
     showPaymentsRecieveMsg: function () {
@@ -244,5 +251,66 @@ Ext.define('NavixyPanel.controller.Settings', {
         if (dealer) {
             dealer.set(data);
         }
+    },
+
+    handleSmptpSettings: function (gateSettings) {
+        if (Ext.checkPermission('email_gateways', 'update')) {
+            if (!gateSettings.selectedGate) {
+                this.createAndAssignEmailGate(gateSettings.settings)
+            } else if (gateSettings.settings) {
+                this.updateAndAssignEmailGate(gateSettings.settings)
+            } else {
+                this.assignEmailGate(gateSettings.selectedGate);
+            }
+        }
+
+        if (Ext.checkPermission('notification_settings', 'update')) {
+            Ext.API.updateEmailNotificationSettings({
+                params: gateSettings.notifications
+            });
+        }
+
+    },
+
+    assignEmailGate: function (id) {
+        Ext.API.assignEmailGate({
+            params: {
+                gateway_id: id
+            },
+            callback: function () {
+                Ext.Msg.show({
+                    msg: _l.get('settings.email_gateways.gateway_assing_success_msg'),
+                    buttons: Ext.Msg.OK,
+                    closable: false
+                });
+            }
+        });
+    },
+
+    updateAndAssignEmailGate: function (settings) {
+        Ext.API.updateEmailGate({
+            params: {
+                gateway: JSON.stringify(settings)
+            },
+            callback: function () {
+                this.assignEmailGate(settings.id);
+            },
+            scope: this
+        })
+    },
+
+    createAndAssignEmailGate: function (settings) {
+        delete settings.id;
+
+        Ext.API.createEmailGate({
+            params: {
+                gateway: JSON.stringify(settings)
+            },
+            callback: function (id) {
+                Ext.getFirst('smtp-gate-item[gate_id=null]').setGateId(id);
+                this.assignEmailGate(id);
+            },
+            scope: this
+        })
     }
 });

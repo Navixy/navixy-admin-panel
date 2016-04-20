@@ -64,6 +64,9 @@ Ext.define('NavixyPanel.controller.Main', {
     // Overrides
     initOverrides: function () {
         Ext.override(Ext, {
+            log: function () {
+                return console.log.apply(console, arguments);
+            },
             getHintSymbol: function (hint, cls) {
                 return ['<span class="icon-help ',
                         cls || '',
@@ -76,18 +79,22 @@ Ext.define('NavixyPanel.controller.Main', {
         });
 
         Ext.override(Ext.form.Basic, {
-            isValid: function() {
+            isValid: function () {
                 var me = this,
                     invalid;
                 Ext.suspendLayouts();
-                invalid = me.getFields().filterBy(function(field) {
-                    return field.skipFormValidation ? false : !field.validate();
-                });
+                try {
+                    invalid = me.getFields().filterBy(function (field) {
+                        return field.skipFormValidation ? false : !field.isDisabled() && !field.validate();
+                    });
+                } catch (e) {
+                    Ext.log(e.stack);
+                }
                 Ext.resumeLayouts(true);
                 return invalid.length < 1;
             },
-            hasInvalidField: function() {
-                return !!this.getFields().findBy(function(field) {
+            hasInvalidField: function () {
+                return !!this.getFields().findBy(function (field) {
                     var preventMark = field.preventMark,
                         isValid;
                     field.preventMark = true;
@@ -252,7 +259,7 @@ Ext.define('NavixyPanel.controller.Main', {
                     var tmp = Math.ceil(value) % 100,
                         len = unitsCombination.length;
 
-                        index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10;
+                    index = tmp < 20 && tmp > 10 ? tmp % 20 : tmp % 10;
 
                     if (unitsCombination[index]) {
                         result = unitsCombination[index];

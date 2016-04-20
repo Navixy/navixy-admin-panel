@@ -94,7 +94,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-
     getUsersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
@@ -163,7 +162,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             root: 'list'
         });
     },
-
 
     getTrackersList: function (config) {
         this.requestWithOptions(config, {
@@ -248,8 +246,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-
-
     getTariffsList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
@@ -325,7 +321,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-
     getSettingsService: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,
@@ -337,7 +332,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getSettingsNotification : function (callback, failure, scope) {
+    getSettingsNotification: function (callback, failure, scope) {
         this.sendRequest({
             success: callback,
             failure: failure,
@@ -432,7 +427,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }, config));
     },
 
-
     getBundlesList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
@@ -487,5 +481,55 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'import',
             handler: 'tracker/bundle'
         });
+    },
+
+    getEmailGates: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'gateways/email'
+        });
+    },
+
+    createEmailGate: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            root: 'id',
+            handler: 'gateways/email'
+        });
+    },
+
+    updateEmailGate: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'gateways/email'
+        });
+    },
+
+    assignEmailGate: function (config) {
+        this.requestWithOptions(config, {
+            action: 'bind',
+            handler: 'gateways/email'
+        });
+    },
+
+    removeEmailGate: function (config) {
+        this.requestWithOptions(config, {
+            action: 'delete',
+            handler: 'gateways/email'
+        });
+    },
+    sendTestEmail: function (config) {
+        this.requestWithOptions(config, {
+            action: 'send_email',
+            handler: 'gateways/email'
+        });
+    },
+
+    updateEmailNotificationSettings: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'dealer/settings/notification/email'
+        });
     }
+
 });

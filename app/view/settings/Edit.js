@@ -398,26 +398,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            {
-                title: lp.get('emails_fields'),
-                role: 'tab',
-                padding: '0 0 0 20',
-                items: [
-                    {
-                        xtype: 'component',
-                        cls: 'block_hint',
-                        margin: '40 20 0 25',
-                        html: lp.get('emails_main_info')
-                    },
-                    {
-                        items: [
-                            {
-                                items: this.getEmailsItems()
-                            }
-                        ]
-                    }
-                ]
-            },
+            Ext.checkPermission('email_gateways', 'create') ? {
+                xtype: 'smtp-gate-panel',
+                layout: {
+                    type: 'auto'
+                },
+                role: 'not-settings-tab'
+            } : null,
             {
                 title: lp.get('sms_fields'),
                 role: 'tab',
@@ -461,6 +448,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             }
                 : null,
+
             Ext.checkPermission('paas_payments', 'create') && seller_currency === this.paymentCurrency
                 ? {
                 xtype: 'avangate-panel',

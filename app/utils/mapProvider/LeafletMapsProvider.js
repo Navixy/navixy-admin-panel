@@ -10,23 +10,15 @@ Ext.define('NavixyPanel.utils.mapProvider.LeafletMapsProvider', {
         'Lib.leaflet.Leaflet',
         'Lib.leaflet.plugins.tile.Google',
         'Lib.leaflet.plugins.Includes',
-        'Lib.leaflet.plugins.utils.PolylineDecorator',
         'Lib.leaflet.plugins.utils.GeometryUtil',
-        'Lib.leaflet.plugins.utils.GreinerHormann',
-        'Lib.leaflet.plugins.utils.SpatialQuery',
-		'Lib.leaflet.plugins.polyline.MultiOptionsPolyline'
+        'Lib.leaflet.plugins.utils.SpatialQuery'
     ],
 
     requires: [
         'NavixyPanel.utils.mapTypes.leaflet.SimpleMapType',
         'NavixyPanel.utils.mapTypes.leaflet.GoogleMapType',
         'NavixyPanel.utils.mapTypes.leaflet.ProjectionMapType',
-        'NavixyPanel.utils.mapTypes.leaflet.OffsetProjectionMapType',
-        //'NavixyPanel.utils.mapTools.leaflet.AbstractLayer',
-        //'NavixyPanel.utils.mapTools.leaflet.CustomOverlay',
-        //'NavixyPanel.utils.mapTools.leaflet.FloatOverlay',
-        //'NavixyPanel.utils.mapTools.leaflet.TrafficOverlay',
-        //'NavixyPanel.utils.mapTools.leaflet.TilesOverlay'
+        'NavixyPanel.utils.mapTypes.leaflet.OffsetProjectionMapType'
     ],
 
     providerMixinName: 'NavixyProvider',
