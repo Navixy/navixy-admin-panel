@@ -159,14 +159,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 layout: {
                     type: 'vbox'
                 },
-                name: 'gate_id',
-                listeners: {
-                    'afterrender': function (rg) {
-                        rg.setValue({'gate_id': data.bound_gateway});
-                    },
-                    single: true
-
-                }
+                name: 'gate_id'
             },
             items = [];
 
@@ -178,6 +171,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                            '</span>'].join(''),
                 name: 'gate_id',
                 leasable: true,
+                checked: item.id === data.bound_gateway,
                 inputValue: item.id
             })
         });
@@ -186,6 +180,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
             Ext.each(data.own, function (settingsItem, key) {
                 items.push({
                     xtype: 'smtp-gate-item',
+                    checked: settingsItem.id === data.bound_gateway,
                     settings: settingsItem,
                     gate_id: settingsItem.id
                 })

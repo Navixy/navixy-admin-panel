@@ -15,11 +15,14 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
     },
     gate_id: null,
     settings: null,
+    checked: false,
     initComponent: function () {
         var localePart = _l.get('settings.email_gateways');
+
         this.items = [{
             xtype: 'radio',
             name: 'gate_id',
+            checked: this.checked,
             inputValue: this.gate_id,
             margin: '0 15 0 0',
             boxLabel: '<b>' + localePart.get('default_label') + '</b>',

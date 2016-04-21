@@ -823,7 +823,8 @@ Ext.define('Locale.locale-en', {
         email_gateways: {
             title: 'Email Gateways',
             description: 'To ensure the deliverability of emails from the platform to your users (notifications, alerts, invoices, etc.) and avoid anti-spam filters we offer several options on which email gateway to use.',
-            mandril_text: 'If you want to use your customised email address in the ‘From’ field, please configure SPF and DKIM records for your domain as described in our manual first, then send us your request to support@navixy.com with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request',
+            mandril_text: 'Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href="https://www.navixy.com/docs/admin-panel-docs/settings/spfdkim/" target="_blank">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com',
+            mandril_text: 'If you want to use your customised email address in the ‘From’ field, please configure <b>SPF</b> and DKIM records for your domain as described in our manual first, then send us your request to support@navixy.com with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request',
             label: 'Server label',
             default_label: 'Your SMTP server',
             encryption: {
