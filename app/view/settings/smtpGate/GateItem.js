@@ -138,6 +138,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
             }, {
                 xtype: 'textfield',
                 name: 'password',
+                inputType: 'password',
                 disabled: true,
                 fieldLabel: localePart.get('password')
             }]
