@@ -831,7 +831,7 @@ Ext.define('Locale.locale-ru', {
         email_gateways: {
             title: 'Email сообщения',
             description: 'Для надежной доставки почтовых уведомлений (сообщений о событиях, счетов и т.п.) и избежания попадания в спам-листы мы предлагаем использовать наш почтовый шлюз. Тем не менее вы можете выбрать и настроить свой почтовый шлюз:',
-            mandril_text: 'Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href="https://www.navixy.com/docs/admin-panel-docs/settings/spfdkim/" target="_blank">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com',
+            mandril_text: 'Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href="https://www.navixy.com/ru/doc/panel/email/navixy-email-gateway/" target="_blank">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com',
             label: 'Название шлюза',
             default_label: 'Ваш SMTP сервер',
             encryption: {
