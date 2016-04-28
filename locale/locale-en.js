@@ -832,11 +832,7 @@ Ext.define('Locale.locale-en', {
                 ssl: 'SSL',
                 none: "None"
             },
-            auth: {
-                label: 'Authentication',
-                yes: 'Yes',
-                no: 'No'
-            },
+            auth_label: "Authentication",
             host_label: 'SMTP host',
             port_label: 'SMPT port',
             host_placeholder: 'IP or domain name',
