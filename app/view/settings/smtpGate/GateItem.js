@@ -16,6 +16,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
     gate_id: null,
     settings: null,
     checked: false,
+    leasable : false,
     initComponent: function () {
         var localePart = _l.get('settings.email_gateways');
 
@@ -195,7 +196,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 id: this.gate_id,
                 label: 'Custom smtp',
                 "provider": "smtp",
-                "leasable": false,
+                "leasable": this.leasable,
                 "params": {
                     "default_from_address": null,
                     "mail.smtp.user": authEnabled ? this.userField.getValue() : null,
@@ -244,6 +245,9 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
 
     setValues: function (settings) {
         var smptpSettings = settings.params;
+
+        this.leasable = settings.leasable || false;
+
         this.userField.setValue(smptpSettings['mail.smtp.user'])
         this.passwordField.setValue(smptpSettings['mail.smtp.password']);
 
