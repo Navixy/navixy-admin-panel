@@ -116,7 +116,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     }
                     values[name] = values[name] && values[name].length
                         ? Ext.Array.unique(values[name].concat(data))
-                        : data
+                        : data || []
+                } else {
+                    if (!values[name]) {
+                        values[name] = [];
+                    }
                 }
             }
 
