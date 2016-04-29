@@ -52,6 +52,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 fieldLabel: _l.get('settings.fields.email_from'),
                 minLength: 2,
                 maxLength: 100,
+                allowBlank: false,
                 role: 'permission-field'
             }, {
                 xtype: 'textfield',
@@ -110,9 +111,13 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
 
     getNotificationsSettings: function () {
         var settings = {};
-
-        this.down('container[role=email-settings]').query('field').forEach(function (field) {
-            settings[field.name] = field.getValue();
+        Ext.each(this.down('container[role=email-settings]').query('field'), function (field) {
+            if (field.isValid()) {
+                settings[field.name] = field.getValue();
+            } else {
+                settings = null;
+                return false;
+            }
         });
 
         return settings;
@@ -120,10 +125,15 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
 
     getValues: function () {
         var selectedGate = this.down('radiogroup[name=gate_id]').getValue().gate_id,
+            notificationsSettings = this.getNotificationsSettings(),
             gateSettings = {
                 selectedGate: selectedGate,
-                notifications: this.getNotificationsSettings()
+                notifications: notificationsSettings
             };
+
+        if (!notificationsSettings) {
+            return null;
+        }
 
         if (!this.down('radio[inputValue=' + selectedGate + ']').leasable) {
             var settings = this.down('smtp-gate-item[gate_id=' + selectedGate + ']').getValues();
