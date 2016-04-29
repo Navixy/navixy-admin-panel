@@ -16,7 +16,11 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
     gate_id: null,
     settings: null,
     checked: false,
-    leasable : false,
+    leasable: false,
+    getEncriptionName: function () {
+        return this.id + '_encryption';
+    },
+
     initComponent: function () {
         var localePart = _l.get('settings.email_gateways');
 
@@ -62,21 +66,22 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 fieldLabel: localePart.get('encryption.label'),
                 vertical: false,
                 defaults: {
+                    name: this.getEncriptionName(),
                     width: 100
                 },
                 name: 'encryption',
                 listeners: {
                     'change': function (rg, data) {
-                        var port = rg.down('radio[inputValue=' + data.encryption + ']').port;
-
-                        this.portField.setValue(port)
+                        if (data.encryption) {
+                            var port = rg.down('radio[inputValue=' + data.encryption + ']').port;
+                            this.portField.setValue(port)
+                        }
                     },
                     scope: this
                 },
                 items: [
                     {
                         boxLabel: localePart.get('encryption.none'),
-                        name: 'encryption',
                         port: 25,
                         inputValue: 'none',
                         checked: true
@@ -84,12 +89,10 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                     {
                         boxLabel: localePart.get('encryption.ssl'),
                         port: 465,
-                        name: 'encryption',
                         inputValue: 'ssl'
                     },
                     {
                         boxLabel: localePart.get('encryption.tls'),
-                        name: 'encryption',
                         port: 587,
                         inputValue: 'tls'
                     }
@@ -214,7 +217,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                     "mail.transport.protocol": "smtp"
                 }
             },
-            encription = this.encryptionRadioGroup.getValue().encryption;
+            encription = this.encryptionRadioGroup.getValue()[this.getEncriptionName()];
 
         switch (encription) {
             case 'none':
@@ -258,7 +261,6 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
         switch (true) {
             case smptpSettings['mail.smtp.use_ssl']:
                 encryption = 'ssl';
-
                 break;
 
             case  smptpSettings['mail.smtp.starttls.enable']:
@@ -266,9 +268,10 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 break;
         }
 
-        this.encryptionRadioGroup.setValue({
-            encryption: encryption
-        });
+        var encriptioValue = {};
+        encriptioValue[this.getEncriptionName()] = encryption;
+
+        this.encryptionRadioGroup.setValue(encriptioValue);
 
         this.hostField.setValue(smptpSettings['mail.smtp.host']);
         this.portField.setValue(smptpSettings['mail.smtp.port']);
