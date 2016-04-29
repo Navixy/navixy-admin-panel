@@ -72,8 +72,10 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 name: 'encryption',
                 listeners: {
                     'change': function (rg, data) {
-                        if (data.encryption) {
-                            var port = rg.down('radio[inputValue=' + data.encryption + ']').port;
+                        console.log(data);
+                        var encription = data[this.getEncriptionName()]
+                        if (encription) {
+                            var port = rg.down('radio[inputValue=' + encription + ']').port;
                             this.portField.setValue(port)
                         }
                     },
@@ -269,10 +271,10 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
         }
 
         var encriptioValue = {};
+
         encriptioValue[this.getEncriptionName()] = encryption;
 
         this.encryptionRadioGroup.setValue(encriptioValue);
-
         this.hostField.setValue(smptpSettings['mail.smtp.host']);
         this.portField.setValue(smptpSettings['mail.smtp.port']);
 

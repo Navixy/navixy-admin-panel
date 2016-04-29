@@ -111,6 +111,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
 
     getNotificationsSettings: function () {
         var settings = {};
+
         Ext.each(this.down('container[role=email-settings]').query('field'), function (field) {
             if (field.isValid()) {
                 settings[field.name] = field.getValue();
