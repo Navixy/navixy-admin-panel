@@ -104,7 +104,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         this.iterateFields(function(field) {
             if (field.is('checkboxgroup')) {
                 var value = field.getValue(),
-                    name = field.items.first().name,
+                    name = field.sRole || field.items.first().name,
                     data = value[name];
 
                 if (data) {
@@ -673,6 +673,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 columns: 4,
                 vertical: true,
                 ui: 'light',
+                sRole: 'features',
                 items: appsList,
                 cellCls: 'form-cell',
                 colspan: 4,
@@ -688,6 +689,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 columns: 4,
                 vertical: true,
                 ui: 'light',
+                sRole: 'features',
                 items: featuresList,
                 cellCls: 'form-cell',
                 colspan: 4,
