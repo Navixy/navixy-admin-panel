@@ -841,8 +841,8 @@ Ext.define('Locale.locale-ru', {
                 none: "Нет"
             },
             auth_label: "Авторизация",
-            host_label: 'SMPT сервер',
-            port_label: 'SMPT порт',
+            host_label: 'SMTP сервер',
+            port_label: 'SMTP порт',
             host_placeholder: 'IP или домен',
             user: 'Пользователь',
             password: 'Пароль',
