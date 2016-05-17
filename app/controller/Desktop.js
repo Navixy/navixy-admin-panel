@@ -133,7 +133,11 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onPayment: function () {
-        if (Ext.checkPermission("paas_payments", "create")) {
+        var dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first(),
+            seller_currency = dealer && dealer.get('seller_currency');
+
+        if (Ext.checkPermission("paas_payments", "create") && seller_currency === "USD") {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
                 xtype: 'avangate-panel'
@@ -162,7 +166,11 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     registerPayments: function () {
-        if (Ext.checkPermission("paas_payments", "create") && !Ext.checkPermission("service_settings", "read")) {
+        var dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first(),
+            seller_currency = dealer && dealer.get('seller_currency');
+
+        if (Ext.checkPermission("paas_payments", "create") && !Ext.checkPermission("service_settings", "read") && seller_currency === "USD") {
             this.addMainMenuItem({
                 name: "payment",
                 text: _l.get('settings.subscription.title'),
