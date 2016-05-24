@@ -173,7 +173,8 @@ Ext.define('Locale.locale-pt',{
         "minute": "m",
         "second": "s",
         "litres": "l",
-        "day": "d"
+        "day": "d",
+        "mile": "mi"
     },
     "search": {
         "empty": "Pesquisar por categoria",
@@ -251,7 +252,81 @@ Ext.define('Locale.locale-pt',{
         "mdl": "Moldovan leu",
         "gel": "Georgian lari",
         "amd": "Armenian dram",
-        "azn": "Azerbaijani manat"
+        "azn": "Azerbaijani manat",
+        "all": "Albania Lek",
+        "afn": "Afghanistan Afghani",
+        "ars": "Argentina Peso",
+        "awg": "Aruba Guilder",
+        "bsd": "Bahamas Dollar",
+        "bbd": "Barbados Dollar",
+        "bzd": "Belize Dollar",
+        "bmd": "Bermuda Dollar",
+        "bob": "Bolivia Boliviano",
+        "bam": "Bosnia and Herzegovina Convertible Marka",
+        "bwp": "Botswana Pula",
+        "bgn": "Bulgaria Lev",
+        "bnd": "Brunei Darussalam Dollar",
+        "khr": "Cambodia Riel",
+        "kyd": "Cayman Islands Dollar",
+        "cop": "Colombia Peso",
+        "crc": "Costa Rica Colon",
+        "hrk": "Croatia Kuna",
+        "cup": "Cuba Peso",
+        "dop": "Dominican Republic Peso",
+        "xcd": "East Caribbean Dollar",
+        "egp": "Egypt Pound",
+        "svc": "El Salvador Colon",
+        "eek": "Estonia Kroon",
+        "fkp": "Falkland Islands (Malvinas) Pound",
+        "fjd": "Fiji Dollar",
+        "ghc": "Ghana Cedi",
+        "gip": "Gibraltar Pound",
+        "gtq": "Guatemala Quetzal",
+        "ggp": "Guernsey Pound",
+        "gyd": "Guyana Dollar",
+        "hnl": "Honduras Lempira",
+        "isk": "Iceland Krona",
+        "irr": "Iran Rial",
+        "imp": "Isle of Man Pound",
+        "jmd": "Jamaica Dollar",
+        "jep": "Jersey Pound",
+        "kpw": "Korea (North) Won",
+        "lak": "Laos Kip",
+        "lbp": "Lebanon Pound",
+        "lrd": "Liberia Dollar",
+        "mkd": "Macedonia Denar",
+        "mur": "Mauritius Rupee",
+        "mnt": "Mongolia Tughrik",
+        "mzn": "Mozambique Metical",
+        "nad": "Namibia Dollar",
+        "npr": "Nepal Rupee",
+        "ang": "Netherlands Antilles Guilder",
+        "nio": "Nicaragua Cordoba",
+        "ngn": "Nigeria Naira",
+        "omr": "Oman Rial",
+        "pab": "Panama Balboa",
+        "pyg": "Paraguay Guarani",
+        "pen": "Peru Nuevo Sol",
+        "qar": "Qatar Riyal",
+        "ron": "Romania New Leu",
+        "shp": "Saint Helena Pound",
+        "sar": "Saudi Arabia Riyal",
+        "rsd": "Serbia Dinar",
+        "scr": "Seychelles Rupee",
+        "sbd": "Solomon Islands Dollar",
+        "sos": "Somalia Shilling",
+        "lkr": "Sri Lanka Rupee",
+        "srd": "Suriname Dollar",
+        "syp": "Syria Pound",
+        "ttd": "Trinidad and Tobago Dollar",
+        "trl": "Turkey Lira",
+        "tvd": "Tuvalu Dollar",
+        "uyu": "Uruguay Peso",
+        "vef": "Venezuela Bolivar",
+        "vnd": "Viet Nam Dong",
+        "yer": "Yemen Rial",
+        "zwd": "Zimbabwe Dollar",
+        "mad": "Moroccan dirham"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -335,7 +410,8 @@ Ext.define('Locale.locale-pt',{
             "activated_short": {
                 "title": "Status",
                 "status_true": "Ativo",
-                "status_false": "Não ativo"
+                "status_false": "Não ativo",
+                "status_no": "Active, email not confirmed"
             },
             "registered_short": "legal",
             "password": "Nova senha",
@@ -370,7 +446,8 @@ Ext.define('Locale.locale-pt',{
                 "user_edit": "Editar usuário",
                 "user_change_password": "Alterar senha",
                 "transactions": "Transações",
-                "create_transaction": "Alterar o equilíbrio"
+                "create_transaction": "Alterar o equilíbrio",
+                "hash_text": "Get session key"
             }
         },
         "transactions": {
@@ -396,7 +473,8 @@ Ext.define('Locale.locale-pt',{
                     "monthly": "mensal",
                     "partner": "de um parceiro",
                     "activeday": "dia activo",
-                    "everyday": "mensal por dia"
+                    "everyday": "mensal por dia",
+                    "sms": "SMS message"
                 }
             }
         },
@@ -411,6 +489,9 @@ Ext.define('Locale.locale-pt',{
         "select_error": "Tracker ou o clone dele já está vinculado ao usuário selecionado",
         "select": {
             "title": "Selecione um usuário"
+        },
+        "session_hash": {
+            "title": "User session key"
         }
     },
     "trackers": {
@@ -799,7 +880,12 @@ Ext.define('Locale.locale-pt',{
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly."
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
+            "display_model_features_link": "Show a link to a website with information about the model",
+            "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "show_call_notifications": "Allow configuration of voice notifications",
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {
             "title": "Configurações do serviço",
@@ -868,7 +954,18 @@ Ext.define('Locale.locale-pt',{
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
             "service_info": "Define the preferences of your service.",
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time."
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
+            "monitoring_logo_title": "User interface logo",
+            "service_maps_preview": "Map default settings preview",
+            "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
+            "map_edit_btn": "Visual editor",
+            "map_window": {
+                "title": "Map default settings – Visual editor",
+                "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
+                "save_btn": "Choose"
+            },
+            "clear_btn": "Reset",
+            "misc_header": "Optional features"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -879,12 +976,14 @@ Ext.define('Locale.locale-pt',{
                 "logo": "Logotipo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Papel de parede página de login",
-                "desktop_wallpaper": "Papel de parede do serviço página"
+                "desktop_wallpaper": "Papel de parede do serviço página",
+                "monitoring_logo": "Additional logo"
             },
             "tips": {
                 "logo": "Recomendado carregar horizontalmente orientado a imagem com um fundo transparente e com uma largura não inferior a 200 pontos.",
                 "favicon": "Recomendado para carregar a imagem com um fundo transparente e uma resolução mínima de 32 x 32 pixels.",
-                "login_wallpaper": "Recomendado para carregar imagens de fundo com uma resolução de pelo menos 1920 x 1080 pixels (FullHD) no formato JPEG."
+                "login_wallpaper": "Recomendado para carregar imagens de fundo com uma resolução de pelo menos 1920 x 1080 pixels (FullHD) no formato JPEG.",
+                "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "O {0} de formato de imagem (o tamanho máximo de {1} MB)",
             "error_text": "Falha ao carregar a imagem"
@@ -895,7 +994,11 @@ Ext.define('Locale.locale-pt',{
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
             "license_balance": "Pending amount {0}",
-            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com"
+            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "pending_amount": "Pending amount: {0}",
+            "current_balance": "Current balance: {0}",
+            "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
+            "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly."
         },
         "sms_gateway": {
             "navixy": {
@@ -1022,7 +1125,8 @@ Ext.define('Locale.locale-pt',{
                     "sberbank": "Sberbank"
                 }
             }
-        }
+        },
+        "report_success": "Email-newsletter successful"
     },
     "payments": {
         "menu_text": "Pagamentos",
@@ -1273,7 +1377,81 @@ Ext.define('Locale.locale-pt',{
         "MDL": "{0} lei",
         "GEL": "{0} lari",
         "AMD": "{0} dram",
-        "AZN": "{0} man."
+        "AZN": "{0} man.",
+        "ALL": "{0} Lek",
+        "AFN": "{0} ؋",
+        "ARS": "{0} $",
+        "AWG": "{0} ƒ",
+        "BSD": "{0} $",
+        "BBD": "{0} $",
+        "BZD": "{0} BZ$",
+        "BMD": "{0} $",
+        "BOB": "{0} $b",
+        "BAM": "{0} KM",
+        "BWP": "{0} P",
+        "BGN": "{0} лв",
+        "BND": "{0} $",
+        "KHR": "{0} ៛",
+        "KYD": "{0} $",
+        "COP": "{0} $",
+        "CRC": "{0} ₡",
+        "HRK": "{0} kn",
+        "CUP": "{0} ₱",
+        "DOP": "{0} RD$",
+        "XCD": "{0} $",
+        "EGP": "{0} £",
+        "SVC": "{0} $",
+        "EEK": "{0} kr",
+        "FKP": "{0} £",
+        "FJD": "{0} $",
+        "GHC": "{0} ¢",
+        "GIP": "{0} £",
+        "GTQ": "{0} Q",
+        "GGP": "{0} £",
+        "GYD": "{0} $",
+        "HNL": "{0} L",
+        "ISK": "{0} kr",
+        "IRR": "{0} ﷼",
+        "IMP": "{0} £",
+        "JMD": "{0} J$",
+        "JEP": "{0} £",
+        "KPW": "{0} ₩",
+        "LAK": "{0} ₭",
+        "LBP": "{0} £",
+        "LRD": "{0} $",
+        "MKD": "{0} ден",
+        "MUR": "{0} ₨",
+        "MNT": "{0} ₮",
+        "MZN": "{0} MT",
+        "NAD": "{0} $",
+        "NPR": "{0} ₨",
+        "ANG": "{0} ƒ",
+        "NIO": "{0} C$",
+        "NGN": "{0} ₦",
+        "OMR": "{0} ﷼",
+        "PAB": "{0} B/.",
+        "PYG": "{0} Gs",
+        "PEN": "{0} S/.",
+        "QAR": "{0} ﷼",
+        "RON": "{0} lei",
+        "SHP": "{0} £",
+        "SAR": "{0} ﷼",
+        "RSD": "{0} Дин.",
+        "SCR": "{0} ₨",
+        "SBD": "{0} $",
+        "SOS": "{0} S",
+        "LKR": "{0} ₨",
+        "SRD": "{0} $",
+        "SYP": "{0} £",
+        "TTD": "{0} TT$",
+        "TRL": "{0} ₤",
+        "TVD": "{0} $",
+        "UYU": "{0} $U",
+        "VEF": "{0} Bs",
+        "VND": "{0} ₫",
+        "YER": "{0} ﷼",
+        "ZWD": "{0} Z$",
+        "MAD": "{0} Dh"
     },
     "geolocation": {
         "disabled": "Disabled",
@@ -1314,6 +1492,12 @@ Ext.define('Locale.locale-pt',{
         "routing": "Roteamento de",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Web-locator",
-        "chat": "Chat"
-    }
+        "chat": "Chat",
+        "statuses": "Work statuses"
+    },
+    "map": {
+        "zoom_in": "Zoom in",
+        "zoom_out": "Zoom out"
+    },
+    "map_type_label": "Map"
 });

@@ -86,7 +86,7 @@ Ext.define('Locale.locale-fr',{
         "212": "Limite demandée est trop grand",
         "213": "L'appareil est en mode hors connexion",
         "214": "Opération demandée ne sont pas supportés par l'appareil",
-        "215": "External service error",
+        "215": "Erreur du service externe",
         "216": "Groupe n'est pas vide",
         "217": "Liste contient des entités inexistantes",
         "218": "Paramètres incorrects service externe",
@@ -653,7 +653,7 @@ Ext.define('Locale.locale-fr',{
             "active_exp": "Les utilisateurs sont autorisés à sélectionner ce plan",
             "device_limit_exp": "Dispositifs de maximum",
             "activation_bonus": "Bonus de l'activation",
-            "free_days": "Number of free days",
+            "free_days": "Journées libres",
             "tariff_type": "Cycle de facturation",
             "tariff_type_short": "Paiement",
             "rate": "Taux",
@@ -703,7 +703,7 @@ Ext.define('Locale.locale-fr',{
                 "9": "Sélectionnez les cartes disponibles pour l'utilisateur si il titres actifs sur le plan actuel. La liste de toutes les cartes disponibles est définie par les préférences pour votre service.",
                 "10": "Sélectionnez les options qui sont disponibles pour les utilisateurs qui possèdent des actifs sur ce plan.",
                 "11": "Sélectionnez les options qui sont disponibles pour les utilisateurs qui possèdent des actifs sur ce plan.",
-                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "12": "L'utilisateur de coût doivent vous payer pour le service. Le système de facturation s'applique à la monnaie que vous avez défini dans les paramètres de compte. < br / > < br / &gt; Si vous voyez « S.O. » au lieu de la valeur, cela signifie que le service n'est pas disponible ou ne peut pas être chargée par le système de facturation.",
                 "13": "Le prix à que payer pour les services fournis par Navixy. Si vous voyez « S.O. » au lieu de la valeur, cela signifie que service n'est pas offert (non ordonnée ou non disponible).",
                 "14": "Ce plan servira par défaut lorsque l'utilisateur active un nouvel appareil. Remarque : ce paramètre va être substitué par le plan défini dans les paramètres de code d'activation.",
                 "15": "Nombre entier (0, 1, 2,...) du groupe auquel appartient ce plan.",
@@ -884,8 +884,8 @@ Ext.define('Locale.locale-fr',{
             "display_model_features_link": "Afficher un lien vers un site Web avec des informations sur le modèle",
             "display_model_features_link_hint": "L'utilisateur peut être fourni avec des informations supplémentaires sur le modèle de l'appareil activé",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
-            "show_call_notifications": "Allow configuration of voice notifications",
-            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
+            "show_call_notifications": "Permettre la configuration de la notification de la voix",
+            "monitoring_logo_clickable": "Cliquez sur le logo de l'interface ouvre un site web promo"
         },
         "edit_form": {
             "title": "Paramètres de service",
@@ -908,7 +908,7 @@ Ext.define('Locale.locale-fr',{
             "upload_btn": "Télécharger",
             "update_btn": "Changement",
             "remove_btn": "Supprimer",
-            "upload_loading": "Upload Image",
+            "upload_loading": "Télécharger Image",
             "domain_fields": "Domain",
             "regional_fields": "Paramètres régionaux",
             "maps_fields": "Cartes",
@@ -1056,7 +1056,7 @@ Ext.define('Locale.locale-fr',{
                         "6": "Service Mobile terrestre (E.212)",
                         "8": "National numbering plan",
                         "9": "Plan de numérotation privé",
-                        "10": "ERMES numbering plan (ETSI DE/PS 3 01-3)",
+                        "10": "Plan de numérotation de ERMES (ETSI DE/CH 3 01-3)",
                         "13": "Internet (IP)",
                         "18": "Identifiant Client WAP (à définir par le WAP Forum)"
                     },
@@ -1263,7 +1263,7 @@ Ext.define('Locale.locale-fr',{
                 "imei_invalid": "Erreur. IMEI non valide valeur entrée « {0} ». <br>S'il vous plaît re-scanner.",
                 "imei_not_found": "Error. The ICCID value \"{0}\" not found.<br>Please re-scan.",
                 "iccid_ready": "IMEI trouvé. Prêt à numériser. <br>Fixer le scanner le code-barres ICCID.",
-                "iccid_focus_lose": "Error. Scanning is not ready. Click the button below.",
+                "iccid_focus_lose": "Erreur. Il n'est pas prêt de numérisation. Cliquez sur le bouton ci-dessous.",
                 "iccid_focus_lose_btn": "Pour démarrer le scan",
                 "iccid_invalid": "Erreur. Vous avez entré une valeur incorrecte ICCID « {0} ». <br>S'il vous plaît re-scanner.",
                 "iccid_found": "IMEI trouvé. Avec lui est associé ICCID code « {0} ». <br>Vous pouvez scanner le nouveau code ICCID pour modifier manuellement ou détachez la carte SIM",
@@ -1493,7 +1493,7 @@ Ext.define('Locale.locale-fr',{
         "ui_mobile": "Interface web mobile",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "statuses": "Work statuses"
+        "statuses": "Statuts de travail"
     },
     "map": {
         "zoom_in": "Effectuez un zoom avant",

@@ -177,7 +177,25 @@ Ext.define('NavixyPanel.store.leMaps', {
                     }
                 }
             },
-
+            {
+                name: 'kosmosnimki',
+                maxZoom: 18,
+                minZoom: 2,
+                urlTpl: '//{serv}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png',
+                attribution: '©<a href="http://kosmosnimki.ru/">Scanex</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                tplFns: {
+                    serv: function (data) {
+                        var servers = ['a', 'b', 'c', 'd'];
+                        return servers[Math.floor(Math.random() * 3)];
+                    }
+                }
+            }, {
+                name: 'sputnik',
+                maxZoom: 18,
+                minZoom: 2,
+                urlTpl: '//tiles.maps.sputnik.ru/{z}/{x}/{y}.png',
+                attribution: '© <a href="http://sputnik.ru">Спутник</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            },
             {
                 name: 'traffic_yandex',
                 httpsReady: true,

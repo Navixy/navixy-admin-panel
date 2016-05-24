@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-ru
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-ru', {
+* @class Locale.locale-ru
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-ru',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -367,6 +367,8 @@ Ext.define('Locale.locale-ru', {
         "doublegis": "Карты DoubleGis",
         "ovi": "Карты OVI",
         "mailru": "Карты Mail.ru",
+        "kosmosnimki": "Космоснимки",
+        "sputnik": "Карты Спутник",
         "here": "Карты HERE",
         "bing": "Карты Bing"
     },
@@ -526,7 +528,7 @@ Ext.define('Locale.locale-ru', {
         "menu_text": "Трекеры",
         "fields": {
             "tracker_id": "ID",
-            "label": "Навзание",
+            "label": "Название",
             "model": "Модель",
             "phone": "Телефон",
             "device_id": "Номер устройства",
@@ -827,37 +829,34 @@ Ext.define('Locale.locale-ru', {
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}"
         },
-
-        email_gateways: {
-            title: 'Email сообщения',
-            description: 'Для надежной доставки почтовых уведомлений (сообщений о событиях, счетов и т.п.) и избежания попадания в спам-листы мы предлагаем использовать наш почтовый шлюз. Тем не менее вы можете выбрать и настроить свой почтовый шлюз:',
-            mandril_text: 'Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href="https://www.navixy.com/ru/doc/panel/email/navixy-email-gateway/" target="_blank">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com',
-            label: 'Название шлюза',
-            default_label: 'Ваш SMTP сервер',
-            encryption: {
-                label: 'Шифрование',
-                tls: 'TLS',
-                ssl: 'SSL',
-                none: "Нет"
+        "email_gateways": {
+            "title": "Email сообщения",
+            "description": "Для надежной доставки почтовых уведомлений (сообщений о событиях, счетов и т.п.) и избежания попадания в спам-листы мы предлагаем использовать наш почтовый шлюз. Тем не менее вы можете выбрать и настроить свой почтовый шлюз:",
+            "mandril_text": "Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href=\"https://www.navixy.com/ru/doc/panel/email/navixy-email-gateway/\" target=\"_blank\">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com",
+            "label": "Название шлюза",
+            "default_label": "Ваш SMTP сервер",
+            "encryption": {
+                "label": "Шифрование",
+                "tls": "TLS",
+                "ssl": "SSL",
+                "none": "Нет"
             },
-            auth_label: "Авторизация",
-            host_label: 'SMTP сервер',
-            port_label: 'SMTP порт',
-            host_placeholder: 'IP или домен',
-            user: 'Пользователь',
-            password: 'Пароль',
-            default_from_email: 'Отправитель',
-            save_btn_text: 'Сохранить настройки',
-            gateway_assing_success_msg: 'Настройки почтовых уведомлений успешно сохранены'
+            "auth_label": "Авторизация",
+            "host_label": "SMTP сервер",
+            "port_label": "SMTP порт",
+            "host_placeholder": "IP или домен",
+            "user": "Пользователь",
+            "password": "Пароль",
+            "default_from_email": "Отправитель",
+            "save_btn_text": "Сохранить настройки",
+            "gateway_assing_success_msg": "Настройки почтовых уведомлений успешно сохранены"
         },
-
-        test_email: {
-            title: 'Отправить тестовое письмо',
-            email_field: 'Email адресата',
-            send_test_email_btn: 'Отправить тестовое письмо',
-            send_btn: 'Отправить'
+        "test_email": {
+            "title": "Отправить тестовое письмо",
+            "email_field": "Email адресата",
+            "send_test_email_btn": "Отправить тестовое письмо",
+            "send_btn": "Отправить"
         },
-
         "fields": {
             "service_title": "Название сервиса",
             "page_title": "Заголовок страниц",

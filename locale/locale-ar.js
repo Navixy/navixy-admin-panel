@@ -24,7 +24,7 @@ Ext.define('Locale.locale-ar',{
         "login": "تسجيل الدخول",
         "password": "كلمة المرور",
         "login_btn": "تسجيل الدخول",
-        "locale_title": "اختر اللغة ",
+        "locale_title": "اختر اللغة",
         "locale_title_short": "اللغة",
         "auth_error": "خطأ في المصادقة",
         "reloading_soon": "إعادة تحميل",
@@ -33,8 +33,8 @@ Ext.define('Locale.locale-ar',{
     },
     "no_path_found": "لا يوجد صفحة للURL غير صحيح",
     "phone_invalid_msg": "يرجى إدخال رقم هاتف فعال",
-    "invalid_numeric_msg": "الرقم غير صحيح ",
-    "invalid_amount_msg": "رقم غير صحيح ",
+    "invalid_numeric_msg": "الرقم غير صحيح",
+    "invalid_amount_msg": "رقم غير صحيح",
     "searcher_empty_text": "أدخل طلب البحث",
     "search_empty_text": "أدخل طلب البحث",
     "searchTitle": "البحث حسب التصنيف",
@@ -47,7 +47,7 @@ Ext.define('Locale.locale-ar',{
     "no": "no",
     "show_btn": "عرض",
     "wrong_period": "الفترة غير صالحة",
-    "required_fields": "مقاطع مطلوبة ",
+    "required_fields": "مقاطع مطلوبة",
     "invalid_tab": "المقاطع المعبأة غير صالحة",
     "page_size": "حجم الصفحة",
     "errors": {
@@ -61,7 +61,7 @@ Ext.define('Locale.locale-ar',{
             "default_msg": "المعلومات عن طلب غير صحيحة. الرجاء التحقق من البيانات.",
             "title": "معلمات غير صحيحة:",
             "errors": {
-                "login": "يجب أن يكون الايميل مفعّل ",
+                "login": "يجب أن يكون الايميل مفعّل",
                 "domain": "معلمات غير صحيحة:"
             }
         },
@@ -75,19 +75,19 @@ Ext.define('Locale.locale-ar',{
         "201": "لا توجد بيانات",
         "202": "هناك نقاط كثيرة جدا في المنطقة",
         "203": "Related item has been deleted",
-        "204": "Element not found",
+        "204": "لم يتم العثور على العنصر",
         "205": "Invalid parameters",
         "206": "This username is already in use",
         "207": "Invalid captcha",
-        "208": "The device is locked",
-        "209": "Failed to send message",
+        "208": "الجهاز مقفل ",
+        "209": "فشل في إرسال الرسالة",
         "210": "Geocoding failed",
-        "211": "Requested time span is too big",
+        "211": "نطاق الوقت المطلوب كبير جداً",
         "212": "Requested limit is too big",
-        "213": "The device is offline",
+        "213": "الجهاز غير متصل",
         "214": "Requested operation are not supported by the device",
         "215": "External service error",
-        "216": "Group is not empty",
+        "216": "المجموعة ليست فارغة",
         "217": "List contains nonexistent entities",
         "218": "Malformed external service parameters",
         "219": "The action is not allowed for the clone objects",
@@ -95,7 +95,7 @@ Ext.define('Locale.locale-ar',{
         "221": "Tariff restriction:</br> Device limit exceeded.",
         "222": "Plugin not found",
         "223": "This phone number is already in use",
-        "224": "Device with this device-id is already in use",
+        "224": "الجهاز بهذا المعرف موجود بالفعل",
         "225": "Not allowed for this legal type",
         "226": "Wrong ICCID",
         "227": "Invalid activation code",
@@ -108,12 +108,12 @@ Ext.define('Locale.locale-ar',{
         "234": "Invalid data format",
         "235": "Missing calibration data",
         "236": "Feature unavailable due to tariff restrictions",
-        "238": "Changing tariff is not allowed",
+        "238": "تغيير الخطة غير مسموح",
         "240": "Not allowed to change tariff too frequently",
         "242": "Validation error",
         "251": "Insufficient funds",
         "254": "Cannot save file",
-        "upload_exeption": "File upload error",
+        "upload_exeption": "خطأ في تحميل ملف",
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
         "tracker": {
@@ -213,12 +213,12 @@ Ext.define('Locale.locale-ar',{
         "kzt": "Kazakhstan Tenge",
         "byr": "Belarusian Ruble",
         "eur": "يورو",
-        "jpy": "Japanese Yen",
+        "jpy": "ين ياباني",
         "gbp": "الجنيه الإسترليني",
         "chf": "Swiss Franc",
         "cad": "Canadian Dollar",
         "aud": "Australian Dollar",
-        "nzd": "New Zealand Dollar",
+        "nzd": "الدولار النيوزيلندي",
         "tjs": "Tajik Somoni",
         "php": "Philippine Peso",
         "brl": "برازيلي حقيقي",
@@ -228,12 +228,12 @@ Ext.define('Locale.locale-ar',{
         "ils": "شيكل",
         "inr": "روبية هندية",
         "idr": "Indonesian rupiah",
-        "cny": "Renminbi",
-        "krw": "South Korean won",
-        "myr": "Malaysian ringgit",
-        "mxn": "Mexican peso",
-        "nok": "Norwegian krone",
-        "pkr": "Pakistani rupee",
+        "cny": "صيني",
+        "krw": "فازت كوريا الجنوبية",
+        "myr": "رينغيت ماليزي",
+        "mxn": "البيزو المكسيكي",
+        "nok": "الكرونة النرويجية",
+        "pkr": "الروبية الباكستانية",
         "pln": "Polish złoty",
         "sgd": "Singapore dollar",
         "twd": "New Taiwan dollar",
@@ -251,7 +251,7 @@ Ext.define('Locale.locale-ar',{
         "uzs": "Uzbekistani som",
         "mdl": "Moldovan leu",
         "gel": "Georgian lari",
-        "amd": "Armenian dram",
+        "amd": "درام أرميني",
         "azn": "Azerbaijani manat",
         "all": "Albania Lek",
         "afn": "Afghanistan Afghani",
@@ -303,7 +303,7 @@ Ext.define('Locale.locale-ar',{
         "ang": "Netherlands Antilles Guilder",
         "nio": "Nicaragua Cordoba",
         "ngn": "Nigeria Naira",
-        "omr": "Oman Rial",
+        "omr": "ريال عمان",
         "pab": "Panama Balboa",
         "pyg": "Paraguay Guarani",
         "pen": "Peru Nuevo Sol",
@@ -338,12 +338,12 @@ Ext.define('Locale.locale-ar',{
         "osm": "خرائط OpenStreet",
         "osmmapnik": "خرائط OpenStreet 2",
         "wikimapia": "Wikimapia",
-        "navitel": "Navitel Maps",
+        "navitel": "خرائط Navitel",
         "doublegis": "DoubleGis Maps",
         "ovi": "OVI Maps",
-        "mailru": "Mail.ru Maps",
-        "here": "HERE Maps",
-        "bing": "Bing Maps"
+        "mailru": "خرائط Mail.ru",
+        "here": "خرائط هنا",
+        "bing": "خرائط بلنج"
     },
     "dealer_info": {
         "first": "مجموع",
@@ -359,35 +359,35 @@ Ext.define('Locale.locale-ar',{
             "title": "مستخدم جديد",
             "main_fields": "معلومات عامة",
             "contact_fields": "تفاصيل المشترك",
-            "address_fields": "Address",
-            "legal_fields": "Legal entity information",
+            "address_fields": "عنوان",
+            "legal_fields": "معلومات الكيان القانوني",
             "password": "Password",
             "password_repeat": "Repeat password",
-            "password_mismatched": "Passwords do not match",
-            "language": "Default language",
-            "time_zone": "Time Zone",
+            "password_mismatched": "لا تتطابق كلمات المرور",
+            "language": "اللغة الافتراضية",
+            "time_zone": "المنطقة الزمنية",
             "save_btn": "Create User",
-            "clear_btn": "Clear form",
+            "clear_btn": "إعادة تعيين النموذج",
             "copy_address": "Copy from address"
         },
         "edit_form": {
             "title": "تعديل المستخدم",
             "save_btn": "حفظ التغييرات",
-            "return_btn": "Back"
+            "return_btn": "خلف"
         },
         "fields": {
             "creation_date": "Date of registration",
-            "login": "Email address",
-            "balance": "Balance",
+            "login": "بريد الكتروني",
+            "balance": "الرصيد",
             "bonus": "Bonus",
             "first_name": "Name",
-            "middle_name": "Middle name",
-            "last_name": "Surname",
-            "activated": "Activated",
+            "middle_name": "الاسم الأوسط",
+            "last_name": "اللقب",
+            "activated": "تنشيط",
             "activated_t": "User active",
-            "legal_type": "Legal status",
-            "tin": "TIN",
-            "legal_name": "Legal Name",
+            "legal_type": "الوضع القانوني",
+            "tin": "رقم الضريبة",
+            "legal_name": "الاسم القانوني",
             "iec": "IEC",
             "phone": "Phone number",
             "post_country": "Country",
@@ -398,7 +398,7 @@ Ext.define('Locale.locale-ar',{
             "registered_country": "Registration country",
             "registered_index": "Registration zip code",
             "registered_region": "Registration region",
-            "registered_city": "Registration city",
+            "registered_city": "مدينة التسجيل",
             "registered_street_address": "Registration address",
             "sole_trader": "Sole trader",
             "legal_entity": "Legal entity",
@@ -416,16 +416,16 @@ Ext.define('Locale.locale-ar',{
             "registered_short": "legal",
             "password": "New password",
             "password_repeat": "Repeat new password",
-            "password_mismatched": "Passwords do not match"
+            "password_mismatched": "لا تتطابق كلمات المرور"
         },
         "password_form": {
-            "title": "Changing password of user",
-            "save_btn": "Set Password",
+            "title": "تغيير كلمة السر لالعميل",
+            "save_btn": "تعيين كلمة المرور",
             "return_btn": "Cancel",
             "success_msg": "Password successfully changed"
         },
         "list": {
-            "create_btn_text": "Create new user",
+            "create_btn_text": "إنشاء مستخدم جديد",
             "empty_text": "No users found"
         },
         "session_alert": {
@@ -433,37 +433,37 @@ Ext.define('Locale.locale-ar',{
             "title": "Your sessio code"
         },
         "session_hash": {
-            "title": "User session key"
+            "title": "مفتاح جلسة عمل المستخدم"
         },
         "card": {
             "tab_panel": {
                 "trackers": {
-                    "title": "User trackers"
+                    "title": "تتبع المستخدم"
                 },
                 "transactions": {
-                    "title": "Transactions"
+                    "title": "المعاملات"
                 }
             },
             "links": {
-                "session_text": "Go to monitoring",
-                "hash_text": "Get session key",
+                "session_text": "تسجيل الدخول كمستخدم",
+                "hash_text": "الحصول على مفتاح جلسة عمل",
                 "user_edit": "Edit user",
-                "user_change_password": "Change password",
-                "transactions": "Transactions",
-                "create_transaction": "Change balance"
+                "user_change_password": "تغيير كلمة المرور",
+                "transactions": "المعاملات",
+                "create_transaction": "تغيير التوازن"
             }
         },
         "transactions": {
             "list": {
-                "empty_text": "No transactions found",
-                "title": "Transactions for user"
+                "empty_text": "المعاملات لم يتم العثور على",
+                "title": "حركات للمستخدم"
             },
             "fields": {
-                "description": "Operation",
+                "description": "العملية",
                 "type": "Operation type",
-                "subtype": "Subtype",
-                "date": "Date",
-                "amount": "Sum",
+                "subtype": "النوع الفرعي",
+                "date": "تاريخ",
+                "amount": "المبلغ",
                 "old_balance": "Old",
                 "new_balance": "New",
                 "type_set": {
@@ -482,16 +482,16 @@ Ext.define('Locale.locale-ar',{
             }
         },
         "transaction_add": {
-            "title": "Changing balance (adding transaction) of users",
+            "title": "تغيير التوازن (إضافة المعاملات) للمستخدمين",
             "description": "Transaction description",
-            "balance": "Balance changes",
-            "bonus": "Bonus changes",
-            "value_sup": "* - amount of which will change the current value, can be negative"
+            "balance": "تغيير التوازن",
+            "bonus": "مكافأة التغييرات",
+            "value_sup": "* مبلغ لإضافة (إيجابية) أو الطرح (السلبية)"
         },
         "combo_empty": "Select an user",
-        "select_error": "Tracker or his clone is already bound to selected user",
+        "select_error": "وكان الفعل يحدها تعقب أو استنساخ للمستخدم المحدد",
         "select": {
-            "title": "Select an user"
+            "title": "حدد المستخدم"
         }
     },
     "trackers": {
@@ -500,17 +500,17 @@ Ext.define('Locale.locale-ar',{
             "tracker_id": "الهوية",
             "label": "عنوان",
             "model": "Model",
-            "phone": "Phone",
-            "device_id": "Device id",
+            "phone": "هاتف",
+            "device_id": "معرف الجهاز",
             "creation_date": "Date of registration",
             "creation_date_short": "Registered",
-            "connection_status": "Status",
-            "tracker_id_exp": "Tracker number",
-            "phone_exp": "Phone number",
-            "owner": "Tracker owner",
-            "tariff": "Tracker tariff",
-            "deleted": "Marked as deleted",
-            "blocked": "Service paused",
+            "connection_status": "مركز",
+            "tracker_id_exp": "رقم تعقب",
+            "phone_exp": "رقم الهاتف",
+            "owner": "مالك المقتفي",
+            "tariff": "خطة المقتفي",
+            "deleted": "حذف المقتفي",
+            "blocked": "تعليق الخدمة",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
@@ -530,67 +530,67 @@ Ext.define('Locale.locale-ar',{
         "edit_form": {
             "main_fields": "معلومات عامة",
             "title": "Edit tracker",
-            "save_btn": "Save changes",
-            "return_btn": "Back"
+            "save_btn": "تحفيظ التغيير",
+            "return_btn": "مرة أخرى"
         },
         "clone_form": {
             "title": "Crate clone of tracker",
-            "remove_failure_msg": "Removing clone failed",
-            "failure_msg": "Creating clone failed",
+            "remove_failure_msg": "فشل في إزالة استنساخ",
+            "failure_msg": "فشل إنشاء استنساخ",
             "remove_confirm": "Remove clone"
         },
         "group_clone_form": {
-            "title": "Cloning group of trackers",
-            "save_btn": "Clone",
+            "title": "استنساخ مجموعة من تتبع",
+            "save_btn": "استنساخ",
             "grid_clone_label": "Clones will be added",
             "grid_clone_tip": "You can change the label of the clone by double clicking on it in the list"
         },
         "group_owner_form": {
-            "title": "Changing owner for group of trackers",
+            "title": "تغيير المالك لمجموعة من تتبع",
             "save_btn": "Changing owner",
             "grid_clone_label": "Trackers will be changed"
         },
         "tariff_form": {
             "title": "Change tariff plan for tracker",
             "save_btn": "Save changes",
-            "repay": "Repay remainder of current tariff payment",
-            "charge": "Charge payment for new tariff",
-            "charge_sup": "only for the tariff plans with monthly payment",
-            "tariff_invalid": "must be different from current"
+            "repay": "رد الرصيد المتبقي من خطة التعريفة الحالية لحساب المستخدم",
+            "charge": "حساب المستخدم المسؤول وفقا لخطة التعريفة الجمركية الجديدة",
+            "charge_sup": "فقط من أجل الخطط على أساس شهري",
+            "tariff_invalid": "يجب أن تكون مختلفة عن الحالية"
         },
         "list": {
             "create_btn_text": "Create new tracker",
-            "owner_btn": "Change owner",
-            "clone_btn": "Clone",
-            "edit_btn": "Edit selected",
-            "empty_text": "No tracers found",
-            "after_clone_success": "Cloned: {0}",
-            "after_clone_failure": "Cloned: {0}, {1} clone failed",
-            "after_owner_success": "Changed: {0}",
+            "owner_btn": "تغيير المالك",
+            "clone_btn": "استنساخ",
+            "edit_btn": "تحرير مختارة",
+            "empty_text": "لم يتم العثور على بتتبع",
+            "after_clone_success": "استنساخ: {0}",
+            "after_clone_failure": "استنساخ: {0} بنجاح، {1} فشل",
+            "after_owner_success": "تغيير: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
             "select_clone_req": "Clones selected, group operations can not be performed"
         },
         "card": {
             "links": {
-                "change_tracker_user": "Change owner",
-                "tracker_edit": "Edit tracker",
-                "tracker_tariff_edit": "Change tariff",
-                "tracker_clone_create": "Create clone of this tracker",
+                "change_tracker_user": "تغيير المالك",
+                "tracker_edit": "تحرير المقتفي",
+                "tracker_tariff_edit": "خطة التغيير",
+                "tracker_clone_create": "إنشاء استنساخ",
                 "tracker_clone_remove": "Delete this clone",
-                "tracker_tariff": "Tracker tariff",
-                "tracker_owner": "Tracker owner",
+                "tracker_tariff": "خطة المقتفي",
+                "tracker_owner": "مالك المقتفي",
                 "tracker_console": "GPRS-terminal",
                 "tracker_corrupt": "Cancel registration"
             }
         },
         "console": {
-            "title": "GPRS-terminal for tracker",
-            "connect_btn": "Start connection",
-            "disconnect_btn": "Close connection",
+            "title": "وحدة التحكم بالهواء لتعقب",
+            "connect_btn": "بدء الاتصال",
+            "disconnect_btn": "إنهاء جلسة العمل",
             "auto_scroll": "Auto-scrolling",
-            "clear": "Clear console",
-            "send_btn": "Send",
+            "clear": "وحدة واضحة",
+            "send_btn": "إرسال",
             "send_empty": "Type the command",
             "loading": "Connecting to a device",
             "connect_init": "Connection is established",
@@ -601,16 +601,16 @@ Ext.define('Locale.locale-ar',{
             "error_msg": "Error connecting to device",
             "connection_failure": "Unable to connect to device",
             "close_question": "Close connection?",
-            "status_title": "Device status",
+            "status_title": "حالة الجهاز",
             "status_property_title": "Status",
             "status_value_title": "Value"
         },
         "corrupt": {
             "alert": {
-                "title": "Remove tracker registration?",
-                "text": "The device will be permanently deleted from the database, all the data - not available!<br><br>You sure you want remove registration?"
+                "title": "إزالة تعقب؟",
+                "text": "سيتم إزالة الجهاز بشكل دائم من قاعدة البيانات. سيتم فقدان كافة البيانات الموجودة ريتاتيد. <br><br>، يمكنك إزالة الجهاز؟"
             },
-            "success_msg": "Device {0} successfully removed"
+            "success_msg": "{0} الجهاز بنجاح إزالة"
         }
     },
     "tariffs": {
@@ -618,29 +618,29 @@ Ext.define('Locale.locale-ar',{
         "create_form": {
             "title": "انشاء خطة جديدة",
             "main_fields": "Main information",
-            "save_btn": "Create tariff",
-            "clear_btn": "Clear form",
+            "save_btn": "قم بإنشاء خطة",
+            "clear_btn": "مسح النموذج",
             "options_fields": "Tariff options",
             "prices_fields": "Tariff prices"
         },
         "edit_form": {
             "title": "Edit tariff",
-            "save_btn": "Save changes"
+            "save_btn": "حفظ التغييرات"
         },
         "default_form": {
-            "title": "Default tariff settings"
+            "title": "إعدادات الخطة الافتراضية"
         },
         "fields": {
-            "tariff_id": "ID",
+            "tariff_id": "معرف",
             "name": "Label",
             "group_id": "Group",
-            "price": "Monthly payment",
-            "device_limit": "Limit of devices",
-            "device_type": "Device type",
-            "store_period": "History storage period",
+            "price": "الدفع الشهري",
+            "device_limit": "الحد الأقصى للأجهزة",
+            "device_type": "نوع الجهاز",
+            "store_period": "تخزين محفوظات",
             "active": "Available for user",
-            "has_reports": "Table reports is available",
-            "proportional_charge": "Subscription fee for the partial month of proportion to the number of days to write off",
+            "has_reports": "جدول التقارير المتاحة",
+            "proportional_charge": "رسوم تتناسب مع الرسوم الشهرية",
             "incoming_sms": "Incoming SMS",
             "outgoing_sms": "Outgoing SMS",
             "service_sms": "Service SMS",
@@ -651,7 +651,7 @@ Ext.define('Locale.locale-ar',{
             "service_price": "the amount charged for service usage",
             "group_id_exp": "Tariff group",
             "active_exp": "Users can switch to this tariff on his own",
-            "device_limit_exp": "Maximum devices",
+            "device_limit_exp": "الحد الأقصى لعدد الأجهزة",
             "activation_bonus": "Activation bonus",
             "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
@@ -664,7 +664,7 @@ Ext.define('Locale.locale-ar',{
             "available_maps": "Available maps",
             "available_features": "Available features",
             "default_name": "My plan",
-            "tariff_is_default": "Use this plan as default"
+            "tariff_is_default": "تستخدم هذه الخطة كافتراضي"
         },
         "list": {
             "create_btn_text": "Add new tariff",
@@ -673,28 +673,28 @@ Ext.define('Locale.locale-ar',{
         "card": {
             "links": {
                 "make_default": "Mark as default",
-                "tariff_edit": "Edit tariff"
+                "tariff_edit": "تحرير الخطة"
             },
             "tab_panel": {
                 "trackers": {
-                    "title": "Trackers at this tariff"
+                    "title": "تتبع في هذه الخطة"
                 }
             },
-            "edit_form_btn": "Edit plan",
-            "create_form_btn": "Create plan",
-            "add_form_btn": "Add new plan",
-            "save_form_btn": "Save plan",
+            "edit_form_btn": "تحرير الخطة",
+            "create_form_btn": "قم بإنشاء خطة",
+            "add_form_btn": "إضافة خطة جديدة",
+            "save_form_btn": "حفظ الخطة",
             "currency_in": "(in {0})",
             "features": {
                 "groups": {
-                    "apps": "Apps",
+                    "apps": "تطبيقات",
                     "features": "Features",
-                    "misc": "Miscellanous"
+                    "misc": "متنوعة"
                 }
             },
             "hints": {
                 "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
-                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
+                "3": "أوامر الرسائل القصيرة خدمة وصيانة المرسلة من المنصة للأجهزة، عادة دون أي أبروفيمينت الخاصة من المستخدم. على سبيل المثال، تستخدم هذه الأوامر sms لتفعيل الجهاز التلقائي – لتسليم أوامر SMS التهيئة (APN، عنوان ملقم، إلخ)، أو عندما يقوم فريق الدعم الخاص بتشخيص الجهاز البعيد.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
                 "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
                 "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
@@ -703,7 +703,7 @@ Ext.define('Locale.locale-ar',{
                 "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
                 "10": "Select options which are available for users who have assets on this plan.",
                 "11": "Select options which are available for users who have assets on this plan.",
-                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "12": "المستخدم تكلفة يجب أن يدفع لك للخدمة. وينطبق نظام الفواتير بالعملة التي تم تحديدها في إعدادات الحساب. < br/> < br/> إذا كنت ترى \"n/A\" بدلاً من القيمة، فهذا يعني أن الخدمة لا يتوفر أو لا يمكن اتهام عن طريق نظام الفواتير.",
                 "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
                 "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
@@ -716,61 +716,61 @@ Ext.define('Locale.locale-ar',{
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
-        "combo_empty": "Select tariff",
-        "select_error": "This tariff is not available",
+        "combo_empty": "حدد خطة",
+        "select_error": "هذه الخطة غير متوفر",
         "select": {
-            "title": "Select tariff"
+            "title": "حدد خطة"
         },
         "types": {
-            "activeday": "Daily",
+            "activeday": "اليومية",
             "monthly": "Monthly",
-            "everyday": "Monthly (daily debit)"
+            "everyday": "شهريا (السحب اليومي)"
         },
         "price_type": {
             "monthly": "Monthly fee",
-            "activeday": "Daily fee",
-            "everyday": "Monthly fee"
+            "activeday": "الأجر اليومي",
+            "everyday": "رسوم شهرية"
         }
     },
     "codes": {
         "menu_text": "رمز التفعيل",
         "fields": {
             "activated": "status",
-            "activation_date": "Activation date",
-            "bonus_amount": "Bonus",
+            "activation_date": "تاريخ التنشيط",
+            "bonus_amount": "مكافأة",
             "code": "code",
             "device_id": "Device ID",
-            "device_type": "Device type",
-            "free_days": "Free days",
-            "money_amount": "Amount",
-            "tariff_id": "Tariff ID",
+            "device_type": "نوع الجهاز",
+            "free_days": "أيام الحر",
+            "money_amount": "المبلغ",
+            "tariff_id": "معرف الخطة",
             "tariff_name": "Tariff",
             "status": {
-                "activated": "activated",
-                "no_activated": "not activated"
+                "activated": "تنشيط",
+                "no_activated": "غير نشط"
             }
         },
         "edit_form": {
-            "title": "Edit activation codes",
-            "save_btn": "Save changes",
+            "title": "تحرير رموز التنشيط",
+            "save_btn": "حفظ التغييرات",
             "selected_count": "Codes selected",
             "device_type": "Codes selected for devices"
         },
         "create_form": {
-            "title": "Create activation codes",
+            "title": "إنشاء رموز التنشيط",
             "save_btn": "Create codes",
             "new_codes_count": "Amount of new codes"
         },
         "list": {
-            "empty_text": "No activation codes found",
+            "empty_text": "رموز التنشيط لا يتم العثور على",
             "create_btn": "Create new",
-            "edit_btn": "Edit selected",
-            "reload_btn": "Reload",
-            "after_create_success": "Created: {0}",
-            "after_edit_success": "Changes: {0}",
+            "edit_btn": "تحرير مختارة",
+            "reload_btn": "إعادة تحميل",
+            "after_create_success": "إنشاء: {0}",
+            "after_edit_success": "التغييرات: {0}",
             "after_edit_failure": "Changed: {0}, {1} change failed",
-            "select_req": "Select codes from list",
-            "same_type_req": "You must specify one device type codes",
+            "select_req": "حدد الرموز من القائمة",
+            "same_type_req": "يجب عليك تحديد أحد رموز نوع الجهاز",
             "edited_tip": "changed",
             "filters": {
                 "activated": "Activated",
@@ -787,20 +787,20 @@ Ext.define('Locale.locale-ar',{
     "settings": {
         "menu_text": "Settings",
         "fields": {
-            "service_title": "Service title",
-            "page_title": "Page title",
+            "service_title": "عنوان الخدمة",
+            "page_title": "عنوان الصفحة",
             "locale": "User interface language",
-            "demo_login": "Demo user",
-            "demo_password": "Demo password",
-            "maps_title": "Available maps",
+            "demo_login": "مستخدم تجريبي",
+            "demo_password": "عرض كلمة مرور",
+            "maps_title": "الخرائط المتاحة",
             "maps_default": {
-                "type": "Default map",
+                "type": "الخريطة الافتراضية",
                 "location_lat": "Latitude default",
-                "location_lng": "Longitude default",
-                "zoom": "Default zoom"
+                "location_lng": "الطول الافتراضي",
+                "zoom": "التكبير الافتراضي"
             },
             "google_client_id": "Client ID for google maps",
-            "currency": "Currency for users",
+            "currency": "عمله الفوترة للمستخدمين",
             "payment_link": "Payment system URL",
             "promo_url": "Promo website URL",
             "domain": "Domain",
@@ -812,7 +812,7 @@ Ext.define('Locale.locale-ar',{
             "password": "New password",
             "password_repeat": "Repeat new password",
             "password_old": "Current password",
-            "password_mismatched": "Passwords do not match",
+            "password_mismatched": "لا تتطابق كلمات المرور",
             "footer_email": "Company E-mail",
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
@@ -825,12 +825,12 @@ Ext.define('Locale.locale-ar',{
             "alerts_email": "Email for important alerts and invoices",
             "time_zone": "Time zone",
             "service_title_ph": "marketing name",
-            "service_title_hint": "Used at the login page, in browser tab and in other places",
+            "service_title_hint": "يستخدم في صفحة تسجيل الدخول، في التبويب مستعرض وفي أماكن أخرى",
             "footer_text_ph": "Some text you want to add into the footer of the login page",
             "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and maito: will be active. Use plain text only, HTML tags are not supported.",
             "promo_url_ph": "http://www.company.com",
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
-            "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
+            "favicon_hint": "سيظهر رمز في التبويب المستعرض (غير معتمد الميزة في Internet Explorer).",
             "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
             "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
             "domain_ph": ".navixy.com",
@@ -876,7 +876,7 @@ Ext.define('Locale.locale-ar',{
             "user_sms_sender_id_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "user_sms_inbound": "Number for inbound messages",
             "user_sms_inbound_ph": "Example: 12162780905",
-            "user_sms_inbound_hint": "Numeric or alpha-numeric sender identificator that an SMS appears to come from (‘from address’) when users receive a message on his phone. Most commonly it is the number you lease for inbound messages or your service marketing name.<br /><br />Special requirements can be applied by local laws and regulations to avoid spam. Please ensure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "user_sms_inbound_hint": "إيدينتيفيكاتور ألفا-رقمية مرسل رسالة SMS تظهر أن تأتي من (من 'عنوان') عندما يتلقى المستخدمون رسالة على هاتفه. الأكثر شيوعاً هو التأجير لك عدد الرسائل الواردة أو الخدمة الخاصة بك التسويق اسم. < br/> < br/> يمكن تطبيق المتطلبات الخاصة بالقوانين المحلية واللوائح لتجنب البريد المزعج. الرجاء التأكد من أن \"معرف المرسل\" الذي قمت بإدخاله يفي بهذه المتطلبات، وإلا قد لا تعمل خدمة الرسائل القصيرة بشكل صحيح.",
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
@@ -890,11 +890,11 @@ Ext.define('Locale.locale-ar',{
         "edit_form": {
             "title": "Service Settings",
             "save_btn": "Save",
-            "save_msg": "Settings saved successfully",
-            "main_fields": "Basic Settings",
-            "map_fields": "Maps settings",
+            "save_msg": "إعدادات تم حفظها بنجاح",
+            "main_fields": "الإعدادات الأساسية",
+            "map_fields": "إعدادات الخرائط",
             "permission_fields": "Notification dettings",
-            "domain_sup": "* - for domains like *{0} available map types limited",
+            "domain_sup": "* خيار خريطة محدودة بالنسبة للمجالات الفرعية من * {0}",
             "custom_fields": "Customization",
             "main_buttons_title": "Displaying buttons",
             "show_mobile_apps": "Show buttons for downloading mobile apps",
@@ -906,7 +906,7 @@ Ext.define('Locale.locale-ar',{
             "login_wallpaper_title": "Authorization page background",
             "desktop_wallpaper_title": "Services page background",
             "upload_btn": "Upload",
-            "update_btn": "Change",
+            "update_btn": "تغيير",
             "remove_btn": "Remove",
             "upload_loading": "Upload Image",
             "domain_fields": "Domain",
@@ -920,14 +920,14 @@ Ext.define('Locale.locale-ar',{
             "pass_save_btn": "Change Password",
             "maps_hint": "Please define the selection of maps which will available for the customers of your service. The list of maps for specific users can be limited with their tariff plan settings.<br><br>The use of map services you selected must be granted to you by their rights owners. NAVIXY is not responsible for any violation of the license terms by you or your end users.",
             "demo_hint": "Choose user account which will be used for demo purposes and available on login page (optional)",
-            "user_notifications_title": "Notifications to users",
+            "user_notifications_title": "إعلامات إلى المستخدمين",
             "user_notifications_hint": "Settings for notifications from your tracking system to users: about geo-events, low balance, password recovering, etc.",
             "special_notifications_title": "Notifications to administrators",
             "special_notifications_hint": "System notifications to administrators about service status, statistics and other",
             "defaults_fields": "User default settings",
             "defaults_hint": "Settings in this section will be automatically applied to all new users",
             "branding_fields": "Branding",
-            "branding_main_title": "Branding main settings",
+            "branding_main_title": "الإعدادات الرئيسية العلامة التجارية",
             "branding_img_title": "Images and logo",
             "branding_contacts_title": "Contact information for users",
             "service_fields": "Service preferences",
@@ -968,19 +968,19 @@ Ext.define('Locale.locale-ar',{
             "monitoring_logo_title": "User interface logo"
         },
         "upload_form": {
-            "save_btn": "Upload",
-            "cancel_btn": "Cancel",
-            "upload_btn": "View",
+            "save_btn": "تحميل",
+            "cancel_btn": "إلغاء الأمر",
+            "upload_btn": "طريقة العرض",
             "title": "Upload image. {0}",
             "titles": {
                 "logo": "Logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Login page wallpaper",
                 "desktop_wallpaper": "Service page wallpaper",
-                "monitoring_logo": "Additional logo"
+                "monitoring_logo": "شعار إضافي"
             },
             "tips": {
-                "logo": "Recommended to load horizontally oriented image with a transparent background and a width of not less than 200 points.",
+                "logo": "من المستحسن استخدام صورة الشعار بخلفية شفافة (PNG) وعرض الحد الأدنى من 200px.",
                 "favicon": "Recommended to load the image with a transparent background and a minimum resolution of 32x32 pixels.",
                 "login_wallpaper": "Recommended to load background images with a resolution of at least 1920x1080 pixels (FullHD) format JPEG.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
@@ -990,52 +990,52 @@ Ext.define('Locale.locale-ar',{
         },
         "subscription": {
             "activation_btn_text": "Pay activation fee now (500 USD) online",
-            "monthly_fee_btn_text": "Pay online",
-            "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
-            "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
-            "license_balance": "Pending amount {0}",
-            "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
-            "pending_amount": "Pending amount: {0}",
+            "monthly_fee_btn_text": "الدفع عبر الإنترنت",
+            "activation_hint": "تقوم فيه بتقييم الإصدار التجريبي سيرفيرماتي نافيكسي (حتى {0}). مواصلة التجارية الإصدار الرجاء اختيار خيارات الاشتراك الخاص بك والمضي قدما في دفع التنشيط:",
+            "monthly_fee_hint": "مراجعة رصيد الاشتراك الخاص بك وإضافة الأموال هنا. أننا نشكركم على المدفوعات الخاصة بك في الوقت المناسب. لتجنب التلقائي تعطيل الاشتراك الخاص بك الرجاء دائماً إغلاق الفواتير الخاصة بك في غضون 10 أيام بعد استلام الفاتورة للشهر السابق.",
+            "license_balance": "المبلغ المعلق {0}",
+            "subscription_hint": "لإتمام الدفع عبر الإنترنت سيتم إعادة توجيهك إلى صفحة ويب آمنة مدخلنا الدفع. يمكنك استخدام خيارات الدفع المختلفة هناك. حالما يتم التأكد من الدفع الأموال الخاصة بك سوف تضاف تلقائياً إلى حسابك في سيرفيرماتي. لأي أسئلة الرجاء الاتصال بنا عن طريق accounting@navixy.com البريد الإلكتروني",
+            "pending_amount": "المبلغ المعلق: {0}",
             "current_balance": "Current balance: {0}",
-            "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
-            "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly."
+            "payment_recieved_msg": "تم بنجاح تنفيذ الدفع الخاص بك وسيتم معالجتها قريبا.",
+            "waiting_activation_fee": "تم بنجاح تنفيذ الدفع الخاص بك وسيتم معالجتها قريبا."
         },
         "sms_gateway": {
             "navixy": {
                 "name": "Navixy",
-                "desc": "SMS-service, provided to you by Navixy for free while you are using Trial version."
+                "desc": "خدمة SMS، يقدمها لك نافيكسي مجاناً بينما كنت تستخدم الإصدار التجريبي."
             },
             "nexmo": {
-                "name": "Nexmo",
-                "desc": "One of the most popular services in the world (<a href=\"http://www.nexmo.com\" target=\"blank\">www.nexmo.com</a>)",
+                "name": "نيكسمو",
+                "desc": "واحدة من الخدمات الأكثر شعبية في العالم (<a href=\"http://www.nexmo.com\" target=\"blank\"> www.nexmo.com</a>)",
                 "credentials": {
-                    "key": "Key",
-                    "secret": "Secret"
+                    "key": "مفتاح",
+                    "secret": "سر"
                 }
             },
             "twilio": {
-                "name": "Twilio",
-                "desc": "One of the most popular services in the world (<a href=\"http://www.twilio.com\" target=\"blank\">www.twilio.com</a>)",
+                "name": "توليو",
+                "desc": "واحدة من الخدمات الأكثر شعبية في العالم (<a href=\"http://www.twilio.com\" target=\"blank\"> www.twilio.com</a>)",
                 "credentials": {
-                    "sid": "Account SID",
-                    "token": "Auth token"
+                    "sid": "حساب SID",
+                    "token": "رمز المصادقة"
                 }
             },
             "smstraffic": {
-                "name": "SMSTraffic",
-                "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"blank\">www.smstraffic.ru</a>)",
+                "name": "سمسترافيك",
+                "desc": "الخدمات المقدمة من شركة سمسترافيك (<a href=\"http://www.smstraffic.ru\" target=\"blank\"> www.smstraffic.ru</a>)",
                 "credentials": {
-                    "login": "Login",
+                    "login": "تسجيل الدخول",
                     "password": "Password"
                 }
             },
             "yaestar": {
-                "name": "Yaestar NeoGate",
-                "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"blank\">www.yeastar.com</a>)",
+                "name": "نوجيت يستر",
+                "desc": "بوابة الأجهزة، التي يمكنك شراء وتثبيت محلياً (<a href=\"http://www.yeastar.com\" target=\"blank\"> www.yeastar.com</a>)",
                 "credentials": {
                     "ip": "Server IP",
                     "port": "Port",
-                    "login": "Login",
+                    "login": "تسجيل الدخول",
                     "password": "Password"
                 }
             },
@@ -1044,79 +1044,79 @@ Ext.define('Locale.locale-ar',{
                 "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"blank\">Wikipedia</a>)",
                 "credentials": {
                     "ip": "Server IP",
-                    "port": "Port",
+                    "port": "منفذ",
                     "login": "Login (System ID)",
-                    "password": "Password",
+                    "password": "كلمة المرور",
                     "source": "Source TON/NPI",
                     "source_select": {
                         "0": "Unknown",
                         "1": "International",
                         "2": "National",
-                        "3": "Network Specific",
+                        "3": "شبكة محددة",
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "محفوظة",
                         "-1": "Auto"
                     },
                     "destination": "Destination TON/NPI",
                     "destination_select": {
                         "0": "Unknown",
-                        "1": "ISDN/telephone numbering plan (E163/E164)",
+                        "1": "خطة الترقيم الهاتف ISDN (E163/E164)",
                         "3": "Data numbering plan (X.121)",
                         "4": "Telex numbering plan (F.69)",
                         "6": "Land Mobile (E.212)",
-                        "8": "National numbering plan",
+                        "8": "خطة الترقيم الوطنية",
                         "9": "Private numbering plan",
                         "10": "ERMES numbering plan (ETSI DE/PS 3 01-3)",
                         "13": "Internet (IP)",
                         "18": "WAP Client Id (to be defined by WAP Forum)"
                     },
-                    "charset": "Default charset",
+                    "charset": "مجموعة الأحرف الافتراضية",
                     "charset_select": {
                         "GSM8": "GSM8",
                         "GSM7": "GSM7",
                         "ISO-8859-1": "ISO-8859-1",
-                        "ISO-8859-15": "ISO-8859-15",
+                        "ISO-8859-15": "إيزو-8859-15",
                         "UTF-8": "UTF-8",
                         "UCS-2": "UCS-2"
                     },
                     "long": "Long messages",
                     "long_select": {
                         "UDH": "UDH",
-                        "Payload": "Payload"
+                        "Payload": "الحمولة"
                     }
                 }
             }
         }
     },
     "accounting": {
-        "menu_text": "Accounting",
+        "menu_text": "المحاسبة",
         "report_msg": {
-            "title": "Confirm email-newsletter",
-            "text": "Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?"
+            "title": "تأكيد البريد الإلكتروني النشرة الإخبارية",
+            "text": "تنبيه العملاء حول تصدير البيانات إلى 1 ج ل <b>{0}</b>. <br>أنت متأكد من أنك تريد جعل <b>البريد الإلكتروني النشرة الإخبارية</b>؟"
         },
         "form": {
             "title": "«1C:Enterprise» Data exporting",
             "export1c": {
-                "tab_title": "Accounting",
-                "save_btn": "Get 1C data file",
-                "report_btn": "Submit deeds by email",
+                "tab_title": "المحاسبة",
+                "save_btn": "الحصول على ملف بيانات ج 1",
+                "report_btn": "تقديم سندات عن طريق البريد الإلكتروني",
                 "fields": {
-                    "month": "Select a month",
+                    "month": "حدد الشهر",
                     "last_act": "Last deed number"
                 }
             },
             "payments": {
-                "tab_title": "Payments",
-                "save_btn": "Get 1C data file",
+                "tab_title": "المدفوعات",
+                "save_btn": "الحصول على ملف بيانات ج 1",
                 "fields": {
-                    "date": "Time interval",
+                    "date": "الفاصل الزمني",
                     "type": "Payment system"
                 },
                 "ps": {
                     "default": "All of the above",
-                    "cyberplat": "CyberPlat",
+                    "cyberplat": "سيبيربلات",
                     "deltapay": "DeltaPay",
                     "mobile": "Mobile",
                     "mobimoney": "Mobi.Money",
@@ -1129,51 +1129,51 @@ Ext.define('Locale.locale-ar',{
         "report_success": "البريد الإلكتروني النشرة الإخبارية الناجحة"
     },
     "payments": {
-        "menu_text": "Payments",
+        "menu_text": "المدفوعات",
         "import_sberbank": {
-            "title": "Sberbank payments import",
+            "title": "وسبربنك مدفوعات الواردات",
             "save_btn": "Import payments",
-            "upload_btn": "View",
-            "upload_loading": "Uploading file",
-            "error_text": "Failed to import payments",
+            "upload_btn": "طريقة العرض",
+            "upload_loading": "تحميل الملف",
+            "error_text": "فشل استيراد المدفوعات",
             "fields": {
-                "file_title": "Import file of format {0} (maximal size {1} Mb)"
+                "file_title": "استيراد الملف {0} (الحد الأقصى لحجم {1} ميغابايت)"
             },
             "errors": {
                 "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
             },
-            "success_msg": "Sberbank payments successfully imported",
+            "success_msg": "المدفوعات وسبربنك استيرادها بنجاح",
             "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
         }
     },
     "bundles": {
         "menu_text": "Package contents",
-        "title": "Working with sets of equipment",
+        "title": "العمل مع مجموعات من المعدات",
         "menu": {
-            "list": "A list of sets",
-            "scan": "Linking the SIM card to the beacon",
-            "shipping": "Shipping",
-            "import": "Import"
+            "list": "قائمة بمجموعات",
+            "scan": "ربط بطاقة SIM للمرشد اللاسلكي",
+            "shipping": "النقل البحري",
+            "import": "استيراد"
         },
         "fields": {
-            "id": "ID",
-            "model_code": "Model",
+            "id": "معرف",
+            "model_code": "نموذج",
             "imei": "IMEI",
             "iccid": "ICCID",
-            "sim_card": "SIM card",
+            "sim_card": "بطاقة SIM",
             "assign_time": "Date",
             "phone": "Phone",
             "apn": "APN",
             "order_id": "The order number"
         },
         "list": {
-            "scan_btn_text": "Snap beacons",
-            "empty_text": "No kits",
+            "scan_btn_text": "التقاط إشارات",
+            "empty_text": "لا توجد مجموعات",
             "unassign": "detach from order",
             "unassign_q": "Do you want to remove the complete<br>c IMEI-code \"{0}\" out of order?"
         },
         "shipping": {
-            "search_btn": "Search",
+            "search_btn": "البحث عن",
             "steps": {
                 "first": {
                     "title": "The order search"
@@ -1228,7 +1228,7 @@ Ext.define('Locale.locale-ar',{
                 "model_code": "The model",
                 "equip_id": "Code kit",
                 "order_id": "The order number",
-                "assign_time": "The binding sim card"
+                "assign_time": "بطاقة sim ملزمة"
             },
             "buttons": {
                 "enter": "Enter",
@@ -1236,7 +1236,7 @@ Ext.define('Locale.locale-ar',{
                 "reassign_iccid": "To reassign the SIM card",
                 "remove_iccid": "Detach the SIM card",
                 "print": "To print the label",
-                "reset": "To start over",
+                "reset": "للبدء من جديد",
                 "change_equip": "Change the composition"
             },
             "imie_hints": {
@@ -1244,13 +1244,13 @@ Ext.define('Locale.locale-ar',{
                 "imei_invalid": "You entered an incorrect value<br>scan Again",
                 "imei_focus_lose": "Scanning is not ready<br>Set the focus on the field",
                 "imei_not_found": "Sets your phone's IMEI code<br><b>{0}</b> not found",
-                "auto_print": "Automatically print and start again"
+                "auto_print": "طباعة تلقائياً والبدء من جديد"
             },
             "iccid_hints": {
                 "iccid_ready": "Attach the scanner to the barcode ICCID",
                 "iccid_invalid": "You entered an incorrect value<br>scan Again",
                 "iccid_focus_lose": "Scanning is not ready<br>Set the focus on the field",
-                "iccid_not_found": "Failed to bind the SIM card c code<br><b>{0}</b>",
+                "iccid_not_found": "فشل في ربط سيم بطاقة c رمز <br><b>{0}</b>",
                 "iccid_cant_unassign": "Failed to detach the SIM card"
             },
             "print_hints": {
@@ -1258,11 +1258,11 @@ Ext.define('Locale.locale-ar',{
             },
             "hints": {
                 "imei_ready": "Ready to scan. Attach the scanner to the barcode device IMEI.",
-                "imei_focus_lose": "Error. Scanning is not ready. Click the button below.",
+                "imei_focus_lose": "خطأ. المسح الضوئي غير جاهز. انقر فوق الزر أدناه.",
                 "imei_focus_lose_btn": "To start the scan",
                 "imei_invalid": "Error. Entered IMEI invalid value \"{0}\".<br>Please re-scan.",
                 "imei_not_found": "Error. The ICCID value \"{0}\" not found.<br>Please re-scan.",
-                "iccid_ready": "IMEI found. Ready to scan.<br>Attach the scanner to the barcode ICCID.",
+                "iccid_ready": "IMEI العثور عليها. استعداد للمسح الضوئي. <br>إرفاق الماسح الضوئي للرمز الشريطي ICCID.",
                 "iccid_focus_lose": "Error. Scanning is not ready. Click the button below.",
                 "iccid_focus_lose_btn": "To start the scan",
                 "iccid_invalid": "Error. You entered an incorrect value ICCID \"{0}\".<br>Please re-scan.",
@@ -1275,7 +1275,7 @@ Ext.define('Locale.locale-ar',{
                 "iccid_print_btn": "Print sticker",
                 "last_scan_text": "The results of the previous scan:",
                 "unassign_q": "Detach the SIM card from the device?",
-                "unassign_success": "SIM card untethered from the device",
+                "unassign_success": "بطاقة SIM غير المربوطة من الجهاز",
                 "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
             }
         },
@@ -1289,7 +1289,7 @@ Ext.define('Locale.locale-ar',{
                 "import_success": "Successfully imported {0}",
                 "import_failure": "The list of devices to import failed",
                 "factory_preset": "The device is already configured by the manufacturer",
-                "no_model": "The model is not selected"
+                "no_model": "لم يتم تحديد نموذج"
             },
             "titles": {
                 "first": "The input set of IMEI-codes",
@@ -1304,16 +1304,16 @@ Ext.define('Locale.locale-ar',{
     "equipment": {
         "fields": {
             "equip_id": "ID",
-            "name": "Name",
-            "model_name": "Model",
-            "model_code": "Model code",
-            "vendor": "Manufacturer"
+            "name": "الاسم",
+            "model_name": "نموذج",
+            "model_code": "نموذج التعليمات البرمجية",
+            "vendor": "الشركة المصنعة"
         },
         "select": {
-            "title": "The choice of kit"
+            "title": "اختيار مجموعة"
         },
         "list": {
-            "empty_text": "Packages not found"
+            "empty_text": "لم يتم العثور على مجموعات"
         }
     },
     "measurement_systems": {
@@ -1322,9 +1322,9 @@ Ext.define('Locale.locale-ar',{
         "us": "الإمبراطورية الأمريكية"
     },
     "route_providers": {
-        "progorod": "Progorod",
+        "progorod": "بروجورود",
         "google": "جوجل",
-        "osrm": "OSRM"
+        "osrm": "أوسرم"
     },
     "geocoders": {
         "google": "جوجل",
@@ -1333,7 +1333,7 @@ Ext.define('Locale.locale-ar',{
         "osm": "أوبن ستريت ماب"
     },
     "currencies_tpls": {
-        "GBP": "£{0}",
+        "GBP": "جنيه استرليني {0}",
         "BRL": "R${0}",
         "HUF": "{0} Ft",
         "HKD": "HK${0}",
@@ -1345,7 +1345,7 @@ Ext.define('Locale.locale-ar',{
         "CAD": "С${0}",
         "CNY": "¥{0}",
         "KRW": "₩{0}",
-        "MYR": "RM{0}",
+        "MYR": "RM {0}",
         "MXN": "Mex${0}",
         "NZD": "NZ${0}",
         "NOK": "kr {0}",
@@ -1454,23 +1454,23 @@ Ext.define('Locale.locale-ar',{
         "MAD": "{0} Dh"
     },
     "geolocation": {
-        "disabled": "Disabled",
+        "disabled": "معطل",
         "navixy": "Mozilla location services / @Navixy Telehouse",
-        "mozilla": "Mozilla location services",
-        "combain": "Combain"
+        "mozilla": "خدمات موقع موزيلا",
+        "combain": "كومبين"
     },
     "speed_restriction": {
         "disabled": "Disabled",
-        "google": "Google Maps Roads",
-        "quazar": "Quazar"
+        "google": "جوجل خرائط الطرق",
+        "quazar": "كوازار"
     },
     "edit_form_btn": "تعديل",
     "cancel_form_btn": "إلغاء",
-    "na": "غير متوفر ",
+    "na": "غير متوفر",
     "enable": "تمكين",
     "disable": "تعطيل",
     "disabled": "تعطيل",
-    "forbid": "منع ",
+    "forbid": "منع",
     "allow": "سماح",
     "forbidden": "محظور",
     "features": {
@@ -1485,7 +1485,7 @@ Ext.define('Locale.locale-ar',{
         "geocoding": "Geocoding",
         "lbs": "Location by Cell ID",
         "map_layers": "خريطة الطبقات",
-        "multilevel_access": "Object clones",
+        "multilevel_access": "استنساخ كائن",
         "priority_support": "Priority support",
         "retranslation": "Retranslation",
         "report_xls": "Reports to file",
@@ -1497,7 +1497,7 @@ Ext.define('Locale.locale-ar',{
     },
     "map": {
         "zoom_in": "Zoom in",
-        "zoom_out": "Zoom out"
+        "zoom_out": "التصغير"
     },
-    "map_type_label": "Map"
+    "map_type_label": "خريطة"
 });
