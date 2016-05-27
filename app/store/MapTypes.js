@@ -69,11 +69,13 @@ Ext.define('NavixyPanel.store.MapTypes', {
             },
             {
                 type: "kosmosnimki",
-                "name": _l.get('maps.kosmosnimki')
+                "name": _l.get('maps.kosmosnimki'),
+                free: true
             },
             {
                 type: "sputnik",
-                "name": _l.get('maps.sputnik')
+                "name": _l.get('maps.sputnik'),
+                free: true
             }
         ];
 
