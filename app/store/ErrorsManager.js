@@ -37,7 +37,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
             {
                 codes: [1, 5, 6, 101, 102, 111, 112, 201,
                         202, 203, 204, 205, 206, 207, 208,
-                        209, 210, 211, 212, 213, 214, 215,
+                        209, 210, 211, 212, 213, 214,
                         216, 217, 218, 219, 220, 221, 222,
                         223, 224, 225, 226, 227, 228, 229,
                         230, 231, 232, 233, 234, 235, 236,
@@ -56,6 +56,10 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
             {
                 codes: [7],
                 callback: this.showErrorMessage
+            },
+            {
+                codes: [215],
+                callback: this.showErrorDescription
             }
         ];
     },
@@ -133,19 +137,30 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
         }
     },
 
+    showErrorDescription: function (code, parameters, response) {
+        var desc = response && response.status && response.status.description,
+            localeErrorPart = _l.get('errors')[code];
+
+        Ext.MessageBox.show({
+            title: _l.get('error'),
+            msg: desc || localeErrorPart
+        });
+    },
+
     showErrorMessage: function (code, parameters, response) {
         var desc = response && response.status && response.status.description,
             localeErrorPart = _l.get('errors')[code],
-            msg = [localeErrorPart && localeErrorPart["title"] ? localeErrorPart["title"]: ""],
+            msg = [localeErrorPart && localeErrorPart["title"] ? localeErrorPart["title"] : ""],
             needToShow = false;
 
         Ext.each(response.errors, function (error) {
-            msg.push('<p>', localeErrorPart.errors[error.parameter] || [error.parameter, ':', error.error].join(" "), '</p>');
+            msg.push('<p>', localeErrorPart.errors[error.parameter] || [error.parameter, ':',
+                                                                        error.error].join(" "), '</p>');
         }, this);
 
         Ext.MessageBox.show({
             title: _l.get('error'),
-            msg: [ ( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('')
+            msg: [( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('')
         });
     },
 
@@ -161,8 +176,10 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
             msg.push('<p>', localeErrorPart.errors[error.parameter], '</p>');
         }, this);
 
-        Ext.Notice.msg({title: needToShow ? localeErrorPart.title : null,
-            msg: needToShow ? msg.join('') : _l.get('errors')[code].default_msg });
+        Ext.Notice.msg({
+            title: needToShow ? localeErrorPart.title : null,
+            msg: needToShow ? msg.join('') : _l.get('errors')[code].default_msg
+        });
     },
 
     showCornerMessage: function (code, requestConfig) {
