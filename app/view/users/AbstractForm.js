@@ -118,7 +118,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 valueField: 'type'
                 ,listeners: {
                     change: function() {
-                        me.changeLegalStatus(this.getValue() === "individual");
+                        me.changeLegalStatus(this.getValue());
                     }
                 }
             }
@@ -303,11 +303,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         ];
     },
 
-    changeLegalStatus: function (soleStatus) {
-        var legal_container = this.down('[role="legal_fields"]'),
+    changeLegalStatus: function (soleState) {
+        var soleStatus = soleState === "individual",
+            legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
-//                this.down('[name="first_name"]'),
-//                this.down('[name="last_name"]'),
                 this.down('[name="post_city"]'),
                 this.down('[name="post_country"]'),
                 this.down('[name="post_region"]'),
@@ -343,6 +342,16 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
             field.setFieldLabel(field.getFieldLabel());
         }, this);
+
+        if (!soleStatus) {
+            var iecField = this.down('[name="iec"]'),
+                nameField = this.down('[name="legal_name"]');
+
+            iecField[soleState === "legal_entity" ? "show" : "hide"]();
+            nameField[soleState === "legal_entity" ? "show" : "hide"]();
+            iecField.allowBlank = soleState !== "legal_entity";
+            nameField.allowBlank = soleState !== "legal_entity";
+        }
     },
 
     copyAddress: function () {
