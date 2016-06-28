@@ -28,12 +28,39 @@
             this._ready = google.maps && google.maps.Map != undefined;
             if (!this._ready) {
                 L.Google.asyncWait.push(this);
+
             }
 
             this._type = type || 'satellite';
+
+        },
+
+        loadAPI: function () {
+            Ext.getStore("Settings").loadRecord(null, function (record) {
+                var gid = record && record.getData().google_client_id;
+
+                if (record && window.google && typeof window.google.load === "function" &&
+                    Locale.Manager.getLocale()) {
+
+                    var params = {
+                        language: Locale.Manager.getLocale()
+                    };
+
+                    if (gid) {
+                        params.client = gid;
+                    }
+
+                    google.load('maps', '3', {
+                        'other_params': Ext.urlEncode(params),
+                        'callback': L.Google.asyncInitialize
+                    });
+
+                }
+            }, this);
         },
 
         onAdd: function (map, insertAtTheBottom) {
+            this.loadAPI();
             this._map = map;
             this._insertAtTheBottom = insertAtTheBottom;
 
@@ -229,15 +256,5 @@
         }
         L.Google.asyncWait = [];
     };
-
-    var checkInterval = setInterval(function () {
-        if (window.google && typeof window.google.load === "function" && Locale.Manager.getLocale()) {
-            google.load('maps', '3.7', {
-                'other_params': 'sensor=false&language=' + Locale.Manager.getLocale(),
-                'callback': L.Google.asyncInitialize
-            });
-            clearInterval(checkInterval);
-        }
-    }, 5);
 
 })(window.google, L);

@@ -135,7 +135,9 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
         try {
             var controlPanel = Ext.getFirst('mapcontrols');
 
-            controlPanel.bindMap(this.map);
+            if (controlPanel) {
+                controlPanel.bindMap(this.map);
+            }
         } catch (e) {
             Ext.log('controls bind problem', e.stack);
         }
