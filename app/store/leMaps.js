@@ -18,7 +18,16 @@ Ext.define('NavixyPanel.store.leMaps', {
             langCode = langCodeMap[locale];
 
         this.data = [
-            {
+            Config.useGoogleMapsTilesDirectly ? {
+                name: 'ROADMAP',
+                httpsReady: true,
+                urlTpl: "https://mt{serv}.google.com/vt/x={x}&y={y}&z={z}&hl=" + locale,
+                tplFns: {
+                    serv: function () {
+                        return Math.floor(Math.random() * 4);
+                    }
+                }
+            } : {
                 name: 'ROADMAP',
                 httpsReady: true,
                 projection: 'GoogleMapType'
@@ -281,23 +290,33 @@ Ext.define('NavixyPanel.store.leMaps', {
                 },
                 projection: 'OffsetProjectionMapType'
             },
-            {
+            Config.useGoogleMapsTilesDirectly ? {
+                name: 'satellite',
+                httpsReady: true,
+                urlTpl: "https://mt{serv}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}&hl=" + locale,
+                tplFns: {
+                    serv: function () {
+                        return Math.floor(Math.random() * 4);
+                    }
+                }
+            } : {
                 name: 'satellite',
                 httpsReady: true,
                 projection: 'GoogleMapType'
             },
 
-            {
+            Config.useGoogleMapsTilesDirectly ? {
                 name: 'hybrid',
                 httpsReady: true,
-                projection: 'GoogleMapType'
-            },
-
-            {
-                name: 'terrain',
+                urlTpl: "https://mt{serv}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&hl=" + locale,
+                tplFns: {
+                    serv: function () {
+                        return Math.floor(Math.random() * 4);
+                    }
+                }
+            } : {
+                name: 'hybrid',
                 httpsReady: true,
-                maxZoom: 15,
-                minZoom: 2,
                 projection: 'GoogleMapType'
             }
         ];

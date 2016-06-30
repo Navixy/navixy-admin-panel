@@ -33,5 +33,7 @@ Config = {
             monthlyFee: '{avangate_payment_page}?PRODS=4656484&INFO4656484={dealer_id}&QTY={qty}&{styleParams}'
         },
         styleParams: 'CLEAN_CART=ALL&CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
-    }
+    },
+
+    useGoogleMapsTilesDirectly: false //use google maps whithout its js api
 };

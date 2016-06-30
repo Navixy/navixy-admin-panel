@@ -24,5 +24,8 @@ Config = {
     excludedTariffs: "monthly",
 
     // Номер приема входящих сообщений для sms-шлюза navixy
-    navixyInboundNumber: "79037976362"
+    navixyInboundNumber: "79037976362",
+
+    useGoogleMapsTilesDirectly: false //use google maps whithout its js api
+
 };

@@ -24,11 +24,18 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     getMapsList: function () {
 
-        var result = [];
+        var result = [],
+            alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
 
         this.mapsStore.each(function (mapRecord) {
+            var name = mapRecord.get('name');
+
+            if (Ext.Array.contains(alertGoogleMapsTypes, mapRecord.get('type'))) {
+                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert'));
+            }
+
             result.push({
-                boxLabel: mapRecord.get('name'),
+                boxLabel: name,
                 name: 'maps',
                 inputValue: mapRecord.get('type'),
                 role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
@@ -164,7 +171,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             },
             {
                 name: 'google_client_id',
-                fieldLabel: _l.get('settings.fields.google_client_id'),
+                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
                 minLength: 2,
                 maxLength: 100
             },
@@ -186,7 +193,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         var values = {},
             field;
 
-        Ext.Array.each(this.fieldsMap, function(name) {
+        Ext.Array.each(this.fieldsMap, function (name) {
             field = this.down("[name=" + name + "]");
             values[name] = field.getValue();
         }, this);
@@ -197,7 +204,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     updateSettingsFromMap: function (settings) {
         var field;
 
-        Ext.Array.each(this.fieldsMap, function(value, key) {
+        Ext.Array.each(this.fieldsMap, function (value, key) {
             field = this.down("[name=" + value + "]");
 
             if (field && !Ext.isEmpty(settings[value])) {
