@@ -151,7 +151,7 @@ Ext.define('Locale.locale-es',{
             "260": "Suma de pagos no cumplen con sumario"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "días|día|días",
         "hours": "horas|hora|horas",
         "minutes": "minutos|minuto|minutos",
@@ -561,8 +561,8 @@ Ext.define('Locale.locale-es',{
         "tariff_form": {
             "title": "Cambio la tarifa para el tracker",
             "save_btn": "Guardar cambios",
-            "repay": "Pagar el resto del pago actual de tarifas",
-            "charge": "Carga de pago para nueva tarifa",
+            "repay": "Repay remainder of current tariff payment",
+            "charge": "Charge user now (according to the new plan)",
             "charge_sup": "Sólo para los planes de tarifas con pago mensual",
             "tariff_invalid": "debe ser diferente de la actual"
         },
@@ -640,7 +640,7 @@ Ext.define('Locale.locale-es',{
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Etiqueta",
+            "name": "Label",
             "group_id": "Grupo",
             "price": "Pago del mes",
             "device_limit": "Limite de dispositivos",
@@ -653,15 +653,15 @@ Ext.define('Locale.locale-es',{
             "outgoing_sms": "Saliente SMS",
             "service_sms": "Servicio SMS",
             "phone_call": "Llamadas telefónicas",
-            "traffic": "GPRS (para Mb)",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "Tarifa predeterminada para los dispositivos de tipo «{0}»",
             "default_short": "defecto",
             "service_price": "La cantidad que se cobra por el uso del servicio",
             "group_id_exp": "Grupo de la tarifa",
             "active_exp": "Los usuarios pueden cambiar a esta tarifa por su cuenta",
-            "device_limit_exp": "Máximo de dispositivos",
+            "device_limit_exp": "Maximum devices",
             "activation_bonus": "Bonus de activación",
-            "free_days": "Número de días libres",
+            "free_days": "Number of free days",
             "tariff_type": "Ciclo de facturación",
             "tariff_type_short": "Pago",
             "rate": "Rate",
@@ -701,12 +701,12 @@ Ext.define('Locale.locale-es',{
                 }
             },
             "hints": {
-                "2": "Messages which are sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br />User notifications about geo-based events they want to stay aware of<br /> – M2M commands to those device models which can be configured over SMS channel only (device configuration, output change), as well as manual acquiring location by SMS (for models which support that feature).",
-                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without a special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostic.",
+                "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
                 "5": "If you use Navixy SIM-cards in devices, you can set up a fee for the its usage based on traffic volume (traffic in both directions is billed).",
                 "6": "User notifications by automatic phone calls are currently supported in some regions and in limited languages only.",
-                "7": "If user reaches the limitation, he will not be available to add or track more assets in his account. In the case user has assets on different plans, the minimum value will be applied.",
+                "7": "If user reaches the limit, he will not be able to add or track more assets in his account. In case user has assets on different plans, the minimum value will be applied.",
                 "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
                 "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
                 "10": "Select options which are available for users who have assets on this plan.",
@@ -716,10 +716,10 @@ Ext.define('Locale.locale-es',{
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
                 "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
                 "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
-                "17": "The plan will be set by default for all devices added by user, if with no activation code is used.<br /><br />When user enters an activation code, its parameters are used prioritily.",
+                "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
-                "19": "Amount of money complimentary charged to user’s balance when he adds a new device.<br /><br />It won’’t be used for general service fee payment, but only for additional services, e.g. SMS notifications.",
-                "20": "If the checkbox is marked, user will be always charged a fee for the full month when service for the device is being renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.<br /><br />If the checkbox is cleared, user will be charged proportionally to the amount of days left from the date of payment to the end of the month.",
+                "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
@@ -1497,4 +1497,5 @@ Ext.define('Locale.locale-es',{
         "zoom_out": "Zoom out"
     },
     "map_type_label": "Map"
+
 });

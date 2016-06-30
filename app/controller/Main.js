@@ -168,8 +168,8 @@ Ext.define('NavixyPanel.controller.Main', {
                 'hours-minutes': function () {
                     var hours = this.getHours(),
                         minutes = this.getMinutes(),
-                        hours_postfix = _l.get('units_combination.hours').split('|')[hours <= 10 || hours > 19 ? hours % 10 : 10],
-                        minutes_postfix = _l.get('units_combination.minutes').split('|')[minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
+                        hours_postfix = _l.get('units_combination_list.hours').split('|')[hours <= 10 || hours > 19 ? hours % 10 : 10],
+                        minutes_postfix = _l.get('units_combination_list.minutes').split('|')[minutes <= 10 || minutes > 19 ? minutes % 10 : 10];
 
                     return [hours, hours_postfix, minutes, minutes_postfix].join(' ');
                 }
@@ -253,9 +253,9 @@ Ext.define('NavixyPanel.controller.Main', {
 
                 value = Math.abs(value);
 
-                var unitsCombination = _l.get('units_combination')[unit].split('|');
+                var unitsCombination = _l.get('units_combination_list')[unit].split('|');
 
-                if (_l.get('units_combination')[unit]) {
+                if (_l.get('units_combination_list')[unit]) {
                     var tmp = Math.ceil(value) % 100,
                         len = unitsCombination.length;
 

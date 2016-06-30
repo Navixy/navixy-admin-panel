@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-ru
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-ru', {
+* @class Locale.locale-ru
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-ru',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -168,7 +168,7 @@ Ext.define('Locale.locale-ru', {
             "260": "Сумма платежей не соотвествует итогам"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "дней|день|дня|дня|дня|дней",
         "hours": "часов|час|часа|часа|часа|часов",
         "minutes": "минут|минута|минуты|минуты|минуты|минут",
@@ -583,8 +583,8 @@ Ext.define('Locale.locale-ru', {
         "tariff_form": {
             "title": "Смена тарифного плана для трекера",
             "save_btn": "Сохранить изменения",
-            "repay": "Вернуть средства за неиспользованный период (по старому ТП)",
-            "charge": "Списать с баланса средства до конца отчетного периода (по новому ТП)",
+            "repay": "Repay remainder of current tariff payment",
+            "charge": "Charge user now (according to the new plan)",
             "charge_sup": "действует только для тарифных планов с помесячной оплатой",
             "tariff_invalid": "Тариф должен отличаться от текущего"
         },
@@ -662,7 +662,7 @@ Ext.define('Locale.locale-ru', {
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Название",
+            "name": "Label",
             "group_id": "Группа",
             "price": "Месячный платеж",
             "device_limit": "Количество устройств",
@@ -675,15 +675,15 @@ Ext.define('Locale.locale-ru', {
             "outgoing_sms": "Уведомления по SMS",
             "service_sms": "Служебные SMS",
             "phone_call": "Голосовые уведомления",
-            "traffic": "GPRS (за Мб)",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "тариф по умолчанию для устройств типа «{0}»",
             "default_short": "по умолчанию",
             "service_price": "сумма взимаемая за пользованием сервисом",
             "group_id_exp": "Группа тарифного плана",
             "active_exp": "Пользователи могут переходить на данный тарифный план самостоятельно",
-            "device_limit_exp": "Максимум устройств в кабинете",
+            "device_limit_exp": "Maximum devices",
             "activation_bonus": "Бонус при активации",
-            "free_days": "Кол-во бесплатных дней",
+            "free_days": "Number of free days",
             "tariff_type": "Биллинговый период",
             "tariff_type_short": "Оплата",
             "rate": "Ставка",
@@ -723,27 +723,27 @@ Ext.define('Locale.locale-ru', {
                 }
             },
             "hints": {
-                "2": "Сообщения, отправляемые с ведома пользователя или по его запросу. Такие SMS отправляются с сервис-платформы пользователям и устройствам, через указанный вами SMS шлюз.<br /><br />К ним относятся:<br /> – Уведомления пользователям о настроенных ими геособытиях<br /> – M2M команды для тех моделей устройств, которые могут управляться только через SMS-канал (конфигурация устройства, изменение выхода), а также принудительный запрос местоположения через SMS (для устройств с поддержкой данной функции)",
-                "3": "Служебные SMS команды устройствам, отправляемые с сервис-платформы, обычно, без дополнительного согласия пользователя. Например, используются при автоматической активации",
+                "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
                 "4": "Если вы используете в устройствах комплектные SIM-карты Navixy, то можете дополнительно тарифицировать входящие на сервис-платформу SMS сообщения с этих SIM-карт (например, ответы от устройств о выполнении команд).",
                 "5": "Если вы используете в устройствах SIM-карты Navixy, то вы можете установить отдельную плату за ее использование на основе объема трафика (учитывается трафик в обе стороны).",
                 "6": "Уведомления пользователей о гео-событиях автоматическим телефонным звонком в настоящее время поддерживаются только в ряде регионов и на ограниченном списке языков.",
-                "7": "Если пользователь достигнет указанного лимита устройств, он не сможет добавлять больше объектов в свою учетную запись. В случае, если пользователь имеет устройства на разных тарифных планах, применяется минимальное из аналогичных значений на всех планах.",
+                "7": "If user reaches the limit, he will not be able to add or track more assets in his account. In case user has assets on different plans, the minimum value will be applied.",
                 "8": "История (поездок, событий и др.) будет храниться в системе не более указанного времени по отношению к текущей дате. При изменении этого параметра у тарифного плана в большую сторону, доступность истории за более ранние периоды не гарантируется.",
-                "9": "Выберите карты, доступные пользователю, если он наблюдает за объектами на этом тарифном плане.Полный список доступных в сервисе карт задается в настройках сервиса.",
-                "10": "Определите опции, которые будут доступны пользователю устройств на данном тарифном плане.",
-                "11": "Определите опции, которые будут доступны пользователю устройств на данном тарифном плане.",
-                "12": "Цена, которую пользователь платит вам, как провайдеру услуг. Используется валюта, определенная вам и в настройках площадки.<br /><br />Если указано “N/A”, то это означает, что услуга не предоставляется или не может быть тарифицирована биллинговой системой.",
-                "13": "Цена, которую платите вы – за сервисы Navixy. Если указано “N/A”, то услуга не предоставляется (не заказана или недоступна).",
+                "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
+                "10": "Select options which are available for users who have assets on this plan.",
+                "11": "Select options which are available for users who have assets on this plan.",
+                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
                 "14": "Этот план будет использоваться по умолчанию, когда пользователь активирует новое устройство. Примечание: при использовании активационного кода, заданный в нем план имеет приоритет над этой настройкой.",
-                "15": "Целое число (0, 1, 2, …), определяющее номер группы, которому принадлежит тарифный план.",
-                "16": "Установите галочку, если хотите, чтобы пользователи имели возможность самостоятельно переключать свои устройства на этот тарифный план (с других планов в пределах той же группы).",
-                "17": "Тарифный план будет назначаться по умолчанию при добавлении пользователем нового устройства, если для этого не используется актвиационный код.<br /><br />Когда пользователь вводит активационный код, приоритетно используются параметры кода.",
-                "18": "Количество дней, предоставляемых пользователю “в подарок” после добавления устройства (включая день, когда устройство было добавлено).",
-                "19": "Сумма, которая зачисляется в “подарок” на бонусный счет пользователя.<br /><br />Она не может быть использована для оплаты периода (абонентской платы), а только для дополнительных услуг, например, SMS уведомлений.",
-                "20": "Если галочка установлена, то списание будет произведено пропорционально числу дней, оставшихся со дня оплаты до конца месяца.<br><br>Если галочка снята, то при продлении услуг с баланса пользователя всегда списывается абонентская плата за целый месяц. Например, если пользователь просрочил оплату и пополнил баланс 10-го числа, с баланса все равно будет списана сумма за весь месяц.",
-                "plan_options": "<b>Примечание о совместимости тарифных планов.</b> Если в одной учетной записи наблюдаются устройства на разных тарифных планах, то некоторые карты и опции (которые не включены во все планы), могут стать недоступны для пользователя. Вы можете избежать данной коллизии, объединяя тарифные планы в группы и, таким образом, делая невозможным использование пользователями несовместимых тарифных планов. Пожалуй, это единственный способ предоставить вам гибкие возможности по конфигурированию тарифных планов и, вместе с тем, предотвратить хитрости с прицелом на экономию со стороны пользователей.",
-                "plan_availability": "Комбинируя тарифные планы в группы, вы можете лучше их организовывать, а также позволять пользователям самостоятельно переключаться между планами. Тогда как вы можете назначить любой тарифный план любому устройству в Панели администратора, ваши пользователи могут переключаться только на тарифы, которые отмеченные соответствующей галочкой."
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
+                "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
+                "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
+                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
+                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
         "combo_empty": "Выберите тарифный план",
@@ -870,7 +870,7 @@ Ext.define('Locale.locale-ru', {
                 "location_lng": "Долгота по умолчанию",
                 "zoom": "Масштаб"
             },
-            "google_client_id": "Client ID или API ключ для карт google. <a href={0} target=\"blank\">Как получить?</a>",
+            "google_client_id": "Client ID для карт google",
             "currency": "Валюта для биллинга пользователей",
             "payment_link": "URL системы оплаты",
             "promo_url": "Web-сайт компании",
@@ -1107,7 +1107,7 @@ Ext.define('Locale.locale-ru', {
             "emails_main_info": "Настройки для отправки Email сообщений пользователям о геособытиях, низком балансе учетной записи и т.п.",
             "sms_fields": "SMS сообщения",
             "sms_main_title": "Основные параметры",
-            "sms_main_info": "Настройки SMS сообщений и SMS шлюзов, обеспечивающих взаимодействие между сервис-платформой, пользователями и устройствами.<br><br><b style='color: red'>В данный момент настройки SMS отключены, для изменения параметров, пожалуйста, обратитесь в техническую поддержку.</b>",
+            "sms_main_info": "Настройки SMS сообщений и SMS шлюзов, обеспечивающих взаимодействие между сервис-платформой, пользователями и устройствами.",
             "sms_m2m_title": "M2M сообщения",
             "sms_m2m_info": "Сервис для обмена M2M-сообщениями между сервис-платформой и устройствами через SMS-канал играет важную роль для простой активации и удаленного управления.<br /><br />С помощью SMS-сообщений выполняется:<br /><ul><li>первоначальная автоматическая активация (APN, адрес сервара и др.) абсолютного большинства устройств</li><li>прием от устройств подтверждений о выполнении ими SMS-команд</li><li>резервный прием информации о местонахождении по SMS-каналу, когда GPRS-канал недоступен (низкий уровень сигнала, международный роуминг и т.д.) – для моделей с поддержкой такой функции)</li></ul>Более того, для тех бюджетных моделей, которые не имеют возможностей управления ими по каналу GPRS/IP, изменение настроек их работы и управление выходами также производится с помощью канала SMS.",
             "sms_user_title": "Оповещения пользователя",

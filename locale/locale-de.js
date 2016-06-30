@@ -151,7 +151,7 @@ Ext.define('Locale.locale-de',{
             "260": "Summe der Zahlungen nicht nachkommt, Zusammenfassung"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "Tage|Tag|Tage",
         "hours": "Stunden|Stunde|Stunden",
         "minutes": "Minuten|Minute|Minuten",

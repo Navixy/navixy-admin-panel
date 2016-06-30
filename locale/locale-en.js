@@ -1,8 +1,8 @@
 /**
- * @class Locale.locale-en
- * @extends Locale.AbstractLocale
- */
-Ext.define('Locale.locale-en', {
+* @class Locale.locale-en
+* @extends Locale.AbstractLocale
+*/
+Ext.define('Locale.locale-en',{
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -163,7 +163,7 @@ Ext.define('Locale.locale-en', {
             "260": "Payments amount does not correspond to the total sum"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "days|day|days",
         "hours": "hours|hour|hours",
         "minutes": "minutes|minute|minutes",
@@ -575,8 +575,8 @@ Ext.define('Locale.locale-en', {
         "tariff_form": {
             "title": "Change plan for tracker",
             "save_btn": "Save changes",
-            "repay": "Refund the remaining balance of the current tariff plan to user account",
-            "charge": "Charge user account according to the new tariff plan",
+            "repay": "Repay remainder of current tariff payment",
+            "charge": "Charge user now (according to the new plan)",
             "charge_sup": "only for monthly based plans",
             "tariff_invalid": "must be different from current"
         },
@@ -654,7 +654,7 @@ Ext.define('Locale.locale-en', {
         },
         "fields": {
             "tariff_id": "ID",
-            "name": "Name",
+            "name": "Label",
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
@@ -667,15 +667,15 @@ Ext.define('Locale.locale-en', {
             "outgoing_sms": "Outgoing SMS",
             "service_sms": "Service SMS",
             "phone_call": "Phone calls",
-            "traffic": "GPRS (per Mb)",
+            "traffic": "GPRS rate (per Mb)",
             "default_tariff": "default plan for devices with type «{0}»",
             "default_short": "default",
             "service_price": "the amount charged for service usage",
             "group_id_exp": "Plan group",
             "active_exp": "Users are allowed to select this plan",
-            "device_limit_exp": "Maximum number of devices",
+            "device_limit_exp": "Maximum devices",
             "activation_bonus": "Activation bonus",
-            "free_days": "Free days",
+            "free_days": "Number of free days",
             "tariff_type": "Billing cycle",
             "tariff_type_short": "Payment",
             "rate": "Rate",
@@ -715,27 +715,27 @@ Ext.define('Locale.locale-en', {
                 }
             },
             "hints": {
-                "2": "Messages sent with user’s consent or by his request. Such SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications on alerts<br /> – M2M commands to those devices which may be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
-                "3": "Service and maintenance SMS commands sent from the platform to devices, normally without any special approvement from user. For example, such sms commands are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
+                "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
+                "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
                 "4": "If you use Navixy SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
                 "5": "If you use Navixy SIM cards in devices, you can set up a fee for its usage based on traffic volume (traffic in both directions is billed).",
                 "6": "User notifications by automatic phone calls are currently supported for limited number of regions and limited number of languages.",
-                "7": "If a user reaches the limit, he won't be able to add or track extra assets. In case a user has assets on different plans in a single account, the minimum value will be applied.",
+                "7": "If user reaches the limit, he will not be able to add or track more assets in his account. In case user has assets on different plans, the minimum value will be applied.",
                 "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
-                "9": "Set the maps available to users who track their assets with the current plan. The list of all available maps may be defined in the Service preferences menu section of your Admin Panel.",
-                "10": "Set features and options available to users who track their assets with the current plan.",
-                "11": "Set features and options available to users who track their assets with the current plan.",
-                "12": "The cost user have to pay you for the service. The billing system applies the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be charged for by the billing system.",
-                "13": "The price you pay to Navixy for provided services. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
+                "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
+                "10": "Select options which are available for users who have assets on this plan.",
+                "11": "Select options which are available for users who have assets on this plan.",
+                "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
+                "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
-                "15": "Reference number (0, 1, 2, …) of the group assigned with the current plan.",
-                "16": "Mark the checkbox if you want to allow your users switch their devices to this plan (from other plans within the same group) on their own.",
-                "17": "The plan will be used by default for all the devices added by users, if no activation codes used.<br /><br />When user applies an activation code its parameters will be used as primary.",
-                "18": "Number of free days user gets after adding a device (including the day when device was added).",
-                "19": "Amount of money complimentary added to user balance after he activates a new device.<br /><br />It can’t be used for basic monthly fee payment, but only for additional services, e.g. SMS notifications.",
-                "20": "If the checkbox is marked, user balance will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user belance will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and topped up his balance on the 10th day, he will be charged for the full month anyway.",
-                "plan_options": "<b>Important note on plans compatibility:</b> in case one user account has assets on different plans, some maps and options (which are not included into all the plans) may become unavailable for that user. You can avoid such a collision by grouping similar plans, thus preventing your users from having devices on incompatible plans. We consider it as the only possible way to offer you flexible configuration of your plans and at the same time not giving your users the opportunity to cheat with your pricing.",
-                "plan_availability": "By combining plans into groups you can better organize your plans and allow your users to switch between the plans on their own. While you can assign any plan to any asset in the Admin Panel, your users will be able to switch only to the plans you define."
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
+                "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
+                "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
+                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
+                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
+                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox."
             }
         },
         "combo_empty": "Select plan",
@@ -862,7 +862,7 @@ Ext.define('Locale.locale-en', {
                 "location_lng": "Default longitude",
                 "zoom": "Default zoom"
             },
-            "google_client_id": "Client ID or API-key for google maps <a href={0} target=\"blank\">Get api key</a>",
+            "google_client_id": "Client ID for google maps",
             "currency": "Billing currency for users",
             "payment_link": "Payment system URL",
             "promo_url": "Promo website URL",
@@ -1098,7 +1098,7 @@ Ext.define('Locale.locale-en', {
             "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
             "sms_fields": "SMS messages",
             "sms_main_title": "Main settings",
-            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br><br><b style='color: red'>Changing SMS settings through panel is not available. For changing parameters, please contact technical support.</b>",
+            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
             "sms_m2m_title": "M2M messages",
             "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
             "sms_user_title": "User notifications",

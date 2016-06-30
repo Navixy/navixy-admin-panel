@@ -143,7 +143,7 @@ Ext.define('Locale.locale-ro',{
             "260": "Payments sum not comply with summary"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "zile|zi|zile",
         "hours": "ore|oră|ore",
         "minutes": "minute|minut|minute",

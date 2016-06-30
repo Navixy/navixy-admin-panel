@@ -143,7 +143,7 @@ Ext.define('Locale.locale-pt',{
             "260": "Soma de pagamentos não cumprir com resumo"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "dias|dia|dias",
         "hours": "horas|hora|horas",
         "minutes": "minutos|minuto|minutos",

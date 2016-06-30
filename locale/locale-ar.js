@@ -143,7 +143,7 @@ Ext.define('Locale.locale-ar',{
             "260": "Payments sum not comply with summary"
         }
     },
-    "units_combination": {
+    "units_combination_list": {
         "days": "أيام",
         "hours": "ساعات",
         "minutes": "دقيقة",
