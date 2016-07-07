@@ -862,7 +862,7 @@ Ext.define('Locale.locale-en',{
                 "location_lng": "Default longitude",
                 "zoom": "Default zoom"
             },
-            "google_client_id": "Client ID for google maps",
+            "google_client_id": "Client ID or API-key for google maps <a href={0} target=\"blank\">Get api key</a>",
             "currency": "Billing currency for users",
             "payment_link": "Payment system URL",
             "promo_url": "Promo website URL",

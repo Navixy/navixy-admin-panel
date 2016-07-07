@@ -870,7 +870,7 @@ Ext.define('Locale.locale-ru',{
                 "location_lng": "Долгота по умолчанию",
                 "zoom": "Масштаб"
             },
-            "google_client_id": "Client ID для карт google",
+            "google_client_id": "Client ID или API ключ для карт google. <a href={0} target=\"blank\">Как получить?</a>",
             "currency": "Валюта для биллинга пользователей",
             "payment_link": "URL системы оплаты",
             "promo_url": "Web-сайт компании",

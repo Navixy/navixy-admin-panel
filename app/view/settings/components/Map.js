@@ -95,6 +95,11 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 margin: '0 0 50 10',
                 ui: 'light',
                 items: this.getMapsList()
+            }, {
+                name: 'google_client_id',
+                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
+                minLength: 2,
+                maxLength: 100
             },
             {
                 xtype: 'blockheader',
@@ -169,12 +174,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     }
                 ]
             },
-            {
-                name: 'google_client_id',
-                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
-                minLength: 2,
-                maxLength: 100
-            },
+
             {
                 xtype: 'button',
                 ui: 'default',
