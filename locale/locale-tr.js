@@ -893,7 +893,7 @@ Ext.define('Locale.locale-tr',{
             "select_req": "Listeden kodları seçin",
             "same_type_req": "Bir cihaz tipi kodu belirlemelisniz",
             "edited_tip": "değiştirildi",
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
             "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Aktif",

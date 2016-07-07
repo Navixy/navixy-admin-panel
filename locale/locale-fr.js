@@ -780,7 +780,7 @@ Ext.define('Locale.locale-fr',{
                 "sockets": "Sockets",
                 "toggle_all": "Afficher tout"
             },
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
             "faq_text": "Codes d'activation FAQ"
         }
     },

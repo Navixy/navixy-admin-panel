@@ -794,7 +794,7 @@ Ext.define('Locale.locale-en',{
             "select_req": "Select codes from list",
             "same_type_req": "You must specify one device type codes",
             "edited_tip": "changed",
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
             "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activated",
@@ -900,7 +900,7 @@ Ext.define('Locale.locale-en',{
             "domain_ph": ".navixy.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
             "domain_help": "How do I set up a CNAME-record",
-            "domain_help_link": "http://www.navixy.com/docs/user/admin-panel-docs/settings/domain-name/",
+            "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",

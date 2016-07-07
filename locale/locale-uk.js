@@ -779,7 +779,7 @@ Ext.define('Locale.locale-uk',{
                 "sockets": "Розетки",
                 "toggle_all": "Показати всі"
             },
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
             "faq_text": "Activation codes FAQ"
         }
     },

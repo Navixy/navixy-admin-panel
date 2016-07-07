@@ -802,7 +802,7 @@ Ext.define('Locale.locale-ru',{
             "select_req": "Выберите коды из списка",
             "same_type_req": "Необходимо указать коды одного типа устройств",
             "edited_tip": "изменен",
-            "faq_link": "http://www.navixy.com/docs/user/admin-panel-docs/activation-codes/",
+            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
             "faq_text": "Коды активации FAQ",
             "filters": {
                 "activated": "Активирован",
