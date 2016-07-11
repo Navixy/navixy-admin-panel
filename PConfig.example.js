@@ -35,5 +35,10 @@ Config = {
         styleParams: 'CLEAN_CART=ALL&CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
     },
 
-    useGoogleMapsTilesDirectly: false //use google maps whithout its js api
+    useGoogleMapsTilesDirectly: false //use google maps whithout its js api ,
+
+    //google_key: {
+    //    allow: true,
+    //    get_key_link: 'https://developers.google.com/maps/documentation/javascript/get-api-key'
+    //}
 };

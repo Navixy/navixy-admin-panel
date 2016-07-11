@@ -80,6 +80,12 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getItems: function () {
+        if (!Config.google_key) {
+            Config.google_key = {
+                allow: false,
+                get_key_link: 'https://www.navixy.com/docs/admin-panel-docs/settings/set-of-maps/'
+            };
+        }
         return [
             {
                 xtype: 'blockheader',
@@ -95,11 +101,17 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 margin: '0 0 50 10',
                 ui: 'light',
                 items: this.getMapsList()
-            }, {
+            }, Config.google_key.allow ? {
                 name: 'google_client_id',
-                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
+                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), Config.google_key.get_key_link),
                 minLength: 2,
                 maxLength: 100
+            } : {
+                xtype: 'hiddefield',
+                name: 'google_client_id'
+            }, Config.google_key.allow ? undefined : {
+                xtype: 'component',
+                html: Ext.String.format(_l.get('settings.fields.premium_gis'), Config.google_key.get_key_link)
             },
             {
                 xtype: 'blockheader',

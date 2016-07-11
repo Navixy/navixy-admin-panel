@@ -1,8 +1,8 @@
 /**
-* @class Locale.locale-en
-* @extends Locale.AbstractLocale
-*/
-Ext.define('Locale.locale-en',{
+ * @class Locale.locale-en
+ * @extends Locale.AbstractLocale
+ */
+Ext.define('Locale.locale-en', {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -950,7 +950,8 @@ Ext.define('Locale.locale-en',{
             "show_call_notifications": "Allow configuration of voice notifications",
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
-            "monitoring_logo_clickable_hint": ""
+            "monitoring_logo_clickable_hint": "",
+            premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). <a href="{0}" target="_blank">Read more</a>'
         },
         "sms_gateway": {
             "navixy": {
@@ -1106,7 +1107,7 @@ Ext.define('Locale.locale-en',{
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
-            "google_maps_alert": "Google Maps may be unavailable without the use of API Key or Client ID. To guarantee Google Maps availability, please use the API Key or Client ID",
+            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy.',
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",

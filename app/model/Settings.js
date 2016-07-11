@@ -8,54 +8,191 @@ Ext.define('NavixyPanel.model.Settings', {
     extend: 'NavixyPanel.model.Abstract',
     idProperty: 'id',
     fields: [
-        {name: 'service_title', type: 'string'},
-        {name: 'domain', type: 'string'},
-        {name: 'locale', type: 'string'},
-        {name: 'demo_login', type: 'string'},
-        {name: 'demo_password', type: 'string'},
+        {
+            name: 'service_title',
+            type: 'string'
+        },
+        {
+            name: 'domain',
+            type: 'string'
+        },
+        {
+            name: 'locale',
+            type: 'string'
+        },
+        {
+            name: 'demo_login',
+            type: 'string'
+        },
+        {
+            name: 'demo_password',
+            type: 'string'
+        },
 
-        {name: 'maps', type: 'auto'},
-        {name: 'default_map', type: 'auto'},
-        {name: 'google_client_id', type: 'string'},
+        {
+            name: 'maps',
+            type: 'auto'
+        },
+        {
+            name: 'default_map',
+            type: 'auto'
+        },
+        {
+            name: 'google_client_id',
+            type: 'string'
+        },
 
-        {name: 'allowed_maps', type: 'auto'},
-        {name: 'limited_domain', type: 'boolean', default: true},
+        {
+            name: 'allowed_maps',
+            type: 'auto'
+        },
+        {
+            name: 'limited_domain',
+            type: 'boolean',
+            default: true
+        },
 
-        {name: 'show_mobile_apps', type: 'boolean', defaultValue: true},
-        {name: 'allow_registration', type: 'boolean', defaultValue: true},
+        {
+            name: 'show_mobile_apps',
+            type: 'boolean',
+            defaultValue: true
+        },
+        {
+            name: 'allow_registration',
+            type: 'boolean',
+            defaultValue: true
+        },
 
+        {
+            name: 'currency',
+            type: 'string'
+        },
+        {
+            name: 'payment_link',
+            type: 'string'
+        },
+        {
+            name: 'promo_url',
+            type: 'string'
+        },
 
-        {name: 'currency', type: 'string'},
-        {name: 'payment_link', type: 'string'},
-        {name: 'promo_url', type: 'string'},
+        {
+            name: 'email_from',
+            type: 'string'
+        },
+        {
+            name: 'email_footer',
+            type: 'string'
+        },
+        {
+            name: 'email_special',
+            type: 'string'
+        },
+        {
+            name: 'sms_originator',
+            type: 'string'
+        },
+        {
+            name: 'caller_id',
+            type: 'string'
+        },
 
-        {name: 'email_from', type: 'string'},
-        {name: 'email_footer', type: 'string'},
-        {name: 'email_special', type: 'string'},
-        {name: 'sms_originator', type: 'string'},
-        {name: 'caller_id', type: 'string'},
+        {
+            name: 'favicon',
+            type: 'string'
+        },
+        {
+            name: 'logo',
+            type: 'string'
+        },
+        {
+            name: 'login_wallpaper',
+            type: 'string'
+        },
+        {
+            name: 'monitoring_logo',
+            type: 'string'
+        },
 
-        {name: 'favicon', type: 'string'},
-        {name: 'logo', type: 'string'},
-        {name: 'login_wallpaper', type: 'string'},
-        {name: 'monitoring_logo', type: 'string'},
+        {
+            name: 'login_footer',
+            type: 'string'
+        },
+        {
+            name: 'display_model_features_link',
+            type: 'boolean'
+        },
+        {
+            name: 'show_call_notifications',
+            type: 'boolean'
+        },
 
-        {name: 'login_footer', type: 'string'},
-        {name: 'display_model_features_link', type: 'boolean'},
-        {name: 'show_call_notifications', type: 'boolean'},
+        {
+            name: 'monitoring_logo_clickable',
+            type: 'boolean'
+        },
 
-        {name: 'monitoring_logo_clickable', type: 'boolean'},
+        {
+            name: 'map_type',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultMapConverter(this, value);
+            }
+        },
+        {
+            name: 'map_zoom',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultMapConverter(this, value);
+            }
+        },
+        {
+            name: 'map_location_lat',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultMapLocationConverter(this, value);
+            }
+        },
+        {
+            name: 'map_location_lng',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultMapLocationConverter(this, value);
+            }
+        },
 
-        {name: 'map_type', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
-        {name: 'map_zoom', type: 'string', convert: function (value, record) {return record.defaultMapConverter(this, value);}},
-        {name: 'map_location_lat', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}},
-        {name: 'map_location_lng', type: 'string', convert: function (value, record) {return record.defaultMapLocationConverter(this, value);}},
-
-        {name: 'default_user_settings', type: 'auto'},
-        {name: 'geocoder', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
-        {name: 'route_provider', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
-        {name: 'measurement_system', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
-        {name: 'translit', type: 'string', convert: function (value, record) {return record.defaultUserConverter(this, value);}},
+        {
+            name: 'default_user_settings',
+            type: 'auto'
+        },
+        {
+            name: 'geocoder',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value);
+            }
+        },
+        {
+            name: 'route_provider',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value);
+            }
+        },
+        {
+            name: 'measurement_system',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value);
+            }
+        },
+        {
+            name: 'translit',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value);
+            }
+        },
 
     ],
 
@@ -75,18 +212,18 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     notificationMap: {
-        email_from : 'email_from',
-        email_footer : 'email_footer',
-        email_special : 'email_special',
-        sms_originator : 'sms_originator',
-        caller_id : 'caller_id'
+        email_from: 'email_from',
+        email_footer: 'email_footer',
+        email_special: 'email_special',
+        sms_originator: 'sms_originator',
+        caller_id: 'caller_id'
     },
 
     defaultUserSettingsMap: {
-        geocoder : 'geocoder',
-        measurement_system : 'measurement_system',
-        route_provider : 'route_provider',
-        translit : 'translit'
+        geocoder: 'geocoder',
+        measurement_system: 'measurement_system',
+        route_provider: 'route_provider',
+        translit: 'translit'
     },
 
     defaultUserConverter: function (field, value) {
@@ -163,10 +300,10 @@ Ext.define('NavixyPanel.model.Settings', {
 
     getClearMapDefaults: function () {
         var result = {};
-        Ext.iterate(this.defaultMapMap, function(fieldName, mapName) {
+        Ext.iterate(this.defaultMapMap, function (fieldName, mapName) {
             result[fieldName] = '';
         }, this);
-        Ext.iterate(this.defaultMapLocationMap, function(fieldName, mapName) {
+        Ext.iterate(this.defaultMapLocationMap, function (fieldName, mapName) {
             result[fieldName] = '';
         }, this);
         return result;
@@ -176,35 +313,34 @@ Ext.define('NavixyPanel.model.Settings', {
         var changes = this.getChanges(),
             result = {};
 
-        Ext.iterate(changes, function(fieldName, fieldValue) {
+        Ext.iterate(changes, function (fieldName, fieldValue) {
             if (!this.notificationMap[fieldName]
                 && !this.defaultUserSettingsMap[fieldName]
                 && !this.defaultMapMap[fieldName]
-                && !this.defaultMapLocationMap[fieldName] ) {
+                && !this.defaultMapLocationMap[fieldName]) {
                 result[fieldName] = fieldValue;
             }
         }, this);
 
-        return Ext.Object.getSize(result) ? result: null;
+        return Ext.Object.getSize(result) ? result : null;
     },
 
     getNotificationChanges: function () {
         var changes = this.getChanges(),
             result = {};
 
-        Ext.iterate(changes, function(fieldName, fieldValue) {
+        Ext.iterate(changes, function (fieldName, fieldValue) {
             if (this.notificationMap[fieldName]) {
                 result[fieldName] = fieldValue;
             }
         }, this);
 
-        return Ext.Object.getSize(result) ? result: null;
+        return Ext.Object.getSize(result) ? result : null;
     },
 
     getServiceFormatted: function () {
         var data = Ext.apply({}, this.getData()),
             dealer = Ext.getStore('Dealer') && Ext.getStore('Dealer').first();
-
 
         Ext.iterate(data, function (field, value) {
             if (
@@ -212,7 +348,7 @@ Ext.define('NavixyPanel.model.Settings', {
                 || this.defaultMapLocationMap[field]
                 || this.notificationMap[field]
                 || this.defaultUserSettingsMap[field]
-                ) {
+            ) {
 
                 delete data[field];
             }
