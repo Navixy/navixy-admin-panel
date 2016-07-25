@@ -73,17 +73,18 @@ Ext.define('NavixyPanel.controller.Accounting', {
             button.disable()
         }
 
+        Ext.defer(function () {
+                if (button) {
+                    button.enable();
+                }
+            }, 10000, this);
+
         $.fileDownload(url)
             .fail(function (responseHtml, url, error) {
                 if (button) {
                     button.enable();
                 }
                 me.handleExportFailure(responseHtml, url, error);
-            })
-            .done(function () {
-                if (button) {
-                    button.enable();
-                }
             })
     },
 
