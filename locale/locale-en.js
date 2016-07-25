@@ -1157,7 +1157,15 @@ Ext.define('Locale.locale-en', {
                 "report_btn": "Submit deeds by email",
                 "fields": {
                     "month": "Select month",
-                    "last_act": "Last deed number"
+                    "last_act": "Last deed number",
+                    "check": "Ignore errors"
+                },
+                errors_window: {
+                    title: "Validation errors occurred during export process",
+                    close: "Close",
+                    users_list: "Users",
+                    dealers_list: "PaaS"
+                }
                 }
             },
             "payments": {

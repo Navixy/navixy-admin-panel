@@ -38,6 +38,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                     formBind: true,
                     disabled: true,
                     margin: '10 5',
+                    role: 'save-btn',
                     handler: Ext.bind(this.sendForm, this)
                 }
             );
@@ -78,6 +79,10 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
             }
         });
 
+        if (Ext.isEmpty(values.check_subject_tax_identity)) {
+            values.check_subject_tax_identity = true;
+        }
+
         return values;
     },
 
@@ -99,7 +104,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 margin: '30 0 10 0',
                 fieldLabel: _l.get('accounting.form.export1c.fields.last_act'),
                 name: 'last_act_id',
-                allowBlank: true,
+                allowBlank: false,
                 vtype: 'numeric',
                 minLength: 1,
                 maxLength: 20
@@ -108,7 +113,15 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 fieldLabel: _l.get('accounting.form.export1c.fields.month'),
                 xtype: 'monthfield',
                 name: 'date',
+                value: Ext.Date.formatISO(moment().subtract('months', 1), "F, Y"),
                 format: 'F, Y'
+            },
+            {
+                fieldLabel: _l.get('accounting.form.export1c.fields.check'),
+                xtype: 'checkbox',
+                name: 'check_subject_tax_identity',
+                inputValue: false,
+                value: false
             }
         ];
     }

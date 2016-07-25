@@ -11,7 +11,12 @@ Ext.define('NavixyPanel.controller.Accounting', {
     views: [
         'accounting.Export1c',
         'accounting.Payments1c',
-        'accounting.Accounting'
+        'accounting.Accounting',
+        'accounting.ExportErrorsWindow'
+    ],
+    dependencies: [
+        'Lib.jquery.jQuery',
+        'Lib.jquery.jquery-file-download'
     ],
 
     refs: [
@@ -58,9 +63,48 @@ Ext.define('NavixyPanel.controller.Accounting', {
     },
 
     onExport1cSubmit: function (form, formValues) {
-        this.openExport(Ext.API.get1cDownloadLink({
-            params: formValues
-        }), formValues);
+        var me = this,
+            button = Ext.getFirst('export1c').down('[role=save-btn]'),
+            url = Ext.API.get1cDownloadLink({
+                params: formValues
+            });
+
+        if (button) {
+            button.disable()
+        }
+
+        $.fileDownload(url)
+            .fail(function (responseHtml, url, error) {
+                if (button) {
+                    button.enable();
+                }
+                me.handleExportFailure(responseHtml, url, error);
+            })
+            .done(function () {
+                if (button) {
+                    button.enable();
+                }
+            })
+    },
+
+    handleExportFailure: function (flatResponse) {
+        var responseStr = Ext.isString(flatResponse) && flatResponse.substring(flatResponse.indexOf("{"), flatResponse.lastIndexOf("}")+1),
+            response = Ext.decode(responseStr),
+            status = response.status,
+            errors = response.list;
+
+        if (status.code == 242) {
+            this.showExportErrors(response);
+        } else {
+            Ext.MessageBox.show({
+                title: _l.get('error'),
+                msg: status.description
+            });
+        }
+    },
+
+    showExportErrors: function (response) {
+        var errWindow = Ext.widget('export-errors', {errors: response.list});
     },
 
     openExport: function (link, values) {

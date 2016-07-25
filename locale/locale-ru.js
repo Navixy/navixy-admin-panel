@@ -1166,7 +1166,14 @@ Ext.define('Locale.locale-ru', {
                 "report_btn": "Отослать акты по email",
                 "fields": {
                     "month": "Укажите месяц",
-                    "last_act": "Последний номер акта"
+                    "last_act": "Последний номер акта",
+                    "check": "Игонорировать ошибки"
+                },
+                errors_window: {
+                    title: "В процессе выгрузки возникли ошибки валидации",
+                    close: "Закрыть",
+                    users_list: "Пользователи",
+                    dealers_list: "PaaS"
                 }
             },
             "payments": {

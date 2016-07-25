@@ -385,13 +385,21 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     get1cDownloadLink: function (config) {
         var apiLink = this.getRequestUrl({
                 handler: 'accounting',
-                action: 'export'
+                action: 'export',
+                api: 'japi_local'
             }),
             hash = this.authKey;
 
         return apiLink + '/?hash=' + hash +
             '&' + Ext.urlEncode(config.params);
 
+    },
+
+    check1cDownloadLink: function (config) {
+        this.requestWithOptions(config, {
+            handler: 'accounting',
+            action: 'export'
+        });
     },
 
     doExportDelivery: function (config) {
