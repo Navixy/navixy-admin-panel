@@ -1166,7 +1166,6 @@ Ext.define('Locale.locale-en', {
                     users_list: "Users",
                     dealers_list: "PaaS"
                 }
-                }
             },
             "payments": {
                 "tab_title": "Payments",
