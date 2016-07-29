@@ -27,5 +27,21 @@ Config = {
     navixyInboundNumber: "79037976362",
 
     useGoogleMapsTilesDirectly: false //use google maps whithout its js api
-
+    //Extended locales for use in MONITORING not in Panel
+    //extended_locales: {
+    //    override: true,
+    //    items: [{
+    //        id: 'en_US',
+    //        name: 'en',
+    //        text: 'English',
+    //        alias: ['en', 'en_US'],
+    //        rtl: false
+    //    }, {
+    //        id: 'zh_CN',
+    //        name: 'zh',
+    //        text: 'Chineese',
+    //        alias: ['zh', 'zh_CN'],
+    //        rtl: false
+    //    }]
+    //}
 };

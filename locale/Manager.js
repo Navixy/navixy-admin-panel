@@ -178,6 +178,10 @@ Ext.define('Locale.Manager', {
     getAvailableForUI: function (simple) {
         var locales = this._ui_locales;
 
+        if (Config.extended_locales) {
+            locales = Config.extended_locales.override ? Config.extended_locales.items : locales.concat(Config.extended_locales.items);
+        }
+
         if (simple) {
             return locales;
         } else {
