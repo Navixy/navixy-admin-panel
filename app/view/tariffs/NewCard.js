@@ -531,13 +531,40 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         }
     },
 
+    handleReportsChange: function (cmp, state) {
+        var report_scheduled = this.down('[role=feature_report_scheduled]'),
+            report_xls = this.down('[role=feature_report_xls]');
+
+        if (!state) {
+            if (report_scheduled) {
+                report_scheduled.setValue(false, true);
+            }
+            if (report_xls) {
+                report_xls.setValue(false, true);
+            }
+        }
+    },
+
+    handleReportsFeatureChange: function (cmp, state) {
+        var has_reports = this.down('[role=feature_has_reports]');
+
+        if (state && has_reports) {
+            has_reports.setValue(true, true);
+        }
+    },
+
     prepareOptionsItems: function () {
         var mapList = [],
             appsList = [{
                 boxLabel: _l.get('features.app_reports'),
                 name: 'has_reports',
+                role: 'feature_has_reports',
                 cls: 'shadow',
-                checked: true
+                checked: true,
+                listeners: {
+                    change: this.handleReportsChange,
+                    scope: this
+                }
             }],
             miscList = [],
             featuresList = [],
@@ -561,10 +588,18 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 boxLabel: featureRecord.get('name'),
                 name: 'features',
                 inputValue: featureRecord.get('type'),
+                role: 'feature_' + featureRecord.get('type'),
                 cls: 'shadow',
                 checked: true,
                 checkboxgroup: true
             };
+
+            if (Ext.Array.indexOf(['report_xls', 'report_scheduled'], featureRecord.get('type')) > -1) {
+                listItem.listeners = {
+                    change: this.handleReportsFeatureChange,
+                    scope: this
+                }
+            }
 
             switch (featureRecord.get("group")) {
                 case "apps":
