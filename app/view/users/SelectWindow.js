@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.view.users.SelectWindow', {
 
         if (this.exclude_user_id) {
             store.on("datachanged", function () {
-                var user = store.findRecord("id", this.exclude_user_id);
+                var user = store.getById(this.exclude_user_id);
                 if (user) {
                     store.remove(user);
                 }
