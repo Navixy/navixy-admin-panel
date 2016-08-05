@@ -23,6 +23,12 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
+.eye-button {
+    @extend .icon-eye-open;
+    font-size: $defaultSizeFormBtnIcon + 2;
+    @include glyph-button;
+}
+
 .options-button {
     @extend .icon-gear;
     @include glyph-button;

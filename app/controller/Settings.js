@@ -13,7 +13,9 @@ Ext.define('NavixyPanel.controller.Settings', {
         'settings.avangate.Subscription',
         'settings.smtpgate.GatePanel',
         'widgets.map.Map',
-        'settings.components.MapWindow'
+        'settings.components.MapWindow',
+        'settings.components.Themes',
+        'settings.components.Theme'
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
@@ -28,7 +30,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap', 'leMaps'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes'],
 
     models: ['Settings'],
     mainStore: 'Settings',

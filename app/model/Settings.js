@@ -193,7 +193,11 @@ Ext.define('NavixyPanel.model.Settings', {
                 return record.defaultUserConverter(this, value);
             }
         },
-
+        {
+            name: 'color_theme',
+            type: 'string',
+            defaultValue: 'metromorph'
+        }
     ],
 
     imagesMap: {

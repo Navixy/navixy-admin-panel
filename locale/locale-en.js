@@ -808,6 +808,28 @@ Ext.define('Locale.locale-en', {
     },
     "settings": {
         "menu_text": "Account management",
+        "themes": {
+            "title": "Theming",
+            "main_info": "Some promo text here",
+            "main_title": "Select monitoring color theme",
+            "preview_title": "Theme screenshots",
+            "preview_btn": "Preview in monitoring",
+            "list": {
+                "metromorph": {
+                    "title": "Metromorph",
+                    "description": "Metromorph theme description here"
+                },
+                "teal": {
+                    "title": "Teal"
+                },
+                "orange": {
+                    "title": "Orange"
+                },
+                "psyco": {
+                    "title": "Psyco"
+                }
+            }
+        },
         "subscription": {
             "title": "Subscription",
             "activation_btn_text": "Pay activation fee now (500 USD) online",

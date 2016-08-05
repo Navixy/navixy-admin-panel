@@ -12,7 +12,9 @@ Config = {
     // Шаблоны внешних ссылок
     links: {
         // Ссылка на "автоматичесую" авторизацию в мониторинге, с передачей хэша через GET. Испольхуется страница  прямого показа демонстрации мониторинга.
-        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}']
+        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
+        // Ссылка на стандартную авторизацию в мониторинге.
+        loginUrlTpl: ['http://{company_url}/login/']
     },
 
     // Адарес подкючения к веб-сокету терминала для устройств
@@ -25,6 +27,9 @@ Config = {
 
     // Номер приема входящих сообщений для sms-шлюза navixy
     navixyInboundNumber: "79037976362",
+
+    // Разрешение на выбор тем интерфейса мониторинга в настройках
+    allowTheming: false,
 
     avangateLinks: {
         avangate_payment_page: 'https://secure.avangate.com/order/checkout.php',

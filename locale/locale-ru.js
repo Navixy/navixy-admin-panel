@@ -792,6 +792,28 @@ Ext.define('Locale.locale-ru', {
     },
     "settings": {
         "menu_text": "Настройки площадки",
+        "themes": {
+            "title": "Темизация",
+            "main_info": "Здесь необходимо разместить маркетинговый текст",
+            "main_title": "Выберите цветовую тему для мониторинга",
+            "preview_title": "Скриншоты темы",
+            "preview_btn": "Посмотреть в интерфейсе",
+            "list": {
+                "metromorph": {
+                    "title": "Metromorph",
+                    "description": "Основная тема интерфейса"
+                },
+                "teal": {
+                    "title": "Teal"
+                },
+                "orange": {
+                    "title": "Orange"
+                },
+                "psyco": {
+                    "title": "Psyco"
+                }
+            }
+        },
         "subscription": {
             "title": "Подписка",
             "activation_btn_text": "Pay activation fee now (500 USD) online",

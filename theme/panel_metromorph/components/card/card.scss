@@ -220,7 +220,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     }
 }
 
-.form-img {
+.form-img, .form-img-preview {
     padding: 5px;
     border-width: 1px;
     border-style: solid;
@@ -231,6 +231,10 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     &:hover {
         border-color: $main-color;
     }
+}
+
+.form-img-preview {
+    background: none;
 }
 
 .shadow-disabled {
