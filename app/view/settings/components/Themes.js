@@ -79,7 +79,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                         scope: this
                     }
                 },
-                {
+                Config.allowTheming ? {
                     xtype: 'button',
                     iconCls: 'eye-button',
                     text: _l.get('settings.themes.preview_btn'),
@@ -91,7 +91,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
                     handler: this.previewLogin,
                     scope: this
-                },
+                } : null,
                 {
                     xtype: 'component',
                     cls: 'block_hint',
@@ -182,7 +182,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     },
 
     getValue: function () {
-        return this.getField().getValue();
+        return this.getField().getValue() || this.defaultTheme;
     },
 
     getSelectedRecord: function () {
