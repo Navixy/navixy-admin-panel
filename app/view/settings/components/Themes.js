@@ -132,10 +132,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     },
 
     previewLogin: function () {
-        var win = window.open('', '_blank'),
-            url = [Ext.Nav.getLogin(), '?theme=', this.getValue()].join("");
+        var loginUrl = Ext.Nav.getLogin();
 
-        win.location = url;
+        if (loginUrl) {
+            var win = window.open('', '_blank');
+            win.location = [loginUrl, '?theme=', this.getValue()].join("");
+
+        }
     },
 
     onSelect: function () {

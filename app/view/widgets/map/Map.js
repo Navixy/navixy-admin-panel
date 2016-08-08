@@ -40,9 +40,8 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
         if (!this.mapReady) {
             return false;
         }
-
         var center = {lat: settings.map_location_lat, lng: settings.map_location_lng},
-            zoom = settings.map_zoom,
+            zoom = settings.map_zoom * 1 || 2,
             typesStore = Ext.getStore("leMaps"),
             type = typesStore.getMapCode(settings.map_type);
 

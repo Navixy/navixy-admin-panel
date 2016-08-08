@@ -196,7 +196,9 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'color_theme',
             type: 'string',
-            defaultValue: 'metromorph'
+            convert: function (value, record) {
+                return Ext.isEmpty(value) ? 'metromorph' : value;
+            }
         }
     ],
 
