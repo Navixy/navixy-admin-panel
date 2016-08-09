@@ -82,6 +82,18 @@ Ext.define('NavixyPanel.store.MapTypes', {
         this.callParent(arguments);
     },
 
+    getClone: function (config) {
+
+        return Ext.create(this.self.getName(), Ext.apply(
+            {},
+            config,
+            {
+                autoLoad: true,
+                storeId: this.storeId + Ext.id()
+            }
+        ));
+    },
+
     setAllowedMaps: function (maps) {
         if (Ext.isArray(maps) && maps.length) {
             this.filters.clear();

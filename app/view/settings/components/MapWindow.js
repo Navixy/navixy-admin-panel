@@ -36,9 +36,23 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
         this.callParent(arguments);
     },
 
-    getItems: function () {
-        this.mapsStore = Ext.getStore('MapTypes');
+    prepareComboStore: function () {
+        var allowed = this.record.get('maps'),
+            store = Ext.getStore('MapTypes').getClone();
 
+        store.clearFilter();
+        store.filter([
+            {
+                filterFn: function(record) {
+                    return Ext.Array.indexOf(allowed, record.get('type')) > -1;
+                }
+            }
+        ]);
+
+        return store
+    },
+
+    getItems: function () {
         return [
             {
                 xtype: 'panel',
@@ -68,7 +82,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                         name: 'map_type',
                         xtype: 'combobox',
                         fieldLabel: _l.get('settings.fields.maps_default.type'),
-                        store: this.mapsStore,
+                        store: this.prepareComboStore(),
                         editable: false,
                         queryMode: 'local',
                         displayField: 'name',
@@ -209,7 +223,6 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
             }
         }
     },
-
 
     getTexts: function () {
         var lp = _l.get("settings.edit_form.map_window");

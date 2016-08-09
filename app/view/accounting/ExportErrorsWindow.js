@@ -34,48 +34,32 @@ Ext.define('NavixyPanel.view.accounting.ExportErrorsWindow', {
     },
 
     getItems: function () {
-        var users = [],
-            dealers = [],
-            tpl = new Ext.XTemplate(
-                '<span style="font-weight: bold;">ID: {subject_id}</span>',
-                '<span style="color: #555"> - {error_message}</span><br>'
-            );
-
-        Ext.iterate(this.errors, function (error) {
-            if (error.subject_type === 'user') {
-                users.push(tpl.apply(error));
-            }
-        }, this);
-
-        if (users.length) {
-            users.unshift(['<h2>', _l.get('accounting.form.export1c.errors_window.users_list'),':</h2>'].join(""))
-        }
-
-        Ext.iterate(this.errors, function (error) {
-            if (error.subject_type === 'dealer') {
-                dealers.push(tpl.apply(error));
-            }
-        }, this);
-
-        if (dealers.length) {
-            dealers.unshift(['<h2>', _l.get('accounting.form.export1c.errors_window.dealers_list'),':</h2>'].join(""))
-        }
-
         return {
-            xtype: 'panel',
-            ui: 'light',
+            xtype: 'component',
+            cls: 'x-panel-body-light',
             autoScroll: true,
-            layout: 'fit',
-            items: {
-                padding: 20,
-                xtype: 'container',
-                autoScroll: true,
-                html: users.concat(dealers).join("<br>")
-            }
-        }
+            padding: 20,
+            tpl: [
+                '<tpl for=".">',
+                    '<h2>{title}:</h2><br>',
+                    '<tpl for="items">',
+                        '<span style="font-weight: bold;">ID: {subject_id}</span>',
+                        '<span style="color: #555"> - {error_message}</span><br><br>',
+                    '</tpl>',
+                '</tpl>'
+            ],
+            data: [
+                {
+                    title: _l.get('accounting.form.export1c.errors_window.users_list'),
+                    items: Ext.Array.filter(this.errors, function (item) {return item.subject_type === 'user'})
+                },
+                {
+                    title: _l.get('accounting.form.export1c.errors_window.dealers_list'),
+                    items: Ext.Array.filter(this.errors, function (item) {return item.subject_type === 'dealer'})
+                }
+            ]
+        };
     },
-
-
 
     getBottomBar: function () {
         return [
