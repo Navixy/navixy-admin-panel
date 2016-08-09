@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.store.Dealer', {
             defaultValue: {}
         }, {
             name: "premium_gis",
-            defaultValue: false
+            defaultValue: true
         }
     ],
 
