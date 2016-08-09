@@ -19,4 +19,16 @@ $dealer-info-font-color: $baseFontColor;
             text-align: right;
         }
     }
+
+    .dealer-warnings {
+        font-size: $dealer-info-font-size;
+        color: $invalid-color;
+
+        div {
+            span {
+                @extend .icon-coin;
+                margin-right: 10px;
+            }
+        }
+    }
 }

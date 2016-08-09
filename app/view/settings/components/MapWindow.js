@@ -6,6 +6,10 @@
 
 Ext.define('NavixyPanel.view.settings.components.MapWindow', {
     extend: 'NavixyPanel.view.components.AbstractWindowSelect',
+    requires: [
+        'NavixyPanel.plugins.ComboGoogleFilter'
+    ],
+
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -88,7 +92,12 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                         displayField: 'name',
                         valueField: 'type',
                         margin: '5 10 0 0',
-                        flex: 4
+                        flex: 4,
+                        plugins: [
+                            {
+                                ptype: 'googlefilter'
+                            }
+                        ]
                     },
                     {
                         name: 'map_location_lat',

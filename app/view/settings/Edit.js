@@ -14,7 +14,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.view.settings.UploadWindow',
         'NavixyPanel.view.settings.BlockHeader',
 
-        'NavixyPanel.view.settings.components.Map'
+        'NavixyPanel.view.settings.components.Map',
+        'NavixyPanel.plugins.ComboGoogleFilter'
     ],
 
     default_paas_domain: '.navixy.ru',
@@ -746,7 +747,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type'
+                valueField: 'type',
+                plugins: [
+                    {
+                        ptype: 'googlefilter'
+                    }
+                ]
             },
             {
                 name: 'route_provider',
@@ -756,7 +762,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type'
+                valueField: 'type',
+                plugins: [
+                    {
+                        ptype: 'googlefilter'
+                    }
+                ]
             },
             //TODO: API w8
             {

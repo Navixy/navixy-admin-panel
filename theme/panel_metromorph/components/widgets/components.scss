@@ -41,3 +41,24 @@
         }
     }
 }
+
+.x-boundlist-item-disabled {
+    padding: 0 6px;
+    line-height: 22px;
+    cursor: default;
+    position: relative;
+    zoom: 1;
+    border-width: 1px;
+    border-style: dotted;
+    border-color: white;
+    color: $grayLight;
+
+    .warning {
+        color: $invalid-color;
+        margin-left: 10px;
+    }
+}
+
+.x-boundlist-item.hidden {
+    display: none;
+}

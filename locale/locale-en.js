@@ -1571,5 +1571,7 @@ Ext.define('Locale.locale-en', {
         "zoom_in": "Zoom in",
         "zoom_out": "Zoom out"
     },
-    "map_type_label": "Map"
+    "map_type_label": "Map",
+    "premium_gps_warning": "Premium GPS is blocked",
+    "premium_gps_warning_tip": "premium GPS is blocked"
 });

@@ -44,6 +44,31 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
         return result;
     },
+    //getMapsList: function () {
+    //    var isPremium = Ext.getStore('Dealer').isPremiumGis(),
+    //        result = [],
+    //        alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
+    //
+    //    this.mapsStore.each(function (mapRecord) {
+    //        var name = mapRecord.get('name'),
+    //            disabled = false;
+    //
+    //        if (Ext.Array.contains(alertGoogleMapsTypes, mapRecord.get('type'))) {
+    //            name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert'));
+    //            disabled = !isPremium
+    //        }
+    //
+    //        result.push({
+    //            boxLabel: name,
+    //            name: 'maps',
+    //            disabled: disabled,
+    //            inputValue: !disabled && mapRecord.get('type'),
+    //            role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
+    //        });
+    //    }, this);
+    //
+    //    return result;
+    //},
 
     getDefaultMapField: function () {
         return this.down('[name="map_type"]');
