@@ -23,52 +23,36 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getMapsList: function () {
-
-        var result = [],
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && Ext.isEmpty(this.record.get('google_client_id')),
+            result = [],
             alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
 
         this.mapsStore.each(function (mapRecord) {
-            var name = mapRecord.get('name');
+            var name = mapRecord.get('name'),
+                disabled = false;
 
             if (Ext.Array.contains(alertGoogleMapsTypes, mapRecord.get('type'))) {
+                disabled = notPremium;
+
+                if (disabled) {
+                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'), '</span>'].join("")
+                }
+
                 name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert'));
             }
 
             result.push({
                 boxLabel: name,
                 name: 'maps',
-                inputValue: mapRecord.get('type'),
+                cls: 'map-type-checkbox',
+                disabled: disabled,
+                inputValue: !disabled && mapRecord.get('type'),
                 role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
             });
         }, this);
 
         return result;
     },
-    //getMapsList: function () {
-    //    var isPremium = Ext.getStore('Dealer').isPremiumGis(),
-    //        result = [],
-    //        alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
-    //
-    //    this.mapsStore.each(function (mapRecord) {
-    //        var name = mapRecord.get('name'),
-    //            disabled = false;
-    //
-    //        if (Ext.Array.contains(alertGoogleMapsTypes, mapRecord.get('type'))) {
-    //            name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert'));
-    //            disabled = !isPremium
-    //        }
-    //
-    //        result.push({
-    //            boxLabel: name,
-    //            name: 'maps',
-    //            disabled: disabled,
-    //            inputValue: !disabled && mapRecord.get('type'),
-    //            role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
-    //        });
-    //    }, this);
-    //
-    //    return result;
-    //},
 
     getDefaultMapField: function () {
         return this.down('[name="map_type"]');

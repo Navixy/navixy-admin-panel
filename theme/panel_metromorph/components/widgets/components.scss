@@ -62,3 +62,24 @@
 .x-boundlist-item.hidden {
     display: none;
 }
+
+.map-type-checkbox {
+    &.x-item-disabled {
+        opacity: 1;
+
+        input {
+            opacity: 0.4;
+        }
+        label {
+            color: $grayer;
+
+            span {
+                opacity: 1;
+            }
+        }
+    }
+
+    .checkbox-invalid-tip {
+        color: $orange
+    }
+}

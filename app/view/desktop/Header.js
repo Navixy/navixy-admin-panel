@@ -70,9 +70,6 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         tpl: [
                             '<tpl if="block_status != \'NOT_BLOCKED\'">',
                                 '<div><span></span>{[_l.get("header_blocked." + values.block_status.toLowerCase())]}</div>',
-                            '</tpl>',
-                            '<tpl if="!tariff.premium_gis">',
-                                '<div><span></span>{[_l.get("premium_gps_warning")]}</div>',
                             '</tpl>'
                         ],
                         data: dealerStore.first().getData()
