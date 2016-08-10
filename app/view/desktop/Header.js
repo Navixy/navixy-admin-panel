@@ -45,7 +45,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                             : {}
                     },
                     {
-                        xtype: 'container',
+                        xtype: 'component',
                         cls: 'dealer-info',
                         padding: '28 0 0 29',
                         height: 78,
@@ -63,7 +63,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         data: dealerStore.first().getData()
                     },
                     {
-                        xtype: 'container',
+                        xtype: 'component',
                         cls: 'dealer-warnings',
                         padding: '28 0 0 29',
                         height: 78,
