@@ -85,12 +85,10 @@ Ext.define('NavixyPanel.store.MapTypes', {
     getClone: function (config) {
 
         return Ext.create(this.self.getName(), Ext.apply(
-            {},
-            config,
             {
-                autoLoad: true,
                 storeId: this.storeId + Ext.id()
-            }
+            },
+            config
         ));
     },
 
