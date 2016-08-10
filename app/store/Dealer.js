@@ -47,8 +47,9 @@ Ext.define('NavixyPanel.store.Dealer', {
     ],
 
     isPremiumGis: function () {
-        var record = this.first();
-        return record && record.get("premium_gis")
+        var record = this.first(),
+            tariff = record && record.get("tariff");
+        return tariff && tariff.premium_gis
     },
 
     getImgUrl: function (field) {
