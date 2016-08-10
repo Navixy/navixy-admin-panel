@@ -40,9 +40,6 @@ Ext.define('NavixyPanel.store.Dealer', {
         }, {
             name: "tariff",
             defaultValue: {}
-        }, {
-            name: "premium_gis",
-            defaultValue: true
         }
     ],
 
