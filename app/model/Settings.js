@@ -39,7 +39,7 @@ Ext.define('NavixyPanel.model.Settings', {
         },
         {
             name: 'google_client_id',
-            type: 'string'
+            type: 'auto'
         },
 
         {
@@ -346,6 +346,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
     getServiceFormatted: function () {
         var data = Ext.apply({}, this.getData()),
+            changes = this.getServiceChanges(),
             dealer = Ext.getStore('Dealer') && Ext.getStore('Dealer').first();
 
         Ext.iterate(data, function (field, value) {
@@ -371,6 +372,10 @@ Ext.define('NavixyPanel.model.Settings', {
         data.maps = Ext.encode(data.maps);
         data.default_map = Ext.encode(data.default_map);
         data.default_user_settings = Ext.encode(data.default_user_settings);
+
+        if ((!this.get('google_client_id') && !data.google_client_id)  || (changes && changes.domain && data.google_client_id === '')) {
+            delete data['google_client_id'];
+        }
 
         return data;
     },
