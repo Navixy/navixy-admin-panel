@@ -373,7 +373,7 @@ Ext.define('NavixyPanel.model.Settings', {
         data.default_map = Ext.encode(data.default_map);
         data.default_user_settings = Ext.encode(data.default_user_settings);
 
-        if ((!this.get('google_client_id') && !data.google_client_id)  || (changes && changes.domain && data.google_client_id === '')) {
+        if ((Ext.isEmpty(this.get('google_client_id'), true) && Ext.isEmpty(data.google_client_id, true))  || (changes && changes.domain && data.google_client_id === '')) {
             delete data['google_client_id'];
         }
 
