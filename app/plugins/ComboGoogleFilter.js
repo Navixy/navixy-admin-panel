@@ -7,6 +7,7 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     alias: 'plugin.googlefilter',
     keys: ['google', 'roadmap', 'satellite', 'hybrid'],
     tpl: null,
+    showErrors: true,
 
     constructor: function (config) {
         Ext.apply(this, config);
@@ -14,7 +15,28 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
 
     init: function (field) {
         this.field = field;
+        this.isPremium = Ext.getStore('Dealer').isPremiumGis();
+        this.applyOverrides(field);
         this.applyTpl();
+    },
+
+    applyOverrides: function (field) {
+        if (field) {
+            var me = this,
+                enabled = Ext.getStore('Dealer').isPremiumGis(),
+                fieldPrototype = Object.getPrototypeOf(field);
+
+            field.getErrors = function (value) {
+                var errors = fieldPrototype.getErrors.apply(field, arguments) || [],
+                    rawValue = fieldPrototype.getValue.apply(field);
+
+                if (!Ext.isEmpty(rawValue) && !me.checkPremium(rawValue)) {
+                    errors.push(_l.get('premium_gps_warning_error'));
+                }
+
+                return me.showErrors ? errors : [];
+            };
+        }
     },
 
     applyTpl: function () {
@@ -38,9 +60,13 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
             '</tpl>',
             {
                 isEnabled: function (data) {
-                    return data[optionName] && !(Ext.Array.indexOf(me.keys, data[optionName]) > -1 && !enabled)
+                    return me.checkPremium(data[optionName]);
                 }
             }
         );
+    },
+
+    checkPremium: function (value) {
+        return value && !(Ext.Array.indexOf(this.keys, Ext.isString(value) && value.toLowerCase()) > -1 && !this.isPremium)
     }
 });

@@ -135,9 +135,14 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                disabled: true,
+                readOnly: true,
                 shadowField: true,
-                cls: 'shadow-disabled'
+                cls: 'shadow-disabled x-item-disabled',
+                plugins: [
+                    {
+                        ptype: 'googlefilter'
+                    }
+                ]
             },
             {
                 xtype: 'container',
