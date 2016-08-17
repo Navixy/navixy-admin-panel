@@ -757,10 +757,10 @@ Ext.define('Locale.locale-en', {
     "codes": {
         "menu_text": "Activation codes",
         "fields": {
-            "activated": "status",
+            "activated": "Status",
             "activation_date": "Activation date",
             "bonus_amount": "Bonus",
-            "code": "code",
+            "code": "Code",
             "device_id": "Device ID",
             "device_type": "Device type",
             "free_days": "Free days",

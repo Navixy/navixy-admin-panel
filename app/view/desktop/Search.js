@@ -146,7 +146,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                 viewPageSize: 10,
                 flex: 1,
                 margin: '30 0 0 0',
-                title: 'test',
+                title: ' ',
                 ui: 'light',
                 showEmpty: false,
                 noTBar: true,
@@ -164,7 +164,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                         moduleWidget,
                         Ext.apply(
                             {
-                                searchTitle: _l[moduleName].menu_text //Ext.String.format(_l.get('list.search_title_tpl'), _l[moduleName].menu_text, '{0}')
+                                searchTitle: _l[moduleName].menu_text
                             },
                             widgetConfig)
                     )

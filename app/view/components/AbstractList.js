@@ -28,7 +28,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     enableColumnHide: false,
     enableColumnMove: false,
-    enableColumnResize: false,
+    enableColumnResize: true,
 
     disableSelection: true,
 

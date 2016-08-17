@@ -162,7 +162,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 xtype: 'templatecolumn',
                 tpl: trackerLabelTpl,
                 dataIndex: 'label',
-                flex: 1
+                flex: 3
             },
             this.showStatus ? {
                 text: _l.get('trackers.fields.connection_status'),
@@ -185,18 +185,20 @@ Ext.define('NavixyPanel.view.trackers.List', {
             {
                 text: _l.get('trackers.fields.device_id'),
                 dataIndex: 'device_id',
-                width: 140
+                width: 160
             },
             {
                 text: _l.get('trackers.fields.phone'),
                 dataIndex: 'phone',
-                width: 120
+                width: 140
             },
             {
                 text: _l.get('trackers.fields.creation_date_short'),
                 dataIndex: 'creation_date',
                 renderer: Ext.util.Format.dateRenderer(Ext.util.Format.dateFormat),
-                width: 140
+                minWidth: 140,
+                resizable: false,
+                flex: 1
             }
         ];
     },

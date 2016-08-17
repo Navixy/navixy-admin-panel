@@ -88,13 +88,14 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                     var data = Ext.apply({isDefault: defaultTariffs[record.data.device_type] === record.get('id')}, record.data, record.getAssociatedData());
                     return this.tpl.apply(data);
                 },
-                flex: 1
+                flex: 3
             },
             {
                 text: _l.get('tariffs.fields.tariff_type_short'),
                 xtype: 'templatecolumn',
                 tpl: tariffTypeTpl,
                 dataIndex: 'type',
+                sortable: false,
                 width: 100
             },
             {
@@ -114,7 +115,9 @@ Ext.define('NavixyPanel.view.tariffs.List', {
                 xtype: 'templatecolumn',
                 tpl: tariffPriceTpl,
                 dataIndex: 'price',
-                width: 150
+                minWidth: 150,
+                resizable: false,
+                flex: 1
             }
         ];
     }

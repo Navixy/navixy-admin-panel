@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.view.users.List', {
                 tpl: userCardTpl,
                 dataIndex: 'last_name',
                 sortable: true,
-                flex: 2
+                flex: 3
             },
             {
                 text: _l.get('users.fields.balance'),
@@ -96,6 +96,7 @@ Ext.define('NavixyPanel.view.users.List', {
                 tpl: userCityTpl,
                 dataIndex: 'post_city',
                 sortable: true,
+                resizable: false,
                 flex: 1
             }
         ];

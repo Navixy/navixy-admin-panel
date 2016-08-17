@@ -24,6 +24,10 @@ $grid-cell-empty-font-size: 14px;
         margin: 0;
     }
 
+    .x-column-header-inner {
+        padding: 5px 9px 5px 5px !important;
+    }
+
     .x-column-header-checkbox .x-column-header-inner {
         padding: 5px 9px 5px 5px !important;
     }
@@ -234,7 +238,7 @@ $grid-cell-empty-font-size: 14px;
 }
 
 .x-grid-row-selected .x-grid-cell-inner {
-    span {
+    span, a {
         color: $white !important;
     }
 }

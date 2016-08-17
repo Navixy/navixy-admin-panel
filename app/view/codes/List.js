@@ -214,19 +214,19 @@ Ext.define('NavixyPanel.view.codes.List', {
                 dataIndex: 'code',
                 xtype: 'templatecolumn',
                 tpl: codeTpl,
-                flex: 1
+                flex: 2
             },
             {
                 text: _l.get('codes.fields.activated'),
                 dataIndex: 'activated',
                 xtype: 'templatecolumn',
                 tpl: codeStatusDaysTpl,
-                flex: 1
+                flex: 2
             },
             {
                 text: _l.get('codes.fields.tariff_name'),
                 dataIndex: 'tariff_name',
-                flex: 1
+                flex: 2
             },
             {
                 text: _l.get('codes.fields.device_type'),
@@ -254,7 +254,9 @@ Ext.define('NavixyPanel.view.codes.List', {
                 xtype: 'templatecolumn',
                 tpl: codeFreeDaysTpl,
                 dataIndex: 'free_days',
-                width: 155
+                minWidth: 155,
+                resizable: false,
+                flex: 1
             }
         ];
     },
