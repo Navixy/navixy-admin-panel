@@ -50,12 +50,8 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                 callback: this.redirectToAuth
             },
             {
-                codes: [12, 13],
+                codes: [7, 12, 13],
                 callback: Ext.emptyFn
-            },
-            {
-                codes: [7],
-                callback: this.showErrorMessage
             },
             {
                 codes: [215],

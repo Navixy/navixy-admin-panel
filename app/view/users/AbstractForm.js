@@ -216,6 +216,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     getSWItems: function () {
         var me = this;
+
         return [
             {
                 xtype: 'container',
@@ -233,16 +234,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.tin'),
                 name: 'tin',
-                minLength: 1,
-                maxLength: 12,
-                vtype: 'numeric'
+                maxLength: 255,
+                allowBlank: true
             },
             {
                 fieldLabel: _l.get('users.fields.iec'),
                 name: 'iec',
-                minLength: 1,
-                maxLength: 10,
-                vtype: 'numeric'
+                maxLength: 255,
+                allowBlank: true
             },
             {
                 xtype: 'container',
@@ -317,11 +316,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function(item) {
-                if (Ext.isString(item.name)) {
+                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec'], item.name) < 0) {
 
                     item.allowBlank = soleStatus;
                     if (soleStatus) {
-                        item.validate();
                         item.labelSeparator = ':';
                     } else {
                         item.labelSeparator = '*:';
@@ -334,7 +332,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         Ext.iterate(ind_fields, function (field) {
             field.allowBlank = soleStatus;
             if (soleStatus) {
-                field.validate();
                 field.labelSeparator = ':';
             } else {
                 field.labelSeparator = '*:';
@@ -345,13 +342,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         if (!soleStatus) {
             var iecField = this.down('[name="iec"]'),
+                tinField = this.down('[name="tin"]'),
                 nameField = this.down('[name="legal_name"]');
 
-            iecField[soleState === "legal_entity" ? "show" : "hide"]();
             nameField[soleState === "legal_entity" ? "show" : "hide"]();
-            iecField.allowBlank = soleState !== "legal_entity";
             nameField.allowBlank = soleState !== "legal_entity";
+            iecField[soleState === "legal_entity" ? "show" : "hide"]();
         }
+        this.getForm().isValid();
     },
 
     copyAddress: function () {
