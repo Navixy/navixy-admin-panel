@@ -53,6 +53,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 minLength: 2,
                 maxLength: 100,
                 allowBlank: false,
+                skipFormValidation: true,
                 role: 'permission-field'
             }, {
                 xtype: 'textfield',

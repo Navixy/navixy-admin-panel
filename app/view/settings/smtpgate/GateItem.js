@@ -108,6 +108,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 items: [{
                     xtype: 'textfield',
                     allowBlank: false,
+                    skipFormValidation: true,
                     validateBlank: true,
                     fieldLabel: localePart.get('host_label'),
                     name: 'host',

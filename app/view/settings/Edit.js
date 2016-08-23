@@ -160,8 +160,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     applyRecordData: function () {
+        this.applyEmptyTheme();
         this.callParent(arguments);
         this.mapSettingsReady = true;
+    },
+
+    applyEmptyTheme: function () {
+        var data = this.getRecordData(),
+            store = Ext.getStore('Themes'),
+            theme = store && data.color_theme;
+
+        if (!Ext.isEmpty(theme, true) && !store.findRecord('name', theme)) {
+            store.add({name: theme, title: theme, login: true});
+        }
     },
 
     getDomainValue: function () {
