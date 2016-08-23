@@ -793,24 +793,15 @@ Ext.define('Locale.locale-ru', {
     "settings": {
         "menu_text": "Настройки площадки",
         "themes": {
-            "title": "Темизация",
-            "main_info": "Здесь необходимо разместить маркетинговый текст",
-            "main_title": "Выберите цветовую тему для мониторинга",
+            "title": "Цветовая тема",
+            "main_info": "Вы можете выбрать одну из представленных цветовых тем пользовательского интерфейса системы мониторига",
+            "main_title": "Выберите цветовую тему",
             "preview_title": "Скриншоты темы",
             "preview_btn": "Посмотреть в интерфейсе",
             "list": {
                 "metromorph": {
-                    "title": "Metromorph",
+                    "title": "Стандартная",
                     "description": "Основная тема интерфейса"
-                },
-                "teal": {
-                    "title": "Teal"
-                },
-                "orange": {
-                    "title": "Orange"
-                },
-                "psyco": {
-                    "title": "Psyco"
                 }
             }
         },

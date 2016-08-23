@@ -52,12 +52,12 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 type: 'vbox',
                 align: 'streach'
             },
-            width: 470,
+            width: 380,
             items: [
                 {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.main_title'),
-                    width: 370,
+                    width: 360,
                     padding: '30 0 10 0'
                 },
                 {

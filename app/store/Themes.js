@@ -28,21 +28,33 @@ Ext.define('NavixyPanel.store.Themes', {
                 images: ['1', '0', '2', '3']
             },
             {
-                name: 'teal',
+                name: 'corp',
                 login: true,
-                title: lp.get('teal.title'),
+                title: 'Corp',
                 images: ['1', '0', '2', '3']
             },
             {
-                name: 'orange',
+                name: 'flat',
                 login: true,
-                title: lp.get('orange.title'),
+                title: 'Flat',
                 images: ['1', '0', '2', '3']
             },
             {
-                name: 'psyco',
+                name: 'vine',
                 login: true,
-                title: lp.get('psyco.title'),
+                title: 'Vine',
+                images: ['1', '0', '2', '3']
+            },
+            {
+                name: 'dark_blue',
+                login: true,
+                title: 'Dark Blue',
+                images: ['1', '0', '2', '3']
+            },
+            {
+                name: 'warm',
+                login: true,
+                title: 'Warm',
                 images: ['1', '0', '2', '3']
             }
         ];

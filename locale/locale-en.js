@@ -809,24 +809,15 @@ Ext.define('Locale.locale-en', {
     "settings": {
         "menu_text": "Account management",
         "themes": {
-            "title": "Theming",
-            "main_info": "Some promo text here",
-            "main_title": "Select monitoring color theme",
+            "title": "UI themes",
+            "main_info": "You can change color UI color theme",
+            "main_title": "Select theme",
             "preview_title": "Theme screenshots",
             "preview_btn": "Preview in monitoring",
             "list": {
                 "metromorph": {
-                    "title": "Metromorph",
-                    "description": "Metromorph theme description here"
-                },
-                "teal": {
-                    "title": "Teal"
-                },
-                "orange": {
-                    "title": "Orange"
-                },
-                "psyco": {
-                    "title": "Psyco"
+                    "title": "Default",
+                    "description": "Default UI theme"
                 }
             }
         },
