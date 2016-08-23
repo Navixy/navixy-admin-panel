@@ -354,11 +354,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ]
             },
 
-            Config.allowTheming
-                ? {
+            {
                 xtype: 'settings-themes'
-            } : null,
-
+            },
 
             {
                 title: lp.get('service_fields'),

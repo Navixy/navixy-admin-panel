@@ -28,9 +28,6 @@ Config = {
     // Номер приема входящих сообщений для sms-шлюза navixy
     navixyInboundNumber: "79037976362",
 
-    // Разрешение на выбор тем интерфейса мониторинга в настройках
-    allowTheming: false,
-
     avangateLinks: {
         avangate_payment_page: 'https://secure.avangate.com/order/checkout.php',
         linkTpls: {
