@@ -8,6 +8,7 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     keys: ['google', 'roadmap', 'satellite', 'hybrid'],
     tpl: null,
     showErrors: true,
+    disabled: false,
 
     constructor: function (config) {
         Ext.apply(this, config);
@@ -16,8 +17,10 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     init: function (field) {
         this.field = field;
         this.isPremium = Ext.getStore('Dealer').isPremiumGis();
-        this.applyOverrides(field);
-        this.applyTpl();
+        if (!this.disabled) {
+            this.applyOverrides(field);
+            this.applyTpl();
+        }
     },
 
     applyOverrides: function (field) {

@@ -375,6 +375,7 @@ Ext.define('NavixyPanel.model.Settings', {
 
         if ((Ext.isEmpty(this.get('google_client_id'), true) && Ext.isEmpty(data.google_client_id, true))  || (changes && changes.domain && data.google_client_id === '')) {
             delete data['google_client_id'];
+            this.set('google_client_id', null);
         }
 
         return data;

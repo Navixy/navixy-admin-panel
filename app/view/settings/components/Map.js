@@ -23,7 +23,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getMapsList: function () {
-        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && Ext.isEmpty(this.record.get('google_client_id')),
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && Ext.isEmpty(this.record.get('google_client_id'), true),
             result = [],
             alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
 

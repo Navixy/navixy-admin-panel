@@ -22,6 +22,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
     mapWait: null,
     firstUpdate: false,
     formValues: null,
+    record: null,
 
     initComponent: function () {
 
@@ -95,7 +96,8 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                         flex: 4,
                         plugins: [
                             {
-                                ptype: 'googlefilter'
+                                ptype: 'googlefilter',
+                                disabled: !Ext.isEmpty(this.record.get('google_client_id', true))
                             }
                         ]
                     },

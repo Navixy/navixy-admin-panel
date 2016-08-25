@@ -743,6 +743,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
+        var hasGoogleKey = !Ext.isEmpty(this.record.get('google_client_id'), true);
+
         return [
             {
                 xtype: 'blockheader',
@@ -759,7 +761,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'type',
                 plugins: [
                     {
-                        ptype: 'googlefilter'
+                        ptype: 'googlefilter',
+                        disabled: hasGoogleKey
                     }
                 ]
             },
@@ -774,7 +777,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'type',
                 plugins: [
                     {
-                        ptype: 'googlefilter'
+                        ptype: 'googlefilter',
+                        disabled: hasGoogleKey
                     }
                 ]
             },
@@ -802,7 +806,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         labelAlign: 'top',
                         labelSeparator: '',
                         disabled: true,
-                        baseCls: 'settings-combo-disabled',
+                        baseCls: 'settings-combo-disabled'
                     },
                 ]
             }
