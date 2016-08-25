@@ -23,7 +23,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getMapsList: function () {
-        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && Ext.isEmpty(this.record.get('google_client_id'), true),
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && this.record.isEmptyGoogleClientId(),
             result = [],
             alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
 
@@ -47,7 +47,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 cls: 'map-type-checkbox',
                 disabled: disabled,
                 inputValue: !disabled && mapRecord.get('type'),
-                role: mapRecord.get('free') ? 'map-free' : 'map-unfree'
+                role: mapRecord.get('free') ? 'map-free' : 'map-unfree',
+                shadowField: true
             });
         }, this);
 
@@ -140,7 +141,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 cls: 'shadow-disabled x-item-disabled',
                 plugins: [
                     {
-                        ptype: 'googlefilter'
+                        ptype: 'googlefilter',
+                        disabled: !this.record.isEmptyGoogleClientId()
                     }
                 ]
             },
@@ -234,9 +236,9 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             field = this.down("[name=" + value + "]");
 
             if (field && !Ext.isEmpty(settings[value])) {
-                field.suspendEvents(false);
+                //field.suspendEvents(false);
                 field.setValue(settings[value]);
-                field.resumeEvents();
+                //field.resumeEvents();
             }
         }, this);
     }

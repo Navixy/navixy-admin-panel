@@ -251,7 +251,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.iterateFields(function (field) {
                 if (field.isDisabled() && !field.shadowField) {
                     delete values[field.name];
-                } else if (field.shadowField) {
+                } else if (field.shadowField && !field.up('checkboxgroup')) {
                     values[field.name] = field.getValue()
                 }
                 if (field.is('checkboxgroup')) {
@@ -743,7 +743,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
-        var hasGoogleKey = !Ext.isEmpty(this.record.get('google_client_id'), true);
+        var hasGoogleKey = !this.record.isEmptyGoogleClientId();
 
         return [
             {

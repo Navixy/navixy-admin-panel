@@ -41,7 +41,7 @@ Ext.define('NavixyPanel.controller.Settings', {
 
         this.control({
             'settingsedit': {
-                formsubmit: this.onEditSubmit,
+                formsubmit: this.mayBeEditSubmit,
                 formsubmitpassword: this.onPasswordEditSubmit,
                 mapchanged: this.onMapSettingsChange
             },
@@ -132,10 +132,11 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     },
 
-    handleEdit: function (settingsRecord) {
+    handleEdit: function (settingsRecord, single) {
         this.fireContent({
             xtype: 'settingsedit',
             record: settingsRecord,
+            singleCmp: !!single,
             rights: {
                 serviceRead: Ext.checkPermission('service_settings', 'read'),
                 serviceEdit: Ext.checkPermission('service_settings', 'update'),
@@ -180,9 +181,48 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
     },
 
-    onEditSubmit: function (cmp, formValues, record) {
+    mayBeEditSubmit: function (cmp, formValues, record) {
         record.set(formValues);
 
+        if (record.isDomainChanged()) {
+            var me = this,
+                isPremium = Ext.getStore('Dealer').isPremiumGis(),
+                key = record.get('google_client_id'),
+                msg = false;
+
+            if (!Ext.isEmpty(key)) {
+                msg = _l.get("settings.domain_warnings.domain_changed");
+            } else if (isPremium) {
+                msg = _l.get("settings.domain_warnings.domain_changed_no_key");
+            } else if (key === '') {
+                msg = _l.get("settings.domain_warnings.domain_changed_empty_key_no_gis");
+                this.formUpdateRequired = true;
+            }
+
+            if (msg) {
+                Ext.Msg.show({
+                    title: _l.get("settings.domain_warnings.domain_warning"),
+                    msg: msg,
+                    buttons: Ext.Msg.OKCANCEL,
+                    buttonText: {'ok': _l.get("settings.domain_warnings.continue")},
+                    fn: function (buttonId) {
+                        if (buttonId == 'ok') {
+                            me.onEditSubmit(cmp, formValues, record);
+                        } else {
+                            record.reject(false);
+                            me.formUpdateRequired = false;
+                        }
+                    }
+                });
+            } else {
+                this.onEditSubmit(cmp, formValues, record);
+            }
+        } else {
+            this.onEditSubmit(cmp, formValues, record);
+        }
+    },
+
+    onEditSubmit: function (cmp, formValues, record) {
         var serviceChanges = record.getServiceChanges(),
             notificationChanges = record.getNotificationChanges(),
             settingsData = record.getData(),
@@ -230,13 +270,20 @@ Ext.define('NavixyPanel.controller.Settings', {
             } catch (e) {
             }
 
-            this.getSettingsEdit().afterSave();
+            if (this.formUpdateRequired) {
+                this.formUpdateRequired = false;
+                this.handleEdit(record, true);
+                this.getSettingsEdit().afterSave();
+            } else {
+                this.getSettingsEdit().afterSave();
+            }
         } else {
             record.reject(false);
         }
     },
 
     afterSettingsEditFailure: function (response, record) {
+        this.formUpdateRequired = false;
         record.reject(false);
         var status = response.status,
             errors = response.errors || [],

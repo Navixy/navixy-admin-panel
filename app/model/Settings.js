@@ -346,7 +346,6 @@ Ext.define('NavixyPanel.model.Settings', {
 
     getServiceFormatted: function () {
         var data = Ext.apply({}, this.getData()),
-            changes = this.getServiceChanges(),
             dealer = Ext.getStore('Dealer') && Ext.getStore('Dealer').first();
 
         Ext.iterate(data, function (field, value) {
@@ -373,12 +372,21 @@ Ext.define('NavixyPanel.model.Settings', {
         data.default_map = Ext.encode(data.default_map);
         data.default_user_settings = Ext.encode(data.default_user_settings);
 
-        if ((Ext.isEmpty(this.get('google_client_id'), true) && Ext.isEmpty(data.google_client_id, true))  || (changes && changes.domain && data.google_client_id === '')) {
+        if (this.isEmptyGoogleClientId()  || (this.isDomainChanged() && data.google_client_id === '')) {
             delete data['google_client_id'];
             this.set('google_client_id', null);
         }
 
         return data;
+    },
+
+    isEmptyGoogleClientId: function () {
+        return this.get('google_client_id') === null;
+    },
+
+    isDomainChanged: function () {
+        var changes = this.getServiceChanges();
+        return !!(changes && changes.domain);
     },
 
     getNotificationFormatted: function () {

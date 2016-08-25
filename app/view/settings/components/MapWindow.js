@@ -97,7 +97,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                         plugins: [
                             {
                                 ptype: 'googlefilter',
-                                disabled: !Ext.isEmpty(this.record.get('google_client_id', true))
+                                disabled: !this.record.isEmptyGoogleClientId()
                             }
                         ]
                     },
