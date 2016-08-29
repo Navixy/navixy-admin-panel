@@ -1153,13 +1153,6 @@ Ext.define('Locale.locale-en', {
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
-        },
-        "domain_warnings": {
-            "domain_warning": "Domain name has been changed",
-            "continue": "Continue",
-            "domain_changed": "Google services may not function properly. Please bind a new domain name to your google maps client ID.",
-            "domain_changed_no_key": "Google services may not function properly. You need to contact the technical support for access to Google services with a new domain name.",
-            "domain_changed_empty_key_no_gis": "Google Services will be locked. You must buy Premium GIS or contact technical support if you have a google maps client ID."
         }
     },
     "accounting": {
