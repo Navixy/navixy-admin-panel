@@ -53,9 +53,9 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 17,
                 minZoom: 2,
+                urlTpl: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
 //            urlTpl: '//mtile0{serv}.mqcdn.com/tiles/1.0.0/vx/map/{z}/{x}/{y}.png',
 //                urlTpl: '//otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-                urlTpl: 'http://otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
                 attribution: _l.get('map.mapAttiributes.osm'),
                 tplFns: {
                     serv: function (data) {
