@@ -914,6 +914,9 @@ Ext.define('Locale.locale-en', {
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
+            "domain_google_key_help": "How domain name affects the use of Google Maps",
+            "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information",
+            "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-key/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
@@ -1131,7 +1134,8 @@ Ext.define('Locale.locale-en', {
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+            "domain_and_google_key": "<a href='https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/domain-and-google-key/' target='_blank'></a>"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -1538,9 +1542,9 @@ Ext.define('Locale.locale-en', {
     },
     "features": {
         "api": "API",
-        "app_tasks": "<a href='http://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
+        "app_tasks": "<a href='https://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
         "app_fleet": "Fleet",
-        "app_reports": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
+        "app_reports": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>Reports</a>",
         "batch_operations": "Batch operations",
         "statuses": "Work statuses",
         "custom_maps": "Custom maps",
@@ -1552,7 +1556,7 @@ Ext.define('Locale.locale-en', {
         "priority_support": "Priority support",
         "retranslation": "Retranslation",
         "report_xls": "Reports to file",
-        "report_scheduled": "<a href='http://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
+        "report_scheduled": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
         "routing": "Routing",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",

@@ -38,7 +38,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'), '</span>'].join("")
                 }
 
-                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert'));
+                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert') + (disabled ? _l.get('settings.fields.domain_google_key_details'): ""));
             }
 
             result.push({
@@ -90,6 +90,9 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getItems: function () {
+
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && this.record.isEmptyGoogleClientId();
+
         if (!Config.google_key) {
             Config.google_key = {
                 allow: false,
@@ -104,7 +107,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             {
                 xtype: 'checkboxgroup',
                 role: 'map_types_select',
-                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')),
+                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + (notPremium ? '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>' : ''),
                 allowBlank: false,
                 columns: 1,
                 vertical: true,
