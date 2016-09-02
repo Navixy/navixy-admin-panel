@@ -900,7 +900,7 @@ Ext.define('Locale.locale-ru', {
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "Как карты Google зависят от домена",
             "domain_google_key_details": "<br>Подробности читайте в разделе \"Как карты Google зависят от домена\"",
-            "domain_google_key_link": "https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/domain-and-google-key/",
+            "domain_google_key_link": "https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
             "locale_hint": "Язык, назначаемый по умолчанию для новых учетных записей пользователей. Пользователи также могут изменять языковые предпочтения самостоятельно, в настройках своей учетной записи.",
             "currency_hint": "Установите валюту, распространенную в вашем регионе. Биллинговая система площадки будет тарифицировать ваших пользователей согласно настроенных вами тарифных планов.",
             "allow_registration": "Разрешить самостоятельную регистрацию пользователей",

@@ -916,7 +916,7 @@ Ext.define('Locale.locale-en', {
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information",
-            "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-key/",
+            "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
