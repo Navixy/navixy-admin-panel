@@ -56,7 +56,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 urlTpl: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
 //            urlTpl: '//mtile0{serv}.mqcdn.com/tiles/1.0.0/vx/map/{z}/{x}/{y}.png',
 //                urlTpl: '//otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-                attribution: _l.get('map.mapAttiributes.osm'),
+                attribution: "<a href=\"http://openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
                 tplFns: {
                     serv: function (data) {
                         return Math.ceil(Math.random() * 4);
@@ -69,7 +69,7 @@ Ext.define('NavixyPanel.store.leMaps', {
                 maxZoom: 18,
                 minZoom: 2,
                 urlTpl: '//{serv}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                attribution: _l.get('map.mapAttiributes.osm'),
+                attribution: "<a href=\"http://openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
                 tplFns: {
                     serv: function (data) {
                         var servers = ['a', 'b', 'c'];
