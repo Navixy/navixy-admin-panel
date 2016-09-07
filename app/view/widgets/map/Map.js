@@ -110,24 +110,28 @@ Ext.define('NavixyPanel.view.widgets.map.Map', {
     },
 
     afterFirstLayout: function () {
-        this.map = Ext.Map.initMap(this.getEl(), {
-            zoom: this.zoom,
-            lineScalePosition: this.lineScalePosition
-        });
+        try {
+            this.map = Ext.Map.initMap(this.getEl(), {
+                zoom: this.zoom,
+                lineScalePosition: this.lineScalePosition
+            });
 
-        Ext.Map.on(this.map, {
-            'bounds_changed': function () {
-                this.fireEvent('bounds_changed', this);
-            },
+            Ext.Map.on(this.map, {
+                'bounds_changed': function () {
+                    this.fireEvent('bounds_changed', this);
+                },
 
-            scope: this
-        });
+                scope: this
+            });
 
-        this.bindControls();
-        this.initMarker();
-        this.callParent(arguments);
+            this.bindControls();
+            this.initMarker();
+            this.callParent(arguments);
 
-        Ext.defer(this.setMapReady, 10, this);
+            Ext.defer(this.setMapReady, 10, this);
+        } catch (e) {
+            console.error(e);
+        }
     },
 
     bindControls: function () {

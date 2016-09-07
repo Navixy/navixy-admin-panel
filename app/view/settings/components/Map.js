@@ -35,7 +35,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 disabled = notPremium;
 
                 if (disabled) {
-                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'), '</span>'].join("")
+                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'), '</span>'].join("");
                 }
 
                 name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert') + (disabled ? _l.get('settings.fields.domain_google_key_details'): ""));
@@ -71,7 +71,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         store.filter('free', true);
 
         if (!store.findRecord('type', defMap.getValue())) {
-            this.getDefaultMapField().setValue(store.first().get('type'))
+            this.getDefaultMapField().setValue(store.first().get('type'));
         }
 
         Ext.iterate(this.getUnFreeMaps(), function (field) {

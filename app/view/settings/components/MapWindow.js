@@ -24,23 +24,6 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
     formValues: null,
     record: null,
 
-    initComponent: function () {
-
-        var defaultTexts = {
-            windowTitle: null
-        };
-
-        this.texts = Ext.applyIf(this.getTexts(), defaultTexts);
-
-        this.title = this.title || this.texts.windowTitle;
-
-        this.items = this.getItems();
-
-        this.bbar = this.getBottomBar();
-
-        this.callParent(arguments);
-    },
-
     prepareComboStore: function () {
         var allowed = this.record.get('maps'),
             store = Ext.getStore('MapTypes').getClone();
@@ -54,7 +37,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
             }
         ]);
 
-        return store
+        return store;
     },
 
     getItems: function () {
@@ -167,10 +150,14 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
     },
 
     applyMapListeners: function () {
-        Ext.Map.on(this.getMap().getMap(), {
-            'zoomchange': this.getSettingsFromMap,
-            scope: this
-        });
+        try {
+            Ext.Map.on(this.getMap().getMap(), {
+                'zoomchange': this.getSettingsFromMap,
+                scope: this
+            });
+        } catch (e) {
+            console.error(e);
+        }
         this.getMap().on('centerchange', this.getSettingsFromMap, this);
     },
 
@@ -200,7 +187,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
             'map_zoom': map.getZoom(),
             'map_location_lat': map.getMarkerPosition().lat.toFixed(6),
             'map_location_lng': map.getMarkerPosition().lng.toFixed(6)
-        })
+        });
     },
 
 
@@ -221,7 +208,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                 margin: '0 5',
                 handler: Ext.bind(this.close, this)
             }
-        ]
+        ];
     },
 
     sendForm: function () {

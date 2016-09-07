@@ -88,7 +88,7 @@ Ext.define('NavixyPanel.controller.Settings', {
             list = [];
 
         defaultStore.each(function (record) {
-            list.push(record.get("type"))
+            list.push(record.get("type"));
         });
 
         mapsStore.availableLoad(list);
@@ -98,7 +98,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         var editCmp = Ext.getFirst('settings-map');
 
         if (editCmp) {
-            editCmp.updateSettingsFromMap(settings)
+            editCmp.updateSettingsFromMap(settings);
         }
     },
 
@@ -166,7 +166,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     afterPasswordEdit: function (success, record) {
         if (success) {
             this.getSettingsEdit().afterPasswordSave();
-        } else {
         }
     },
 
@@ -259,9 +258,9 @@ Ext.define('NavixyPanel.controller.Settings', {
     handleSmptpSettings: function (gateSettings) {
         if (Ext.checkPermission('email_gateways', 'update')) {
             if (!gateSettings.selectedGate) {
-                this.createAndAssignEmailGate(gateSettings.settings)
+                this.createAndAssignEmailGate(gateSettings.settings);
             } else if (gateSettings.settings) {
-                this.updateAndAssignEmailGate(gateSettings.settings)
+                this.updateAndAssignEmailGate(gateSettings.settings);
             } else {
                 this.assignEmailGate(gateSettings.selectedGate);
             }
@@ -299,7 +298,7 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(settings.id);
             },
             scope: this
-        })
+        });
     },
 
     createAndAssignEmailGate: function (settings) {
@@ -314,6 +313,6 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(id);
             },
             scope: this
-        })
+        });
     }
 });
