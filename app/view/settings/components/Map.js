@@ -113,7 +113,16 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 vertical: true,
                 margin: '0 0 50 10',
                 ui: 'light',
-                items: this.getMapsList()
+                items: this.getMapsList(),
+                listeners: {
+                    validitychange: function (cmp, isValid) {
+                        var btn = this.down('[role="map-edit-button"]');
+                        if (btn) {
+                            btn.setDisabled(!isValid);
+                        }
+                    },
+                    scope: this
+                }
             }, Config.google_key.allow ? {
                 name: 'google_client_id',
                 fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), Config.google_key.get_key_link),
@@ -210,6 +219,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 xtype: 'button',
                 ui: 'default',
                 iconCls: 'edit-button',
+                role: 'map-edit-button',
                 padding: 3,
                 width: 175,
                 margin: '20 0 0 10',
@@ -229,7 +239,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             values[name] = field.getValue();
         }, this);
 
-        this.fireEvent('map-edit', this, this.record, values)
+        this.fireEvent('map-edit', this, this.getUpdatedRecord(), values);
     },
 
     updateSettingsFromMap: function (settings) {
@@ -244,5 +254,16 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 //field.resumeEvents();
             }
         }, this);
+    },
+
+    getUpdatedRecord: function () {
+        var checkboxgroup = this.down('component[role="map_types_select"]'),
+            mapsObject = checkboxgroup && checkboxgroup.getValue();
+
+        if (mapsObject && !Ext.isEmpty(mapsObject.maps)) {
+            this.record.set('maps', mapsObject.maps);
+        }
+
+        return this.record;
     }
 });
