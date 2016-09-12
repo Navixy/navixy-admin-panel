@@ -107,7 +107,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             {
                 xtype: 'checkboxgroup',
                 role: 'map_types_select',
-                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + (notPremium ? '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>' : ''),
+                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>',
                 allowBlank: false,
                 columns: 1,
                 vertical: true,
