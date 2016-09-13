@@ -261,7 +261,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             mapsObject = checkboxgroup && checkboxgroup.getValue();
 
         if (mapsObject && !Ext.isEmpty(mapsObject.maps)) {
-            this.record.set('maps', mapsObject.maps);
+            var maps = Ext.isArray(mapsObject.maps) ? mapsObject.maps : [mapsObject.maps];
+            this.record.set('maps', maps);
         }
 
         return this.record;

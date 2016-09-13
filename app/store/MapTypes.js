@@ -97,7 +97,7 @@ Ext.define('NavixyPanel.store.MapTypes', {
             this.filters.clear();
 
             this.filterBy(function (record) {
-                return Ext.Array.indexOf(maps, record.get('type')) > -1
+                return Ext.Array.indexOf(maps, record.get('type')) > -1;
             }, this);
         }
     }

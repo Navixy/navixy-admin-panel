@@ -116,7 +116,7 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
                         flex: 1
                     },
                     {
-                        xtype: 'container',
+                        xtype: 'component',
                         flex: 4
                     }
                 ]
@@ -165,11 +165,21 @@ Ext.define('NavixyPanel.view.settings.components.MapWindow', {
         this.callParent(arguments);
 
         this.firstUpdate = true;
-        this.getForm().setValues(this.formValues);
+        this.getForm().setValues(this.getVerifiedFormValues());
         this.waitMapInit(function () {
             this.updateMap();
             this.applyMapListeners();
         });
+    },
+
+    getVerifiedFormValues: function () {
+        var allowedMaps = this.record.get('maps');
+
+        if (!Ext.Array.contains(allowedMaps, this.formValues.map_type)) {
+            this.formValues.map_type = allowedMaps[0];
+        }
+
+        return this.formValues;
     },
 
     waitMapInit: function (callback, scope) {
