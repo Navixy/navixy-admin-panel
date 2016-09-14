@@ -23,6 +23,11 @@ Ext.define('NavixyPanel.store.Tariffs', {
         }
     ],
 
+    proxy: {
+        type: 'navixy',
+        apiFilters: ['device_type']
+    },
+
     getProxyEncoder: function () {
         var me = this;
 

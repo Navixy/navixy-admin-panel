@@ -32,8 +32,8 @@ Ext.define('NavixyPanel.store.Abstract', {
     constructor: function () {
         var me = this;
 
-        if (!this.proxy) {
-            this.proxy = {
+        if (!this.proxy || this.proxy.type === 'navixy') {
+            this.proxy = Ext.apply(this.proxy || {}, {
                 type: 'navixy',
                 enablePaging: true,
                 apiCalls: this.api,
@@ -46,7 +46,7 @@ Ext.define('NavixyPanel.store.Abstract', {
                 listeners: {
                     exception: Ext.bind(me.onException, me)
                 }
-            };
+            });
         }
 
         this.callParent(arguments);
