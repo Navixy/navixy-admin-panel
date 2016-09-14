@@ -53,7 +53,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
     },
 
     buildParams: function (request) {
-        return request.jsonData || request.params
+        return request.jsonData || request.params;
     },
 
     createSuccessCallback: function (request, operation, callback, scope) {
@@ -95,7 +95,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
 
         for (; i < length; i++) {
             if (filters[i].property === this.apiFilterProperty){
-                return filters[i].value
+                return filters[i].value;
             }
         }
         return result;
@@ -109,7 +109,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
 
         for (; i < length; i++) {
             if (Ext.Array.indexOf(this.apiFilters, filters[i].property) > -1){
-                result[filters[i].property] = filters[i].value
+                result[filters[i].property] = filters[i].value;
             }
         }
 

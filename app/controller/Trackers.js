@@ -351,7 +351,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     trackerCloneRemove: function (record) {
         Ext.API.removeTrackerClone({
             params: {
-                tracker_id: record.get('id'),
+                tracker_id: record.get('id')
             },
             callback: function (response) {
                 this.afterTrackerCloneRemove(response, record);
@@ -509,7 +509,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 },
                 scope: this
             });
-        }, this)
+        }, this);
     },
 
     afterGroupCloneSubmit: function (successCount, assigned, response) {
@@ -541,7 +541,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 },
                 scope: this
             });
-        }, this)
+        }, this);
     },
 
     afterGroupOwnerSubmit: function (successCount, assigned, response) {

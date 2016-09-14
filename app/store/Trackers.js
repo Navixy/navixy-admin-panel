@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.store.Trackers', {
                         params, config;
 
                     if (request && request.params && request.params.order_by === "model_name") {
-                        request.params.order_by = "model"
+                        request.params.order_by = "model";
                     }
 
                     if (operation.allowWrite()) {
@@ -63,6 +63,6 @@ Ext.define('NavixyPanel.store.Trackers', {
             };
         }
 
-        Ext.data.Store.prototype.constructor.apply(this, arguments)
+        Ext.data.Store.prototype.constructor.apply(this, arguments);
     }
 });

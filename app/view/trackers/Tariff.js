@@ -70,7 +70,7 @@ Ext.define('NavixyPanel.view.trackers.Tariff', {
                 deviceType: 'tracker',
                 trackerRecord: this.record,
                 validator: function(value) {
-                    var currentTariffId = me.getRecordData().tariff_id
+                    var currentTariffId = me.getRecordData().tariff_id;
                     return currentTariffId === value
                         ? _l.get('trackers.tariff_form.tariff_invalid')
                         : true;

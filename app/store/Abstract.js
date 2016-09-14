@@ -163,6 +163,6 @@ Ext.define('NavixyPanel.store.Abstract', {
                     ? Ext.create(me.model, recordData)
                     : recordData,
                 fn, scope, loadAssociations);
-        }
+        };
     }
 });

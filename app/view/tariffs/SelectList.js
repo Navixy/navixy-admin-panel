@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
                     }
                 },
                 {
-                    xtype: 'container',
+                    xtype: 'component',
                     width: 10
                 },
                 {
@@ -69,7 +69,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
             config.items
         );
 
-        return config
+        return config;
     },
 
     getSelectBtn: function () {

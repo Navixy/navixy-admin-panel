@@ -370,7 +370,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     uploadSettingsImage: function (form, config) {
         this.uploadFile(form, Ext.apply({
             action: 'upload',
-            handler: 'dealer/settings/image',
+            handler: 'dealer/settings/image'
         }, config));
     },
 
