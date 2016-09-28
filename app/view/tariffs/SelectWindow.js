@@ -12,23 +12,23 @@ Ext.define('NavixyPanel.view.tariffs.SelectWindow', {
     deviceType: null,
 
     getItems: function () {
-        return [
-            {
-                xtype: 'tariffselectlist',
-                filter: {
-                    device_type: this.deviceType
-                },
-                listeners: {
-                    close: this.destroy,
-                    recordselected: this.submitSelect,
-                    scope: this
-                }
+        var filter = this.deviceType ? {
+            device_type: this.deviceType
+        } : {};
+
+        return [{
+            xtype: 'tariffselectlist',
+            filter: filter,
+            listeners: {
+                close: this.destroy,
+                recordselected: this.submitSelect,
+                scope: this
             }
-        ];
+        }];
     },
 
     getTexts: function () {
-        return  {
+        return {
             windowTitle: _l.get('tariffs.select.title')
         };
     }
