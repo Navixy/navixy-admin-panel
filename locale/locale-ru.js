@@ -345,7 +345,9 @@ Ext.define('Locale.locale-ru', {
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
-        "mad": "Moroccan dirham"
+        "mad": "Moroccan dirham",
+        "xaf": "Central African CFA franc",
+        "xof": "West African CFA franc"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -1504,7 +1506,9 @@ Ext.define('Locale.locale-ru', {
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
-        "MAD": "{0} Dh"
+        "MAD": "{0} Dh",
+        "XOF": "{0} франк",
+        "XAF": "{0} франк"
     },
     "features": {
         "api": "API",

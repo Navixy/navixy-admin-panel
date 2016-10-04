@@ -346,7 +346,9 @@ Ext.define('Locale.locale-en', {
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
-        "mad": "Moroccan dirham"
+        "mad": "Moroccan dirham",
+        "xaf": "Central African CFA franc",
+        "xof": "West African CFA franc"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1538,7 +1540,10 @@ Ext.define('Locale.locale-en', {
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
-        "MAD": "{0} Dh"
+        "MAD": "{0} Dh",
+        "XOF": "{0} franc",
+        "XAF": "{0} franc"
+
     },
     "features": {
         "api": "API",

@@ -613,6 +613,16 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "MAD",
                 "name": _l.get('currency.mad'),
                 priority: 5
+            },
+            {
+                type: "XOF",
+                "name": _l.get('currency.xof'),
+                priority: 5
+            },
+            {
+                type: "XAF",
+                "name": _l.get('currency.xaf'),
+                priority: 5
             }
         ];
 
