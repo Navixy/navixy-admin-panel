@@ -23,6 +23,9 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
         {
             name: 'free_days',
             type: 'int'
+        },{
+            name: 'free_period_devices',
+            type: 'int'
         },
         {
             name: 'id',
@@ -33,7 +36,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
     getProxyEncoder: function () {
         var me = this;
 
-        return function(results) {
+        return function (results) {
 
             var data = Object.getOwnPropertyNames(results),
                 list = [];
@@ -57,6 +60,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
             tariff: tariff_id ? Ext.getStore('Tariffs').findRecord('id', tariff_id) : null,
             tariff_id: tariff_id || null,
             activation_bonus: device.activation_bonus || 0,
+            free_period_devices: device.free_period_devices || 0,
             free_days: device.free_days || 0
         };
     },
@@ -83,7 +87,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
     },
 
     isDefaultTariff: function (tariffId) {
-        return  tariffId
+        return tariffId
             && !!this.findRecord('tariff_id', Ext.isNumber(tariffId) ? tariffId : tariffId.get('id') || null);
     }
 });

@@ -65,6 +65,15 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 vtype: 'numeric',
 
                 value: defaultData.free_days || 0
+            }, {
+                fieldLabel: _l.get('tariffs.fields.free_period_devices'),
+                name: 'free_period_devices',
+
+                minLength: 1,
+                maxLength: 6,
+                vtype: 'numeric',
+
+                value: defaultData.free_period_devices || 0
             },
             {
                 xtype: 'hidden',
@@ -79,7 +88,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
             fieldName, fieldValue, fieldType;
 
         if (recordData) {
-            this.iterateFields(function(field) {
+            this.iterateFields(function (field) {
                 fieldName = field.name;
                 fieldType = field.getXType();
                 fieldValue = recordData[fieldName];
