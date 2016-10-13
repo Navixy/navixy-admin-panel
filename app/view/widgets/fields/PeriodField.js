@@ -31,7 +31,10 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
         this.store = Ext.create('Ext.data.Store', {
             fields: ['name', 'period'],
             data: [
-
+                {
+                    "name": Ext.util.Format.units(1, 'hours'),
+                    "period": "h"
+                },
                 {
                     "name": Ext.util.Format.units(1, 'days'),
                     "period": "d"
@@ -166,6 +169,9 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
             size;
 
         switch (periodField.getValue()) {
+            case 'h':
+                size = 'hours';
+                break;
             case 'd':
                 size = 'days';
                 break;

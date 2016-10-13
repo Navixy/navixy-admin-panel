@@ -278,6 +278,7 @@ Ext.define('NavixyPanel.controller.Main', {
             unitsDecode: function (value) {
                 var units = this.unitsParse(value),
                     unitsMap = {
+                        h: 'hours',
                         d: 'days',
                         m: 'months',
                         y: 'years'
