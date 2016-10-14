@@ -44,7 +44,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             recordData["tariff_is_default"] = isDefault;
             recordData["activation_bonus"] = isDefault ? defaultData['activation_bonus'] : 0;
             recordData["free_days"] = isDefault ? defaultData['free_days'] : 0;
-            recordData["free_days_device_limit"] = isDefault ? defaultData['free_days_device_limit'] : 0;
+            recordData["free_days_device_limit"] = isDefault ? defaultData['free_days_device_limit'] : null;
 
             if (recordData.maps_exclusion) {
                 if (recordData["maps"].length) {
