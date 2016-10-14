@@ -651,6 +651,7 @@ Ext.define('Locale.locale-ru', {
             "price": "Месячный платеж",
             "device_limit": "Количество устройств",
             "free_days_device_limit": "Кол-во устройств с демо периодом",
+            "free_days_device_no_limit": "Не ограничено",
             "device_type": "Тип устройств",
             "store_period": "Период хранения истории",
             "active": "Доступен пользователю",

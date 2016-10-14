@@ -23,9 +23,9 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
         {
             name: 'free_days',
             type: 'int'
-        },{
+        }, {
             name: 'free_days_device_limit',
-            type: 'int'
+            defaultValue: null
         },
         {
             name: 'id',
@@ -60,7 +60,7 @@ Ext.define('NavixyPanel.store.TariffDefaults', {
             tariff: tariff_id ? Ext.getStore('Tariffs').findRecord('id', tariff_id) : null,
             tariff_id: tariff_id || null,
             activation_bonus: device.activation_bonus || 0,
-            free_days_device_limit: device.free_days_device_limit || 0,
+            free_days_device_limit: device.free_days_device_limit || null,
             free_days: device.free_days || 0
         };
     },

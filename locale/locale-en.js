@@ -661,6 +661,7 @@ Ext.define('Locale.locale-en', {
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
             "free_days_device_limit": "Limit of devices with free period",
+            "free_days_device_no_limit": "No limit",
             "device_type": "Device type",
             "store_period": "Store history for",
             "active": "Available for user",

@@ -71,9 +71,8 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
 
                 minLength: 1,
                 maxLength: 6,
-                vtype: 'numeric',
 
-                value: defaultData.free_days_device_limit || 0
+                value: defaultData.free_days_device_limit
             },
             {
                 xtype: 'hidden',

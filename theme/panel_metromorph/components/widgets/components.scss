@@ -83,3 +83,20 @@
         color: $orange
     }
 }
+
+.free_days_device_limit.x-item-disabled {
+    input::-webkit-input-placeholder {
+        color: #333;
+    }
+    input::-moz-placeholder {
+        color: #333;
+    }
+    /* Firefox 19+ */
+    input:-moz-placeholder {
+        color: #333;
+    }
+    /* Firefox 18- */
+    input:-ms-input-placeholder {
+        color: #333;
+    }
+}

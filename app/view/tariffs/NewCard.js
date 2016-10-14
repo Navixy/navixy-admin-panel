@@ -401,6 +401,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
 
                 value: 0
             }),
+
             {role: "free_days_empty2"},
 
             // -3.3i --------------------------------------------------------------------- //
@@ -415,6 +416,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.getFieldConfig({
                 xtype: 'numberfield',
                 role: 'free_days_device_limit',
+                allowBlank: true,
                 plugins: [
                     {
                         ptype: 'fieldpostfix',
@@ -423,14 +425,14 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                         useRaw: true
                     }
                 ],
+                cls: 'free_days_device_limit',
+                emptyText: _l.get('tariffs.fields.free_days_device_no_limit'),
                 hideTrigger: true,
                 name: 'free_days_device_limit',
                 width: 200,
                 minValue: 0,
                 minLength: 1,
-                maxLength: 6,
-
-                value: 0
+                maxLength: 6
             }),
             {role: "free_days_device_limit_empty2"},
 
