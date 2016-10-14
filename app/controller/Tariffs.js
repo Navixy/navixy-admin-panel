@@ -219,7 +219,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 ||
                 defaultRecord.get("free_days") != formValues["free_days"]
                 ||
-                defaultRecord.get("free_period_devices") != formValues["free_period_devices"]
+                defaultRecord.get("free_days_device_limit") != formValues["free_days_device_limit"]
                 ||
                 defaultRecord.get("activation_bonus") != formValues["activation_bonus"]
             )
@@ -227,7 +227,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             this.handleTariffDefaultEdit(null, {
                     tariff_id: record.get("id"),
                     free_days: formValues["free_days"],
-                    free_period_devices: formValues["free_period_devices"],
+                    free_days_device_limit: formValues["free_days_device_limit"],
                     activation_bonus: formValues["activation_bonus"]
                 },
                 record,

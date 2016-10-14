@@ -66,14 +66,14 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
 
                 value: defaultData.free_days || 0
             }, {
-                fieldLabel: _l.get('tariffs.fields.free_period_devices'),
-                name: 'free_period_devices',
+                fieldLabel: _l.get('tariffs.fields.free_days_device_limit'),
+                name: 'free_days_device_limit',
 
                 minLength: 1,
                 maxLength: 6,
                 vtype: 'numeric',
 
-                value: defaultData.free_period_devices || 0
+                value: defaultData.free_days_device_limit || 0
             },
             {
                 xtype: 'hidden',

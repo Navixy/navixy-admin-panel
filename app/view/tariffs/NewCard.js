@@ -44,7 +44,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             recordData["tariff_is_default"] = isDefault;
             recordData["activation_bonus"] = isDefault ? defaultData['activation_bonus'] : 0;
             recordData["free_days"] = isDefault ? defaultData['free_days'] : 0;
-            recordData["free_period_devices"] = isDefault ? defaultData['free_period_devices'] : 0;
+            recordData["free_days_device_limit"] = isDefault ? defaultData['free_days_device_limit'] : 0;
 
             if (recordData.maps_exclusion) {
                 if (recordData["maps"].length) {
@@ -406,15 +406,15 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             // -3.3i --------------------------------------------------------------------- //
 
             {
-                html: [_l.get('tariffs.fields.free_period_devices'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.free_period_devices'))].join(""),
-                role: "free_period_devices_label",
+                html: [_l.get('tariffs.fields.free_days_device_limit'),
+                       this.getHintSymbol(_l.get('tariffs.card.hints.free_days_device_limit'))].join(""),
+                role: "free_days_device_limit_label",
                 cellCls: 'strong-height'
             },
-            {role: "free_period_devices_empty1"},
+            {role: "free_days_device_limit_empty1"},
             this.getFieldConfig({
                 xtype: 'numberfield',
-                role: 'free_period_devices',
+                role: 'free_days_device_limit',
                 plugins: [
                     {
                         ptype: 'fieldpostfix',
@@ -424,7 +424,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     }
                 ],
                 hideTrigger: true,
-                name: 'free_period_devices',
+                name: 'free_days_device_limit',
                 width: 200,
                 minValue: 0,
                 minLength: 1,
@@ -432,7 +432,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
 
                 value: 0
             }),
-            {role: "free_period_devices_empty2"},
+            {role: "free_days_device_limit_empty2"},
 
             // -3.3i --------------------------------------------------------------------- //
             {
@@ -877,10 +877,10 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.down('[role="free_days"]'),
             this.down('[role="free_days_empty2"]'),
 
-            this.down('[role="free_period_devices_label"]'),
-            this.down('[role="free_period_devices_empty1"]'),
-            this.down('[role="free_period_devices"]'),
-            this.down('[role="free_period_devices_empty2"]'),
+            this.down('[role="free_days_device_limit_label"]'),
+            this.down('[role="free_days_device_limit_empty1"]'),
+            this.down('[role="free_days_device_limit"]'),
+            this.down('[role="free_days_device_limit_empty2"]'),
 
             this.down('[role="activation_bonus_label"]'),
             this.down('[role="activation_bonus_empty1"]'),

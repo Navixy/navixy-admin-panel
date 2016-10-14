@@ -660,7 +660,7 @@ Ext.define('Locale.locale-en', {
             "group_id": "Group",
             "price": "Monthly payment",
             "device_limit": "Limit of devices",
-            "free_period_devices": "Limit of devices with free period",
+            "free_days_device_limit": "Limit of devices with free period",
             "device_type": "Device type",
             "store_period": "Store history for",
             "active": "Available for user",
@@ -739,7 +739,7 @@ Ext.define('Locale.locale-en', {
                 "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
                 "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
                 "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
-                "free_period_devices": "If user reaches the limit, new assets will have no free period"
+                "free_days_device_limit": "If user reaches the limit, new assets will have no free period"
 
             }
         },
