@@ -41,13 +41,13 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.callParent(arguments);
 
         this.application.on({
-            contentchange       : this.showContent,
-            menuregister        : this.addMainMenuItem,
-            menuselect          : this.onMenuSelect,
-            menudeselect        : this.onMenuDeselect,
-            'section-search'    : this.onSearch,
-            'section-payment'    : this.onPayment,
-            index               : this.onIndex,
+            contentchange: this.showContent,
+            menuregister: this.addMainMenuItem,
+            menuselect: this.onMenuSelect,
+            menudeselect: this.onMenuDeselect,
+            'section-search': this.onSearch,
+            'section-payment': this.onPayment,
+            index: this.onIndex,
             scope: this
         });
 
@@ -101,7 +101,8 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         try {
             cardContainer.remove(cmp, true);
-        } catch(e) {}
+        } catch (e) {
+        }
     },
 
     addContent: function (cmpConfig) {
@@ -127,7 +128,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
                 xtype: 'searchform',
-                searchStr: searchString
+                searchStr: decodeURIComponent(searchString)
             });
         }
     },
