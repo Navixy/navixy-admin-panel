@@ -6,6 +6,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     getLinks: function () {
         var me = this,
+            tracker = this.getRecordData(),
             result = [];
 
         if (Ext.checkPermission('trackers', 'update')) {
@@ -36,7 +37,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('trackers', 'create') && !this.getRecordData().clone) {
+        if (Ext.checkPermission('trackers', 'create') && !tracker.clone) {
             result.push(
                 {
                     html: '<a>' + _l.get('trackers.card.links.tracker_clone_create') + '</a>',
@@ -50,7 +51,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('trackers', 'delete') && this.getRecordData().clone) {
+        if (Ext.checkPermission('trackers', 'delete') && tracker.clone) {
             result.push(
                 {
                     html: '<a>' + _l.get('trackers.card.links.tracker_clone_remove') + '</a>',
@@ -64,7 +65,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && Ext.checkPermission('tariffs', 'read') && !this.getRecordData().clone && !this.getRecordData().deleted) {
+        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('transactions', 'create') && Ext.checkPermission('tariffs', 'read') && !tracker.clone && !tracker.deleted) {
             result.push(
                 {
                     html: '<a>' + _l.get('trackers.card.links.tracker_tariff_edit') + '</a>',
@@ -114,12 +115,11 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-
-        if (Ext.checkPermission('trackers', 'corrupt') && !this.getRecordData().clone) {
+        if (Ext.checkPermission('trackers', 'corrupt') && !tracker.clone) {
 
             result.push(
                 {
-                    xtype: 'container',
+                    xtype: 'component',
                     height: 10
                 }
             );
@@ -135,6 +135,29 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                     }
                 }
             );
+        }
+        if (Ext.checkPermission('trackers', 'update') && !tracker.blocked && tracker.connection_status === 'just_registered') {
+            result.push({
+                html: '<a style="font-weight: bold">' + _l.get('trackers.card.links.tracker_register_retry') + '</a>',
+                margin: '15 0 0 0',
+                role: 'register_retry_link',
+                hidden: !!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id),
+                listeners: {
+                    click: {
+                        fn: me.fireTrackerRegisterRetry,
+                        scope: me
+                    },
+                    afterrender: function () {
+                        var retryLink = this;
+                        setTimeout(function () {
+                            if (!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id)) {
+                                retryLink.show();
+                            }
+                        }, 2 * 60 * 1000);
+
+                    }
+                }
+            });
         }
 
         return result;
@@ -162,13 +185,13 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 {
                     no_encode: true,
                     title: _l.get('trackers.fields.owner'),
-                    value: Ext.checkPermission('users', 'read') ? '<a href="#user/' +  userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id
+                    value: Ext.checkPermission('users', 'read') ? '<a href="#user/' + userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id
                 },
                 {
                     no_encode: true,
                     no_empty: true,
                     title: _l.get('trackers.fields.tariff'),
-                    value: tariffData && (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' +  tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
+                    value: tariffData && (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' + tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
                 },
                 {
                     title: _l.get('trackers.fields.creation_date'),
@@ -239,6 +262,17 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         });
     },
 
+    fireTrackerRegisterRetry: function () {
+        Ext.MessageBox.show({
+            title: _l.get('trackers.retry_registraion.alert.title'),
+            msg: _l.get('trackers.retry_registraion.alert.text'),
+            width: 500,
+            buttons: Ext.MessageBox.OKCANCEL,
+            icon: Ext.MessageBox.WARNING,
+            fn: Ext.bind(this.sendTrackerRegisterRetry, this)
+        });
+    },
+
     sendTrackerCorrupt: function (result) {
         if (result === "ok") {
             Ext.API.setTrackerCorrupt({
@@ -254,5 +288,26 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 scope: this
             });
         }
+    },
+
+    sendTrackerRegisterRetry: function (result) {
+        if (result === "ok") {
+
+            //Rate limiter is here because api launches the rate limiter on request instead of the success retry
+            this.retryLink.hide();
+            Ext.util.Cookies.set('panel-need-to-retry-registration-' + this.getRecordData().id, 1, moment().add(2, 'minutes').toDate());
+
+            Ext.API.registerRetry({
+                params: {
+                    tracker_id: this.record.getId()
+                },
+                scope: this
+            });
+        }
+    },
+
+    afterRender: function () {
+        this.callParent(arguments);
+        this.retryLink = this.down('component[role=register_retry_link]');
     }
 });

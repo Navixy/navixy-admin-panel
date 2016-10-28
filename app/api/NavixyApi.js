@@ -245,6 +245,12 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'tracker'
         });
     },
+    registerRetry: function (config) {
+        this.requestWithOptions(config, {
+            action: 'register_retry',
+            handler: 'tracker'
+        });
+    },
 
     getTariffsList: function (config) {
         this.requestWithOptions(config, {

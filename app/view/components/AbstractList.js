@@ -212,7 +212,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             ? [
             {
                 xtype: 'toolcolumn',
-                width: 31,
+                width: 40,
                 action: 'edit',
                 tip: this.texts.editToolTip
             }

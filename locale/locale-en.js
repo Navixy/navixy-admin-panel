@@ -605,7 +605,8 @@ Ext.define('Locale.locale-en', {
                 "tracker_tariff": "Tracker plan",
                 "tracker_owner": "Tracker owner",
                 "tracker_console": "Air console",
-                "tracker_corrupt": "Cancel registration"
+                "tracker_corrupt": "Cancel registration",
+                "tracker_register_retry": "Retry activation"
             }
         },
         "console": {
@@ -635,6 +636,12 @@ Ext.define('Locale.locale-en', {
                 "text": "Device will be permanently removed from database. All retated data will be lost.<br><br>Are you to remove device?"
             },
             "success_msg": "Device {0} successfully removed"
+        },
+        "retry_registraion": {
+            "alert": {
+                "title": "Retry activation",
+                "text": "Send activation commands to the device?"
+            }
         }
     },
     "tariffs": {

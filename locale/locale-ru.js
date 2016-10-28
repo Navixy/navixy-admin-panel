@@ -597,7 +597,8 @@ Ext.define('Locale.locale-ru', {
                 "tracker_tariff": "Тариф трекера",
                 "tracker_owner": "Владелец трекера",
                 "tracker_console": "GPRS-терминал",
-                "tracker_corrupt": "Снять с регистрации"
+                "tracker_corrupt": "Снять с регистрации",
+                "tracker_register_retry": "Повторная активация"
             }
         },
         "console": {
@@ -627,6 +628,12 @@ Ext.define('Locale.locale-ru', {
                 "text": "Устройство будет безвозвратно удалено из базы данных, все данные - недоступны!<br><br>Вы уверены что хотите отменить регистрацию?"
             },
             "success_msg": "Устройство {0} успешно удалено"
+        }            ,
+        "retry_registraion": {
+            "alert": {
+                "title": "Поторная активация",
+                "text": "Отправить активационные команды на устройство?"
+            }
         }
     },
     "tariffs": {
