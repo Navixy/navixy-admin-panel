@@ -1532,7 +1532,7 @@ Ext.define('Locale.locale-ru', {
         "geocoding": "Гео-кодирование",
         "lbs": "Определение по базовым станциям GSM",
         "map_layers": "Слои карт",
-        "multilevel_access": "Клонирование объектов",
+        "multilevel_access": "Пользователи и роли",
         "priority_support": "Приоритетная поддержка",
         "retranslation": "Ретрансляция",
         "report_xls": "Экспорт отчетов",

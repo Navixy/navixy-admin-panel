@@ -87,22 +87,22 @@ Ext.define('NavixyPanel.store.Features', {
             {
                 type: "api",
                 "name": _l.get('features.api'),
-                group: "misñ"
+                group: "misc"
             },
             {
                 type: "custom_maps",
                 "name": _l.get('features.custom_maps'),
-                group: "misñ"
+                group: "misc"
             },
             {
                 type: "priority_support",
                 "name": _l.get('features.priority_support'),
-                group: "misñ"
+                group: "misc"
             },
             {
                 type: "multilevel_access",
                 "name": _l.get('features.multilevel_access'),
-                group: "misñ"
+                group: "misc"
             }
         ];
 

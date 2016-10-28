@@ -674,7 +674,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 case "features":
                     featuresList.push(listItem);
                     break;
-                case "mis�":
+                case "misc":
                     miscList.push(listItem);
                     break;
             }

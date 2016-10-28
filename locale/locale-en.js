@@ -1568,7 +1568,7 @@ Ext.define('Locale.locale-en', {
         "geocoding": "Geocoding",
         "lbs": "Location by Cell ID",
         "map_layers": "Map layers",
-        "multilevel_access": "Object clones",
+        "multilevel_access": "Users and roles",
         "priority_support": "Priority support",
         "retranslation": "Retranslation",
         "report_xls": "Reports to file",
