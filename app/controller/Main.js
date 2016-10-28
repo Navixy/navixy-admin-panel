@@ -647,13 +647,17 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     onUserAuthFailure: function () {
-        var form = this.getAuthForm(),
-            errBox = form.down('[role=auth-error]');
 
-        this.getAuthWindow().showError(_l.get('auth.auth_error'));
+        var form = this.getAuthForm();
 
-        Ext.getBody().unmask();
-        this.getAuthWindow().show();
+        if (form) {
+            var errBox = form.down('[role=auth-error]');
+
+            this.getAuthWindow().showError(_l.get('auth.auth_error'));
+
+            Ext.getBody().unmask();
+            this.getAuthWindow().show();
+        }
     },
 
     loadPermissions: function (config) {
