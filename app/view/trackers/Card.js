@@ -141,7 +141,6 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 html: '<a style="font-weight: bold">' + _l.get('trackers.card.links.tracker_register_retry') + '</a>',
                 margin: '15 0 0 0',
                 role: 'register_retry_link',
-                hidden: !!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id),
                 listeners: {
                     click: {
                         fn: me.fireTrackerRegisterRetry,
@@ -149,12 +148,28 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                     },
                     afterrender: function () {
                         var retryLink = this;
-                        setTimeout(function () {
-                            if (!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id)) {
-                                retryLink.show();
-                            }
-                        }, 2 * 60 * 1000);
 
+                        if (Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id)) {
+                            retryLink.disable();
+                            retryLink.setTip(_l.get('trackers.card.links.countdown_msg'));
+
+                            retryLink.interval = setInterval(function () {
+                                if (!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id)) {
+                                    retryLink.enable();
+                                    retryLink.removeTip();
+                                    clearInterval(retryLink.interval);
+                                }
+                            }, 5000);
+                        }
+
+                    },
+                    beforedestroy: function () {
+                        if (this.interval) {
+                            clearInterval(this.interval);
+                        }
+                        if (this.timeout) {
+                            clearTimeout(this.timeout);
+                        }
                     }
                 }
             });
@@ -263,14 +278,16 @@ Ext.define('NavixyPanel.view.trackers.Card', {
     },
 
     fireTrackerRegisterRetry: function () {
-        Ext.MessageBox.show({
-            title: _l.get('trackers.retry_registraion.alert.title'),
-            msg: _l.get('trackers.retry_registraion.alert.text'),
-            width: 500,
-            buttons: Ext.MessageBox.OKCANCEL,
-            icon: Ext.MessageBox.WARNING,
-            fn: Ext.bind(this.sendTrackerRegisterRetry, this)
-        });
+        if (!this.retryLink.disabled) {
+            Ext.MessageBox.show({
+                title: _l.get('trackers.retry_registraion.alert.title'),
+                msg: _l.get('trackers.retry_registraion.alert.text'),
+                width: 500,
+                buttons: Ext.MessageBox.OKCANCEL,
+                icon: Ext.MessageBox.WARNING,
+                fn: Ext.bind(this.sendTrackerRegisterRetry, this)
+            });
+        }
     },
 
     sendTrackerCorrupt: function (result) {
@@ -292,9 +309,12 @@ Ext.define('NavixyPanel.view.trackers.Card', {
 
     sendTrackerRegisterRetry: function (result) {
         if (result === "ok") {
+            var retryLink = this.retryLink,
+                tracker = this.getRecordData();
 
             //Rate limiter is here because api launches the rate limiter on request instead of the success retry
-            this.retryLink.hide();
+            this.retryLink.disable();
+            this.retryLink.setTip(_l.get('trackers.card.links.countdown_msg'));
             Ext.util.Cookies.set('panel-need-to-retry-registration-' + this.getRecordData().id, 1, moment().add(2, 'minutes').toDate());
 
             Ext.API.registerRetry({
@@ -303,6 +323,13 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 },
                 scope: this
             });
+
+            retryLink.timeout = setTimeout(function () {
+                if (!Ext.util.Cookies.get('panel-need-to-retry-registration-' + tracker.id)) {
+                    retryLink.enable();
+                    retryLink.removeTip();
+                }
+            }, 2 * 60 * 1000);
         }
     },
 

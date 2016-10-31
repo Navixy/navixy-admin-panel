@@ -598,7 +598,8 @@ Ext.define('Locale.locale-ru', {
                 "tracker_owner": "Владелец трекера",
                 "tracker_console": "GPRS-терминал",
                 "tracker_corrupt": "Снять с регистрации",
-                "tracker_register_retry": "Повторная активация"
+                "tracker_register_retry": "Повторная активация",
+                "countdown_msg": "Таймаут на выполнение повторной активации ещё не истёк"
             }
         },
         "console": {

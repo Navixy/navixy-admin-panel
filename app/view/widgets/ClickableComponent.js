@@ -62,5 +62,12 @@ Ext.define('NavixyPanel.view.widgets.ClickableComponent', {
         if (this.tip) {
             this.setTip(this.tip, this.tipAnchor);
         }
+    },
+
+    removeTip: function () {
+        if (this.tipCmp) {
+            this.tipCmp.destroy();
+            this.tipCmp = null;
+        }
     }
 });

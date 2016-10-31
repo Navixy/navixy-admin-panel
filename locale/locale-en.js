@@ -606,7 +606,8 @@ Ext.define('Locale.locale-en', {
                 "tracker_owner": "Tracker owner",
                 "tracker_console": "Air console",
                 "tracker_corrupt": "Cancel registration",
-                "tracker_register_retry": "Retry activation"
+                "tracker_register_retry": "Retry activation",
+                "countdown_msg": "Timeout to perform reactivation has not expired"
             }
         },
         "console": {
