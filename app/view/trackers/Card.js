@@ -136,7 +136,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 }
             );
         }
-        if (Ext.checkPermission('trackers', 'update') && !tracker.blocked && tracker.connection_status === 'just_registered') {
+        if (Ext.checkPermission('trackers', 'update') && this.isRetryRegisterAllowed(tracker)) {
             result.push({
                 html: '<a style="font-weight: bold">' + _l.get('trackers.card.links.tracker_register_retry') + '</a>',
                 margin: '15 0 0 0',
@@ -331,6 +331,11 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 }
             }, 2 * 60 * 1000);
         }
+    },
+
+    isRetryRegisterAllowed: function (tracker) {
+        var forbiddenModel = /^navixymobile|^mobile_unknown|^iosnavixytracker/gi.exec(tracker.model);
+        return !forbiddenModel && !tracker.blocked && !tracker.deleted && !tracker.clone;
     },
 
     afterRender: function () {
