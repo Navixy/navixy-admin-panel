@@ -270,7 +270,12 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
     },
 
     getRecordData: function () {
-        return this.record.getData();
+        try {
+            return this.record.getData();
+        } catch (e) {
+            console.log(e, e.stack);
+            return false;
+        }
     },
 
     handleLinksCollapseTool: function () {

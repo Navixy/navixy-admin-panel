@@ -191,25 +191,43 @@ Ext.define('NavixyPanel.controller.Trackers', {
         });
     },
 
+    handleAction: function (record, callback) {
+        if (!record.get('source').corrupted) {
+            callback.call(this, record);
+        } else {
+            Ext.MessageBox.show({
+                title: _l.get('error'),
+                msg: _l.get('errors.252')
+            });
+        }
+    },
 
     handleListAction: function (record) {
-        var trackerId = record.getId();
-        Ext.Nav.shift('tracker/' + trackerId);
+        this.handleAction(record, function (record) {
+            var trackerId = record.getId();
+            Ext.Nav.shift('tracker/' + trackerId);
+        });
     },
 
     handleTrackerEditAction: function (record) {
-        var trackerId = record.getId();
-        Ext.Nav.shift('tracker/' + trackerId + '/edit');
+        this.handleAction(record, function (record) {
+            var trackerId = record.getId();
+            Ext.Nav.shift('tracker/' + trackerId + '/edit');
+        });
     },
 
     onTrackerTariffEditAction: function (record) {
-        var trackerId = record.getId();
-        Ext.Nav.shift('tracker/' + trackerId + '/tariff');
+        this.handleAction(record, function (record) {
+            var trackerId = record.getId();
+            Ext.Nav.shift('tracker/' + trackerId + '/tariff');
+        });
     },
 
     handleTrackerCloneAction: function (record) {
-        var trackerId = record.getId();
-        Ext.Nav.shift('tracker/' + trackerId + '/clone');
+        this.handleAction(record, function (record) {
+            var trackerId = record.getId();
+            Ext.Nav.shift('tracker/' + trackerId + '/clone');
+        });
     },
 
     handleTrackerEditSubmit: function (cmp, formValues, record) {
@@ -452,11 +470,13 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     onTrackerConsole: function (record) {
-        var trackerId = record.get('id');
+        this.handleAction(record, function (record) {
+            var trackerId = record.get('id');
 
-        if (trackerId !== null) {
-            Ext.Nav.shift('tracker/' + trackerId + '/console');
-        }
+            if (trackerId !== null) {
+                Ext.Nav.shift('tracker/' + trackerId + '/console');
+            }
+        });
     },
 
     onTrackerRemove: function (trackerRecord) {

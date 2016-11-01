@@ -237,7 +237,12 @@ Ext.define('NavixyPanel.view.trackers.Console', {
     },
 
     getRecordData: function () {
-        return this.record.getData() || false;
+        try {
+            return this.record.getData() || false;
+        } catch (e) {
+            console.log(e, e.stack);
+            return false;
+        }
     },
 
     getConnectBtn: function () {

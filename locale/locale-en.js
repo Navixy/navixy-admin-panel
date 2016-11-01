@@ -132,6 +132,7 @@ Ext.define('Locale.locale-en', {
         "240": "Not allowed to change plan too frequently",
         "242": "Validation error",
         "251": "Insufficient funds",
+        "252": "Device already corrupted",
         "254": "Cannot save file",
         "upload_exeption": "File upload error",
         "no_hash": "The session key is not found",
