@@ -56,9 +56,8 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 skipFormValidation: true,
                 role: 'permission-field'
             }, {
-                xtype: 'textfield',
-                name: 'email_footer',
                 xtype: 'textarea',
+                name: 'email_footer',
                 fieldLabel: _l.get('settings.fields.email_footer'),
                 width: 450,
                 rows: 10,
@@ -160,7 +159,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
         Ext.API.getEmailGates({
             callback: this.constructForm,
             scope: this
-        })
+        });
     },
 
     constructForm: function (data) {
@@ -185,7 +184,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 leasable: true,
                 checked: item.id === data.bound_gateway,
                 inputValue: item.id
-            })
+            });
         });
 
         if (data.own.length) {
@@ -195,14 +194,14 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                     checked: settingsItem.id === data.bound_gateway,
                     settings: settingsItem,
                     gate_id: settingsItem.id
-                })
+                });
             });
         } else {
             items.push({
                 xtype: 'smtp-gate-item',
                 leasable: true,
                 gate_id: null
-            })
+            });
         }
 
         radiogroup.items = items;

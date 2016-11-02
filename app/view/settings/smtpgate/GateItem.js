@@ -73,10 +73,11 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 listeners: {
                     'change': function (rg, data) {
                         console.log(data);
-                        var encription = data[this.getEncriptionName()]
+                        var encription = data[this.getEncriptionName()];
                         if (encription) {
                             var port = rg.down('radio[inputValue=' + encription + ']').port;
-                            this.portField.setValue(port)
+                            this.portField.setValue(port);
+                            this.trustCheckbox.setVisible(encription !== 'none');
                         }
                     },
                     scope: this
@@ -99,6 +100,14 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                         inputValue: 'tls'
                     }
                 ]
+            }, {
+                xtype: 'checkbox',
+                boxLabel: localePart.get('trust_all_hosts'),
+                name: 'trust_all_hosts',
+                inputValue: true,
+                uncheckedValue: false,
+                checked: false,
+                hidden: true
             }, {
                 xtype: 'container',
                 layout: {
@@ -164,12 +173,13 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
         this.hostField = this.down('textfield[name=host]');
         this.authCheckbox = this.down('checkbox[name=auth]');
         this.encryptionRadioGroup = this.down('radiogroup[name=encryption]');
+        this.trustCheckbox = this.down('checkbox[name=trust_all_hosts]');
         this.callParent(arguments);
     },
 
     afterFirstLayout: function () {
         if (this.settings) {
-            this.setValues(this.settings)
+            this.setValues(this.settings);
         }
         this.callParent(arguments);
     },
@@ -198,6 +208,8 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
         }
 
         var authEnabled = this.authCheckbox.getValue(),
+            encription = this.encryptionRadioGroup.getValue()[this.getEncriptionName()],
+            encriptionEnabled = encription !== 'none',
             smtpSettings = {
                 id: this.gate_id,
                 label: 'Custom smtp',
@@ -217,10 +229,10 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                     "mail.smtp.use_ssl": false,
                     "mail.smtp.timeout": 60000,
                     "mail.smtp.connectiontimeout": 60000,
-                    "mail.transport.protocol": "smtp"
+                    "mail.transport.protocol": "smtp",
+                    "mail.smtp.ssl.trust_all_hosts": encriptionEnabled ? this.trustCheckbox.getValue() : false
                 }
-            },
-            encription = this.encryptionRadioGroup.getValue()[this.getEncriptionName()];
+            };
 
         switch (encription) {
             case 'none':
@@ -254,7 +266,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
 
         this.leasable = settings.leasable || false;
 
-        this.userField.setValue(smptpSettings['mail.smtp.user'])
+        this.userField.setValue(smptpSettings['mail.smtp.user']);
         this.passwordField.setValue(smptpSettings['mail.smtp.password']);
 
         this.authCheckbox.setValue(smptpSettings['mail.smtp.auth']);
@@ -276,6 +288,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
         encriptioValue[this.getEncriptionName()] = encryption;
 
         this.encryptionRadioGroup.setValue(encriptioValue);
+        this.trustCheckbox.setValue(smptpSettings['mail.smtp.ssl.trust_all_hosts']);
         this.hostField.setValue(smptpSettings['mail.smtp.host']);
         this.portField.setValue(smptpSettings['mail.smtp.port']);
 

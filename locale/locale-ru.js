@@ -845,6 +845,7 @@ Ext.define('Locale.locale-ru', {
                 "none": "Нет"
             },
             "auth_label": "Авторизация",
+            "trust_all_hosts": "Доверять любому хосту",
             "host_label": "SMTP сервер",
             "port_label": "SMTP порт",
             "host_placeholder": "IP или домен",
