@@ -307,7 +307,12 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 record.commit();
             } catch (e) {}
 
-            this.getTrackersList().store.load();
+            try {
+                this.getTrackersList().store.load();
+            } catch (e) {
+                console.log('Trackers list doesn\'t exist yet');
+            }
+
             this.getTrackerEdit().afterSave();
         } else {
             record.reject(false);
