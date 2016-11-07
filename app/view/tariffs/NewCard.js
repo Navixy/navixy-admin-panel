@@ -41,16 +41,16 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 defaultData = defaultTariff && defaultTariff.getData(),
                 isDefault = recordData.id === defaultData.tariff_id;
 
-            recordData["tariff_is_default"] = isDefault;
-            recordData["activation_bonus"] = isDefault ? defaultData['activation_bonus'] : 0;
-            recordData["free_days"] = isDefault ? defaultData['free_days'] : 0;
-            recordData["free_days_device_limit"] = isDefault ? defaultData['free_days_device_limit'] : null;
+            recordData.tariff_is_default = isDefault;
+            recordData.activation_bonus = isDefault ? defaultData.activation_bonus : 0;
+            recordData.free_days = isDefault ? defaultData.free_days : 0;
+            recordData.free_days_device_limit = isDefault ? defaultData.free_days_device_limit : null;
 
             if (recordData.maps_exclusion) {
-                if (recordData["maps"].length) {
+                if (recordData.maps.length) {
                     disableMaps = true;
                 }
-                recordData["maps"] = this.reverseMaps(recordData["maps"]);
+                recordData.maps = this.reverseMaps(recordData.maps);
             }
 
             this.iterateFields(function (field) {
@@ -70,7 +70,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 this.down("[name=tariff_is_default]").strictDisabled = "edit";
             }
             this.changeDefault(isDefault);
-            this.changePaymentType(recordData['type']);
+            this.changePaymentType(recordData.type);
         }
 
         this.getForm().isValid();
@@ -91,11 +91,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         Ext.getStore('MapTypes').each(function (mapRecord) {
             type = mapRecord.get('type');
             if (Ext.Array.indexOf(maps, type) < 0) {
-                result.push(type)
+                result.push(type);
             }
         }, this);
 
-        return result
+        return result;
     },
 
     getProcessedValues: function () {
@@ -116,7 +116,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     }
                     values[name] = values[name] && values[name].length
                         ? Ext.Array.unique(values[name].concat(data))
-                        : data || []
+                        : data || [];
                 } else {
                     if (!values[name]) {
                         values[name] = [];
@@ -221,7 +221,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             deviceData.push({
                 type: "camera",
                 "name": _l.get('devices.camera')
-            })
+            });
         }
 
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
@@ -293,7 +293,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                value: "monthly",
+                value: this.tariffTypesStore.first().get('type'),
 
                 width: 250,
                 hidden: isCamera,
@@ -332,7 +332,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             {},
             this.getFieldConfig({
                 disabledValue: function () {
-                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'))
+                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'));
                 },
                 name: 'price',
                 allowBlank: true,
@@ -448,7 +448,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.getFieldConfig({
                 role: 'activation_bonus',
                 disabledValue: function () {
-                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'))
+                    return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'));
                 },
                 name: 'activation_bonus',
                 allowBlank: true,
@@ -519,7 +519,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             {},
             Ext.apply({name: 'phone_call'}, priceConfig),
             {html: this.getTariffPriceText("phone_call", tariffPrices, seller_currency)}
-        ]
+        ];
     },
 
     getBodyItemsConfig: function () {
@@ -527,7 +527,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.getBodyCollapserConfig('options', {
                 html: _l.get('tariffs.fields.plan_options'),
                 collapsedHtml: _l.get('tariffs.fields.plan_options'),
-                expandedHtml: [_l.get('tariffs.fields.plan_options'), _l.get('card.body.exptitle_show')].join(" "),
+                expandedHtml: [_l.get('tariffs.fields.plan_options'), _l.get('card.body.exptitle_show')].join(" ")
             }),
             this.getBodyConfig('options', this.getOptionsBodyConfig()),
             {
@@ -537,14 +537,14 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.getBodyCollapserConfig('availability', {
                 html: _l.get('tariffs.fields.plan_availability'),
                 collapsedHtml: _l.get('tariffs.fields.plan_availability'),
-                expandedHtml: [_l.get('tariffs.fields.plan_availability'), _l.get('card.body.exptitle_show')].join(" "),
+                expandedHtml: [_l.get('tariffs.fields.plan_availability'), _l.get('card.body.exptitle_show')].join(" ")
             }),
             this.getBodyConfig('availability', this.getAvailabilityBodyConfig()),
             {
                 xtype: 'container',
                 height: 40
             }
-        ]
+        ];
     },
 
     getOptionsBodyConfig: function () {
@@ -569,7 +569,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 },
                 items: this.prepareOptionsItems()
             }
-        }
+        };
     },
 
     getAvailabilityBodyConfig: function () {
@@ -594,7 +594,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 },
                 items: this.prepareAvailabilityItems()
             }
-        }
+        };
     },
 
     handleReportsChange: function (cmp, state) {
@@ -664,7 +664,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 listItem.listeners = {
                     change: this.handleReportsFeatureChange,
                     scope: this
-                }
+                };
             }
 
             switch (featureRecord.get("group")) {
@@ -837,7 +837,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 xtype: 'fakefield',
                 cellCls: 'form-cell',
                 processText: function (value) {
-                    return value != "0" ? value : _l.get('no')
+                    return value != "0" ? value : _l.get('no');
                 },
                 fieldConfig: this.getFieldConfig({
                     name: 'group_id',
@@ -961,7 +961,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             result.push({
                 type: type,
                 "name": _l.get('tariffs.types')[type]
-            })
+            });
         }, this);
 
         return result.length ? result : empty_result;
@@ -970,6 +970,6 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     getTariffPriceText: function (type, prices, currency) {
         return prices[type] !== null
             ? Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(prices[type], '0.00'))
-            : _l.get("na")
+            : _l.get("na");
     }
 });
