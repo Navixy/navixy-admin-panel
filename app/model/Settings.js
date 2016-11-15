@@ -372,7 +372,7 @@ Ext.define('NavixyPanel.model.Settings', {
         data.default_map = Ext.encode(data.default_map);
         data.default_user_settings = Ext.encode(data.default_user_settings);
 
-        if (this.isEmptyGoogleClientId()  || (this.isDomainChanged() && data.google_client_id === '')) {
+        if (this.isDomainChanged() && data.google_client_id === '') {
             delete data['google_client_id'];
             this.set('google_client_id', null);
         }
@@ -381,7 +381,7 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     isEmptyGoogleClientId: function () {
-        return this.get('google_client_id') === null;
+        return !this.get('google_client_id');
     },
 
     isDomainChanged: function () {
