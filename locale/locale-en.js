@@ -1173,6 +1173,11 @@ Ext.define('Locale.locale-en', {
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
+        },
+        "domain_warnings": {
+            "domain_warning": "Domain name has been changed",
+            "continue": "Continue",
+            "domain_changed": "Domain name change may affect Google Maps availability.</br><a target=\"_blank\" href=\"{0}\">Read more about Google Maps for your domain.</a>"
         }
     },
     "accounting": {

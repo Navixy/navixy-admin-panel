@@ -41,7 +41,7 @@ Ext.define('NavixyPanel.controller.Settings', {
 
         this.control({
             'settingsedit': {
-                formsubmit: this.onEditSubmit,
+                formsubmit: this.mayBeEditSubmit,
                 formsubmitpassword: this.onPasswordEditSubmit,
                 mapchanged: this.onMapSettingsChange
             },
@@ -88,7 +88,7 @@ Ext.define('NavixyPanel.controller.Settings', {
             list = [];
 
         defaultStore.each(function (record) {
-            list.push(record.get("type"));
+            list.push(record.get("type"))
         });
 
         mapsStore.availableLoad(list);
@@ -98,7 +98,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         var editCmp = Ext.getFirst('settings-map');
 
         if (editCmp) {
-            editCmp.updateSettingsFromMap(settings);
+            editCmp.updateSettingsFromMap(settings)
         }
     },
 
@@ -132,10 +132,11 @@ Ext.define('NavixyPanel.controller.Settings', {
 
     },
 
-    handleEdit: function (settingsRecord) {
+    handleEdit: function (settingsRecord, single) {
         this.fireContent({
             xtype: 'settingsedit',
             record: settingsRecord,
+            singleCmp: !!single,
             rights: {
                 serviceRead: Ext.checkPermission('service_settings', 'read'),
                 serviceEdit: Ext.checkPermission('service_settings', 'update'),
@@ -166,6 +167,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     afterPasswordEdit: function (success, record) {
         if (success) {
             this.getSettingsEdit().afterPasswordSave();
+        } else {
         }
     },
 
@@ -179,9 +181,33 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
     },
 
-    onEditSubmit: function (cmp, formValues, record) {
+    mayBeEditSubmit: function (cmp, formValues, record) {
         record.set(formValues);
 
+        var isPremium = Ext.getStore('Dealer').isPremiumGis();
+
+        if (record.isDomainChanged() && isPremium) {
+            Ext.Msg.show({
+                title: _l.get("settings.domain_warnings.domain_warning"),
+                msg: _l.get("settings.domain_warnings.domain_changed"),
+                buttons: Ext.Msg.OKCANCEL,
+                buttonText: {'ok': _l.get("settings.domain_warnings.continue")},
+                fn: function (buttonId) {
+                    if (buttonId == 'ok') {
+                        this.onEditSubmit(cmp, formValues, record);
+                    } else {
+                        record.reject(false);
+                        this.formUpdateRequired = false;
+                    }
+                },
+                scope: this
+            });
+        } else {
+            this.onEditSubmit(cmp, formValues, record);
+        }
+    },
+
+    onEditSubmit: function (cmp, formValues, record) {
         var serviceChanges = record.getServiceChanges(),
             notificationChanges = record.getNotificationChanges(),
             settingsData = record.getData(),
@@ -229,7 +255,13 @@ Ext.define('NavixyPanel.controller.Settings', {
             } catch (e) {
             }
 
-            this.getSettingsEdit().afterSave();
+            if (this.formUpdateRequired) {
+                this.formUpdateRequired = false;
+                this.handleEdit(record, true);
+                this.getSettingsEdit().afterSave();
+            } else {
+                this.getSettingsEdit().afterSave();
+            }
         } else {
             record.reject(false);
         }
@@ -258,9 +290,9 @@ Ext.define('NavixyPanel.controller.Settings', {
     handleSmptpSettings: function (gateSettings) {
         if (Ext.checkPermission('email_gateways', 'update')) {
             if (!gateSettings.selectedGate) {
-                this.createAndAssignEmailGate(gateSettings.settings);
+                this.createAndAssignEmailGate(gateSettings.settings)
             } else if (gateSettings.settings) {
-                this.updateAndAssignEmailGate(gateSettings.settings);
+                this.updateAndAssignEmailGate(gateSettings.settings)
             } else {
                 this.assignEmailGate(gateSettings.selectedGate);
             }
@@ -298,7 +330,7 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(settings.id);
             },
             scope: this
-        });
+        })
     },
 
     createAndAssignEmailGate: function (settings) {
@@ -313,6 +345,6 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(id);
             },
             scope: this
-        });
+        })
     }
 });

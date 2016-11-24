@@ -83,3 +83,7 @@ a, .link {
 .x-tip-body-bottom {
     padding: 5px 10px !important
 }
+
+input {
+    @include border-radius(0);
+}
