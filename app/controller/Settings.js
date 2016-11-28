@@ -189,7 +189,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         if (record.isDomainChanged() && isPremium) {
             Ext.Msg.show({
                 title: _l.get("settings.domain_warnings.domain_warning"),
-                msg: _l.get("settings.domain_warnings.domain_changed"),
+                msg: Ext.String.format(_l.get("settings.domain_warnings.domain_changed"), _l.get('settings.fields.domain_google_key_link')),
                 buttons: Ext.Msg.OKCANCEL,
                 buttonText: {'ok': _l.get("settings.domain_warnings.continue")},
                 fn: function (buttonId) {
