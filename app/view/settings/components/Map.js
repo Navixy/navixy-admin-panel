@@ -23,7 +23,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getMapsList: function () {
-        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && this.record.isEmptyGoogleClientId(),
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis(),
             result = [],
             alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
 
@@ -90,8 +90,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getItems: function () {
-
-        var notPremium = !Ext.getStore('Dealer').isPremiumGis() && this.record.isEmptyGoogleClientId();
+        var notPremium = !Ext.getStore('Dealer').isPremiumGis();
 
         if (!Config.google_key) {
             Config.google_key = {

@@ -43,10 +43,15 @@ Ext.define('NavixyPanel.store.Dealer', {
         }
     ],
 
+    setGoogleClientId: function (google_client_id) {
+        this.google_client_id = google_client_id;
+    },
+
     isPremiumGis: function () {
         var record = this.first(),
             tariff = record && record.get("tariff");
-        return tariff && tariff.premium_gis
+
+        return (tariff && tariff.premium_gis) || !!this.google_client_id;
     },
 
     getImgUrl: function (field) {
