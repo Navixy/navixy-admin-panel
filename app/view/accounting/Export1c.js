@@ -35,10 +35,10 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 {
                     text: saveBtn,
                     scale: 'medium',
-                    formBind: true,
                     disabled: true,
                     margin: '10 5',
                     role: 'save-btn',
+                    action: 'getacts',
                     handler: Ext.bind(this.sendForm, this)
                 }
             );
@@ -50,8 +50,7 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                     text: reportBtn,
                     scale: 'medium',
                     margin: '10 5',
-                    disabled: true,
-                    formBind: true,
+                    action: 'sendreport',
                     handler: Ext.bind(this.sendReport, this)
                 }
             );
@@ -61,17 +60,13 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
     },
 
     sendReport: function () {
-        var form = this.getForm();
-
-        if (form.isValid()) {
-            this.fireEvent('reportsubmit', this, this.getProcessedValues(), this.record);
-        }
+        this.fireEvent('reportsubmit', this, this.getProcessedValues(), this.record);
     },
 
     getProcessedValues: function () {
         var values = this.getValues();
 
-        this.iterateFields(function(field) {
+        this.iterateFields(function (field) {
             if (field.is('monthfield')) {
                 values[field.name] = field.getValue();
                 values.year = Ext.Date.format(field.getValue(), 'Y');
@@ -86,15 +81,33 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
         return values;
     },
 
-    isValid: function() {
-        var me = this,
-            invalid;
-        Ext.suspendLayouts();
-        invalid = me.getFields().filterBy(function(field) {
-            return !field.validate();
-        });
-        Ext.resumeLayouts(true);
-        return invalid.length < 1;
+    sendForm: function () {
+        if (this.isValid()) {
+            this.callParent(arguments);
+        }
+    },
+
+    isValid: function () {
+        var requiredFields = ['last_act_id', 'date'],
+            valid = true;
+
+        Ext.each(requiredFields, function (fieldName) {
+            var field = this.down('field[name=' + fieldName + ']');
+
+            if (!field.isValid()) {
+                valid = false;
+                return false;
+            }
+
+            if (!field.getValue()) {
+                field.markInvalid(field.blankText);
+                valid = false;
+                return false;
+
+            }
+        }, this);
+
+        return valid;
     },
 
     getNWItems: function () {
@@ -104,14 +117,28 @@ Ext.define('NavixyPanel.view.accounting.Export1c', {
                 margin: '30 0 10 0',
                 fieldLabel: _l.get('accounting.form.export1c.fields.last_act'),
                 name: 'last_act_id',
-                allowBlank: false,
                 vtype: 'numeric',
+                listeners: {
+                    change: function () {
+                        this.down('button[action=getacts]').setDisabled(!this.isValid())
+                    },
+                    scope: this
+                },
+                allowBlank: true,
                 minLength: 1,
                 maxLength: 20
             },
             {
                 fieldLabel: _l.get('accounting.form.export1c.fields.month'),
                 xtype: 'monthfield',
+                listeners: {
+                    change: function (monthfield) {
+                        this.down('button[action=getacts]').setDisabled(!this.isValid())
+                        this.down('button[action=sendreport]').setDisabled(!monthfield.isValid())
+                    },
+                    scope: this
+                },
+                maxValue: moment().add(1, 'day').toDate(),
                 name: 'date',
                 value: Ext.Date.formatISO(moment().subtract('months', 1), "F, Y"),
                 format: 'F, Y'
