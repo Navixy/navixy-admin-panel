@@ -1220,7 +1220,9 @@ Ext.define('Locale.locale-en', {
                     "mobimoney": "Mobi.Money",
                     "rbkmoney": "RBK Money",
                     "webmoney": "WebMoney",
-                    "sberbank": "Sberbank"
+                    "sberbank": "Sberbank",
+                    "yandex": "Yandex",
+                    "ios_inapp": "Inapp purchase(isOS)"
                 }
             }
         }

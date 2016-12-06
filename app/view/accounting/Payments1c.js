@@ -18,14 +18,46 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
         this.typesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name', 'free'],
             data: [
-                {type: "", "name": _l.get('accounting.form.payments.ps.default')},
-                {type: "cyberplat", "name": _l.get('accounting.form.payments.ps.cyberplat')},
-                {type: "deltapay", "name": _l.get('accounting.form.payments.ps.deltapay')},
-                {type: "mobile", "name": _l.get('accounting.form.payments.ps.mobile')},
-                {type: "mobimoney", "name": _l.get('accounting.form.payments.ps.mobimoney')},
-                {type: "rbkmoney", "name": _l.get('accounting.form.payments.ps.rbkmoney')},
-                {type: "webmoney", "name": _l.get('accounting.form.payments.ps.webmoney')},
-                {type: "sberbank", "name": _l.get('accounting.form.payments.ps.sberbank')},
+                {
+                    type: "",
+                    "name": _l.get('accounting.form.payments.ps.default')
+                },
+                {
+                    type: "cyberplat",
+                    "name": _l.get('accounting.form.payments.ps.cyberplat')
+                },
+                {
+                    type: "deltapay",
+                    "name": _l.get('accounting.form.payments.ps.deltapay')
+                },
+                {
+                    type: "mobile",
+                    "name": _l.get('accounting.form.payments.ps.mobile')
+                },
+                {
+                    type: "mobimoney",
+                    "name": _l.get('accounting.form.payments.ps.mobimoney')
+                },
+                {
+                    type: "rbkmoney",
+                    "name": _l.get('accounting.form.payments.ps.rbkmoney')
+                },
+                {
+                    type: "webmoney",
+                    "name": _l.get('accounting.form.payments.ps.webmoney')
+                },
+                {
+                    type: "sberbank",
+                    "name": _l.get('accounting.form.payments.ps.sberbank')
+                },
+                {
+                    type: "yandex",
+                    "name": _l.get('accounting.form.payments.ps.yandex')
+                },
+                {
+                    type: "ios_inapp",
+                    "name": _l.get('accounting.form.payments.ps.ios_inapp')
+                }
             ]
         });
 
@@ -67,12 +99,12 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
         return result;
     },
 
-    isValid: function() {
+    isValid: function () {
         var me = this,
             invalid;
 
         Ext.suspendLayouts();
-        invalid = me.getForm().getFields().filterBy(function(field) {
+        invalid = me.getForm().getFields().filterBy(function (field) {
             return !field.validate();
         });
 
@@ -92,7 +124,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
             labelPad: 10,
             labelAlign: 'right',
             labelSeparator: this.fieldRequiredMark ? '' : ':',
-            afterLabelTextTpl: this.fieldRequiredMark ? new Ext.XTemplate('<tpl if="allowBlank === false"><sup>*</sup>:<tpl else>:</tpl>', { disableFormats: true }) : null,
+            afterLabelTextTpl: this.fieldRequiredMark ? new Ext.XTemplate('<tpl if="allowBlank === false"><sup>*</sup>:<tpl else>:</tpl>', {disableFormats: true}) : null,
 
             ui: 'light'
         };
