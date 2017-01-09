@@ -156,7 +156,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
 
         Ext.MessageBox.show({
             title: _l.get('error'),
-            msg: [( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('')
+            msg: [( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('') || desc
         });
     },
 

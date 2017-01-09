@@ -134,6 +134,7 @@ Ext.define('Locale.locale-en', {
         "251": "Insufficient funds",
         "252": "Device already corrupted",
         "254": "Cannot save file",
+        246: 'User is incorrect',
         "upload_exeption": "File upload error",
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
