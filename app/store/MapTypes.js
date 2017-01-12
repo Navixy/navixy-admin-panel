@@ -27,6 +27,9 @@ Ext.define('NavixyPanel.store.MapTypes', {
             {
                 type: "yandex",
                 "name": _l.get('maps.yandex')
+            },{
+                type: "yandex_satellite",
+                "name": _l.get('maps.yandex_satellite')
             },
             {
                 type: "yandexpublic",
@@ -62,7 +65,12 @@ Ext.define('NavixyPanel.store.MapTypes', {
             }, {
                 type: "bing",
                 "name": _l.get('maps.bing')
+            }, {
+                type: "bing_satellite",
+                "name": _l.get('maps.bing_satellite')
             },
+
+
             {
                 type: "mailru",
                 "name": _l.get('maps.mailru')

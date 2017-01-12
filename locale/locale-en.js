@@ -357,6 +357,7 @@ Ext.define('Locale.locale-en', {
         "satellite": "Google satellite",
         "hybrid": "Google hybrid",
         "yandex": "Yandex Maps",
+        "yandex_satellite": "Yandex Satellite",
         "yandexpublic": "Yandex Crowdsourcing",
         "cdcom": "ProGorod Maps",
         "osm": "OpenStreet Maps",
@@ -369,7 +370,8 @@ Ext.define('Locale.locale-en', {
         "kosmosnimki": "Kosmosnimki (OSM)",
         "sputnik": "Sputnik (OSM)",
         "here": "HERE Maps",
-        "bing": "Bing Maps"
+        "bing": "Bing Maps",
+        "bing_satellite": "Bing Satellite"
     },
     "dealer_info": {
         "first": "total",

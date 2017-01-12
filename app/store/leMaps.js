@@ -304,7 +304,60 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: true,
                 projection: 'GoogleMapType'
             },
+            {
+                name: 'bing_satellite',
+                httpsReady: true,
+                maxZoom: 18,
+                minZoom: 2,
+                urlTpl: '//ecn.t{serv}.tiles.virtualearth.net/tiles/a{quadKey}.jpeg?g=3893',
+                tplFns: {
+                    serv: function () {
+                        return Math.floor(Math.random() * 3 + 1);
+                    },
+                    quadKey: function (data) {
 
+                        var x = data.x,
+                            y = data.y, z = data.z,
+                            quadKey = [];
+                        for (var i = z ; i > 0 ; i--) {
+                            var digit = '0';
+                            var mask = 1 << (i - 1);
+                            if ((x & mask) !== 0) {
+                                digit++;
+                            }
+                            if ((y & mask) !== 0) {
+                                digit++;
+                                digit++;
+                            }
+                            quadKey.push(digit);
+                        }
+                        return quadKey.join('');
+                    }
+
+                },
+                attribution: [
+                    '&copy; ', new Date().getFullYear(), '<a href="https://www.digitalglobe.com/">DigitalGlobe</a>',
+                    '&copy; ', new Date().getFullYear(),
+                    '<a href="http://www.terracolor.net/">Earthstar Geographics</a>',
+                    '&copy; ', new Date().getFullYear(), '<a href="https://here.com">HERE</a>'
+                ].join(' ')
+
+            },
+
+            {
+                name: 'yandex_satellite',
+                httpsReady: true,
+                maxZoom: 19,
+                minZoom: 2,
+                urlTpl: '//sat0{serv}.maps.yandex.net/tiles?l=sat&x={x}&y={y}&z={z}&lang=' + locale,
+                tplFns: {
+                    serv: function () {
+                        return Math.ceil(Math.random() * 4);
+                    }
+                },
+                projection: 'ProjectionMapType'
+
+            },
             Config.useGoogleMapsTilesDirectly ? {
                 name: 'hybrid',
                 httpsReady: true,

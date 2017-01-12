@@ -356,6 +356,7 @@ Ext.define('Locale.locale-ru', {
         "satellite": "Google спутник",
         "hybrid": "Google гибрид",
         "yandex": "Карты Яндекс",
+        "yandex_satellite": "Спутниковые карты Яндекс",
         "yandexpublic": "Народная карта Яндекс",
         "cdcom": "Карты ПроГород",
         "osm": "OpenStreet Maps",
@@ -368,7 +369,8 @@ Ext.define('Locale.locale-ru', {
         "kosmosnimki": "Космоснимки",
         "sputnik": "Карты Спутник",
         "here": "Карты HERE",
-        "bing": "Карты Bing"
+        "bing": "Карты Bing",
+        "bing_satellite": "Спутниковые карты Bing"
     },
     "dealer_info": {
         "first": "вcего",
