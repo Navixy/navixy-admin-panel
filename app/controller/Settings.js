@@ -32,7 +32,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
              'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes'],
 
-    models: ['Settings'],
+    models: ['Settings', 'MapType'],
     mainStore: 'Settings',
 
     init: function () {

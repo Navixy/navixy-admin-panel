@@ -13,7 +13,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     record: null,
 
     fieldsMap: ['map_type', 'map_zoom', 'map_location_lat', 'map_location_lng'],
-
+    googleMapsTypes: ['roadmap', 'hybrid', 'satellite'],
     initComponent: function () {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.record.get('allowed_maps') || []);
@@ -25,29 +25,29 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     getMapsList: function () {
         var notPremium = !Ext.getStore('Dealer').isPremiumGis(),
             result = [],
-            alertGoogleMapsTypes = ['roadmap', 'hybrid', 'satellite'];
+            googleMapsTypes = this.googleMapsTypes;
 
         this.mapsStore.each(function (mapRecord) {
             var name = mapRecord.get('name'),
                 disabled = false;
 
-            if (Ext.Array.contains(alertGoogleMapsTypes, mapRecord.get('type'))) {
+            if (Ext.Array.contains(googleMapsTypes, mapRecord.get('type'))) {
                 disabled = notPremium;
 
                 if (disabled) {
-                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'), '</span>'].join("");
+                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'),
+                             '</span>'].join("");
                 }
 
-                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert') + (disabled ? _l.get('settings.fields.domain_google_key_details'): ""));
+                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert') + (disabled ? _l.get('settings.fields.domain_google_key_details') : ""));
             }
 
             result.push({
                 boxLabel: name,
                 name: 'maps',
                 cls: 'map-type-checkbox',
-                disabled: disabled,
+                disabled: disabled || !!mapRecord.get('free'),
                 inputValue: !disabled && mapRecord.get('type'),
-                role: mapRecord.get('free') ? 'map-free' : 'map-unfree',
                 shadowField: true
             });
         }, this);
@@ -55,43 +55,49 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         return result;
     },
 
-    getDefaultMapField: function () {
-        return this.down('[name="map_type"]');
-    },
+    applyPaasMapsAvailability: function (isPaasDomain) {
+        var me = this,
+            isPremiumGis = Ext.getStore('Dealer').isPremiumGis();
 
-    getUnFreeMaps: function () {
+        this.query('checkboxgroup[role=map_types_select] checkbox').forEach(function (checkbox) {
+            var mapType = checkbox.inputValue,
+                mapRecord = me.mapsStore.getById(mapType),
+                isPaidMapDisabledForPaas = mapRecord && !mapRecord.get('free') && isPaasDomain,
 
-        return this.query('[role="map-unfree"]');
-    },
+                needToDisable = (Ext.Array.contains(me.googleMapsTypes, mapType) && !isPremiumGis && !isPaasDomain) ||
+                    isPaidMapDisabledForPaas
 
-    setFreeMaps: function () {
-        var store = this.mapsStore,
-            defMap = this.getDefaultMapField();
+            checkbox.setDisabled(needToDisable);
 
-        store.filter('free', true);
+            if (checkbox.getValue() && isPaidMapDisabledForPaas) {
+                checkbox.setValue(false);
+            }
 
-        if (!store.findRecord('type', defMap.getValue())) {
-            this.getDefaultMapField().setValue(store.first().get('type'));
+            var paasDisabledMapMsg = Ext.String.format(_l.get('settings.fields.paas_maps_is_unavailable'),
+                Ext.Array.from(Config.paas_domain).map(function (domain) {
+                    return '*.' + domain;
+                }).join(', ')
+            );
+
+            if (checkbox.rendered) {
+                checkbox.getEl().set({
+                    'data-qtip': isPaidMapDisabledForPaas ? paasDisabledMapMsg : ''
+                });
+            } else {
+                checkbox.labelAttrTpl = 'data-qtip="' + ( isPaidMapDisabledForPaas ? paasDisabledMapMsg : '') + '"';
+            }
+        });
+
+        var defaultMapField = this.down('combobox[name="map_type"]'),
+            defaultMapRecord = this.mapsStore.getById(defaultMapField.getValue());
+
+        if (isPaasDomain && !defaultMapRecord.get('free')) {
+            defaultMapField.setValue(this.mapsStore.findRecord('free', true));
         }
 
-        Ext.iterate(this.getUnFreeMaps(), function (field) {
-            field.hide();
-        }, this);
-    },
-
-    unSetFreeMaps: function () {
-        var store = this.mapsStore;
-
-        store.removeFilter();
-
-        Ext.iterate(this.getUnFreeMaps(), function (field) {
-            field.show();
-        }, this);
     },
 
     getItems: function () {
-        var notPremium = !Ext.getStore('Dealer').isPremiumGis();
-
         if (!Config.google_key) {
             Config.google_key = {
                 allow: false,

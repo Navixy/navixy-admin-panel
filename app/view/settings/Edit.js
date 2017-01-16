@@ -171,7 +171,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             theme = store && data.color_theme;
 
         if (!Ext.isEmpty(theme, true) && !store.findRecord('name', theme)) {
-            store.add({name: theme, title: theme, login: true});
+            store.add({
+                name: theme,
+                title: theme,
+                login: true
+            });
         }
     },
 
@@ -185,26 +189,26 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return this.down('[name="google_client_id"]');
     },
 
-    checkFreeDomain: function () {
+    isPaasDomain: function () {
         var value = this.getDomainValue(),
             fromConfig = Config.paas_domain && Ext.Array.from(Config.paas_domain),
-            isDomain = false;
+            isPaasDomain = false;
 
         Ext.iterate(fromConfig, function (domain) {
             if (value.indexOf(domain) > -1) {
-                isDomain = true;
+                isPaasDomain = true;
             }
         });
 
-        return isDomain || false
+        return isPaasDomain;
     },
 
-    updateFreeMaps: function () {
-        var isFree = this.checkFreeDomain(),
+    changeDealerMapsAvailability: function () {
+        var isPaasDomain = this.isPaasDomain(),
             mapSettings = this.down('settings-map');
 
         if (mapSettings) {
-            mapSettings[isFree ? 'setFreeMaps' : 'unSetFreeMaps']();
+            mapSettings.applyPaasMapsAvailability(isPaasDomain);
         }
     },
 
@@ -591,7 +595,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 minLength: 2,
                 maxLength: 100,
                 listeners: {
-                    change: this.updateFreeMaps,
+                    change: this.changeDealerMapsAvailability,
                     scope: this
                 }
             },

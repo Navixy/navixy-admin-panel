@@ -357,6 +357,7 @@ Ext.define('Locale.locale-ru', {
         "hybrid": "Google гибрид",
         "yandex": "Карты Яндекс",
         "yandex_satellite": "Спутниковые карты Яндекс",
+        yandex_hybrid: 'Спутниковые карты Яндекс с указанием дорог',
         "yandexpublic": "Народная карта Яндекс",
         "cdcom": "Карты ПроГород",
         "osm": "OpenStreet Maps",
@@ -370,7 +371,8 @@ Ext.define('Locale.locale-ru', {
         "sputnik": "Карты Спутник",
         "here": "Карты HERE",
         "bing": "Карты Bing",
-        "bing_satellite": "Спутниковые карты Bing"
+        "bing_satellite": "Спутниковые карты Bing",
+        bing_hybrid: 'Спутниковые карты Bing с указанием дорог'
     },
     "dealer_info": {
         "first": "вcего",
@@ -969,7 +971,8 @@ Ext.define('Locale.locale-ru', {
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Клик по логотипу в интерфейсе открывает промо web-сайт",
             "monitoring_logo_clickable_hint": "",
-            premium_gis: 'Подключите пакет "Премиум ГИС" от Navixy, включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). <a href="{0}"  target="_blank">Подробнее</a>'
+            premium_gis: 'Подключите пакет "Премиум ГИС" от Navixy, включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). <a href="{0}"  target="_blank">Подробнее</a>',
+            paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}'
         },
         "sms_gateway": {
             "navixy": {

@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.store.MapTypes', {
     extend: 'Ext.data.Store',
-    fields: ['type', 'name', 'free'],
+    model: 'NavixyPanel.model.MapType',
     constructor: function () {
         this.data = [
             {
@@ -27,9 +27,14 @@ Ext.define('NavixyPanel.store.MapTypes', {
             {
                 type: "yandex",
                 "name": _l.get('maps.yandex')
-            },{
+            },
+            {
                 type: "yandex_satellite",
                 "name": _l.get('maps.yandex_satellite')
+            },
+            {
+                type: "yandex_hybrid",
+                "name": _l.get('maps.yandex_hybrid')
             },
             {
                 type: "yandexpublic",
@@ -62,14 +67,19 @@ Ext.define('NavixyPanel.store.MapTypes', {
             {
                 type: "ovi",
                 "name": _l.get('maps.ovi')
-            }, {
+            },
+            {
                 type: "bing",
                 "name": _l.get('maps.bing')
-            }, {
+            },
+            {
                 type: "bing_satellite",
                 "name": _l.get('maps.bing_satellite')
             },
-
+            {
+                type: "bing_hybrid",
+                "name": _l.get('maps.bing_hybrid')
+            },
 
             {
                 type: "mailru",
@@ -105,7 +115,7 @@ Ext.define('NavixyPanel.store.MapTypes', {
             this.filters.clear();
 
             this.filterBy(function (record) {
-                return Ext.Array.indexOf(maps, record.get('type')) > -1;
+                return Ext.Array.contains(maps, record.get('type'));
             }, this);
         }
     }
