@@ -11,6 +11,11 @@
                 height: 99%;
             }
         }
+        .frame {
+            height: 68mm;
+            width: 100mm;
+            overflow: hidden;
+        }
     </style>
 
     <script src="../libs/pdf/pdf.js"></script>
@@ -19,9 +24,9 @@
 
 </head>
 <body>
-
+<div class="frame">
 <canvas id="canvas" style="width:100mm; height:71mm"></canvas>
-
+<div>
 <script id="script">
 
     ready = false;
