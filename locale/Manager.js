@@ -110,6 +110,12 @@ Ext.define('Locale.Manager', {
             alias: ['pt', 'pt_PT', 'Português'],
             rtl: false
         }, {
+            id: 'pt_BR',
+            name: 'pt_BR',
+            text: 'Português Brasileiro',
+            alias: ['pt_BR', 'pt_BR', 'Português Brasileiro'],
+            rtl: false
+        }, {
             id: 'tr_TR',
             name: 'tr',
             text: 'Türkçe',
