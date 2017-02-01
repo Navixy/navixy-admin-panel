@@ -1,6 +1,6 @@
 {
     "test": {
-        "host": "ubertest.gdemoi",
+        "host": "192.168.88.10",
         "remotePath": "/var/www/panel/"
     },
 
