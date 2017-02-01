@@ -490,6 +490,7 @@ Ext.define('Locale.locale-en', {
             "links": {
                 "session_text": "Login as user",
                 "hash_text": "Get session key",
+                "activate_tracker": "Activate tracker",
                 "user_edit": "Edit user",
                 "user_change_password": "Change password",
                 "transactions": "Transactions",

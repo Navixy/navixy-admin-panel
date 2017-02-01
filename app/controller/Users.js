@@ -21,6 +21,8 @@ Ext.define('NavixyPanel.controller.Users', {
         'users.SelectWindow'
     ],
 
+    requires: ['NavixyPanel.view.users.ActivationPanel'],
+
     refs: [
         {
             ref: 'usersList',
@@ -41,6 +43,10 @@ Ext.define('NavixyPanel.controller.Users', {
         {
             ref: 'transactionAdd',
             selector: 'usertransactionadd'
+        },
+        {
+            ref: 'userCard',
+            selector: 'usercard'
         }
     ],
 
@@ -72,7 +78,11 @@ Ext.define('NavixyPanel.controller.Users', {
                 formsubmit: this.handleUserTransactionAddSubmit
             },
             'usercard' : {
-                useredit: this.handleUserEditAction
+                useredit: this.handleUserEditAction,
+                toggleactivationpanel: this.toggleActivationPanel
+            },
+            'activationpanel': {
+                close: this.closeActivationPanel
             }
         });
 
@@ -388,5 +398,27 @@ Ext.define('NavixyPanel.controller.Users', {
             errDescription = _l.get('errors')[errCode] || status.description || false;
 
         this.getTransactionAdd().showSubmitErrors(errCode, errors, errDescription);
+    },
+
+    toggleActivationPanel: function () {
+        var card = this.getUserCard();
+
+        if (!this.registrationPanel) {
+            card.fireSessionCreateHash(function (hash) {
+                this.registrationPanel = Ext.create('NavixyPanel.view.users.ActivationPanel', {
+                    renderTo: Ext.getBody(),
+                    hash: hash
+                });
+            }, this);
+        } else {
+            this.closeActivationPanel();
+        }
+    },
+
+    closeActivationPanel: function () {
+        if (this.registrationPanel) {
+            this.registrationPanel.slideOff();
+            this.registrationPanel = null;
+        }
     }
 });

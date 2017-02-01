@@ -12,7 +12,7 @@ Config = {
     // Шаблоны внешних ссылок
     links: {
         // Ссылка на "автоматичесую" авторизацию в мониторинге, с передачей хэша через GET. Испольхуется страница  прямого показа демонстрации мониторинга.
-        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
+        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}&app={app}'],
         // Ссылка на стандартную авторизацию в мониторинге.
         loginUrlTpl: ['http://{company_url}/login/']
     },

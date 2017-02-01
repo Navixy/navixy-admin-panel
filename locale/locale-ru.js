@@ -467,6 +467,7 @@ Ext.define('Locale.locale-ru', {
             "links": {
                 "session_text": "Перейти к мониторингу",
                 "hash_text": "Получить ключ сессии",
+                "activate_tracker": "Активировать маячок",
                 "user_edit": "Редактировать пользователя",
                 "user_change_password": "Изменить пароль",
                 "transactions": "Транзакции",

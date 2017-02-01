@@ -8,56 +8,55 @@ Ext.define('NavixyPanel.view.users.Card', {
         var me = this,
             result = [
                 {
-                    xtype: 'container',
+                    xtype: 'component',
                     height: 10
                 }
             ];
 
         if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
-            result.push(
-                {
-                    html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.fireSessionCreate,
-                            scope: me
-                        }
+            result.push({
+                html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireSessionCreate,
+                        scope: me
                     }
                 }
-            );
-        }
-
-        if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
-            result.push(
-                {
-                    html: '<a>' + _l.get('users.card.links.hash_text') + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.fireSessionCreateHash,
-                            scope: me
-                        }
+            }, {
+                html: '<a>' + _l.get('users.card.links.hash_text') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireSessionCreateHash,
+                        scope: me
                     }
                 }
-            );
+            }, {
+                xtype: 'component',
+                height: 10
+            }, {
+                html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.toggleActivationPanel,
+                        scope: me
+                    }
+                }
+            });
         }
 
         if (Ext.checkPermission('users', 'update')) {
-            result.unshift(
-                {
-                    html: '<a>' + _l.get('users.card.links.user_change_password') + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.fireUserChangePassword,
-                            scope: me
-                        }
+            result.unshift({
+                html: '<a>' + _l.get('users.card.links.user_change_password') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireUserChangePassword,
+                        scope: me
                     }
                 }
-            );
-        }
+            });
 
-        if (Ext.checkPermission('users', 'update') && Ext.checkPermission('transactions', 'create')) {
-            result.unshift(
-                {
+            if (Ext.checkPermission('transactions', 'create')) {
+                result.unshift({
                     html: '<a>' + _l.get('users.card.links.create_transaction') + '</a>',
                     listeners: {
                         click: {
@@ -65,22 +64,18 @@ Ext.define('NavixyPanel.view.users.Card', {
                             scope: me
                         }
                     }
-                }
-            );
-        }
+                });
+            }
 
-        if (Ext.checkPermission('users', 'update')) {
-            result.unshift(
-                {
-                    html: '<a>' + _l.get('users.card.links.user_edit') + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.fireUserEdit,
-                            scope: me
-                        }
+            result.unshift({
+                html: '<a>' + _l.get('users.card.links.user_edit') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireUserEdit,
+                        scope: me
                     }
                 }
-            );
+            });
         }
 
         return result;
@@ -253,7 +248,7 @@ Ext.define('NavixyPanel.view.users.Card', {
         });
     },
 
-    fireSessionCreateHash: function () {
+    fireSessionCreateHash: function (callback, scope) {
         var userId = this.record.getId();
 
         Ext.API.createUserSession({
@@ -261,9 +256,13 @@ Ext.define('NavixyPanel.view.users.Card', {
                 user_id: userId
             },
             callback: function (hash) {
+                if (callback && Ext.isFunction(callback)) {
+                    return callback.call(scope || this, hash);
+                }
                 Ext.MessageBox.alert(_l.get('users.session_hash.title'), hash);
             },
-            failure: this.showUserSessionHashFailure
+            failure: this.showUserSessionHashFailure,
+            scope: this
         });
     },
 
@@ -285,5 +284,9 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     fireUserCrateTransaction: function () {
         Ext.Nav.shift('user/' + this.record.getId() + '/transaction_add');
+    },
+
+    toggleActivationPanel: function () {
+        this.fireEvent('toggleactivationpanel');
     }
 });

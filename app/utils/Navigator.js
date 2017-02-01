@@ -125,6 +125,16 @@ Ext.define('NavixyPanel.utils.Navigator', {
         return url;
     },
 
+    getApplicationLink: function (hash, app) {
+        var domain = Ext.getStore('Dealer').first().get('domain');
+
+        return !!domain && !!app && new Ext.Template(Config.links.monUrlTpl).apply({
+            company_url: domain || 'my.gdemoi.ru',
+            hash: hash || '',
+            app: app
+        });
+    },
+
     getLogin: function () {
         var domain = Ext.getStore('Dealer').first().get('domain'),
             url = !!domain && new Ext.Template(Config.links.loginUrlTpl).apply({
