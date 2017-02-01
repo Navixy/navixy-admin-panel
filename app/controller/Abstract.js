@@ -177,7 +177,6 @@ Ext.define('NavixyPanel.controller.Abstract', {
         return Ext.String.uncapitalize(path.pop());
     },
 
-
     fireContent: function (config) {
         this.application.fireEvent('contentchange', config);
     }

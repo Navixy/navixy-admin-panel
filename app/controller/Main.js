@@ -499,7 +499,9 @@ Ext.define('NavixyPanel.controller.Main', {
                 newIcon.setAttribute("rel", "icon");
                 newIcon.setAttribute("href", [favicon_url, '?', Ext.Date.now()].join(''));
                 document.querySelector("head").appendChild(newIcon);
-            }
+            },
+
+            isIE11: !!navigator.userAgent.match(/Trident.*rv[ :]*11\./)
         });
 
         Ext.override(Ext.util.Format, {

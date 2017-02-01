@@ -24,18 +24,21 @@ Ext.define('NavixyPanel.view.users.ActivationPanel', {
     afterRender: function () {
         this.callParent(arguments);
 
-        var me = this;
+        var me = this,
+            isIE = Ext.isIE || Ext.isIE11;
+
         this.beforeClosePanel = Ext.bind(this.beforeClosePanel, this);
 
         window.addEventListener('message', this.beforeClosePanel);
-        window.onpopstate = function () {
+        window[isIE ? 'onhashchange' : 'onpopstate'] = function () {
             me.fireEvent('close');
         };
     },
 
     destroy: function () {
         window.removeEventListener('message', this.beforeClosePanel);
-        window.onpopstate = Ext.emptyFn;
+        window.onpopstate = null;
+        window.onhashchange = null;
 
         this.callParent(arguments);
     },
