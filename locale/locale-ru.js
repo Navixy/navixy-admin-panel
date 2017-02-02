@@ -471,7 +471,8 @@ Ext.define('Locale.locale-ru', {
                 "user_edit": "Редактировать пользователя",
                 "user_change_password": "Изменить пароль",
                 "transactions": "Транзакции",
-                "create_transaction": "Изменить баланс"
+                "create_transaction": "Изменить баланс",
+                "wrong_config": "Проверьте PConfig.js -> links -> monUrlTpl"
             }
         },
         "transactions": {

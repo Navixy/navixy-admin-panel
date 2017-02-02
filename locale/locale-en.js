@@ -379,12 +379,10 @@ Ext.define('Locale.locale-en', {
     "dealer_info": {
         "first": "total",
         "last": "of"
-    }
-    ,
+    },
     "index": {
         "menu_text": "Home"
-    }
-    ,
+    },
     "users": {
         "menu_text": "Users",
         "create_btn": "New user",
@@ -402,14 +400,12 @@ Ext.define('Locale.locale-en', {
             "save_btn": "Create User",
             "clear_btn": "Reset form",
             "copy_address": "Copy from address"
-        }
-        ,
+        },
         "edit_form": {
             "title": "Edit user",
             "save_btn": "Save changes",
             "return_btn": "Back"
-        }
-        ,
+        },
         "fields": {
             "creation_date": "Date of registration",
             "login": "Email address",
@@ -447,46 +443,38 @@ Ext.define('Locale.locale-en', {
                 "status_true": "Active",
                 "status_false": "Not active",
                 "status_no": "Active, email not confirmed"
-            }
-            ,
+            },
             "registered_short": "legal",
             "password": "New password",
             "password_repeat": "Repeat new password",
             "password_mismatched": "Passwords do not match"
-        }
-        ,
+        },
         "password_form": {
             "title": "Changing password of user",
             "save_btn": "Set Password",
             "return_btn": "Cancel",
             "success_msg": "Password successfully changed"
-        }
-        ,
+        },
         "list": {
             "create_btn_text": "Create new user",
             "empty_text": "No users found"
-        }
-        ,
+        },
         "session_alert": {
             "error": "Can't create user session",
             "title": "Your session code"
-        }
-        ,
+        },
         "session_hash": {
             "title": "User session key"
-        }
-        ,
+        },
         "card": {
             "tab_panel": {
                 "trackers": {
                     "title": "User trackers"
-                }
-                ,
+                },
                 "transactions": {
                     "title": "Transactions"
                 }
-            }
-            ,
+            },
             "links": {
                 "session_text": "Login as user",
                 "hash_text": "Get session key",
@@ -494,16 +482,15 @@ Ext.define('Locale.locale-en', {
                 "user_edit": "Edit user",
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
-                "create_transaction": "Change balance"
+                "create_transaction": "Change balance",
+                "wrong_config": "Check PConfig.js -> links -> monUrlTpl"
             }
-        }
-        ,
+        },
         "transactions": {
             "list": {
                 "empty_text": "No transactions found",
                 "title": "Transactions for user"
-            }
-            ,
+            },
             "fields": {
                 "description": "Operation",
                 "type": "Transaction type",
@@ -517,8 +504,7 @@ Ext.define('Locale.locale-en', {
                     "payment": "payment",
                     "tariff_charge": "telecom services",
                     "bonus_charge": "bonus refill"
-                }
-                ,
+                },
                 "subtype_set": {
                     "monthly": "monthly",
                     "partner": "from a partner",
@@ -527,23 +513,20 @@ Ext.define('Locale.locale-en', {
                     "sms": "SMS message"
                 }
             }
-        }
-        ,
+        },
         "transaction_add": {
             "title": "Changing balance (adding transaction) of users",
             "description": "Transaction description",
             "balance": "Balance changes",
             "bonus": "Bonus changes",
             "value_sup": "* Amount to add (positive) or subtract (negative)"
-        }
-        ,
+        },
         "combo_empty": "Select user",
         "select_error": "Tracker or clone was already bounded to selected user",
         "select": {
             "title": "Select user"
         }
-    }
-    ,
+    },
     "trackers": {
         "menu_text": "Trackers",
         "fields": {
@@ -568,8 +551,7 @@ Ext.define('Locale.locale-en', {
                 "clone": "clone",
                 "deleted": "deleted",
                 "blocked": "blocked"
-            }
-            ,
+            },
             "statuses": {
                 "active": "Online",
                 "signal_lost": "Connection lost",
@@ -577,35 +559,30 @@ Ext.define('Locale.locale-en', {
                 "just_registered": "Just registered",
                 "idle": "GPS not updated"
             }
-        }
-        ,
+        },
         "edit_form": {
             "main_fields": "General information",
             "title": "Edit tracker",
             "save_btn": "Save changes",
             "return_btn": "Back"
-        }
-        ,
+        },
         "clone_form": {
             "title": "Crate a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"
-        }
-        ,
+        },
         "group_clone_form": {
             "title": "Cloning group of trackers",
             "save_btn": "Clone",
             "grid_clone_label": "Clones will be added",
             "grid_clone_tip": "Use double click to change the clone label"
-        }
-        ,
+        },
         "group_owner_form": {
             "title": "Changing owner for group of trackers",
             "save_btn": "Changing owner",
             "grid_clone_label": "Trackers will be changed"
-        }
-        ,
+        },
         "tariff_form": {
             "title": "Change plan for tracker",
             "save_btn": "Save changes",
@@ -613,8 +590,7 @@ Ext.define('Locale.locale-en', {
             "charge": "Charge user now (according to the new plan)",
             "charge_sup": "only for monthly based plans",
             "tariff_invalid": "must be different from current"
-        }
-        ,
+        },
         "list": {
             "create_btn_text": "Create new tracker",
             "owner_btn": "Change owner",
@@ -627,8 +603,7 @@ Ext.define('Locale.locale-en', {
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
             "select_clone_req": "Clones selected, group operations can not be performed"
-        }
-        ,
+        },
         "card": {
             "links": {
                 "change_tracker_user": "Change owner",
@@ -643,8 +618,7 @@ Ext.define('Locale.locale-en', {
                 "tracker_register_retry": "Retry activation",
                 "countdown_msg": "Timeout to perform reactivation has not expired"
             }
-        }
-        ,
+        },
         "console": {
             "title": "Air console for tracker",
             "connect_btn": "Start connection",
@@ -665,25 +639,21 @@ Ext.define('Locale.locale-en', {
             "status_title": "Device status",
             "status_property_title": "Status",
             "status_value_title": "Value"
-        }
-        ,
+        },
         "corrupt": {
             "alert": {
                 "title": "Remove tracker?",
                 "text": "Device will be permanently removed from database. All retated data will be lost.<br><br>Are you to remove device?"
-            }
-            ,
+            },
             "success_msg": "Device {0} successfully removed"
-        }
-        ,
+        },
         "retry_registraion": {
             "alert": {
                 "title": "Retry activation",
                 "text": "Send activation commands to the device?"
             }
         }
-    }
-    ,
+    },
     "tariffs": {
         "menu_text": "Plans",
         "create_form": {
@@ -693,17 +663,14 @@ Ext.define('Locale.locale-en', {
             "clear_btn": "Clear form",
             "options_fields": "Plan options",
             "prices_fields": "Rates"
-        }
-        ,
+        },
         "edit_form": {
             "title": "Edit plan",
             "save_btn": "Save changes"
-        }
-        ,
+        },
         "default_form": {
             "title": "Default plan settings"
-        }
-        ,
+        },
         "fields": {
             "tariff_id": "ID",
             "name": "Label",
@@ -741,13 +708,11 @@ Ext.define('Locale.locale-en', {
             "available_features": "Available features",
             "default_name": "My plan",
             "tariff_is_default": "Use this plan as default"
-        }
-        ,
+        },
         "list": {
             "create_btn_text": "Add new plan",
             "empty_text": "No plans found"
-        }
-        ,
+        },
         "card": {
             "edit_form_btn": "Edit plan",
             "create_form_btn": "Create plan",
@@ -757,22 +722,19 @@ Ext.define('Locale.locale-en', {
             "links": {
                 "make_default": "Mark as default",
                 "tariff_edit": "Edit plan"
-            }
-            ,
+            },
             "tab_panel": {
                 "trackers": {
                     "title": "Trackers on this plan"
                 }
-            }
-            ,
+            },
             "features": {
                 "groups": {
                     "apps": "Apps",
                     "features": "Features",
                     "misc": "Miscellanous"
                 }
-            }
-            ,
+            },
             "hints": {
                 "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
                 "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
@@ -798,27 +760,23 @@ Ext.define('Locale.locale-en', {
                 "free_days_device_limit": "If user reaches the limit, new assets will have no free period"
 
             }
-        }
-        ,
+        },
         "combo_empty": "Select plan",
         "select_error": "This plan is not available",
         "select": {
             "title": "Select plan"
-        }
-        ,
+        },
         "types": {
             "activeday": "Daily",
             "monthly": "Monthly",
             "everyday": "Monthly (daily debit)"
-        }
-        ,
+        },
         "price_type": {
             "monthly": "Monthly fee",
             "activeday": "Daily fee",
             "everyday": "Monthly fee"
         }
-    }
-    ,
+    },
     "codes": {
         "menu_text": "Activation codes",
         "fields": {
@@ -836,21 +794,18 @@ Ext.define('Locale.locale-en', {
                 "activated": "activated",
                 "no_activated": "not activated"
             }
-        }
-        ,
+        },
         "edit_form": {
             "title": "Edit activation codes",
             "save_btn": "Save changes",
             "selected_count": "Codes selected",
             "device_type": "Type of devices for selected codes"
-        }
-        ,
+        },
         "create_form": {
             "title": "Create activation codes",
             "save_btn": "Create codes",
             "new_codes_count": "Amount of new codes"
-        }
-        ,
+        },
         "list": {
             "empty_text": "No activation codes found",
             "create_btn": "Create new",
@@ -873,8 +828,7 @@ Ext.define('Locale.locale-en', {
                 "toggle_all": "Show all"
             }
         }
-    }
-    ,
+    },
     "settings": {
         "menu_text": "Account management",
         "themes": {
@@ -889,8 +843,7 @@ Ext.define('Locale.locale-en', {
                     "description": "Default UI theme"
                 }
             }
-        }
-        ,
+        },
         "subscription": {
             "title": "Subscription",
             "activation_btn_text": "Pay activation fee now (500 USD) online",
@@ -903,8 +856,7 @@ Ext.define('Locale.locale-en', {
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}"
-        }
-        ,
+        },
         "email_gateways": {
             "title": "Email Gateways",
             "description": "To ensure the deliverability of emails from the platform to your users (notifications, alerts, invoices, etc.) and avoid anti-spam filters we offer several options on which email gateway to use.",
@@ -916,8 +868,7 @@ Ext.define('Locale.locale-en', {
                 "tls": "TLS",
                 "ssl": "SSL",
                 "none": "None"
-            }
-            ,
+            },
             "auth_label": "Authentication",
             "trust_all_hosts": "Trust all hosts",
             "host_label": "SMTP host",
@@ -928,15 +879,13 @@ Ext.define('Locale.locale-en', {
             "default_from_email": "Default from",
             "save_btn_text": "Save settings",
             "gateway_assing_success_msg": "Email gate has been successfully assigned"
-        }
-        ,
+        },
         "test_email": {
             "title": "Send test email",
             "email_field": "Target email",
             "send_test_email_btn": "Send test email",
             "send_btn": "Send"
-        }
-        ,
+        },
         "fields": {
             "service_title": "Service title",
             "page_title": "Page title",
@@ -949,8 +898,7 @@ Ext.define('Locale.locale-en', {
                 "location_lat": "Default latitude",
                 "location_lng": "Default longitude",
                 "zoom": "Default zoom"
-            }
-            ,
+            },
             "google_client_id": "Client ID or API-key for google maps <a href={0} target=\"blank\">Get api key</a>",
             "currency": "Billing currency for users",
             "payment_link": "Payment system URL",
@@ -1045,14 +993,12 @@ Ext.define('Locale.locale-en', {
             "monitoring_logo_clickable_hint": "",
             premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). <a href="{0}" target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}'
-        }
-        ,
+        },
         "sms_gateway": {
             "navixy": {
                 "name": "Navixy",
                 "desc": "SMS-service, provided to you by Navixy for free while you are using Trial version."
-            }
-            ,
+            },
             "nexmo": {
                 "name": "Nexmo",
                 "desc": "One of the most popular services in the world (<a href=\"http://www.nexmo.com\" target=\"blank\">www.nexmo.com</a>)",
@@ -1060,8 +1006,7 @@ Ext.define('Locale.locale-en', {
                     "key": "Key",
                     "secret": "Secret"
                 }
-            }
-            ,
+            },
             "twilio": {
                 "name": "Twilio",
                 "desc": "One of the most popular services in the world (<a href=\"http://www.twilio.com\" target=\"blank\">www.twilio.com</a>)",
@@ -1069,8 +1014,7 @@ Ext.define('Locale.locale-en', {
                     "sid": "Account SID",
                     "token": "Auth token"
                 }
-            }
-            ,
+            },
             "smstraffic": {
                 "name": "SMSTraffic",
                 "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"blank\">www.smstraffic.ru</a>)",
@@ -1078,8 +1022,7 @@ Ext.define('Locale.locale-en', {
                     "login": "Login",
                     "password": "Password"
                 }
-            }
-            ,
+            },
             "yaestar": {
                 "name": "Yaestar NeoGate",
                 "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"blank\">www.yeastar.com</a>)",
@@ -1089,8 +1032,7 @@ Ext.define('Locale.locale-en', {
                     "login": "Login",
                     "password": "Password"
                 }
-            }
-            ,
+            },
             "smpp": {
                 "name": "SMPP v.3.4",
                 "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"blank\">Wikipedia</a>)",
@@ -1110,8 +1052,7 @@ Ext.define('Locale.locale-en', {
                         "6": "Alphanumeric",
                         "7": "Reserverd",
                         "-1": "Auto"
-                    }
-                    ,
+                    },
                     "destination": "Destination TON/NPI",
                     "destination_select": {
                         "0": "Unknown",
@@ -1124,8 +1065,7 @@ Ext.define('Locale.locale-en', {
                         "10": "ERMES numbering plan (ETSI DE/PS 3 01-3)",
                         "13": "Internet (IP)",
                         "18": "WAP Client Id (to be defined by WAP Forum)"
-                    }
-                    ,
+                    },
                     "charset": "Default charset",
                     "charset_select": {
                         "GSM8": "GSM8",
@@ -1134,8 +1074,7 @@ Ext.define('Locale.locale-en', {
                         "ISO-8859-15": "ISO-8859-15",
                         "UTF-8": "UTF-8",
                         "UCS-2": "UCS-2"
-                    }
-                    ,
+                    },
                     "long": "Long messages",
                     "long_select": {
                         "UDH": "UDH",
@@ -1143,8 +1082,7 @@ Ext.define('Locale.locale-en', {
                     }
                 }
             }
-        }
-        ,
+        },
         "edit_form": {
             "title": "Service Settings",
             "save_btn": "Save",
@@ -1219,13 +1157,11 @@ Ext.define('Locale.locale-en', {
                 "title": "Map default settings – Visual editor",
                 "header": "Choose default map center by moving the crosshair with your mouse. To select default map zoom use the scroll wheel or zoom in / out buttons.",
                 "save_btn": "Choose"
-            }
-            ,
+            },
             "clear_btn": "Reset",
             "misc_header": "Optional features",
             "domain_and_google_key": "<a href='https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/domain-and-google-key/' target='_blank'></a>"
-        }
-        ,
+        },
         "upload_form": {
             "save_btn": "Upload",
             "cancel_btn": "Cancel",
@@ -1237,33 +1173,28 @@ Ext.define('Locale.locale-en', {
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
                 "desktop_wallpaper": "Service page wallpaper"
-            }
-            ,
+            },
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
                 "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
-            }
-            ,
+            },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
-        }
-        ,
+        },
         "domain_warnings": {
             "domain_warning": "Domain name has been changed",
             "continue": "Continue",
             "domain_changed": "Domain name change may affect Google Maps availability.</br><a target=\"_blank\" href=\"{0}\">Read more about Google Maps for your domain.</a>"
         }
-    }
-    ,
+    },
     "accounting": {
         "menu_text": "Accounting",
         "report_msg": {
             "title": "Confirm email-newsletter",
             "text": "Alert customers about exporting data to 1C for <b>{0}</b>.<br>You sure you want make <b>email-newsletter</b>?"
-        }
-        ,
+        },
         "report_success": "Email-newsletter successful",
         "form": {
             "title": "«1C:Enterprise» Data exporting",
@@ -1275,24 +1206,21 @@ Ext.define('Locale.locale-en', {
                     "month": "Select month",
                     "last_act": "Last deed number",
                     "check": "Ignore errors"
-                }
-                ,
+                },
                 errors_window: {
                     title: "Validation errors occurred during export process",
                     close: "Close",
                     users_list: "Users",
                     dealers_list: "PaaS"
                 }
-            }
-            ,
+            },
             "payments": {
                 "tab_title": "Payments",
                 "save_btn": "Get 1C data file",
                 "fields": {
                     "date": "Time interval",
                     "type": "Payment system"
-                }
-                ,
+                },
                 "ps": {
                     "default": "All of the above",
                     "cyberplat": "CyberPlat",
@@ -1307,8 +1235,7 @@ Ext.define('Locale.locale-en', {
                 }
             }
         }
-    }
-    ,
+    },
     "payments": {
         "menu_text": "Payments",
         "import_sberbank": {
@@ -1319,17 +1246,14 @@ Ext.define('Locale.locale-en', {
             "error_text": "Failed to import payments",
             "fields": {
                 "file_title": "Import {0} file (max size {1} Mb)"
-            }
-            ,
+            },
             "errors": {
                 "242": "Line {0}, column {1}, description:<br><i>{2}</i>"
-            }
-            ,
+            },
             "success_msg": "Sberbank payments successfully imported",
             "success_dsc": "Date of registry: <b>{0}</b><br>Count of loaded payments: <b>{1}</b><br>Sum of loaded payments: <b>{2}</b>"
         }
-    }
-    ,
+    },
     "bundles": {
         "menu_text": "Package contents",
         "title": "Working with sets of equipment",
@@ -1338,8 +1262,7 @@ Ext.define('Locale.locale-en', {
             "scan": "Linking the SIM card to the beacon",
             "shipping": "Shipping",
             "import": "Import"
-        }
-        ,
+        },
         "fields": {
             "id": "ID",
             "model_code": "Model",
@@ -1350,27 +1273,23 @@ Ext.define('Locale.locale-en', {
             "phone": "Phone",
             "apn": "APN",
             "order_id": "The order number"
-        }
-        ,
+        },
         "list": {
             "scan_btn_text": "Snap beacons",
             "empty_text": "No kits",
             "unassign": "detach from order",
             "unassign_q": "Do you want to remove the complete<br>c IMEI-code \"{0}\" out of order?"
-        }
-        ,
+        },
         "shipping": {
             "search_btn": "Search",
             "steps": {
                 "first": {
                     "title": "The order search"
-                }
-                ,
+                },
                 "second": {
                     "title": "The addition of retro fit kits to order"
                 }
-            }
-            ,
+            },
             "hints": {
                 "ready_for_search": "Please enter the order number.",
                 "order_search_failure": "Error. Order number \"{0}\" not found.",
@@ -1381,8 +1300,7 @@ Ext.define('Locale.locale-en', {
                 "imei_reset_btn": "Reassign",
                 "bundle_asssigned": "Set your phone's IMEI code \"{0}\" was successfully added to the order of \"{1}\".",
                 "bundle_asssign_failure": "Error. Set your phone's IMEI code \"{0}\" could not be added to the order \"{1}\"."
-            }
-            ,
+            },
             "fields": {
                 "id": "The order number",
                 "user_id": "The user number",
@@ -1395,21 +1313,18 @@ Ext.define('Locale.locale-en', {
                 "creation_time": "Creation time",
                 "status": "Status"
             }
-        }
-        ,
+        },
         "scan": {
             "clear_form": "To start over",
             "to_list": "A list of sets",
             "steps": {
                 "first": {
                     "title": "Scan the IMEI code of the device"
-                }
-                ,
+                },
                 "second": {
                     "title": "Installation ICCID code device"
                 }
-            }
-            ,
+            },
             "fields": {
                 "title": "Information about the kit",
                 "title_add": "The SIM card is already linked!",
@@ -1422,8 +1337,7 @@ Ext.define('Locale.locale-en', {
                 "equip_id": "Code kit",
                 "order_id": "The order number",
                 "assign_time": "The binding sim card"
-            }
-            ,
+            },
             "buttons": {
                 "enter": "Enter",
                 "assign_iccid": "Snap the SIM card",
@@ -1432,28 +1346,24 @@ Ext.define('Locale.locale-en', {
                 "print": "To print the label",
                 "reset": "To start over",
                 "change_equip": "Change the composition"
-            }
-            ,
+            },
             "imie_hints": {
                 "imei_ready": "Attach the scanner to the bar code IMEI",
                 "imei_invalid": "You entered an incorrect value<br>scan Again",
                 "imei_focus_lose": "Scanning is not ready<br>Set the focus on the field",
                 "imei_not_found": "Sets your phone's IMEI code<br><b>{0}</b> not found",
                 "auto_print": "Automatically print and start again"
-            }
-            ,
+            },
             "iccid_hints": {
                 "iccid_ready": "Attach the scanner to the barcode ICCID",
                 "iccid_invalid": "You entered an incorrect value<br>scan Again",
                 "iccid_focus_lose": "Scanning is not ready<br>Set the focus on the field",
                 "iccid_not_found": "Failed to bind the SIM card c code<br><b>{0}</b>",
                 "iccid_cant_unassign": "Failed to detach the SIM card"
-            }
-            ,
+            },
             "print_hints": {
                 "print_error": "Error. Not found the label template for the kit.<br>Printing is not possible."
-            }
-            ,
+            },
             "hints": {
                 "imei_ready": "Ready to scan. Attach the scanner to the barcode device IMEI.",
                 "imei_focus_lose": "Error. Scanning is not ready. Click the button below.",
@@ -1476,8 +1386,7 @@ Ext.define('Locale.locale-en', {
                 "unassign_success": "SIM card untethered from the device",
                 "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
             }
-        }
-        ,
+        },
         "import": {
             "import_hints": {
                 "enter_list": "Enter or scan the list of IMEI-codes",
@@ -1489,20 +1398,17 @@ Ext.define('Locale.locale-en', {
                 "import_failure": "The list of devices to import failed",
                 "factory_preset": "The device is already configured by the manufacturer",
                 "no_model": "The model is not selected"
-            }
-            ,
+            },
             "titles": {
                 "first": "The input set of IMEI-codes",
                 "second": "Model selection for devices"
-            }
-            ,
+            },
             "buttons": {
                 "import": "To import codes",
                 "reset": "Clear form"
             }
         }
-    }
-    ,
+    },
     "equipment": {
         "fields": {
             "equip_id": "ID",
@@ -1510,49 +1416,41 @@ Ext.define('Locale.locale-en', {
             "model_name": "Model",
             "model_code": "Model code",
             "vendor": "Manufacturer"
-        }
-        ,
+        },
         "select": {
             "title": "The choice of kit"
-        }
-        ,
+        },
         "list": {
             "empty_text": "Packages not found"
         }
-    }
-    ,
+    },
     "measurement_systems": {
         "metric": "Metric",
         "imperial": "Imperial",
         "us": "US"
-    }
-    ,
+    },
     "route_providers": {
         "progorod": "Progorod",
         "google": "Google",
         "osrm": "OSRM"
-    }
-    ,
+    },
     "geocoders": {
         "google": "Google",
         "yandex": "Yandex",
         "progorod": "Progorod",
         "osm": "OpenStreetMap"
-    }
-    ,
+    },
     "geolocation": {
         "disabled": "Disabled",
         "navixy": "Mozilla location services / @Navixy Telehouse",
         "mozilla": "Mozilla location services",
         "combain": "Combain"
-    }
-    ,
+    },
     "speed_restriction": {
         "disabled": "Disabled",
         "google": "Google Maps Roads",
         "quazar": "Quazar"
-    }
-    ,
+    },
     "currencies_tpls": {
         "GBP": "£{0}",
         "BRL": "R${0}",
@@ -1676,8 +1574,7 @@ Ext.define('Locale.locale-en', {
         "XOF": "{0} franc",
         "XAF": "{0} franc"
 
-    }
-    ,
+    },
     "features": {
         "api": "API",
         "app_tasks": "<a href='https://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>Tasks</a>",
@@ -1699,15 +1596,12 @@ Ext.define('Locale.locale-en', {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat"
-    }
-    ,
+    },
     "map": {
         "zoom_in": "Zoom in",
         "zoom_out": "Zoom out"
-    }
-    ,
+    },
     "map_type_label": "Map",
     "premium_gps_warning_tip": "Available on Premium GIS",
     "premium_gps_warning_error": "This value available only on Premium GIS"
-})
-;
+});

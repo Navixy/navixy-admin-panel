@@ -14,6 +14,20 @@ Ext.define('NavixyPanel.view.users.Card', {
             ];
 
         if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
+            var isAppLinkCorrect = Ext.Nav.getApplicationLink('hash', 'checkname').indexOf('checkname') > -1,
+                activateTrackerLink = isAppLinkCorrect ? {
+                    html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.toggleActivationPanel,
+                            scope: me
+                        }
+                    }
+                } : {
+                    html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') +  '">' +
+                        _l.get('users.card.links.activate_tracker') + '</a>'
+                };
+
             result.push({
                 html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
                 listeners: {
@@ -33,15 +47,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             }, {
                 xtype: 'component',
                 height: 10
-            }, {
-                html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.toggleActivationPanel,
-                        scope: me
-                    }
-                }
-            });
+            }, activateTrackerLink);
         }
 
         if (Ext.checkPermission('users', 'update')) {
