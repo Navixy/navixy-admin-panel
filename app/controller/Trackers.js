@@ -381,7 +381,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             failure: function (response) {
                 this.afterTrackerCloneRemoveFailure(response, record);
-//                Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.remove_failure_msg'));
             },
             scope: this
         });
@@ -403,7 +402,19 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
+            errDescription;
+
+        if (errCode === 203) {
+            var localPath = _l.get('errors.tracker').get(errCode.toString()),
+                entities = Ext.Array.map(response.entities, function(entity) {
+                    return localPath.get('entities').get(entity.type);
+                }).join(', ');
+
+            errDescription = Ext.String.format(localPath.get('msg'), entities);
+
+        } else {
             errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
+        }
 
         Ext.MessageBox.alert(_l.get('error'), errDescription);
     },

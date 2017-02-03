@@ -139,7 +139,13 @@ Ext.define('Locale.locale-en', {
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
         "tracker": {
-            "203": "Tracker has attached rules",
+            "203": {
+                "msg": "Tracker has attached: {0}",
+                "entities": {
+                    "rules": "rules",
+                    "vehicles": "vehicles"
+                }
+            },
             "237": "Plan invalid",
             "238": "Changing plan is not allowed",
             "239": "New plan does not exist",
