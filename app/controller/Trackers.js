@@ -364,8 +364,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 msg: _l.get('trackers.clone_form.remove_confirm') + ' "' + record.get('label') + '"?',
                 buttons: Ext.MessageBox.YESNO,
                 closable: false,
-                fn: function() {
-                    me.trackerCloneRemove(record);
+                fn: function(res) {
+                    if (res === 'yes') {
+                        me.trackerCloneRemove(record);
+                    }
                 }
             });
         }
