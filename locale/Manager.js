@@ -249,7 +249,7 @@ Ext.define('Locale.Manager', {
         wl.replace(!Ext.Object.isEmpty(params)
                 ? path += '?' + Ext.urlEncode(params)
                 : path
-        )
+        );
 
     },
 
@@ -272,14 +272,13 @@ Ext.define('Locale.Manager', {
             loadCallback = function () {
                 _l = Locale[path];
                 Ext.Array.remove(Ext.Loader.history, cls);
-
-                document.title = _l.panel_title;
+                document.title = '...';
             };
 
         try {
             Ext.require(cls, loadCallback);
         } catch (e) {
-            Ext.log('cant load locale ' + path)
+            Ext.log('cant load locale ' + path);
         }
     },
 

@@ -101,9 +101,15 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         if (!Config.google_key) {
             Config.google_key = {
                 allow: false,
-                get_key_link: 'https://www.navixy.com/docs/admin-panel-docs/settings/set-of-maps/'
+                get_key_link: _l.get('settings.fields.get_key_link')
             };
         }
+
+        var isNavixy = Ext.isNavixy(),
+            googleKeyLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>' : '',
+            google_client_id_link = isNavixy ? Ext.String.format(_l.get('settings.fields.google_client_id_link'), Config.google_key.get_key_link) : '',
+            premium_gis_link = isNavixy ? Ext.String.format(_l.get('settings.fields.premium_gis_link'), Config.google_key.get_key_link) : '';
+
         return [
             {
                 xtype: 'blockheader',
@@ -112,7 +118,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             {
                 xtype: 'checkboxgroup',
                 role: 'map_types_select',
-                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>',
+                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + googleKeyLink,
                 allowBlank: false,
                 columns: 1,
                 vertical: true,
@@ -130,7 +136,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 }
             }, Config.google_key.allow ? {
                 name: 'google_client_id',
-                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), Config.google_key.get_key_link),
+                fieldLabel: Ext.String.format(_l.get('settings.fields.google_client_id'), google_client_id_link),
                 minLength: 2,
                 maxLength: 100
             } : {
@@ -138,7 +144,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 name: 'google_client_id'
             }, Config.google_key.allow ? undefined : {
                 xtype: 'component',
-                html: Ext.String.format(_l.get('settings.fields.premium_gis'), Config.google_key.get_key_link)
+                html: Ext.String.format(_l.get('settings.fields.premium_gis'), premium_gis_link)
             },
             {
                 xtype: 'blockheader',

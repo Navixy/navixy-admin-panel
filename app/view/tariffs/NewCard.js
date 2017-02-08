@@ -486,7 +486,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             {
                 html: [_l.get('tariffs.fields.client_costs'), " (",
                        Ext.String.format(_l.get('currencies_tpls')[seller_currency], "").replace(" ", ""), ")",
-                       this.getHintSymbol(_l.get('tariffs.card.hints.13'))].join(""),
+                       Ext.isNavixy() ? this.getHintSymbol(_l.get('tariffs.card.hints.13')) : ''
+                ].join(""),
                 cellCls: 'sub_title'
             },
 
@@ -622,7 +623,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     prepareOptionsItems: function () {
         var mapList = [],
             appsList = [{
-                boxLabel: _l.get('features.app_reports'),
+                boxLabel: Ext.isNavixy() ? Ext.String.format(_l.get('features.app_reports_link'), _l.get('features.app_reports')) : _l.get('features.app_reports'),
                 name: 'has_reports',
                 role: 'feature_has_reports',
                 cls: 'shadow',

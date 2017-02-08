@@ -72,7 +72,6 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GateItem', {
                 name: 'encryption',
                 listeners: {
                     'change': function (rg, data) {
-                        console.log(data);
                         var encription = data[this.getEncriptionName()];
                         if (encription) {
                             var port = rg.down('radio[inputValue=' + encription + ']').port;

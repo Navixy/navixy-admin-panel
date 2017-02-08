@@ -256,7 +256,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 if (field.isDisabled() && !field.shadowField) {
                     delete values[field.name];
                 } else if (field.shadowField && !field.up('checkboxgroup')) {
-                    values[field.name] = field.getValue()
+                    values[field.name] = field.getValue();
                 }
                 if (field.is('checkboxgroup')) {
                     var value = field.getValue(),
@@ -298,7 +298,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 align: 'stretch'
             },
             defaults: this.getRowDefaults()
-        }
+        };
     },
 
     getRowDefaults: function () {
@@ -479,7 +479,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 },
                 role: 'not-settings-tab'
             } : null
-        ]
+        ];
     },
 
     getBrandingItems: function () {
@@ -534,7 +534,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
                 name: 'monitoring_logo_clickable'
             }
-        ]
+        ];
     },
 
     getImgsCustom: function () {
@@ -576,10 +576,15 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             this.getImgConfig('login_wallpaper'),
             this.getImgButtonConfig('login_wallpaper')
-        ]
+        ];
     },
 
     getServiceItemsLeft: function () {
+        var domainPh = Ext.isNavixy() ? _l.get('settings.fields.domain_ph') : _l.get('settings.fields.paas_domain_ph'),
+            domain = Ext.getStore('Dealer').first().get('id') + domainPh,
+            labelHint = this.getHintSymbol(_l.get('settings.fields.domain_hint')),
+            labelLink = Ext.isNavixy() ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '';
+
         return [
             {
                 xtype: 'blockheader',
@@ -587,9 +592,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             {
                 name: 'domain',
-                fieldLabel: _l.get('settings.fields.domain') + this.getHintSymbol(_l.get('settings.fields.domain_hint')) + '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>',
-                emptyText: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
-                value: Ext.getStore('Dealer').first().get('id') + _l.get('settings.fields.domain_ph'),
+                fieldLabel: _l.get('settings.fields.domain') + labelHint + labelLink,
+                emptyText: domain,
+                value: domain,
                 allowBlank: false,
 
                 minLength: 2,
@@ -710,7 +715,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
                 name: 'show_call_notifications'
             }
-        ]
+        ];
     },
 
     getAccountItemsLeft: function () {
@@ -743,7 +748,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 margin: '20 0 0 10',
                 boxLabel: _l.get('settings.fields.translit') + this.getHintSymbol(_l.get('settings.fields.translit_hint'))
             }
-        ]
+        ];
     },
 
     getAccountItemsRight: function () {
@@ -843,7 +848,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //    valueField: 'type',
             //    value: "google"
             //}
-        ]
+        ];
     },
 
     getEmailsItems: function () {
@@ -869,7 +874,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 maxLength: 450,
                 role: 'permission-field'
             }
-        ]
+        ];
     },
 
     getSMSM2MItems: function () {
@@ -931,7 +936,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //    maxLength: 20,
             //    role: 'permission-field'
             //},
-        ]
+        ];
     },
 
     getSMSUserItems: function () {
@@ -981,7 +986,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 value: _l.get('settings.fields.not_editable'),
                 cls: 'settings-disabled'
             }
-        ]
+        ];
     },
 
     getImgConfig: function (type, config) {
@@ -1006,7 +1011,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 }
             },
-            config || {})
+            config || {});
     },
 
     getImgUrl: function (type, record) {
@@ -1021,7 +1026,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             ? isUrl
                    ? value + aCache
                    : [Ext.API.getGlobalApiUrl({action: value}), aCache].join('')
-            : null
+            : null;
     },
 
     getImgButtonConfig: function (type) {
@@ -1069,7 +1074,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             ]
         }
-            : null
+            : null;
     },
 
     removeImgCall: function (type) {
@@ -1085,7 +1090,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 this.afterRemove(response);
             },
             scope: this
-        })
+        });
     },
 
     afterUpload: function (type, record) {
@@ -1186,7 +1191,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var tab = this.down('tabpanel').getActiveTab(),
             role = tab && tab.role;
 
-        return role === 'pass_tab'
+        return role === 'pass_tab';
     },
 
     getServiceFields: function () {

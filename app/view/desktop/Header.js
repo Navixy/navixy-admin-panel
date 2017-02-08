@@ -38,11 +38,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         cls: 'header-logo',
                         width: 150,
                         height: 30,
-                        style: headerLogo
-                            ?
-                                'background-image:url(' + headerLogo + ')'
-
-                            : {}
+                        style: headerLogo ? 'background-image:url(' + headerLogo + ')' : {}
                     },
                     {
                         xtype: 'component',

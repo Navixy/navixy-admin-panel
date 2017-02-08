@@ -20,10 +20,10 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
             {
                 xtype: 'container',
                 padding: 20,
-                html: _l.get('main_copyright')
+                html: _l.get(Ext.isNavixy() ? 'main_copyright' : 'paas_main_copyright')
             }
         ];
 
         this.callParent(arguments);
-    },
+    }
 });

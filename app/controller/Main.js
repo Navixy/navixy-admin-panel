@@ -59,6 +59,8 @@ Ext.define('NavixyPanel.controller.Main', {
                 change: this.changeLocale
             }
         });
+
+        document.title = Ext.isNavixy() ? _l.panel_title : _l.paas_panel_title;
     },
 
     // Overrides
@@ -499,6 +501,10 @@ Ext.define('NavixyPanel.controller.Main', {
                 newIcon.setAttribute("rel", "icon");
                 newIcon.setAttribute("href", [favicon_url, '?', Ext.Date.now()].join(''));
                 document.querySelector("head").appendChild(newIcon);
+            },
+
+            isNavixy: function () {
+                return Config.hideNavixyLogo && /navixy\.com$/gi.test(location.hostname) || !Config.hideNavixyLogo;
             },
 
             isIE11: !!navigator.userAgent.match(/Trident.*rv[ :]*11\./)

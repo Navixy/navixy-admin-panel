@@ -89,6 +89,11 @@ Ext.define('NavixyPanel.view.codes.List', {
         var canCreate = Ext.checkPermission('codes', 'read,create');
 
         var me = this,
+            fagLink = Ext.isNavixy() ? {
+                xtype: 'component',
+                margin: '0 20',
+                html: '<span class="icon-help" style="color:#0f5491;font-size:12px; padding: 5px"></span><a href="' + _l.get('codes.list.faq_link') + '" target="_blank">' + _l.get('codes.list.faq_text') + '</a>'
+            } : null,
             barConfig = {
                 padding: '0 0 10 0',
                 border: 0,
@@ -122,11 +127,7 @@ Ext.define('NavixyPanel.view.codes.List', {
                         html: _l.get('codes.list.select_req')
                     },
                     '->',
-                    {
-                        xtype: 'container',
-                        margin: '0 20 0 20',
-                        html: '<span class="icon-help" style="color:#0f5491;font-size:12px; padding: 5px"></span><a href="' + _l.get('codes.list.faq_link') + '" target="_blank">' + _l.get('codes.list.faq_text') + '</a>'
-                    },
+                    fagLink,
                     {
                         xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',

@@ -184,12 +184,13 @@ Ext.define('NavixyPanel.controller.Settings', {
     mayBeEditSubmit: function (cmp, formValues, record) {
         record.set(formValues);
 
-        var isPremium = Ext.getStore('Dealer').isPremiumGis();
+        var isPremium = Ext.getStore('Dealer').isPremiumGis(),
+            hint = Ext.isNavixy() ? _l.get('settings.fields.domain_google_key_link') : '';
 
         if (record.isDomainChanged() && isPremium) {
             Ext.Msg.show({
                 title: _l.get("settings.domain_warnings.domain_warning"),
-                msg: Ext.String.format(_l.get("settings.domain_warnings.domain_changed"), _l.get('settings.fields.domain_google_key_link')),
+                msg: Ext.String.format(_l.get("settings.domain_warnings.domain_changed"), hint),
                 buttons: Ext.Msg.OKCANCEL,
                 buttonText: {'ok': _l.get("settings.domain_warnings.continue")},
                 fn: function (buttonId) {
@@ -330,7 +331,7 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(settings.id);
             },
             scope: this
-        })
+        });
     },
 
     createAndAssignEmailGate: function (settings) {
@@ -345,6 +346,6 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.assignEmailGate(id);
             },
             scope: this
-        })
+        });
     }
 });

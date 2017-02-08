@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.store.Features', {
         this.data = [
             {
                 type: "app_tasks",
-                "name": _l.get('features.app_tasks'),
+                "name": Ext.isNavixy() ? Ext.String.format(_l.get('features.app_tasks_link'), _l.get('features.app_tasks')) : _l.get('features.app_tasks'),
                 group: "apps"
             },
             {
@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.store.Features', {
             },
             {
                 type: "report_scheduled",
-                "name": _l.get('features.report_scheduled'),
+                "name": Ext.isNavixy() ? Ext.String.format(_l.get('features.report_scheduled_link'), _l.get('features.report_scheduled')) : _l.get('features.report_scheduled'),
                 group: "features"
             },
             {
