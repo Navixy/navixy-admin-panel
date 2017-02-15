@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 name: 'maps',
                 cls: 'map-type-checkbox',
                 disabled: disabled || !!mapRecord.get('free'),
-                inputValue: !disabled && mapRecord.get('type'),
+                inputValue: mapRecord.get('type'),
                 shadowField: true
             });
         }, this);
