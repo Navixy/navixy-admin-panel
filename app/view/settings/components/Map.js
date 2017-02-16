@@ -91,8 +91,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         var defaultMapField = this.down('combobox[name="map_type"]'),
             defaultMapRecord = this.mapsStore.getById(defaultMapField.getValue());
 
-        if (isPaasDomain && !defaultMapRecord.get('free')) {
-            defaultMapField.setValue(this.mapsStore.findRecord('free', true));
+        if (isPaasDomain && defaultMapRecord && !defaultMapRecord.get('free')) {
+            defaultMapField.setValue(this.mapsStore.findRecord('free', true).get('type'));
         }
 
     },
