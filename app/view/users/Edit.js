@@ -33,6 +33,10 @@ Ext.define('NavixyPanel.view.users.Edit', {
             fieldLabel: _l.get('users.fields.discount.value'),
             minValue: 0,
             maxValue: 100,
+            plugins: {
+                ptype: 'fieldpostfix',
+                postfix: '%'
+            },
             allowBlank: true,
             decimalPrecision: 1,
             name: 'discount'
