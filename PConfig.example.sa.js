@@ -12,7 +12,7 @@ Config = {
     // Шаблоны внешних ссылок
     links: {
         // Ссылка на "автоматичесую" авторизацию в мониторинге, с передачей хэша через GET. Испольхуется страница  прямого показа демонстрации мониторинга.
-        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}&app={app}']
+        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}']
     },
 
     // Адарес подкючения к веб-сокету терминала для устройств

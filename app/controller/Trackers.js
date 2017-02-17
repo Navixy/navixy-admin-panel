@@ -87,7 +87,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 trackertariffedit: this.onTrackerTariffEditAction,
                 trackerconsole: this.onTrackerConsole,
                 trackerremoved: this.onTrackerRemove,
-                trackerremovefailure: this.onTrackerRemoveFailure
+                trackerremovefailure: this.onTrackerRemoveFailure,
+                opentrackersettings: this.openTrackerSettings
             }
         });
 
@@ -522,6 +523,31 @@ Ext.define('NavixyPanel.controller.Trackers', {
         });
     },
 
+    openTrackerSettings: function (card) {
+        if (!this.trackerSettingsWindow) {
+            card.fireSessionCreateHash(function (hash) {
+                this.trackerSettingsWindow = Ext.create('NavixyPanel.view.trackers.TrackerSettingsWindow', {
+                    listeners: {
+                        destroy: function () {
+                            this.trackerSettingsWindow = null;
+                        },
+                        scope: this
+                    },
+                    hash: hash,
+                    tracker_id: card.record.getId()
+                }).show();
+            }, this);
+        } else {
+            this.closeTrackerSettingsWindow();
+        }
+    },
+
+    closeTrackerSettingsWindow: function () {
+        if (this.trackerSettingsWindow) {
+            this.trackerSettingsWindow.close();
+            this.trackerSettingsWindow = null;
+        }
+    },
 
     onGroupCloneSubmit: function (cmp, formValues, recordsData) {
         var requestsCnt = recordsData.length,

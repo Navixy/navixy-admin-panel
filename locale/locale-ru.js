@@ -607,6 +607,7 @@ Ext.define('Locale.locale-ru', {
             "links": {
                 "change_tracker_user": "Сменить владельца",
                 "tracker_edit": "Редактировать трекер",
+                "tracker_settings": "Настройки трекера",
                 "tracker_tariff_edit": "Изменить тариф",
                 "tracker_clone_create": "Клонировать трекер",
                 "tracker_clone_remove": "Удалить этот клон",
