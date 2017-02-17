@@ -73,8 +73,10 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
-        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
-            result.push(this.isAppLinkCorrect('hash', 'tracker_id') ? {
+        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('users', 'read') &&
+            Ext.checkPermission('user_sessions', 'create') && !tracker.clone && !tracker.blocked)
+        {
+            result.push(this.isAppLinkCorrect({tracker_id: 'tracker_id'}) ? {
                 html: '<a>' + _l.get('trackers.card.links.tracker_settings') + '</a>',
                 listeners: {
                     click: {

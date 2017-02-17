@@ -33,7 +33,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             }, {
                 xtype: 'component',
                 height: 10
-            }, this.isAppLinkCorrect('hash') ? {
+            }, this.isAppLinkCorrect() ? {
                 html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
                 listeners: {
                     click: {

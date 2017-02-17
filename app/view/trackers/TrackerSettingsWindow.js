@@ -11,6 +11,8 @@ Ext.define('NavixyPanel.view.trackers.TrackerSettingsWindow', {
     closeAction: 'destroy',
     hash: null,
     tracker_id: null,
+    width: 1115,
+    maximizable: true,
 
     getItems: function () {
         var appName = 'pconfig',

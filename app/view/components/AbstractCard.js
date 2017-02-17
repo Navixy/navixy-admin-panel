@@ -368,13 +368,16 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
         Ext.MessageBox.alert(_l.get('error'), _l.get('users.session_alert.error'));
     },
 
-    isAppLinkCorrect: function (checked_keys) {
-        var result = true;
+    isAppLinkCorrect: function (params) {
+        var link = Ext.Nav.getApplicationLink('hash', 'checkapp', params),
+            result = link.indexOf('checkapp') > -1;
 
-        Ext.each(Ext.isArray(checked_keys) ? checked_keys : [checked_keys], function (key) {
-            result = Ext.Nav.getApplicationLink(key, 'checkname').indexOf('checkname') > -1;
-            return result;
-        });
+        if (params && Ext.isObject(params)) {
+            Ext.iterate(params, function (key, value) {
+                result = link.indexOf(value) > -1;
+                return result;
+            });
+        }
 
         return result;
     }
