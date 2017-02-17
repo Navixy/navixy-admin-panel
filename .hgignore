@@ -12,6 +12,7 @@ PConfig.js
 .tx/config
 VERSION
 translation_cache
+stickers/
 syntax: regexp
 ^ext/
 ^transifex/
