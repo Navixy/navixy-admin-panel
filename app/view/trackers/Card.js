@@ -73,6 +73,21 @@ Ext.define('NavixyPanel.view.trackers.Card', {
             );
         }
 
+        if (Ext.checkPermission('trackers', 'update') && Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
+            result.push(this.isAppLinkCorrect('hash', 'tracker_id') ? {
+                html: '<a>' + _l.get('trackers.card.links.tracker_settings') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.openTrackerSettings,
+                        scope: me
+                    }
+                }
+            } : {
+                html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') +  '">' +
+                _l.get('trackers.card.links.tracker_settings') + '</a>'
+            });
+        }
+
         if (Ext.checkPermission('trackers', 'create') && !tracker.clone) {
             result.push(
                 {
@@ -367,6 +382,14 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 }
             }, 2 * 60 * 1000);
         }
+    },
+
+    getUserId: function () {
+        return this.record.get('user_id');
+    },
+
+    openTrackerSettings: function () {
+        this.fireEvent('opentrackersettings', this);
     },
 
     isRetryRegisterAllowed: function (tracker) {

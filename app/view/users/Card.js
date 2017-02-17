@@ -14,20 +14,6 @@ Ext.define('NavixyPanel.view.users.Card', {
             ];
 
         if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
-            var isAppLinkCorrect = Ext.Nav.getApplicationLink('hash', 'checkname').indexOf('checkname') > -1,
-                activateTrackerLink = isAppLinkCorrect ? {
-                    html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
-                    listeners: {
-                        click: {
-                            fn: me.toggleActivationPanel,
-                            scope: me
-                        }
-                    }
-                } : {
-                    html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') + '">' +
-                    _l.get('users.card.links.activate_tracker') + '</a>'
-                };
-
             result.push({
                 html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
                 listeners: {
@@ -47,7 +33,18 @@ Ext.define('NavixyPanel.view.users.Card', {
             }, {
                 xtype: 'component',
                 height: 10
-            }, activateTrackerLink);
+            }, this.isAppLinkCorrect('hash') ? {
+                html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.toggleActivationPanel,
+                        scope: me
+                    }
+                }
+            } : {
+                html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') +  '">' +
+                _l.get('users.card.links.activate_tracker') + '</a>'
+            });
         }
 
         if (Ext.checkPermission('users', 'update')) {
@@ -252,41 +249,8 @@ Ext.define('NavixyPanel.view.users.Card', {
         };
     },
 
-    fireSessionCreate: function () {
-        var userId = this.record.getId(),
-            win = window.open('', '_blank');
-
-        Ext.API.createUserSession({
-            params: {
-                user_id: userId
-            },
-            callback: function (hash) {
-                win.location = Ext.Nav.getMonitoring(hash);
-            },
-            failure: this.showUserSessionHashFailure
-        });
-    },
-
-    fireSessionCreateHash: function (callback, scope) {
-        var userId = this.record.getId();
-
-        Ext.API.createUserSession({
-            params: {
-                user_id: userId
-            },
-            callback: function (hash) {
-                if (callback && Ext.isFunction(callback)) {
-                    return callback.call(scope || this, hash);
-                }
-                Ext.MessageBox.alert(_l.get('users.session_hash.title'), hash);
-            },
-            failure: this.showUserSessionHashFailure,
-            scope: this
-        });
-    },
-
-    showUserSessionHashFailure: function () {
-        Ext.MessageBox.alert(_l.get('error'), _l.get('users.session_alert.error'));
+    getUserId: function () {
+        return this.record.getId();
     },
 
     fireUserEdit: function () {

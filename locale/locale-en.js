@@ -622,6 +622,7 @@ Ext.define('Locale.locale-en', {
             "links": {
                 "change_tracker_user": "Change owner",
                 "tracker_edit": "Edit tracker",
+                "tracker_settings": "Tracker settings",
                 "tracker_tariff_edit": "Change plan",
                 "tracker_clone_create": "Create clone",
                 "tracker_clone_remove": "Delete clone",

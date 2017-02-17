@@ -328,4 +328,54 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
             }
         }
     },
+
+    getUserId: Ext.emptyFn,
+
+    fireSessionCreate: function () {
+        var userId = this.getUserId(),
+            win = window.open('', '_blank');
+
+        Ext.API.createUserSession({
+            params: {
+                user_id: userId
+            },
+            callback: function (hash) {
+                win.location = Ext.Nav.getMonitoring(hash);
+            },
+            failure: this.showUserSessionHashFailure
+        });
+    },
+
+    fireSessionCreateHash: function (callback, scope) {
+        var userId = this.getUserId();
+
+        Ext.API.createUserSession({
+            params: {
+                user_id: userId
+            },
+            callback: function (hash) {
+                if (callback && Ext.isFunction(callback)) {
+                    return callback.call(scope || this, hash);
+                }
+                Ext.MessageBox.alert(_l.get('users.session_hash.title'), hash);
+            },
+            failure: this.showUserSessionHashFailure,
+            scope: this
+        });
+    },
+
+    showUserSessionHashFailure: function () {
+        Ext.MessageBox.alert(_l.get('error'), _l.get('users.session_alert.error'));
+    },
+
+    isAppLinkCorrect: function (checked_keys) {
+        var result = true;
+
+        Ext.each(Ext.isArray(checked_keys) ? checked_keys : [checked_keys], function (key) {
+            result = Ext.Nav.getApplicationLink(key, 'checkname').indexOf('checkname') > -1;
+            return result;
+        });
+
+        return result;
+    }
 });
