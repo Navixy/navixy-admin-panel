@@ -49,6 +49,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
     stores: ['Trackers'],
     models: ['Tracker'],
     mainStore: 'Trackers',
+    requires: ['NavixyPanel.view.trackers.TrackerSettingsWindow'],
 
     init: function () {
         this.callParent(arguments);
