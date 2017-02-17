@@ -31,6 +31,8 @@ Ext.define('NavixyPanel.view.users.Edit', {
         return items.concat([{
             xtype: 'numberfield',
             fieldLabel: _l.get('users.fields.discount.value'),
+            minValue: 0,
+            maxValue: 100,
             allowBlank: true,
             decimalPrecision: 1,
             name: 'discount'
@@ -45,6 +47,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
             xtype: 'numberfield',
             fieldLabel: _l.get('users.fields.discount.min_trackers'),
             allowBlank: true,
+            minValue: 0,
             allowDecimals: false,
             name: 'discount_min_trackers'
         }])

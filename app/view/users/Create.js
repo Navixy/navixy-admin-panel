@@ -14,6 +14,8 @@ Ext.define('NavixyPanel.view.users.Create', {
             xtype: 'numberfield',
             allowBlank: true,
             fieldLabel: _l.get('users.fields.discount.value'),
+            maxValue: 100,
+            minValue: 0,
             decimalPrecision: 1,
             name: 'discount'
         }, {
@@ -27,6 +29,7 @@ Ext.define('NavixyPanel.view.users.Create', {
             xtype: 'numberfield',
             fieldLabel: _l.get('users.fields.discount.min_trackers'),
             allowBlank: true,
+            minValue: 0,
             allowDecimals: false,
             name: 'discount_min_trackers'
         }])
