@@ -25,14 +25,39 @@ Ext.define('NavixyPanel.view.users.Edit', {
         return false;
     },
 
+    getNEItems: function () {
+        var items = this.callParent(arguments);
+
+        return items.concat([{
+            xtype: 'numberfield',
+            fieldLabel: _l.get('users.fields.discount.value'),
+            allowBlank: true,
+            decimalPrecision: 1,
+            name: 'discount'
+        }, {
+            xtype: 'datefield',
+            fieldLabel: _l.get('users.fields.discount.end_date'),
+            emptyText: _l.get('users.fields.discount.endless'),
+            allowBlank: true,
+            submitFormat: 'Y-m-d',
+            name: 'discount_end_date'
+        }, {
+            xtype: 'numberfield',
+            fieldLabel: _l.get('users.fields.discount.min_trackers'),
+            allowBlank: true,
+            allowDecimals: false,
+            name: 'discount_min_trackers'
+        }])
+    },
+
     getNWItems: function () {
         var config = this.callParent(arguments);
 
         return [
-            config.shift(),
-            config.shift(),
-            config[2],
-            config.pop()
+            config[0],
+            config[1],
+            config[4],
+            config[config.length - 1]
         ];
     }
 });

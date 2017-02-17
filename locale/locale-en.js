@@ -455,7 +455,13 @@ Ext.define('Locale.locale-en', {
             "registered_short": "legal",
             "password": "New password",
             "password_repeat": "Repeat new password",
-            "password_mismatched": "Passwords do not match"
+            "password_mismatched": "Passwords do not match",
+            discount: {
+                value: 'Discount',
+                min_trackers: 'Device limit',
+                end_date: 'End date',
+                endless: 'Permanent'
+            }
         },
         "password_form": {
             "title": "Changing password of user",

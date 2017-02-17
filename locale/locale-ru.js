@@ -450,7 +450,14 @@ Ext.define('Locale.locale-ru', {
             "registered_short": "юр",
             "password": "Новый пароль",
             "password_repeat": "Повторите новый пароль",
-            "password_mismatched": "Пароли не совпадают"
+            "password_mismatched": "Пароли не совпадают",
+
+            discount: {
+                value: 'Скидка',
+                min_trackers: 'Минимальное число устройств',
+                end_date: 'Дата окончания',
+                endless: 'Бессрочная'
+            }
         },
         "password_form": {
             "title": "Изменение пароля пользователя",

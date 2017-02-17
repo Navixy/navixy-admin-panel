@@ -106,11 +106,18 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             params: {
                 user_id: userId
             },
-            success: callback,
+            success: function (result, params, response) {
+                //Hoook to extract discount
+                callback.call(scope, Ext.apply(result.value, {
+                    discount: result.discount.value,
+                    discount_min_trackers: result.discount.min_trackers,
+                    discount_end_date: result.discount.end_date,
+                    discount_strategy: result.discount.strategy
+                }), params, response)
+            },
             failure: failure,
             action: 'read',
             handler: 'user',
-            root: 'value',
             scope: scope
         });
     },

@@ -62,22 +62,22 @@ Ext.define('NavixyPanel.controller.Users', {
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction
             },
-            'userslist button[role="create-btn"]' : {
+            'userslist button[role="create-btn"]': {
                 click: this.handleUserCreateAction
             },
-            'usercreate' : {
+            'usercreate': {
                 formsubmit: this.handleUserCreateSubmit
             },
-            'useredit' : {
+            'useredit': {
                 formsubmit: this.handleUserEditSubmit
             },
-            'userchangepassword' : {
+            'userchangepassword': {
                 formsubmit: this.handleUserChangePasswordSubmit
             },
-            'usertransactionadd' : {
+            'usertransactionadd': {
                 formsubmit: this.handleUserTransactionAddSubmit
             },
-            'usercard' : {
+            'usercard': {
                 useredit: this.handleUserEditAction,
                 toggleactivationpanel: this.toggleActivationPanel
             },
@@ -87,35 +87,35 @@ Ext.define('NavixyPanel.controller.Users', {
         });
 
         this.handle({
-            'users' : {
+            'users': {
                 fn: this.handleUserList,
                 access: 'read'
             },
-            'user' : {
+            'user': {
                 fn: this.handleUserCard,
                 access: 'read',
                 loadRecord: true
             },
-            'user > transactions' : {
+            'user > transactions': {
                 fn: this.handleUserTransactions,
                 loadRecord: true,
                 access: 'read'
             },
-            'user > edit' : {
+            'user > edit': {
                 fn: this.handleUserEdit,
                 loadRecord: true,
                 access: 'update'
             },
-            'user > create' : {
+            'user > create': {
                 fn: this.handleUserCreate,
                 access: 'create'
             },
-            'user > transaction_add' : {
+            'user > transaction_add': {
                 fn: this.handleUserTransactionAdd,
                 loadRecord: true,
                 access: 'update'
             },
-            'user > change_password' : {
+            'user > change_password': {
                 fn: this.handleUserChangePassword,
                 loadRecord: true,
                 access: 'update'
@@ -193,8 +193,6 @@ Ext.define('NavixyPanel.controller.Users', {
         });
     },
 
-
-
     handleListAction: function (record) {
         var userId = record.getId();
         Ext.Nav.shift('user/' + userId);
@@ -212,19 +210,25 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCreateSubmit: function (cmp, formValues) {
-
-        var dealerId = Ext.getStore('Dealer').first().getId(),
-            record = Ext.create('NavixyPanel.model.User', formValues),
+        var record = Ext.create('NavixyPanel.model.User', formValues),
             userData = Ext.apply({}, record.getData());
 
-        delete userData.id; delete userData.dealer_id; delete userData.verified;
+        delete userData.id;
+        delete userData.dealer_id;
+        delete userData.verified;
 
         Ext.API.createUser({
             params: {
                 user: Ext.encode(userData),
                 locale: formValues.locale || Locale.Manager.getLocaleId(),
                 time_zone: formValues.time_zone,
-                password: formValues.password
+                password: formValues.password,
+                discount: Ext.encode({
+                    value: +userData.discount,
+                    end_date: userData.discount_end_date || null,
+                    strategy: 'no_summing',
+                    min_trackers: +userData.discount_min_trackers
+                })
             },
             callback: function (response) {
                 this.afterUserCreate(response);
@@ -240,7 +244,6 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.getStore('Users').load();
     },
 
-
     afterUserCreateFailure: function (response) {
         var status = response.status,
             errors = response.errors || [],
@@ -251,13 +254,20 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserEditSubmit: function (cmp, formValues, record) {
-        var userData = Ext.apply({}, formValues, record.getData());
+        var userData = Ext.apply({}, formValues, record.getData()),
+            discount = {
+                value: +userData.discount,
+                end_date: userData.discount_end_date || null,
+                strategy: userData.discount_strategy,
+                min_trackers: +userData.discount_min_trackers
+            };
 
         delete userData.verified;
 
         Ext.API.updateUser({
             params: {
-                user: Ext.encode(userData)
+                user: Ext.encode(userData),
+                discount: Ext.encode(discount),
             },
             callback: function (response) {
                 this.afterUserEdit(response, formValues, record);
@@ -344,7 +354,7 @@ Ext.define('NavixyPanel.controller.Users', {
                     text: formValues.text
                 },
                 callback: function (response) {
-                    if (--requestsCnt === 0)  {
+                    if (--requestsCnt === 0) {
                         this.afterUserTransactionAdd(response, formValues, record);
                     }
                 },
@@ -366,7 +376,7 @@ Ext.define('NavixyPanel.controller.Users', {
                     text: formValues.text
                 },
                 callback: function (response) {
-                    if (--requestsCnt === 0)  {
+                    if (--requestsCnt === 0) {
                         this.afterUserTransactionAdd(response, formValues, record);
                     }
                 },

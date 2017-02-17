@@ -7,34 +7,124 @@
 Ext.define('NavixyPanel.model.User', {
     extend: 'NavixyPanel.model.Abstract',
     fields: [
-        {name: 'dealer_id', type: 'int'},
-        {name: 'balance', type: 'float'},
-        {name: 'bonus', type: 'float'},
+        {
+            name: 'dealer_id',
+            type: 'int'
+        },
+        {
+            name: 'balance',
+            type: 'float'
+        },
+        {
+            name: 'bonus',
+            type: 'float'
+        },
 
-        {name: 'login', type: 'string'},
-        {name: 'first_name', type: 'string'},
-        {name: 'middle_name', type: 'string'},
-        {name: 'last_name', type: 'string'},
+        {
+            name: 'login',
+            type: 'string'
+        },
+        {
+            name: 'first_name',
+            type: 'string'
+        },
+        {
+            name: 'middle_name',
+            type: 'string'
+        },
+        {
+            name: 'last_name',
+            type: 'string'
+        },
 
-        {name: 'activated', type: 'boolean'},
-        {name: 'legal_type', type: 'string'},
-        {name: 'tin', type: 'string'},
-        {name: 'legal_name', type: 'string'},
-        {name: 'iec', type: 'string'},
+        {
+            name: 'activated',
+            type: 'boolean'
+        },
+        {
+            name: 'legal_type',
+            type: 'string'
+        },
+        {
+            name: 'tin',
+            type: 'string'
+        },
+        {
+            name: 'legal_name',
+            type: 'string'
+        },
+        {
+            name: 'iec',
+            type: 'string'
+        },
 
-        {name: 'phone', type: 'string'},
-        {name: 'post_country', type: 'string'},
-        {name: 'post_index', type: 'string'},
-        {name: 'post_region', type: 'string'},
-        {name: 'post_city', type: 'string'},
-        {name: 'post_street_address', type: 'string'},
-        {name: 'registered_country', type: 'string'},
-        {name: 'registered_index', type: 'string'},
-        {name: 'registered_region', type: 'string'},
-        {name: 'registered_city', type: 'string'},
-        {name: 'registered_street_address', type: 'string'},
-        {name: 'creation_date', type: 'string'},
-        {name: 'verified', type: 'boolean'}
+        {
+            name: 'phone',
+            type: 'string'
+        },
+        {
+            name: 'post_country',
+            type: 'string'
+        },
+        {
+            name: 'post_index',
+            type: 'string'
+        },
+        {
+            name: 'post_region',
+            type: 'string'
+        },
+        {
+            name: 'post_city',
+            type: 'string'
+        },
+        {
+            name: 'post_street_address',
+            type: 'string'
+        },
+        {
+            name: 'registered_country',
+            type: 'string'
+        },
+        {
+            name: 'registered_index',
+            type: 'string'
+        },
+        {
+            name: 'registered_region',
+            type: 'string'
+        },
+        {
+            name: 'registered_city',
+            type: 'string'
+        },
+        {
+            name: 'registered_street_address',
+            type: 'string'
+        },
+        {
+            name: 'creation_date',
+            type: 'string'
+        },
+        {
+            name: 'verified',
+            type: 'boolean'
+        },
+
+        {
+            name: 'discount',
+            type: 'number'
+        },
+        {
+            name: 'discount_min_trackers',
+            type: 'number'
+        },
+        {
+            name: 'discount_end_date'
+        },
+        {
+            name: 'discount_strategy'
+        }
     ],
 
     hasTrackerClone: function (sourceId) {
@@ -42,7 +132,7 @@ Ext.define('NavixyPanel.model.User', {
             result = false;
 
         if (trackers && Ext.isNumber(sourceId)) {
-            Ext.iterate(trackers, function(record) {
+            Ext.iterate(trackers, function (record) {
                 if (record.get('source_id') === sourceId) {
                     result = true;
                     return false;

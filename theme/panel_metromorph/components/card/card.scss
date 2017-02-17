@@ -17,7 +17,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     border-spacing: 0;
 
     td {
-        padding: 3px;
+        padding: 4px;
     }
 
     td:first-child {
@@ -191,7 +191,6 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
             font-weight: bold;
         }
 
-
         &.dots:after {
             content: ':';
         }
@@ -241,7 +240,6 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     opacity: 0.8;
 }
 
-
 .card-editor {
 
     .x-form-type-checkbox.shadow {
@@ -269,7 +267,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     .header-table {
         border-spacing: 0;
 
-        td.x-table-layout-cell  {
+        td.x-table-layout-cell {
             padding: 3px;
 
             &.form-cell {
@@ -318,7 +316,6 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
                 }
             }
         }
-
 
         span.pre_note {
             width: 60px;
@@ -380,7 +377,6 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
                 color: $baseFontColor !important;
                 font-weight: bold;
             }
-
 
             &.dots:after {
                 content: ':';

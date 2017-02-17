@@ -22,5 +22,10 @@
     "nginx": {
         "host": "172.16.0.65",
         "remotePath": "/var/www/panel.navixy.com/"
+    },
+
+    "nginx": {
+        "host": "172.16.0.65",
+        "remotePath": "/var/www/panel.navixy.com/"
     }
 }

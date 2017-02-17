@@ -27,6 +27,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     getItems: function () {
         var items = this.callParent(arguments);
 
+        //this is fucking shit. @naru wtf?
         if (items[1] && items[1].items && items[1].items[1]) {
             items[1].items[1].role = 'legal_fields';
         }
@@ -47,7 +48,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         return [
             {
-                xtype: 'container',
+                xtype: 'component',
                 cls: 'block_header',
                 html: _l.get('users.create_form.main_fields'),
                 padding: '10 0 20 0'
@@ -55,18 +56,15 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
-
                 vtype: 'email',
                 minLength: 2,
                 maxLength: 100,
-
                 validateOnChange: true
             },
             {
                 fieldLabel: _l.get('users.create_form.password'),
                 name: 'password',
                 inputType: 'password',
-
                 minLength: 6,
                 maxLength: 20
             },
@@ -74,10 +72,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.create_form.password_repeat'),
                 inputType: 'password',
                 allowBlank: false,
-
                 minLength: 6,
                 maxLength: 20,
-
                 validator: function(value) {
                     var pass_val = me.down('*[name=password]').getValue();
                     return value === pass_val || _l.get('users.create_form.password_mismatched');
@@ -115,8 +111,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
-                valueField: 'type'
-                ,listeners: {
+                valueField: 'type',
+                listeners: {
                     change: function() {
                         me.changeLegalStatus(this.getValue());
                     }
