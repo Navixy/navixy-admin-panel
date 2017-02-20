@@ -52,6 +52,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
             fieldLabel: _l.get('users.fields.discount.min_trackers'),
             allowBlank: true,
             minValue: 0,
+            maxValue: 2147483647,
             allowDecimals: false,
             name: 'discount_min_trackers'
         }])
