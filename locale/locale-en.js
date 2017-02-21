@@ -460,7 +460,8 @@ Ext.define('Locale.locale-en', {
                 value: 'Discount',
                 min_trackers: 'Device limit',
                 end_date: 'End date',
-                endless: 'Permanent'
+                permanent: 'Permanent',
+                set_permanent: 'Set permanent'
             }
         },
         "password_form": {

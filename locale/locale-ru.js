@@ -456,7 +456,8 @@ Ext.define('Locale.locale-ru', {
                 value: 'Скидка',
                 min_trackers: 'Минимальное число устройств',
                 end_date: 'Дата окончания',
-                endless: 'Бессрочная'
+                permanent: 'Бессрочная',
+                set_permanent: 'Сделать скидку бессрочной'
             }
         },
         "password_form": {

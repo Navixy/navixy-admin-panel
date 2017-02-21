@@ -110,3 +110,39 @@ $defaultSizeFormBtnIcon: 16px;
 a{
     color: $main-color;
 }
+
+
+.href-btn {
+    color: $main-color, 'href-btn';
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 4px;
+    white-space: nowrap;
+    &.href-btn-pressed {
+        border-color: $main-color;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+    &.href-btn-icon-text-left {
+        .href-btn-icon-el {
+            top: 6px;
+            right: 0;
+            bottom: 0;
+            left: 5px;
+            position: absolute;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: $main-color !important;
+            width: 20px;
+        }
+
+        .href-btn-inner {
+            padding-left: 24px;
+        }
+    }
+
+    &.href-btn-underline {
+        text-decoration: underline;
+    }
+}

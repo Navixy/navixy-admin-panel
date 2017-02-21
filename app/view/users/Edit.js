@@ -41,13 +41,6 @@ Ext.define('NavixyPanel.view.users.Edit', {
             decimalPrecision: 1,
             name: 'discount'
         }, {
-            xtype: 'datefield',
-            fieldLabel: _l.get('users.fields.discount.end_date'),
-            emptyText: _l.get('users.fields.discount.endless'),
-            allowBlank: true,
-            submitFormat: 'Y-m-d',
-            name: 'discount_end_date'
-        }, {
             xtype: 'numberfield',
             fieldLabel: _l.get('users.fields.discount.min_trackers'),
             allowBlank: true,
@@ -55,6 +48,22 @@ Ext.define('NavixyPanel.view.users.Edit', {
             maxValue: 2147483647,
             allowDecimals: false,
             name: 'discount_min_trackers'
+        }, {
+            xtype: 'datefield',
+            fieldLabel: _l.get('users.fields.discount.end_date'),
+            emptyText: _l.get('users.fields.discount.permanent'),
+            allowBlank: true,
+            submitFormat: 'Y-m-d',
+            name: 'discount_end_date'
+        }, {
+            xtype: 'button',
+            baseCls: 'href-btn',
+            text: _l.get('users.fields.discount.set_permanent'),
+            maxWidth: 200,
+            margin: '0 0 0 205',
+            handler: function (btn) {
+                btn.up().down('datefield[name=discount_end_date]').setValue('');
+            }
         }])
     },
 
