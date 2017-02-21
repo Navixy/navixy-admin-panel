@@ -537,6 +537,13 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     hash: hash,
                     tracker_id: card.record.getId()
                 }).show();
+
+                this.trackerSettingsWindow.mon(Ext.getFirst('viewport'), {
+                    resize: function () {
+                        this.updateLayout();
+                    },
+                    scope: this.trackerSettingsWindow
+                });
             }, this);
         } else {
             this.closeTrackerSettingsWindow();
