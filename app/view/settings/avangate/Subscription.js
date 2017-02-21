@@ -86,7 +86,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 xtype: 'component',
                 cls: 'subscription_hint',
                 margin: '20 0 0 0',
-                html: localePart.get('subscription_hint')
+                html: localePart.get(Ext.isNavixy() ? 'subscription_hint' : 'paas_subscription_hint')
             };
 
         if (dealerData.demo_tariff && !dealerData.paas_activation_date) {

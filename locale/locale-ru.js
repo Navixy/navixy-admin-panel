@@ -852,6 +852,7 @@ Ext.define('Locale.locale-ru', {
             "pending_amount": "Pending amount: {0}",
             "current_balance": "Current balance: {0}",
             "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}"
@@ -860,6 +861,7 @@ Ext.define('Locale.locale-ru', {
             "title": "Email сообщения",
             "description": "Для надежной доставки почтовых уведомлений (сообщений о событиях, счетов и т.п.) и избежания попадания в спам-листы мы предлагаем использовать наш почтовый шлюз. Тем не менее вы можете выбрать и настроить свой почтовый шлюз:",
             "mandril_text": "Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в нашей <a href=\"https://www.navixy.com/ru/docs/admin-panel-docs/settings/email/navixy-email-gateway/\" target=\"_blank\">инструкции</a>, далее отправьте заявку на изменение отправителя на support@navixy.com",
+            "paas_mandril_text": "Если вы хотите указать отправителя, отличного от {0}, пожалуйста настройте <b>SPF</b> и <b>DKIM</b> записи для вашего домена, так как указано в инструкции, далее отправьте заявку на изменение отправителя в службу поддержки",
             "label": "Название шлюза",
             "default_label": "Ваш SMTP сервер",
             "encryption": {
@@ -994,6 +996,7 @@ Ext.define('Locale.locale-ru', {
             "monitoring_logo_clickable": "Клик по логотипу в интерфейсе открывает промо web-сайт",
             "monitoring_logo_clickable_hint": "",
             premium_gis: 'Подключите пакет "Премиум ГИС" от Navixy, включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
+            paas_premium_gis: 'Подключите пакет "Премиум ГИС", включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
             paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}'
         },

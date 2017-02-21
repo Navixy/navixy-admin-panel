@@ -144,7 +144,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 name: 'google_client_id'
             }, Config.google_key.allow ? undefined : {
                 xtype: 'component',
-                html: Ext.String.format(_l.get('settings.fields.premium_gis'), premium_gis_link)
+                html: Ext.String.format(_l.get('settings.fields').get(isNavixy ? 'premium_gis' : 'paas_premium_gis'), premium_gis_link)
             },
             {
                 xtype: 'blockheader',

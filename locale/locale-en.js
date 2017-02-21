@@ -869,6 +869,7 @@ Ext.define('Locale.locale-en', {
             "pending_amount": "Pending amount: {0}",
             "current_balance": "Current balance: {0}",
             "subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact us by email accounting@navixy.com",
+            "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}"
@@ -877,6 +878,7 @@ Ext.define('Locale.locale-en', {
             "title": "Email Gateways",
             "description": "To ensure the deliverability of emails from the platform to your users (notifications, alerts, invoices, etc.) and avoid anti-spam filters we offer several options on which email gateway to use.",
             "mandril_text": "If you want to use your customised email address in the ‘From’ field, please configure <b>SPF</b> and <b>DKIM</b> records for your domain as described in our <a href=\"https://www.navixy.com/docs/admin-panel-docs/settings/email/navixy-email-gateway/\" target=\"_blank\">manual</a> first, then send us your request to support@navixy.com with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request",
+            "paas_mandril_text": "If you want to use your customised email address in the ‘From’ field, please configure <b>SPF</b> and <b>DKIM</b> records for your domain as described in the manual first, then send us your request with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request",
             "label": "Server label",
             "default_label": "Your SMTP server",
             "encryption": {
@@ -1011,6 +1013,7 @@ Ext.define('Locale.locale-en', {
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
             "monitoring_logo_clickable_hint": "",
             premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
+            paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}'
         },

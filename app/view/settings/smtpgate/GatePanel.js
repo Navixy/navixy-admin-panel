@@ -163,7 +163,8 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
     },
 
     constructForm: function (data) {
-        var radiogroup = {
+        var locale = _l.get('settings.email_gateways'),
+            radiogroup = {
                 xtype: 'radiogroup',
                 vertical: true,
                 columns: 1,
@@ -178,7 +179,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
             items.push({
                 boxLabel: ['<span><b>', item.label, '</b>',
                            '<span class="gate-deafult-from">&lt;', item.default_from_address, '&gt;</span>',
-                           item.provider === 'mandrill_smtp' ? '<div class="gate_hint">' + Ext.String.format(_l.get('settings.email_gateways.mandril_text'), '<b>' + item.default_from_address + '</b>') + '</div>' : '',
+                           item.provider === 'mandrill_smtp' ? '<div class="gate_hint">' + Ext.String.format(locale.get(Ext.isNavixy() ? 'mandril_text' : 'paas_mandril_text'), '<b>' + item.default_from_address + '</b>') + '</div>' : '',
                            '</span>'].join(''),
                 name: 'gate_id',
                 leasable: true,
