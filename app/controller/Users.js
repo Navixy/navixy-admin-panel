@@ -419,6 +419,13 @@ Ext.define('NavixyPanel.controller.Users', {
                     renderTo: Ext.getBody(),
                     hash: hash
                 });
+
+                this.registrationPanel.mon(Ext.getFirst('viewport'), {
+                    resize: function (viewport, width, height) {
+                        this.setHeight(height);
+                    },
+                    scope: this.registrationPanel
+                });
             }, this);
         } else {
             this.closeActivationPanel();
