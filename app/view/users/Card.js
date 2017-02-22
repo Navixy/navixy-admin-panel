@@ -42,7 +42,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                     }
                 }
             } : {
-                html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') +  '">' +
+                html: '<a class="x-item-disabled" data-qtip="' + _l.get('users.card.links.wrong_config') + '">' +
                 _l.get('users.card.links.activate_tracker') + '</a>'
             });
         }
@@ -167,7 +167,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 },
                 {
                     title: _l.get('users.fields.discount.end_date'),
-                    value: recordData.discount_end_date ? Ext.Date.formatISO(recordData.discount_end_date, Ext.util.Format.dateFormat) : _l.get('users.fields.discount.endless')
+                    value: recordData.discount_end_date ? Ext.Date.formatISO(recordData.discount_end_date, Ext.util.Format.dateFormat) : _l.get('users.fields.discount.permanent')
                 },
                 {
                     title: _l.get('users.fields.discount.min_trackers'),

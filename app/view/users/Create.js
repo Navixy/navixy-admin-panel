@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.view.users.Create', {
         }, {
             xtype: 'datefield',
             fieldLabel: _l.get('users.fields.discount.end_date'),
-            emptyText: _l.get('users.fields.discount.endless'),
+            emptyText: _l.get('users.fields.discount.permanent'),
             allowBlank: true,
             submitFormat: 'Y-m-d',
             name: 'discount_end_date'
