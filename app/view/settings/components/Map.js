@@ -42,12 +42,11 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
                 name += Ext.getHintSymbol(googleMapsAlert + (disabled ? _l.get('settings.fields.domain_google_key_details') : ""));
             }
-
             result.push({
                 boxLabel: name,
                 name: 'maps',
                 cls: 'map-type-checkbox',
-                disabled: disabled || !!mapRecord.get('free'),
+                disabled: disabled || !mapRecord.get('free'),
                 inputValue: mapRecord.get('type'),
                 shadowField: true
             });
