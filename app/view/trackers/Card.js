@@ -374,6 +374,14 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 params: {
                     tracker_id: this.record.getId()
                 },
+                failure: function (err) {
+                    if (err.status.code === 214 && retryLink.timeout) {
+                        Ext.util.Cookies.clear('panel-need-to-retry-registration-' + this.getRecordData().id);
+                        clearTimeout(retryLink.timeout);
+                        retryLink.enable();
+                        retryLink.removeTip();
+                    }
+                },
                 scope: this
             });
 
