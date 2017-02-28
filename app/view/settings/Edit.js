@@ -580,10 +580,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getServiceItemsLeft: function () {
-        var domainPh = Ext.isNavixy() ? _l.get('settings.fields.domain_ph') : _l.get('settings.fields.paas_domain_ph'),
+        var isNavixy = Ext.isNavixy(),
+            domainPh = _l.get('settings.fields').get(isNavixy ? 'domain_ph' : 'paas_domain_ph'),
             domain = Ext.getStore('Dealer').first().get('id') + domainPh,
-            labelHint = this.getHintSymbol(_l.get('settings.fields.domain_hint')),
-            labelLink = Ext.isNavixy() ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '';
+            labelHint = this.getHintSymbol(_l.get('settings.fields').get(isNavixy ? 'domain_hint' : 'paas_domain_hint')),
+            labelLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '';
 
         return [
             {

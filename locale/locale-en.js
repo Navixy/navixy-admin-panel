@@ -957,6 +957,7 @@ Ext.define('Locale.locale-en', {
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
+            "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server.",
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
@@ -1172,7 +1173,9 @@ Ext.define('Locale.locale-en', {
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
+            "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
             "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy.',
+            "paas_google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package.',
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
@@ -1466,6 +1469,7 @@ Ext.define('Locale.locale-en', {
     "geolocation": {
         "disabled": "Disabled",
         "navixy": "Mozilla location services / @Navixy Telehouse",
+        "paas_navixy": "Mozilla location services / @Telehouse",
         "mozilla": "Mozilla location services",
         "combain": "Combain"
     },

@@ -24,6 +24,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     getMapsList: function () {
         var notPremium = !Ext.getStore('Dealer').isPremiumGis(),
+            googleMapsAlert = _l.get('settings.edit_form').get(Ext.isNavixy() ? 'google_maps_alert' : 'paas_google_maps_alert'),
             result = [],
             googleMapsTypes = this.googleMapsTypes;
 
@@ -39,7 +40,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                              '</span>'].join("");
                 }
 
-                name += Ext.getHintSymbol(_l.get('settings.edit_form.google_maps_alert') + (disabled ? _l.get('settings.fields.domain_google_key_details') : ""));
+                name += Ext.getHintSymbol(googleMapsAlert + (disabled ? _l.get('settings.fields.domain_google_key_details') : ""));
             }
 
             result.push({
@@ -106,6 +107,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         }
 
         var isNavixy = Ext.isNavixy(),
+            mapHint = _l.get('settings.edit_form').get(isNavixy ? 'maps_hint': 'paas_maps_hint'),
             googleKeyLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_google_key_link') + '" target="_blank">' + _l.get('settings.fields.domain_google_key_help') + '</a>' : '',
             google_client_id_link = isNavixy ? Ext.String.format(_l.get('settings.fields.google_client_id_link'), Config.google_key.get_key_link) : '',
             premium_gis_link = isNavixy ? Ext.String.format(_l.get('settings.fields.premium_gis_link'), Config.google_key.get_key_link) : '';
@@ -118,7 +120,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             {
                 xtype: 'checkboxgroup',
                 role: 'map_types_select',
-                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_hint')) + googleKeyLink,
+                fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(mapHint) + googleKeyLink,
                 allowBlank: false,
                 columns: 1,
                 vertical: true,
