@@ -1,6 +1,10 @@
+html{
+    overflow-y: auto !important;;
+}
+
 body {
     background-color: $baseBackgroundColor;
-    overflow-y: scroll !important;
+    overflow: visible !important;;
 }
 
 a, .link {

@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     hasSelection: false,
     showStatus: true,
-
+    stateId: 'TrackersList',
     getTexts: function () {
         return {
             emptyData: _l.get('trackers.list.empty_text'),
@@ -124,6 +124,9 @@ Ext.define('NavixyPanel.view.trackers.List', {
                     }
                 });
             }
+
+
+
         }
 
         return !this.noTBar && barConfig;
@@ -213,8 +216,8 @@ Ext.define('NavixyPanel.view.trackers.List', {
         btnTip.update(!assigned
                 ? Ext.String.format(_l.get('trackers.list.after_clone_success'), Ext.util.Format.units(succesed, 'trackers', true))
                 : assigned !== succesed
-                    ? Ext.String.format(_l.get('trackers.list.after_clone_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
-                    : Ext.String.format(_l.get('trackers.list.after_clone_success'), Ext.util.Format.units(succesed, 'trackers', true))
+                          ? Ext.String.format(_l.get('trackers.list.after_clone_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
+                          : Ext.String.format(_l.get('trackers.list.after_clone_success'), Ext.util.Format.units(succesed, 'trackers', true))
         );
     },
 
@@ -228,8 +231,8 @@ Ext.define('NavixyPanel.view.trackers.List', {
         btnTip.update(!assigned
                 ? Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
                 : assigned !== succesed
-                    ? Ext.String.format(_l.get('trackers.list.after_owner_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
-                    : Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
+                          ? Ext.String.format(_l.get('trackers.list.after_owner_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
+                          : Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
         );
     }
 });

@@ -2,8 +2,9 @@ Ext.define('NavixyPanel.view.Viewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widget.mainviewport',
     innerWidth: 1250,
-
-    autoScroll: true,
+    layout: {
+        type: 'auto'
+    },
     initComponent: function () {
 
         this.items = [

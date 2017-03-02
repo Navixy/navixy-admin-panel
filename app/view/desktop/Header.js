@@ -34,7 +34,8 @@ Ext.define('NavixyPanel.view.desktop.Header', {
 
                 items: [
                     {
-                        xtype: 'container',
+                        xtype: 'component',
+                        id: 'dealer-logo',
                         cls: 'header-logo',
                         width: 150,
                         height: 30,
@@ -47,13 +48,13 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         height: 78,
                         tpl: [
                             '<tpl if="legal_name">',
-                                '{legal_name}',
-                                '<div class="devices-info">',
-                                    '{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} ',
-                                    '<tpl if="active_limit">',
-                                        ' {[_l.get("dealer_info.last")]} {active_limit}',
-                                    '</tpl>',
-                                '</div>',
+                            '{legal_name}',
+                            '<div class="devices-info">',
+                            '{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} ',
+                            '<tpl if="active_limit">',
+                            ' {[_l.get("dealer_info.last")]} {active_limit}',
+                            '</tpl>',
+                            '</div>',
                             '</tpl>'
                         ],
                         data: dealerStore.first().getData()
@@ -65,7 +66,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         height: 78,
                         tpl: [
                             '<tpl if="block_status != \'NOT_BLOCKED\'">',
-                                '<div><span></span>{[_l.get("header_blocked." + values.block_status.toLowerCase())]}</div>',
+                            '<div><span></span>{[_l.get("header_blocked." + values.block_status.toLowerCase())]}</div>',
                             '</tpl>'
                         ],
                         data: dealerStore.first().getData()
@@ -112,7 +113,6 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                 xtype: 'mainmenu'
             }
         ];
-
 
         this.callParent(arguments);
     }

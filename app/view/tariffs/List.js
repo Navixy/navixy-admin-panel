@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.view.tariffs.List', {
 
     viewPageSize: 1000,
     showBBar: false,
+    stateId: 'TariffsList',
 
     getTopBar: function () {
 

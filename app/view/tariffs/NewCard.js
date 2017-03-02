@@ -936,6 +936,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         return data && data.device_type === 'tracker' && [
                 {
                     xtype: 'trackerslist',
+                    stateId: 'UserTrackersList',
                     title: _l.get('tariffs.card.tab_panel.trackers.title'),
                     noTBar: true,
                     showStatus: false,

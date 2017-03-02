@@ -9,6 +9,7 @@ Ext.define('NavixyPanel.view.users.List', {
     alias: 'widget.userslist',
 
     store: 'Users',
+    stateId: 'UsersList',
 
     getTexts: function () {
         return {

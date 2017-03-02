@@ -1,7 +1,10 @@
 (function () {
-    var stateProvider = Ext.supports.LocalStorage ?
-                        new Ext.state.LocalStorageProvider() :
-                        new Ext.state.CookieProvider();
+    var stateProviderConfig = {
+            prefix: 'panel-'
+        },
+        stateProvider = Ext.supports.LocalStorage ?
+                        Ext.create('Ext.state.LocalStorageProvider', stateProviderConfig) :
+                        Ext.create('Ext.state.CookieProvider', stateProviderConfig);
 
     Ext.state.Manager.setProvider(stateProvider);
 })(window);

@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.view.codes.List', {
     viewPageSize: 20,
 
     hasSelection: true,
+    stateId: 'CodesList',
 
     applyListeners: function () {
         this.on('beforeselect', this.handleCellSelect, this);
@@ -65,10 +66,10 @@ Ext.define('NavixyPanel.view.codes.List', {
         }
 
         btnTip.update(!assigned
-            ? Ext.String.format(_l.get('codes.list.after_create_success'), Ext.util.Format.units(succesed, 'codes', true))
-            : assigned !== succesed
-                ? Ext.String.format(_l.get('codes.list.after_edit_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
-                : Ext.String.format(_l.get('codes.list.after_edit_success'), Ext.util.Format.units(succesed, 'codes', true))
+                ? Ext.String.format(_l.get('codes.list.after_create_success'), Ext.util.Format.units(succesed, 'codes', true))
+                : assigned !== succesed
+                          ? Ext.String.format(_l.get('codes.list.after_edit_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'codes', true))
+                          : Ext.String.format(_l.get('codes.list.after_edit_success'), Ext.util.Format.units(succesed, 'codes', true))
         );
     },
 
@@ -129,6 +130,11 @@ Ext.define('NavixyPanel.view.codes.List', {
                     '->',
                     fagLink,
                     {
+                        xtype: 'button',
+                        text:'asdasd'         ,
+                        menu: this.headerCt.getColumnMenu(this.headerCt)
+                    },
+                    {
                         xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',
                         width: 200,
@@ -172,7 +178,8 @@ Ext.define('NavixyPanel.view.codes.List', {
         Ext.defer(function () {
             try {
                 this.getReloadBnt().enable();
-            } catch (e) {}
+            } catch (e) {
+            }
         }, 5000, this);
         this.fireEvent('reload');
     },
@@ -182,7 +189,7 @@ Ext.define('NavixyPanel.view.codes.List', {
         var codeTpl = [
                 '{code}',
                 '<tpl if="edited">',
-                    '<span class="red">{[_l.get("codes.list.edited_tip")]}</span>',
+                '<span class="red">{[_l.get("codes.list.edited_tip")]}</span>',
                 '</tpl>'
             ],
             codeDeviceTpl = [
@@ -196,16 +203,16 @@ Ext.define('NavixyPanel.view.codes.List', {
             ],
             codeFreeDaysTpl = [
                 '<tpl if="free_days">',
-                    '{free_days:daysEncode}',
+                '{free_days:daysEncode}',
                 '<tpl else>',
-                    '<span class="gray nopad">{[_l.get("no")]}</span>',
+                '<span class="gray nopad">{[_l.get("no")]}</span>',
                 '</tpl>'
             ],
             codeStatusDaysTpl = [
                 '<tpl if="activated">',
-                    '<span class="red nopad">{[_l.get("codes.fields.status.activated")]}</span> <a>{[Ext.util.Format.deviceLabelEncode(values.device_type, values.device_id)]}</a>',
+                '<span class="red nopad">{[_l.get("codes.fields.status.activated")]}</span> <a>{[Ext.util.Format.deviceLabelEncode(values.device_type, values.device_id)]}</a>',
                 '<tpl else>',
-                    '<span class="gray nopad">{[_l.get("codes.fields.status.no_activated")]}</span>',
+                '<span class="gray nopad">{[_l.get("codes.fields.status.no_activated")]}</span>',
                 '</tpl>'
             ];
 

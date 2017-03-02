@@ -40,6 +40,7 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             toggleHandler: this.changeTabButtonHandler,
             handler: this.changeTabButtonHandler,
             scope: this,
+            hrefTarget: '_self',
             padding: '5 15',
             margin: '0 1'
         };
@@ -96,17 +97,17 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     getSearcher: function () {
         return this.hasSearch
             ? [
-                {
-                    xtype: 'searchfield',
-                    margin: '0 5 0 0',
-                    listeners: {
-                        'search': {
-                            fn: this.fireSearch,
-                            scope: this
-                        }
+            {
+                xtype: 'searchfield',
+                margin: '0 5 0 0',
+                listeners: {
+                    'search': {
+                        fn: this.fireSearch,
+                        scope: this
                     }
                 }
-            ]
+            }
+        ]
             : false;
     },
 
@@ -125,7 +126,8 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
         var config = {
             text: sectionConfig.text || sectionConfig.name,
             sectionRole: sectionConfig.name,
-            sectionTarget: sectionConfig.target
+            sectionTarget: sectionConfig.target,
+            href: window.location.pathname + window.location.search + '#' + sectionConfig.target
         };
 
         this.getMenuBox().add(config);

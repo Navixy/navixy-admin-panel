@@ -93,6 +93,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             {
                 xtype: 'trackerslist',
                 title: _l.get('users.card.tab_panel.trackers.title'),
+                stateId: 'UserTrackersList',
                 noTBar: true,
                 filter: {
                     user_id: this.getRecordId()

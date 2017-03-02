@@ -57,8 +57,26 @@ Ext.define('NavixyPanel.controller.Desktop', {
                     fn: this.registerSearch,
                     single: true
                 }
+            },
+
+            navixypaging: {
+                change: this.scrollGridToTop
             }
         });
+    },
+
+    scrollGridToTop: function (toolbar, pageOptions) {
+        console.log(arguments);
+        if (!pageOptions || pageOptions.currentPage === 1) {
+            return;
+        }
+
+        var grid = toolbar.up('grid');
+        if (grid) {
+            grid.el.dom.scrollIntoView();
+        } else {
+            Ext.getBody().scrollTo('top', 0);
+        }
     },
 
     onMenuDeselect: function () {

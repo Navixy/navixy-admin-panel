@@ -15,7 +15,6 @@ Ext.define('NavixyPanel.utils.store.NavixyPaging', {
     inputItemWidth: 42,
     defaultButtonUI: 'transparent',
     border: 0,
-
     // Override items of toolbar
     getPagingItems: function() {
         var me = this;

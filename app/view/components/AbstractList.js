@@ -25,9 +25,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     ui: 'light',
 
     store: null,
-
-    enableColumnHide: false,
-    enableColumnMove: false,
+    stateful: true,
     enableColumnResize: true,
 
     disableSelection: true,
@@ -76,10 +74,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.bbar = this.getBottomBar();
 
         this.columns = {
-            items: Ext.Array.merge(this.getToolsColumns(), this.getColumnsConfig()),
-            defaults: {
-                menuDisabled: true
-            }
+            items: Ext.Array.merge(this.getToolsColumns(), this.getColumnsConfig())
         };
 
         this.addSelection();
@@ -95,7 +90,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
             this.selModel = Ext.create('Ext.selection.CheckboxModel', {
                 checkOnly: true,
-                injectCheckbox: this.hasEdit ? 1: 0,
+                injectCheckbox: this.hasEdit ? 1 : 0,
 
                 renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
                     var baseCSSPrefix = Ext.baseCSSPrefix;
@@ -124,7 +119,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                         selected = me.selected;
                         hdSelectStatus = true;
 
-                        for (i = 0, len = selected.getCount(); i < len; ++i) {
+                        for (i = 0, len = selected.getCount() ; i < len ; ++i) {
                             if (!me.storeHasSelected(selected.getAt(i))) {
                                 break;
                             }
@@ -168,7 +163,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     ? [config]
                     : config;
 
-            Ext.iterate(this.filter, function(name, value) {
+            Ext.iterate(this.filter, function (name, value) {
                 if (name === 'root') {
                     return true;
                 }
@@ -213,6 +208,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             {
                 xtype: 'toolcolumn',
                 width: 40,
+                hideable: false,
+                draggable: false,
+                menuDisabled: true,
                 action: 'edit',
                 tip: this.texts.editToolTip
             }
@@ -240,8 +238,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         }
 
         if (this.hasFilter) {
-            barConfig.items.push('->');
-            barConfig.items.push({
+            barConfig.items.push('->', {
                 xtype: 'navixylistfilter',
                 margin: '0 -2 0 0',
                 width: 200,
@@ -272,7 +269,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     applyListeners: function () {
         this.on('cellclick', this.handleCellClick, this);
-        this.on('afterrender', this.applySearchView, this);
 
         if (this.hasSelection) {
             this.on('beforeselect', this.handleCellSelect, this);
@@ -283,6 +279,31 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     handleCellSelect: Ext.emptyFn,
     afterCellSelect: Ext.emptyFn,
 
+    afterRender: function () {
+        this.callParent(arguments);
+        this.addColumnsMenuButton();
+        this.applySearchView();
+    },
+
+    addColumnsMenuButton: function () {
+        var toolbar = this.down('toolbar[dock=top]'),
+            menuBtn = {
+                xtype: 'button',
+                text: this.headerCt.columnsText,
+                margin: '0 5 0 0',
+                menu: this.headerCt.getColumnMenu(this.headerCt)
+            };
+        if (!toolbar) {
+            return;
+        }
+        if (toolbar.down('navixylistfilter')) {
+            toolbar.insert(toolbar.items.getCount() - 1, menuBtn);
+        } else {
+            toolbar.add(menuBtn);
+        }
+
+    },
+
     applySearchView: function () {
         if (this.search || this.storeSearch) {
             this.store.on('load', function () {
@@ -290,7 +311,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                     moduleTitle = Ext.String.format('<span class="search-title">{0}</span>', this.texts.searchTitle);
 
                 this.setTitle(
-                    Ext.String.format(resultsCnt ? this.texts.searchTitleTpl: this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
+                    Ext.String.format(resultsCnt ? this.texts.searchTitleTpl : this.texts.searchEmptyTitleTpl, moduleTitle, Ext.util.Format.units(resultsCnt, 'entries', true))
                 );
 
                 if (resultsCnt) {
