@@ -66,7 +66,6 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     scrollGridToTop: function (toolbar, pageOptions) {
-        console.log(arguments);
         if (!pageOptions || pageOptions.currentPage === 1) {
             return;
         }
