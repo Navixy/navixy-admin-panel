@@ -156,6 +156,9 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('users.fields.creation_date'),
                     value: Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat)
+                },  {
+                    title: _l.get('users.fields.trackers_count'),
+                    value: recordData.trackers_count
                 },
                 {
                     title: _l.get('users.fields.phone'),

@@ -83,6 +83,10 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'activationpanel': {
                 close: this.closeActivationPanel
+            },
+
+            'checkbox[name=only_active]': {
+                change: this.refreshUsersStore
             }
         });
 
@@ -126,6 +130,10 @@ Ext.define('NavixyPanel.controller.Users', {
             text: _l.get('users.menu_text'),
             target: 'users'
         };
+    },
+
+    refreshUsersStore: function (cb) {
+        this.getUsersList().store.load();
     },
 
     registerMenu: function (config) {

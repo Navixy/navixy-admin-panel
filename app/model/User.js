@@ -112,6 +112,9 @@ Ext.define('NavixyPanel.model.User', {
         },
 
         {
+            name: 'trackers_count',
+            type: 'number'
+        }, {
             name: 'discount',
             type: 'number'
         },

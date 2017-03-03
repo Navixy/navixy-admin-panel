@@ -72,30 +72,31 @@ Ext.define('Locale.Manager', {
         {
             id: 'es_ES',
             name: 'es',
-            text: 'Spanish - Español',
+            text: 'Español',
             alias: ['es', 'es_ES', 'Español'],
             rtl: false
         },
         {
+            id: 'el_GR',
+            name: 'el',
+            text: 'Ελληνικά',
+            alias: ['el', 'el_GR', 'Ελληνικά'],
+            rtl: false
+        }, {
             id: 'de_DE',
             name: 'de',
             text: 'Deutsch',
             alias: ['de', 'de_DE', 'de_AT'],
             rtl: false
-        }, {
+        },
+        {
             id: 'fr_FR',
             name: 'fr',
             text: 'Français',
             alias: ['fr', 'fr_FR', 'Français'],
             rtl: false
         },
-        {
-            id: 'ru_RU',
-            name: 'ru',
-            text: 'Русский',
-            alias: ['ru', 'ru_RU', 'Русский'],
-            rtl: false
-        },
+
         {
             id: 'uk_UA',
             name: 'uk',
@@ -115,25 +116,41 @@ Ext.define('Locale.Manager', {
             text: 'Português Brasileiro',
             alias: ['pt_BR', 'pt_BR', 'Português Brasileiro'],
             rtl: false
+        },
+        {
+            id: 'ro_RO',
+            name: 'ro',
+            text: 'Românesc',
+            alias: ['ro', 'ro_RO', 'Românesc'],
+            rtl: false
+        }, {
+            id: 'ru_RU',
+            name: 'ru',
+            text: 'Русский',
+            alias: ['ru', 'ru_RU', 'Русский'],
+            rtl: false
         }, {
             id: 'tr_TR',
             name: 'tr',
             text: 'Türkçe',
             alias: ['tr', 'tr_TR', 'Türkçe'],
             rtl: false
-        }, {
-            id: 'ro_RO',
-            name: 'ro',
-            text: 'Românesc',
-            alias: ['ro', 'ro_RO', 'Românesc'],
-            rtl: false
         },
+
         {
             id: 'ar_AR',
             name: 'ar',
-            text: 'Arabic - العربية',
+            text: 'Arabic',
             alias: ['ar', 'ar_AR', 'ar_AR'],
-            rtl: true
+            rtl: false
+        },
+
+        {
+            id: 'th',
+            name: 'th',
+            text: 'ไทย',
+            alias: ['th', 'th_TH'],
+            rtl: false
         }
     ],
 

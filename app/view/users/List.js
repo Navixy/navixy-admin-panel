@@ -18,22 +18,43 @@ Ext.define('NavixyPanel.view.users.List', {
         };
     },
 
+    getTopBar: function () {
+        var toolbar = this.callParent(arguments);
+        Ext.Array.insert(toolbar.items, 1, [Ext.apply({
+            xtype: 'checkbox',
+            boxLabel: _l.get('users.show_only_active_users'),
+            name: 'only_active',
+            margin: '0 0 0 10',
+            stateful: true,
+            stateId: 'ShowOnlyActiveUsers',
+            stateEvents: ['change'],
+            inputValue: true,
+            getState: function () {
+                return {
+                    checked: this.getValue()
+                }
+            }
+        }, Ext.state.Manager.get('ShowOnlyActiveUsers') || {})]);
+
+        return toolbar;
+    },
+
     getColumnsConfig: function () {
         var userCardTpl = [
                 '<span class="icon {legal_type}"></span>',
-                    '<a>',
-                        '<tpl if="legal_name && legal_type == \'legal_entity\'">',
-                            '{legal_name:htmlEncode}',
-                        '<tpl else>',
-                            '{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}',
-                        '</tpl>',
-                    '</a>',
-                '<tpl if="!activated">',
-                    '<span class="scaled red">{[_l.get("users.fields.activated_short.status_false")]}</span>',
+                '<a>',
+                '<tpl if="legal_name && legal_type == \'legal_entity\'">',
+                '{legal_name:htmlEncode}',
                 '<tpl else>',
-                    '<tpl if="!verified">',
-                        '<span class="scaled green">{[_l.get("users.fields.activated_short.status_no")]}</span>',
-                    '</tpl>',
+                '{last_name:htmlEncode} {first_name:htmlEncode} {middle_name:htmlEncode}',
+                '</tpl>',
+                '</a>',
+                '<tpl if="!activated">',
+                '<span class="scaled red">{[_l.get("users.fields.activated_short.status_false")]}</span>',
+                '<tpl else>',
+                '<tpl if="!verified">',
+                '<span class="scaled green">{[_l.get("users.fields.activated_short.status_no")]}</span>',
+                '</tpl>',
                 '</tpl>',
                 '</a>'
             ],
@@ -42,11 +63,11 @@ Ext.define('NavixyPanel.view.users.List', {
             bonusTpl = '{bonus:bonusEncode}',
             statusTpl = [
                 '<tpl if="verified">',
-                    '<tpl if="verified">',
-                        '{[_l.get("users.fields.activated_short.status_true")]}',
-                    '<tpl else>',
-                        '{[_l.get("users.fields.activated_short.status_no")]}',
-                    '</tpl>',
+                '<tpl if="verified">',
+                '{[_l.get("users.fields.activated_short.status_true")]}',
+                '<tpl else>',
+                '{[_l.get("users.fields.activated_short.status_no")]}',
+                '</tpl>',
 
                 '<tpl else>',
                 '<span class="gray nopad">{[_l.get("users.fields.activated_short.status_false")]}</span>',
@@ -78,7 +99,13 @@ Ext.define('NavixyPanel.view.users.List', {
                 text: _l.get('users.fields.bonus'),
                 xtype: 'templatecolumn',
                 tpl: bonusTpl,
+                hidden: true,
                 dataIndex: 'bonus',
+                width: 80
+            }, {
+                text: _l.get('users.fields.trackers_count'),
+                dataIndex: 'trackers_count',
+                align: 'center',
                 width: 80
             },
             {
@@ -90,6 +117,14 @@ Ext.define('NavixyPanel.view.users.List', {
                 text: _l.get('users.fields.phone'),
                 dataIndex: 'phone',
                 flex: 1
+            }, {
+                text: _l.get('users.fields.creation_date'),
+                dataIndex: 'creation_date',
+                renderer: function (value) {
+                    return Ext.Date.formatISO(value, Ext.util.Format.dateFormat);
+                },
+                hidden: true,
+                width: 120
             },
             {
                 text: _l.get('users.fields.post_city'),

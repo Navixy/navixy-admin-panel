@@ -390,6 +390,7 @@ Ext.define('Locale.locale-ru', {
     "index": {"menu_text": "Главная"},
     "users": {
         "menu_text": "Пользователи",
+        show_only_active_users: 'Отображать только активных',
         "create_form": {
             "title": "Новый пользователь",
             "main_fields": "Основные данные",
@@ -439,6 +440,7 @@ Ext.define('Locale.locale-ru', {
             "legal_entity": "Юридическое лицо",
             "individual": "Физическое лицо",
             "full_name": "Ф. И. О.",
+            "trackers_count": "Устройств",
             "login_short": "Логин",
             "user_id": "ID",
             "user_id_exp": "Номер пользователя",

@@ -130,11 +130,6 @@ Ext.define('NavixyPanel.view.codes.List', {
                     '->',
                     fagLink,
                     {
-                        xtype: 'button',
-                        text:'asdasd'         ,
-                        menu: this.headerCt.getColumnMenu(this.headerCt)
-                    },
-                    {
                         xtype: 'navixylistfilter',
                         margin: '0 -2 0 0',
                         width: 200,

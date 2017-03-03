@@ -17,5 +17,19 @@ Ext.define('NavixyPanel.store.Users', {
             property: 'id',
             direction: 'ASC'
         }
-    ]
+    ],
+    proxy: {
+        type: 'navixy',
+        buildParams: function (request) {
+
+            var params = request.jsonData || request.params,
+                onlyActiveUsersCfg = Ext.state.Manager.get('ShowOnlyActiveUsers');
+
+            if (onlyActiveUsersCfg && onlyActiveUsersCfg.checked) {
+                params.hide_inactive = true;
+            }
+
+            return params;
+        }
+    }
 });

@@ -395,6 +395,7 @@ Ext.define('Locale.locale-en', {
     "users": {
         "menu_text": "Users",
         "create_btn": "New user",
+        show_only_active_users: 'Show only active users',
         "create_form": {
             "title": "New user",
             "main_fields": "General information",
@@ -444,6 +445,7 @@ Ext.define('Locale.locale-en', {
             "legal_entity": "Legal entity",
             "individual": "Individual",
             "full_name": "Full Name",
+            "trackers_count": "Devices",
             "login_short": "Login",
             "user_id": "ID",
             "user_id_exp": "User number",
