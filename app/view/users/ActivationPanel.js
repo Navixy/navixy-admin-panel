@@ -45,9 +45,10 @@ Ext.define('NavixyPanel.view.users.ActivationPanel', {
 
     beforeClosePanel: function (messageEvent) {
         var domain = Ext.getStore('Dealer').first().get('domain'),
+            paasDomain = Config.links.paasCompanyUrl,
             data = JSON.parse(messageEvent.data);
 
-        if (data.action === 'closeregisterpanel' && data.host === domain) {
+        if (data.action === 'closeregisterpanel' && data.host === (Ext.isNavixy() ? paasDomain : domain)) {
             this.fireEvent('close');
         }
     }

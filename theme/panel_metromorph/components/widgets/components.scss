@@ -103,7 +103,7 @@
 
 .slidable-panel {
     background-color: $baseElementActiveColor;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     bottom: 0;
     right: 0;
