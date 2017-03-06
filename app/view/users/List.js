@@ -20,21 +20,24 @@ Ext.define('NavixyPanel.view.users.List', {
 
     getTopBar: function () {
         var toolbar = this.callParent(arguments);
-        Ext.Array.insert(toolbar.items, 1, [Ext.apply({
-            xtype: 'checkbox',
-            boxLabel: _l.get('users.show_only_active_users'),
-            name: 'only_active',
-            margin: '0 0 0 10',
-            stateful: true,
-            stateId: 'ShowOnlyActiveUsers',
-            stateEvents: ['change'],
-            inputValue: true,
-            getState: function () {
-                return {
-                    checked: this.getValue()
+
+        if (toolbar) {
+            Ext.Array.insert(toolbar.items, 1, [Ext.apply({
+                xtype: 'checkbox',
+                boxLabel: _l.get('users.show_only_active_users'),
+                name: 'only_active',
+                margin: '0 0 0 10',
+                stateful: true,
+                stateId: 'ShowOnlyActiveUsers',
+                stateEvents: ['change'],
+                inputValue: true,
+                getState: function () {
+                    return {
+                        checked: this.getValue()
+                    }
                 }
-            }
-        }, Ext.state.Manager.get('ShowOnlyActiveUsers') || {})]);
+            }, Ext.state.Manager.get('ShowOnlyActiveUsers') || {})]);
+        }
 
         return toolbar;
     },
