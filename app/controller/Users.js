@@ -86,7 +86,10 @@ Ext.define('NavixyPanel.controller.Users', {
             },
 
             'checkbox[name=only_active]': {
-                change: this.refreshUsersStore
+                change: {
+                    fn: this.refreshUsersStore,
+                    buffer: 100
+                }
             }
         });
 

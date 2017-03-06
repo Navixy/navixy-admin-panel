@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.view.bundles.List', {
 
     store: 'Bundles',
 
-    doRefresh : function(){
+    doRefresh: function () {
         var me = this,
             current = me.store.currentPage;
 
@@ -18,7 +18,7 @@ Ext.define('NavixyPanel.view.bundles.List', {
             me.store.loadPage(current);
         }
     },
-    
+
     getTexts: function () {
         return {
             createBtnText: _l.get('bundles.list.scan_btn_text'),
@@ -31,14 +31,20 @@ Ext.define('NavixyPanel.view.bundles.List', {
         var me = this;
         return this.hasEdit
             ? [
-                {
-                    xtype: 'toolcolumn',
-                    width: 31,
-                    action: 'edit',
-                    tip: this.texts.editToolTip
-                },
             {
                 xtype: 'toolcolumn',
+                hideable: false,
+                draggable: false,
+                menuDisabled: true,
+                width: 31,
+                action: 'edit',
+                tip: this.texts.editToolTip
+            },
+            {
+                xtype: 'toolcolumn',
+                hideable: false,
+                draggable: false,
+                menuDisabled: true,
                 width: 31,
                 action: 'remove',
                 renderer: function (value, meta, record) {
