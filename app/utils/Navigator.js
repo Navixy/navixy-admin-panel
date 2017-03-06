@@ -127,8 +127,9 @@ Ext.define('NavixyPanel.utils.Navigator', {
 
     getApplicationLink: function (hash, app, params) {
         var domain = Ext.getStore('Dealer').first().get('domain'),
+            paasDomain = Config.links.paasCompanyUrl,
             data = Ext.apply({
-                company_url: domain || 'my.gdemoi.ru',
+                company_url:  Ext.isNavixy() ? paasDomain : domain || paasDomain,
                 hash: hash || '',
                 app: app
             }, params || {});
