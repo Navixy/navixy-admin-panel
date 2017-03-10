@@ -44,6 +44,7 @@ Ext.application({
         'NavixyPanel.controller.Bundles',
         'NavixyPanel.controller.Settings',
         'NavixyPanel.controller.Accounting',
-        'NavixyPanel.controller.Payments'
+        'NavixyPanel.controller.Payments',
+        'NavixyPanel.controller.Reports'
     ]
 });

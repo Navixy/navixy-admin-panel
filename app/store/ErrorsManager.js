@@ -50,8 +50,11 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                 callback: this.redirectToAuth
             },
             {
-                codes: [7, 12, 13],
+                codes: [12, 13],
                 callback: Ext.emptyFn
+            }, {
+                codes: [7],
+                callback: this.showInvalidParameterMsg
             },
             {
                 codes: [215],
@@ -142,6 +145,21 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
             msg: desc || localeErrorPart
         });
     },
+    getInvalidParamsMsgs: function (code, errors) {
+        try {
+            var localeErrorPart = _l.get('errors')[code],
+                msgs = [];
+
+            Ext.each(errors, function (error) {
+                msgs.push(localeErrorPart.errors[error.parameter] || (error.parameter + ': ' + error.error));
+            }, this);
+
+            return msgs;
+        } catch (e) {
+            Ext.logger(e.stack);
+        }
+
+    },
 
     showErrorMessage: function (code, parameters, response) {
         var desc = response && response.status && response.status.description,
@@ -161,20 +179,10 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
     },
 
     showInvalidParameterMsg: function (code, parameters, response) {
-        var localeErrorPart = _l.get('errors')[code],
-            msg = [],
-            needToShow = false;
-
-        Ext.each(response.errors, function (error) {
-            if (localeErrorPart.errors[error.parameter]) {
-                needToShow = true;
-            }
-            msg.push('<p>', localeErrorPart.errors[error.parameter], '</p>');
-        }, this);
-
-        Ext.Notice.msg({
-            title: needToShow ? localeErrorPart.title : null,
-            msg: needToShow ? msg.join('') : _l.get('errors')[code].default_msg
+        Ext.MessageBox.show({
+            width: 300,
+            title: _l.get('errors')[code].title,
+            msg: '<p>' + this.getInvalidParamsMsgs(code, response.errors).join('</p><p>') + '</p>'
         });
     },
 

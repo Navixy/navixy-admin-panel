@@ -56,7 +56,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
 
         Ext.iterate(handlers, function (name, eventConfig) {
             var eventName = this.getHandlerEventConfig(name), // Get event navigation key
-                eventAccess = Ext.checkPermission(this.getModuleName(), eventConfig.access || false), // Check user permissions for handle access
+                eventAccess = Ext.checkPermission(eventConfig.entity || this.getModuleName(), eventConfig.access || false), // Check user permissions for handle access
                 caller, handleCaller, callConfig;
 
             if (eventName && name !== 'scope') {

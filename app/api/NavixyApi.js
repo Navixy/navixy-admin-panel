@@ -550,6 +550,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'dealer/settings/notification/email'
         });
+    },
+
+    getActiveTrackersStat: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'tracker/active/history'
+        });
     }
 
 });

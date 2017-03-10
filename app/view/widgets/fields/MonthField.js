@@ -1,12 +1,12 @@
 Ext.define('NavixyPanel.view.widgets.fields.MonthField', {
-    extend:'Ext.form.field.Date',
+    extend: 'Ext.form.field.Date',
     requires: ['Ext.picker.Month'],
 
     alias: 'widget.monthfield',
 
     selectMonth: null,
 
-    createPicker: function() {
+    createPicker: function () {
         var me = this,
             format = Ext.String.format;
 
@@ -27,39 +27,56 @@ Ext.define('NavixyPanel.view.widgets.fields.MonthField', {
             format: me.format,
             showToday: me.showToday,
             startDay: me.startDay,
+            setMaxDate: Ext.emptyFn,
+            setMinDate: Ext.emptyFn,
             minText: format(me.minText, me.formatDate(me.minValue)),
             maxText: format(me.maxText, me.formatDate(me.maxValue)),
             single: true,
             listeners: {
-                select:        { scope: me,   fn: me.onSelect     },
-                monthdblclick: { scope: me,   fn: me.onOKClick     },
-                yeardblclick:  { scope: me,   fn: me.onOKClick     },
-                OkClick:       { scope: me,   fn: me.onOKClick     },
-                CancelClick:   { scope: me,   fn: me.onCancelClick }
+                select: {
+                    scope: me,
+                    fn: me.onSelect
+                },
+                monthdblclick: {
+                    scope: me,
+                    fn: me.onOKClick
+                },
+                yeardblclick: {
+                    scope: me,
+                    fn: me.onOKClick
+                },
+                OkClick: {
+                    scope: me,
+                    fn: me.onOKClick
+                },
+                CancelClick: {
+                    scope: me,
+                    fn: me.onCancelClick
+                }
             },
             keyNavConfig: {
-                esc: function() {
+                esc: function () {
                     me.collapse();
                 }
             }
         });
     },
 
-    onSelect: function(m, d) {
+    onSelect: function (m, d) {
         var me = this;
-        me.selectMonth = new Date(( d[0]+1 ) +'/1/'+d[1]);
+        me.selectMonth = new Date(( d[0] + 1 ) + '/1/' + d[1]);
     },
 
-    onOKClick: function() {
+    onOKClick: function () {
         var me = this;
-        if( me.selectMonth ) {
+        if (me.selectMonth) {
             me.setValue(me.selectMonth);
             me.fireEvent('select', me, me.selectMonth);
         }
         me.collapse();
     },
 
-    onCancelClick: function() {
+    onCancelClick: function () {
         var me = this;
         me.selectMonth = null;
         me.collapse();

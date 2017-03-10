@@ -26,8 +26,8 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
         totalProperty: 'count'
     },
 
-    doRequest: function(operation, callback, scope) {
-        var writer  = this.getWriter(),
+    doRequest: function (operation, callback, scope) {
+        var writer = this.getWriter(),
             request = this.buildRequest(operation),
             method = this.getMethod(operation),
             params, config;
@@ -59,15 +59,15 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
     createSuccessCallback: function (request, operation, callback, scope) {
         var me = this;
 
-        return function(data, params, response) {
-            me.processResponse(true, operation, request, Ext.isFunction(me.responseEncodeFn) ? me.responseEncodeFn(data) : data , callback, scope);
+        return function (data, params, response) {
+            me.processResponse(true, operation, request, Ext.isFunction(me.responseEncodeFn) ? me.responseEncodeFn(data) : data, callback, scope);
         };
     },
 
     createFailureCallback: function (request, operation, callback, scope) {
         var me = this;
 
-        return function(data, params, response) {
+        return function (data, params, response) {
             me.processResponse(false, operation, request, Ext.isFunction(me.responseEncodeFn) ? me.responseEncodeFn(data) : data, callback, scope);
         };
     },
@@ -76,7 +76,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
         return false;
     },
 
-    getParams: function(operation) {
+    getParams: function (operation) {
 
         var params = this.callParent(arguments);
 
@@ -87,14 +87,14 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
         return Ext.apply(params, this.encodeSpecialFilters(operation.filters));
     },
 
-    encodeFilters: function(filters) {
+    encodeFilters: function (filters) {
         var min = [],
             length = filters.length,
             i = 0,
             result = null;
 
-        for (; i < length; i++) {
-            if (filters[i].property === this.apiFilterProperty){
+        for (; i < length ; i++) {
+            if (filters[i].property === this.apiFilterProperty) {
                 return filters[i].value;
             }
         }
@@ -107,8 +107,8 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
             i = 0,
             result = {};
 
-        for (; i < length; i++) {
-            if (Ext.Array.indexOf(this.apiFilters, filters[i].property) > -1){
+        for (; i < length ; i++) {
+            if (Ext.Array.indexOf(this.apiFilters, filters[i].property) > -1) {
                 result[filters[i].property] = filters[i].value;
             }
         }

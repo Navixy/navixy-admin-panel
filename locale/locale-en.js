@@ -1635,5 +1635,16 @@ Ext.define('Locale.locale-en', {
     },
     "map_type_label": "Map",
     "premium_gps_warning_tip": "Available on Premium GIS",
-    "premium_gps_warning_error": "This value available only on Premium GIS"
+    "premium_gps_warning_error": "This value available only on Premium GIS",
+
+    reports: {
+        active_trackers: {
+            empty: 'There are no active trackers',
+            title: 'Active devices',
+            count_label: 'Devices',
+            month: 'Date',
+            open_tracker: 'Go to device'
+        },
+        menu_text: 'Reports'
+    }
 });

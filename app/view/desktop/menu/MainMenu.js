@@ -122,7 +122,6 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     },
 
     addSection: function (sectionConfig) {
-
         var config = {
             text: sectionConfig.text || sectionConfig.name,
             sectionRole: sectionConfig.name,

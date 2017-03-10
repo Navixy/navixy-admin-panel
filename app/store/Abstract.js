@@ -29,6 +29,11 @@ Ext.define('NavixyPanel.store.Abstract', {
     apiCall: null,
     recordAPI: null,
 
+    onException: function (proxy, response) {
+        console.log(arguments);
+        Ext.API.errorsManager.fireError(response.status.code, {}, response);
+    },
+
     constructor: function () {
         var me = this;
 
@@ -139,7 +144,7 @@ Ext.define('NavixyPanel.store.Abstract', {
                         if (--aCnt === 0) {
                             fn.call(scope, record);
                         }
-                    }, this, false, function() {
+                    }, this, false, function () {
                         if (--aCnt === 0) {
                             fn.call(scope, record);
                         }
@@ -157,7 +162,7 @@ Ext.define('NavixyPanel.store.Abstract', {
 
     createLoadCallback: function (fn, scope, loadAssociations) {
         var me = this;
-        return function(recordData) {
+        return function (recordData) {
             me.loadRecordDep(
                 me.model
                     ? Ext.create(me.model, recordData)

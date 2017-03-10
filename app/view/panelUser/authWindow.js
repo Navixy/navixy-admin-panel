@@ -28,6 +28,7 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
             cls: 'auth-header',
             height: 60
         };
+
         this.items = [
             {
                 xtype: 'form',
@@ -61,7 +62,6 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
 
                         minLength: 1,
                         maxLength: 50,
-                        vtype: 'alphanum',
                         allowBlank: false,
 
                         emptyText: _l.get('auth.login'),
