@@ -134,7 +134,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
                 app: app
             }, params || {});
 
-        return !!domain && !!app && new Ext.Template(Config.links.monUrlTpl).apply(data);
+        return !!domain && !!app && new Ext.Template(Config.links.appUrlTpl).apply(data);
     },
 
     getLogin: function () {
