@@ -32,6 +32,7 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
         enableGroupingMenu: false,
         startCollapsed: true
     })],
+
     viewConfig: {
         autoScroll: false,
         stripeRows: false,
@@ -54,7 +55,6 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
             padding: '5 0',
             defaults: {
                 xtype: 'monthfield',
-
                 submitFormat: 'Y-m',
                 editable: false,
                 format: 'F Y',
@@ -70,7 +70,6 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                         toField.isValid();
                         this.isValid();
                         this.up().getForm().checkValidity();
-
                     }
                 },
                 value: moment().toDate()
@@ -113,6 +112,10 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
             to: to.getSubmitValue()
         });
 
+        btn.disable();
+        Ext.defer(function () {
+            btn.enable();
+        }, 1000);
     },
 
     addColumnsMenuButton: Ext.emptyFn,

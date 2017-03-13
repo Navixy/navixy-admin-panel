@@ -38,22 +38,22 @@ Ext.define('NavixyPanel.controller.Reports', {
                 access: 'read'
             }
         });
-
-        console.log(this.menuConfig);
     },
 
     registerMenu: function () {
+        if (Ext.checkPermission('trackers', 'read')) {
 
-        this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
+            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
 
-        var menuText = this.menuConfig.text || this.getModuleName(),
-            menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+            var menuText = this.menuConfig.text || this.getModuleName(),
+                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
 
-        this.application.fireEvent('menuregister', {
-            name: this.getModuleName(),
-            text: menuText,
-            target: menuTarget
-        });
+            this.application.fireEvent('menuregister', {
+                name: this.getModuleName(),
+                text: menuText,
+                target: menuTarget
+            });
+        }
     },
 
     handleReports: function () {
