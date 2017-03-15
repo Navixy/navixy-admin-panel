@@ -543,7 +543,8 @@ Ext.define('Locale.locale-en', {
         "select_error": "Tracker or clone was already bounded to selected user",
         "select": {
             "title": "Select user"
-        }
+        },
+        "download_btn": "Download list"
     },
     "trackers": {
         "menu_text": "Trackers",

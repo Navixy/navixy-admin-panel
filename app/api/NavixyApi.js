@@ -101,6 +101,17 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getUsersListDownloadLink: function (config) {
+        var apiLink = this.getRequestUrl({
+                action: 'export',
+                handler: 'user'
+            }),
+            hash = this.authKey;
+
+        return apiLink + '/?hash=' + hash +
+            '&' + Ext.urlEncode(config.params);
+    },
+
     getUser: function (userId, callback, failure, scope) {
         this.sendRequest({
             params: {

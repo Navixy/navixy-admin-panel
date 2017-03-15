@@ -34,12 +34,35 @@ Ext.define('NavixyPanel.view.users.List', {
                 getState: function () {
                     return {
                         checked: this.getValue()
-                    }
+                    };
                 }
             }, Ext.state.Manager.get('ShowOnlyActiveUsers') || {})]);
         }
 
         return toolbar;
+    },
+
+    getBottomBar: function () {
+        var bbar = this.callParent(arguments);
+
+        bbar.items.unshift({
+            xtype: 'button',
+            text: _l.get('users.download_btn'),
+            menu: {
+                xtype: 'menu',
+                cls: 'download-menu',
+                items: Ext.Array.map(['xlsx', 'csv'], function (format) {
+                    return {
+                        text: format.toUpperCase(),
+                        name: format,
+                        handler: this.fireDownload,
+                        scope: this
+                    };
+                }, this)
+            }
+        });
+
+        return bbar;
     },
 
     getColumnsConfig: function () {
@@ -139,5 +162,9 @@ Ext.define('NavixyPanel.view.users.List', {
                 flex: 1
             }
         ];
+    },
+
+    fireDownload: function (cmp) {
+        this.fireEvent('downloaduserlist', this, cmp.name);
     }
 });

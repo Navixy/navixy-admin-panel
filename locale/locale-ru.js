@@ -535,7 +535,8 @@ Ext.define('Locale.locale-ru', {
         "combo_empty": "Выберите пользователя",
         "select_error": "Трекер или его клон уже привязан к выбранному пользователю",
         "select": {"title": "Выберите пользователя"},
-        "create_btn": "New user"
+        "create_btn": "New user",
+        "download_btn": "Скачать список"
     },
     "trackers": {
         "menu_text": "Трекеры",

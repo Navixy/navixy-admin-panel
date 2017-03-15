@@ -31,3 +31,13 @@ $users-create-block-header-font-size: 15px;
         text-align: right;
     }
 }
+
+.download-menu {
+    .x-menu-item {
+        padding-top: 3px !important;
+        padding-bottom: 0 !important;
+    }
+    .x-menu-item-icon {
+        display: none;
+    }
+}

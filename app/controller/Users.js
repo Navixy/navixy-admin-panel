@@ -60,7 +60,8 @@ Ext.define('NavixyPanel.controller.Users', {
         this.control({
             'userslist': {
                 actionclick: this.handleListAction,
-                editclick: this.handleUserEditAction
+                editclick: this.handleUserEditAction,
+                downloaduserlist: this.downloadUserList
             },
             'userslist button[role="create-btn"]': {
                 click: this.handleUserCreateAction
@@ -448,5 +449,14 @@ Ext.define('NavixyPanel.controller.Users', {
             this.registrationPanel.slideOff();
             this.registrationPanel = null;
         }
+    },
+
+    downloadUserList: function (userList, format) {
+        var params = {
+            columns: ['login', 'first_name', 'middle_name', 'last_name', 'phone'],
+            format: format
+        };
+
+        window.open(Ext.API.getUsersListDownloadLink({params: params}), 'Download');
     }
 });
