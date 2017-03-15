@@ -453,7 +453,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     downloadUserList: function (userList, format) {
         var params = {
-            columns: ['login', 'first_name', 'middle_name', 'last_name', 'phone'],
+            columns: Ext.encode(['login', 'first_name', 'middle_name', 'last_name', 'phone']),
             format: format
         };
 
