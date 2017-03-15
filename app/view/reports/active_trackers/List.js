@@ -159,7 +159,11 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                 renderer: function (yearMonth) {
                     return Ext.Date.format(moment(yearMonth + '-01').toDate(), 'F Y')
                 },
-                dataIndex: 'month'
+                dataIndex: 'month',
+                filter: {
+                    type: 'disabled',
+                    value: _l.get('list.search_title') + ':'
+                }
 
             }, {
                 header: _l.get('trackers.fields.user_id'),
@@ -169,7 +173,11 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                                  ' {[values.children.length]})'],
 
                 dataIndex: 'user_id',
-                filter: 'string'
+                filter: {
+                    type: 'string',
+                    emptyText: _l.get('trackers.fields.user_id'),
+                    maskRe: /[0-9]/
+                }
 
             },
                 {
@@ -178,6 +186,7 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                     dataIndex: 'tracker_id',
                     filter: {
                         type: 'string',
+                        emptyText: _l.get('trackers.fields.tracker_id'),
                         maskRe: /[0-9]/
                     }
 
@@ -186,14 +195,20 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                     header: _l.get('trackers.fields.label'),
                     flex: 1,
                     dataIndex: 'label',
-                    filter: 'string'
+                    filter: {
+                        type: 'string',
+                        emptyText: _l.get('trackers.fields.label')
+                    }
 
                 },
                 {
                     header: _l.get('trackers.fields.device_id'),
                     flex: 1,
                     dataIndex: 'device_id',
-                    filter: 'string'
+                    filter: {
+                        type: 'string',
+                        emptyText: _l.get('trackers.fields.device_id')
+                    }
                 }
             ]
         };
