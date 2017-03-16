@@ -41,3 +41,29 @@ $users-create-block-header-font-size: 15px;
         display: none;
     }
 }
+
+.x-grid-row-summary {
+
+    .total-cell {
+        overflow: visible;
+
+        .x-grid-cell-inner {
+            position: relative;
+            overflow: visible;
+
+            .total-description {
+                position: absolute;
+                top: 0;
+                left: -160px;
+                width: 160px;
+                height: 100%;
+                padding: 5px 9px;
+            }
+
+            .total {
+                font-weight: bold;
+                margin: 5px 0 7px;
+            }
+        }
+    }
+}

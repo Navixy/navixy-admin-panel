@@ -510,6 +510,8 @@ Ext.define('Locale.locale-ru', {
                 "amount": "Сумма:",
                 "old_balance": "Было",
                 "new_balance": "Стало",
+                "total_refills": "Всего поступлений",
+                "total_charges": "Всего списаний",
                 "type_set": {
                     "main_charge": "абонентская плата",
                     "payment": "платеж",

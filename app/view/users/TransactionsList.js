@@ -8,6 +8,9 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     extend: 'NavixyPanel.view.components.AbstractList',
     dependencies: ['Lib.momentjs.Moment'],
     alias: 'widget.usertransactions',
+    features: [{
+        ftype: 'summary'
+    }],
     singleCmp: true,
 
     afterFirstLayout: function () {
@@ -42,6 +45,8 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             {
                 text: _l.get('users.transactions.fields.description'),
                 dataIndex: 'description',
+                hideable: false,
+                minWidth: 160,
                 flex: 1
             },
             {
@@ -94,8 +99,31 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             {
                 text: _l.get('users.transactions.fields.amount'),
                 dataIndex: 'amount',
+                hideable: false,
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
+                },
+                summaryRenderer: function (value, cell) {
+                    var locale = _l.get('users.transactions.fields'),
+                        total = {
+                            refills: 0,
+                            charges: 0
+                        };
+
+                    cell.tdCls += 'total-cell';
+                    this.store.each(function (record) {
+                        var amount = record.get('amount');
+                        total[amount < 0 ? 'charges' : 'refills'] += amount;
+                    });
+
+                    return [
+                        '<div class="total-description">',
+                        '<div class="total">' + locale.get('total_refills') + ':</div>',
+                        '<div class="total">' + locale.get('total_charges') + ':</div>',
+                        '</div>',
+                        '<div class="total">' + Ext.Number.toFixed(total.refills, 2) + '</div>',
+                        '<div class="total">' + Ext.Number.toFixed(total.charges, 2) + '</div>'
+                    ].join('');
                 },
                 width: 90
             },
