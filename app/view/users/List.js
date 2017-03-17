@@ -45,22 +45,24 @@ Ext.define('NavixyPanel.view.users.List', {
     getBottomBar: function () {
         var bbar = this.callParent(arguments);
 
-        bbar.items.unshift({
-            xtype: 'button',
-            text: _l.get('users.download_btn'),
-            menu: {
-                xtype: 'menu',
-                cls: 'download-menu',
-                items: Ext.Array.map(['xlsx', 'csv'], function (format) {
-                    return {
-                        text: format.toUpperCase(),
-                        name: format,
-                        handler: this.fireDownload,
-                        scope: this
-                    };
-                }, this)
-            }
-        });
+        if (Ext.checkPermission('users', 'read')) {
+            bbar.items.unshift({
+                xtype: 'button',
+                text: _l.get('users.download_btn'),
+                menu: {
+                    xtype: 'menu',
+                    cls: 'download-menu',
+                    items: Ext.Array.map(['xlsx', 'csv'], function (format) {
+                        return {
+                            text: format.toUpperCase(),
+                            name: format,
+                            handler: this.fireDownload,
+                            scope: this
+                        };
+                    }, this)
+                }
+            });
+        }
 
         return bbar;
     },
