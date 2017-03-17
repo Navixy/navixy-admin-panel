@@ -49,6 +49,7 @@ Ext.define('NavixyPanel.view.users.List', {
             bbar.items.unshift({
                 xtype: 'button',
                 text: _l.get('users.download_btn'),
+                menuAlign: 'tr-br?',
                 menu: {
                     xtype: 'menu',
                     cls: 'download-menu',

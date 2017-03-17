@@ -549,7 +549,7 @@ Ext.define('Locale.locale-en', {
         "select": {
             "title": "Select user"
         },
-        "download_btn": "Download list"
+        "download_btn": "Download user list"
     },
     "trackers": {
         "menu_text": "Trackers",
