@@ -13,6 +13,17 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     }],
     singleCmp: true,
 
+    afterRender: function () {
+        this.callParent(arguments);
+
+        this.mon(this.store, 'datachanged', function (store) {
+            var summary = this.getFeatureByName('summary');
+            if (summary) {
+                summary.toggleSummaryRow(store.getCount());
+            }
+        }, this);
+    },
+
     afterFirstLayout: function () {
         this.loadTransactions();
     },

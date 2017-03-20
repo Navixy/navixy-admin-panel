@@ -346,5 +346,19 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     removeListFilter: function () {
         this.store.removeSearchFilter();
+    },
+
+    getFeatureByName: function (name) {
+        var view = this.getView(),
+            id = null;
+
+        Ext.each(this.features, function (feature, index) {
+            if (feature.ftype === name) {
+                id = index;
+                return false;
+            }
+        }, this);
+
+        return view && view.getFeature(id);
     }
 });
