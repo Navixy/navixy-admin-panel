@@ -16,6 +16,7 @@ Ext.define('Locale.locale-en', {
     "panel_title": "Navixy Admin Panel",
     "paas_panel_title": "Admin Panel",
     "error": "Error",
+    "success": "Operation was successfully completed",
     "loading": "Loading...",
     "conneting_loader": "Connecting to server",
     "access_denied": "Access denied",
@@ -158,6 +159,10 @@ Ext.define('Locale.locale-en', {
             "250": "Not allowed for deleted devices",
             "253": "The operation can not be performed, the tracker has the following clones<br>Clones ID: {0}"
         },
+        "users": {
+            "252": "User already removed",
+            "253": "Some of user trackers has clone"
+        },
         "tariff": {
             "244": "Plan with same name already exists"
         },
@@ -173,6 +178,13 @@ Ext.define('Locale.locale-en', {
             "259": "Payments amount does not correspond to the total sum",
             "260": "Payments amount does not correspond to the total sum"
         }
+    },
+    "message_box_with_alert": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "no": "No",
+        "argeement": "I read the warning and understand that the operation is irreversible"
     },
     "units_combination_list": {
         "days": "days|day|days",
@@ -501,8 +513,16 @@ Ext.define('Locale.locale-en', {
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
                 "create_transaction": "Change balance",
-                "wrong_config": "Check PConfig.js -> links -> monUrlTpl"
+                "wrong_config": "Check PConfig.js -> links -> monUrlTpl",
+                "corrupt": "Remove user"
             }
+        },
+        "corrupt": {
+            "alert": {
+                "title": "Remove user?",
+                "text": "User will be permanently removed from database. All retated data will be lost and all sub-users will be removed too.<br><br>Are you sure to remove user?"
+            },
+            "success_msg": "User {0} successfully removed"
         },
         "transactions": {
             "list": {

@@ -81,6 +81,21 @@ Ext.define('NavixyPanel.view.users.Card', {
             });
         }
 
+        if (Ext.checkPermission('users', 'corrupt')) {
+            result.push({
+                xtype: 'component',
+                height: 10
+            }, {
+                html: '<a style="color: red">' + _l.get('users.card.links.corrupt') + '</a>',
+                listeners: {
+                    click: {
+                        fn: me.fireCorruptUser,
+                        scope: me
+                    }
+                }
+            });
+        }
+
         return result;
     },
 
@@ -271,6 +286,10 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     fireUserCrateTransaction: function () {
         Ext.Nav.shift('user/' + this.record.getId() + '/transaction_add');
+    },
+
+    fireCorruptUser: function () {
+        this.fireEvent('usercorrupt', this.record);
     },
 
     toggleActivationPanel: function () {

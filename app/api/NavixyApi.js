@@ -165,6 +165,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    removeUser: function (config) {
+        this.requestWithOptions(config, {
+            action: 'corrupt',
+            handler: 'user'
+        });
+    },
+
     createUserSession: function (config) {
         this.requestWithOptions(config, {
             action: 'session/create',

@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     views: [
         'widgets.ToolColumn',
+        'components.MessageBoxWithAlert',
 
         'users.TransactionsList',
         'users.TransactionAdd',
@@ -80,6 +81,7 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'usercard': {
                 useredit: this.handleUserEditAction,
+                usercorrupt: this.handleUserCorruptAction,
                 toggleactivationpanel: this.toggleActivationPanel
             },
             'activationpanel': {
@@ -214,6 +216,61 @@ Ext.define('NavixyPanel.controller.Users', {
         var userId = record.getId();
 
         Ext.Nav.shift('user/' + userId + '/edit');
+    },
+
+    handleUserCorruptAction: function (record) {
+        Ext.create('Ext.MessageBoxWithAlert', {
+            title: _l.get('users.corrupt.alert.title'),
+            msg: _l.get('users.corrupt.alert.text'),
+            agreeAction: Ext.bind(function (window) {
+                Ext.API.removeUser({
+                    params: {
+                        user_id: record.getId(),
+                        login: record.get('login')
+                    },
+                    callback: function () {
+                        this.onUserRemoved(record);
+                    },
+                    failure: function () {
+                        this.onUserRemovedFailure(record, arguments[0]);
+                    },
+                    scope: this
+                });
+                window.close();
+            }, this)
+        }).show();
+    },
+
+    onUserRemoved: function (record) {
+        var name = [record.get('first_name'), record.get('middle_name'), record.get('last_name')].join(' ');
+
+        Ext.Msg.show({
+            title: _l.get('success'),
+            msg: Ext.String.format(_l.get('users.corrupt.success_msg'), name),
+            buttons: Ext.Msg.OK
+        });
+
+        Ext.Nav.shift('users');
+
+        Ext.waitFor(function () {
+            return this.getUsersList();
+        }, function () {
+            this.getUsersList().store.load();
+        }, this);
+    },
+
+    onUserRemovedFailure: function (record, response) {
+
+        var status = response.status,
+            errors = response.errors || [],
+            errCode = status.code,
+            errDescription = _l.get('errors.users')[errCode] || _l.get('errors')[errCode] || status.description || false;
+
+        Ext.Msg.show({
+            title: _l.get('error'),
+            msg: errCode === 7 ? errDescription.default_msg : errDescription,
+            buttons: Ext.Msg.OK
+        });
     },
 
     handleUserCreateAction: function () {
