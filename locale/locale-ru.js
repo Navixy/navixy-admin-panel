@@ -544,7 +544,8 @@ Ext.define('Locale.locale-ru', {
                     "activeday": "активный день",
                     "everyday": "ежемесячный с посуточным списанием",
                     "sms": "SMS message"
-                }
+                },
+                "invalid_date": "Конец периода должен быть позже начала периода"
             }
         },
         "transaction_add": {

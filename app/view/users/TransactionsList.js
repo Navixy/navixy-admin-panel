@@ -165,33 +165,48 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
             ui: 'light',
             items: [
                 {
-                    xtype: 'datefield',
-                    width: 100,
-                    ui: 'trigger-blue',
-                    role: 'period-start',
-                    value: moment().subtract('days', 6).toDate(),
-                    listeners: {
-                        focus: function () {
-                            this.expand();
+                    xtype: 'form',
+                    role: 'datepicker',
+                    layout: 'hbox',
+                    ui: 'light',
+                    items: [
+                        {
+                            xtype: 'datefield',
+                            allowBlank: false,
+                            width: 100,
+                            role: 'period-start',
+                            value: moment().subtract('days', 6).toDate(),
+                            listeners: {
+                                focus: function () {
+                                    this.expand();
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'component',
+                            html: '—',
+                            padding: '3 7'
+                        },
+                        {
+                            xtype: 'datefield',
+                            allowBlank: false,
+                            width: 100,
+                            role: 'period-end',
+                            value: moment().toDate(),
+                            validator: function () {
+                                var value = this.getValue(),
+                                    start = this.previousSibling('datefield[role=period-start]'),
+                                    isValid = value && start && value >= start.getValue();
+
+                                return isValid || _l.get('users.transactions.fields.invalid_date');
+                            },
+                            listeners: {
+                                focus: function () {
+                                    this.expand();
+                                }
+                            }
                         }
-                    }
-                },
-                {
-                    xtype: 'component',
-                    html: '—',
-                    padding: '3 7'
-                },
-                {
-                    xtype: 'datefield',
-                    width: 100,
-                    ui: 'trigger-blue',
-                    role: 'period-end',
-                    value: moment().toDate(),
-                    listeners: {
-                        focus: function () {
-                            this.expand();
-                        }
-                    }
+                    ]
                 },
                 {
                     xtype: 'button',
@@ -231,30 +246,33 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     },
 
     loadTransactions: function () {
+        var form = this.down('form[role=datepicker]');
 
-        var me = this,
-            store = this.store,
-            options = Ext.apply({
-                limit: 1000,
-                user_id: this.getUserId()
-            }, this.getPeriod());
+        if (form && form.isValid()) {
+            var me = this,
+                store = this.store,
+                options = Ext.apply({
+                    limit: 1000,
+                    user_id: this.getUserId()
+                }, this.getPeriod());
 
-        this.mask();
+            this.mask();
 
-        Ext.API.getUserTransactions({
-            params: options,
-            callback: function (transactions, limitExceeded) {
-                me.unmask();
-                me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.emptyData + '</div>';
-                transactions.reverse();
-                store.loadData(transactions);
-            },
-            failure: function () {
-                me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.badRequest + '</div>';
-                me.getView().refresh();
-                me.unmask();
-            }
-        });
+            Ext.API.getUserTransactions({
+                params: options,
+                callback: function (transactions, limitExceeded) {
+                    me.unmask();
+                    me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.emptyData + '</div>';
+                    transactions.reverse();
+                    store.loadData(transactions);
+                },
+                failure: function () {
+                    me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.badRequest + '</div>';
+                    me.getView().refresh();
+                    me.unmask();
+                }
+            });
+        }
     }
 
 });

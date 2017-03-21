@@ -554,7 +554,8 @@ Ext.define('Locale.locale-en', {
                     "activeday": "active day",
                     "everyday": "monthly by day",
                     "sms": "SMS message"
-                }
+                },
+                "invalid_date": "The end of the period must be after the start of the period"
             }
         },
         "transaction_add": {
