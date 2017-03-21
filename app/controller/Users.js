@@ -264,7 +264,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = _l.get('errors.users')[errCode] || _l.get('errors')[errCode] || status.description || false;
+            errDescription = _l.get('errors.user')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         Ext.Msg.show({
             title: _l.get('error'),

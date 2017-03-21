@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.type'),
                 dataIndex: 'type',
                 renderer: function (value) {
-                    return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.type_set")[value] || value + '</div>';
+                    return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.type_set").get(value) + '</div>';
                 },
                 sortable: true,
                 width: 120
@@ -73,7 +73,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.subtype'),
                 dataIndex: 'subtype',
                 renderer: function (value) {
-                    return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.subtype_set")[value] || value + '</div>';
+                    return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.subtype_set").get(value) + '</div>';
                 },
                 sortable: true,
                 width: 120

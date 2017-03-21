@@ -159,7 +159,7 @@ Ext.define('Locale.locale-en', {
             "250": "Not allowed for deleted devices",
             "253": "The operation can not be performed, the tracker has the following clones<br>Clones ID: {0}"
         },
-        "users": {
+        "user": {
             "252": "User already removed",
             "253": "Some of user trackers has clone"
         },
