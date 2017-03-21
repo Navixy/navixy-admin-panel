@@ -320,14 +320,11 @@ Ext.define('NavixyPanel.view.trackers.Card', {
     },
 
     fireTrackerCorrupt: function () {
-        Ext.MessageBox.show({
+        Ext.create('Ext.MessageBoxWithAlert', {
             title: _l.get('trackers.corrupt.alert.title'),
             msg: _l.get('trackers.corrupt.alert.text'),
-            width: 500,
-            buttons: Ext.MessageBox.OKCANCEL,
-            icon: Ext.MessageBox.WARNING,
-            fn: Ext.bind(this.sendTrackerCorrupt, this)
-        });
+            agreeAction: Ext.bind(this.sendTrackerCorrupt, this)
+        }).show();
     },
 
     fireTrackerRegisterRetry: function () {
@@ -343,21 +340,20 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         }
     },
 
-    sendTrackerCorrupt: function (result) {
-        if (result === "ok") {
-            Ext.API.setTrackerCorrupt({
-                params: {
-                    tracker_id: this.record.getId()
-                },
-                callback: function () {
-                    this.fireEvent('trackerremoved', this.record);
-                },
-                failure: function () {
-                    this.fireEvent('trackerremovefailure', this.record, arguments[0]);
-                },
-                scope: this
-            });
-        }
+    sendTrackerCorrupt: function (window) {
+        Ext.API.setTrackerCorrupt({
+            params: {
+                tracker_id: this.record.getId()
+            },
+            callback: function () {
+                this.fireEvent('trackerremoved', this.record);
+            },
+            failure: function () {
+                this.fireEvent('trackerremovefailure', this.record, arguments[0]);
+            },
+            scope: this
+        });
+        window.close();
     },
 
     sendTrackerRegisterRetry: function (result) {

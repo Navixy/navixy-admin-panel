@@ -9,6 +9,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
     id: 'TrackersController',
 
     views: [
+        'components.MessageBoxWithAlert',
+
         'trackers.List',
         'trackers.Card',
         'trackers.Clone',
@@ -501,11 +503,18 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     onTrackerRemove: function (trackerRecord) {
         Ext.Msg.show({
+            title: _l.get('success'),
             msg: Ext.String.format(_l.get('trackers.corrupt.success_msg'), trackerRecord.get('label')),
             buttons: Ext.Msg.OK
         });
+
         Ext.Nav.shift('trackers');
-        this.getTrackersList().store.load();
+
+        Ext.waitFor(function () {
+            return this.getTrackersList();
+        }, function () {
+            this.getTrackersList().store.load();
+        }, this);
     },
 
     onTrackerRemoveFailure: function (trackerRecord, response) {
@@ -519,7 +528,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
             title: _l.get('error'),
             msg: errCode === 253 && response.list
                 ? Ext.String.format(errDescription, response.list.join(', '))
-                : errDescription,
+                : errCode === 7 ? errDescription.default_msg : errDescription,
             buttons: Ext.Msg.OK
         });
     },
