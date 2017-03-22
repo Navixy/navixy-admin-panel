@@ -9,23 +9,9 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     requires: ['NavixyPanel.plugins.pagination.Store'],
     dependencies: ['Lib.momentjs.Moment'],
     alias: 'widget.usertransactions',
-    features: [{
-        ftype: 'summary'
-    }],
     singleCmp: true,
     sortableColumns: false,
     enableColumnHide: false,
-
-    afterRender: function () {
-        this.callParent(arguments);
-
-        this.mon(this.store, 'datachanged', function (store) {
-            var summary = this.getFeatureByName('summary');
-            if (summary) {
-                summary.toggleSummaryRow(store.getCount());
-            }
-        }, this);
-    },
 
     afterFirstLayout: function () {
         this.loadTransactions();
@@ -114,28 +100,6 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                summaryRenderer: function (value, cell) {
-                    var locale = _l.get('users.transactions.fields'),
-                        total = {
-                            refills: 0,
-                            charges: 0
-                        };
-
-                    cell.tdCls += 'total-cell';
-                    this.store.each(function (record) {
-                        var amount = record.get('amount');
-                        total[amount < 0 ? 'charges' : 'refills'] += amount;
-                    });
-
-                    return [
-                        '<div class="total-description">',
-                        '<div class="total">' + locale.get('total_refills') + ':</div>',
-                        '<div class="total">' + locale.get('total_charges') + ':</div>',
-                        '</div>',
-                        '<div class="total">' + Ext.Number.toFixed(total.refills, 2) + '</div>',
-                        '<div class="total">' + Ext.Number.toFixed(total.charges, 2) + '</div>'
-                    ].join('');
-                },
                 width: 90
             },
             {
@@ -159,7 +123,6 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     },
 
     getTopBar: function () {
-
         var barConfig = {
             padding: '3',
             border: 0,
@@ -223,7 +186,17 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                     }
                 },
                 {
-                    xtype: 'tbfill'
+                    xtype: 'component',
+                    role: 'transactions_summary',
+                    tpl: [
+                        '<tpl if="hasRecords">',
+                        '<div class="transactions-total">',
+                        '<p>{[_l.get("users.transactions.fields.total_refills")]}: {[Ext.Number.toFixed(values.refills, 2)]}</p>',
+                        '<p>{[_l.get("users.transactions.fields.total_charges")]}: {[Ext.Number.toFixed(values.charges, 2)]}</p>',
+                        '</div>',
+                        '</tpl>'
+                    ],
+                    flex: 1
                 }
             ]
         };
@@ -264,13 +237,35 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                     me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.emptyData + '</div>';
                     transactions.reverse();
                     me.store.loadData(transactions);
+                    me.updateSummary();
                 },
                 failure: function () {
                     me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.badRequest + '</div>';
                     me.getView().refresh();
+                    me.updateSummary();
                     me.unmask();
                 }
             });
+        }
+    },
+
+    updateSummary: function () {
+        var summaryCmp = this.down('[role=transactions_summary]'),
+            rawStoreData = this.store.getProxy().data,
+            data = {
+                hasRecords: rawStoreData && rawStoreData.length,
+                refills: 0,
+                charges: 0
+            };
+
+        Ext.each(rawStoreData, function (record) {
+            if (Ext.isNumber(record.amount)) {
+                data[record.amount < 0 ? 'charges' : 'refills'] += record.amount;
+            }
+        });
+
+        if (summaryCmp) {
+            summaryCmp.update(data);
         }
     }
 
