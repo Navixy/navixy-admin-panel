@@ -4,6 +4,42 @@ Ext.define('NavixyPanel.view.users.Card', {
     stateful: true,
     stateId: 'userCard',
 
+    getItemsConfig: function () {
+        if (this.getRecordData() === false) {
+            return [{
+                xtype: 'panel',
+                ui: 'light',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+                flex: 1,
+                bodyPadding: '10 20',
+                title: this.getPanelTitle(),
+                items: [{
+                    xtype: 'component',
+                    html: _l.get('errors.user.252'),
+                    style: 'font-size:15px;color: #f44336 !important;',
+                    margin: '0 0 10 0'
+                }, {
+                    xtype: 'container',
+                    layout: 'hbox',
+                    items: [{
+                        xtype: 'button',
+                        text: _l.get('back_form_btn'),
+                        ui: "gray-small",
+                        handler: Ext.Nav.back
+                    }, {
+                        xtype: 'component',
+                        flex: 1
+                    }]
+                }]
+            }];
+        }
+
+        return this.callParent(arguments);
+    },
+
     getLinks: function () {
         var me = this,
             result = [
