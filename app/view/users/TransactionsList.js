@@ -6,12 +6,15 @@
 
 Ext.define('NavixyPanel.view.users.TransactionsList', {
     extend: 'NavixyPanel.view.components.AbstractList',
+    requires: ['NavixyPanel.plugins.pagination.Store'],
     dependencies: ['Lib.momentjs.Moment'],
     alias: 'widget.usertransactions',
     features: [{
         ftype: 'summary'
     }],
     singleCmp: true,
+    sortableColumns: false,
+    enableColumnHide: false,
 
     afterRender: function () {
         this.callParent(arguments);
@@ -42,8 +45,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     },
 
     initStore: function () {
-
-        this.store = Ext.create('Ext.data.Store', {
+        this.store = Ext.create('NavixyPanel.plugins.pagination.Store', {
             model: 'NavixyPanel.model.Transaction'
         });
     },
@@ -58,7 +60,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 dataIndex: 'description',
                 hideable: false,
                 minWidth: 160,
-                flex: 1
+                flex: 3
             },
             {
                 text: _l.get('users.transactions.fields.type'),
@@ -66,8 +68,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.type_set").get(value) + '</div>';
                 },
-                sortable: true,
-                width: 120
+                width: 100
             },
             {
                 text: _l.get('users.transactions.fields.subtype'),
@@ -75,8 +76,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.subtype_set").get(value) + '</div>';
                 },
-                sortable: true,
-                width: 120
+                width: 100
             },
             {
                 text: _l.get('users.transactions.fields.date'),
@@ -152,7 +152,8 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                width: 90
+                minWidth: 90,
+                flex: 1
             }
         ];
     },
@@ -250,9 +251,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
 
         if (form && form.isValid()) {
             var me = this,
-                store = this.store,
                 options = Ext.apply({
-                    limit: 1000,
                     user_id: this.getUserId()
                 }, this.getPeriod());
 
@@ -264,7 +263,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                     me.unmask();
                     me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.emptyData + '</div>';
                     transactions.reverse();
-                    store.loadData(transactions);
+                    me.store.loadData(transactions);
                 },
                 failure: function () {
                     me.getView().emptyText = '<div class="x-grid-empty">' + me.texts.badRequest + '</div>';

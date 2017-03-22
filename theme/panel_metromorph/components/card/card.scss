@@ -58,6 +58,7 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
 .content-table.body-table {
     background-color: $card-body-bg-color;
+    width: 100%;
 
     td {
         padding: 5px;
