@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
     singleCmp: true,
     sortableColumns: false,
     enableColumnHide: false,
+    enableColumnResize: false,
 
     afterFirstLayout: function () {
         this.loadTransactions();
@@ -45,8 +46,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.description'),
                 dataIndex: 'description',
                 hideable: false,
-                minWidth: 160,
-                flex: 3
+                flex: 1
             },
             {
                 text: _l.get('users.transactions.fields.type'),
@@ -54,7 +54,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.type_set").get(value) + '</div>';
                 },
-                width: 100
+                width: 120
             },
             {
                 text: _l.get('users.transactions.fields.subtype'),
@@ -62,7 +62,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.subtype_set").get(value) + '</div>';
                 },
-                width: 100
+                width: 120
             },
             {
                 text: _l.get('users.transactions.fields.date'),
@@ -75,7 +75,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                width: 60
+                width: 80
             },
             {
                 text: _l.get('users.transactions.fields.old_bonus'),
@@ -83,7 +83,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                width: 60
+                width: 90
             },
             {
                 text: _l.get('users.transactions.fields.new_bonus'),
@@ -91,7 +91,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                width: 90
+                width: 80
             },
             {
                 text: _l.get('users.transactions.fields.amount'),
@@ -116,8 +116,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 renderer: function (value) {
                     return Ext.Number.toFixed(value, 2);
                 },
-                minWidth: 90,
-                flex: 1
+                minWidth: 90
             }
         ];
     },

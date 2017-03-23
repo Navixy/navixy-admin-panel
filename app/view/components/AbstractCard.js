@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
     singleColumnBody: false,
 
     layout: {
-        type: 'hbox',
+        type: 'vbox',
         align: 'stretch'
     },
 
@@ -41,28 +41,41 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
     },
 
     getItemsConfig: function () {
-
         var linksConfig = !!this.getLinks(),
             links = linksConfig && this.getLinksPanelConfig(),
-            linksCollapser = linksConfig && this.getLinksCollapserConfig();
-
-        return [
-            {
-                xtype: 'panel',
+            linksCollapser = linksConfig && this.getLinksCollapserConfig(),
+            tabItems = this.getTabPanelItems(),
+            tabpanel = tabItems ? [{
+                xtype: 'tabpanel',
                 ui: 'light',
-                layout: {
-                    type: 'vbox',
-                    align: 'stretch'
-                },
-                flex: 1,
-                bodyPadding: 10,
-                title: this.getPanelTitle(),
-                items: !linksCollapser
-                    ? this.getPanelItemsConfig()
-                    : Ext.Array.merge(this.getPanelItemsConfig(), [linksCollapser])
+                border: 0,
+                items: tabItems
+            }] : [];
+
+        return Ext.Array.merge([{
+            xtype: 'container',
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
             },
-            links
-        ];
+            items: [
+                {
+                    xtype: 'panel',
+                    ui: 'light',
+                    layout: {
+                        type: 'vbox',
+                        align: 'stretch'
+                    },
+                    flex: 1,
+                    bodyPadding: 10,
+                    title: this.getPanelTitle(),
+                    items: !linksCollapser
+                        ? this.getPanelItemsConfig()
+                        : Ext.Array.merge(this.getPanelItemsConfig(), [linksCollapser])
+                },
+                links
+            ]
+        }], tabpanel);
     },
 
     getLinksPanelConfig: function () {
@@ -109,15 +122,7 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
                 padding: '10 10 10 10',
                 tpl: this.makeMainTpl(),
                 data: this.prepareHeaderData()
-            },
-            tabPanelConfig = {
-                xtype: 'tabpanel',
-                ui: 'light',
-                border: 0,
-                items: this.getTabPanelItems()
             };
-
-
 
         if (hasBody) {
             items = [
@@ -142,7 +147,6 @@ Ext.define('NavixyPanel.view.components.AbstractCard', {
         }
 
         items.unshift(headerConfig);
-        items.push(tabPanelConfig);
 
         return items;
     },
