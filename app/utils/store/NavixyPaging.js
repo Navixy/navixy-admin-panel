@@ -15,6 +15,7 @@ Ext.define('NavixyPanel.utils.store.NavixyPaging', {
     inputItemWidth: 42,
     defaultButtonUI: 'transparent',
     border: 0,
+    hideRefresh: false,
     // Override items of toolbar
     getPagingItems: function() {
         var me = this;
@@ -93,6 +94,7 @@ Ext.define('NavixyPanel.utils.store.NavixyPaging', {
                 iconCls: Ext.baseCSSPrefix + 'tbar-loading',
                 handler: me.doRefresh,
                 margin: '0 0 0 5',
+                hidden: me.hideRefresh,
                 scope: me
             }];
     }

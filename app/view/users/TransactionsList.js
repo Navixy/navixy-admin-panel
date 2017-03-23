@@ -203,6 +203,21 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
         return barConfig.items.length ? barConfig : false;
     },
 
+    getBottomBar: function () {
+        return {
+            items: [
+                {
+                    xtype: 'tbfill'
+                },
+                {
+                    xtype: 'navixypaging',
+                    store: this.store,
+                    hideRefresh: true
+                }
+            ]
+        };
+    },
+
     getUserId: function () {
 
         return this.record && this.record.getId();
