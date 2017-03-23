@@ -46,6 +46,9 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.description'),
                 dataIndex: 'description',
                 hideable: false,
+                renderer: function (value) {
+                    return '<div style="white-space:normal !important;">' + value + '</div>';
+                },
                 flex: 1
             },
             {
