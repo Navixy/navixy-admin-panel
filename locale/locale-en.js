@@ -371,7 +371,8 @@ Ext.define('Locale.locale-en', {
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
         "xaf": "Central African CFA franc",
-        "xof": "West African CFA franc"
+        "xof": "West African CFA franc",
+        "aed": "United Arab Emirates dirham"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1628,7 +1629,8 @@ Ext.define('Locale.locale-en', {
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
         "XOF": "{0} franc",
-        "XAF": "{0} franc"
+        "XAF": "{0} franc",
+        "AED": "{0} Dh"
 
     },
     "features": {
