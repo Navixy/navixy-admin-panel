@@ -39,10 +39,19 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         var me = this;
         this.legalTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : [
-                {type: "individual", "name": _l.get('users.fields.individual')},
-                {type: "legal_entity", "name": _l.get('users.fields.legal_entity')},
-                {type: "sole_trader", "name": _l.get('users.fields.sole_trader')}
+            data: [
+                {
+                    type: "individual",
+                    "name": _l.get('users.fields.individual')
+                },
+                {
+                    type: "legal_entity",
+                    "name": _l.get('users.fields.legal_entity')
+                },
+                {
+                    type: "sole_trader",
+                    "name": _l.get('users.fields.sole_trader')
+                }
             ]
         });
 
@@ -56,6 +65,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
+                labelSeparator: Util.getRequiredSeparator(),
                 vtype: 'email',
                 minLength: 2,
                 maxLength: 100,
@@ -64,6 +74,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.create_form.password'),
                 name: 'password',
+                labelSeparator: Util.getRequiredSeparator(),
                 inputType: 'password',
                 minLength: 6,
                 maxLength: 20
@@ -74,7 +85,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 allowBlank: false,
                 minLength: 6,
                 maxLength: 20,
-                validator: function(value) {
+                validator: function (value) {
                     var pass_val = me.down('*[name=password]').getValue();
                     return value === pass_val || _l.get('users.create_form.password_mismatched');
                 }
@@ -92,11 +103,15 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 xtype: 'localefield',
                 fieldLabel: _l.get('users.create_form.language'),
+                labelSeparator: Util.getRequiredSeparator(),
+                allowBlank: false,
                 name: 'locale'
             },
             {
                 xtype: 'timezoneselect',
                 fieldLabel: _l.get('users.create_form.time_zone'),
+                labelSeparator: Util.getRequiredSeparator(),
+                allowBlank: false,
                 name: 'time_zone'
             },
             {
@@ -109,11 +124,13 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.legal_type'),
                 store: this.legalTypesStore,
                 editable: false,
+                labelSeparator: Util.getRequiredSeparator(),
+                allowBlank: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
                 listeners: {
-                    change: function() {
+                    change: function () {
                         me.changeLegalStatus(this.getValue());
                     }
                 }
@@ -145,7 +162,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 name: 'last_name',
                 minLength: 2,
                 maxLength: 100,
-                labelSeparator: '*:',
+                labelSeparator: Util.getRequiredSeparator(),
                 allowBlank: false
             },
             {
@@ -153,7 +170,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 name: 'first_name',
                 minLength: 2,
                 maxLength: 100,
-                labelSeparator: '*:',
+                labelSeparator: Util.getRequiredSeparator(),
                 allowBlank: false
             },
             {
@@ -180,29 +197,34 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.post_country'),
                 name: 'post_country',
+                allowBlank: true,
                 minLength: 1,
                 maxLength: 100
             },
             {
                 fieldLabel: _l.get('users.fields.post_region'),
                 name: 'post_region',
+                allowBlank: true,
                 minLength: 1,
                 maxLength: 100
             },
             {
                 fieldLabel: _l.get('users.fields.post_city'),
                 name: 'post_city',
+                allowBlank: true,
                 minLength: 1,
                 maxLength: 100
             },
             {
                 fieldLabel: _l.get('users.fields.post_street_address'),
                 name: 'post_street_address',
+                allowBlank: true,
                 minLength: 1,
                 maxLength: 100
             },
             {
                 fieldLabel: _l.get('users.fields.post_index'),
+                allowBlank: true,
                 name: 'post_index',
                 minLength: 1
             }
@@ -311,14 +333,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
-            legal_container.items.each(function(item) {
+            legal_container.items.each(function (item) {
                 if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec'], item.name) < 0) {
 
                     item.allowBlank = soleStatus;
                     if (soleStatus) {
                         item.labelSeparator = ':';
                     } else {
-                        item.labelSeparator = '*:';
+                        item.labelSeparator = Util.getRequiredSeparator();
                     }
                     item.setFieldLabel(item.getFieldLabel());
                 }
@@ -330,7 +352,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             if (soleStatus) {
                 field.labelSeparator = ':';
             } else {
-                field.labelSeparator = '*:';
+                field.labelSeparator = Util.getRequiredSeparator();
             }
 
             field.setFieldLabel(field.getFieldLabel());

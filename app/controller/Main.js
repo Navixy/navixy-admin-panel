@@ -13,7 +13,7 @@ Ext.define('NavixyPanel.controller.Main', {
         'panelUser.authWindow'
     ],
 
-    requires: [
+    requires: ['Dev.Util',
         'Ext.util.Cookies',
         'NavixyPanel.utils.CTemplate',
 

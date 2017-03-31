@@ -70,7 +70,7 @@ Ext.define('Locale.locale-en', {
     "forbidden": "Forbidden",
     "show_btn": "Show",
     "wrong_period": "An invalid period",
-    "required_fields": "* - required fields or sections",
+    "required_fields": "<span style=\"color:red\">*</span> - required fields or sections",
     "invalid_tab": "Invalid filled fields",
     "page_size": "Page size",
     "errors": {

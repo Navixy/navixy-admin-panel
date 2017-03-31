@@ -68,7 +68,7 @@ Ext.define('Locale.locale-ru', {
     "allow": "разрешить",
     "forbidden": "Запрещено",
     "show_btn": "Показать",
-    "required_fields": "* - поля или разделы обязательные для заполнения",
+    "required_fields": "<span style=\"color:red\">*</span> - поля или разделы обязательные для заполнения",
     "wrong_period": "Указан недопустимый период",
     "invalid_tab": "Неверно заполненные поля",
     "page_size": "Размер страницы",
