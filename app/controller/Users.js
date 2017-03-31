@@ -138,8 +138,8 @@ Ext.define('NavixyPanel.controller.Users', {
         };
     },
 
-    refreshUsersStore: function (cb) {
-        this.getUsersList().store.load();
+    refreshUsersStore: function () {
+        this.getUsersList().store.loadPage(1);
     },
 
     registerMenu: function (config) {
