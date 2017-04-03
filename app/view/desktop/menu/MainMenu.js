@@ -37,8 +37,8 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             textAlign: 'center',
             allowDepress: false,
             toggleGroup: this.id,
-            toggleHandler: this.changeTabButtonHandler,
             handler: this.changeTabButtonHandler,
+            doToggle: Ext.emptyFn,
             scope: this,
             hrefTarget: '_self',
             padding: '5 15',
@@ -132,9 +132,8 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
         this.getMenuBox().add(config);
     },
 
-    changeTabButtonHandler: function (btn, pressed) {
-
-        if (pressed) {
+    changeTabButtonHandler: function (btn, event) {
+        if (btn.pressed && !(event.shiftKey || event.ctrlKey)) {
             this.fireTabButtonChange(btn);
         }
     },
