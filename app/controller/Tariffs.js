@@ -301,7 +301,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             },
             callback: function (response) {
                 if (Ext.isNumber(response)) {
-                    record.set("id", response)
+                    record.set("id", response);
                 }
                 this.checkDefaultChange(formValues, record, this.afterTariffCreate, [response, record]);
             },

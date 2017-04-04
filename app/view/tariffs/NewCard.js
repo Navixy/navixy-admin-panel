@@ -201,18 +201,18 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             tariffPrices = Ext.getStore('TariffPrices').getPrices(),
             priceConfig = {
                 xtype: 'tariffprice',
+                layout: 'hbox',
                 cellCls: 'form-cell',
                 tariffPrices: tariffPrices,
                 currency: currency,
                 fieldConfig: this.getFieldConfig({
 
-                    allowBlank: true,
+                    xtype: 'numberfield',
+                    allowBlank: false,
                     width: 100,
-
-                    minLength: 1,
-                    maxLength: 10,
-                    vtype: 'numeric',
-
+                    maxValue: 999999.99,
+                    decimalPrecision: 2,
+                    hideTrigger: true,
                     value: 0
                 })
             };
@@ -334,14 +334,13 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 disabledValue: function () {
                     return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'));
                 },
+                xtype: 'numberfield',
+                hideTrigger: true,
                 name: 'price',
                 allowBlank: true,
                 width: 100,
-
-                minLength: 1,
-                maxLength: 10,
-                vtype: 'numeric',
-
+                maxValue: 999999.99,
+                decimalPrecision: 2,
                 value: 0
             }),
             {},
