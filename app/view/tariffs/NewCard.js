@@ -244,6 +244,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             this.getFieldConfig({
                 width: 250,
                 name: 'name',
+                maxLength: 100,
                 value: _l.get('tariffs.fields.default_name')
             }),
             {},
@@ -728,7 +729,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 ui: 'light',
                 numberWidth: 120,
                 width: 200,
-                allowBlank: true,
+                allowBlank: false,
                 cellCls: 'form-cell',
                 colspan: 2,
                 initDisabled: this.isFormDisabled(),
