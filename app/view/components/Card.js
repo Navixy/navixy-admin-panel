@@ -121,7 +121,7 @@ Ext.define('NavixyPanel.view.components.Card', {
     iterateFields: function (fn, scope) {
         this.getForm().getFields().each(function (field) {
             if (!field.up("[role=tab-panel]")) {
-                fn.apply(this, arguments)
+                fn.apply(this, arguments);
             }
         }, scope || this);
     },

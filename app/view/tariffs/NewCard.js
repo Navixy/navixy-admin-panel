@@ -334,13 +334,14 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 disabledValue: function () {
                     return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'));
                 },
-                xtype: 'numberfield',
-                hideTrigger: true,
+                vtype: 'numeric',
                 name: 'price',
                 allowBlank: true,
                 width: 100,
-                maxValue: 999999.99,
-                decimalPrecision: 2,
+                regex: /^\d{0,6}(\.\d{0,2})?$/,
+                minLength: 1,
+                maxLength: 9,
+                enforceMaxLength: true,
                 value: 0
             }),
             {},
@@ -397,7 +398,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 minValue: 0,
                 minLength: 1,
                 maxLength: 6,
-
+                enforceMaxLength: true,
                 value: 0
             }),
 
@@ -416,6 +417,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 xtype: 'numberfield',
                 role: 'free_days_device_limit',
                 allowBlank: true,
+                allowDecimals: false,
                 plugins: [
                     {
                         ptype: 'fieldpostfix',
@@ -431,7 +433,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 width: 200,
                 minValue: 0,
                 minLength: 1,
-                maxLength: 6
+                maxLength: 6,
+                enforceMaxLength: true
             }),
             {role: "free_days_device_limit_empty2"},
 
@@ -446,17 +449,17 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             {role: "activation_bonus_empty1"},
             this.getFieldConfig({
                 role: 'activation_bonus',
+                vtype: 'numeric',
                 disabledValue: function () {
                     return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(this.getValue(), '0.00'));
                 },
                 name: 'activation_bonus',
+                regex: /^\d{0,6}(\.\d{0,2})?$/,
                 allowBlank: true,
                 width: 100,
-
                 minLength: 1,
-                maxLength: 10,
-                vtype: 'numeric',
-
+                maxLength: 9,
+                enforceMaxLength: true,
                 value: 0
             }),
             {role: "activation_bonus_empty2"},
@@ -698,24 +701,18 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     }
                 ],
                 allowBlank: false,
+                allowDecimals: false,
                 hideTrigger: true,
                 name: 'device_limit',
                 width: 200,
 
                 minValue: 1,
+                maxValue: 999999,
                 minLength: 1,
                 maxLength: 6,
-
                 value: 5,
                 colspan: 2,
-                listeners: {
-                    change: function (cmp, value) {
-                        cmp.suspendEvent('change');
-                        cmp.setValue(0);
-                        cmp.setValue(value);
-                        cmp.resumeEvent('change');
-                    }
-                }
+                enforceMaxLength: true
             }),
             {
                 html: [_l.get('tariffs.fields.store_period'), this.getHintSymbol(_l.get('tariffs.card.hints.8')),
@@ -840,10 +837,13 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     return value != "0" ? value : _l.get('no');
                 },
                 fieldConfig: this.getFieldConfig({
+                    xtype: 'numberfield',
+                    hideTrigger: true,
                     name: 'group_id',
+                    minValue: 0,
                     maxLength: 6,
-                    vtype: 'numeric',
-                    allowBlank: true
+                    allowBlank: true,
+                    allowDecimals: false
                 })
             },
 

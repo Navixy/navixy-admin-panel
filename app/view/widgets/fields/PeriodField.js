@@ -67,6 +67,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PeriodField', {
                 labelWidth: this.labelWidth,
                 width: this.width - this.numberWidth,
                 allowBlank: true,
+                allowDecimals: false,
                 minValue: 0,
                 disabled: this.initDisabled,
                 value: this.defaultVal,
