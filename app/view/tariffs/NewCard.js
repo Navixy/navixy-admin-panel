@@ -210,6 +210,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     xtype: 'numberfield',
                     allowBlank: false,
                     width: 100,
+                    minValue: 0,
                     maxValue: 999999.99,
                     decimalPrecision: 2,
                     hideTrigger: true,
