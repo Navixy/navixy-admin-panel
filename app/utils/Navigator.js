@@ -132,9 +132,11 @@ Ext.define('NavixyPanel.utils.Navigator', {
                 company_url:  Ext.isNavixy() ? paasDomain : domain || paasDomain,
                 hash: hash || '',
                 app: app
-            }, params || {});
+            }, params || {}),
+            locale = Locale.Manager.getLocale(),
+            link = new Ext.Template(Config.links.appUrlTpl).apply(data);
 
-        return !!domain && !!app && new Ext.Template(Config.links.appUrlTpl).apply(data);
+        return !!domain && !!app && Ext.String.urlAppend(link, 'locale=' + locale);
     },
 
     getLogin: function () {
