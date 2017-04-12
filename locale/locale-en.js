@@ -514,7 +514,7 @@ Ext.define('Locale.locale-en', {
                 "user_change_password": "Change password",
                 "transactions": "Transactions",
                 "create_transaction": "Change balance",
-                "wrong_config": "Check PConfig.js -> links -> monUrlTpl",
+                "wrong_config": "Check PConfig.js -> links -> appUrlTpl",
                 "corrupt": "Remove user"
             }
         },

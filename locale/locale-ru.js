@@ -504,7 +504,7 @@ Ext.define('Locale.locale-ru', {
                 "user_change_password": "Изменить пароль",
                 "transactions": "Транзакции",
                 "create_transaction": "Изменить баланс",
-                "wrong_config": "Проверьте PConfig.js -> links -> monUrlTpl",
+                "wrong_config": "Проверьте PConfig.js -> links -> appUrlTpl",
                 "corrupt": "Удалить пользователя"
             }
         },
