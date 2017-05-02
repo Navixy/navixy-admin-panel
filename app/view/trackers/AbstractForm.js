@@ -38,10 +38,6 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
                 if (fieldValue !== undefined) {
                     field.setValue(fieldValue);
                 }
-                
-                if (fieldName === 'blocked') {
-                    field.setDisabled(!fieldValue)
-                }
             });
         }
 
@@ -78,6 +74,7 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
             {
                 fieldLabel: _l.get('trackers.fields.blocked'),
                 name: 'blocked',
+                disabled: true,
                 xtype: 'checkbox'
             },
             {
