@@ -26,17 +26,21 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
             fieldName, fieldValue, fieldType;
 
         if (recordData) {
-            this.iterateFields(function(field) {
+            this.iterateFields(function (field) {
                 fieldName = field.name;
                 fieldType = field.getXType();
                 fieldValue = recordData[fieldName];
 
-                if (fieldName == 'creation_date') {
+                if (fieldName === 'creation_date') {
                     fieldValue = Ext.Date.formatISO(fieldValue, Ext.util.Format.dateFormat)
                 }
 
                 if (fieldValue !== undefined) {
                     field.setValue(fieldValue);
+                }
+                
+                if (fieldName === 'blocked') {
+                    field.setDisabled(!fieldValue)
                 }
             });
         }
