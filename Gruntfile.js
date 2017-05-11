@@ -54,7 +54,20 @@ module.exports = function (grunt) {
                     productionFiles: ['dev/preprocessors.js', 'app.js']
                 }
             },
-
+            'sass': {
+                theme_build: {
+                    options: {
+                        style: 'compressed',
+                        sourcemap: 'none',
+                        update: true,
+                        compass: true
+                    },
+                    files: [{
+                        src: './theme/panel_metromorph/app.scss',
+                        dest: './theme/panel_metromorph.css'
+                    }]
+                }
+            },
             'deploy': {
                 options: {
                     files: {
@@ -76,7 +89,7 @@ module.exports = function (grunt) {
             }
         }
     );
-
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-bless');
 
     grunt.loadTasks('tasks');

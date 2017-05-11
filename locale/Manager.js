@@ -90,6 +90,12 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
+            id: 'nl',
+            name: 'nl',
+            text: 'Nederlands',
+            alias: ['nl', 'nl_NL', 'Nederlands'],
+            rtl: false
+        }, {
             id: 'fr_FR',
             name: 'fr',
             text: 'Français',
@@ -270,8 +276,8 @@ Ext.define('Locale.Manager', {
         delete params[me._cookie_name];
 
         wl.replace(!Ext.Object.isEmpty(params)
-                ? path += '?' + Ext.urlEncode(params)
-                : path
+            ? path += '?' + Ext.urlEncode(params)
+            : path
         );
 
     },

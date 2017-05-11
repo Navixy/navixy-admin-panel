@@ -26,6 +26,7 @@
     "grunt-bless": "~0.1.1"
   },
   "dependencies": {
+    "grunt-contrib-sass": "^1.0.0",
     "merge": "^1.2.0",
     "promise": "^7.0.0",
     "string-template": "^0.2.0"
