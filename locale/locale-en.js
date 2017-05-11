@@ -1270,6 +1270,11 @@ Ext.define('Locale.locale-en', {
                     dealers_list: "PaaS"
                 }
             },
+
+            payments_avangate: {
+                "tab_title": "Avangate"
+            },
+
             "payments": {
                 "tab_title": "Payments",
                 "save_btn": "Get 1C data file",

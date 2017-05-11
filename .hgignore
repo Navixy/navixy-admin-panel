@@ -13,6 +13,7 @@ PConfig.js
 VERSION
 translation_cache
 stickers/
+.sass-cache
 syntax: regexp
 ^ext/
 ^transifex/

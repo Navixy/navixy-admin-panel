@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
     extend: 'NavixyPanel.view.components.AbstractTabForm',
     alias: 'widget.accountingmain',
     bodyPadding: '0',
-
+    requires: ['NavixyPanel.view.accounting.PaymentsAvangate'],
     getInvalidTabs: function () {
         return [];
     },
@@ -47,6 +47,14 @@ Ext.define('NavixyPanel.view.accounting.Accounting', {
                     }
                 ]
             },
+            {
+                title: _l.get('accounting.form.payments_avangate.tab_title'),
+                items: [
+                    {
+                        xtype: 'paymentst_avangate'
+                    }
+                ]
+            }
         ];
     }
 });

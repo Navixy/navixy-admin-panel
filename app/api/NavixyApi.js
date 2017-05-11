@@ -425,6 +425,18 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     },
 
+    getAvangateDownloadLink: function (config) {
+        var apiLink = this.getRequestUrl({
+                handler: 'payments',
+                action: 'avangate/export'
+            }),
+            hash = this.authKey;
+
+        return apiLink + '/?hash=' + hash +
+            '&' + Ext.urlEncode(config.params);
+
+    },
+
     check1cDownloadLink: function (config) {
         this.requestWithOptions(config, {
             handler: 'accounting',

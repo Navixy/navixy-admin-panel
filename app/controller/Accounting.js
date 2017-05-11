@@ -34,17 +34,20 @@ Ext.define('NavixyPanel.controller.Accounting', {
         this.callParent(arguments);
 
         this.control({
-            'export1c' : {
+            'export1c': {
                 formsubmit: this.onExport1cSubmit,
                 reportsubmit: this.onExport1cReport
             },
-            'paymentst1c' : {
-                formsubmit: this.onPayments1cSubmit,
+            'paymentst1c': {
+                formsubmit: this.onPayments1cSubmit
+            },
+            'paymentst_avangate': {
+                formsubmit: this.onPaymentsAvangateSubmit
             }
         });
 
         this.handle({
-            'accounting' : {
+            'accounting': {
                 fn: this.handleAccounting,
                 access: 'generate'
             }
@@ -74,10 +77,10 @@ Ext.define('NavixyPanel.controller.Accounting', {
         }
 
         Ext.defer(function () {
-                if (button) {
-                    button.enable();
-                }
-            }, 10000, this);
+            if (button) {
+                button.enable();
+            }
+        }, 10000, this);
 
         $.fileDownload(url)
             .fail(function (responseHtml, url, error) {
@@ -89,7 +92,7 @@ Ext.define('NavixyPanel.controller.Accounting', {
     },
 
     handleExportFailure: function (flatResponse) {
-        var responseStr = Ext.isString(flatResponse) && flatResponse.substring(flatResponse.indexOf("{"), flatResponse.lastIndexOf("}")+1),
+        var responseStr = Ext.isString(flatResponse) && flatResponse.substring(flatResponse.indexOf("{"), flatResponse.lastIndexOf("}") + 1),
             response = Ext.decode(responseStr),
             status = response.status,
             errors = response.list;
@@ -162,7 +165,6 @@ Ext.define('NavixyPanel.controller.Accounting', {
         this.getExport1c().showSubmitErrors(errCode, errors, errDescription);
     },
 
-
     onPayments2cSubmit: function (form, formValues) {
         Ext.API.doPaymentExport({
             params: formValues,
@@ -174,6 +176,12 @@ Ext.define('NavixyPanel.controller.Accounting', {
 
     onPayments1cSubmit: function (form, formValues) {
         this.openPaymentsExport(Ext.API.get1cPaymentDownloadLink({
+            params: formValues
+        }), formValues);
+    },
+
+    onPaymentsAvangateSubmit: function (form, formValues) {
+        this.openPaymentsExport(Ext.API.getAvangateDownloadLink({
             params: formValues
         }), formValues);
     },

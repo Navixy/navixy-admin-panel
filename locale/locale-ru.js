@@ -1251,6 +1251,10 @@ Ext.define('Locale.locale-ru', {
                     dealers_list: "PaaS"
                 }
             },
+            payments_avangate: {
+                "tab_title": "Платежи Avangate"
+            },
+
             "payments": {
                 "tab_title": "Платежи",
                 "save_btn": "Получить выгрузку",
