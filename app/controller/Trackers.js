@@ -505,7 +505,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
         Ext.Msg.show({
             title: _l.get('success'),
             msg: Ext.String.format(_l.get('trackers.corrupt.success_msg'), trackerRecord.get('label')),
-            buttons: Ext.Msg.OK
+            buttons: Ext.Msg.OK,
+            width: 350
         });
 
         Ext.Nav.shift('trackers');
