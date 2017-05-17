@@ -24,24 +24,23 @@ Ext.define('NavixyPanel.controller.Reports', {
     models: ['ActiveTrackersStatItem'],
 
     init: function () {
+        this.callParent(arguments);
         this.menuConfig = {
             text: _l.get('reports.menu_text'),
             target: 'reports'
         };
 
-        this.callParent(arguments);
-
         this.handle({
             'reports': {
                 fn: this.handleReports,
                 entity: 'trackers',
-                access: 'reports'
+                access: 'report'
             }
         });
     },
 
     registerMenu: function () {
-        if (Ext.checkPermission('trackers', 'read')) {
+        if (Ext.checkPermission('trackers', 'report')) {
 
             this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
 

@@ -15,6 +15,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     initComponent: function () {
         this.title = _l.get('settings.themes.title');
         this.store = Ext.getStore('Themes');
+
+        var customTheme = Config.customThemes && Config.customThemes[Ext.getStore('Dealer').first().getId()]
+
+        if (customTheme) {
+            this.store.add(customTheme)
+        }
+        
         this.items = this.getItems();
 
         this.callParent(arguments);
