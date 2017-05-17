@@ -35,7 +35,7 @@ Ext.define('NavixyPanel.controller.Reports', {
             'reports': {
                 fn: this.handleReports,
                 entity: 'trackers',
-                access: 'read'
+                access: 'reports'
             }
         });
     },
