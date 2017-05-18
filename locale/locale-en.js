@@ -1292,7 +1292,8 @@ Ext.define('Locale.locale-en', {
                     "webmoney": "WebMoney",
                     "sberbank": "Sberbank",
                     "yandex": "Yandex",
-                    "ios_inapp": "Inapp purchase(isOS)"
+                    "ios_inapp": "Inapp purchase(isOS)",
+                    "android_inapp": "Inapp purchase(Android)"
                 }
             }
         }

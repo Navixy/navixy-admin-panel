@@ -1272,7 +1272,8 @@ Ext.define('Locale.locale-ru', {
                     "webmoney": "WebMoney",
                     "sberbank": "Сбербанк-Онлайн",
                     "yandex": "Яндекс",
-                    "ios_inapp": "Мобильные приложения(iOS)"
+                    "ios_inapp": "Мобильные приложения(iOS)",
+                    "android_inapp": "Мобильные приложения(Android)"
                 }
             }
         }

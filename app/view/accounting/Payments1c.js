@@ -57,6 +57,10 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                 {
                     type: "ios_inapp",
                     "name": _l.get('accounting.form.payments.ps.ios_inapp')
+                },
+                {
+                    type: "android_inapp",
+                    "name": _l.get('accounting.form.payments.ps.android_inapp')
                 }
             ]
         });
