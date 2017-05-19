@@ -156,6 +156,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                     {
                         xtype: 'datefield',
                         width: 120,
+                        disabledDates: [Ext.Date.formatISO(moment(), "Y-m-d")],
                         name: 'from',
                         value: Ext.Date.formatISO(moment().subtract('days', 7), "Y-m-d"),
                         format: 'Y-m-d'
@@ -167,6 +168,7 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                     },
                     {
                         xtype: 'datefield',
+                        disabledDates: [Ext.Date.formatISO(moment(), "Y-m-d")],
                         width: 120,
                         name: 'to',
                         value: Ext.Date.formatISO(moment().subtract('days', 1), "Y-m-d"),
