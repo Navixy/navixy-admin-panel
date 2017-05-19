@@ -587,6 +587,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'list',
             handler: 'tracker/active/history'
         });
+    },
+
+    getAvangateInvalidPayments: function (config) {
+        this.requestWithOptions(config, {
+            handler: 'payments',
+            action: 'avangate/ignored/list',
+            root: 'list'
+        });
     }
 
 });

@@ -7,10 +7,10 @@
 Ext.define('NavixyPanel.view.accounting.PaymentsAvangate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     requires: [
-        'NavixyPanel.view.widgets.fields.MonthField'
+        'NavixyPanel.view.widgets.fields.MonthField',
+        'NavixyPanel.view.accounting.AvangateinvalidPayments'
     ],
     alias: 'widget.paymentst_avangate',
-
     getProcessedValues: function () {
         var result = this.getValues();
         if (result.type === "") {
@@ -78,8 +78,6 @@ Ext.define('NavixyPanel.view.accounting.PaymentsAvangate', {
     },
 
     getNWItems: function () {
-        var me = this;
-
         return [
             {
                 xtype: 'container',
@@ -116,6 +114,10 @@ Ext.define('NavixyPanel.view.accounting.PaymentsAvangate', {
                         format: 'Y-m-d'
                     }
                 ]
+            }, {
+                xtype: 'avangate_invalid_payments_grid',
+                width: 1200,
+                hidden: true
             }
 
         ];

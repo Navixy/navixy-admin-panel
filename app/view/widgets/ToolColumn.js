@@ -23,7 +23,6 @@ Ext.define('NavixyPanel.view.widgets.ToolColumn', {
     },
 
     defaultRenderer: function(value, meta, record) {
-
         if (this.tip) {
             meta.tdAttr = 'data-qtip="' + this.tip + '"';
         }

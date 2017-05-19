@@ -184,6 +184,18 @@ Ext.define('NavixyPanel.controller.Accounting', {
         this.openPaymentsExport(Ext.API.getAvangateDownloadLink({
             params: formValues
         }), formValues);
+
+        Ext.API.getAvangateInvalidPayments({
+            params: formValues,
+            callback: function (payments) {
+                if (payments.length) {
+                    var grid = Ext.getFirst('avangate_invalid_payments_grid')
+                    grid.show()
+                    grid.getStore().loadData(payments)
+                }
+            }
+        })
+
     },
 
     openPaymentsExport: function (link, values) {
