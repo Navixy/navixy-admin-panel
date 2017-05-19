@@ -180,10 +180,13 @@ Ext.define('NavixyPanel.controller.Accounting', {
         }), formValues);
     },
 
-    onPaymentsAvangateSubmit: function (form, formValues) {
+    downloadAvangatePayments: function (formValues) {
         this.openPaymentsExport(Ext.API.getAvangateDownloadLink({
             params: formValues
         }), formValues);
+    },
+
+    onPaymentsAvangateSubmit: function (form, formValues) {
 
         Ext.API.getAvangateInvalidPayments({
             params: formValues,
@@ -193,7 +196,14 @@ Ext.define('NavixyPanel.controller.Accounting', {
                     grid.show()
                     grid.getStore().loadData(payments)
                 }
-            }
+
+                this.downloadAvangatePayments(formValues);
+            },
+
+            failure: function () {
+                this.downloadAvangatePayments(formValues);
+            },
+            scope: this
         })
 
     },
@@ -204,7 +214,9 @@ Ext.define('NavixyPanel.controller.Accounting', {
 
         aEl.download = fileName;
         aEl.href = link;
+        document.body.appendChild(aEl)
         aEl.click();
+        aEl.remove()
     },
 
     afterPaymentExportFailure: function (response) {
