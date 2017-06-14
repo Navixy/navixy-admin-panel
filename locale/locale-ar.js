@@ -827,7 +827,7 @@ Ext.define('Locale.locale-ar',{
             "service_title_ph": "marketing name",
             "service_title_hint": "يستخدم في صفحة تسجيل الدخول، في التبويب مستعرض وفي أماكن أخرى",
             "footer_text_ph": "Some text you want to add into the footer of the login page",
-            "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and maito: will be active. Use plain text only, HTML tags are not supported.",
+            "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and mailto: will be active. Use plain text only, HTML tags are not supported.",
             "promo_url_ph": "http://www.company.com",
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
             "favicon_hint": "سيظهر رمز في التبويب المستعرض (غير معتمد الميزة في Internet Explorer).",
