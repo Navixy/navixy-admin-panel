@@ -1424,7 +1424,7 @@ Ext.define('Locale.locale-fr',{
         "EEK": "kr {0}",
         "FKP": "{0} £",
         "FJD": "{0} $",
-        "GHC": "{0} ¢",
+        "GHS": "{0} ¢",
         "GIP": "{0} £",
         "GTQ": "{0} Q",
         "GGP": "{0} £",

@@ -375,7 +375,7 @@ Ext.define('NavixyPanel.store.Currencies', {
                 priority: 5
             },
             {
-                type: "GHC",
+                type: "GHS",
                 name: _l.get('currency.ghc'),
                 priority: 5
             },
