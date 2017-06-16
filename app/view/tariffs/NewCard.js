@@ -950,8 +950,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     getTariffTypesData: function () {
-        var types = Ext.Array.difference(["monthly", "everyday", "every_year",
-                                          "activeday"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
+        var types = Ext.Array.difference(["activeday", "monthly", "everyday",
+                                          "every_year"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
             result = [],
             empty_result = [
                 {
