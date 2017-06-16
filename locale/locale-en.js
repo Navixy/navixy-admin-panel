@@ -551,9 +551,11 @@ Ext.define('Locale.locale-en', {
                 },
                 "subtype_set": {
                     "monthly": "monthly",
+                    "every_year": "annual",
                     "partner": "from a partner",
                     "activeday": "active day",
                     "everyday": "monthly by day",
+                    "every_year": "annual",
                     "sms": "SMS message"
                 },
                 "invalid_date": "The end of the period must be after the start of the period"
@@ -816,11 +818,13 @@ Ext.define('Locale.locale-en', {
         "types": {
             "activeday": "Daily",
             "monthly": "Monthly",
+            "every_year": "Annual",
             "everyday": "Monthly (daily debit)"
         },
         "price_type": {
             "monthly": "Monthly fee",
             "activeday": "Daily fee",
+            "every_year": "Annual fee",
             "everyday": "Monthly fee"
         }
     },

@@ -26,22 +26,28 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     getNWItems: function () {
         var me = this,
             deviceData = [
-                {type: "tracker", "name": _l.get('devices.tracker')},
+                {
+                    type: "tracker",
+                    "name": _l.get('devices.tracker')
+                },
             ],
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first();
 
         if (!!dealer.get('enable_cameras')) {
-            deviceData.push({type: "camera", "name": _l.get('devices.camera')})
+            deviceData.push({
+                type: "camera",
+                "name": _l.get('devices.camera')
+            })
         }
 
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : deviceData
+            data: deviceData
         });
         this.tariffTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
-            data : this.getTariffTypesData()
+            data: this.getTariffTypesData()
         });
 
         return [
@@ -67,7 +73,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 displayField: 'name',
                 valueField: 'type',
                 listeners: {
-                    change: function() {
+                    change: function () {
                         me.changeDeviceType(this.getValue() !== "tracker");
                     }
                 }
@@ -84,7 +90,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 displayField: 'name',
                 valueField: 'type',
                 listeners: {
-                    change: function() {
+                    change: function () {
                         me.changePaymentType(this.getValue());
                     }
                 }
@@ -279,10 +285,10 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
 
     changeDeviceType: function (type) {
         var trackerFields = [
-                this.down('[name="has_reports"]'),
-                this.down('[name="device_limit"]'),
-                this.down('[role="store_period"]')
-            ];
+            this.down('[name="has_reports"]'),
+            this.down('[name="device_limit"]'),
+            this.down('[role="store_period"]')
+        ];
 
         Ext.iterate(trackerFields, function (field) {
             field[type ? 'hide' : 'show']();
@@ -306,17 +312,20 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     },
 
     getTariffTypesData: function () {
-        var types = Ext.Array.difference(["monthly", "everyday", "activeday"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
+        var types = Ext.Array.difference(["monthly", "everyday", "activeday",
+                                          'every_year'], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
             result = [],
             empty_result = [
                 {
-                    type: null, "name": _l.get('tariffs.types.empty')
+                    type: null,
+                    "name": _l.get('tariffs.types.empty')
                 }
             ];
 
-        Ext.iterate(types, function(type) {
+        Ext.iterate(types, function (type) {
             result.push({
-                type: type, "name": _l.get('tariffs.types')[type]
+                type: type,
+                "name": _l.get('tariffs.types')[type]
             })
         }, this);
 
@@ -331,7 +340,7 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
         var values = this.getValues(),
             type = values.type || this.getRecordData().type;
 
-        this.iterateFields(function(field) {
+        this.iterateFields(function (field) {
             if (field.is('checkboxfield, checkbox')) {
                 values[field.name] = field.getValue();
             }

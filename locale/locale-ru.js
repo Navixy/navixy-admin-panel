@@ -541,6 +541,7 @@ Ext.define('Locale.locale-ru', {
                 },
                 "subtype_set": {
                     "monthly": "ежемесячный",
+                    "every_year": "ежегодный",
                     "partner": "от партнера",
                     "activeday": "активный день",
                     "everyday": "ежемесячный с посуточным списанием",
@@ -796,11 +797,13 @@ Ext.define('Locale.locale-ru', {
         "types": {
             "activeday": "Посуточно",
             "monthly": "Помесячно",
+            "every_year": "Ежегодно",
             "everyday": "Помесячно (ежедневное списание)"
         },
         "price_type": {
             "monthly": "Месячный платеж",
             "activeday": "Суточный платеж",
+            "every_year": "Годовой платеж",
             "everyday": "Месячный платеж"
         }
     },
