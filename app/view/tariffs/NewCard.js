@@ -340,9 +340,9 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 name: 'price',
                 allowBlank: true,
                 width: 100,
-                regex: /^\d{0,6}(\.\d{0,2})?$/,
+                regex: /^\d{0,12}(\.\d{0,2})?$/,
                 minLength: 1,
-                maxLength: 9,
+                maxLength: 15,
                 enforceMaxLength: true,
                 value: 0
             }),
@@ -460,7 +460,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 allowBlank: true,
                 width: 100,
                 minLength: 1,
-                maxLength: 9,
+                maxLength: 19,
                 enforceMaxLength: true,
                 value: 0
             }),

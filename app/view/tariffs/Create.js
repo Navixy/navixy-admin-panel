@@ -77,7 +77,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
                 name: 'price',
 
                 minLength: 1,
-                maxLength: 6,
+                maxLength: 14,
                 vtype: 'numeric',
 
                 hidden: true,
