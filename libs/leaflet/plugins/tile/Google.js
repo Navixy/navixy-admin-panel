@@ -37,7 +37,7 @@
 
         loadAPI: function () {
             Ext.getStore("Settings").loadRecord(null, function (record) {
-                var gid = record && record.getData().google_client_id;
+                var clientId = record && record.getData().google_client_id;
 
                 if (record && window.google && typeof window.google.load === "function" &&
                     Locale.Manager.getLocale()) {
@@ -46,8 +46,12 @@
                         language: Locale.Manager.getLocale()
                     };
 
-                    if (gid) {
-                        params.client = gid;
+                    if (clientId) {
+                        if (Ext.String.startsWith(clientId, 'gme-')) {
+                            params.client = clientId;
+                        } else {
+                            params.key = clientId;
+                        }
                     }
 
                     google.load('maps', '3', {
