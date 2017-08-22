@@ -52,6 +52,14 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 flex: 1
             },
             {
+                text: _l.get('devices.tracker'),
+                dataIndex: 'tracker_id',
+                renderer: function (value) {
+                    return value == 0 ? '<span class="gray nopad">{[_l.get("no")]}</span>' : '<a>' + value + '</a>';
+                },
+                width: 80
+            },
+            {
                 text: _l.get('users.transactions.fields.type'),
                 dataIndex: 'type',
                 renderer: function (value) {
@@ -60,17 +68,9 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 width: 120
             },
             {
-                text: _l.get('users.transactions.fields.subtype'),
-                dataIndex: 'subtype',
-                renderer: function (value) {
-                    return '<div style="white-space:normal !important;">' + _l.get("users.transactions.fields.subtype_set").get(value) + '</div>';
-                },
-                width: 120
-            },
-            {
                 text: _l.get('users.transactions.fields.date'),
                 dataIndex: 'date',
-                width: 90
+                width: 120
             },
             {
                 text: _l.get('users.transactions.fields.bonus_amount'),

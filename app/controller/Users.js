@@ -59,6 +59,9 @@ Ext.define('NavixyPanel.controller.Users', {
         this.callParent(arguments);
 
         this.control({
+            'usertransactions': {
+                cellclick: this.handleTransactionsListAction,
+            },
             'userslist': {
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction,
@@ -155,6 +158,15 @@ Ext.define('NavixyPanel.controller.Users', {
                 text: menuText,
                 target: menuTarget
             });
+        }
+    },
+
+    handleTransactionsListAction: function (table, td, cellIndex, record) {
+        if (cellIndex == 1) {
+            var trackerId = record.get('tracker_id');
+            if (trackerId) {
+                Ext.Nav.shift('tracker/' + trackerId);
+            }
         }
     },
 
