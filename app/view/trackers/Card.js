@@ -235,7 +235,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
         var recordData = this.getRecordData(),
             userData = this.record.getUsersData(),
             tariffData = this.record.getTariffsData();
-
+        
         return {
             title: recordData.label,
             title_add: recordData.clone ? _l.get('trackers.fields.clone') : false,
@@ -263,7 +263,7 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 },
                 {
                     title: _l.get('trackers.fields.creation_date'),
-                    value: Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat)
+                    value: recordData.creation_date ? Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat) : ''
                 },
                 {
                     title: _l.get('trackers.fields.model'),
