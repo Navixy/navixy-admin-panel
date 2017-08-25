@@ -17,34 +17,6 @@ Ext.define('NavixyPanel.view.trackers.Clone', {
         return titleTpl.apply(this.getRecordData());
     },
 
-    getItems: function () {
-        return [
-            {
-                items: [
-                    {
-                        items: this.getNWItems()
-                    },
-                    {
-                        padding: this.formCellsPadding,
-                        items: this.getNEItems()
-                    }
-                ]
-            },
-            {
-                padding: this.formRowPadding,
-                items: [
-                    {
-                        items: this.getSEItems()
-                    },
-                    {
-                        padding: this.formCellsPadding,
-                        items: this.getSWItems()
-                    }
-                ]
-            }
-        ];
-    },
-
     getNWItems: function () {
         var items = this.callParent(arguments);
 
