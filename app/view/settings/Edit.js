@@ -584,7 +584,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             domainPh = _l.get('settings.fields').get(isNavixy ? 'domain_ph' : 'paas_domain_ph'),
             domain = Ext.getStore('Dealer').first().get('id') + domainPh,
             labelHint = this.getHintSymbol(_l.get('settings.fields').get(isNavixy ? 'domain_hint' : 'paas_domain_hint')),
-            labelLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '';
+            labelLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '',
+            locale = Locale.Manager.getLocale();
 
         return [
             {
@@ -710,6 +711,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 boxLabel: _l.get('settings.fields.display_model_features_link') + this.getHintSymbol(_l.get('settings.fields.display_model_features_link_hint')),
                 name: 'display_model_features_link'
             },
+            locale === 'en'
+                ? null
+                :
             {
                 xtype: 'checkbox',
                 role: 'checkbox',
