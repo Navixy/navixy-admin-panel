@@ -17,13 +17,14 @@ Ext.define('NavixyPanel.view.trackers.Clone', {
         return titleTpl.apply(this.getRecordData());
     },
 
-
     getNWItems: function () {
         var items = this.callParent(arguments);
 
         items[4].disabled = true;
         items[2].fieldLabel = _l.get('trackers.fields.clone_owner');
         items[2].hasDefaultValue = false;
+        items[2].skipDefaultValue = true;
+        items[2].allowBlank = false;
 
         delete items[3];
 

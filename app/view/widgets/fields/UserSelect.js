@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
     editable: false,
 
     hasDefaultValue: false,
+    skipDefaultValue: false,
 
     store: 'Users',
     record: null,
@@ -60,6 +61,10 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
         return this.selectRecord || (this.trackerRecord && this.trackerRecord.getUsersRecord && this.trackerRecord.getUsersRecord());
     },
 
+    isTrackerValue: function (value) {
+        return this.trackerRecord && value == this.trackerRecord.get(this.name)
+    },
+
     setValue: function (value) {
         var text,
             isAvailable = Ext.isArray(value) && Ext.isObject(value[0])
@@ -68,7 +73,9 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
 
         if (isAvailable) {
             this.record = isAvailable;
-            text = this.displayTpl.apply(this.record.getData());
+            if (!(this.skipDefaultValue && this.isTrackerValue(value))) {
+                text = this.displayTpl.apply(this.record.getData());
+            }
 
             if (this.hasDefaultValue && this.defaultValue === null) {
                 this.defaultValue = this.record.get(this.valueField);
@@ -79,7 +86,11 @@ Ext.define('NavixyPanel.view.widgets.fields.UserSelect', {
     },
 
     getRawValue: function () {
-        return this.record ? this.record.get(this.valueField): '';
+        var value = this.record && this.record.get(this.valueField);
+
+        return !(this.skipDefaultValue && this.isTrackerValue(value))
+            ? value || ''
+            : ''
     },
 
     onSelect: function (record) {
