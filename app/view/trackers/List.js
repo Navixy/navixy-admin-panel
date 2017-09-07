@@ -178,6 +178,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 xtype: 'templatecolumn',
                 tpl: blockedStatusTpl,
                 dataIndex: 'blocked',
+                sortable: false,
                 width: 180
             },
             {
