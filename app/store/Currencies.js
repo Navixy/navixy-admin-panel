@@ -628,6 +628,11 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "AED",
                 name: _l.get('currency.aed'),
                 priority: 5
+            },
+            {
+                type: "AOA",
+                name: _l.get('currency.aoa'),
+                priority: 5
             }
         ];
 
