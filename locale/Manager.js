@@ -102,7 +102,13 @@ Ext.define('Locale.Manager', {
             alias: ['fr', 'fr_FR', 'Français'],
             rtl: false
         },
-
+        {
+            id: 'ka',
+            name: 'ka',
+            text: 'ქართული',
+            alias: ['ka', 'ka_GE', 'ქართული'],
+            rtl: false
+        },
         {
             id: 'uk_UA',
             name: 'uk',
