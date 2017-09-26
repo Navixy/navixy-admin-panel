@@ -88,6 +88,12 @@ Ext.define('Locale.Manager', {
             text: 'Deutsch',
             alias: ['de', 'de_DE', 'de_AT'],
             rtl: false
+        }, {
+            id: 'id_ID',
+            name: 'id_ID',
+            text: 'bahasa Indonesia',
+            alias: ['id', 'id_ID', 'bahasa Indonesia'],
+            rtl: false
         },
         {
             id: 'nl',
