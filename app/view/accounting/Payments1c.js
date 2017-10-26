@@ -27,10 +27,6 @@ Ext.define('NavixyPanel.view.accounting.Payments1c', {
                     "name": _l.get('accounting.form.payments.ps.cyberplat')
                 },
                 {
-                    type: "deltapay",
-                    "name": _l.get('accounting.form.payments.ps.deltapay')
-                },
-                {
                     type: "mobile",
                     "name": _l.get('accounting.form.payments.ps.mobile')
                 },

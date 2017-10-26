@@ -83,6 +83,10 @@ Ext.define('NavixyPanel.store.Features', {
                 type: "statuses",
                 "name": _l.get('features.statuses'),
                 group: "features"
+            }, {
+                type: "street_view",
+                "name": _l.get('features.street_view'),
+                group: "features"
             },
             {
                 type: "api",

@@ -1619,6 +1619,7 @@ Ext.define('Locale.locale-ru', {
         "geocoding": "Гео-кодирование",
         "lbs": "Определение по базовым станциям GSM",
         "map_layers": "Слои карт",
+        "street_view": "Панорама улиц",
         "multilevel_access": "Пользователи и роли",
         "priority_support": "Приоритетная поддержка",
         "retranslation": "Ретрансляция",
