@@ -1458,15 +1458,15 @@ Ext.define('Locale.locale-ru', {
         "us": "Английская (США)"
     },
     "route_providers": {
-        "progorod": "Прогород",
-        "google": "Google",
-        "osrm": "OSRM"
+        "progorod": "Basic GIS (Прогород)",
+        "google": "Premium GIS (Google)",
+        "osrm": "Basic GIS (OSRM)"
     },
     "geocoders": {
-        "google": "Google",
-        "yandex": "Яндекс",
-        "progorod": "Прогород",
-        "osm": "OpenStreetMap"
+        "google": "Premium GIS (Google)",
+        "yandex": "Basic GIS (Яндекс)",
+        "progorod": "Basic GIS (Прогород)",
+        "osm": "Basic GIS (OpenStreetMap)"
     },
     "geolocation": {
         "disabled": "Отключена",
@@ -1654,7 +1654,9 @@ Ext.define('Locale.locale-ru', {
         "entries": "совпадений|совпадение|совпадения|совпадения|совпадения|совпадений",
         "assets": "устройств|устройство|устройства|устройства|устройства|устройств"
     },
-    "premium_gps_warning_tip": "Доступно с \"Премиум ГИС\"",
+    "premium_gps_has_own_key": "Отслеживание ресурсов (Google)",
+    "premium_gps_caution": "Доступно с \"Премиум ГИС\"",
+    "premium_gps_warning_tip": "Подключите у вашего менеджера",
     "premium_gps_warning_error": "Это значение доступно только с \"Премиум ГИС\"",
 
     reports: {

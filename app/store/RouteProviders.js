@@ -24,6 +24,13 @@ Ext.define('NavixyPanel.store.RouteProviders', {
         ];
 
         this.callParent(arguments);
+    },
+
+    handleLabels: function (hasGoogleKey, isPremiumGis) {
+        if (hasGoogleKey && !isPremiumGis) {
+            this.findRecord('type', 'google').set('name', _l.get('premium_gps_has_own_key'));
+        }
+        return this;
     }
 
 });

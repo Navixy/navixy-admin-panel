@@ -757,7 +757,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
-        var hasGoogleKey = !this.record.isEmptyGoogleClientId();
+        var hasGoogleKey = !this.record.isEmptyGoogleClientId(),
+            isPremiumGis = Ext.getStore('Dealer').isPremiumGis();
 
         return [
             {
@@ -768,7 +769,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'geocoder',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
-                store: Ext.getStore('Geocoders'),
+                store: Ext.getStore('Geocoders').handleLabels(hasGoogleKey, isPremiumGis),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
@@ -784,7 +785,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'route_provider',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint')),
-                store: Ext.getStore('RouteProviders'),
+                store: Ext.getStore('RouteProviders').handleLabels(hasGoogleKey, isPremiumGis),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
