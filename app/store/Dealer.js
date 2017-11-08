@@ -48,10 +48,14 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
     isPremiumGis: function () {
+        return this.hasPremiumGis() || !!this.google_client_id;
+    },
+
+    hasPremiumGis: function () {
         var record = this.first(),
             tariff = record && record.get("tariff");
 
-        return (tariff && tariff.premium_gis) || !!this.google_client_id;
+        return tariff && tariff.premium_gis;
     },
 
     getImgUrl: function (field) {

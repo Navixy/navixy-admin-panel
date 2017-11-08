@@ -757,8 +757,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
-        var hasGoogleKey = !this.record.isEmptyGoogleClientId(),
-            isPremiumGis = Ext.getStore('Dealer').isPremiumGis();
+        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
+            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
 
         return [
             {
@@ -769,7 +769,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'geocoder',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
-                store: Ext.getStore('Geocoders').handleLabels(hasGoogleKey, isPremiumGis),
+                store: Ext.getStore('Geocoders'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
@@ -777,7 +777,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 plugins: [
                     {
                         ptype: 'googlefilter',
-                        disabled: hasGoogleKey
+                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
+                        disabled: hasPremiumGis
                     }
                 ]
             },
@@ -785,7 +786,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'route_provider',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint')),
-                store: Ext.getStore('RouteProviders').handleLabels(hasGoogleKey, isPremiumGis),
+                store: Ext.getStore('RouteProviders'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
@@ -793,7 +794,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 plugins: [
                     {
                         ptype: 'googlefilter',
-                        disabled: hasGoogleKey
+                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
+                        disabled: hasPremiumGis
                     }
                 ]
             },
