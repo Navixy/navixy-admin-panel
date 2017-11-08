@@ -114,6 +114,12 @@ Ext.define('Locale.Manager', {
             text: 'ქართული',
             alias: ['ka', 'ka_GE', 'ქართული'],
             rtl: false
+        }, {
+            id: 'pl',
+            name: 'pl',
+            text: 'Polskie',
+            alias: ['pl', 'pl_PL', 'Polskie'],
+            rtl: false
         },
         {
             id: 'uk_UA',
