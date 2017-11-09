@@ -1497,15 +1497,15 @@ Ext.define('Locale.locale-en', {
         "us": "US"
     },
     "route_providers": {
-        "progorod": "Progorod",
-        "google": "Google",
-        "osrm": "OSRM"
+        "progorod": "Basic GIS (Progorod)",
+        "google": "Premium GIS (Google)",
+        "osrm": "Basic GIS (OSRM)"
     },
     "geocoders": {
-        "google": "Google",
-        "yandex": "Yandex",
-        "progorod": "Progorod",
-        "osm": "OpenStreetMap"
+        "google": "Premium GIS (Google)",
+        "yandex": "Basic GIS (Yandex)",
+        "progorod": "Basic GIS (Progorod)",
+        "osm": "Basic GIS (OpenStreetMap)"
     },
     "geolocation": {
         "disabled": "Disabled",
@@ -1675,7 +1675,9 @@ Ext.define('Locale.locale-en', {
         "zoom_out": "Zoom out"
     },
     "map_type_label": "Map",
-    "premium_gps_warning_tip": "Available on Premium GIS",
+    "premium_gps_has_own_key": "Asset tracking (Google)",
+    "premium_gps_caution": "Available on Premium GIS",
+    "premium_gps_warning_tip": "Ask your manager for the package",
     "premium_gps_warning_error": "This value available only on Premium GIS",
 
     reports: {

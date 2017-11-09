@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 disabled = notPremium;
 
                 if (disabled) {
-                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_warning_tip'),
+                    name += [' <span class="checkbox-invalid-tip">', _l.get('premium_gps_caution'),
                              '</span>'].join("");
                 }
 

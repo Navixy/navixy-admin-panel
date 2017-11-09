@@ -757,7 +757,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
-        var hasGoogleKey = !this.record.isEmptyGoogleClientId();
+        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
+            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
 
         return [
             {
@@ -776,7 +777,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 plugins: [
                     {
                         ptype: 'googlefilter',
-                        disabled: hasGoogleKey
+                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
+                        disabled: hasPremiumGis
                     }
                 ]
             },
@@ -792,7 +794,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 plugins: [
                     {
                         ptype: 'googlefilter',
-                        disabled: hasGoogleKey
+                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
+                        disabled: hasPremiumGis
                     }
                 ]
             },

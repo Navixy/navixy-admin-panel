@@ -9,14 +9,30 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     tpl: null,
     showErrors: true,
     disabled: false,
+    hasOnlyOwnKey: false,
 
     constructor: function (config) {
         Ext.apply(this, config);
     },
 
     init: function (field) {
+        var store = field && field.store;
         this.field = field;
-        this.isPremium = Ext.getStore('Dealer').isPremiumGis();
+        this.hasPremium = Ext.getStore('Dealer').hasPremiumGis();
+
+        if (this.hasOnlyOwnKey && store) {
+            try {
+                this.keys.splice(0, 1, 'fake_google');
+                store.findRecord('type', 'google').set('type', 'fake_google');
+                store.add({
+                    type: 'google',
+                    name: _l.get('premium_gps_has_own_key')
+                });
+            } catch (e) {
+                console.log(e.stack);
+            }
+        }
+
         if (!this.disabled) {
             this.applyOverrides(field);
             this.applyTpl();
@@ -26,7 +42,6 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     applyOverrides: function (field) {
         if (field) {
             var me = this,
-                enabled = Ext.getStore('Dealer').isPremiumGis(),
                 fieldPrototype = Object.getPrototypeOf(field);
 
             field.getErrors = function (value) {
@@ -44,7 +59,6 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
 
     applyTpl: function () {
         var me = this,
-            enabled = Ext.getStore('Dealer').isPremiumGis(),
             optionName = me.field.valueField,
             displayName = me.field.displayField;
 
@@ -70,6 +84,6 @@ Ext.define('NavixyPanel.plugins.ComboGoogleFilter', {
     },
 
     checkPremium: function (value) {
-        return value && !(Ext.Array.indexOf(this.keys, Ext.isString(value) && value.toLowerCase()) > -1 && !this.isPremium)
+        return value && !(Ext.Array.indexOf(this.keys, Ext.isString(value) && value.toLowerCase()) > -1 && !this.hasPremium);
     }
 });
