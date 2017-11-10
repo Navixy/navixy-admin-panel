@@ -117,8 +117,8 @@ Ext.define('Locale.Manager', {
         }, {
             id: 'pl',
             name: 'pl',
-            text: 'Polskie',
-            alias: ['pl', 'pl_PL', 'Polskie'],
+            text: 'Polski',
+            alias: ['pl', 'pl_PL', 'Polski'],
             rtl: false
         },
         {
