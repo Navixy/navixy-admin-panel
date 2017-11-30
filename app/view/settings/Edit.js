@@ -354,15 +354,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         html: lp.get('branding_main_info')
                     },
                     {
+                        layout: 'anchor',
                         items: [
                             {
                                 items: this.getBrandingItems()
                             },
                             {
-                                items: this.getImgsCustom(),
-                                defaults: Ext.apply(this.getFieldDefaults(), {
-                                    margin: '5 0 0 10'
-                                })
+                                xtype: 'blockheader',
+                                html: _l.get('settings.edit_form.branding_img_title'),
+                                margin: '5 0 0 10'
+                            },
+
+                            {
+                                anchor: '100%',
+                                layout: {
+                                    type: 'vbox',
+                                    align: 'stretch'
+                                },
+                                items: this.getImgsCustom()
                             }
                         ]
                     }
@@ -452,33 +461,33 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                title: lp.get('password_fields'),
-                role: 'pass_tab',
-                items: [
-                    {
-                        margin: '30 0 0 20',
-                        items: [
-                            {
-                                items: this.getPasswordItems()
-                            },
-                            {
-                                padding: this.formRowPadding,
-                                items: this.getPassHint()
-                            }
-                        ]
-                    }
-                ]
-            }
+                    title: lp.get('password_fields'),
+                    role: 'pass_tab',
+                    items: [
+                        {
+                            margin: '30 0 0 20',
+                            items: [
+                                {
+                                    items: this.getPasswordItems()
+                                },
+                                {
+                                    padding: this.formRowPadding,
+                                    items: this.getPassHint()
+                                }
+                            ]
+                        }
+                    ]
+                }
                 : null,
 
             Ext.checkPermission('paas_payments', 'create') && seller_currency === this.paymentCurrency
                 ? {
-                xtype: 'avangate-panel',
-                layout: {
-                    type: 'auto'
-                },
-                role: 'not-settings-tab'
-            } : null
+                    xtype: 'avangate-panel',
+                    layout: {
+                        type: 'auto'
+                    },
+                    role: 'not-settings-tab'
+                } : null
         ];
     },
 
@@ -538,44 +547,88 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getImgsCustom: function () {
-
+        // Ext.apply(this.getFieldDefaults(), {
+        //     margin: '5 0 0 10'
+        // })
         return [
             {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.branding_img_title')
+                xtype: 'container',
+                layout: {
+                    type: 'hbox'
+                },
+                defaults: {
+                    defaults: {
+                        margin: 10
+                    },
+                },
+                items: [{
+                    xtype: 'container',
+                    items: [{
+                        xtype: 'component',
+                        cls: 'block_header',
+                        html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
+                        padding: '20 0 5 0'
+                    },
+                        this.getImgConfig('logo'),
+                        this.getImgButtonConfig('logo')]
+                },
+                    {
+                        xtype: 'container',
+                        items: [{
+                            xtype: 'component',
+                            cls: 'block_header',
+                            html: _l.get('settings.edit_form.monitoring_logo_title') + this.getHintSymbol(_l.get('settings.fields.monitoring_logo_hint')),
+                            padding: '20 0 5 0'
+                        },
+                            this.getImgConfig('monitoring_logo'),
+                            this.getImgButtonConfig('monitoring_logo')]
+                    },
+                    {
+                        xtype: 'container',
+                        items: [{
+                            xtype: 'component',
+                            cls: 'block_header',
+                            html: _l.get('settings.edit_form.document_logo_title') + this.getHintSymbol(_l.get('settings.fields.document_logo_hint')),
+                            padding: '20 0 5 0'
+                        },
+                            this.getImgConfig('document_logo'),
+                            this.getImgButtonConfig('document_logo')]
+                    }]
             },
             {
-                xtype: 'component',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
-                padding: '0 0 5 0'
-            },
-            this.getImgConfig('favicon', {maxWidth: 28}),
-            this.getImgButtonConfig('favicon'),
-            {
-                xtype: 'component',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
-                padding: '20 0 5 0'
-            },
-            this.getImgConfig('logo'),
-            this.getImgButtonConfig('logo'),
-            {
-                xtype: 'component',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.monitoring_logo_title') + this.getHintSymbol(_l.get('settings.fields.monitoring_logo_hint')),
-                padding: '20 0 5 0'
-            },
-            this.getImgConfig('monitoring_logo'),
-            this.getImgButtonConfig('monitoring_logo'),
-            {
-                xtype: 'component',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
-                padding: '20 0 5 0'
-            },
-            this.getImgConfig('login_wallpaper'),
-            this.getImgButtonConfig('login_wallpaper')
+                xtype: 'container',
+                layout: {
+                    type: 'hbox'
+                },
+                defaults: {
+                    defaults: {
+                        margin: 10
+                    }
+                },
+                items: [{
+                    xtype: 'container',
+                    items: [{
+                        xtype: 'component',
+                        cls: 'block_header',
+                        html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
+                        padding: '20 0 5 0'
+                    },
+                        this.getImgConfig('login_wallpaper', {maxWidth: 400}),
+                        this.getImgButtonConfig('login_wallpaper')]
+                }, {
+                    xtype: 'container',
+                    padding: '20 0 0 0',
+                    items: [{
+                        xtype: 'component',
+                        cls: 'block_header',
+                        html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
+                        padding: '0 0 5 0'
+                    },
+                        this.getImgConfig('favicon', {maxWidth: 28}),
+                        this.getImgButtonConfig('favicon')]
+                }]
+            }
+
         ];
     },
 
@@ -714,12 +767,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             locale === 'en'
                 ? null
                 :
-            {
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
-                name: 'show_call_notifications'
-            }
+                {
+                    xtype: 'checkbox',
+                    role: 'checkbox',
+                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
+                    name: 'show_call_notifications'
+                }
         ];
     },
 
@@ -1007,7 +1060,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 hidden: !value,
                 src: value,
                 cls: 'form-img',
-                maxWidth: 350,
+                maxWidth: 220,
                 listeners: {
                     render: function (img) {
                         img.getEl().on('load', function () {
@@ -1024,8 +1077,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getImgUrl: function (type, record) {
         var data = record
-                ? record.getData()
-                : this.getRecordData(),
+            ? record.getData()
+            : this.getRecordData(),
             value = data[type],
             isUrl = new RegExp('http://|https://', 'i').test(value),
             aCache = "?" + new Date().getTime();
@@ -1046,42 +1099,42 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
-            xtype: 'container',
-            layout: 'hbox',
-            items: [
-                {
-                    role: role,
-                    xtype: 'button',
-                    text: text,
-                    margin: '5 0 10 0',
-                    ui: 'default',
-                    scale: 'medium',
-                    width: 140,
-                    handler: function () {
-                        Ext.widget('uploadwindow', {
-                            fileType: type,
-                            listeners: {
-                                fileupload: me.afterUpload,
-                                scope: me
-                            }
-                        });
+                xtype: 'container',
+                layout: 'hbox',
+                items: [
+                    {
+                        role: role,
+                        xtype: 'button',
+                        text: text,
+                        margin: '5 0 10 0',
+                        ui: 'default',
+                        scale: 'medium',
+                        width: 100,
+                        handler: function () {
+                            Ext.widget('uploadwindow', {
+                                fileType: type,
+                                listeners: {
+                                    fileupload: me.afterUpload,
+                                    scope: me
+                                }
+                            });
+                        }
+                    },
+                    {
+                        role: delRole,
+                        xtype: 'button',
+                        text: _l.get('settings.edit_form.remove_btn'),
+                        margin: '5 0 10 10',
+                        hidden: hidden,
+                        ui: 'gray',
+                        scale: 'medium',
+                        width: 100,
+                        handler: function () {
+                            me.removeImgCall(type);
+                        }
                     }
-                },
-                {
-                    role: delRole,
-                    xtype: 'button',
-                    text: _l.get('settings.edit_form.remove_btn'),
-                    margin: '5 0 10 10',
-                    hidden: hidden,
-                    ui: 'gray',
-                    scale: 'medium',
-                    width: 140,
-                    handler: function () {
-                        me.removeImgCall(type);
-                    }
-                }
-            ]
-        }
+                ]
+            }
             : null;
     },
 

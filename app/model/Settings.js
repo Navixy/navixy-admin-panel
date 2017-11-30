@@ -112,6 +112,9 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'monitoring_logo',
             type: 'string'
+        }, {
+            name: 'document_logo',
+            type: 'string'
         },
 
         {

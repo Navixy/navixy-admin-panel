@@ -49,13 +49,13 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                         tpl: [
                             '<tpl if="legal_name">',
                             '{legal_name}',
+                            '</tpl>',
                             '<div class="devices-info">',
                             '{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} ',
                             '<tpl if="active_limit">',
                             ' {[_l.get("dealer_info.last")]} {active_limit}',
                             '</tpl>',
-                            '</div>',
-                            '</tpl>'
+                            '</div>'
                         ],
                         data: dealerStore.first().getData()
                     },

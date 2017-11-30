@@ -6,13 +6,13 @@
 Ext.define("NavixyPanel.view.settings.UploadWindow", {
     extend: "Ext.Window",
     alias: "widget.uploadwindow",
-    modal:  true,
-    autoShow:  true,
-    border:  true,
+    modal: true,
+    autoShow: true,
+    border: true,
     resizable: false,
-    draggable:  true,
-    width:  500,
-    height:  300,
+    draggable: true,
+    width: 500,
+    height: 300,
     closable: true,
     closeAction: "destroy",
     constrain: true,
@@ -34,6 +34,10 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
             format: 'PNG',
             accept: 'image/png'
         },
+        document_logo: {
+            format: 'PNG',
+            accept: 'image/png'
+        },
         favicon: {
             format: 'ICO',
             accept: 'image/x-icon'
@@ -48,7 +52,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         }
     },
 
-    initComponent: function() {
+    initComponent: function () {
         this.constrainTo = Ext.getBody();
 
         this.title = Ext.String.format(_l.get('settings.upload_form.title'), _l.get('settings.upload_form.titles')[this.fileType]);
@@ -122,14 +126,14 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                             padding: "3 10 3 10"
                         },
                         listeners: {
-                            afterrender: function(field) {
+                            afterrender: function (field) {
                                 field.fileInputEl.set({
                                     accept: fileAccept
                                 });
                             },
-                            change: function(field, value){
+                            change: function (field, value) {
                                 var node = Ext.DomQuery.selectNode('input[id=' + field.getInputId() + ']');
-                                node.value = value.replace("C:\\fakepath\\","");
+                                node.value = value.replace("C:\\fakepath\\", "");
                             }
                         }
                     }]
@@ -146,7 +150,6 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
     getErrorsContainer: function () {
         return this.down("container[role=upload-errors]");
     },
-
 
     fireUploadFile: function () {
         var waitMsg = _l.get('settings.edit_form.upload_loading'),
@@ -193,6 +196,6 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
 
     showUploadError: function (errDescription) {
         this.getErrorsContainer().show();
-        this.getErrorsContainer().down("component[role=error-text]").update(_l.get('settings.upload_form.error_text') + (errDescription  ? ": " + errDescription : ""));
+        this.getErrorsContainer().down("component[role=error-text]").update(_l.get('settings.upload_form.error_text') + (errDescription ? ": " + errDescription : ""));
     }
 });
