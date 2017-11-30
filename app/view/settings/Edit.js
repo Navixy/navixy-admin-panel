@@ -1061,6 +1061,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 src: value,
                 cls: 'form-img',
                 maxWidth: 220,
+                maxHeight: 220,
                 listeners: {
                     render: function (img) {
                         img.getEl().on('load', function () {

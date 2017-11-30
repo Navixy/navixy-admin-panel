@@ -1160,6 +1160,7 @@ Ext.define('Locale.locale-en', {
             "logo_title": "Logo",
             "monitoring_logo_title": "User interface logo",
             "document_logo_title": "Documents and notifications logo",
+            "document_logo": "Documents and notifications logo",
             "favicon_title": "Favicon",
             "login_wallpaper_title": "Login page background",
             "desktop_wallpaper_title": "Services page background",
@@ -1233,6 +1234,7 @@ Ext.define('Locale.locale-en', {
             "titles": {
                 "logo": "Logo",
                 "monitoring_logo": "Additional logo",
+                "document_logo": "Document logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
                 "desktop_wallpaper": "Service page wallpaper"
@@ -1240,6 +1242,7 @@ Ext.define('Locale.locale-en', {
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
+                "document_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
                 "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
             },
