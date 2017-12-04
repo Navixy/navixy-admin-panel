@@ -362,7 +362,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                             {
                                 xtype: 'blockheader',
                                 html: _l.get('settings.edit_form.branding_img_title'),
-                                margin: '5 0 0 10'
+                                margin: '25 0 0 5'
                             },
 
                             {
@@ -559,7 +559,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 defaults: {
                     defaults: {
                         margin: 10
-                    },
+                    }
                 },
                 items: [{
                     xtype: 'container',

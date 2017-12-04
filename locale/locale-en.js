@@ -988,7 +988,7 @@ Ext.define('Locale.locale-en', {
             "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
             "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
-            "document_logo_hint": "Additional logo that is shown in the email notifications an reports files",
+            "document_logo_hint": "Additional logo that is shown in the email notifications and reports",
             "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
