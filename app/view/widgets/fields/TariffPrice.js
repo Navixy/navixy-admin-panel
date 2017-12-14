@@ -20,6 +20,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
     name: null,
     tariffPrices: null,
     currency: null,
+    dontShowButton: false,
 
     disabledValue: 999999.99,
     disabledValue_alt: 999999,
@@ -40,16 +41,16 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
 
         return [
             Ext.apply({
-                    role: 'field',
-                    name: this.name,
-                    hidden: isNa,
-                    listeners: {
-                        disable: !isNa ? this.onDisable : Ext.emptyFn,
-                        enable: !isNa ? this.onEnable : Ext.emptyFn,
-                        change: !isNa ? this.onChange : Ext.emptyFn,
-                        scope: this
-                    }
-                },
+                role: 'field',
+                name: this.name,
+                hidden: isNa,
+                listeners: {
+                    disable: !isNa ? this.onDisable : Ext.emptyFn,
+                    enable: !isNa ? this.onEnable : Ext.emptyFn,
+                    change: !isNa ? this.onChange : Ext.emptyFn,
+                    scope: this
+                }
+            },
                 this.fieldConfig || {}
             ),
             {
@@ -140,7 +141,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
                 field.hide();
             } else {
                 this.getEnableBtn().hide();
-                this.getDisableBtn().show();
+                !this.dontShowButton && this.getDisableBtn().show();
             }
         }
     },
@@ -175,4 +176,4 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
         }
     }
 })
-;
+    ;
