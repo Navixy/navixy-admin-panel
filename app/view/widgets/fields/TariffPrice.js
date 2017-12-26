@@ -130,7 +130,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
             text = this.getText();
 
         if (!this.na) {
-            if (field.getValue() == this.disabledValue || field.getValue() == this.disabledValue_alt) {
+            if (!this.dontShowButton && (field.getValue() == this.disabledValue || field.getValue() == this.disabledValue_alt)) {
                 this.getEnableBtn().show();
                 this.getDisableBtn().hide();
 
