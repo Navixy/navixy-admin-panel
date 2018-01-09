@@ -462,7 +462,6 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
         opacity: 0.7;
         cursor: pointer;
-
         &:hover {
             opacity: 1;
         }
@@ -478,10 +477,23 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         border-style: solid;
         color: $grayLight;
         cursor: pointer;
-
         &:hover {
             border-color: $main-color;
         }
+    }
+}
+
+.form-img {
+    max-width: 220px;
+}
+
+.img-container {
+    max-width: 293px;
+    display: inline-block;
+    vertical-align: top;
+
+    .block_header {
+        height: 48px
     }
 }
 

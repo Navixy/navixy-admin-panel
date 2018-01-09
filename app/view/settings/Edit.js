@@ -554,9 +554,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 xtype: 'container',
                 layout: {
-                    type: 'hbox'
+                    type: 'auto'
                 },
                 defaults: {
+                    cls: 'img-container',
+                    maxWidth: 220,
                     defaults: {
                         margin: 10
                     }
@@ -593,40 +595,29 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         },
                             this.getImgConfig('document_logo'),
                             this.getImgButtonConfig('document_logo')]
+                    }, {
+                        xtype: 'container',
+                        maxWidth: 400,
+                        items: [{
+                            xtype: 'component',
+                            cls: 'block_header',
+                            html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
+                            padding: '20 0 5 0'
+                        },
+                            this.getImgConfig('login_wallpaper'),
+                            this.getImgButtonConfig('login_wallpaper')]
+                    }, {
+                        xtype: 'container',
+                        padding: '20 0 0 0',
+                        items: [{
+                            xtype: 'component',
+                            cls: 'block_header',
+                            html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
+                            padding: '0 0 5 0'
+                        },
+                            this.getImgConfig('favicon'),
+                            this.getImgButtonConfig('favicon')]
                     }]
-            },
-            {
-                xtype: 'container',
-                layout: {
-                    type: 'hbox'
-                },
-                defaults: {
-                    defaults: {
-                        margin: 10
-                    }
-                },
-                items: [{
-                    xtype: 'container',
-                    items: [{
-                        xtype: 'component',
-                        cls: 'block_header',
-                        html: _l.get('settings.edit_form.login_wallpaper_title') + this.getHintSymbol(_l.get('settings.fields.login_wallpaper_hint')),
-                        padding: '20 0 5 0'
-                    },
-                        this.getImgConfig('login_wallpaper', {maxWidth: 400}),
-                        this.getImgButtonConfig('login_wallpaper')]
-                }, {
-                    xtype: 'container',
-                    padding: '20 0 0 0',
-                    items: [{
-                        xtype: 'component',
-                        cls: 'block_header',
-                        html: _l.get('settings.edit_form.favicon_title') + this.getHintSymbol(_l.get('settings.fields.favicon_hint')),
-                        padding: '0 0 5 0'
-                    },
-                        this.getImgConfig('favicon', {maxWidth: 28}),
-                        this.getImgButtonConfig('favicon')]
-                }]
             }
 
         ];
@@ -1061,7 +1052,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 src: value,
                 cls: 'form-img',
                 maxWidth: 220,
-                maxHeight: 220,
                 listeners: {
                     render: function (img) {
                         img.getEl().on('load', function () {
