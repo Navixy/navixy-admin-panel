@@ -197,15 +197,17 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     "name": _l.get('devices.tracker')
                 }
             ],
+            tariffPrices = Ext.getStore('TariffPrices').getPrices();
 
-            tariffPrices = Ext.getStore('TariffPrices').getPrices(),
-            priceConfig = {
+        function getPriceConfig(dontShowButton) {
+            return {
                 xtype: 'tariffprice',
                 layout: 'hbox',
                 cellCls: 'form-cell',
                 tariffPrices: tariffPrices,
                 currency: currency,
-                fieldConfig: this.getFieldConfig({
+                dontShowButton: dontShowButton,
+                fieldConfig: me.getFieldConfig({
 
                     xtype: 'numberfield',
                     allowBlank: false,
@@ -217,6 +219,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     value: 0
                 })
             };
+        }
 
         if (!!dealer.get('enable_cameras')) {
             deviceData.push({
@@ -276,7 +279,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     }
                 },
                 hidden: hasCamera
-            }), {hidden: hasCamera},
+            }), { hidden: hasCamera },
 
             // 2.0 --------------------------------------------------------------------- //
             {
@@ -304,16 +307,16 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                         me.changePaymentType(this.getValue());
                     }
                 }
-            }), {hidden: isCamera},
+            }), { hidden: isCamera },
 
             // 2.1 --------------------------------------------------------------------- //
             {
                 html: [_l.get('tariffs.fields.proportional_charge'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.20'))].join(""),
+                this.getHintSymbol(_l.get('tariffs.card.hints.20'))].join(""),
                 role: "proportional_charge_label",
                 cellCls: 'strong-height'
             },
-            {role: "proportional_charge_empty1"},
+            { role: "proportional_charge_empty1" },
             {
                 xtype: 'fakefield',
                 role: "proportional_charge",
@@ -324,7 +327,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     name: 'proportional_charge'
                 })
             },
-            {role: "proportional_charge_empty2"},
+            { role: "proportional_charge_empty2" },
 
             // 3 --------------------------------------------------------------------- //
             {
@@ -351,7 +354,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             // -3.1i --------------------------------------------------------------------- //
             {
                 html: [_l.get('tariffs.fields.tariff_is_default'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.17'))].join(""),
+                this.getHintSymbol(_l.get('tariffs.card.hints.17'))].join(""),
                 cellCls: 'strong-height',
                 role: 'tariff-is-default-hint'
             },
@@ -378,11 +381,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             // -3.2i --------------------------------------------------------------------- //
             {
                 html: [_l.get('tariffs.fields.free_days'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.18'))].join(""),
+                this.getHintSymbol(_l.get('tariffs.card.hints.18'))].join(""),
                 role: "free_days_label",
                 cellCls: 'strong-height'
             },
-            {role: "free_days_empty1"},
+            { role: "free_days_empty1" },
             this.getFieldConfig({
                 xtype: 'numberfield',
                 role: 'free_days',
@@ -404,17 +407,17 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 value: 0
             }),
 
-            {role: "free_days_empty2"},
+            { role: "free_days_empty2" },
 
             // -3.3i --------------------------------------------------------------------- //
 
             {
                 html: [_l.get('tariffs.fields.free_days_device_limit'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.free_days_device_limit'))].join(""),
+                this.getHintSymbol(_l.get('tariffs.card.hints.free_days_device_limit'))].join(""),
                 role: "free_days_device_limit_label",
                 cellCls: 'strong-height'
             },
-            {role: "free_days_device_limit_empty1"},
+            { role: "free_days_device_limit_empty1" },
             this.getFieldConfig({
                 xtype: 'numberfield',
                 role: 'free_days_device_limit',
@@ -438,17 +441,17 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 maxLength: 6,
                 enforceMaxLength: true
             }),
-            {role: "free_days_device_limit_empty2"},
+            { role: "free_days_device_limit_empty2" },
 
             // -3.3i --------------------------------------------------------------------- //
             {
                 html: [_l.get('tariffs.fields.activation_bonus'), , " (",
-                       Ext.String.format(_l.get('currencies_tpls')[currency], "").replace(" ", ""), ")",
-                       this.getHintSymbol(_l.get('tariffs.card.hints.19'))].join(""),
+                Ext.String.format(_l.get('currencies_tpls')[currency], "").replace(" ", ""), ")",
+                this.getHintSymbol(_l.get('tariffs.card.hints.19'))].join(""),
                 role: "activation_bonus_label",
                 cellCls: 'strong-height'
             },
-            {role: "activation_bonus_empty1"},
+            { role: "activation_bonus_empty1" },
             this.getFieldConfig({
                 role: 'activation_bonus',
                 vtype: 'numeric',
@@ -464,12 +467,12 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 enforceMaxLength: true,
                 value: 0
             }),
-            {role: "activation_bonus_empty2"},
+            { role: "activation_bonus_empty2" },
 
             // 4 --------------------------------------------------------------------- //
-            {html: '&nbsp'},
-            {cellCls: 'no_dots'},
-            {width: 220},
+            { html: '&nbsp' },
+            { cellCls: 'no_dots' },
+            { width: 220 },
             {},
 
             // 5 --------------------------------------------------------------------- //
@@ -482,48 +485,48 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             },
             {
                 html: [_l.get('tariffs.fields.users_price'), " (",
-                       Ext.String.format(_l.get('currencies_tpls')[currency], "").replace(" ", ""), ")",
-                       this.getHintSymbol(_l.get('tariffs.card.hints.12'))].join(""),
+                Ext.String.format(_l.get('currencies_tpls')[currency], "").replace(" ", ""), ")",
+                this.getHintSymbol(_l.get('tariffs.card.hints.12'))].join(""),
                 cellCls: 'sub_title'
 
             },
             {
                 html: [_l.get('tariffs.fields.client_costs'), " (",
-                       Ext.String.format(_l.get('currencies_tpls')[seller_currency], "").replace(" ", ""), ")",
-                       Ext.isNavixy() ? this.getHintSymbol(_l.get('tariffs.card.hints.13')) : ''
+                Ext.String.format(_l.get('currencies_tpls')[seller_currency], "").replace(" ", ""), ")",
+                Ext.isNavixy() ? this.getHintSymbol(_l.get('tariffs.card.hints.13')) : ''
                 ].join(""),
                 cellCls: 'sub_title'
             },
 
             // 6 --------------------------------------------------------------------- //
-            {html: _l.get('tariffs.fields.outgoing_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.2'))},
+            { html: _l.get('tariffs.fields.outgoing_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.2')) },
             {},
-            Ext.apply({name: 'outgoing_sms'}, priceConfig),
-            {html: this.getTariffPriceText("outgoing_sms", tariffPrices, seller_currency)},
+            Ext.apply({ name: 'outgoing_sms' }, getPriceConfig()),
+            { html: this.getTariffPriceText("outgoing_sms", tariffPrices, seller_currency) },
 
             // 7 --------------------------------------------------------------------- //
-            {html: _l.get('tariffs.fields.service_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.3'))},
+            { html: _l.get('tariffs.fields.service_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.3')) },
             {},
-            Ext.apply({name: 'service_sms'}, priceConfig),
-            {html: this.getTariffPriceText("service_sms", tariffPrices, seller_currency)},
+            Ext.apply({ name: 'service_sms' }, getPriceConfig()),
+            { html: this.getTariffPriceText("service_sms", tariffPrices, seller_currency) },
 
             // 8 --------------------------------------------------------------------- //
-            {html: _l.get('tariffs.fields.incoming_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.4'))},
+            { html: _l.get('tariffs.fields.incoming_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.4')) },
             {},
-            Ext.apply({name: 'incoming_sms'}, priceConfig),
-            {html: this.getTariffPriceText("incoming_sms", tariffPrices, seller_currency)},
+            Ext.apply({ name: 'incoming_sms' }, getPriceConfig(true)),
+            { html: this.getTariffPriceText("incoming_sms", tariffPrices, seller_currency) },
 
             // 9 --------------------------------------------------------------------- //
-            {html: _l.get('tariffs.fields.traffic') + this.getHintSymbol(_l.get('tariffs.card.hints.5'))},
+            { html: _l.get('tariffs.fields.traffic') + this.getHintSymbol(_l.get('tariffs.card.hints.5')) },
             {},
-            Ext.apply({name: 'traffic'}, priceConfig),
-            {html: this.getTariffPriceText("traffic", tariffPrices, seller_currency)},
+            Ext.apply({ name: 'traffic' }, getPriceConfig(true)),
+            { html: this.getTariffPriceText("traffic", tariffPrices, seller_currency) },
 
             // 10 -------------------------------------------------------------------- //
-            {html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6'))},
+            { html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6')) },
             {},
-            Ext.apply({name: 'phone_call'}, priceConfig),
-            {html: this.getTariffPriceText("phone_call", tariffPrices, seller_currency)}
+            Ext.apply({ name: 'phone_call' }, getPriceConfig()),
+            { html: this.getTariffPriceText("phone_call", tariffPrices, seller_currency) }
         ];
     },
 
@@ -688,7 +691,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         return [
             {
                 html: [_l.get('tariffs.fields.device_limit_exp'), this.getHintSymbol(_l.get('tariffs.card.hints.7')),
-                       ":"].join(" "),
+                    ":"].join(" "),
                 colspan: 2,
                 height: 25
             },
@@ -718,7 +721,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             }),
             {
                 html: [_l.get('tariffs.fields.store_period'), this.getHintSymbol(_l.get('tariffs.card.hints.8')),
-                       ":"].join(" "),
+                    ":"].join(" "),
                 colspan: 2,
                 height: 25,
                 role: 'store_period_label'
@@ -742,7 +745,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             },
             {
                 html: [_l.get('tariffs.fields.available_maps'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.9'))].join(" "),
+                this.getHintSymbol(_l.get('tariffs.card.hints.9'))].join(" "),
                 colspan: 4,
                 cellCls: 'sub_title'
             },
@@ -763,7 +766,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             },
             {
                 html: [_l.get('tariffs.fields.available_features'),
-                       this.getHintSymbol(_l.get('tariffs.card.hints.10'))].join(" "),
+                this.getHintSymbol(_l.get('tariffs.card.hints.10'))].join(" "),
                 colspan: 4,
                 cellCls: 'sub_title'
             },
@@ -906,11 +909,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         var type = paymentType == "monthly";
 
         var trackerFields = [
-                this.down('[role="proportional_charge"]'),
-                this.down('[role="proportional_charge_label"]'),
-                this.down('[role="proportional_charge_empty1"]'),
-                this.down('[role="proportional_charge_empty2"]')
-            ],
+            this.down('[role="proportional_charge"]'),
+            this.down('[role="proportional_charge_label"]'),
+            this.down('[role="proportional_charge_empty1"]'),
+            this.down('[role="proportional_charge_empty2"]')
+        ],
             price_label = this.down('[role="price_label"]');
 
         Ext.iterate(trackerFields, function (field) {
@@ -935,23 +938,23 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         var data = this.getRecordData();
 
         return data && data.device_type === 'tracker' && [
-                {
-                    xtype: 'trackerslist',
-                    stateId: 'UserTrackersList',
-                    title: _l.get('tariffs.card.tab_panel.trackers.title'),
-                    noTBar: true,
-                    showStatus: false,
-                    filter: {
-                        tariff_id: this.getRecordId()
-                    },
-                    hasEdit: Ext.checkPermission('trackers', 'read')
-                }
-            ];
+            {
+                xtype: 'trackerslist',
+                stateId: 'UserTrackersList',
+                title: _l.get('tariffs.card.tab_panel.trackers.title'),
+                noTBar: true,
+                showStatus: false,
+                filter: {
+                    tariff_id: this.getRecordId()
+                },
+                hasEdit: Ext.checkPermission('trackers', 'read')
+            }
+        ];
     },
 
     getTariffTypesData: function () {
         var types = Ext.Array.difference(["activeday", "monthly", "everyday",
-                                          "every_year"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
+            "every_year"], Config.excludedTariffs ? Ext.isArray(Config.excludedTariffs) ? Config.excludedTariffs : [Config.excludedTariffs] : []),
             result = [],
             empty_result = [
                 {
