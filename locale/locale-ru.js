@@ -372,7 +372,8 @@ Ext.define('Locale.locale-ru', {
         "xaf": "Central African CFA franc",
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
-        "aoa": "Ангольская кванза"
+        "aoa": "Ангольская кванза",
+        "kwd": "Kuwaiti dinar"
     },
     "maps": {
         "roadmap": "Google дорожная карта",

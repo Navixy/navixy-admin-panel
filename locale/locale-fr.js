@@ -326,7 +326,8 @@ Ext.define('Locale.locale-fr',{
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
-        "mad": "Moroccan dirham"
+        "mad": "Moroccan dirham",
+        "kwd": "Kuwaiti dinar"
     },
     "maps": {
         "roadmap": "Carte routière Google",

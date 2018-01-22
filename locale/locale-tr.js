@@ -326,7 +326,8 @@ Ext.define('Locale.locale-tr',{
         "vnd": "Viet Nam Dong",
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
-        "mad": "Moroccan dirham"
+        "mad": "Moroccan dirham",
+        "kwd": "Kuwaiti dinar"
     },
     "currencies_tpls": {
         "GBP": "£{0}",
