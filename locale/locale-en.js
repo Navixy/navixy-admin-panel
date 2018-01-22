@@ -1647,7 +1647,8 @@ Ext.define('Locale.locale-en', {
         "XOF": "{0} franc",
         "XAF": "{0} franc",
         "AED": "{0} Dh",
-        "AOA ": "{0} Kz"
+        "AOA ": "{0} Kz",
+        "KWD": "{0} د.ك"
     },
     "features": {
         "api": "API",

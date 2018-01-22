@@ -447,7 +447,8 @@ Ext.define('Locale.locale-tr',{
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
-        "MAD": "{0} Dh"
+        "MAD": "{0} Dh",
+        "KWD": "{0} د.ك"
     },
     "maps": {
         "roadmap": "Google yol haritası",

@@ -1467,7 +1467,8 @@ Ext.define('Locale.locale-de',{
         "VND": "{0} ₫",
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
-        "MAD": "{0} Dh"
+        "MAD": "{0} Dh",
+        "KWD": "{0} د.ك"
     },
     "features": {
         "api": "API",
