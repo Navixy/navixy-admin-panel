@@ -449,7 +449,7 @@ Ext.define('Locale.locale-tr',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "{0} د.ك"
+        "KWD": "د.ك {0}"
     },
     "maps": {
         "roadmap": "Google yol haritası",

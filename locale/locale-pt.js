@@ -1453,7 +1453,7 @@ Ext.define('Locale.locale-pt',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "{0} د.ك"
+        "KWD": "د.ك {0}"
     },
     "geolocation": {
         "disabled": "Disabled",
