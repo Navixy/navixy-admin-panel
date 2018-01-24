@@ -1609,7 +1609,7 @@ Ext.define('Locale.locale-ru', {
         "XAF": "{0} франк",
         "AED": "{0} Dh",
         "AOA ": "{0} Kz",
-        "KWD": "د.ك {0}"
+        "KWD": "KD {0}"
     },
     "features": {
         "api": "API",

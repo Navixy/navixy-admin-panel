@@ -1469,7 +1469,7 @@ Ext.define('Locale.locale-es',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "د.ك {0}"
+        "KWD": "KD {0}"
     },
     "features": {
         "api": "API",
