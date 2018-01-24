@@ -372,7 +372,8 @@ Ext.define('Locale.locale-ru', {
         "xaf": "Central African CFA franc",
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
-        "aoa": "Ангольская кванза"
+        "aoa": "Ангольская кванза",
+        "kwd": "Кувейтский динар"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -380,7 +381,7 @@ Ext.define('Locale.locale-ru', {
         "hybrid": "Google гибрид",
         "yandex": "Карты Яндекс",
         "yandex_satellite": "Спутниковые карты Яндекс",
-        yandex_hybrid: 'Спутниковые карты Яндекс с указанием дорог',
+        "yandex_hybrid": 'Спутниковые карты Яндекс с указанием дорог',
         "yandexpublic": "Народная карта Яндекс",
         "cdcom": "Карты ПроГород",
         "osm": "OpenStreet Maps",
@@ -1607,7 +1608,8 @@ Ext.define('Locale.locale-ru', {
         "XOF": "{0} франк",
         "XAF": "{0} франк",
         "AED": "{0} Dh",
-        "AOA ": "{0} Kz"
+        "AOA ": "{0} Kz",
+        "KWD": "KD {0}"
     },
     "features": {
         "api": "API",
