@@ -373,7 +373,7 @@ Ext.define('Locale.locale-ru', {
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
         "aoa": "Ангольская кванза",
-        "kwd": "Кувейтский Динар"
+        "kwd": "Кувейтский динар"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -381,7 +381,7 @@ Ext.define('Locale.locale-ru', {
         "hybrid": "Google гибрид",
         "yandex": "Карты Яндекс",
         "yandex_satellite": "Спутниковые карты Яндекс",
-        yandex_hybrid: 'Спутниковые карты Яндекс с указанием дорог',
+        "yandex_hybrid": 'Спутниковые карты Яндекс с указанием дорог',
         "yandexpublic": "Народная карта Яндекс",
         "cdcom": "Карты ПроГород",
         "osm": "OpenStreet Maps",
