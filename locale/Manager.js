@@ -168,7 +168,13 @@ Ext.define('Locale.Manager', {
             alias: ['ar', 'ar_AR', 'ar_AR'],
             rtl: false
         },
-
+        {
+            id: 'si',
+            name: 'si',
+            text: 'සිංහල',
+            alias: ['si', 'si_LK'],
+            rtl: false
+        },
         {
             id: 'th',
             name: 'th',
