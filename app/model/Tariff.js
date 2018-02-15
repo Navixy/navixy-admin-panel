@@ -35,7 +35,8 @@ Ext.define('NavixyPanel.model.Tariff', {
         {name: 'service_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'traffic', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
 
-        {name: 'currency'}
+        {name: 'currency'},
+        {name: 'early_change_price', type: 'int'}
     ],
 
     associationsMap: {
