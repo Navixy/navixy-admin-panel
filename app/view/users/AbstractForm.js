@@ -252,14 +252,11 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.fields.tin'),
                 name: 'tin',
-                maxLength: 255,
-                allowBlank: true
+                maxLength: 255
             },
             {
                 fieldLabel: _l.get('users.fields.iec'),
-                name: 'iec',
-                maxLength: 255,
-                allowBlank: true
+                name: 'iec'
             },
             {
                 xtype: 'container',
@@ -322,6 +319,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     changeLegalStatus: function (soleState) {
         var soleStatus = soleState === "individual",
+            reqSeparator = Util.getRequiredSeparator(),
             legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
                 this.down('[name="post_city"]'),
@@ -340,7 +338,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     if (soleStatus) {
                         item.labelSeparator = ':';
                     } else {
-                        item.labelSeparator = Util.getRequiredSeparator();
+                        item.labelSeparator = reqSeparator;
                     }
                     item.setFieldLabel(item.getFieldLabel());
                 }
@@ -352,21 +350,31 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             if (soleStatus) {
                 field.labelSeparator = ':';
             } else {
-                field.labelSeparator = Util.getRequiredSeparator();
+                field.labelSeparator = reqSeparator;
             }
 
             field.setFieldLabel(field.getFieldLabel());
         }, this);
 
-        if (!soleStatus) {
-            var iecField = this.down('[name="iec"]'),
-                tinField = this.down('[name="tin"]'),
-                nameField = this.down('[name="legal_name"]');
+        var iecField = this.down('[name="iec"]'),
+            tinField = this.down('[name="tin"]'), // inn
+            nameField = this.down('[name="legal_name"]'),
+            is_legal = soleState !== "legal_entity";
 
-            nameField[soleState === "legal_entity" ? "show" : "hide"]();
-            nameField.allowBlank = soleState !== "legal_entity";
-            iecField[soleState === "legal_entity" ? "show" : "hide"]();
-        }
+        nameField[soleState === "legal_entity" ? "show" : "hide"]();
+        iecField[soleState === "legal_entity" ? "show" : "hide"]();
+        tinField[soleState !== "individual" ? "show" : "hide"]();
+
+        nameField.allowBlank = soleState !== "legal_entity";
+        iecField.allowBlank = soleState !== "legal_entity";
+        tinField.allowBlank = soleState === "individual";
+
+        Ext.each([iecField, tinField, nameField], function (item) {
+            item.labelSeparator = item.allowBlank ? ':' : reqSeparator;
+            item.setFieldLabel(item.getFieldLabel());
+
+        });
+
         this.getForm().isValid();
     },
 
