@@ -152,7 +152,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
         var apiProfiles = this.apiProfiles,
             api = config.api || this.defaultApiProfile,
             apiUrlTpl = apiProfiles[api].apiUrlTpl,
-            apiRoot = apiProfiles[api].apiRoot;
+            apiRoot = localStorage.getItem('debug_api') || apiProfiles[api].apiRoot;
 
         return new Ext.Template(apiUrlTpl).apply({
             apiRoot: apiRoot,
