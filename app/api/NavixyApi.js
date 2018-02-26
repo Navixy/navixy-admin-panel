@@ -30,10 +30,9 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                 try {
                     if (config.failure) {
                         config.failure.call(config.scope || this, form, action);
-                    }
+                    } else {
+                        var errorCode = action.result.status.code;
 
-                    var errorCode = action.result.status.code;
-                    if (errorCode) {
                         this.errorsManager.fireError(errorCode, params, action.response.responseText);
                     }
                 } catch (e) {
