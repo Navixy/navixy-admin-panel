@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('devices.tracker'),
                 dataIndex: 'tracker_id',
                 renderer: function (value) {
-                    return value == 0 ? '<span class="gray nopad">' + _l.get("no") + '</span>' : '<a>' + value + '</a>';
+                    return value == 0 ? '<span class="gray nopad">{[_l.get("no")]}</span>' : '<a>' + value + '</a>';
                 },
                 width: 80
             },
@@ -76,7 +76,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.bonus_amount'),
                 dataIndex: 'bonus_amount',
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
                 width: 80
             },
@@ -84,7 +84,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.old_bonus'),
                 dataIndex: 'old_bonus',
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
                 width: 90
             },
@@ -92,16 +92,16 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.new_bonus'),
                 dataIndex: 'new_bonus',
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
-                width: 80
+                width: 90
             },
             {
                 text: _l.get('users.transactions.fields.amount'),
                 dataIndex: 'amount',
                 hideable: false,
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
                 width: 90
             },
@@ -109,7 +109,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.old_balance'),
                 dataIndex: 'old_balance',
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
                 width: 90
             },
@@ -117,7 +117,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('users.transactions.fields.new_balance'),
                 dataIndex: 'new_balance',
                 renderer: function (value) {
-                    return Ext.Number.toFixed(value, 2);
+                    return Ext.Number.toFixed(value, 4);
                 },
                 minWidth: 90
             }
