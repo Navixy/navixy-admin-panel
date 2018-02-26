@@ -88,6 +88,7 @@ Ext.define('Locale.locale-en', {
                 "domain": "Incorrect domain name"
             }
         },
+        "9": "Too large request",
         "11": "Access denied",
         "12": "Service platform is not found",
         "101": "This feature is not available in the Demo mode",
