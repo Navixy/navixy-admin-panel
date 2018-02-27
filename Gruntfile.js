@@ -68,18 +68,6 @@ module.exports = function (grunt) {
                     }]
                 }
             },
-            'deploy': {
-                options: {
-                    files: {
-                        src: ["build/panel/**"]
-                    },
-                    exclusions: [
-                        "build/panel/theme/panel_metromorph/images/**"
-                    ],
-
-                    srcBasePath: "build/panel"
-                }
-            },
 
             'bless': {
                 css: {
