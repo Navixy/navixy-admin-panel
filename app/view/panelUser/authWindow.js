@@ -7,7 +7,10 @@
 Ext.define('NavixyPanel.view.panelUser.authWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.authwindow',
-    requires: ['NavixyPanel.view.widgets.fields.LocaleCombo'],
+    requires: [
+        'NavixyPanel.utils.Navigator',
+        'NavixyPanel.view.widgets.fields.LocaleCombo'
+    ],
 
     cls: 'auth-window',
     width: 320,
@@ -122,6 +125,10 @@ Ext.define('NavixyPanel.view.panelUser.authWindow', {
 
         if (this.errMsg) {
             this.showError(this.errMsg);
+        }
+
+        if (!Config.hideNavixyLogo || location.host.match(/navixy\.com/)) {
+            Ext.Nav.setPageFavicon('/navixy.ico');
         }
     },
 
