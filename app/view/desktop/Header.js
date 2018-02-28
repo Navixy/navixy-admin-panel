@@ -7,7 +7,10 @@
 Ext.define('NavixyPanel.view.desktop.Header', {
     extend: 'Ext.Container',
     alias: 'widget.mainheader',
-    requires: ['NavixyPanel.view.widgets.fields.LocaleCombo'],
+    requires: [
+        'NavixyPanel.utils.Navigator',
+        'NavixyPanel.view.widgets.fields.LocaleCombo'
+    ],
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -21,7 +24,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
             headerLogo = dealerStore.getLogo(),
             pageFavicon = dealerStore.getFavicon();
 
-        Ext.setPageFavicon(pageFavicon);
+        Ext.Nav.setPageFavicon(pageFavicon);
 
         this.items = [
             {
