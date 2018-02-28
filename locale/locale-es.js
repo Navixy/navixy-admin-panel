@@ -121,6 +121,7 @@ Ext.define('Locale.locale-es',{
         "242": "Error de validación",
         "251": "Fondos insuficientes",
         "254": "No se puede guardar archivo",
+        "268": "Se ha superado el límite de objetos creados",
         "upload_exeption": "Error de carga de archivos",
         "no_hash": "La clave de sesión no se encuentra",
         "service_not_respond": "El servicio no está disponible temporalmente",
