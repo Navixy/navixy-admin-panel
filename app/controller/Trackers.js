@@ -347,7 +347,17 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     this.afterTrackerCloneCreate(response, record, formValues);
                 },
                 failure: function (response) {
-                    Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.failure_msg'));
+                    var status = response.status,
+                    errors = response.errors || [],
+                    errCode = status.code,
+                    errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || _l.get('trackers.clone_form.failure_msg') || status.description || false;
+
+                    Ext.MessageBox.show({
+                        title: _l.get('error') + (errCode ? ' #' + errCode : ''),
+                        msg: errDescription,
+                        closable: false,
+                        buttons: Ext.MessageBox.OK
+                    });
                 },
                 scope: this
             });
