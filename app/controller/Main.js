@@ -484,25 +484,6 @@ Ext.define('NavixyPanel.controller.Main', {
                 }
             },
 
-            setPageFavicon: function (favicon_url) {
-
-                if (!favicon_url) {
-                    return false
-                }
-
-                var oldIcons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]'),
-                    i, newIcon;
-
-                for (i = 0 ; i < oldIcons.length ; i++) {
-                    oldIcons[i].parentNode.removeChild(oldIcons[i]);
-                }
-
-                newIcon = document.createElement("link");
-                newIcon.setAttribute("rel", "icon");
-                newIcon.setAttribute("href", [favicon_url, '?', Ext.Date.now()].join(''));
-                document.querySelector("head").appendChild(newIcon);
-            },
-
             isNavixy: function () {
                 return Config.hideNavixyLogo && /navixy\.com$/gi.test(location.hostname) || !Config.hideNavixyLogo;
             },

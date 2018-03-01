@@ -140,6 +140,7 @@ Ext.define('Locale.locale-en', {
         "252": "Device already corrupted",
         "254": "Cannot save file",
         "264": "Timeout to perform reoperation has not expired",
+        "268": "Object creation limit has been exceeded",
         "upload_exeption": "File upload error",
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
