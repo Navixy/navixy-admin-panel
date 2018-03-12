@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.view.accounting.PaymentsAvangate', {
     extend: 'NavixyPanel.view.components.AbstractForm',
     requires: [
         'NavixyPanel.view.widgets.fields.MonthField',
-        'NavixyPanel.view.accounting.AvangateinvalidPayments'
+        'NavixyPanel.view.accounting.AvangateInvalidPayments'
     ],
     alias: 'widget.paymentst_avangate',
     getProcessedValues: function () {
