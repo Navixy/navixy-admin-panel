@@ -491,8 +491,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
 
             },
             {
-                html: [_l.get('tariffs.fields.client_costs'), " (",
-                Ext.String.format(_l.get('currencies_tpls')[seller_currency], "").replace(" ", ""), ")",
+                html: [_l.get('tariffs.fields.client_costs'),
                 Ext.isNavixy() ? this.getHintSymbol(_l.get('tariffs.card.hints.13')) : ''
                 ].join(""),
                 cellCls: 'sub_title'
@@ -974,8 +973,12 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     },
 
     getTariffPriceText: function (type, prices, currency) {
-        return prices[type] !== null
-            ? Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(prices[type], '0.00'))
-            : _l.get("na");
+        if (prices[type] === null) {
+            return _l.get("na")
+        }
+        if (prices[type] === 0) {
+            return '-'
+        }
+        return Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(prices[type], '0.00'));
     }
 });
