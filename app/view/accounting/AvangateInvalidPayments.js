@@ -4,7 +4,7 @@
  * Description
  */
 
-Ext.define('NavixyPanel.view.accounting.AvangateinvalidPayments', {
+Ext.define('NavixyPanel.view.accounting.AvangateInvalidPayments', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.avangate_invalid_payments_grid',
     disableSelection: true,
