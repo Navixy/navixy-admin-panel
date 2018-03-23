@@ -246,7 +246,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var updateSettingsStep = function () {
             return new Promise(function (resolve, reject) {
                 if (!trackerChanges) {
-                    return resolve()
+                    return resolve({ success: true })
                 }
 
                 Ext.API.updateTrackerData({
@@ -263,8 +263,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         var moveTrackerStep = function () {
             return new Promise(function (resolve, reject) {
-                if (trackerChanges && !trackerChanges.user_id) {
-                    return resolve()
+                if (!trackerChanges || !trackerChanges.user_id) {
+                    return resolve({ success: true })
                 }
 
                 Ext.API.updateTrackerUser({
@@ -281,7 +281,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var updateSourceStep = function () {
             return new Promise(function (resolve, reject) {
                 if (!sourceChanges) {
-                    return resolve()
+                    return resolve({ success: true })
                 }
                 Ext.API.updateTrackerSource({
                     params: {
@@ -306,10 +306,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     afterTrackerEdit: function (response, record) {
-        if (response.tracker_id) {
-            Ext.Nav.shift('tracker/' + response.tracker_id + '/edit');
-        }
-        if (response) {
+        if (response.success) {
+            if (response.id) {
+                return Ext.Nav.shift('tracker/' + response.id);
+            }
             try {
                 record.commit();
             } catch (e) {}
