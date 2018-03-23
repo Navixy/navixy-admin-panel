@@ -280,7 +280,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         var updateSourceStep = function () {
             return new Promise(function (resolve, reject) {
-                if (sourceChanges) {
+                if (!sourceChanges) {
                     return resolve()
                 }
                 Ext.API.updateTrackerSource({
@@ -305,8 +305,11 @@ Ext.define('NavixyPanel.controller.Trackers', {
             })
     },
 
-    afterTrackerEdit: function (success, record) {
-        if (success) {
+    afterTrackerEdit: function (response, record) {
+        if (response.tracker_id) {
+            Ext.Nav.shift('tracker/' + response.tracker_id + '/edit');
+        }
+        if (response) {
             try {
                 record.commit();
             } catch (e) {}
