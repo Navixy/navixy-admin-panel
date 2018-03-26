@@ -228,8 +228,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     updateTrackerUser: function (config) {
         this.requestWithOptions(config, {
             action: 'move',
-            handler: 'tracker',
-            root: 'success'
+            handler: 'tracker'
         });
     },
 

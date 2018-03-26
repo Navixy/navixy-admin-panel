@@ -238,75 +238,78 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         record.set(formValues);
 
-        var trackerChanges = record.getTrackerChanges(),
+        var me = this,
+            trackerChanges = record.getTrackerChanges(),
             sourceChanges = record.getSourceChanges(),
-            trackerData = record.getData(),
-            requestsCnt = 0;
+            trackerData = record.getData();
 
-        if (trackerChanges) {
-            requestsCnt++ ;
-            Ext.API.updateTrackerData({
-                params: {
-                    tracker_id: trackerData.id,
-                    label: trackerData.label,
-                    deleted: trackerData.deleted
-                },
-                callback: function (response) {
-                    if (--requestsCnt === 0)  {
-                        this.afterTrackerEdit(response, record);
-                    }
-                },
-                failure: function (response) {
-                    --requestsCnt;
-                    this.afterTrackerEditFailure(response, record);
-                },
-                scope: this
-            });
+        var updateSettingsStep = function () {
+            return new Promise(function (resolve, reject) {
+                if (!trackerChanges) {
+                    return resolve({ success: true })
+                }
+
+                Ext.API.updateTrackerData({
+                    params: {
+                        tracker_id: trackerData.id,
+                        label: trackerData.label,
+                        deleted: trackerData.deleted
+                    },
+                    callback: resolve,
+                    failure: reject
+                });
+            })
         }
 
-        if (trackerChanges && trackerChanges.user_id) {
-            requestsCnt++ ;
-            Ext.API.updateTrackerUser({
-                params: {
-                    tracker_id: trackerData.id,
-                    user_id: trackerData.user_id
-                },
-                callback: function (response) {
-                    if (--requestsCnt === 0)  {
-                        this.afterTrackerEdit(response, record);
-                    }
-                },
-                failure: function (response) {
-                    --requestsCnt;
-                    this.afterTrackerEditFailure(response, record);
-                },
-                scope: this
-            });
+        var moveTrackerStep = function () {
+            return new Promise(function (resolve, reject) {
+                if (!trackerChanges || !trackerChanges.user_id) {
+                    return resolve({ success: true })
+                }
+
+                Ext.API.updateTrackerUser({
+                    params: {
+                        tracker_id: trackerData.id,
+                        user_id: trackerData.user_id
+                    },
+                    callback: resolve,
+                    failure: reject
+                });
+            })
         }
 
-        if (sourceChanges) {
-            requestsCnt++ ;
-            Ext.API.updateTrackerSource({
-                params: {
-                    tracker_id: trackerData.id,
-                    blocked: trackerData.blocked
-                },
-                callback: function (response) {
-                    if (--requestsCnt === 0)  {
-                        this.afterTrackerEdit(response, record);
-                    }
-                },
-                failure: function (response) {
-                    --requestsCnt;
-                    this.afterTrackerEditFailure(response, record);
-                },
-                scope: this
-            });
+        var updateSourceStep = function () {
+            return new Promise(function (resolve, reject) {
+                if (!sourceChanges) {
+                    return resolve({ success: true })
+                }
+                Ext.API.updateTrackerSource({
+                    params: {
+                        tracker_id: trackerData.id,
+                        blocked: trackerData.blocked
+                    },
+                    callback: resolve,
+                    failure: reject
+                });
+            })
         }
+
+        updateSettingsStep()
+            .then(updateSourceStep)
+            .then(moveTrackerStep)
+            .then(function (response) {
+                response && me.afterTrackerEdit(response, record);
+            })
+            .catch(function (response) {
+                response && me.afterTrackerEditFailure(response, record);
+            })
     },
 
-    afterTrackerEdit: function (success, record) {
-        if (success) {
+    afterTrackerEdit: function (response, record) {
+        if (response.success) {
+            if (response.id) {
+                return Ext.Nav.shift('tracker/' + response.id);
+            }
             try {
                 record.commit();
             } catch (e) {}
