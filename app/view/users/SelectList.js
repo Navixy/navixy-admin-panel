@@ -128,7 +128,7 @@ Ext.define('NavixyPanel.view.users.SelectList', {
                 text: _l.get('users.fields.full_name'),
                 xtype: 'templatecolumn',
                 tpl: userCardTpl,
-                dataIndex: 'last_name',
+                dataIndex: 'legal_name',
                 sortable: true,
                 flex: 2
             },
