@@ -66,9 +66,9 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                     {
                         xtype: 'image',
                         src: default_src,
-                        cls: 'form-img-preview',
+                        cls: 'form-img-preview big',
                         role: 'big-picture',
-                        width: 575,
+                        width: 571,
                         height: 374
                     }
                 ]
