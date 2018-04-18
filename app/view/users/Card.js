@@ -149,13 +149,33 @@ Ext.define('NavixyPanel.view.users.Card', {
                 filter: {
                     user_id: this.getRecordId()
                 },
-                hasEdit: Ext.checkPermission('trackers', 'read')
+                hasEdit: Ext.checkPermission('trackers', 'read'),
+                listeners: {
+                    render : {
+                        fn: function () {
+                            this.getView().on('refresh', function () {
+                                window.scrollTo(0, this.getEl().getY() - 40)
+                            }, this, {buffer: 10})
+                        },
+                        single: true
+                    }
+                }
             },
             {
                 xtype: 'usertransactions',
                 noTBar: true,
                 title: _l.get('users.card.tab_panel.transactions.title'),
-                record: this.record
+                record: this.record,
+                listeners: {
+                    render : {
+                        fn: function () {
+                            this.getView().on('refresh', function () {
+                                window.scrollTo(0, this.getEl().getY() - 40)
+                            }, this, {buffer: 10})
+                        },
+                        single: true
+                    }
+                }
             }
         ];
     },
