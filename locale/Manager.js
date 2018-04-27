@@ -97,10 +97,10 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
-            id: 'mn',
-            name: 'mn',
+            id: 'mn_MN',
+            name: 'mn_MN',
             text: 'Монгол',
-            alias: ['mn', 'mn_MN', 'Монгол'],
+            alias: ['mn_MN', 'Монгол'],
             rtl: false
         },
         {
