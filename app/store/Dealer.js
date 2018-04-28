@@ -19,7 +19,6 @@ Ext.define('NavixyPanel.store.Dealer', {
         "domain",
         "favicon",
         "logo",
-        "enable_cameras",
         "seller_currency",
         "demo_tariff",
         "store_period",
