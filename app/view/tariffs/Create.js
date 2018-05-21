@@ -16,9 +16,7 @@ Ext.define('NavixyPanel.view.tariffs.Create', {
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first();
 
-        if (!!dealer.get('enable_cameras')) {
-            deviceData.push({type: "camera", "name": _l.get('devices.camera')})
-        }
+        deviceData.push({type: "camera", "name": _l.get('devices.camera')})
 
         this.deviceTypesStore = Ext.create('Ext.data.Store', {
             fields: ['type', 'name'],
