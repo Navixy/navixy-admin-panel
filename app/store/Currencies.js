@@ -638,6 +638,11 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "KWD",
                 name: _l.get('currency.kwd'),
                 priority: 5
+            },
+            {
+                type: "BDT",
+                name: _l.get('currency.bdt'),
+                priority: 5
             }
         ];
 
