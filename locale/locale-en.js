@@ -374,7 +374,8 @@ Ext.define('Locale.locale-en', {
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
         "aoa": "Angolan  kwanza",
-        "kwd": "Kuwaiti dinar"
+        "kwd": "Kuwaiti dinar",
+        "bdt": "Bangladeshi taka"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1649,7 +1650,8 @@ Ext.define('Locale.locale-en', {
         "XAF": "{0} franc",
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "features": {
         "api": "API",
