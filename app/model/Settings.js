@@ -134,6 +134,13 @@ Ext.define('NavixyPanel.model.Settings', {
             name: 'monitoring_logo_clickable',
             type: 'boolean'
         },
+        {
+            name: 'privacy_policy_link',
+            type: 'string'
+        }, {
+            name: 'tos',
+            type: 'string'
+        },
 
         {
             name: 'map_type',
