@@ -15,12 +15,13 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
 
     // TODO: Footer and copyright styles;
     initComponent: function () {
-
+        var mainCopyright = Ext.String.format(_l.get('main_copyright'), moment().year());
+        var paasCopyright = _l.get(Ext.isNavixy() ? 'main_copyright' : 'paas_main_copyright');
         this.items = [
             {
                 xtype: 'container',
                 padding: 20,
-                html: _l.get(Ext.isNavixy() ? 'main_copyright' : 'paas_main_copyright')
+                html: Ext.isNavixy() ? mainCopyright : paasCopyright
             }
         ];
 

@@ -357,6 +357,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         layout: 'anchor',
                         items: [
                             {
+                                anchor: '100%',
+                                layout: {
+                                    type: 'vbox',
+                                    align: 'stretch'
+                                },
                                 items: this.getBrandingItems()
                             },
                             {
@@ -498,50 +503,92 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 html: _l.get('settings.edit_form.branding_main_title')
             },
             {
-                name: 'service_title',
-                fieldLabel: _l.get('settings.fields.service_title') + this.getHintSymbol(_l.get('settings.fields.service_title_hint')),
-                emptyText: _l.get('settings.fields.service_title_ph'),
-                minLength: 2,
-                maxLength: 100
-            },
-            {
-                name: 'login_footer',
-                xtype: 'textarea',
-                height: 120,
-                fieldLabel: _l.get('settings.fields.footer_text') + this.getHintSymbol(_l.get('settings.fields.footer_text_hint')),
-                emptyText: _l.get('settings.fields.footer_text_ph'),
-
-                maxLength: 512
+                xtype: 'container',
+                layout: 'hbox',
+                defaults: {
+                    xtype: 'container',
+                    layout: {
+                        type: 'vbox',
+                        align: 'stretch'
+                    },
+                    defaults: {
+                        xtype: 'textfield',
+                        labelSeparator: '',
+                        labelAlign: 'top',
+                        maxWidth: 460
+                    },
+                    flex: 1
+                },
+                items: [{
+                    items: [{
+                        name: 'service_title',
+                        fieldLabel: _l.get('settings.fields.service_title') + this.getHintSymbol(_l.get('settings.fields.service_title_hint')),
+                        emptyText: _l.get('settings.fields.service_title_ph'),
+                        minLength: 2,
+                        maxLength: 100
+                    }, {
+                        name: 'login_footer',
+                        xtype: 'textarea',
+                        height: 120,
+                        fieldLabel: _l.get('settings.fields.footer_text') + this.getHintSymbol(_l.get('settings.fields.footer_text_hint')),
+                        emptyText: _l.get('settings.fields.footer_text_ph'),
+                        maxLength: 512
+                    }]
+                }, {
+                    items: [{
+                        name: 'privacy_policy_link',
+                        fieldLabel: _l.get('settings.fields.privacy_policy_title') + this.getHintSymbol(_l.get('settings.fields.privacy_policy_hint')),
+                        vtype: 'url',
+                        maxLength: 255
+                    }, {
+                        name: 'tos',
+                        xtype: 'textarea',
+                        height: 120,
+                        fieldLabel: _l.get('settings.fields.tos_title') + this.getHintSymbol(_l.get('settings.fields.tos_hint'))
+                    }]
+                }]
             },
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.branding_contacts_title')
             },
             {
-                name: 'promo_url',
-                fieldLabel: _l.get('settings.fields.promo_url') + this.getHintSymbol(_l.get('settings.fields.promo_url_hint')),
-                emptyText: _l.get('settings.fields.promo_url_ph'),
-                allowBlank: true,
-                minLength: 2,
-                maxLength: 100,
-                vtype: 'rurl'
-                //    TODO: API w8
-                //},
-                //{
-                //    name: 'payment_description',
-                //    fieldLabel: _l.get('settings.fields.payment_description'),
-                //    allowBlank: true
-                //},
-                //{
-                //    name: 'support_email',
-                //    fieldLabel: _l.get('settings.fields.support_email'),
-                //    allowBlank: true
-            },
-            {
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
-                name: 'monitoring_logo_clickable'
+                xtype: 'container',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+                defaults: {
+                    xtype: 'textfield',
+                    labelSeparator: '',
+                    labelAlign: 'top'
+                },
+                items: [{
+                    name: 'promo_url',
+                    fieldLabel: _l.get('settings.fields.promo_url') + this.getHintSymbol(_l.get('settings.fields.promo_url_hint')),
+                    emptyText: _l.get('settings.fields.promo_url_ph'),
+                    allowBlank: true,
+                    minLength: 2,
+                    maxLength: 100,
+                    vtype: 'rurl',
+                    maxWidth: 460
+                    //    TODO: API w8
+                    //},
+                    //{
+                    //    name: 'payment_description',
+                    //    fieldLabel: _l.get('settings.fields.payment_description'),
+                    //    allowBlank: true
+                    //},
+                    //{
+                    //    name: 'support_email',
+                    //    fieldLabel: _l.get('settings.fields.support_email'),
+                    //    allowBlank: true
+                }, {
+                    xtype: 'checkbox',
+                    role: 'checkbox',
+                    boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
+                    name: 'monitoring_logo_clickable'
+                }]
             }
         ];
     },
