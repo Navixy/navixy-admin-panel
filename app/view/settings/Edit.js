@@ -544,6 +544,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         name: 'tos',
                         xtype: 'textarea',
                         height: 120,
+                        maxLength: 65535,
                         fieldLabel: _l.get('settings.fields.tos_title') + this.getHintSymbol(_l.get('settings.fields.tos_hint'))
                     }]
                 }]
