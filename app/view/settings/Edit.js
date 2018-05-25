@@ -538,14 +538,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     items: [{
                         name: 'privacy_policy_link',
                         fieldLabel: _l.get('settings.fields.privacy_policy_title') + this.getHintSymbol(_l.get('settings.fields.privacy_policy_hint')),
-                        minLength: 2,
-                        maxLength: 100
+                        vtype: 'url',
+                        maxLength: 255
                     }, {
                         name: 'tos',
                         xtype: 'textarea',
                         height: 120,
-                        fieldLabel: _l.get('settings.fields.tos_title') + this.getHintSymbol(_l.get('settings.fields.tos_hint')),
-                        maxLength: 512
+                        fieldLabel: _l.get('settings.fields.tos_title') + this.getHintSymbol(_l.get('settings.fields.tos_hint'))
                     }]
                 }]
             },
