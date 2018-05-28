@@ -9,8 +9,10 @@ Ext.define('Locale.locale-ru', {
         "history": false
     }],
     "singleton": true,
-    "main_copyright": "© 2013-{0} RusLink. All rights reserved.",
+    "main_copyright": "© RusLink. All rights reserved.",
     "paas_main_copyright": "© All rights reserved.",
+    "privacy_policy": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Privacy Policy</a>",
+    "terms_of_service": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Terms of Use</a>",
     "panel_title": "NavixyPanel",
     "paas_panel_title": "Панель администратора",
     "error": "Ошибка",

@@ -13,6 +13,8 @@ Ext.define('Locale.locale-en', {
     "singleton": true,
     "main_copyright": "© Navixy. All rights reserved.",
     "paas_main_copyright": "© All rights reserved.",
+    "privacy_policy": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Privacy Policy</a>",
+    "terms_of_service": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Terms of Use</a>",
     "panel_title": "Navixy Admin Panel",
     "paas_panel_title": "Admin Panel",
     "error": "Error",
