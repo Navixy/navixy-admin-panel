@@ -15,13 +15,17 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
 
     // TODO: Footer and copyright styles;
     initComponent: function () {
-        var mainCopyright = Ext.String.format(_l.get('main_copyright'), moment().year());
-        var paasCopyright = _l.get(Ext.isNavixy() ? 'main_copyright' : 'paas_main_copyright');
+        var copyright = !Ext.isNavixy() ? _l.get('main_copyright') : _l.get('paas_main_copyright');
+        var privacyPolicy = !Ext.isNavixy() ? (_l.get('privacy_policy') + ' | ') : '';
+        var links = _l.get('terms_of_service');
+        var copyrightCmp = '<span style="margin-right:5px">' + copyright + '</span>';
+
         this.items = [
             {
                 xtype: 'container',
                 padding: 20,
-                html: Ext.isNavixy() ? mainCopyright : paasCopyright
+                style: { textAlign: 'center' },
+                html: copyrightCmp + '<br />' + privacyPolicy + links
             }
         ];
 
