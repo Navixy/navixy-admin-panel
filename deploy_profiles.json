@@ -17,5 +17,9 @@
     "nginx": {
         "host": "172.16.0.65",
         "remotePath": "/var/www/panel.navixy.com/"
+    }       ,
+    "aws-us": {
+        "host": "nginx.us.navixy",
+        "remotePath": "/var/www/panel.us.navixy.com/"
     }
 }

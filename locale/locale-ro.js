@@ -991,7 +991,7 @@ Ext.define('Locale.locale-ro',{
             "error_text": "Failed to load image"
         },
         "subscription": {
-            "activation_btn_text": "Achitare taxă de activare acum (500 USD) on-line",
+            "activation_btn_text": "Achitare taxă de activare acum (100 USD) on-line",
             "monthly_fee_btn_text": "Plată online",
             "activation_hint": "Evaluați versiunea de încercare Navixy ServerMate (pînă{0}). Pentru a continua cu versiunea comercială, vă rugăm să alegeți opțiunile de abonament, și să continuați cu plata de activare:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",

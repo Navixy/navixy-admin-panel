@@ -1085,7 +1085,7 @@ Ext.define('Locale.locale-de',{
             "error_text": "Fehler beim Laden des Bildes"
         },
         "subscription": {
-            "activation_btn_text": "Pay activation fee now (500 USD) online",
+            "activation_btn_text": "Pay activation fee now (100 USD) online",
             "monthly_fee_btn_text": "Pay online",
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
