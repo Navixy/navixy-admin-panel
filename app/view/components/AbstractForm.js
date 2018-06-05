@@ -216,10 +216,9 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     {
                         items: this.getSEItems()
                     },
-                    {
-                        padding: this.formCellsPadding,
-                        items: this.getSWItems()
-                    }
+                    Ext.apply({
+                        padding: this.formCellsPadding
+                    }, this.getSWItems())
                 ]
             }
         ];
@@ -289,7 +288,7 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
 
     // Left-bottom corner
     getSWItems: function () {
-        return [];
+        return { items: [] };
     },
 
 

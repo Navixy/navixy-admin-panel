@@ -440,6 +440,8 @@ Ext.define('Locale.locale-ru', {
             "legal_type": "Юридический статус",
             "tin": "ИНН",
             "legal_name": "Юридическое название",
+            "state_reg_num": "ОГРН",
+            "state_reg_num_sole": "ОГРНИП",
             "iec": "КПП",
             "phone": "Номер телефона",
             "post_country": "Страна",
