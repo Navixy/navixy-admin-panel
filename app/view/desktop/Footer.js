@@ -18,9 +18,10 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
     initComponent: function () {
         var copyright = Ext.isNavixy() ? _l.get('main_copyright') : _l.get('paas_main_copyright');
         var privacyPolicy = Ext.isNavixy() ? (' | ' + _l.get('privacy_policy')) : '';
+        var copyrightCmp = '<span>' + copyright + '</span>';
         // var privacyPolicy = Ext.isNavixy() ? (_l.get('privacy_policy') + ' | ') : '';
         // var links = _l.get('terms_of_service');
-        var copyrightCmp = '<span style="margin-right:2px">' + copyright + '</span>';
+        // var copyrightCmp = '<span style="margin-right:2px">' + copyright + '</span>';
 
         this.items = [
             {
