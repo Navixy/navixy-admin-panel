@@ -36,6 +36,17 @@ Ext.define('Dev.ConfigManager', {
         }
     },
 
+    _maybeUseDebugApi: function () {
+        this.debugApiUrl = localStorage.getItem('debugApi');
+        var debugApiNotice = "YOU ARE USING THE DEBUG API."
+            + " To restore the original api execute localStorage.removeItem('debugApi') command"
+
+        if (this.debugApiUrl) {
+            this._config.apiProfiles.japi.apiRoot = this.debugApiUrl;
+            console.warn(debugApiNotice)
+        }
+    },
+
     _getData: function (lang) {
         var me = this,
 
@@ -45,6 +56,7 @@ Ext.define('Dev.ConfigManager', {
                 me._config = Config;
                 Ext.Array.remove(Ext.Loader.history, cls);
                 me._maybeExecuteConfigCustomCode();
+                me._maybeUseDebugApi();
             };
 
         try {
