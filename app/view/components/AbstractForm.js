@@ -27,6 +27,8 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     backTarget: null,
     saveTarget: null,
 
+    sendFormEnabled: true,
+
     initComponent: function () {
 
         this.defaults = this.getRowDefaults();
@@ -126,7 +128,8 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     sendForm: function () {
         var form = this.getForm();
 
-        if (form.isValid()) {
+        if (this.sendFormEnabled && form.isValid()) {
+            this.sendFormEnabled = false;
             this.fireEvent('formsubmit', this, this.getProcessedValues(), this.record);
         }
     },
@@ -134,7 +137,8 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     sendFormCreate: function () {
         var form = this.getForm();
 
-        if (form.isValid()) {
+        if (this.sendFormEnabled && form.isValid()) {
+            this.sendFormEnabled = false;
             this.fireEvent('createsubmit', this, this.getProcessedValues(), this.record);
         }
     },
