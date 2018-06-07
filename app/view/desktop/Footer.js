@@ -14,18 +14,22 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
     },
 
     // TODO: Footer and copyright styles;
+    // TODO: Return "terms of use" to the footer when the text is ready
     initComponent: function () {
         var copyright = Ext.isNavixy() ? _l.get('main_copyright') : _l.get('paas_main_copyright');
-        var privacyPolicy = Ext.isNavixy() ? (_l.get('privacy_policy') + ' | ') : '';
-        var links = _l.get('terms_of_service');
-        var copyrightCmp = '<span style="margin-right:2px">' + copyright + '</span>';
+        var privacyPolicy = Ext.isNavixy() ? (' | ' + _l.get('privacy_policy')) : '';
+        var copyrightCmp = '<span>' + copyright + '</span>';
+        // var privacyPolicy = Ext.isNavixy() ? (_l.get('privacy_policy') + ' | ') : '';
+        // var links = _l.get('terms_of_service');
+        // var copyrightCmp = '<span style="margin-right:2px">' + copyright + '</span>';
 
         this.items = [
             {
                 xtype: 'container',
                 padding: 20,
                 style: { textAlign: 'center' },
-                html: copyrightCmp + '<br />' + privacyPolicy + links
+                html: copyrightCmp + privacyPolicy
+                // html: copyrightCmp + '<br />' + privacyPolicy + links
             }
         ];
 
