@@ -149,33 +149,13 @@ Ext.define('NavixyPanel.view.users.Card', {
                 filter: {
                     user_id: this.getRecordId()
                 },
-                hasEdit: Ext.checkPermission('trackers', 'read'),
-                listeners: {
-                    render : {
-                        fn: function () {
-                            this.getView().on('refresh', function () {
-                                window.scrollTo(0, this.getEl().getY() - 40)
-                            }, this, {buffer: 10})
-                        },
-                        single: true
-                    }
-                }
+                hasEdit: Ext.checkPermission('trackers', 'read')
             },
             {
                 xtype: 'usertransactions',
                 noTBar: true,
                 title: _l.get('users.card.tab_panel.transactions.title'),
-                record: this.record,
-                listeners: {
-                    render : {
-                        fn: function () {
-                            this.getView().on('refresh', function () {
-                                window.scrollTo(0, this.getEl().getY() - 40)
-                            }, this, {buffer: 10})
-                        },
-                        single: true
-                    }
-                }
+                record: this.record
             }
         ];
     },
@@ -312,6 +292,10 @@ Ext.define('NavixyPanel.view.users.Card', {
                     title: _l.get('users.fields.registered_street_address'),
                     value: recordData.registered_street_address
                 },
+                (recordData.legal_type === 'individual' ? null : {
+                    title: _l.get('users.fields.' + (recordData.legal_type === 'sole_trader' ? 'state_reg_num_sole' : 'state_reg_num')),
+                    value: recordData.state_reg_num
+                }),
                 {
                     title: _l.get('users.fields.tin'),
                     value: recordData.tin

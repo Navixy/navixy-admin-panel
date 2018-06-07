@@ -112,70 +112,72 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
     getSWItems: function () {
         var me = this;
 
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('tariffs.create_form.options_fields'),
-                padding: '10 0 20 0'
-            },
-            {
-                fieldLabel: _l.get('tariffs.fields.group_id_exp'),
-                name: 'group_id',
-                labelAlign: 'left',
-                width: 400,
-                labelWidth: 220,
-                minLength: 1,
-                maxLength: 6,
-                vtype: 'numeric',
-                value: 0
-            },
-            {
-                fieldLabel: _l.get('tariffs.fields.device_limit_exp'),
-                name: 'device_limit',
-                allowBlank: true,
-                labelAlign: 'left',
-                width: 400,
-                labelWidth: 220,
-                minLength: 1,
-                maxLength: 6,
-                vtype: 'numeric',
-                value: 0
-            },
-            {
-                fieldLabel: _l.get('tariffs.fields.store_period'),
-                fname: 'store_period',
-                allowBlank: true,
-                xtype: 'periodfield',
-                role: 'store_period',
-                ui: 'light',
-                width: 400,
-                labelWidth: 225
-            },
-            {
-                boxLabel: _l.get('tariffs.fields.proportional_charge'),
-                name: 'proportional_charge',
-                labelWidth: 'auto',
-                width: 'auto',
-                xtype: 'checkbox'
-            },
-            {
-                boxLabel: _l.get('tariffs.fields.active_exp'),
-                name: 'active',
-                labelWidth: 'auto',
-                width: 'auto',
-                xtype: 'checkbox'
-            },
-            {
-                boxLabel: _l.get('tariffs.fields.has_reports'),
-                name: 'has_reports',
-                allowBlank: true,
-                checked: true,
-                labelWidth: 'auto',
-                width: 'auto',
-                xtype: 'checkbox'
-            }
-        ];
+        return {
+            items:[
+                {
+                    xtype: 'container',
+                    cls: 'block_header',
+                    html: _l.get('tariffs.create_form.options_fields'),
+                    padding: '10 0 20 0'
+                },
+                {
+                    fieldLabel: _l.get('tariffs.fields.group_id_exp'),
+                    name: 'group_id',
+                    labelAlign: 'left',
+                    width: 400,
+                    labelWidth: 220,
+                    minLength: 1,
+                    maxLength: 6,
+                    vtype: 'numeric',
+                    value: 0
+                },
+                {
+                    fieldLabel: _l.get('tariffs.fields.device_limit_exp'),
+                    name: 'device_limit',
+                    allowBlank: true,
+                    labelAlign: 'left',
+                    width: 400,
+                    labelWidth: 220,
+                    minLength: 1,
+                    maxLength: 6,
+                    vtype: 'numeric',
+                    value: 0
+                },
+                {
+                    fieldLabel: _l.get('tariffs.fields.store_period'),
+                    fname: 'store_period',
+                    allowBlank: true,
+                    xtype: 'periodfield',
+                    role: 'store_period',
+                    ui: 'light',
+                    width: 400,
+                    labelWidth: 225
+                },
+                {
+                    boxLabel: _l.get('tariffs.fields.proportional_charge'),
+                    name: 'proportional_charge',
+                    labelWidth: 'auto',
+                    width: 'auto',
+                    xtype: 'checkbox'
+                },
+                {
+                    boxLabel: _l.get('tariffs.fields.active_exp'),
+                    name: 'active',
+                    labelWidth: 'auto',
+                    width: 'auto',
+                    xtype: 'checkbox'
+                },
+                {
+                    boxLabel: _l.get('tariffs.fields.has_reports'),
+                    name: 'has_reports',
+                    allowBlank: true,
+                    checked: true,
+                    labelWidth: 'auto',
+                    width: 'auto',
+                    xtype: 'checkbox'
+                }
+            ]
+        };
     },
 
     getSEItems: function () {

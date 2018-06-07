@@ -446,6 +446,8 @@ Ext.define('Locale.locale-en', {
             "activated_t": "User active",
             "legal_type": "Legal status",
             "tin": "Tax number",
+            "state_reg_num": "OGRN",
+            "state_reg_num_sole": "OGRNIP",
             "legal_name": "Legal Name",
             "iec": "IEC",
             "phone": "Phone number",

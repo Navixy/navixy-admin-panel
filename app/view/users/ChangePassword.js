@@ -67,7 +67,7 @@ Ext.define('NavixyPanel.view.users.ChangePassword', {
     },
 
     getSWItems: function () {
-        return [];
+        return { items: [] };
     },
 
     getSEItems: function () {
