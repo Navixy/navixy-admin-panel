@@ -103,19 +103,6 @@ Ext.define('NavixyPanel.store.leMaps', {
                     }
                 }
             },
-
-            {
-                name: 'ovi',
-                httpsReady: false,
-                maxZoom: 18,
-                minZoom: 2,
-                urlTpl: 'http://{serv}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?lg=' + locale + '&token=&appId=',
-                tplFns: {
-                    serv: function () {
-                        return Math.floor(Math.random() * 3 + 1);
-                    }
-                }
-            },
             {
                 name: 'bing',
                 httpsReady: true,

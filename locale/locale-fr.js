@@ -342,7 +342,6 @@ Ext.define('Locale.locale-fr',{
         "wikimapia": "Wikimapia",
         "navitel": "Navitel cartes",
         "doublegis": "DoubleGIS cartes",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "here": "Cartes ICIS",
         "bing": "Bing Maps"

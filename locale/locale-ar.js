@@ -342,7 +342,6 @@ Ext.define('Locale.locale-ar',{
         "wikimapia": "Wikimapia",
         "navitel": "خرائط Navitel",
         "doublegis": "DoubleGis Maps",
-        "ovi": "OVI Maps",
         "mailru": "خرائط Mail.ru",
         "here": "خرائط هنا",
         "bing": "خرائط بلنج"
