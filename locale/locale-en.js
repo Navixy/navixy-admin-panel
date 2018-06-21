@@ -393,7 +393,6 @@ Ext.define('Locale.locale-en', {
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGIS Maps",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "kosmosnimki": "Kosmosnimki (OSM)",
         "sputnik": "Sputnik (OSM)",

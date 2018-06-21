@@ -392,7 +392,6 @@ Ext.define('Locale.locale-ru', {
         "wikimapia": "Wikimapia",
         "navitel": "Карты Navitel",
         "doublegis": "Карты DoubleGis",
-        "ovi": "Карты OVI",
         "mailru": "Карты Mail.ru",
         "kosmosnimki": "Космоснимки",
         "sputnik": "Карты Спутник",

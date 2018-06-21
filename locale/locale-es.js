@@ -350,7 +350,6 @@ Ext.define('Locale.locale-es',{
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"
