@@ -129,7 +129,6 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         var form = this.getForm();
 
         if (this.sendFormEnabled && form.isValid()) {
-            this.sendFormEnabled = false;
             this.fireEvent('formsubmit', this, this.getProcessedValues(), this.record);
         }
     },
