@@ -1061,7 +1061,7 @@ Ext.define('Locale.locale-en', {
             "tos_hint": "Insert random text with links. Users will see this text when clicking on the “Terms of Use” link in a pop-up window. Links starting with http:,https: and mailto: will be converted into active hyperlinks. Please, use plain text only, html marking is not allowed.",
             premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
-            premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
+            premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}'
         },
         "sms_gateway": {
