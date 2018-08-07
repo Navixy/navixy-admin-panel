@@ -90,6 +90,13 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
+            id: 'hr_HR',
+            name: 'hr_HR',
+            text: 'Hrvatski',
+            alias: ['hr', 'hr_HR', 'Hrvatski'],
+            rtl: false
+        },
+        {
             id: 'id_ID',
             name: 'id_ID',
             text: 'Bahasa Indonesia',
@@ -122,7 +129,15 @@ Ext.define('Locale.Manager', {
             text: 'ქართული',
             alias: ['ka', 'ka_GE', 'ქართული'],
             rtl: false
-        }, {
+        },
+        {
+            id: 'ko',
+            name: 'ko_KR',
+            text: '한국어',
+            alias: ['ko', 'ko_KR', '한국어'],
+            rtl: false
+        },
+        {
             id: 'pl',
             name: 'pl',
             text: 'Polski',
