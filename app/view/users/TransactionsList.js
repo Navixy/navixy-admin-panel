@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.view.users.TransactionsList', {
                 text: _l.get('devices.tracker'),
                 dataIndex: 'tracker_id',
                 renderer: function (value) {
-                    return value == 0 ? '<span class="gray nopad">{[_l.get("no")]}</span>' : '<a>' + value + '</a>';
+                    return value == 0 ? '<span class="gray nopad">' + _l.get("no") + '</span>' : '<a>' + value + '</a>';
                 },
                 width: 80
             },

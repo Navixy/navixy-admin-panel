@@ -27,11 +27,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     getItems: function () {
         var items = this.callParent(arguments);
 
-        //this is fucking shit. @naru wtf?
-        if (items[1] && items[1].items && items[1].items[1]) {
-            items[1].items[1].role = 'legal_fields';
-        }
-
         return items;
     },
 
@@ -235,89 +230,98 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     getSWItems: function () {
         var me = this;
 
-        return [
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('users.create_form.legal_fields'),
-                padding: '10 0 20 0',
-                allowBlank: true
-            },
-            {
-                fieldLabel: _l.get('users.fields.legal_name'),
-                name: 'legal_name',
-                minLength: 1,
-                maxLength: 100
-            },
-            {
-                fieldLabel: _l.get('users.fields.tin'),
-                name: 'tin',
-                maxLength: 255,
-                allowBlank: true
-            },
-            {
-                fieldLabel: _l.get('users.fields.iec'),
-                name: 'iec',
-                maxLength: 255,
-                allowBlank: true
-            },
-            {
-                xtype: 'container',
-                height: 10
-            },
-            {
-                xtype: 'container',
-                layout: {
-                    type: 'hbox',
-                    puck: 'end'
+        return {
+            role: 'legal_fields',
+            items: [
+                {
+                    xtype: 'container',
+                    cls: 'block_header',
+                    html: _l.get('users.create_form.legal_fields'),
+                    padding: '10 0 20 0',
+                    allowBlank: true
                 },
-                padding: '11 0 5',
-                items: [
-                    {
-                        xtype: 'container',
-                        flex: 1
+                {
+                    fieldLabel: _l.get('users.fields.legal_name'),
+                    name: 'legal_name',
+                    minLength: 1,
+                    maxLength: 100
+                },
+                {
+                    fieldLabel: _l.get('users.fields.tin'),
+                    name: 'tin',
+                    maxLength: 255,
+                    allowBlank: true
+                },
+                {
+                    fieldLabel: _l.get('users.fields.iec'),
+                    name: 'iec',
+                    maxLength: 255,
+                    allowBlank: true
+                },
+                {
+                    fieldLabel: _l.get('users.fields.state_reg_num'),
+                    name: 'state_reg_num',
+                    maxLength: 15,
+                    allowBlank: true
+                },
+                {
+                    xtype: 'container',
+                    height: 10
+                },
+                {
+                    xtype: 'container',
+                    layout: {
+                        type: 'hbox',
+                        puck: 'end'
                     },
-                    {
-                        xtype: 'button',
-                        ui: 'gray',
-                        text: _l.get('users.create_form.copy_address'),
-                        handler: function () {
-                            me.copyAddress();
+                    padding: '11 0 5',
+                    items: [
+                        {
+                            xtype: 'container',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            ui: 'gray',
+                            text: _l.get('users.create_form.copy_address'),
+                            handler: function () {
+                                me.copyAddress();
+                            }
                         }
-                    }
-                ]
-            },
-            {
-                fieldLabel: _l.get('users.fields.registered_country'),
-                name: 'registered_country',
-                minLength: 1,
-                maxLength: 100
-            },
-            {
-                fieldLabel: _l.get('users.fields.registered_region'),
-                name: 'registered_region',
-                minLength: 1,
-                maxLength: 100
-            },
-            {
-                fieldLabel: _l.get('users.fields.registered_city'),
-                name: 'registered_city',
-                minLength: 1,
-                maxLength: 100
-            },
-            {
-                fieldLabel: _l.get('users.fields.registered_street_address'),
-                name: 'registered_street_address',
-                minLength: 1,
-                maxLength: 100
-            },
-            {
-                fieldLabel: _l.get('users.fields.registered_index'),
-                name: 'registered_index',
-                minLength: 1,
-                allowBlank: true
-            }
-        ];
+                    ]
+                },
+                {
+                    fieldLabel: _l.get('users.fields.registered_country'),
+                    name: 'registered_country',
+                    minLength: 1,
+                    maxLength: 100
+                },
+                {
+                    fieldLabel: _l.get('users.fields.registered_region'),
+                    name: 'registered_region',
+                    minLength: 1,
+                    maxLength: 100
+                },
+                {
+                    fieldLabel: _l.get('users.fields.registered_city'),
+                    name: 'registered_city',
+                    minLength: 1,
+                    maxLength: 100
+                },
+                {
+                    fieldLabel: _l.get('users.fields.registered_street_address'),
+                    name: 'registered_street_address',
+                    minLength: 1,
+                    maxLength: 100
+                },
+                {
+                    fieldLabel: _l.get('users.fields.registered_index'),
+                    name: 'registered_index',
+                    minLength: 1,
+                    allowBlank: true
+                }
+            ]
+        };
     },
 
     changeLegalStatus: function (soleState) {
@@ -334,7 +338,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
-                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec'], item.name) < 0) {
+                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec', 'state_reg_num'], item.name) < 0) {
 
                     item.allowBlank = soleStatus;
                     if (soleStatus) {
@@ -343,6 +347,11 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                         item.labelSeparator = Util.getRequiredSeparator();
                     }
                     item.setFieldLabel(item.getFieldLabel());
+                }
+                if (Ext.isString(item.name) && item.name === 'state_reg_num') {
+                    var isSoleTrader = soleState === 'sole_trader'
+                    item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
+                    this.updateMaxLength(item, isSoleTrader ? 15 : 13)
                 }
             }, this);
         }
@@ -368,6 +377,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             iecField[soleState === "legal_entity" ? "show" : "hide"]();
         }
         this.getForm().isValid();
+    },
+
+    updateMaxLength: function (field, maxLength) {
+        field.maxLength = maxLength
     },
 
     copyAddress: function () {

@@ -13,6 +13,8 @@ Ext.define('Locale.locale-en', {
     "singleton": true,
     "main_copyright": "© Navixy. All rights reserved.",
     "paas_main_copyright": "© All rights reserved.",
+    "privacy_policy": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Privacy Policy</a>",
+    "terms_of_service": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Terms of Use</a>",
     "panel_title": "Navixy Admin Panel",
     "paas_panel_title": "Admin Panel",
     "error": "Error",
@@ -374,7 +376,8 @@ Ext.define('Locale.locale-en', {
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
         "aoa": "Angolan  kwanza",
-        "kwd": "Kuwaiti dinar"
+        "kwd": "Kuwaiti dinar",
+        "bdt": "Bangladeshi taka"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -390,7 +393,6 @@ Ext.define('Locale.locale-en', {
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGIS Maps",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "kosmosnimki": "Kosmosnimki (OSM)",
         "sputnik": "Sputnik (OSM)",
@@ -443,6 +445,8 @@ Ext.define('Locale.locale-en', {
             "activated_t": "User active",
             "legal_type": "Legal status",
             "tin": "Tax number",
+            "state_reg_num": "OGRN",
+            "state_reg_num_sole": "OGRNIP",
             "legal_name": "Legal Name",
             "iec": "IEC",
             "phone": "Phone number",
@@ -1051,9 +1055,13 @@ Ext.define('Locale.locale-en', {
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
             "monitoring_logo_clickable_hint": "",
+            "privacy_policy_title": "Link to Privacy Policy",
+            "privacy_policy_hint": "Please insert a link to Privacy Policy. The link should begin with http: or https.",
+            "tos_title": "Terms of Use",
+            "tos_hint": "Insert random text with links. Users will see this text when clicking on the “Terms of Use” link in a pop-up window. Links starting with http:,https: and mailto: will be converted into active hyperlinks. Please, use plain text only, html marking is not allowed.",
             premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
-            premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
+            premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}'
         },
         "sms_gateway": {
@@ -1649,7 +1657,8 @@ Ext.define('Locale.locale-en', {
         "XAF": "{0} franc",
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "features": {
         "api": "API",

@@ -335,7 +335,8 @@ Ext.define('Locale.locale-es',{
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
-        "kwd": "Kuwaiti dinar"
+        "kwd": "Kuwaiti dinar",
+        "bdt": "Bangladeshi taka"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -349,7 +350,6 @@ Ext.define('Locale.locale-es',{
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGis Maps",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"
@@ -1469,7 +1469,8 @@ Ext.define('Locale.locale-es',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "features": {
         "api": "API",

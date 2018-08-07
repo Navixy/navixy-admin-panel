@@ -88,11 +88,26 @@ Ext.define('Locale.Manager', {
             text: 'Deutsch',
             alias: ['de', 'de_DE', 'de_AT'],
             rtl: false
-        }, {
+        },
+        {
+            id: 'hr_HR',
+            name: 'hr_HR',
+            text: 'Hrvatski',
+            alias: ['hr', 'hr_HR', 'Hrvatski'],
+            rtl: false
+        },
+        {
             id: 'id_ID',
             name: 'id_ID',
             text: 'Bahasa Indonesia',
-            alias: ['id', 'id_ID', 'bahasa Indonesia'],
+            alias: ['id', 'id_ID', 'in_ID', 'Bahasa Indonesia'],
+            rtl: false
+        },
+        {
+            id: 'mn_MN',
+            name: 'mn_MN',
+            text: 'Монгол',
+            alias: ['mn_MN', 'Монгол'],
             rtl: false
         },
         {
@@ -114,7 +129,15 @@ Ext.define('Locale.Manager', {
             text: 'ქართული',
             alias: ['ka', 'ka_GE', 'ქართული'],
             rtl: false
-        }, {
+        },
+        {
+            id: 'ko',
+            name: 'ko_KR',
+            text: '한국어',
+            alias: ['ko', 'ko_KR', '한국어'],
+            rtl: false
+        },
+        {
             id: 'pl',
             name: 'pl',
             text: 'Polski',

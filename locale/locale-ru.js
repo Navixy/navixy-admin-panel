@@ -9,8 +9,10 @@ Ext.define('Locale.locale-ru', {
         "history": false
     }],
     "singleton": true,
-    "main_copyright": "© 2015 RusLink. All rights reserved.",
+    "main_copyright": "© RusLink. All rights reserved.",
     "paas_main_copyright": "© All rights reserved.",
+    "privacy_policy": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Privacy Policy</a>",
+    "terms_of_service": "<a href=\"https://www.navixy.com/about/privacy-policy/\" target=\"_blank\">Terms of Use</a>",
     "panel_title": "NavixyPanel",
     "paas_panel_title": "Панель администратора",
     "error": "Ошибка",
@@ -373,7 +375,8 @@ Ext.define('Locale.locale-ru', {
         "xof": "West African CFA franc",
         "aed": "United Arab Emirates dirham",
         "aoa": "Ангольская кванза",
-        "kwd": "Кувейтский динар"
+        "kwd": "Кувейтский динар",
+        "bdt": "Бангладешская така"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -389,7 +392,6 @@ Ext.define('Locale.locale-ru', {
         "wikimapia": "Wikimapia",
         "navitel": "Карты Navitel",
         "doublegis": "Карты DoubleGis",
-        "ovi": "Карты OVI",
         "mailru": "Карты Mail.ru",
         "kosmosnimki": "Космоснимки",
         "sputnik": "Карты Спутник",
@@ -439,6 +441,8 @@ Ext.define('Locale.locale-ru', {
             "legal_type": "Юридический статус",
             "tin": "ИНН",
             "legal_name": "Юридическое название",
+            "state_reg_num": "ОГРН",
+            "state_reg_num_sole": "ОГРНИП",
             "iec": "КПП",
             "phone": "Номер телефона",
             "post_country": "Страна",
@@ -1030,6 +1034,10 @@ Ext.define('Locale.locale-ru', {
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Клик по логотипу в интерфейсе открывает промо web-сайт",
             "monitoring_logo_clickable_hint": "",
+            "privacy_policy_title": "Ссылка на политику конфиденциальности",
+            "privacy_policy_hint": "Укажите ссылку на политику конфиденциальности. Ссылка должна начинаться с http: или https.",
+            "tos_title": "Условия использования",
+            "tos_hint": "Укажите произвольный текст со ссылками. Пользователь увидит данный текст после нажатия на ссылку “Условия использования” во всплывающем окне. Ссылки начинающиеся на http:, https: и mailto: преобразуются в активные. Используйте только простой текст, HTML-разметка не допускается.",
             premium_gis: 'Подключите пакет "Премиум ГИС" от Navixy, включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             paas_premium_gis: 'Подключите пакет "Премиум ГИС", включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
@@ -1609,7 +1617,8 @@ Ext.define('Locale.locale-ru', {
         "XAF": "{0} франк",
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "features": {
         "api": "API",

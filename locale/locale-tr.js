@@ -327,7 +327,8 @@ Ext.define('Locale.locale-tr',{
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
-        "kwd": "Kuwaiti dinar"
+        "kwd": "Kuwaiti dinar",
+        "bdt": "Bangladeshi taka"
     },
     "currencies_tpls": {
         "GBP": "£{0}",
@@ -449,7 +450,8 @@ Ext.define('Locale.locale-tr',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "maps": {
         "roadmap": "Google yol haritası",
@@ -463,7 +465,6 @@ Ext.define('Locale.locale-tr',{
         "wikimapia": "Wikimapia",
         "navitel": "Navitel Maps",
         "doublegis": "DoubleGIS Maps",
-        "ovi": "OVI Maps",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"

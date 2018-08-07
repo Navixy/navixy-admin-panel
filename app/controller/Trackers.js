@@ -350,7 +350,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     this.afterTrackerCloneCreate(response, record, formValues);
                 },
                 failure: function (response) {
-                    Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.failure_msg'));
+                    var errCode = response && response.status && response.status.code,
+                        errDescription = _l.get('errors.tracker')[errCode] || _l.get('errors')[errCode] || status.description || false;
+
+                    Ext.MessageBox.alert(_l.get('error'), _l.get('trackers.clone_form.failure_msg') + (errDescription ? '. ' + errDescription : ''));
                 },
                 scope: this
             });

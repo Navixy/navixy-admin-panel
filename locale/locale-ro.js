@@ -327,7 +327,8 @@ Ext.define('Locale.locale-ro',{
         "yer": "Yemen Rial",
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
-        "kwd": "Kuwaiti dinar"
+        "kwd": "Kuwaiti dinar",
+        "bdt": "Bangladeshi taka"
     },
     "maps": {
         "roadmap": "Foaia de parcurs google",
@@ -341,7 +342,6 @@ Ext.define('Locale.locale-ro',{
         "wikimapia": "Wikimapia",
         "navitel": "Hărți Navitel",
         "doublegis": "Hărți DoubleGis",
-        "ovi": "Hărți OVI",
         "mailru": "Mail.ru Maps",
         "here": "HERE Maps",
         "bing": "Bing Maps"
@@ -1453,7 +1453,8 @@ Ext.define('Locale.locale-ro',{
         "YER": "{0} ﷼",
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
-        "KWD": "KD {0}"
+        "KWD": "KD {0}",
+        "BDT": "{0} ৳"
     },
     "geolocation": {
         "disabled": "Disabled",

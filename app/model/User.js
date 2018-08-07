@@ -57,7 +57,10 @@ Ext.define('NavixyPanel.model.User', {
             name: 'iec',
             type: 'string'
         },
-
+        {
+            name: 'state_reg_num',
+            type: 'string'
+        },
         {
             name: 'phone',
             type: 'string'
