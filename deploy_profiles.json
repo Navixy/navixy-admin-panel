@@ -4,7 +4,7 @@
         "remotePath": "/var/www/panel/"
     },
 
-    "test_dist": {
+    "standalone": {
         "host": "ubertest.gdemoi",
         "remotePath": "/home/dist/simple/panel-v2/"
     },
