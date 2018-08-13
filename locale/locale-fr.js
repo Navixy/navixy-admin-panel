@@ -1079,7 +1079,7 @@ Ext.define('Locale.locale-fr',{
             }
         },
         "subscription": {
-            "activation_btn_text": "Payer les frais d'activation maintenant (100 USD) en ligne",
+            "activation_btn_text": "Payer les frais d'activation maintenant (500 USD) en ligne",
             "monthly_fee_btn_text": "Payer en ligne",
             "activation_hint": "Vous évaluez Navixy ServerMate version d'évaluation (till {0}). Pour continuer avec le commercial version Veuillez choisir vos options d'abonnement et procéder au versement de l'activation :",
             "monthly_fee_hint": "Consulter le solde de votre abonnement et ajouter de l'argent ici. Nous vous remercions pour vos paiements en temps opportun. Pour éviter l'automatique interruption de votre abonnement s'il vous plaît fermez toujours vos factures dans les 10 jours après que vous avez reçu la facture pour le mois précédent.",

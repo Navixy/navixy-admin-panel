@@ -990,7 +990,7 @@ Ext.define('Locale.locale-ar',{
             "error_text": "Failed to load image"
         },
         "subscription": {
-            "activation_btn_text": "Pay activation fee now (100 USD) online",
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
             "monthly_fee_btn_text": "الدفع عبر الإنترنت",
             "activation_hint": "تقوم فيه بتقييم الإصدار التجريبي سيرفيرماتي نافيكسي (حتى {0}). مواصلة التجارية الإصدار الرجاء اختيار خيارات الاشتراك الخاص بك والمضي قدما في دفع التنشيط:",
             "monthly_fee_hint": "مراجعة رصيد الاشتراك الخاص بك وإضافة الأموال هنا. أننا نشكركم على المدفوعات الخاصة بك في الوقت المناسب. لتجنب التلقائي تعطيل الاشتراك الخاص بك الرجاء دائماً إغلاق الفواتير الخاصة بك في غضون 10 أيام بعد استلام الفاتورة للشهر السابق.",

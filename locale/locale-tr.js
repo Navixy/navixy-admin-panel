@@ -911,7 +911,7 @@ Ext.define('Locale.locale-tr',{
     "settings": {
         "menu_text": "Hesap yönetimi",
         "subscription": {
-            "activation_btn_text": "Pay activation fee now (100 USD) online",
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
             "monthly_fee_btn_text": "Pay online",
             "activation_hint": "Şu an gp-s yazılımının deneme sürümünü kullanıyorsunuz (bitiş tarihi {0}). Tam sürüm ile devam etmek için lütfen abonelik seçeneklerinizi belirleyin ve aboneliğinize ait ödeme işlemini tamamlayın.",
             "monthly_fee_hint": "Aboneliğinize ait bakiye ve ödenen tutarlar burada gösterilmektedir. Zamanında yaptığınız ödemeler için teşekkür ederiz. Otomatik kesintilere uğramamak için lütfen bir önceki aya ait faturalarınız çıktığında 10 gün içerisinde ödeme işlemini tamamlayınız.",

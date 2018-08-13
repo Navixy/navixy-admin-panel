@@ -87,7 +87,9 @@ Ext.define('Locale.locale-en', {
             "title": "Incorrect parameters:",
             "errors": {
                 "login": "Must be a valid email address",
-                "domain": "Incorrect domain name"
+                "domain": "Incorrect domain name",
+                "user.post_index": "Post index must match \"[-a-zA-Z0-9 ]{0,30}\"",
+                "user._i_e_c": "IEC: Length must be between 0 and 255"
             }
         },
         "9": "Too large request",
@@ -905,7 +907,7 @@ Ext.define('Locale.locale-en', {
         },
         "subscription": {
             "title": "Subscription",
-            "activation_btn_text": "Pay activation fee now (100 USD) online",
+            "activation_btn_text": "Pay activation fee now (500 USD) online",
             "monthly_fee_btn_text": "Pay online",
             "activation_hint": "You are evaluating Navixy ServerMate trial version (till {0}). To continue with the commercial version please choose your subscription options and proceed with the activation payment:",
             "monthly_fee_hint": "Review your subscription’s balance and add funds here. We thank you for your timely payments. To avoid the automatic disruption of your subscription please always close your bills within 10 days after you received the invoice for the previous month.",
