@@ -182,16 +182,21 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
     },
 
     afterFileUpdateFailure: function (type, response) {
-        var status = response.status,
-            errors = response.errors || [],
-            errCode = status.code,
-            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        this.down("container[role=form]").down("filefield").fileInputEl.set({
-            accept: this.typesMap[this.fileType].accept
-        });
+        try {
+            var status = response.status,
+                errors = response.errors || [],
+                errCode = status.code,
+                errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        this.showUploadError(errDescription);
+            this.down("container[role=form]").down("filefield").fileInputEl.set({
+                accept: this.typesMap[this.fileType].accept
+            });
+
+            this.showUploadError(errDescription);
+        } catch (e) {
+            Ext.API.errorsManager.fireError('upload_exeption', false, false);
+        }
     },
 
     showUploadError: function (errDescription) {
