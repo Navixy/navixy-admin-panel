@@ -28,11 +28,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             success: config.success || Ext.emptyFn,
             failure: Ext.bind(function (form, action) {
                 try {
-                    var errorCode = action.result.status.code;
                     if (config.failure) {
                         config.failure.call(config.scope || this, form, action);
+                    } else {
+                        var errorCode = action.result.status.code;
+
+                        this.errorsManager.fireError(errorCode, params, action.response.responseText);
                     }
-                    this.errorsManager.fireError(errorCode, params, action.response.responseText);
                 } catch (e) {
                     this.errorsManager.fireError('upload_exeption');
                     console.log(e.stack);
