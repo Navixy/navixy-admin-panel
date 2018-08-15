@@ -77,6 +77,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.create_form.password_repeat'),
                 inputType: 'password',
+                labelSeparator: Util.getRequiredSeparator(),
                 allowBlank: false,
                 minLength: 6,
                 maxLength: 20,
@@ -318,6 +319,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.registered_index'),
                     name: 'registered_index',
                     minLength: 1,
+                    maxLength: 30,
                     allowBlank: true
                 }
             ]
@@ -326,6 +328,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     changeLegalStatus: function (soleState) {
         var soleStatus = soleState === "individual",
+            reqSeparator = Util.getRequiredSeparator(),
             legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
                 this.down('[name="post_city"]'),
@@ -344,7 +347,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     if (soleStatus) {
                         item.labelSeparator = ':';
                     } else {
-                        item.labelSeparator = Util.getRequiredSeparator();
+                        item.labelSeparator = reqSeparator;
                     }
                     item.setFieldLabel(item.getFieldLabel());
                 }
