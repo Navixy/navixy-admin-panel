@@ -1055,6 +1055,8 @@ Ext.define('Locale.locale-en', {
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "do_not_apply_default_seetings_during_activation": "Do not apply default settings during device activation",
+            "do_not_apply_default_seetings_during_activation_hint": "If the checkbox is marked the platform will not send configurational SMS and GPRS commands with default settings. The device should be manually configured before its activation on the platform.",
             "show_call_notifications": "Allow configuration of voice notifications",
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",

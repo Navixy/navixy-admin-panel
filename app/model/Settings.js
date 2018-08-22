@@ -129,7 +129,10 @@ Ext.define('NavixyPanel.model.Settings', {
             name: 'show_call_notifications',
             type: 'boolean'
         },
-
+        {
+            name: 'no_register_commands',
+            type: 'boolean'
+        },
         {
             name: 'monitoring_logo_clickable',
             type: 'boolean'

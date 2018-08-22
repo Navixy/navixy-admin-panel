@@ -321,6 +321,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     name: 'registered_index',
                     maxLength: 30,
                     minLength: 1,
+                    maxLength: 30,
                     allowBlank: true
                 }
             ]

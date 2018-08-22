@@ -893,6 +893,8 @@ Ext.define('Locale.locale-es',{
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "do_not_apply_default_seetings_during_activation": "No aplicar las configuraciones predeterminadas al activar dispositivo",
+            "do_not_apply_default_seetings_during_activation_hint": "Al elegir esta opción la plataforma no va a enviar comandos SMS y GPRS con las configuraciones predeterminadas al dispositivo. Debe configurar el dispositivo de forma manual antes de activarlo en la plataforma",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
             "show_call_notifications": "Allow configuration of voice notifications",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
