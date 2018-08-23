@@ -60,6 +60,11 @@ Ext.define('NavixyPanel.store.Features', {
                 group: "features"
             },
             {
+                type: "driver_journal",
+                "name": _l.get('features.driver_journal'),
+                group: "features"
+            },
+            {
                 type: "ui_mobile",
                 "name": _l.get('features.ui_mobile'),
                 group: "features"
