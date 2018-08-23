@@ -265,6 +265,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     maxLength: 15,
                     allowBlank: true
                 },
+                this.getOKPOField(),
                 {
                     xtype: 'container',
                     height: 10
@@ -341,7 +342,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
-                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec', 'state_reg_num'], item.name) < 0) {
+                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
 
                     item.allowBlank = soleStatus;
                     if (soleStatus) {
@@ -351,10 +352,13 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     }
                     item.setFieldLabel(item.getFieldLabel());
                 }
+                var isSoleTrader = soleState === 'sole_trader';
                 if (Ext.isString(item.name) && item.name === 'state_reg_num') {
-                    var isSoleTrader = soleState === 'sole_trader'
                     item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
                     this.updateMaxLength(item, isSoleTrader ? 15 : 13)
+                }
+                if (Ext.isString(item.name) && item.name === 'okpo_code') {
+                    this.updateMaxLength(item, isSoleTrader ? 10 : 8)
                 }
             }, this);
         }
@@ -408,5 +412,17 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     gatSaveTarget: function (value) {
         return 'user/' + (value || this.record.getId());
+    },
+
+    getOKPOField: function () {
+        return Locale.Manager.getLocale() === 'ru' ? {
+            fieldLabel: 'ОКПО',
+            xtype: 'textfield',
+            enforceMaxLength: true,
+            maskRe: /[0-9]/,
+            regex: /[0-9]/,
+            name: 'okpo_code',
+            allowBlank: true,
+        } : null;
     }
 });
