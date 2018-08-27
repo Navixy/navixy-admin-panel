@@ -252,18 +252,24 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.tin'),
                     name: 'tin',
                     maxLength: 255,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.iec'),
                     name: 'iec',
                     maxLength: 255,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.state_reg_num'),
                     name: 'state_reg_num',
                     maxLength: 15,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 this.getOKPOField(),
@@ -344,23 +350,24 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
-                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
-
-                    item.allowBlank = soleStatus;
-                    if (soleStatus) {
-                        item.labelSeparator = ':';
-                    } else {
-                        item.labelSeparator = reqSeparator;
+                if (Ext.isString(item.name)) {
+                    if (Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
+                        item.allowBlank = soleStatus;
+                        if (soleStatus) {
+                            item.labelSeparator = ':';
+                        } else {
+                            item.labelSeparator = reqSeparator;
+                        }
+                        item.setFieldLabel(item.getFieldLabel());
                     }
-                    item.setFieldLabel(item.getFieldLabel());
-                }
-                var isSoleTrader = soleState === 'sole_trader';
-                if (Ext.isString(item.name) && item.name === 'state_reg_num') {
-                    item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
-                    this.updateMaxLength(item, isSoleTrader ? 15 : 13)
-                }
-                if (Ext.isString(item.name) && item.name === 'okpo_code') {
-                    this.updateMaxLength(item, isSoleTrader ? 10 : 8)
+                    var isSoleTrader = soleState === 'sole_trader';
+                    if (item.name === 'state_reg_num') {
+                        item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
+                        this.updateMaxLength(item, isSoleTrader ? 15 : 13);
+                    }
+                    if (item.name === 'okpo_code') {
+                        this.updateMaxLength(item, isSoleTrader ? 10 : 8);
+                    }
                 }
             }, this);
         }
@@ -425,6 +432,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             regex: /[0-9]/,
             name: 'okpo_code',
             allowBlank: true,
+            minLength: 8
         } : null;
     }
 });
