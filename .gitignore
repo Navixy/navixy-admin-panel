@@ -1,0 +1,17 @@
+.idea/*
+app/api/_proxy/*
+theme/panel_metromorph/.sass-cache/*
+
+build
+node_modules
+theme/metromorph.css
+PConfig.js
+
+.tx/config
+VERSION
+translation_cache
+stickers/
+.sass-cache
+syntax: regexp
+^ext/
+^transifex/

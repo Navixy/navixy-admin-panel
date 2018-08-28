@@ -337,7 +337,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     changeLegalStatus: function (soleState) {
         var soleStatus = soleState === "individual",
-            reqSeparator = Util.getRequiredSeparator(),
+            labelSeparator = soleStatus ? ':' : Util.getRequiredSeparator(),
             legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
                 this.down('[name="post_city"]'),
@@ -351,13 +351,9 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
                 if (Ext.isString(item.name)) {
-                    if (Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
+                    if (item.name !== 'okpo_code') {
                         item.allowBlank = soleStatus;
-                        if (soleStatus) {
-                            item.labelSeparator = ':';
-                        } else {
-                            item.labelSeparator = reqSeparator;
-                        }
+                        item.labelSeparator = labelSeparator;
                         item.setFieldLabel(item.getFieldLabel());
                     }
                     var isSoleTrader = soleState === 'sole_trader';
@@ -367,6 +363,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     }
                     if (item.name === 'okpo_code') {
                         this.updateMaxLength(item, isSoleTrader ? 10 : 8);
+                        this.updateMinLength(item, isSoleTrader ? 10 : 8);
                     }
                 }
             }, this);
@@ -397,6 +394,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     updateMaxLength: function (field, maxLength) {
         field.maxLength = maxLength
+    },
+
+    updateMinLength: function (field, minLength) {
+        field.minLength = minLength
     },
 
     copyAddress: function () {
@@ -432,7 +433,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             regex: /[0-9]/,
             name: 'okpo_code',
             allowBlank: true,
-            minLength: 8
         } : null;
     }
 });
