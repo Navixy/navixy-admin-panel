@@ -349,7 +349,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
                 if (Ext.isString(item.name)) {
-                    if (item.name !== 'okpo_code') {
+                    if (Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
                         item.allowBlank = soleStatus;
                         item.labelSeparator = labelSeparator;
                         item.setFieldLabel(item.getFieldLabel());
