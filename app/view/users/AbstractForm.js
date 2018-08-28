@@ -371,12 +371,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         Ext.iterate(ind_fields, function (field) {
             field.allowBlank = soleStatus;
-            if (soleStatus) {
-                field.labelSeparator = ':';
-            } else {
-                field.labelSeparator = reqSeparator;
-            }
-
+            field.labelSeparator = labelSeparator;
             field.setFieldLabel(field.getFieldLabel());
         }, this);
 
