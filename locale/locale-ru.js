@@ -1648,6 +1648,7 @@ Ext.define('Locale.locale-ru', {
         "report_scheduled": "Запланированные отчеты",
         "report_scheduled_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>{0}</a>",
         "routing": "Поддержка маршрутов",
+        "driver_journal": "Журнал водителя",
         "ui_mobile": "Мобильный интерфейс",
         "weblocator": "Веб-локатор",
         "chat": "Чат"

@@ -1688,6 +1688,7 @@ Ext.define('Locale.locale-en', {
         "report_scheduled": "Scheduled reports",
         "report_scheduled_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>{0}</a>",
         "routing": "Routing",
+        "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat"
