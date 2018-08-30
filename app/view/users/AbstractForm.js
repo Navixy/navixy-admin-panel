@@ -366,8 +366,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                         this.updateMinLength(item, isSoleTrader ? 10 : 8);
                     }
                     if (item.name === 'tin') {
-                        this.updateMaxLength(item, 10);
-                        this.updateMinLength(item, 10);
+                        this.updateMaxLength(item, isSoleTrader ? 12 : 10);
+                        this.updateMinLength(item, isSoleTrader ? 12 : 10);
                     }
                     if (item.name === 'iec') {
                         this.updateMaxLength(item, 9);
