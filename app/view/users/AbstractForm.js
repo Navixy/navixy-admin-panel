@@ -349,7 +349,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
                 if (Ext.isString(item.name)) {
-                    if (Ext.Array.indexOf(['tin', 'iec', 'state_reg_num', 'okpo_code'], item.name) < 0) {
+                    if (Ext.Array.indexOf(['state_reg_num', 'okpo_code'], item.name) < 0) {
                         item.allowBlank = soleStatus;
                         item.labelSeparator = labelSeparator;
                         item.setFieldLabel(item.getFieldLabel());
@@ -362,6 +362,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     if (item.name === 'okpo_code') {
                         this.updateMaxLength(item, isSoleTrader ? 10 : 8);
                         this.updateMinLength(item, isSoleTrader ? 10 : 8);
+                    }
+                    if (item.name === 'tin') {
+                        this.updateMaxLength(item, 10);
+                        this.updateMinLength(item, 9);
+                    }
+                    if (item.name === 'iec') {
+                        this.updateMaxLength(item, 9);
+                        this.updateMinLength(item, 9);
                     }
                 }
             }, this);
@@ -427,5 +435,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             name: 'okpo_code',
             allowBlank: true,
         } : null;
+    },
+
+    applyRecordData: function () {
+        this.callParent(arguments);
+        this.changeLegalStatus(this.down('[name=legal_type]').getValue());
     }
 });
