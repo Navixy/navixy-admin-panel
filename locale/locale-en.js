@@ -87,9 +87,12 @@ Ext.define('Locale.locale-en', {
             "title": "Incorrect parameters:",
             "errors": {
                 "login": "Must be a valid email address",
-                "domain": "Incorrect domain name"
+                "domain": "Incorrect domain name",
+                "user.post_index": "Post index must match \"[-a-zA-Z0-9 ]{0,30}\"",
+                "user._i_e_c": "IEC: Length must be between 0 and 255"
             }
         },
+        "9": "Too large request",
         "11": "Access denied",
         "12": "Service platform is not found",
         "101": "This feature is not available in the Demo mode",
@@ -998,7 +1001,7 @@ Ext.define('Locale.locale-en', {
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
-            "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server.",
+            "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup your DNS server accordingly.",
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
@@ -1051,6 +1054,8 @@ Ext.define('Locale.locale-en', {
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
+            "do_not_apply_default_seetings_during_activation": "Do not apply default settings during device activation",
+            "do_not_apply_default_seetings_during_activation_hint": "If the checkbox is marked the platform will not send configurational SMS and GPRS commands with default settings. The device should be manually configured before its activation on the platform.",
             "show_call_notifications": "Allow configuration of voice notifications",
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",

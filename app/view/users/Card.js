@@ -303,7 +303,11 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('users.fields.iec'),
                     value: recordData.iec
-                }
+                },
+                (Locale.Manager.getLocale() === 'ru' ? {
+                    title: 'ОКПО',
+                    value: recordData.okpo_code
+                } : null)
             ]
         };
     },

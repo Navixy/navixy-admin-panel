@@ -77,6 +77,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             {
                 fieldLabel: _l.get('users.create_form.password_repeat'),
                 inputType: 'password',
+                labelSeparator: Util.getRequiredSeparator(),
                 allowBlank: false,
                 minLength: 6,
                 maxLength: 20,
@@ -250,20 +251,27 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.tin'),
                     name: 'tin',
                     maxLength: 255,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.iec'),
                     name: 'iec',
                     maxLength: 255,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.state_reg_num'),
                     name: 'state_reg_num',
                     maxLength: 15,
+                    maskRe: /[0-9]/,
+                    regex: /[0-9]/,
                     allowBlank: true
                 },
+                this.getOKPOField(),
                 {
                     xtype: 'container',
                     height: 10
@@ -318,6 +326,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.registered_index'),
                     name: 'registered_index',
                     minLength: 1,
+                    maxLength: 30,
                     allowBlank: true
                 }
             ]
@@ -326,6 +335,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     changeLegalStatus: function (soleState) {
         var soleStatus = soleState === "individual",
+            labelSeparator = soleStatus ? ':' : Util.getRequiredSeparator(),
             legal_container = this.down('[role="legal_fields"]'),
             ind_fields = [
                 this.down('[name="post_city"]'),
@@ -338,32 +348,36 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
             legal_container.items.each(function (item) {
-                if (Ext.isString(item.name) && Ext.Array.indexOf(['tin', 'iec', 'state_reg_num'], item.name) < 0) {
-
-                    item.allowBlank = soleStatus;
-                    if (soleStatus) {
-                        item.labelSeparator = ':';
-                    } else {
-                        item.labelSeparator = Util.getRequiredSeparator();
+                if (Ext.isString(item.name)) {
+                    if (Ext.Array.indexOf(['state_reg_num', 'okpo_code'], item.name) < 0) {
+                        item.allowBlank = soleStatus;
+                        item.labelSeparator = labelSeparator;
+                        item.setFieldLabel(item.getFieldLabel());
                     }
-                    item.setFieldLabel(item.getFieldLabel());
-                }
-                if (Ext.isString(item.name) && item.name === 'state_reg_num') {
-                    var isSoleTrader = soleState === 'sole_trader'
-                    item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
-                    this.updateMaxLength(item, isSoleTrader ? 15 : 13)
+                    var isSoleTrader = soleState === 'sole_trader';
+                    if (item.name === 'state_reg_num') {
+                        item.setFieldLabel(_l.get('users.fields.' + (isSoleTrader ? 'state_reg_num_sole' : 'state_reg_num')));
+                        this.updateMaxLength(item, isSoleTrader ? 15 : 13);
+                    }
+                    if (item.name === 'okpo_code') {
+                        this.updateMaxLength(item, isSoleTrader ? 10 : 8);
+                        this.updateMinLength(item, isSoleTrader ? 10 : 8);
+                    }
+                    if (item.name === 'tin') {
+                        this.updateMaxLength(item, 10);
+                        this.updateMinLength(item, 9);
+                    }
+                    if (item.name === 'iec') {
+                        this.updateMaxLength(item, 9);
+                        this.updateMinLength(item, 9);
+                    }
                 }
             }, this);
         }
 
         Ext.iterate(ind_fields, function (field) {
             field.allowBlank = soleStatus;
-            if (soleStatus) {
-                field.labelSeparator = ':';
-            } else {
-                field.labelSeparator = Util.getRequiredSeparator();
-            }
-
+            field.labelSeparator = labelSeparator;
             field.setFieldLabel(field.getFieldLabel());
         }, this);
 
@@ -381,6 +395,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     updateMaxLength: function (field, maxLength) {
         field.maxLength = maxLength
+    },
+
+    updateMinLength: function (field, minLength) {
+        field.minLength = minLength
     },
 
     copyAddress: function () {
@@ -405,5 +423,22 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
     gatSaveTarget: function (value) {
         return 'user/' + (value || this.record.getId());
+    },
+
+    getOKPOField: function () {
+        return Locale.Manager.getLocale() === 'ru' ? {
+            fieldLabel: 'ОКПО',
+            xtype: 'textfield',
+            enforceMaxLength: true,
+            maskRe: /[0-9]/,
+            regex: /[0-9]/,
+            name: 'okpo_code',
+            allowBlank: true,
+        } : null;
+    },
+
+    applyRecordData: function () {
+        this.callParent(arguments);
+        this.changeLegalStatus(this.down('[name=legal_type]').getValue());
     }
 });

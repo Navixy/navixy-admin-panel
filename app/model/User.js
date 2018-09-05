@@ -62,6 +62,10 @@ Ext.define('NavixyPanel.model.User', {
             type: 'string'
         },
         {
+            name: 'okpo_code',
+            type: 'string'
+        },
+        {
             name: 'phone',
             type: 'string'
         },
