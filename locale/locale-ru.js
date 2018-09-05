@@ -980,7 +980,7 @@ Ext.define('Locale.locale-ru', {
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Запустите и предоставляйте ваш сервис на собственном доменном имени (например: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо настроить CNAME-запись на вашем DNS-сервере, ссылающуюся на адрес saas.navixy.com.",
-            "paas_domain_hint": "Запустите и предоставляйте ваш сервис на собственном доменном имени (например: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо настроить CNAME-запись на вашем DNS-сервере.",
+            "paas_domain_hint": "Запустите и предоставляйте ваш сервис на собственном доменном имени (например: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо соответствующим образом настроить DNS-сервер.",
             "domain_help": "Как настроить CNAME-запись",
             "domain_help_link": "https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "Как карты Google зависят от домена",
