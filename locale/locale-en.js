@@ -1002,7 +1002,7 @@ Ext.define('Locale.locale-en', {
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
-            "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server.",
+            "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup your DNS server accordingly.",
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
