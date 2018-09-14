@@ -347,6 +347,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         if (legal_container) {
             legal_container[soleStatus ? 'hide' : 'show']();
+            legal_container[soleStatus ? 'disable' : 'enable']();
+
             legal_container.items.each(function (item) {
                 if (Ext.isString(item.name)) {
                     if (Ext.Array.indexOf(['state_reg_num', 'okpo_code'], item.name) < 0) {
@@ -388,8 +390,12 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
             nameField[soleState === "legal_entity" ? "show" : "hide"]();
             nameField.allowBlank = soleState !== "legal_entity";
+
             iecField[soleState === "legal_entity" ? "show" : "hide"]();
+            iecField[soleState === "legal_entity" ? "enable" : "disable"]();
         }
+
+        this.getForm().checkValidity();
         this.getForm().isValid();
     },
 
