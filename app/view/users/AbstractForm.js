@@ -334,6 +334,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     changeLegalStatus: function (soleState) {
+        if (soleState === null) return;
+
         var soleStatus = soleState === "individual",
             labelSeparator = soleStatus ? ':' : Util.getRequiredSeparator(),
             legal_container = this.down('[role="legal_fields"]'),
