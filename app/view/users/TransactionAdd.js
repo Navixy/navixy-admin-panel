@@ -63,14 +63,14 @@ Ext.define('NavixyPanel.view.users.TransactionAdd', {
                 name: 'balance_dif',
                 allowBlank: true,
                 value: 0,
-                vtype: 'amount'
+                vtype: 'balance'
             },
             {
                 fieldLabel: _l.get('users.transaction_add.bonus') + '<sup>*</sup>',
                 name: 'bonus_dif',
                 allowBlank: true,
                 value: 0,
-                vtype: 'amount'
+                vtype: 'balance'
             },
             {
                 xtype: 'container',
