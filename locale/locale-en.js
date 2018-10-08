@@ -50,7 +50,7 @@ Ext.define('Locale.locale-en', {
     "no_path_found": "No page - wrong URL",
     "phone_invalid_msg": "Please enter a valid phone number",
     "invalid_numeric_msg": "Not a valid number",
-    "invalid_amount_msg": "Not a valid number<br>(2 digits after decimal point)",
+    "invalid_amount_msg": "Not a valid number<br>({0} digits after decimal point)",
     "searcher_empty_text": "Enter search query",
     "search_empty_text": "Enter search query",
     "searchTitle": "Search by category",

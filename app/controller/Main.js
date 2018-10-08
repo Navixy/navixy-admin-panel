@@ -346,9 +346,18 @@ Ext.define('NavixyPanel.controller.Main', {
             amount: function (v) {
                 return Ext.form.VTypes['amountVal'].test(v);
             },
-            amountText: _l.get('invalid_amount_msg'),
+            amountText: Ext.String.format(_l.get('invalid_amount_msg'), 2),
             amountMask: /[\-\+0-9.]/,
             amountVal: /^[-+]?\d*\.?\d{0,2}$/i
+        });
+
+        Ext.apply(Ext.form.field.VTypes, {
+            balance: function (v) {
+                return Ext.form.VTypes['balanceVal'].test(v);
+            },
+            balanceText: Ext.String.format(_l.get('invalid_amount_msg'), 4),
+            balanceMask: /[\-\+0-9.]/,
+            balanceVal: /^[-+]?\d*\.?\d{0,4}$/i
         });
 
         Ext.apply(Ext.form.field.VTypes, {

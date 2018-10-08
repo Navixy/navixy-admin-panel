@@ -49,7 +49,7 @@ Ext.define('Locale.locale-ru', {
     "no_path_found": "Указан неверный адрес",
     "phone_invalid_msg": "Укажите корректный номер телефона",
     "invalid_numeric_msg": "Необходимо указать число",
-    "invalid_amount_msg": "Необходимо указать сумму<br>(два знака после точки)",
+    "invalid_amount_msg": "Необходимо указать сумму<br>({0} знака после точки)",
     "searcher_empty_text": "Введите текст фильтра",
     "search_empty_text": "Введите текст поиска",
     "searchTitle": "Поиск по разделам",
