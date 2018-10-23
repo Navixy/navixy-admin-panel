@@ -111,6 +111,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             google_client_id_link = isNavixy ? Ext.String.format(_l.get('settings.fields.google_client_id_link'), Config.google_key.get_key_link) : '',
             premium_gis_link = isNavixy ? Ext.String.format(_l.get('settings.fields.premium_gis_link'), Config.google_key.get_key_link) : '';
 
+        var isPremiumGis = Ext.getStore('Dealer').getGisPackage() === 'premium';
         return [
             {
                 xtype: 'blockheader',
@@ -143,7 +144,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             } : {
                 xtype: 'hiddefield',
                 name: 'google_client_id'
-            }, Config.google_key.allow ? undefined : {
+            }, isPremiumGis ? undefined : {
                 xtype: 'component',
                 html: Ext.String.format(_l.get('settings.fields').get(isNavixy ? 'premium_gis' : 'paas_premium_gis'), premium_gis_link)
             },

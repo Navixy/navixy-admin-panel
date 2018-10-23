@@ -958,7 +958,7 @@ Ext.define('Locale.locale-ru', {
             "footer_email": "E-mail компании",
             "footer_site": "Ссылка «О компании»",
             "footer_text": "Текст внизу страницы входа",
-            "geocoder": "Геокодирование",
+            "default_geocoder": "Геокодирование по умолчанию",
             "route_provider": "Провайдер маршрутов по умолчанию",
             "translit": "Транслитерация SMS",
             "measurement_system": "Система мер",

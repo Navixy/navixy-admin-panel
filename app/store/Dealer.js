@@ -50,6 +50,12 @@ Ext.define('NavixyPanel.store.Dealer', {
         return this.hasPremiumGis() || !!this.google_client_id;
     },
 
+    getGisPackage: function () {
+        var record = this.first();
+        var tariff = record && record.get("tariff");
+        return tariff && tariff.gis_package
+    },
+
     hasPremiumGis: function () {
         var record = this.first(),
             tariff = record && record.get("tariff");

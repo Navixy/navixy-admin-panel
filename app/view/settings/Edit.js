@@ -866,7 +866,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             {
                 name: 'geocoder',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
+                fieldLabel: _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
                 store: Ext.getStore('Geocoders'),
                 editable: false,
                 queryMode: 'local',
