@@ -18,7 +18,6 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.record.get('allowed_maps') || []);
         this.items = this.getItems();
-
         this.callParent(arguments);
     },
 
@@ -148,6 +147,91 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 xtype: 'component',
                 html: Ext.String.format(_l.get('settings.fields').get(isNavixy ? 'premium_gis' : 'paas_premium_gis'), premium_gis_link)
             },
+            Util.navixyPermissions('manage', 'geocoder') ? {
+                xtype: 'checkboxgroup',
+                role: 'geocoder_select',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: [
+                    {
+                        type: 'google',
+                        name: 'geocoders',
+                        boxLabel: 'Google'
+                    },
+                    {
+                        type: 'yandex',
+                        name: 'geocoders',
+                        boxLabel: 'Yandex'
+                    },
+                    {
+                        type: 'progorod',
+                        name: 'geocoders',
+                        boxLabel: 'Progorod'
+                    },
+                    {
+                        type: 'osm',
+                        name: 'geocoders',
+                        boxLabel: 'OpenStreetMap'
+                    }
+                ],
+            } : undefined,
+            Util.navixyPermissions('manage', 'route_provider') ? {
+                xtype: 'checkboxgroup',
+                role: 'route_provider_select',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: [
+                    {
+                        type: 'google',
+                        name: 'route_providers',
+                        boxLabel: 'Google'
+                    },
+                    {
+                        type: 'osrm',
+                        name: 'route_providers',
+                        boxLabel: 'OpenStreetMap'
+                    },
+                    {
+                        type: 'progorod',
+                        name: 'route_providers',
+                        boxLabel: 'Progorod'
+                    }
+                ],
+            } : undefined,
+            Util.navixyPermissions('manage', 'lbs') ? {
+                xtype: 'combobox',
+                role: 'lbs_select',
+                width: 300,
+                fieldLabel: _l.get('settings.fields.geolocation'),
+                editable: false,
+                queryMode: 'local',
+                margin: '0 0 50 10',
+                displayField: 'name',
+                valueField: 'type',
+                store: Ext.create('Ext.data.Store', {
+                    fields: ['type', 'name'],
+                    data: [
+                        {
+                            type: 'google',
+                            name: 'Google'
+                        },
+                        {
+                            type: 'mozilla',
+                            name: 'Mozilla location services'
+                        },
+                        {
+                            type: 'yandex',
+                            name: 'Yandex'
+                        }
+                    ],
+                })
+            } : undefined,
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.service_maps_defaults_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_defaults_hint'))

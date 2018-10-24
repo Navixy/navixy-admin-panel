@@ -854,49 +854,71 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ];
     },
 
-    getAccountItemsRight: function () {
-        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
-            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
-
-        return [
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.accounts_geocoding_title')
-            },
-            {
+    renderGeocoderField: function (plugins, defaultValue) {
+        var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
+        if (Util.navixyPermissions('manage', 'geocoder')) {
+            return {
                 name: 'geocoder',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
+                fieldLabel: label,
                 store: Ext.getStore('Geocoders'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                plugins: [
-                    {
-                        ptype: 'googlefilter',
-                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
-                        disabled: hasPremiumGis
-                    }
-                ]
-            },
-            {
+                plugins: plugins
+            };
+        }
+        return {
+            xtype: 'displayfield',
+            fieldLabel: label,
+            value: defaultValue
+        };
+    },
+
+    renderRouteProviderField: function (plugins, defaultValue) {
+        var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
+        if (Util.navixyPermissions('manage', 'route_provider')) {
+            return {
                 name: 'route_provider',
                 xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint')),
+                fieldLabel: label,
                 store: Ext.getStore('RouteProviders'),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                plugins: [
-                    {
-                        ptype: 'googlefilter',
-                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
-                        disabled: hasPremiumGis
-                    }
-                ]
+                plugins: plugins
+            }
+        }
+        return {
+            xtype: 'displayfield',
+            fieldLabel: label,
+            value: defaultValue
+        };
+    },
+
+    getAccountItemsRight: function () {
+        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
+            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
+
+        var defaultValue = Ext.getStore('Dealer').getGisPackage() + ' GIS';
+        defaultValue = defaultValue.charAt(0).toUpperCase() + defaultValue.slice(1);
+
+        var plugins = [
+            {
+                ptype: 'googlefilter',
+                hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
+                disabled: hasPremiumGis
+            }
+        ];
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.accounts_geocoding_title')
             },
+            this.renderGeocoderField(plugins, defaultValue),
+            this.renderRouteProviderField(plugins, defaultValue),
             //TODO: API w8
             {
                 xtype: 'container',

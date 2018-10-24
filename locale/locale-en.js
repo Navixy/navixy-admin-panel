@@ -980,6 +980,7 @@ Ext.define('Locale.locale-en', {
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
             "geocoder": "Geocoding",
+            "default_geocoder": "Geocoding by default",
             "route_provider": "Default route provider",
             "translit": "Transliteration for SMS",
             "measurement_system": "Measurement system",
