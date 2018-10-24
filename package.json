@@ -29,7 +29,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-ssh": "^0.12.9",
     "merge": "^1.2.0",
-    "navixy-permissions": "git+ssh://git@gitlab.test.gdemoi.ru:10022/fr/navixy-permissions.git#store-implementation",
+    "navixy-permissions": "git+ssh://git@gitlab.test.gdemoi.ru:10022/fr/navixy-permissions.git#f9d1b6c6",
     "promise": "^7.0.0",
     "prompt": "^1.0.0",
     "string-template": "^0.2.0"
