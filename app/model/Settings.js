@@ -212,6 +212,18 @@ Ext.define('NavixyPanel.model.Settings', {
             convert: function (value, record) {
                 return Ext.isEmpty(value) ? 'metromorph' : value;
             }
+        },
+        {
+            name: 'geocoders',
+            type: 'auto'
+        },
+        {
+            name: 'route_providers',
+            type: 'auto'
+        },
+        {
+            name: 'lbs_providers',
+            type: 'auto'
         }
     ],
 
@@ -396,7 +408,18 @@ Ext.define('NavixyPanel.model.Settings', {
             delete data['google_client_id'];
             this.set('google_client_id', null);
         }
-
+        var geocoderSelect = Ext.getFirst('[role=geocoder_select]');
+        if (geocoderSelect) {
+            data.geocoders = Ext.encode(Object.keys(geocoderSelect.getValue()));
+        }
+        var routeProviderSelect = Ext.getFirst('[role=route_provider_select]');
+        if (routeProviderSelect) {
+            data.route_providers = Ext.encode(Object.keys(routeProviderSelect.getValue()));
+        }
+        var lbsProviders = Ext.getFirst('[role=lbs_select]');
+        if (lbsProviders) {
+            data.lbs_providers = Ext.encode([lbsProviders.getValue()]);
+        }
         return data;
     },
 

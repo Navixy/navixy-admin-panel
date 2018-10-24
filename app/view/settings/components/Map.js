@@ -96,6 +96,23 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     },
 
+    fillCheckboxesFromRecord: function (name, checkboxes) {
+        var result = [];
+        var value = this.record.get(name);
+        for (var i = 0; i < checkboxes.length; i++) {
+            result.push({
+                name: checkboxes[i][0],
+                boxLabel: checkboxes[i][1],
+                checked: value.indexOf(checkboxes[i][0]) > -1
+            })
+        }
+        return result;
+    },
+
+    getLBSValue: function () {
+        return this.record.get('lbs_providers')[0];
+    },
+
     getItems: function () {
         if (!Config.google_key) {
             Config.google_key = {
@@ -155,28 +172,12 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 columns: 1,
                 vertical: true,
                 margin: '0 0 50 10',
-                items: [
-                    {
-                        type: 'google',
-                        name: 'geocoders',
-                        boxLabel: 'Google'
-                    },
-                    {
-                        type: 'yandex',
-                        name: 'geocoders',
-                        boxLabel: 'Yandex'
-                    },
-                    {
-                        type: 'progorod',
-                        name: 'geocoders',
-                        boxLabel: 'Progorod'
-                    },
-                    {
-                        type: 'osm',
-                        name: 'geocoders',
-                        boxLabel: 'OpenStreetMap'
-                    }
-                ],
+                items: this.fillCheckboxesFromRecord('geocoders', [
+                    ['google', 'Google'],
+                    ['yandex', 'Yandex'],
+                    ['progorod', 'Progorod'],
+                    ['osm', 'OpenStreetMap']
+                ]),
             } : undefined,
             Util.navixyPermissions('manage', 'route_provider') ? {
                 xtype: 'checkboxgroup',
@@ -186,23 +187,11 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 columns: 1,
                 vertical: true,
                 margin: '0 0 50 10',
-                items: [
-                    {
-                        type: 'google',
-                        name: 'route_providers',
-                        boxLabel: 'Google'
-                    },
-                    {
-                        type: 'osrm',
-                        name: 'route_providers',
-                        boxLabel: 'OpenStreetMap'
-                    },
-                    {
-                        type: 'progorod',
-                        name: 'route_providers',
-                        boxLabel: 'Progorod'
-                    }
-                ],
+                items: this.fillCheckboxesFromRecord('route_providers', [
+                    ['google', 'Google'],
+                    ['osrm', 'OpenStreetMap'],
+                    ['progorod', 'Progorod']
+                ]),
             } : undefined,
             Util.navixyPermissions('manage', 'lbs') ? {
                 xtype: 'combobox',
@@ -214,6 +203,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 margin: '0 0 50 10',
                 displayField: 'name',
                 valueField: 'type',
+                value: this.getLBSValue(),
                 store: Ext.create('Ext.data.Store', {
                     fields: ['type', 'name'],
                     data: [
@@ -361,7 +351,6 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             var maps = Ext.isArray(mapsObject.maps) ? mapsObject.maps : [mapsObject.maps];
             this.record.set('maps', maps);
         }
-
         return this.record;
     }
 });
