@@ -837,13 +837,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 displayField: 'name',
                 valueField: 'type'
             },
-            //TODO: API w8
-            //{
-            //    xtype: 'timezoneselect',
-            //    labelClsExtra: 'red-label',
-            //    fieldLabel: _l.get('settings.fields.time_zone') + this.getHintSymbol(_l.get('settings.fields.time_zone_hint')),
-            //    name: 'time_zone'
-            //},
             {
                 name: 'translit',
                 xtype: 'checkbox',
@@ -854,19 +847,38 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ];
     },
 
-    renderGeocoderField: function (plugins, defaultValue) {
+    getAvaliableComboboxItems: function (name, map) {
+        var data = [];
+        var values = this.record.get(name);
+        for (var i = 0; i < values.length; i++) {
+            data.push({
+                name: map[values[i]],
+                type: values[i]
+            })
+        }
+        return Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data: data
+        });
+    },
+
+    renderGeocoderField: function (defaultValue) {
         var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
-        if (Util.navixyPermissions('manage', 'geocoder')) {
+        if (Util.navixyPermissions('manage', 'geocoder') && this.record.get('geocoders').length > 0) {
             return {
                 name: 'geocoder',
                 xtype: 'combobox',
                 fieldLabel: label,
-                store: Ext.getStore('Geocoders'),
+                store: this.getAvaliableComboboxItems('geocoders', {
+                    'google': 'Google',
+                    'yandex': 'Yandex',
+                    'progorod': 'Progorod',
+                    'osm': 'OpenStreetMap'
+                }),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                plugins: plugins
             };
         }
         return {
@@ -876,20 +888,23 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         };
     },
 
-    renderRouteProviderField: function (plugins, defaultValue) {
+    renderRouteProviderField: function (defaultValue) {
         var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
-        if (Util.navixyPermissions('manage', 'route_provider')) {
+        if (Util.navixyPermissions('manage', 'route_provider') && this.record.get('route_providers').length > 0) {
             return {
                 name: 'route_provider',
                 xtype: 'combobox',
                 fieldLabel: label,
-                store: Ext.getStore('RouteProviders'),
+                store: this.getAvaliableComboboxItems('route_providers', {
+                    'google': 'Google',
+                    'osrm': 'OpenStreetMap',
+                    'progorod': 'Progorod'
+                }),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                plugins: plugins
-            }
+            };
         }
         return {
             xtype: 'displayfield',
@@ -898,84 +913,57 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         };
     },
 
+    renderLBSField: function () {
+        var label = _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint'));
+        if (Util.navixyPermissions('manage', 'lbs')) {
+            var map = {
+                google: 'Google',
+                mozilla: 'Mozilla location services',
+                yandex: 'Yandex'
+            }
+            return {
+                xtype: 'displayfield',
+                fieldLabel: label,
+                value: map[this.record.get('lbs_providers')[0]]
+            };
+        } else {
+            return {
+                xtype: 'combobox',
+                fieldLabel: label,
+                store: Ext.getStore('Geolocation'),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+                value: "navixy",
+                margin: 0,
+                labelAlign: 'top',
+                labelSeparator: '',
+                disabled: true,
+                baseCls: 'settings-combo-disabled'
+            };
+        }
+    },
+
     getAccountItemsRight: function () {
         var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
             hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
 
-        var defaultValue = Ext.getStore('Dealer').getGisPackage() + ' GIS';
+        var gisPackage = Ext.getStore('Dealer').getGisPackage();
+        if (gisPackage === 'none') {
+            gisPackage = 'No';
+        }
+        var defaultValue = gisPackage + ' GIS';
         defaultValue = defaultValue.charAt(0).toUpperCase() + defaultValue.slice(1);
 
-        var plugins = [
-            {
-                ptype: 'googlefilter',
-                hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
-                disabled: hasPremiumGis
-            }
-        ];
         return [
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.accounts_geocoding_title')
             },
-            this.renderGeocoderField(plugins, defaultValue),
-            this.renderRouteProviderField(plugins, defaultValue),
-            //TODO: API w8
-            {
-                xtype: 'container',
-                layout: {
-                    type: 'vbox',
-                    align: 'stretch'
-                },
-
-                items: [
-                    {
-                        //name: 'geolocation',
-                        //labelClsExtra: 'red-label',
-                        xtype: 'combobox',
-                        fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
-                        store: Ext.getStore('Geolocation'),
-                        editable: false,
-                        queryMode: 'local',
-                        displayField: 'name',
-                        valueField: 'type',
-                        value: "navixy",
-                        margin: 0,
-                        labelAlign: 'top',
-                        labelSeparator: '',
-                        disabled: true,
-                        baseCls: 'settings-combo-disabled'
-                    },
-                ]
-            }
-            //TODO: API w8
-            //{
-            //    xtype: 'blockheader',
-            //    html: _l.get('settings.edit_form.account_roads_title')
-            //},
-            //{
-            //    //name: 'speed_restriction',
-            //    labelClsExtra: 'red-label',
-            //    xtype: 'combobox',
-            //    fieldLabel: _l.get('settings.fields.speed_restriction') + this.getHintSymbol(_l.get('settings.fields.speed_restriction_hint')),
-            //    store: Ext.getStore('SpeedRestriction'),
-            //    editable: false,
-            //    queryMode: 'local',
-            //    displayField: 'name',
-            //    valueField: 'type',
-            //    value: "google"
-            //},
-            //{
-            //    //name: 'speed_restriction',
-            //    labelClsExtra: 'red-label',
-            //    xtype: 'combobox',
-            //    fieldLabel: _l.get('settings.fields.roads_snap') + this.getHintSymbol(_l.get('settings.fields.roads_snap_hint')),
-            //    store: Ext.getStore('RoadsSnap'),
-            //    editable: false,
-            //    queryMode: 'local',
-            //    displayField: 'name',
-            //    valueField: 'type',
-            //    value: "google"
-            //}
+            this.renderGeocoderField(defaultValue),
+            this.renderRouteProviderField(defaultValue),
+            this.renderLBSField()
         ];
     },
 
