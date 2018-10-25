@@ -18,7 +18,6 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.record.get('allowed_maps') || []);
         this.items = this.getItems();
-
         this.callParent(arguments);
     },
 
@@ -97,6 +96,24 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     },
 
+    fillCheckboxesFromRecord: function (name, checkboxes) {
+        var result = [];
+        var value = this.record.get(name);
+        for (var i = 0; i < checkboxes.length; i++) {
+            result.push({
+                name: name,
+                boxLabel: checkboxes[i][1],
+                inputValue: checkboxes[i][0],
+                shadowField: true
+            })
+        }
+        return result;
+    },
+
+    getLBSValue: function () {
+        return this.record.get('lbs_providers')[0];
+    },
+
     getItems: function () {
         if (!Config.google_key) {
             Config.google_key = {
@@ -111,6 +128,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             google_client_id_link = isNavixy ? Ext.String.format(_l.get('settings.fields.google_client_id_link'), Config.google_key.get_key_link) : '',
             premium_gis_link = isNavixy ? Ext.String.format(_l.get('settings.fields.premium_gis_link'), Config.google_key.get_key_link) : '';
 
+        var isPremiumGis = Ext.getStore('Dealer').getGisPackage() === 'premium';
         return [
             {
                 xtype: 'blockheader',
@@ -143,10 +161,74 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             } : {
                 xtype: 'hiddefield',
                 name: 'google_client_id'
-            }, Config.google_key.allow ? undefined : {
+            }, isPremiumGis ? undefined : {
                 xtype: 'component',
                 html: Ext.String.format(_l.get('settings.fields').get(isNavixy ? 'premium_gis' : 'paas_premium_gis'), premium_gis_link)
             },
+            Util.navixyPermissions('manage', 'geocoder') ? {
+                xtype: 'checkboxgroup',
+                name: 'geocoders',
+                role: 'geocoder_select',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: this.fillCheckboxesFromRecord('geocoders', [
+                    ['google', 'Google'],
+                    ['yandex', 'Yandex'],
+                    ['progorod', 'Progorod'],
+                    ['osm', 'OpenStreetMap']
+                ]),
+            } : undefined,
+            Util.navixyPermissions('manage', 'route_provider') ? {
+                xtype: 'checkboxgroup',
+                name: 'route_providers',
+                role: 'route_provider_select',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: this.fillCheckboxesFromRecord('route_providers', [
+                    ['google', 'Google'],
+                    ['osrm', 'OpenStreetMap'],
+                    ['progorod', 'Progorod']
+                ]),
+            } : undefined,
+            Util.navixyPermissions('manage', 'lbs') ? {
+                xtype: 'combobox',
+                role: 'lbs_select',
+                width: 300,
+                fieldLabel: _l.get('settings.fields.geolocation'),
+                editable: false,
+                queryMode: 'local',
+                margin: '0 0 50 10',
+                displayField: 'name',
+                valueField: 'type',
+                value: this.getLBSValue(),
+                store: Ext.create('Ext.data.Store', {
+                    fields: ['type', 'name'],
+                    data: [
+                        {
+                            type: null,
+                            name: _l.get('settings.fields.unavaliable')
+                        },
+                        {
+                            type: 'google',
+                            name: 'Google'
+                        },
+                        {
+                            type: 'mozilla',
+                            name: 'Mozilla location services'
+                        },
+                        {
+                            type: 'yandex',
+                            name: 'Yandex'
+                        }
+                    ],
+                })
+            } : undefined,
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.service_maps_defaults_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_defaults_hint'))
@@ -276,7 +358,6 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             var maps = Ext.isArray(mapsObject.maps) ? mapsObject.maps : [mapsObject.maps];
             this.record.set('maps', maps);
         }
-
         return this.record;
     }
 });

@@ -163,6 +163,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.applyEmptyTheme();
         this.callParent(arguments);
         this.mapSettingsReady = true;
+        var geocoder = this.down('[name=geocoder]')
+        if (geocoder) {
+            geocoder.bindStore(this.getGeocodersStore());
+        }
+        var routeProvider = this.down('[name=route_provider]')
+        if (routeProvider) {
+            routeProvider.bindStore(this.getRouteProvidersStore());
+        }
+        var lbs = this.down('[name=lbs_display_field]');
+        if (lbs) {
+            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || _l.get('settings.fields.unavaliable');
+            lbs.setValue(lbsLabel);
+        }
     },
 
     applyEmptyTheme: function () {
@@ -837,13 +850,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 displayField: 'name',
                 valueField: 'type'
             },
-            //TODO: API w8
-            //{
-            //    xtype: 'timezoneselect',
-            //    labelClsExtra: 'red-label',
-            //    fieldLabel: _l.get('settings.fields.time_zone') + this.getHintSymbol(_l.get('settings.fields.time_zone_hint')),
-            //    name: 'time_zone'
-            //},
             {
                 name: 'translit',
                 xtype: 'checkbox',
@@ -854,106 +860,141 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         ];
     },
 
+    getAvaliableComboboxItems: function (name, map) {
+        var data = [];
+        var values = this.record.get(name);
+        for (var i = 0; i < values.length; i++) {
+            data.push({
+                name: map[values[i]],
+                type: values[i]
+            })
+        }
+        return Ext.create('Ext.data.Store', {
+            fields: ['type', 'name'],
+            data: data
+        });
+    },
+
+    getGeocodersStore: function () {
+        return this.getAvaliableComboboxItems('geocoders', {
+            'google': 'Google',
+            'yandex': 'Yandex',
+            'progorod': 'Progorod',
+            'osm': 'OpenStreetMap'
+        });
+    },
+
+    getRouteProvidersStore: function () {
+        return this.getAvaliableComboboxItems('route_providers', {
+            'google': 'Google',
+            'osrm': 'OpenStreetMap',
+            'progorod': 'Progorod'
+        })
+    },
+
+    renderGeocoderField: function (defaultValue) {
+        var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
+        if (Util.navixyPermissions('manage', 'geocoder') && this.record.get('geocoders').length > 0) {
+            return {
+                name: 'geocoder',
+                xtype: 'combobox',
+                fieldLabel: label,
+                store: this.getGeocodersStore(),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+            };
+        }
+        return {
+            xtype: 'displayfield',
+            fieldLabel: label,
+            value: defaultValue
+        };
+    },
+
+    renderRouteProviderField: function (defaultValue) {
+        var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
+        if (Util.navixyPermissions('manage', 'route_provider') && this.record.get('route_providers').length > 0) {
+            return {
+                name: 'route_provider',
+                xtype: 'combobox',
+                fieldLabel: label,
+                store: this.getRouteProvidersStore(),
+                editable: false,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'type',
+            };
+        }
+        return {
+            xtype: 'displayfield',
+            fieldLabel: label,
+            value: defaultValue
+        };
+    },
+
+    getLbsProvidersDisplayValue: function (value) {
+        var map = {
+            google: 'Google',
+            mozilla: 'Mozilla location services',
+            yandex: 'Yandex'
+        };
+        return map[value || this.record.get('lbs_providers')[0]];
+    },
+
+    renderLBSField: function () {
+        var label = _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint'));
+        if (Util.navixyPermissions('manage', 'lbs')) {
+
+            return {
+                xtype: 'displayfield',
+                name: 'lbs_display_field',
+                fieldLabel: label,
+                value: this.getLbsProvidersDisplayValue()
+            };
+        } else {
+            return {
+                xtype: 'container',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'combobox',
+                    fieldLabel: label,
+                    store: Ext.getStore('Geolocation'),
+                    editable: false,
+                    queryMode: 'local',
+                    displayField: 'name',
+                    valueField: 'type',
+                    value: "navixy",
+                    margin: 0,
+                    labelAlign: 'top',
+                    labelSeparator: '',
+                    disabled: true,
+                    baseCls: 'settings-combo-disabled'
+                }]
+            };
+        }
+    },
+
     getAccountItemsRight: function () {
-        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
-            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
+        var gisPackage = Ext.getStore('Dealer').getGisPackage();
+        if (gisPackage === 'none') {
+            gisPackage = 'No';
+        }
+        var defaultValue = gisPackage + ' GIS';
+        defaultValue = defaultValue.charAt(0).toUpperCase() + defaultValue.slice(1);
 
         return [
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.accounts_geocoding_title')
             },
-            {
-                name: 'geocoder',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint')),
-                store: Ext.getStore('Geocoders'),
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                plugins: [
-                    {
-                        ptype: 'googlefilter',
-                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
-                        disabled: hasPremiumGis
-                    }
-                ]
-            },
-            {
-                name: 'route_provider',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint')),
-                store: Ext.getStore('RouteProviders'),
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                plugins: [
-                    {
-                        ptype: 'googlefilter',
-                        hasOnlyOwnKey: !hasPremiumGis && hasGoogleKey,
-                        disabled: hasPremiumGis
-                    }
-                ]
-            },
-            //TODO: API w8
-            {
-                xtype: 'container',
-                layout: {
-                    type: 'vbox',
-                    align: 'stretch'
-                },
-
-                items: [
-                    {
-                        //name: 'geolocation',
-                        //labelClsExtra: 'red-label',
-                        xtype: 'combobox',
-                        fieldLabel: _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint')),
-                        store: Ext.getStore('Geolocation'),
-                        editable: false,
-                        queryMode: 'local',
-                        displayField: 'name',
-                        valueField: 'type',
-                        value: "navixy",
-                        margin: 0,
-                        labelAlign: 'top',
-                        labelSeparator: '',
-                        disabled: true,
-                        baseCls: 'settings-combo-disabled'
-                    },
-                ]
-            }
-            //TODO: API w8
-            //{
-            //    xtype: 'blockheader',
-            //    html: _l.get('settings.edit_form.account_roads_title')
-            //},
-            //{
-            //    //name: 'speed_restriction',
-            //    labelClsExtra: 'red-label',
-            //    xtype: 'combobox',
-            //    fieldLabel: _l.get('settings.fields.speed_restriction') + this.getHintSymbol(_l.get('settings.fields.speed_restriction_hint')),
-            //    store: Ext.getStore('SpeedRestriction'),
-            //    editable: false,
-            //    queryMode: 'local',
-            //    displayField: 'name',
-            //    valueField: 'type',
-            //    value: "google"
-            //},
-            //{
-            //    //name: 'speed_restriction',
-            //    labelClsExtra: 'red-label',
-            //    xtype: 'combobox',
-            //    fieldLabel: _l.get('settings.fields.roads_snap') + this.getHintSymbol(_l.get('settings.fields.roads_snap_hint')),
-            //    store: Ext.getStore('RoadsSnap'),
-            //    editable: false,
-            //    queryMode: 'local',
-            //    displayField: 'name',
-            //    valueField: 'type',
-            //    value: "google"
-            //}
+            this.renderGeocoderField(defaultValue),
+            this.renderRouteProviderField(defaultValue),
+            this.renderLBSField()
         ];
     },
 

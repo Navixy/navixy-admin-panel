@@ -827,6 +827,7 @@ Ext.define('Locale.locale-es',{
             "footer_site": "«Sobre nosotros» Link",
             "footer_text": "El texto en la parte inferior de la página",
             "geocoder": "Geocoder por defecto",
+            "default_geocoder": "Geocodificación por defecto",
             "route_provider": "Proveedor de ruta por defecto",
             "translit": "SMS transcripción",
             "measurement_system": "Sistema de medición",
