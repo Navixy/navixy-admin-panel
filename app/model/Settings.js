@@ -410,11 +410,11 @@ Ext.define('NavixyPanel.model.Settings', {
         }
         var geocoderSelect = Ext.getFirst('[role=geocoder_select]');
         if (geocoderSelect) {
-            data.geocoders = Ext.encode(Object.keys(geocoderSelect.getValue()));
+            data.geocoders = Ext.encode(data.geocoders);
         }
         var routeProviderSelect = Ext.getFirst('[role=route_provider_select]');
         if (routeProviderSelect) {
-            data.route_providers = Ext.encode(Object.keys(routeProviderSelect.getValue()));
+            data.route_providers = Ext.encode(data.route_providers);
         }
         var lbsProviders = Ext.getFirst('[role=lbs_select]');
         if (lbsProviders) {

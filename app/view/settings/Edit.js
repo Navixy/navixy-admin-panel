@@ -163,6 +163,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.applyEmptyTheme();
         this.callParent(arguments);
         this.mapSettingsReady = true;
+        this.down('[name=geocoder]').bindStore(this.getGeocodersStore());
+        this.down('[name=route_provider]').bindStore(this.getRouteProvidersStore());
+        this.down('[name=lbs_display_field]').setValue(this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()));
     },
 
     applyEmptyTheme: function () {
@@ -862,6 +865,23 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
+    getGeocodersStore: function () {
+        return this.getAvaliableComboboxItems('geocoders', {
+            'google': 'Google',
+            'yandex': 'Yandex',
+            'progorod': 'Progorod',
+            'osm': 'OpenStreetMap'
+        });
+    },
+
+    getRouteProvidersStore: function () {
+        return this.getAvaliableComboboxItems('route_providers', {
+            'google': 'Google',
+            'osrm': 'OpenStreetMap',
+            'progorod': 'Progorod'
+        })
+    },
+
     renderGeocoderField: function (defaultValue) {
         var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
         if (Util.navixyPermissions('manage', 'geocoder') && this.record.get('geocoders').length > 0) {
@@ -869,12 +889,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'geocoder',
                 xtype: 'combobox',
                 fieldLabel: label,
-                store: this.getAvaliableComboboxItems('geocoders', {
-                    'google': 'Google',
-                    'yandex': 'Yandex',
-                    'progorod': 'Progorod',
-                    'osm': 'OpenStreetMap'
-                }),
+                store: this.getGeocodersStore(),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
@@ -895,11 +910,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'route_provider',
                 xtype: 'combobox',
                 fieldLabel: label,
-                store: this.getAvaliableComboboxItems('route_providers', {
-                    'google': 'Google',
-                    'osrm': 'OpenStreetMap',
-                    'progorod': 'Progorod'
-                }),
+                store: this.getRouteProvidersStore(),
                 editable: false,
                 queryMode: 'local',
                 displayField: 'name',
@@ -913,18 +924,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         };
     },
 
+    getLbsProvidersDisplayValue: function (value) {
+        var map = {
+            google: 'Google',
+            mozilla: 'Mozilla location services',
+            yandex: 'Yandex'
+        };
+        return map[value || this.record.get('lbs_providers')[0]];
+    },
+
     renderLBSField: function () {
         var label = _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint'));
         if (Util.navixyPermissions('manage', 'lbs')) {
-            var map = {
-                google: 'Google',
-                mozilla: 'Mozilla location services',
-                yandex: 'Yandex'
-            }
+
             return {
                 xtype: 'displayfield',
+                name: 'lbs_display_field',
                 fieldLabel: label,
-                value: map[this.record.get('lbs_providers')[0]]
+                value: this.getLbsProvidersDisplayValue()
             };
         } else {
             return {
@@ -946,9 +963,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getAccountItemsRight: function () {
-        var hasGoogleKey = Ext.getStore('Dealer').isPremiumGis(),
-            hasPremiumGis = Ext.getStore('Dealer').hasPremiumGis();
-
         var gisPackage = Ext.getStore('Dealer').getGisPackage();
         if (gisPackage === 'none') {
             gisPackage = 'No';

@@ -101,9 +101,10 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         var value = this.record.get(name);
         for (var i = 0; i < checkboxes.length; i++) {
             result.push({
-                name: checkboxes[i][0],
+                name: name,
                 boxLabel: checkboxes[i][1],
-                checked: value.indexOf(checkboxes[i][0]) > -1
+                inputValue: checkboxes[i][0],
+                shadowField: true
             })
         }
         return result;
@@ -166,6 +167,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             },
             Util.navixyPermissions('manage', 'geocoder') ? {
                 xtype: 'checkboxgroup',
+                name: 'geocoders',
                 role: 'geocoder_select',
                 fieldLabel: _l.get('settings.fields.geocoder'),
                 allowBlank: true,
@@ -181,6 +183,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             } : undefined,
             Util.navixyPermissions('manage', 'route_provider') ? {
                 xtype: 'checkboxgroup',
+                name: 'route_providers',
                 role: 'route_provider_select',
                 fieldLabel: _l.get('settings.fields.route_provider'),
                 allowBlank: true,
