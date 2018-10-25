@@ -163,9 +163,19 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.applyEmptyTheme();
         this.callParent(arguments);
         this.mapSettingsReady = true;
-        this.down('[name=geocoder]').bindStore(this.getGeocodersStore());
-        this.down('[name=route_provider]').bindStore(this.getRouteProvidersStore());
-        this.down('[name=lbs_display_field]').setValue(this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()));
+        var geocoder = this.down('[name=geocoder]')
+        if (geocoder) {
+            geocoder.bindStore(this.getGeocodersStore());
+        }
+        var routeProvider = this.down('[name=route_provider]')
+        if (routeProvider) {
+            routeProvider.bindStore(this.getRouteProvidersStore());
+        }
+        var lbs = this.down('[name=lbs_display_field]');
+        if (lbs) {
+            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || _l.get('settings.fields.unavaliable');
+            lbs.setValue(lbsLabel);
+        }
     },
 
     applyEmptyTheme: function () {
@@ -945,19 +955,26 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             };
         } else {
             return {
-                xtype: 'combobox',
-                fieldLabel: label,
-                store: Ext.getStore('Geolocation'),
-                editable: false,
-                queryMode: 'local',
-                displayField: 'name',
-                valueField: 'type',
-                value: "navixy",
-                margin: 0,
-                labelAlign: 'top',
-                labelSeparator: '',
-                disabled: true,
-                baseCls: 'settings-combo-disabled'
+                xtype: 'container',
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+                items: [{
+                    xtype: 'combobox',
+                    fieldLabel: label,
+                    store: Ext.getStore('Geolocation'),
+                    editable: false,
+                    queryMode: 'local',
+                    displayField: 'name',
+                    valueField: 'type',
+                    value: "navixy",
+                    margin: 0,
+                    labelAlign: 'top',
+                    labelSeparator: '',
+                    disabled: true,
+                    baseCls: 'settings-combo-disabled'
+                }]
             };
         }
     },

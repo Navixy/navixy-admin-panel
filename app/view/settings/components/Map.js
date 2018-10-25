@@ -211,6 +211,10 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     fields: ['type', 'name'],
                     data: [
                         {
+                            type: null,
+                            name: _l.get('settings.fields.unavaliable')
+                        },
+                        {
                             type: 'google',
                             name: 'Google'
                         },
