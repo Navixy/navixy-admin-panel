@@ -177,13 +177,18 @@ Ext.define('Locale.Manager', {
             alias: ['ru', 'ru_RU', 'Русский'],
             rtl: false
         }, {
+            id: 'ta_IN',
+            name: 'ta_IN',
+            text: 'தமிழ்',
+            alias: ['ta_IN', 'Tamil', 'தமிழ்'],
+            rtl: false
+        }, {
             id: 'tr_TR',
             name: 'tr',
             text: 'Türkçe',
             alias: ['tr', 'tr_TR', 'Türkçe'],
             rtl: false
         },
-
         {
             id: 'ar_AR',
             name: 'ar',

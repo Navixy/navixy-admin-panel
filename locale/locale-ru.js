@@ -49,7 +49,7 @@ Ext.define('Locale.locale-ru', {
     "no_path_found": "Указан неверный адрес",
     "phone_invalid_msg": "Укажите корректный номер телефона",
     "invalid_numeric_msg": "Необходимо указать число",
-    "invalid_amount_msg": "Необходимо указать сумму<br>(два знака после точки)",
+    "invalid_amount_msg": "Необходимо указать сумму<br>({0} знака после точки)",
     "searcher_empty_text": "Введите текст фильтра",
     "search_empty_text": "Введите текст поиска",
     "searchTitle": "Поиск по разделам",
@@ -1647,6 +1647,7 @@ Ext.define('Locale.locale-ru', {
         "report_scheduled": "Запланированные отчеты",
         "report_scheduled_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>{0}</a>",
         "routing": "Поддержка маршрутов",
+        "driver_journal": "Журнал водителя",
         "ui_mobile": "Мобильный интерфейс",
         "weblocator": "Веб-локатор",
         "chat": "Чат"

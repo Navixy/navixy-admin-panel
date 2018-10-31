@@ -1,6 +1,6 @@
 {
     "test": {
-        "host": "192.168.88.10",
+        "host": "192.168.88.8",
         "remotePath": "/var/www/panel/"
     },
 
