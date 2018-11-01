@@ -173,7 +173,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }
         var lbs = this.down('[name=lbs_display_field]');
         if (lbs) {
-            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || '—';
+            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || _l.get('settings.fields.unavaliable');
             lbs.setValue(lbsLabel);
         }
     },
