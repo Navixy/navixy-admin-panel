@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.store.Geolocation', {
         this.data = [
             {
                 type: 'disabled',
-                name: _l.get('geolocation.disabled')
+                name: '—'
             },
             {
                 type: 'navixy',
