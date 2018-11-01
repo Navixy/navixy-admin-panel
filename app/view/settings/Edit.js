@@ -173,7 +173,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }
         var lbs = this.down('[name=lbs_display_field]');
         if (lbs) {
-            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || _l.get('settings.fields.unavaliable');
+            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || '—';
             lbs.setValue(lbsLabel);
         }
     },
@@ -948,7 +948,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     renderLBSField: function () {
         var label = _l.get('settings.fields.geolocation') + this.getHintSymbol(_l.get('settings.fields.geolocation_hint'));
         if (Util.navixyPermissions('manage', 'lbs')) {
-
             return {
                 xtype: 'displayfield',
                 name: 'lbs_display_field',
