@@ -111,7 +111,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     },
 
     getLBSValue: function () {
-        return this.record.get('lbs_providers')[0];
+        return this.record.get('lbs_providers')[0] || 'disabled';
     },
 
     getItems: function () {
@@ -211,7 +211,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     fields: ['type', 'name'],
                     data: [
                         {
-                            type: null,
+                            type: 'disabled',
                             name: '—'
                         },
                         {

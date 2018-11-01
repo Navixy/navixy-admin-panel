@@ -426,7 +426,7 @@ Ext.define('NavixyPanel.model.Settings', {
         }
         var lbsProviders = Ext.getFirst('[role=lbs_select]');
         if (lbsProviders) {
-            var hasLbsProviders = !!lbsProviders.getValue()
+            var hasLbsProviders = lbsProviders.getValue() !== 'disabled'
             data.lbs_providers = Ext.encode(hasLbsProviders ? [lbsProviders.getValue()] : []);
         }
         data.default_user_settings = Ext.encode(data.default_user_settings);
