@@ -893,8 +893,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     renderGeocoderField: function (defaultValue) {
+        var geocoders = this.record.get('geocoders').filter(function (item) { return !!item })
         var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
-        if (Util.navixyPermissions('manage', 'geocoder') && this.record.get('geocoders').length > 0) {
+        if (Util.navixyPermissions('manage', 'geocoder') && geocoders.length > 0) {
             return {
                 name: 'geocoder',
                 xtype: 'combobox',
@@ -914,8 +915,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     renderRouteProviderField: function (defaultValue) {
+        var providers = this.record.get('route_providers').filter(function (item) { return !!item })
         var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
-        if (Util.navixyPermissions('manage', 'route_provider') && this.record.get('route_providers').length > 0) {
+        if (Util.navixyPermissions('manage', 'route_provider') && providers.length > 0) {
             return {
                 name: 'route_provider',
                 xtype: 'combobox',
