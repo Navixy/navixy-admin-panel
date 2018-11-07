@@ -180,6 +180,10 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     ['progorod', 'Progorod'],
                     ['osm', 'OpenStreetMap']
                 ]),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
             } : undefined,
             Util.navixyPermissions('manage', 'route_provider') ? {
                 xtype: 'checkboxgroup',
@@ -195,6 +199,10 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     ['osrm', 'OpenStreetMap'],
                     ['progorod', 'Progorod']
                 ]),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
             } : undefined,
             Util.navixyPermissions('manage', 'lbs') ? {
                 xtype: 'combobox',
@@ -227,7 +235,11 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                             name: 'Yandex'
                         }
                     ],
-                })
+                }),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
             } : undefined,
             {
                 xtype: 'blockheader',
@@ -333,7 +345,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             values[name] = field.getValue();
         }, this);
 
-        this.fireEvent('map-edit', this, this.getUpdatedRecord(), values);
+        this.updatedRecord(this.getRecordChanges());
+        this.fireEvent('map-edit', this, this.record, values);
     },
 
     updateSettingsFromMap: function (settings) {
@@ -350,14 +363,40 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         }, this);
     },
 
-    getUpdatedRecord: function () {
-        var checkboxgroup = this.down('component[role="map_types_select"]'),
-            mapsObject = checkboxgroup && checkboxgroup.getValue();
+    getRecordChanges: function () {
+        var changesSpec = [
+            { field: 'map_types_select', getter: 'maps', recordField: 'maps' },
+            { field: 'geocoder_select', getter: 'geocoders', recordField: 'geocoders' },
+            { field: 'route_provider_select', getter: 'route_providers', recordField: 'route_providers' },
+            { field: 'lbs_select', getter: null, recordField: 'lbs_providers' }
+        ]
+        var changes = []
+        Ext.Array.each(changesSpec, function (changeInfo) {
+            var field = this.down('component[role="' + changeInfo.field + '"]'),
+                value = field && field.getValue();
 
-        if (mapsObject && !Ext.isEmpty(mapsObject.maps)) {
-            var maps = Ext.isArray(mapsObject.maps) ? mapsObject.maps : [mapsObject.maps];
-            this.record.set('maps', maps);
-        }
+            if (changeInfo.getter) {
+                value = value[changeInfo.getter]
+            }
+            value = Ext.isArray(value) ? value : [value];
+
+            if (JSON.stringify(this.record.get(changeInfo.recordField)) !== JSON.stringify(value)) {
+                changes.push({ field: changeInfo.recordField, value: value})
+            }
+        }, this);
+
+        return changes
+    },
+
+    updatedRecord: function (changes) {
+        Ext.Array.each(changes, function (changeInfo) {
+            this.record.set(changeInfo.field, changeInfo.value);
+        }, this);
         return this.record;
+    },
+
+    onGisFieldsChange: function () {
+        this.updatedRecord(this.getRecordChanges())
+        Ext.getFirst('settingsedit').renderGisFields()
     }
 });

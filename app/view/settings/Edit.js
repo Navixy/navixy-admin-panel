@@ -34,6 +34,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
     },
 
+    renderGisFields: function () {
+        var gisFields = this.down('component[role="gis_fields"]');
+        var owner = gisFields.ownerCt;
+        var index = owner.items.indexOf(gisFields);
+        owner.remove(index);
+        owner.insert(index, {
+            role: 'gis_fields',
+            items: this.getAccountItemsRight()
+        })
+    },
+
     getHintSymbol: function (hint, cls) {
         return ['<span class="icon-help ',
                 cls || '',
@@ -441,6 +452,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                                 items: this.getAccountItemsLeft()
                             },
                             {
+                                role: 'gis_fields',
                                 items: this.getAccountItemsRight()
                             }
                         ]
@@ -893,6 +905,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     renderGeocoderField: function (defaultValue) {
+        var defaultSetting = this.record.get('default_user_settings').geocoder;
         var geocoders = this.record.get('geocoders').filter(function (item) { return !!item })
         var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
         if (Util.navixyPermissions('manage', 'geocoder') && geocoders.length > 0) {
@@ -905,6 +918,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
+                value: geocoders.indexOf(defaultSetting) !== -1 ? defaultSetting : geocoders[0]
             };
         }
         return {
@@ -915,6 +929,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     renderRouteProviderField: function (defaultValue) {
+        var defaultSetting = this.record.get('default_user_settings').route_provider;
         var providers = this.record.get('route_providers').filter(function (item) { return !!item })
         var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
         if (Util.navixyPermissions('manage', 'route_provider') && providers.length > 0) {
@@ -927,6 +942,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
+                value: providers.indexOf(defaultSetting) !== -1 ? defaultSetting : providers[0]
             };
         }
         return {
