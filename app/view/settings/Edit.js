@@ -35,14 +35,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     renderGisFields: function () {
-        var gisFields = this.down('component[role="gis_fields"]');
-        var owner = gisFields.ownerCt;
-        var index = owner.items.indexOf(gisFields);
-        owner.remove(index);
-        owner.insert(index, {
-            role: 'gis_fields',
-            items: this.getAccountItemsRight()
-        })
+        var me = this
+        // Без этого таймаута экст ломается и перестает сохранять
+        setTimeout(function () {
+            var gisFields = me.down('component[role="gis_fields"]');
+            var owner = gisFields.ownerCt;
+            var index = owner.items.indexOf(gisFields);
+            owner.remove(index);
+            owner.insert(index, {
+                role: 'gis_fields',
+                items: me.getAccountItemsRight()
+            })
+        }, 1)
     },
 
     getHintSymbol: function (hint, cls) {
