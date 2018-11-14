@@ -903,7 +903,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     getRouteProvidersStore: function () {
         return this.getAvaliableComboboxItems('route_providers', {
             'google': 'Google',
-            'osrm': 'OpenStreetMap',
+            'osrm': 'OSRM',
             'progorod': 'Progorod'
         })
     },
