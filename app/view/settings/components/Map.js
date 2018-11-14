@@ -196,7 +196,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 margin: '0 0 50 10',
                 items: this.fillCheckboxesFromRecord('route_providers', [
                     ['google', 'Google'],
-                    ['osrm', 'OpenStreetMap'],
+                    ['osrm', 'OSRM'],
                     ['progorod', 'Progorod']
                 ]),
                 listeners: {
