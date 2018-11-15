@@ -188,7 +188,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }
         var lbs = this.down('[name=lbs_display_field]');
         if (lbs) {
-            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue()) || _l.get('settings.fields.unavaliable');
+            var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue());
             lbs.setValue(lbsLabel);
         }
     },
@@ -962,7 +962,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             mozilla: 'Mozilla location services',
             yandex: 'Yandex'
         };
-        return map[value || this.record.get('lbs_providers')[0]];
+        return map[value || this.record.get('lbs_providers')[0]] || _l.get('settings.fields.unavaliable');
     },
 
     renderLBSField: function () {
