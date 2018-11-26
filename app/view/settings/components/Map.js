@@ -18,7 +18,6 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         this.mapsStore = Ext.getStore('MapTypes');
         this.mapsStore.setAllowedMaps(this.record.get('allowed_maps') || []);
         this.items = this.getItems();
-
         this.callParent(arguments);
     },
 
@@ -97,6 +96,24 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
 
     },
 
+    fillCheckboxesFromRecord: function (name, checkboxes) {
+        var result = [];
+        var value = this.record.get(name);
+        for (var i = 0; i < checkboxes.length; i++) {
+            result.push({
+                name: name,
+                boxLabel: checkboxes[i][1],
+                inputValue: checkboxes[i][0],
+                shadowField: true
+            })
+        }
+        return result;
+    },
+
+    getLBSValue: function () {
+        return this.record.get('lbs_providers')[0] || 'disabled';
+    },
+
     getItems: function () {
         if (!Config.google_key) {
             Config.google_key = {
@@ -111,6 +128,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             google_client_id_link = isNavixy ? Ext.String.format(_l.get('settings.fields.google_client_id_link'), Config.google_key.get_key_link) : '',
             premium_gis_link = isNavixy ? Ext.String.format(_l.get('settings.fields.premium_gis_link'), Config.google_key.get_key_link) : '';
 
+        var isPremiumGis = Ext.getStore('Dealer').getGisPackage() === 'premium';
         return [
             {
                 xtype: 'blockheader',
@@ -143,10 +161,86 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             } : {
                 xtype: 'hiddefield',
                 name: 'google_client_id'
-            }, Config.google_key.allow ? undefined : {
+            }, isPremiumGis ? undefined : {
                 xtype: 'component',
                 html: Ext.String.format(_l.get('settings.fields').get(isNavixy ? 'premium_gis' : 'paas_premium_gis'), premium_gis_link)
             },
+            Util.navixyPermissions('manage', 'geocoder') ? {
+                xtype: 'checkboxgroup',
+                name: 'geocoders',
+                role: 'geocoder_select',
+                fieldLabel: _l.get('settings.fields.geocoder'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: this.fillCheckboxesFromRecord('geocoders', [
+                    ['google', 'Google'],
+                    ['yandex', 'Yandex'],
+                    ['progorod', 'Progorod'],
+                    ['osm', 'OpenStreetMap']
+                ]),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
+            } : undefined,
+            Util.navixyPermissions('manage', 'route_provider') ? {
+                xtype: 'checkboxgroup',
+                name: 'route_providers',
+                role: 'route_provider_select',
+                fieldLabel: _l.get('settings.fields.route_provider'),
+                allowBlank: true,
+                columns: 1,
+                vertical: true,
+                margin: '0 0 50 10',
+                items: this.fillCheckboxesFromRecord('route_providers', [
+                    ['google', 'Google'],
+                    ['osrm', 'OSRM'],
+                    ['progorod', 'Progorod']
+                ]),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
+            } : undefined,
+            Util.navixyPermissions('manage', 'lbs') ? {
+                xtype: 'combobox',
+                role: 'lbs_select',
+                width: 300,
+                fieldLabel: _l.get('settings.fields.geolocation'),
+                editable: false,
+                queryMode: 'local',
+                margin: '0 0 50 10',
+                displayField: 'name',
+                valueField: 'type',
+                value: this.getLBSValue(),
+                store: Ext.create('Ext.data.Store', {
+                    fields: ['type', 'name'],
+                    data: [
+                        {
+                            type: 'disabled',
+                            name: '—'
+                        },
+                        {
+                            type: 'google',
+                            name: 'Google'
+                        },
+                        {
+                            type: 'mozilla',
+                            name: 'Mozilla location services'
+                        },
+                        {
+                            type: 'yandex',
+                            name: 'Yandex'
+                        }
+                    ],
+                }),
+                listeners: {
+                    change: this.onGisFieldsChange,
+                    scope: this
+                }
+            } : undefined,
             {
                 xtype: 'blockheader',
                 html: _l.get('settings.edit_form.service_maps_defaults_title') + Ext.getHintSymbol(_l.get('settings.edit_form.maps_defaults_hint'))
@@ -251,7 +345,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             values[name] = field.getValue();
         }, this);
 
-        this.fireEvent('map-edit', this, this.getUpdatedRecord(), values);
+        this.updatedRecord(this.getRecordChanges());
+        this.fireEvent('map-edit', this, this.record, values);
     },
 
     updateSettingsFromMap: function (settings) {
@@ -268,15 +363,40 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
         }, this);
     },
 
-    getUpdatedRecord: function () {
-        var checkboxgroup = this.down('component[role="map_types_select"]'),
-            mapsObject = checkboxgroup && checkboxgroup.getValue();
+    getRecordChanges: function () {
+        var changesSpec = [
+            { field: 'map_types_select', getter: 'maps', recordField: 'maps' },
+            { field: 'geocoder_select', getter: 'geocoders', recordField: 'geocoders' },
+            { field: 'route_provider_select', getter: 'route_providers', recordField: 'route_providers' },
+            { field: 'lbs_select', getter: null, recordField: 'lbs_providers' }
+        ]
+        var changes = []
+        Ext.Array.each(changesSpec, function (changeInfo) {
+            var field = this.down('component[role="' + changeInfo.field + '"]'),
+                value = field && field.getValue();
 
-        if (mapsObject && !Ext.isEmpty(mapsObject.maps)) {
-            var maps = Ext.isArray(mapsObject.maps) ? mapsObject.maps : [mapsObject.maps];
-            this.record.set('maps', maps);
-        }
+            if (changeInfo.getter) {
+                value = value[changeInfo.getter]
+            }
+            value = Ext.isArray(value) ? value : [value];
 
+            if (JSON.stringify(this.record.get(changeInfo.recordField)) !== JSON.stringify(value)) {
+                changes.push({ field: changeInfo.recordField, value: value})
+            }
+        }, this);
+
+        return changes
+    },
+
+    updatedRecord: function (changes) {
+        Ext.Array.each(changes, function (changeInfo) {
+            this.record.set(changeInfo.field, changeInfo.value);
+        }, this);
         return this.record;
+    },
+
+    onGisFieldsChange: function () {
+        this.updatedRecord(this.getRecordChanges())
+        Ext.getFirst('settingsedit').renderGisFields()
     }
 });

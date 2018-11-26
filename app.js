@@ -17,7 +17,8 @@ Ext.Loader.setConfig({
         'Ext.ux': 'ext/src/ux',
         'Config': 'PConfig.js',
         'Locale': 'locale',
-        'Lib': 'libs'
+        'Lib': 'libs',
+        'NavixyPermissions': 'node_modules/navixy-permissions/dist/navixy-permissions.js',
     }
 });
 

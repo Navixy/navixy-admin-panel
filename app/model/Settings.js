@@ -212,6 +212,18 @@ Ext.define('NavixyPanel.model.Settings', {
             convert: function (value, record) {
                 return Ext.isEmpty(value) ? 'metromorph' : value;
             }
+        },
+        {
+            name: 'geocoders',
+            type: 'auto'
+        },
+        {
+            name: 'route_providers',
+            type: 'auto'
+        },
+        {
+            name: 'lbs_providers',
+            type: 'auto'
         }
     ],
 
@@ -386,7 +398,6 @@ Ext.define('NavixyPanel.model.Settings', {
 
         data.maps = Ext.encode(data.maps);
         data.default_map = Ext.encode(data.default_map);
-        data.default_user_settings = Ext.encode(data.default_user_settings);
 
         if (data.google_client_id === null) {
             delete data['google_client_id'];
@@ -396,7 +407,29 @@ Ext.define('NavixyPanel.model.Settings', {
             delete data['google_client_id'];
             this.set('google_client_id', null);
         }
+        var geocoderSelect = Ext.getFirst('[role=geocoder_select]');
+        if (geocoderSelect) {
+            var hasGeocoders = data.geocoders.filter(function (item) { return !!item }).length > 0
+            data.geocoders = Ext.encode(hasGeocoders ? data.geocoders : []);
+            if (!hasGeocoders) {
+                delete data.default_user_settings.geocoder
+            }
+        }
 
+        var routeProviderSelect = Ext.getFirst('[role=route_provider_select]');
+        if (routeProviderSelect) {
+            var hasRouteProviders = data.route_providers.filter(function (item) { return !!item }).length > 0
+            data.route_providers = Ext.encode(hasRouteProviders ? data.route_providers : []);
+            if (!hasRouteProviders) {
+                delete data.default_user_settings.route_provider
+            }
+        }
+        var lbsProviders = Ext.getFirst('[role=lbs_select]');
+        if (lbsProviders) {
+            var hasLbsProviders = lbsProviders.getValue() !== 'disabled'
+            data.lbs_providers = Ext.encode(hasLbsProviders ? [lbsProviders.getValue()] : []);
+        }
+        data.default_user_settings = Ext.encode(data.default_user_settings);
         return data;
     },
 
