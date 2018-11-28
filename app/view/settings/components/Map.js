@@ -375,7 +375,7 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
             var field = this.down('component[role="' + changeInfo.field + '"]'),
                 value = field && field.getValue();
 
-            if (changeInfo.getter) {
+            if (value && changeInfo.getter) {
                 value = value[changeInfo.getter]
             }
             value = Ext.isArray(value) ? value : [value];
