@@ -37,7 +37,7 @@
 
         loadAPI: function () {
             Ext.getStore("Settings").loadRecord(null, function (record) {
-                var clientId = record && record.getData().google_client_id;
+                var clientId = Config.googleApiKey || (record && record.getData().google_client_id);
 
                 if (record && window.google && typeof window.google.load === "function" &&
                     Locale.Manager.getLocale()) {
