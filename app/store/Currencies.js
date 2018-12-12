@@ -643,6 +643,11 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "BDT",
                 name: _l.get('currency.bdt'),
                 priority: 5
+            },
+            {
+                type: "KES",
+                name: _l.get('currency.kes'),
+                priority: 5
             }
         ];
 
