@@ -336,7 +336,8 @@ Ext.define('Locale.locale-es',{
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
         "kwd": "Kuwaiti dinar",
-        "bdt": "Bangladeshi taka"
+        "bdt": "Bangladeshi taka",
+        "kes": "Kenyan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1473,7 +1474,8 @@ Ext.define('Locale.locale-es',{
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",
