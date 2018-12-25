@@ -1494,11 +1494,12 @@ Ext.define('Locale.locale-es',{
         "report_xls": "Reports to file",
         "report_scheduled": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
         "routing": "Enrutamiento",
-        "driver_journal": "Diario de conductor",
+        "driver_journal": "Diario el conductor",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "statuses": "Work statuses"
+        "statuses": "Work statuses",
+        "checkins": "Los check-ins en el mapa enviados por los empleados móviles"
     },
     "singleton": true,
     "map": {

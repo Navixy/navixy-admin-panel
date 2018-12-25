@@ -1694,7 +1694,8 @@ Ext.define('Locale.locale-en', {
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "checkins": "Check-ins on the map submitted by mobile employees"
     },
     "map": {
         "zoom_in": "Zoom in",
