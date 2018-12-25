@@ -381,7 +381,8 @@ Ext.define('Locale.locale-en', {
         "aed": "United Arab Emirates dirham",
         "aoa": "Angolan  kwanza",
         "kwd": "Kuwaiti dinar",
-        "bdt": "Bangladeshi taka"
+        "bdt": "Bangladeshi taka",
+        "kes": "Kenyan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1666,7 +1667,8 @@ Ext.define('Locale.locale-en', {
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",
@@ -1693,7 +1695,8 @@ Ext.define('Locale.locale-en', {
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "checkins": "Check-ins on the map submitted by mobile employees"
     },
     "map": {
         "zoom_in": "Zoom in",

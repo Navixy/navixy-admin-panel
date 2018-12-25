@@ -380,7 +380,8 @@ Ext.define('Locale.locale-ru', {
         "aed": "United Arab Emirates dirham",
         "aoa": "Ангольская кванза",
         "kwd": "Кувейтский динар",
-        "bdt": "Бангладешская така"
+        "bdt": "Бангладешская така",
+        "kes": "Кенийский шиллинг"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -1626,7 +1627,8 @@ Ext.define('Locale.locale-ru', {
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",
@@ -1653,7 +1655,8 @@ Ext.define('Locale.locale-ru', {
         "driver_journal": "Журнал водителя",
         "ui_mobile": "Мобильный интерфейс",
         "weblocator": "Веб-локатор",
-        "chat": "Чат"
+        "chat": "Чат",
+        "checkins": "Отметки на карте, отправленные мобильными сотрудниками"
     },
     "map": {
         "zoom_in": "Увеличить масштаб",

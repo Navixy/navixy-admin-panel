@@ -94,6 +94,11 @@ Ext.define('NavixyPanel.store.Features', {
                 group: "features"
             },
             {
+                type: "checkins",
+                "name": _l.get('features.checkins'),
+                group: "features"
+            },
+            {
                 type: "api",
                 "name": _l.get('features.api'),
                 group: "misc"

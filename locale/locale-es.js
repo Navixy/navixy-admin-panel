@@ -337,7 +337,8 @@ Ext.define('Locale.locale-es',{
         "zwd": "Zimbabwe Dollar",
         "mad": "Moroccan dirham",
         "kwd": "Kuwaiti dinar",
-        "bdt": "Bangladeshi taka"
+        "bdt": "Bangladeshi taka",
+        "kes": "Kenyan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1474,7 +1475,8 @@ Ext.define('Locale.locale-es',{
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",
@@ -1493,11 +1495,12 @@ Ext.define('Locale.locale-es',{
         "report_xls": "Reports to file",
         "report_scheduled": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>Scheduled reports</a>",
         "routing": "Enrutamiento",
-        "driver_journal": "Diario de conductor",
+        "driver_journal": "Diario el conductor",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "statuses": "Work statuses"
+        "statuses": "Work statuses",
+        "checkins": "Los check-ins en el mapa enviados por los empleados móviles"
     },
     "singleton": true,
     "map": {
