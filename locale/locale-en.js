@@ -1696,7 +1696,7 @@ Ext.define('Locale.locale-en', {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "checkins": "Check-ins on the map submitted by mobile employees"
+        "checkins": "Check-ins on the map"
     },
     "map": {
         "zoom_in": "Zoom in",
