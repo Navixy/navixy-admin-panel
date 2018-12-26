@@ -1499,7 +1499,7 @@ Ext.define('Locale.locale-es',{
         "weblocator": "Weblocator",
         "chat": "Chat",
         "statuses": "Work statuses",
-        "checkins": "Los check-ins en el mapa enviados por los empleados móviles"
+        "checkins": "Los check-ins en el mapa"
     },
     "singleton": true,
     "map": {
