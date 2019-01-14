@@ -2,8 +2,13 @@ Ext.define('Dev.Util', {
     alternateClassName: 'Util',
     singleton: true,
     dependencies: ['NavixyPermissions'],
+
     getRequiredSeparator: function () {
         return '<span style="color:red">*</span>:';
+    },
+
+    formatDate: function (date) {
+      return date ? Ext.Date.formatISO(date, Ext.util.Format.dateFormat) : ''
     },
 
     navixyPermissions: function (action, feature) {
