@@ -199,7 +199,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
             {
                 text: _l.get('trackers.fields.creation_date_short'),
                 dataIndex: 'creation_date',
-                renderer: Ext.util.Format.dateRenderer(Ext.util.Format.dateFormat),
+                renderer: Util.formatDate,
                 minWidth: 140,
                 resizable: false,
                 flex: 1
