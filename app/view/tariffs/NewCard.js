@@ -39,7 +39,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         if (recordData) {
             var defaultTariff = Ext.getStore('TariffDefaults').findRecord('id', recordData.device_type),
                 defaultData = defaultTariff && defaultTariff.getData(),
-                isDefault = recordData.id === defaultData.tariff_id;
+                isDefault = defaultData ? recordData.id === defaultData.tariff_id : false;
 
             recordData.tariff_is_default = isDefault;
             recordData.activation_bonus = isDefault ? defaultData.activation_bonus : 0;
