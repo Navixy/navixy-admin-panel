@@ -24,7 +24,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
         var me = this,
             recordData = this.getRecordData(),
             defaultTariff = Ext.getStore('TariffDefaults').findRecord('id', recordData.device_type),
-            defaultData = defaultTariff && defaultTariff.getData();
+            defaultData = defaultTariff && defaultTariff.getData() || {};
 
         return [
             {
@@ -72,7 +72,7 @@ Ext.define('NavixyPanel.view.tariffs.SetDefault', {
                 minLength: 1,
                 maxLength: 6,
 
-                value: defaultData.free_days_device_limit
+                value: defaultData.free_days_device_limit || 0
             },
             {
                 xtype: 'hidden',

@@ -213,7 +213,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         var device_type = record.get('device_type'),
             defaultRecord = Ext.getStore('TariffDefaults').findRecord('id', device_type);
 
-        if (formValues["tariff_is_default"] &&
+        if (!defaultRecord || (formValues["tariff_is_default"] &&
             (
                 defaultRecord.get("tariff_id") != record.get("id")
                 ||
@@ -222,7 +222,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
                 defaultRecord.get("free_days_device_limit") != formValues["free_days_device_limit"]
                 ||
                 defaultRecord.get("activation_bonus") != formValues["activation_bonus"]
-            )
+            ))
         ) {
             this.handleTariffDefaultEdit(null, {
                     tariff_id: record.get("id"),
