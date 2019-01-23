@@ -380,7 +380,8 @@ Ext.define('Locale.locale-en', {
         "aed": "United Arab Emirates dirham",
         "aoa": "Angolan  kwanza",
         "kwd": "Kuwaiti dinar",
-        "bdt": "Bangladeshi taka"
+        "bdt": "Bangladeshi taka",
+        "kes": "Kenyan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -980,6 +981,7 @@ Ext.define('Locale.locale-en', {
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
             "geocoder": "Geocoding",
+            "default_geocoder": "Geocoding by default",
             "route_provider": "Default route provider",
             "translit": "Transliteration for SMS",
             "measurement_system": "Measurement system",
@@ -1067,7 +1069,8 @@ Ext.define('Locale.locale-en', {
             premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
-            paas_maps_is_unavailable: 'This map type is not available on these domains: {0}'
+            paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
+            "unavaliable": "Not available"
         },
         "sms_gateway": {
             "navixy": {
@@ -1663,7 +1666,8 @@ Ext.define('Locale.locale-en', {
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",

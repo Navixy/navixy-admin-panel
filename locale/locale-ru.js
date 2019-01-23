@@ -379,7 +379,8 @@ Ext.define('Locale.locale-ru', {
         "aed": "United Arab Emirates dirham",
         "aoa": "Ангольская кванза",
         "kwd": "Кувейтский динар",
-        "bdt": "Бангладешская така"
+        "bdt": "Бангладешская така",
+        "kes": "Кенийский шиллинг"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -959,6 +960,7 @@ Ext.define('Locale.locale-ru', {
             "footer_site": "Ссылка «О компании»",
             "footer_text": "Текст внизу страницы входа",
             "geocoder": "Геокодирование",
+            "default_geocoder": "Геокодирование по умолчанию",
             "route_provider": "Провайдер маршрутов по умолчанию",
             "translit": "Транслитерация SMS",
             "measurement_system": "Система мер",
@@ -1046,7 +1048,8 @@ Ext.define('Locale.locale-ru', {
             premium_gis: 'Подключите пакет "Премиум ГИС" от Navixy, включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             paas_premium_gis: 'Подключите пакет "Премиум ГИС", включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
-            paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}'
+            paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}',
+            "unavaliable": "Недоступно"
         },
         "sms_gateway": {
             "navixy": {
@@ -1623,7 +1626,8 @@ Ext.define('Locale.locale-ru', {
         "AED": "{0} Dh",
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "KES": "{0} KSh"
     },
     "features": {
         "api": "API",
