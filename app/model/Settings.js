@@ -408,22 +408,14 @@ Ext.define('NavixyPanel.model.Settings', {
             this.set('google_client_id', null);
         }
         var geocoderSelect = Ext.getFirst('[role=geocoder_select]');
-        if (geocoderSelect) {
-            var hasGeocoders = data.geocoders.filter(function (item) { return !!item }).length > 0
-            data.geocoders = Ext.encode(hasGeocoders ? data.geocoders : []);
-            if (!hasGeocoders) {
-                delete data.default_user_settings.geocoder
-            }
-        }
+        var hasGeocoders = geocoderSelect && data.geocoders.filter(function (item) { return !!item }).length > 0
+        data.geocoders = Ext.encode(hasGeocoders ? data.geocoders : []);
+
 
         var routeProviderSelect = Ext.getFirst('[role=route_provider_select]');
-        if (routeProviderSelect) {
-            var hasRouteProviders = data.route_providers.filter(function (item) { return !!item }).length > 0
-            data.route_providers = Ext.encode(hasRouteProviders ? data.route_providers : []);
-            if (!hasRouteProviders) {
-                delete data.default_user_settings.route_provider
-            }
-        }
+        var hasRouteProviders = routeProviderSelect && data.route_providers.filter(function (item) { return !!item }).length > 0
+        data.route_providers = Ext.encode(hasRouteProviders ? data.route_providers : []);
+
         var lbsProviders = Ext.getFirst('[role=lbs_select]');
         var hasLbsProviders = lbsProviders && (lbsProviders.getValue() !== 'disabled')
         data.lbs_providers = Ext.encode(hasLbsProviders ? [lbsProviders.getValue()] : []);
