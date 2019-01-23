@@ -104,6 +104,13 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
+            id: 'lt_LT',
+            name: 'lt_LT',
+            text: 'Lietùvių Kalbà',
+            alias: ['lt', 'lt_LT', 'Lietùvių Kalbà'],
+            rtl: false
+        },
+        {
             id: 'mn_MN',
             name: 'mn_MN',
             text: 'Монгол',
