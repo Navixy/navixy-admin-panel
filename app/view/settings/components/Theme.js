@@ -19,10 +19,26 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     record: null,
 
     defaultPreviewsPathTpl: 'images/themes/{0}/{1}.jpg',
-
     initComponent: function () {
         this.items = this.getItems();
-
+        this.callParent(arguments);
+    },
+    afterLayout: function() {
+        var iphoneImg = document.querySelector('.theme-image-iphone__object');
+        if (iphoneImg) {
+            try {
+                Ext.waitFor(function () {
+                    return iphoneImg.contentDocument.getElementsByClassName('theme-color').length > 0;
+                }, function () {
+                    var needChangeColor = iphoneImg.contentDocument.getElementsByClassName('theme-color');
+                    for (var i = 0; i < needChangeColor.length; i++) {
+                        needChangeColor[i].setAttribute('fill', this.iphoneColor);
+                    }
+                }, this);
+            } catch (e) {
+                console.log(e.stack);
+            }
+        }
         this.callParent(arguments);
     },
 
@@ -30,7 +46,6 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
         var tpl = pathTpl || this.defaultPreviewsPathTpl,
             previews = Ext.Array.clone(this.record.get('images')),
             themeName = this.record.get('name'),
-            subItems = [],
             default_src = previews && previews.length && Ext.String.format(tpl, themeName, previews.shift()),
             result = default_src ? {
                 role: 'previews-container',
@@ -56,10 +71,10 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                         height: 400
                     },
                     {
-                        xtype: 'image',
+                        xtype: 'component',
                         width: 195,
                         cls: 'theme-image-iphone',
-                        src: 'images/themes/iphone.svg'
+                        html: '<object type="image/svg+xml" data="images/themes/iphone.svg" class="theme-image-iphone__object" />'
                     }
                 ]
             }

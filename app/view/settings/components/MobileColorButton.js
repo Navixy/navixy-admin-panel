@@ -5,26 +5,26 @@
  */
 
 Ext.define('NavixyPanel.view.settings.components.MobileColorButton', {
-    extend: 'Ext.Container',
+    extend: 'Ext.Component',
     xtype: 'settings-themes-mobile-color-button',
     checked: false,
     color: '#1E96DC',
     initComponent: function () {
-        this.items = this.getItems();
-
+        this.html = this.renderButton(this.checked)
         this.callParent(arguments);
     },
-    getItems: function () {
+
+    renderButton (checked) {
         var html = '<div class="mobile-color-picker-button" style="background-color: ' + this.color + '">'
-        if (this.checked) {
+        if (checked) {
             html += '<div class="mobile-color-picker-button__active-icon" />';
         }
-        html += '</div>'
-        return [
-            {
-                xtype: 'component',
-                html: html
-            }
-        ];
+        html += '</div>';
+        return html;
+    },
+
+    check () {
+        this.checked = !this.checked;
+        this.update(this.renderButton(this.checked));
     }
 });

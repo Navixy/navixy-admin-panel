@@ -207,4 +207,12 @@
 .theme-image-iphone {
     position: static !important;
     margin-left: 40px !important;
+    display: inline-block;
+}
+.theme-image-iphone__object {
+    height: 395px;
+}
+
+.theme-image-iphone__object .theme-color {
+    fill: #ccc !important;
 }
