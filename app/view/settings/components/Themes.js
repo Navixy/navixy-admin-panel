@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (customTheme) {
             this.store.add(customTheme)
         }
-        
+
         this.items = this.getItems();
 
         this.callParent(arguments);
@@ -87,25 +87,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     }
                 },
                 {
-                    xtype: 'button',
-                    iconCls: 'eye-button',
-                    text: _l.get('settings.themes.preview_btn'),
-                    ui: 'default',
-                    scale: 'medium',
-                    width: 260,
-                    margin: '5 10',
-                    role: 'preview-btn',
-
-                    handler: this.previewLogin,
-                    scope: this
-                }, {
-                    xtype: 'component',
-                    cls: 'block_hint',
-                    margin: '15 10 5',
-                    width: 260,
-
-                    hidden: true,
-                    role: 'theme-description'
+                    xtype: 'blockheader',
+                    html: _l.get('settings.themes.mobile_app'),
+                    width: 360,
+                    padding: '30 0 10 0'
+                },
+                {
+                    xtype: 'settings-themes-mobile-color-picker'
                 }
             ]
         }

@@ -15,6 +15,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         'widgets.map.Map',
         'settings.components.MapWindow',
         'settings.components.Themes',
+        'settings.components.MobileColorPicker',
+        'settings.components.MobileColorButton',
         'settings.components.Theme'
     ],
     requires: [
