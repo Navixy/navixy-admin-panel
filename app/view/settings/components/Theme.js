@@ -40,68 +40,30 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                     type: 'hbox',
                     align: 'streach'
                 },
-                listeners: {
-                    'mouseover': {
-                        fn: function (event, element) {
-                            var el = Ext.get(element);
-
-                            if (el && el.hasCls('form-img-preview')) {
-                                this.down("[role=big-picture]").setSrc(el.getAttribute('src'));
-                            }
-                        },
-                        element: 'el',
-                        scope: this
-                    },
-                    'mouseout': {
-                        fn: function () {
-                            if (default_src) {
-                                this.down("[role=big-picture]").setSrc(default_src);
-                            }
-                        },
-                        element: 'el',
-                        scope: this
-                    }
-                },
                 items: [
                     {
                         xtype: 'image',
                         src: default_src,
-                        cls: 'form-img-preview',
-                        role: 'big-picture',
-                        width: 575,
-                        maxHeight: 374
+                        width: 490,
+                        height: 276,
+                        cls: 'theme-image-monitor__content'
+                    },
+                    {
+                        xtype: 'image',
+                        src: 'images/themes/monitor.svg',
+                        cls: 'theme-image-monitor',
+                        width: 600,
+                        height: 400
+                    },
+                    {
+                        xtype: 'image',
+                        width: 195,
+                        cls: 'theme-image-iphone',
+                        src: 'images/themes/iphone.svg'
                     }
                 ]
             }
                 : null;
-
-        if (result) {
-            Ext.iterate(previews, function (img_path, index) {
-                subItems.push({
-                    margin: index ? '2 0 1 2' : '0 0 0 2',
-                    src: Ext.String.format(tpl, themeName, img_path)
-                });
-            }, this);
-
-            if (subItems.length) {
-                result.items.push(
-                    {
-                        xtype: 'container',
-                        layout: {
-                            type: 'vbox',
-                            align: 'stretch'
-                        },
-                        defaults: {
-                            xtype: 'image',
-                            cls: 'form-img-preview',
-                            width: 191,
-                            height: 108
-                        },
-                        items: subItems
-                    }
-                )
-            }
-        }
 
         return result;
     }

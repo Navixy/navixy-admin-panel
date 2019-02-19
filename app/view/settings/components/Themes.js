@@ -59,12 +59,12 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 type: 'vbox',
                 align: 'streach'
             },
-            width: 380,
+            width: 320,
             items: [
                 {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.main_title'),
-                    width: 360,
+                    width: 300,
                     padding: '30 0 10 0'
                 },
                 {
@@ -73,7 +73,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     editable: false,
                     labelAlign: 'top',
                     ui: 'light',
-                    width: 260,
+                    width: 270,
                     margin: '5 10',
 
                     store: this.store,
@@ -89,7 +89,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.mobile_app'),
-                    width: 360,
+                    width: 300,
                     padding: '30 0 10 0'
                 },
                 {
@@ -118,6 +118,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 {
                     xtype: 'container',
                     height: 420,
+                    margin: '0 0 0 -30px',
                     role: 'preview-container'
                 }
             ]
@@ -145,7 +146,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             preview.removeAll(true);
             preview.add({
                 xtype: 'settings-theme',
-                padding: '5 0 20 10',
+                padding: '5 0 20 0',
                 record: this.getSelectedRecord()
             })
         }
