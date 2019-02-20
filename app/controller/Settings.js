@@ -169,7 +169,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     afterPasswordEdit: function (success, record) {
         if (success) {
             this.getSettingsEdit().afterPasswordSave();
-        } else {
         }
     },
 
@@ -213,7 +212,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     onEditSubmit: function (cmp, formValues, record) {
         var serviceChanges = record.getServiceChanges(),
             notificationChanges = record.getNotificationChanges(),
-            settingsData = record.getData(),
             requestsCnt = 0;
 
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {

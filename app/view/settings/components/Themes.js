@@ -27,7 +27,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         green_3: '#97C33C',
         blue_4: '#29ACDF'
     },
-    currentIphoneColor: '#1E96DC',
+    defaultColorName: 'blue_2',
     initComponent: function () {
         this.title = _l.get('settings.themes.title');
         this.store = Ext.getStore('Themes');
@@ -37,6 +37,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (customTheme) {
             this.store.add(customTheme)
         }
+        this.currentIphoneColor = this.colorCodes[this.defaultColorName];
         this.items = this.getItems();
         this.callParent(arguments);
     },
@@ -202,5 +203,14 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         this.currentIphoneColor = colorCode;
         this.down('settings-themes-mobile-color-picker').setActiveColor(colorCode);
         this.onSelect();
+    },
+    getColorName: function () {
+        var result = this.defaultColorName;
+        Ext.iterate(this.colorCodes, function(key, value) {
+            if (value === this.currentIphoneColor) {
+                result = key;
+            }
+        }.bind(this))
+        return result;
     }
 });
