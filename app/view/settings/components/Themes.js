@@ -33,11 +33,14 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         this.store = Ext.getStore('Themes');
 
         var customTheme = Config.customThemes && Config.customThemes[Ext.getStore('Dealer').first().getId()]
-
         if (customTheme) {
             this.store.add(customTheme)
         }
         this.currentIphoneColor = this.colorCodes[this.defaultColorName];
+        var dealerStore = Ext.getStore('Dealer');
+        var dealer = dealerStore && dealerStore.first();
+        this.allowBranding = dealer && dealer.get('allow_branding');
+
         this.items = this.getItems();
         this.callParent(arguments);
     },
@@ -52,6 +55,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             },
             {
                 xtype: 'container',
+                disabled: !this.allowBranding,
                 layout: {
                     type: 'hbox',
                     align: 'streach'
@@ -96,6 +100,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     displayField: 'title',
                     valueField: 'name',
                     name: 'color_theme',
+                    forceValue: !this.allowBranding ? this.defaultTheme : false,
                     listeners: {
                         change: this.onSelect,
                         scope: this
@@ -163,13 +168,12 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         var preview = this.getPreviewsContainer(),
             button = this.getPreviewsButton(),
             record = this.getSelectedRecord();
-
         if (preview) {
             preview.removeAll(true);
             preview.add({
                 xtype: 'settings-theme',
                 padding: '5 0 20 0',
-                record: this.getSelectedRecord(),
+                record: record,
                 iphoneColor: this.currentIphoneColor
             });
         }
@@ -192,14 +196,21 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     },
 
     getValue: function () {
-        return this.getField().getValue() || this.defaultTheme;
+        if (this.allowBranding) {
+            return this.getField().getValue() || this.defaultTheme;
+        }
+        return this.defaultTheme;
     },
 
     getSelectedRecord: function () {
         return this.store.findRecord('name', this.getValue());
     },
     setCurrentIphoneColor: function (color) {
-        var colorCode = this.colorCodes[color]
+        if (!this.allowBranding) {
+            color = this.defaultColorName;
+        }
+        var colorCode = this.colorCodes[color];
+
         this.currentIphoneColor = colorCode;
         this.down('settings-themes-mobile-color-picker').setActiveColor(colorCode);
         this.onSelect();
