@@ -37,9 +37,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (customTheme) {
             this.store.add(customTheme)
         }
-
         this.items = this.getItems();
-
         this.callParent(arguments);
     },
 
@@ -198,5 +196,11 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
     getSelectedRecord: function () {
         return this.store.findRecord('name', this.getValue());
+    },
+    setCurrentIphoneColor: function (color) {
+        var colorCode = this.colorCodes[color]
+        this.currentIphoneColor = colorCode;
+        this.down('settings-themes-mobile-color-picker').setActiveColor(colorCode);
+        this.onSelect();
     }
 });

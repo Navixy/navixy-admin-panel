@@ -64,5 +64,10 @@ Ext.define('NavixyPanel.view.settings.components.MobileColorPicker', {
             });
         }
         return result;
+    },
+    setActiveColor: function (color) {
+        this.removeAll(true);
+        this.activeColor = color
+        this.add(this.getItems());
     }
 });
