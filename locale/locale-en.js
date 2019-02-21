@@ -997,6 +997,7 @@ Ext.define('Locale.locale-en', {
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
             "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
             "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
+            "app_logo_hint": "Displayed on the mobile app login screen.",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
             "document_logo_hint": "Additional logo that is shown in the email notifications and reports",
             "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
@@ -1175,6 +1176,7 @@ Ext.define('Locale.locale-en', {
             "main_texts_title": "Main texts",
             "footer_texts_title": "Text in the basement of the login page",
             "logo_title": "Logo",
+            "app_logo_title": "Logo in mobile app",
             "monitoring_logo_title": "User interface logo",
             "document_logo_title": "Documents and notifications logo",
             "document_logo": "Documents and notifications logo",
@@ -1254,14 +1256,16 @@ Ext.define('Locale.locale-en', {
                 "document_logo": "Document logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
-                "desktop_wallpaper": "Service page wallpaper"
+                "desktop_wallpaper": "Service page wallpaper",
+                "app_logo": "Logo in mobile app"
             },
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "document_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
-                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
+                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format.",
+                "app_logo": "Displayed on the mobile app login screen.",
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
