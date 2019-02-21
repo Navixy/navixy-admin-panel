@@ -896,15 +896,16 @@ Ext.define('Locale.locale-en', {
         "themes": {
             "title": "UI themes",
             "main_info": "You can change color UI color theme",
-            "main_title": "Select theme",
-            "preview_title": "Theme screenshots",
+            "main_title": "Web Interface",
+            "preview_title": "Preview",
             "preview_btn": "Preview in monitoring",
             "list": {
                 "metromorph": {
                     "title": "Default",
                     "description": "Default UI theme"
                 }
-            }
+            },
+            'mobile_app': "Mobile app"
         },
         "subscription": {
             "title": "Subscription",
