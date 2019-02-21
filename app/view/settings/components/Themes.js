@@ -209,7 +209,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (!this.allowBranding) {
             color = this.defaultColorName;
         }
-        var colorCode = this.colorCodes[color];
+        var colorCode = this.colorCodes[color] || this.colorCodes[this.defaultColorName];
 
         this.currentIphoneColor = colorCode;
         this.down('settings-themes-mobile-color-picker').setActiveColor(colorCode);
