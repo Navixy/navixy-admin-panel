@@ -22,6 +22,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "seller_currency",
         "demo_tariff",
         "store_period",
+        "allow_branding",
         {
             name: "paas_activation_date",
             type: 'date',
