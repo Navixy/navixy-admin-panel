@@ -625,9 +625,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getImgsCustom: function () {
-        // Ext.apply(this.getFieldDefaults(), {
-        //     margin: '5 0 0 10'
-        // })
+        var dealerStore = Ext.getStore('Dealer');
+        var dealer = dealerStore && dealerStore.first();
+        var allowBranding = dealer && dealer.get('allow_branding');
         return [
             {
                 xtype: 'container',
@@ -695,6 +695,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         },
                             this.getImgConfig('favicon'),
                             this.getImgButtonConfig('favicon')]
+                    }, {
+                        xtype: 'container',
+                        padding: '20 0 0 0',
+                        disabled: !allowBranding,
+                        items: [{
+                            xtype: 'component',
+                            cls: 'block_header',
+                            html: _l.get('settings.edit_form.app_logo_title') + this.getHintSymbol(_l.get('settings.fields.app_logo_hint')),
+                            padding: '0 0 5 0'
+                        },
+                        this.getImgConfig('app_logo'),
+                        this.getImgButtonConfig('app_logo')]
                     }]
             }
 
