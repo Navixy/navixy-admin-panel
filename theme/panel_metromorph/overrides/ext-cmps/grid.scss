@@ -1,4 +1,4 @@
-$grid-header-bg-color: $baseElementActiveColor;
+$grid-header-bg-color: #A8ABB5;
 $grid-header-over-bg-color: darken($grid-header-bg-color, 10%);
 $grid-header-sort-bg-color: $grid-header-bg-color;
 $grid-header-padding: 1px 0;
@@ -20,231 +20,233 @@ $grid-cell-empty-color: $baseFontColor;
 $grid-cell-empty-font-size: 14px;
 
 .x-grid {
-    .x-column-header-checkbox .x-column-header-text {
-        margin: 0;
+  .x-column-header-checkbox .x-column-header-text {
+    margin: 0;
+  }
+
+  .x-group-header {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .x-column-header {
+    text-shadow: none;
+    font-weight: normal;
+    background-color: $grid-header-bg-color;
+    padding: $grid-header-padding;
+  }
+
+  .x-grid-header-ct {
+    border: none !important;
+  }
+
+  .x-grid-body {
+    border-top: none !important;
+    background-color: $grid-body-bg-color;
+  }
+
+  .x-column-header-over {
+    border-color: $grid-header-over-bg-color !important;
+    background-color: $grid-header-over-bg-color !important;
+  }
+
+  .x-column-header-sort-DESC,
+  .x-column-header-sort-ASC {
+    background-color: $grid-header-sort-bg-color !important;
+  }
+
+  .x-grid-row-over .x-grid-cell {
+    background: $grid-cell-border-color;
+    border-color: $grid-cell-border-color;
+
+    &.tool-column {
+      color: $tool-column-color;
+
+      .x-grid-cell-inner {
+        opacity: 1;
+      }
     }
+  }
 
-    .x-column-header-inner {
-        padding: 5px 9px 5px 5px !important;
-    }
+  .x-grid-empty {
+    color: $grid-cell-empty-color;
+    font-size: $grid-cell-empty-font-size;
 
-    .x-column-header-checkbox .x-column-header-inner {
-        padding: 5px 9px 5px 5px !important;
-    }
-
-    .x-column-header {
-        text-shadow: none;
-        font-weight: normal;
-        background-color: $grid-header-bg-color;
-        padding: $grid-header-padding;
-    }
-
-    .x-grid-header-ct {
-        border: none !important;
-    }
-
-    .x-grid-body {
-        border-top: none !important;
-        background-color: $grid-body-bg-color;
-    }
-
-    .x-column-header-over {
-        border-color: $grid-header-over-bg-color !important;
-        background-color: $grid-header-over-bg-color !important;
-    }
-
-    .x-column-header-sort-DESC,
-    .x-column-header-sort-ASC {
-        background-color: $grid-header-sort-bg-color !important;
-    }
-
-    .x-grid-row-over .x-grid-cell {
-        background: $grid-cell-border-color;
-        border-color: $grid-cell-border-color;
-
-        &.tool-column {
-            color: $tool-column-color;
-
-            .x-grid-cell-inner {
-                opacity: 1;
-            }
-        }
-    }
-
-    .x-grid-empty {
-        color: $grid-cell-empty-color;
-        font-size: $grid-cell-empty-font-size;
-
-    }
+  }
 }
 
 .x-grid-row .x-grid-cell {
-    border-color: $grid-cell-bg-color;
-    border-top-color: $grid-cell-border-color;
-    background-color: $grid-cell-bg-color;
+  border-color: $grid-cell-bg-color;
+  border-top-color: $grid-cell-border-color;
+  background-color: $grid-cell-bg-color;
 
-    font-size: $grid-cell-font-size;
+  font-size: $grid-cell-font-size;
 
-    &.tool-column {
+  &.tool-column {
 
-        cursor: pointer;
+    cursor: pointer;
 
-        &:hover {
-            color: $tool-column-over-color;
-        }
-
-        .x-grid-cell-inner {
-            opacity: 0;
-        }
-
-        &.edit {
-            .x-grid-cell-inner {
-                @extend .icon-pencil;
-            }
-        }
-
-        &.save {
-            .x-grid-cell-inner {
-                @extend .icon-save;
-            }
-        }
-
-        &.save {
-            .x-grid-cell-inner {
-                @extend .icon-remove;
-            }
-        }
-
-        &.remove {
-            .x-grid-cell-inner {
-                @extend .icon-close;
-            }
-        }
-
-        &.hidden {
-            cursor: default;
-            .x-grid-cell-inner {
-                display: none;
-            }
-        }
+    &:hover {
+      color: $tool-column-over-color;
     }
 
     .x-grid-cell-inner {
-        padding: $grid-cell-inner-padding;
+      opacity: 0;
+    }
+
+    &.edit {
+      .x-grid-cell-inner {
+        @extend .icon-pencil;
+      }
+    }
+
+    &.save {
+      .x-grid-cell-inner {
+        @extend .icon-save;
+      }
+    }
+
+    &.save {
+      .x-grid-cell-inner {
+        @extend .icon-remove;
+      }
+    }
+
+    &.remove {
+      .x-grid-cell-inner {
+        @extend .icon-close;
+      }
+    }
+
+    &.hidden {
+      cursor: default;
+
+      .x-grid-cell-inner {
+        display: none;
+      }
+    }
+  }
+
+  .x-grid-cell-inner {
+    padding: $grid-cell-inner-padding;
+
+    span {
+      padding-left: 5px;
+
+      &.icon {
+        margin-right: 5px;
+        font-size: 10px;
+        color: $smoke;
+
+        &.sole_trader {
+          @extend .icon-sole-trader;
+        }
+
+        &.individual {
+          @extend .icon-user;
+        }
+
+        &.legal_entity {
+          @extend .icon-legal-entity;
+        }
+      }
+
+      &.nopad {
+        padding-left: 0;
+      }
+
+      &.scaled {
+        font-size: $grid-cell-font-size - 2;
+        text-transform: lowercase;
+      }
+
+      &.red {
+        color: $invalid-color;
+      }
+
+      &.blue {
+        color: $blueDark;
+      }
+
+      &.green {
+        color: $green;
+      }
+
+      &.gray {
+        color: $smoke;
+      }
+
+      &.lighten {
+        color: lighten($baseFontColor, 30%);
+      }
+
+      &.online {
+        color: $green;
+      }
+
+      &.offline {
+        color: $invalid-color;
+      }
+
+      &.just_registered {
+        color: lighten($baseFontColor, 30%);
+      }
+
+      &.signal_lost {
+        color: lighten($baseFontColor, 30%);
+      }
+
+      &.idle {
+        color: darken($baseFontColor, 10%);
+      }
+
+      &.device {
+
+        &.tracker {
+          color: #8b4f56;
+
+          span {
+            @extend .icon-location;
+          }
+        }
+
+        &.camera {
+          color: #4f568b;
+
+          span {
+            @extend .icon-camera;
+          }
+        }
+
+        &.socket {
+          color: #528b4f;
+
+          span {
+            @extend .icon-lightning;
+          }
+        }
+
+        &.activeday {
+          color: #ff0000;
+        }
 
         span {
-            padding-left: 5px;
-
-            &.icon {
-                margin-right: 5px;
-                font-size: 10px;
-                color: $smoke;
-
-                &.sole_trader {
-                    @extend .icon-sole-trader;
-                }
-                &.individual {
-                    @extend .icon-user;
-                }
-                &.legal_entity {
-                    @extend .icon-legal-entity;
-                }
-            }
-
-            &.nopad {
-                padding-left: 0;
-            }
-
-            &.scaled {
-                font-size: $grid-cell-font-size - 2;
-                text-transform: lowercase;
-            }
-
-            &.red {
-                color: $invalid-color;
-            }
-
-            &.blue {
-                color: $blueDark;
-            }
-
-            &.green {
-                color: $green;
-            }
-
-            &.gray {
-                color: $smoke;
-            }
-
-            &.lighten {
-                color: lighten($baseFontColor, 30%);
-            }
-
-            &.online {
-                color: $green;
-            }
-
-            &.offline {
-                color: $invalid-color;
-            }
-
-            &.just_registered {
-                color: lighten($baseFontColor, 30%);
-            }
-
-            &.signal_lost {
-                color: lighten($baseFontColor, 30%);
-            }
-
-            &.idle {
-                color: darken($baseFontColor, 10%);
-            }
-
-            &.device {
-
-                &.tracker {
-                    color: #8b4f56;
-                    span {
-                        @extend .icon-location;
-                    }
-                }
-
-                &.camera {
-                    color: #4f568b;
-                    span {
-                        @extend .icon-camera;
-                    }
-                }
-
-                &.socket {
-                    color: #528b4f;
-                    span {
-                        @extend .icon-lightning;
-                    }
-                }
-
-                &.activeday {
-                    color: #ff0000;
-                }
-
-                span {
-                    padding-left: 0;
-                    padding-right: 5px;
-                    font-size: $grid-cell-font-size - 2;
-             }
-            }
+          padding-left: 0;
+          padding-right: 5px;
+          font-size: $grid-cell-font-size - 2;
         }
+      }
     }
+  }
 }
 
 .x-grid-row-selected .x-grid-cell-inner {
-    span, a {
-        color: $white !important;
-    }
+  span, a {
+    color: $white !important;
+  }
 }
 
 .x-grid-cell-row-checker {
-    .x-grid-cell-inner {
-        padding: $grid-cell-checker-inner-padding !important;
-    }
+  .x-grid-cell-inner {
+    padding: $grid-cell-checker-inner-padding !important;
+  }
 }

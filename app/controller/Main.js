@@ -659,7 +659,6 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     loadPermissions: function (config) {
-
         if (config) {
             var data = [];
 

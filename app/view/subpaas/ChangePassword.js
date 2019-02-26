@@ -1,37 +1,35 @@
 /**
- * @class NavixyPanel.view.user.Edit
- * @extends NavixyPanel.view.users.AbstractForm
+ * @class NavixyPanel.view.subpaas.Edit
+ * @extends NavixyPanel.view.subpaas.AbstractForm
  * Description
  */
 
-Ext.define('NavixyPanel.view.sub_paas.ChangePassword', {
-    extend: 'NavixyPanel.view.sub_paas.AbstractForm',
-    alias: 'widget.userchangepassword',
+Ext.define('NavixyPanel.view.subpaas.ChangePassword', {
+    extend: 'NavixyPanel.view.subpaas.AbstractForm',
+    alias: 'widget.subpaaschangepassword',
 
     getTitle: function () {
-
         var titleTpl = new Ext.XTemplate(
-            _l.get('users.password_form.title'),
-            ' #{id}: {last_name} {first_name} {middle_name}'
-        );
-        return titleTpl.apply(this.getRecordData());
+            _l.get('subpaas.password_form.title'),
+            ' #{subpaas}: {title}'
+        )
+        return titleTpl.apply(this.getRecordData())
     },
 
     getSaveBtnTitle: function () {
-        return _l.get('users.password_form.save_btn');
+        return _l.get('subpaas.password_form.save_btn')
     },
 
     getBackBtnTitle: function () {
-        return _l.get('users.password_form.return_btn');
+        return _l.get('subpaas.password_form.return_btn')
     },
 
     getClearBtnTitle: function () {
-        return false;
+        return false
     },
 
     getNWItems: function () {
-
-        var me = this;
+        var me = this
 
         return [
             {
@@ -40,38 +38,42 @@ Ext.define('NavixyPanel.view.sub_paas.ChangePassword', {
                 padding: '10 0 30 0'
             },
             {
-                fieldLabel: _l.get('users.fields.password'),
+                fieldLabel: _l.get('subpaas.fields.password'),
                 name: 'new_password',
                 inputType: 'password',
-
                 minLength: 6,
                 maxLength: 20
             },
             {
-                fieldLabel: _l.get('users.fields.password_repeat'),
+                fieldLabel: _l.get('subpaas.fields.password_repeat'),
                 inputType: 'password',
-
                 minLength: 6,
                 maxLength: 20,
-
                 validator: function (value) {
-                    var pass_val = me.down('textfield[name=new_password]').getValue();
-                    return value === pass_val || _l.get('users.fields.password_mismatched');
+                    var pass_val = me.down('textfield[name=new_password]').getValue()
+                    return value === pass_val || _l.get('subpaas.fields.password_mismatched')
                 }
-            },
-        ];
+            }
+        ]
     },
 
     getNEItems: function () {
-        return [];
+        return []
     },
 
     getSWItems: function () {
-        return { items: [] };
+        return { items: [] }
     },
 
     getSEItems: function () {
-        return [];
+        return []
     },
 
-});
+    afterFirstLayout: function () {
+        this.callParent(arguments)
+        this.query('textfield').map(function (field) {
+            field.clearInvalid()
+        })
+    }
+
+})

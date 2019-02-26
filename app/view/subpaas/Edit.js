@@ -1,80 +1,100 @@
 /**
- * @class NavixyPanel.view.user.Edit
- * @extends NavixyPanel.view.users.AbstractForm
+ * @class NavixyPanel.view.subpaas.Edit
+ * @extends NavixyPanel.view.subpaas.AbstractForm
  * Description
  */
 
-Ext.define('NavixyPanel.view.sub_paas.Edit', {
-    extend: 'NavixyPanel.view.sub_paas.AbstractForm',
-    alias: 'widget.useredit',
+Ext.define('NavixyPanel.view.subpaas.Edit', {
+    extend: 'NavixyPanel.view.subpaas.AbstractForm',
+    alias: 'widget.subpaasedit',
 
     getTitle: function () {
-
         var titleTpl = new Ext.XTemplate(
-            _l.get('users.edit_form.title'),
-            ' #{id}: {last_name} {first_name} {middle_name}'
-        );
-        return titleTpl.apply(this.getRecordData());
+            _l.get('subpaas.edit_form.title'),
+            ' #{subpaas_id}: {title}'
+        )
+        return titleTpl.apply(this.getRecordData())
     },
 
     getSaveBtnTitle: function () {
-        return _l.get('users.edit_form.save_btn');
+        return _l.get('subpaas.edit_form.save_btn')
     },
 
     getClearBtnTitle: function () {
-        return false;
+        return false
     },
 
-    getNEItems: function () {
-        var items = this.callParent(arguments);
+    getSEItems: function () {
+        var items = this.callParent(arguments)
 
-        return items.concat([{
-            xtype: 'numberfield',
-            fieldLabel: _l.get('users.fields.discount.value'),
-            minValue: 0,
-            maxValue: 100,
-            plugins: {
-                ptype: 'fieldpostfix',
-                postfix: '%'
+        return items.concat([
+            {
+                fieldLabel: _l.get('subpaas.fields.contact_fio'),
+                name: 'contact_fio',
+                minLength: 2,
+                maxLength: 100,
+                allowBlank: true
             },
-            allowBlank: true,
-            decimalPrecision: 1,
-            name: 'discount'
-        }, {
-            xtype: 'numberfield',
-            fieldLabel: _l.get('users.fields.discount.min_trackers'),
-            allowBlank: true,
-            minValue: 0,
-            maxValue: 2147483647,
-            allowDecimals: false,
-            name: 'discount_min_trackers'
-        }, {
-            xtype: 'datefield',
-            fieldLabel: _l.get('users.fields.discount.end_date'),
-            emptyText: _l.get('users.fields.discount.permanent'),
-            allowBlank: true,
-            submitFormat: 'Y-m-d',
-            name: 'discount_end_date'
-        }, {
-            xtype: 'button',
-            baseCls: 'href-btn',
-            text: _l.get('users.fields.discount.set_permanent'),
-            maxWidth: 200,
-            margin: '0 0 0 205',
-            handler: function (btn) {
-                btn.up().down('datefield[name=discount_end_date]').setValue('');
+
+            {
+                fieldLabel: _l.get('subpaas.fields.contact_post'),
+                name: 'contact_post',
+                minLength: 2,
+                maxLength: 100,
+                allowBlank: true
+            },
+
+            {
+                fieldLabel: _l.get('subpaas.fields.contact_phone'),
+                name: 'contact_phone',
+                minLength: 2,
+                maxLength: 100,
+                allowBlank: true
             }
-        }])
+        ])
     },
+
 
     getNWItems: function () {
-        var config = this.callParent(arguments);
+        var config = this.callParent(arguments)
 
         return [
+            {
+                xtype: 'hiddenfield',
+                name: 'subpaas_id'
+            },
             config[0],
             config[1],
-            config[4],
-            config[config.length - 1]
-        ];
+            config[2],
+            config[3],
+
+            {
+                xtype: 'combobox',
+                store: Ext.create('Ext.data.Store', {
+                    fields: ['type', 'label'],
+                    data: [{
+                        type: 'NOT_BLOCKED',
+                        label: _l.get('subpaas.block_status.NOT_BLOCKED')
+                    }, {
+                        type: 'INITIAL_BLOCK',
+                        label: _l.get('subpaas.block_status.INITIAL_BLOCK')
+                    }, {
+                        type: 'BLOCK_LOGIN',
+                        label: _l.get('subpaas.block_status.BLOCK_LOGIN')
+                    }, {
+                        type: 'CLIENTS_BLOCKED',
+                        label: _l.get('subpaas.block_status.CLIENTS_BLOCKED')
+                    }, {
+                        type: 'DELETED',
+                        label: _l.get('subpaas.block_status.DELETED')
+                    }]
+                }),
+                fieldLabel: _l.get('subpaas.fields.block_type'),
+                name: 'block_type',
+                valueField: 'type',
+                displayField: 'label',
+                allowBlank: true
+            }
+        ]
     }
-});
+})
