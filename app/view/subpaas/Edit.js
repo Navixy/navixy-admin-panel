@@ -70,12 +70,13 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
 
             {
                 xtype: 'combobox',
+                editable: false,
                 store: Ext.create('Ext.data.Store', {
                     fields: ['type', 'label'],
                     data: [{
                         type: 'NOT_BLOCKED',
                         label: _l.get('subpaas.block_status.NOT_BLOCKED')
-                    },  {
+                    }, {
                         type: 'BLOCK_LOGIN',
                         label: _l.get('subpaas.block_status.BLOCK_LOGIN')
                     }, {

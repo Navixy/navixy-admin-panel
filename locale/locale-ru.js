@@ -1697,7 +1697,6 @@ Ext.define('Locale.locale-ru', {
 
     subpaas: {
         notice_text: 'Текущий аккаунт: {0}. <a>Вернуться в свой аккаунт</a>',
-
         list: {
             create_btn_text: 'Новый дилер',
             users: 'Пользователи',
@@ -1710,6 +1709,7 @@ Ext.define('Locale.locale-ru', {
         menu_text: 'Дилеры',
         card: {
             links: {
+                session_text: 'Войти в панель управления',
                 subpaas_edit: 'Редактировать',
                 subpaas_change_password: 'Сменить пароль'
             }

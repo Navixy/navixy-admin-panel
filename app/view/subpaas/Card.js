@@ -46,18 +46,27 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                     xtype: 'component',
                     height: 10
                 }
-            ]
-
+            ],
+            recordData = this.getRecordData()
+        console.log(recordData.block_type)
         if (Ext.checkPermission('subpaas', 'read')) {
-            result.push({
-                html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireSubpaasSessionCreate,
-                        scope: me
+            if (recordData.block_type === 'NOT_BLOCKED') {
+                result.push({
+                    html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireSubpaasSessionCreate,
+                            scope: me
+                        }
                     }
-                }
-            })
+                })
+            } else {
+                result.push({
+                    html: ['<a class="x-item-disabled" data-qtip="',
+                        _l.get('subpaas.block_status')[recordData.block_type],
+                        '">', _l.get('subpaas.card.links.session_text'), '</a>'].join('')
+                })
+            }
         }
 
         if (Ext.checkPermission('subpaas', 'update')) {

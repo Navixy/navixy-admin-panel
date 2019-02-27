@@ -192,20 +192,20 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 jur_country: formValues.jur_country
             },
             callback: function (response) {
-                this.afterSubPaasrCreate(response)
+                this.afterSubPaasCreate(response)
             },
-            failure: this.afterSubPaasrCreateFailure,
+            failure: this.afterSubPaasCreateFailure,
             scope: this
         })
     },
 
-    afterSubPaasrCreate: function (subpaasId, record) {
+    afterSubPaasCreate: function (subpaasId, record) {
         this.getSubpaasCreate().afterSave(subpaasId)
         this.getSubpaassList().store.load()
         Ext.getStore('Subpaass').load()
     },
 
-    afterSubPaasrCreateFailure: function (response) {
+    afterSubPaasCreateFailure: function (response) {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
@@ -240,7 +240,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         if (success) {
             record.set(formValues)
             this.getSubpaasEdit().afterSave()
-            this.getSubpaassList().store.load()
+            this.getSubpaasList().store.load()
         }
     },
 
