@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         'widgets.ToolColumn',
         'components.MessageBoxWithAlert',
         'subpaas.ChangePassword',
+        'subpaas.SubPaasNotice',
         'subpaas.List',
         'subpaas.Create',
         'subpaas.Edit',
@@ -49,6 +50,12 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         this.callParent(arguments)
 
         this.control({
+            'mainviewport': {
+                afterrender: this.addSubPaasNotice
+            },
+            'subpaasnotice': {
+                returntomaster: this.returnToMaster
+            },
             'subpaaslist': {
                 actionclick: this.handleListAction,
                 editclick: this.handleSubpaasEditAction
@@ -67,7 +74,8 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             },
 
             'subpaascard': {
-                subpaasedit: this.handleSubpaasEditAction
+                subpaasedit: this.handleSubpaasEditAction,
+                subpaaspanellogin: this.createSubpaasSessionAndLogin
             }
         })
 
@@ -106,7 +114,9 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     registerMenu: function (config) {
-        if (Ext.checkPermission('subpaas', 'read') && this.menuConfig && this.menuConfig.target) {
+        var dealer = Ext.getStore('Dealer').first().getData()
+
+        if (!dealer.subpaas && dealer.tariff.allow_subpaas && Ext.checkPermission('subpaas', 'read') && this.menuConfig && this.menuConfig.target) {
 
             this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target)
 
@@ -283,5 +293,33 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             errDescription = _l.get('errors')[errCode] || status.description || false
 
         this.getSubpaasChangePassword().showSubmitErrors(errCode, errors, errDescription)
+    },
+
+    createSubpaasSessionAndLogin: function (subpaasId) {
+        Ext.API.createSubPaasSession({
+            params: {
+                subpaas_id: subpaasId
+            },
+            callback: function (session_key) {
+                Ext.util.Cookies.set('master_panel_session_key', Ext.API.authKey)
+                Ext.util.Cookies.set('panel_session_key', session_key)
+                window.location = location.href.split('#')[0]
+            },
+            failure: this.showUserSessionHashFailure
+        })
+    },
+
+    addSubPaasNotice: function () {
+        Ext.getFirst('mainviewport').add({
+            xtype: 'subpaasnotice'
+        })
+    },
+
+    returnToMaster: function () {
+        var masterHash = Ext.util.Cookies.get('master_panel_session_key')
+        Ext.util.Cookies.clear('master_panel_session_key')
+        Ext.util.Cookies.set('panel_session_key', masterHash)
+        window.location.reload()
+        window.location.href = location.href.split('#')[0] + '#subpaas_list'
     }
 })

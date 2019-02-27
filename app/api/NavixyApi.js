@@ -639,7 +639,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             root: 'value',
             scope: scope
         })
+    },
+
+    createSubPaasSession: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            root: 'hash',
+            handler: 'subpaas/session'
+        })
     }
-
-
 })

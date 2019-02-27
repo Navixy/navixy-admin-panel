@@ -75,18 +75,12 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
                     data: [{
                         type: 'NOT_BLOCKED',
                         label: _l.get('subpaas.block_status.NOT_BLOCKED')
-                    }, {
-                        type: 'INITIAL_BLOCK',
-                        label: _l.get('subpaas.block_status.INITIAL_BLOCK')
-                    }, {
+                    },  {
                         type: 'BLOCK_LOGIN',
                         label: _l.get('subpaas.block_status.BLOCK_LOGIN')
                     }, {
                         type: 'CLIENTS_BLOCKED',
                         label: _l.get('subpaas.block_status.CLIENTS_BLOCKED')
-                    }, {
-                        type: 'DELETED',
-                        label: _l.get('subpaas.block_status.DELETED')
                     }]
                 }),
                 fieldLabel: _l.get('subpaas.fields.block_type'),

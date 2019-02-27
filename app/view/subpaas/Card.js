@@ -3,7 +3,6 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
     alias: 'widget.subpaascard',
     stateful: true,
     stateId: 'subpaasCard',
-
     getItemsConfig: function () {
         if (this.getRecordData() === false) {
             return [{
@@ -49,37 +48,15 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 }
             ]
 
-        if (Ext.checkPermission('subpaas', 'read') && Ext.checkPermission('subpaas_sessions', 'create')) {
+        if (Ext.checkPermission('subpaas', 'read')) {
             result.push({
                 html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
                 listeners: {
                     click: {
-                        fn: me.fireSessionCreate,
+                        fn: me.fireSubpaasSessionCreate,
                         scope: me
                     }
                 }
-            }, {
-                html: '<a>' + _l.get('subpaas.card.links.hash_text') + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.fireSessionCreateHash,
-                        scope: me
-                    }
-                }
-            }, {
-                xtype: 'component',
-                height: 10
-            }, this.isAppLinkCorrect() ? {
-                html: '<a>' + _l.get('subpaas.card.links.activate_tracker') + '</a>',
-                listeners: {
-                    click: {
-                        fn: me.toggleActivationPanel,
-                        scope: me
-                    }
-                }
-            } : {
-                html: '<a class="x-item-disabled" data-qtip="' + _l.get('subpaas.card.links.wrong_config') + '">' +
-                    _l.get('subpaas.card.links.activate_tracker') + '</a>'
             })
         }
 
@@ -109,6 +86,11 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
         return result
     },
 
+    fireSubpaasSessionCreate: function () {
+        this.fireEvent('subpaaspanellogin', this.getSubPaasId())
+    },
+
+
     getPanelTitle: function () {
         return false
     },
@@ -128,13 +110,13 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 },
                 {
                     title: _l.get('subpaas.fields.title'),
-                    value: recordData.title
+                    value: recordData.title || '—'
                 }, {
                     title: _l.get('subpaas.fields.email'),
-                    value: recordData.email
+                    value: recordData.email || '—'
                 }, {
                     title: _l.get('subpaas.fields.link_monitoring'),
-                    value: recordData.link_monitoring
+                    value: recordData.link_monitoring || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.block_type'),
@@ -166,6 +148,28 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
         }
     },
 
+
+    getPanelItemsConfig: function () {
+        var items = this.callParent(arguments)
+
+        var recordData = this.getRecordData()
+        // if (recordData.block_type === 'INITIAL_BLOCK') {
+        console.warn('REMOVE THIS ASAP')
+        if (recordData.block_type === 'NOT_BLOCKED') {
+            items.splice(1, 0, {
+                xtype: 'container',
+                padding: 10,
+                items: [{
+                    xtype: 'button',
+                    minWidth: 150,
+                    text: 'PAY'
+                }]
+            })
+        }
+
+        return items
+    },
+
     prepareBodyLeftData: function () {
         var recordData = this.getRecordData()
 
@@ -175,18 +179,18 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
             fields: [
                 {
                     title: _l.get('subpaas.fields.creation_date'),
-                    value: recordData.creation_date ? Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat) : '-'
+                    value: recordData.creation_date ? Ext.Date.formatISO(recordData.creation_date, Ext.util.Format.dateFormat) : '—'
                 }, {
                     title: _l.get('subpaas.fields.jur_name'),
-                    value: recordData.jur_name
+                    value: recordData.jur_name || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.jur_country'),
-                    value: recordData.jur_country
+                    value: recordData.jur_country || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.contact_fio'),
-                    value: recordData.contact_fio
+                    value: recordData.contact_fio || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.contact_post'),
@@ -194,7 +198,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 },
                 {
                     title: _l.get('subpaas.fields.contact_phone'),
-                    value: recordData.contact_phone
+                    value: recordData.contact_phone || '—'
                 }
             ]
         }
@@ -216,3 +220,15 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
         this.fireEvent('toggleactivationpanel')
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
