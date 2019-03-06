@@ -174,6 +174,9 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                     title: _l.get('subpaas.fields.email'),
                     value: recordData.email || '—'
                 }, {
+                    title: _l.get('subpaas.fields.login'),
+                    value: recordData.login || '—'
+                }, {
                     title: _l.get('subpaas.fields.link_monitoring'),
                     value: recordData.link_monitoring || '—'
                 },
