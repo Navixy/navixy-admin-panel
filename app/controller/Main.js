@@ -589,13 +589,11 @@ Ext.define('NavixyPanel.controller.Main', {
 
     // Navigation
     checkHandlerLoad: function () {
-        this.notFoundHandlerErrorDelay = Ext.defer(this.onHandlerFoundError, this.errorDelay, this)
+        this.notFoundHandlerErrorDelay = setTimeout(Ext.bind(this.onHandlerFoundError, this), this.errorDelay)
     },
 
     onHandlerFoundError: function () {
-
         Ext.MessageBox.alert(_l.get('error'), _l.get('no_path_found'))
-        console.log('err')
         //TODO Show 404 or something
     },
 
@@ -637,7 +635,6 @@ Ext.define('NavixyPanel.controller.Main', {
             Ext.destroy(this.getAuthWindow())
 
             this.setAuthKey(result.hash)
-
             this.loadPermissions(result.permissions)
         } else {
             this.onUserAuthFailure()
@@ -735,7 +732,6 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     handleResults: function (results) {
-        console.log(results)
         Ext.iterate({
             'getDealerInfo': 'Dealer',
             'getPaySystems': 'PaymentSystems',
@@ -758,8 +754,8 @@ Ext.define('NavixyPanel.controller.Main', {
             this.application.fireEvent('connectionset', this)
         }
 
-        this.registerHistory()
         Ext.create('NavixyPanel.view.Viewport', { renderTo: Ext.getBody() })
+        this.registerHistory()
     },
 
     // Localization

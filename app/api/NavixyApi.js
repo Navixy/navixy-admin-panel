@@ -666,4 +666,5 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'payment_system/' + config.payment_system
         })
     }
-})
+});
+
