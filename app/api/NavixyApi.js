@@ -17,7 +17,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }), params = Ext.apply({
             hash: this.authKey,
             redirect_target: this.getUploadHandlerUrl()
-        }, config.params || {});
+        }, config.params || {})
 
         form.submit({
             url: url,
@@ -29,26 +29,26 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             failure: Ext.bind(function (form, action) {
                 try {
                     if (config.failure) {
-                        config.failure.call(config.scope || this, form, action);
+                        config.failure.call(config.scope || this, form, action)
                     } else {
-                        var errorCode = action.result.status.code;
+                        var errorCode = action.result.status.code
 
-                        this.errorsManager.fireError(errorCode, params, action.response.responseText);
+                        this.errorsManager.fireError(errorCode, params, action.response.responseText)
                     }
                 } catch (e) {
-                    this.errorsManager.fireError('upload_exeption');
-                    console.log(e.stack);
+                    this.errorsManager.fireError('upload_exeption')
+                    console.log(e.stack)
                 }
             }, this)
-        });
+        })
     },
 
     getUploadHandlerUrl: function () {
-        var location = window.location.href.split('/');
-        location.pop();
+        var location = window.location.href.split('/')
+        location.pop()
 
-        location.push(Ext.Loader.getPath('Dev') + '/uploadHandler.html');
-        return location.join('/');
+        location.push(Ext.Loader.getPath('Dev') + '/uploadHandler.html')
+        return location.join('/')
     },
 
     authUser: function (callback, failure, params, scope) {
@@ -59,7 +59,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'auth',
             handler: 'account',
             scope: scope
-        });
+        })
     },
 
     loadPermissions: function (callback, failure, scope) {
@@ -70,7 +70,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'account',
             root: 'permissions',
             scope: scope
-        });
+        })
     },
 
     getDealerInfo: function (callback, failure, scope) {
@@ -80,27 +80,27 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'get_info',
             handler: 'dealer',
             scope: scope
-        });
+        })
     },
 
     getTimeZones: function (callback, failure, scope) {
 
         this.sendRequest({
-            params: {locale: Locale.Manager.getLocale()},
+            params: { locale: Locale.Manager.getLocale() },
             success: callback,
             failure: failure,
             action: 'list',
             root: 'list',
             handler: 'timezone',
             scope: scope
-        });
+        })
     },
 
     getUsersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'user'
-        });
+        })
     },
 
     getUsersListDownloadLink: function (config) {
@@ -108,10 +108,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                 action: 'export',
                 handler: 'user'
             }),
-            hash = this.authKey;
+            hash = this.authKey
 
         return apiLink + '/?hash=' + hash +
-            '&' + Ext.urlEncode(config.params);
+            '&' + Ext.urlEncode(config.params)
     },
 
     getUser: function (userId, callback, failure, scope) {
@@ -132,7 +132,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'read',
             handler: 'user',
             scope: scope
-        });
+        })
     },
 
     updateUser: function (config) {
@@ -140,7 +140,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'user',
             root: 'success'
-        });
+        })
     },
 
     updateUserPassword: function (config) {
@@ -148,7 +148,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'change_password',
             handler: 'user',
             root: 'success'
-        });
+        })
     },
 
     addUserTransaction: function (config) {
@@ -156,7 +156,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'change_balance',
             handler: 'user/transaction',
             root: 'success'
-        });
+        })
     },
 
     createUser: function (config) {
@@ -164,14 +164,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'create',
             handler: 'user',
             root: 'id'
-        });
+        })
     },
 
     removeUser: function (config) {
         this.requestWithOptions(config, {
             action: 'corrupt',
             handler: 'user'
-        });
+        })
     },
 
     createUserSession: function (config) {
@@ -179,7 +179,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'session/create',
             handler: 'user',
             root: 'hash'
-        });
+        })
     },
 
     getUserTransactions: function (config) {
@@ -187,14 +187,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'transaction/list',
             handler: 'user',
             root: 'list'
-        });
+        })
     },
 
     getTrackersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'tracker'
-        });
+        })
     },
 
     getTracker: function (trackerId, callback, failure, scope) {
@@ -208,7 +208,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'tracker',
             root: 'value',
             scope: scope
-        });
+        })
     },
 
     updateTrackerData: function (config) {
@@ -216,7 +216,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'tracker/settings',
             root: 'success'
-        });
+        })
     },
 
     updateTrackerSource: function (config) {
@@ -224,14 +224,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'tracker/source',
             root: 'success'
-        });
+        })
     },
 
     updateTrackerUser: function (config) {
         this.requestWithOptions(config, {
             action: 'move',
             handler: 'tracker'
-        });
+        })
     },
 
     updateTrackerTariff: function (config) {
@@ -239,7 +239,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'change',
             handler: 'tracker/tariff',
             root: 'success'
-        });
+        })
     },
 
     createTrackerClone: function (config) {
@@ -247,7 +247,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'clone',
             handler: 'tracker',
             root: 'id'
-        });
+        })
     },
 
     removeTrackerClone: function (config) {
@@ -255,34 +255,34 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'delete_clone',
             handler: 'tracker',
             root: 'success'
-        });
+        })
     },
 
     getTrackerConnect: function (config) {
         this.requestWithOptions(config, {
             action: 'connect',
             handler: 'tracker/console'
-        });
+        })
     },
 
     setTrackerCorrupt: function (config) {
         this.requestWithOptions(config, {
             action: 'corrupt',
             handler: 'tracker'
-        });
+        })
     },
     registerRetry: function (config) {
         this.requestWithOptions(config, {
             action: 'register_retry',
             handler: 'tracker'
-        });
+        })
     },
 
     getTariffsList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'tariff'
-        });
+        })
     },
 
     getTariff: function (tariffId, callback, failure, scope) {
@@ -296,14 +296,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'tariff',
             root: 'value',
             scope: scope
-        });
+        })
     },
 
     getTariffsDefaults: function (config) {
         this.requestWithOptions(config, {
             action: 'defaults/read',
             handler: 'tariff'
-        });
+        })
     },
 
     updateTariffData: function (config) {
@@ -311,7 +311,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'tariff',
             root: 'success'
-        });
+        })
     },
 
     updateTariffDefaults: function (config) {
@@ -319,7 +319,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'tariff/defaults',
             root: 'success'
-        });
+        })
     },
 
     createTariff: function (config) {
@@ -327,14 +327,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'create',
             handler: 'tariff',
             root: 'id'
-        });
+        })
     },
 
     getCodesList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'dealer/activation_code'
-        });
+        })
     },
 
     updateCodes: function (config) {
@@ -342,7 +342,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'dealer/activation_code',
             root: 'count'
-        });
+        })
     },
 
     createCodes: function (config) {
@@ -350,7 +350,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'create',
             handler: 'dealer/activation_code',
             root: 'count'
-        });
+        })
     },
 
     getSettingsService: function (callback, failure, scope) {
@@ -361,7 +361,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/settings/service',
             root: 'value',
             scope: scope
-        });
+        })
     },
 
     getSettingsNotification: function (callback, failure, scope) {
@@ -372,7 +372,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer/settings/notification',
             root: 'value',
             scope: scope
-        });
+        })
     },
 
     updateSettingsSerivce: function (config) {
@@ -380,7 +380,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'dealer/settings/service',
             root: 'success'
-        });
+        })
     },
 
     updateSettingsNotification: function (config) {
@@ -388,7 +388,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'dealer/settings/notification',
             root: 'success'
-        });
+        })
     },
 
     updateSettingsPassword: function (config) {
@@ -396,14 +396,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
             handler: 'dealer/password',
             root: 'success'
-        });
+        })
     },
 
     uploadSettingsImage: function (form, config) {
         this.uploadFile(form, Ext.apply({
             action: 'upload',
             handler: 'dealer/settings/image'
-        }, config));
+        }, config))
     },
 
     removeSettingsPassword: function (config) {
@@ -411,7 +411,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'delete',
             handler: 'dealer/settings/image',
             root: 'success'
-        });
+        })
     },
 
     get1cDownloadLink: function (config) {
@@ -419,10 +419,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                 handler: 'accounting',
                 action: 'export'
             }),
-            hash = this.authKey;
+            hash = this.authKey
 
         return apiLink + '/?hash=' + hash +
-            '&' + Ext.urlEncode(config.params);
+            '&' + Ext.urlEncode(config.params)
 
     },
 
@@ -431,10 +431,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                 handler: 'payments',
                 action: 'avangate/export'
             }),
-            hash = this.authKey;
+            hash = this.authKey
 
         return apiLink + '/?hash=' + hash +
-            '&' + Ext.urlEncode(config.params);
+            '&' + Ext.urlEncode(config.params)
 
     },
 
@@ -442,14 +442,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             handler: 'accounting',
             action: 'export'
-        });
+        })
     },
 
     doExportDelivery: function (config) {
         this.requestWithOptions(config, {
             action: 'send_acts',
             handler: 'accounting'
-        });
+        })
     },
 
     get1cPaymentDownloadLink: function (config) {
@@ -457,10 +457,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                 handler: 'payments',
                 action: 'export'
             }),
-            hash = this.authKey;
+            hash = this.authKey
 
         return apiLink + '/?hash=' + hash +
-            '&' + Ext.urlEncode(config.params);
+            '&' + Ext.urlEncode(config.params)
 
     },
 
@@ -468,77 +468,77 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             action: 'export',
             handler: 'payments'
-        });
+        })
     },
 
     importSberbank: function (form, config) {
         this.uploadFile(form, Ext.apply({
             action: 'sberbank',
             handler: 'payments/import'
-        }, config));
+        }, config))
     },
 
     getBundlesList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'tracker/bundle'
-        });
+        })
     },
 
     getBundles: function (config) {
         this.requestWithOptions(config, {
             action: 'read',
             handler: 'tracker/bundle'
-        });
+        })
     },
 
     assignBundle: function (config) {
         this.requestWithOptions(config, {
             action: 'assign',
             handler: 'tracker/bundle'
-        });
+        })
     },
 
     assignBundleToOrder: function (config) {
         this.requestWithOptions(config, {
             action: 'assign',
             handler: 'tracker/bundle/order'
-        });
+        })
     },
 
     getBundleOrder: function (config) {
         this.requestWithOptions(config, {
             action: 'read',
             handler: 'order'
-        });
+        })
     },
 
     getEquipmentList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'equipment'
-        });
+        })
     },
 
     assignEquipToBundle: function (config) {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'tracker/bundle'
-        });
+        })
     },
 
     importBundles: function (config) {
         this.requestWithOptions(config, {
             action: 'import',
             handler: 'tracker/bundle'
-        });
+        })
     },
 
     getEmailGates: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'gateways/email'
-        });
+        })
     },
 
     createEmailGate: function (config) {
@@ -546,48 +546,48 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'create',
             root: 'id',
             handler: 'gateways/email'
-        });
+        })
     },
 
     updateEmailGate: function (config) {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'gateways/email'
-        });
+        })
     },
 
     assignEmailGate: function (config) {
         this.requestWithOptions(config, {
             action: 'bind',
             handler: 'gateways/email'
-        });
+        })
     },
 
     removeEmailGate: function (config) {
         this.requestWithOptions(config, {
             action: 'delete',
             handler: 'gateways/email'
-        });
+        })
     },
     sendTestEmail: function (config) {
         this.requestWithOptions(config, {
             action: 'send_email',
             handler: 'gateways/email'
-        });
+        })
     },
 
     updateEmailNotificationSettings: function (config) {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'dealer/settings/notification/email'
-        });
+        })
     },
 
     getActiveTrackersStat: function (config) {
         this.requestWithOptions(config, {
             action: 'list',
             handler: 'tracker/active/history'
-        });
+        })
     },
 
     getAvangateInvalidPayments: function (config) {
@@ -595,7 +595,75 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'payments',
             action: 'avangate/ignored/list',
             root: 'list'
-        });
-    }
+        })
+    },
 
-});
+    getSubPaasList: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'subpaas'
+        })
+    },
+
+    createSubPaas: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            handler: 'subpaas',
+            root: 'id'
+        })
+    },
+
+    updateSubPaas: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'subpaas'
+        })
+    },
+
+    updateSubpaasPassword: function (config) {
+        this.requestWithOptions(config, {
+            action: 'change',
+            handler: 'subpaas/password'
+        })
+    },
+
+    getSubPaas: function (subPaasId, callback, failure, scope) {
+        this.sendRequest({
+            params: {
+                subpaas_id: subPaasId
+            },
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'subpaas',
+            root: 'value',
+            scope: scope
+        })
+    },
+
+    createSubPaasSession: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            root: 'hash',
+            handler: 'subpaas/session'
+        })
+    },
+
+    getPaySystems: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            root: 'list',
+            action: 'list',
+            handler: 'payment_system',
+            scope: scope
+        })
+    },
+
+    pay: function (config) {
+        this.requestWithOptions(config, {
+            action: 'pay',
+            handler: 'payment_system/' + config.payment_system
+        })
+    }
+})

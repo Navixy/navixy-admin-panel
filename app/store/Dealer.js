@@ -19,6 +19,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "domain",
         "favicon",
         "logo",
+        "subpaas",
         "seller_currency",
         "demo_tariff",
         "store_period",
