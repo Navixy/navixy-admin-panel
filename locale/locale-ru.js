@@ -1699,7 +1699,7 @@ Ext.define('Locale.locale-ru', {
         notice_text: 'Текущий аккаунт: {0}. <a>Вернуться в свой аккаунт</a>',
         list: {
             empty_text: 'Дилеров не найдено',
-            create_btn_text: 'Новый дилер',
+            create_btn_text: 'Создать дилера',
             users: 'Пользователи',
             users_count: 'Всего',
             active_users_count: 'Активные',
@@ -1731,7 +1731,7 @@ Ext.define('Locale.locale-ru', {
         },
 
         create_form: {
-            title: 'Добавление дилера',
+            title: 'Новый дилер',
             main_fields: 'Основная информация:',
             misc_fields: 'Дополнительно:',
             premium_gis_hint: 'Для активации пакета “Premium GIS” у дилера обратитесь, пожалуйста, в техническую поддержку.',
@@ -1742,9 +1742,9 @@ Ext.define('Locale.locale-ru', {
             subpaas_id: 'ID',
             block_type: 'Статус',
             creation_date: 'Создан',
-            users_count: 'Пользователи',
             title: 'Название',
             login: 'Логин',
+            users_count: 'Пользователи',
             active_users_count: 'Активные пользователи',
             trackers_count: 'Устройства',
             active_trackers_count: 'Активные устройства',
