@@ -10,26 +10,12 @@ Ext.define('NavixyPanel.model.SubPaas', {
     fields: [
         {
             name: 'subpaas_id',
-            type: 'int',
-            convert: function (val, raw) {
-                123
-                console.warn('remove this ASAP')
-                if (val) {
-                    return +val
-                }
-                return +raw.raw.dealer_id
-            }
+            type: 'int'
         },
 
         {
             name: 'title',
-            type: 'string',
-            convert: function (val, raw) {
-                if (val) {
-                    return val
-                }
-                return raw.raw.name
-            }
+            type: 'string'
         },
         {
             name: 'login',
@@ -80,5 +66,12 @@ Ext.define('NavixyPanel.model.SubPaas', {
             name: 'active_trackers_count',
             type: 'int'
         }
-    ]
+    ],
+    isInitialBlock: function () {
+        return this.get('block_type') === 'INITIAL_BLOCK'
+    },
+
+    isActive: function () {
+        return this.get('block_type') === 'NOT_BLOCKED'
+    }
 })

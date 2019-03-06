@@ -99,6 +99,13 @@ $grid-cell-empty-font-size: 14px;
       }
     }
 
+
+    &.login {
+      .x-grid-cell-inner {
+        @extend .icon-user
+      }
+    }
+
     &.save {
       .x-grid-cell-inner {
         @extend .icon-save;

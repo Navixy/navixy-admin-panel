@@ -1698,6 +1698,7 @@ Ext.define('Locale.locale-ru', {
     subpaas: {
         notice_text: 'Текущий аккаунт: {0}. <a>Вернуться в свой аккаунт</a>',
         list: {
+            empty_text: 'Дилеров не найдено',
             create_btn_text: 'Новый дилер',
             users: 'Пользователи',
             users_count: 'Всего',
@@ -1711,7 +1712,11 @@ Ext.define('Locale.locale-ru', {
             links: {
                 session_text: 'Войти в панель управления',
                 subpaas_edit: 'Редактировать',
-                subpaas_change_password: 'Сменить пароль'
+                subpaas_change_password: 'Сменить пароль',
+                invoice_view: 'Посмотреть счет',
+                invoice_request: 'Отправить счет по email',
+                avangate_pay: 'Оплатить через Avangate'
+
             }
         },
         edit_form: {
@@ -1756,10 +1761,15 @@ Ext.define('Locale.locale-ru', {
 
         block_status: {
             NOT_BLOCKED: 'Активен',
-            INITIAL_BLOCK: 'Не оплачен',
+            INITIAL_BLOCK: 'Ожидает оплаты',
             BLOCK_LOGIN: 'Блокировка панели',
             CLIENTS_BLOCKED: 'Полная блокировка',
             DELETED: 'Удален'
+        },
+
+        bill: {
+            title: 'Счет на оплату',
+            msg: 'Счет выслан на ваш Email'
         }
     }
 })

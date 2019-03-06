@@ -2,83 +2,84 @@ $scan-font-size: 14px;
 
 .scan-panel {
 
-    .step-title {
-        padding: 10px 0;
-        font-size: $scan-font-size + 4
+  .step-title {
+    padding: 10px 0;
+    font-size: $scan-font-size + 4
+  }
+
+  .step-field {
+
+    input {
+      height: 46px;
+      font-size: $scan-font-size * 2
     }
 
-    .step-field {
-
-        input {
-            height: 46px;
-            font-size: $scan-font-size * 2
-        }
-
-        textarea {
-            font-size: $scan-font-size + 4
-        }
-
-        .x-form-invalid-under {
-            padding: 5px 0 0 0;
-            font-size: $scan-font-size - 1;
-            line-height: $scan-font-size + 2;
-        }
-
-        &.has-message .x-form-invalid-under {
-            display: inherit !important;
-
-            color: $baseFontColor;
-        }
-
-        .x-form-invalid-field {
-            background-color: inherit !important;
-            border: 1px solid $invalid-color !important;
-            padding: 0 3px !important;
-        }
-
-        &.x-form-invalid .x-form-trigger-wrap {
-            border: 1px solid $invalid-color !important;
-        }
-
-        &.x-item-disabled .x-form-trigger-wrap {
-            padding: 1px 0;
-        }
+    textarea {
+      font-size: $scan-font-size + 4
     }
 
-    .step-hint {
-        padding: 10px 0;
-        font-size: $scan-font-size + 2;
-
-        &.error {
-            color: $invalid-color
-        }
-
-        &.success {
-            color: $green
-        }
+    .x-form-invalid-under {
+      padding: 5px 0 0 0;
+      font-size: $scan-font-size - 1;
+      line-height: $scan-font-size + 2;
     }
 
-    .print-frame {
-        background: url($img_dir + '/loader/loading_white.gif') no-repeat 50% 50%;
+    &.has-message .x-form-invalid-under {
+      display: inherit !important;
+
+      color: $baseFontColor;
     }
 
-    .tool-column {
-        &.edit {
-            .x-grid-cell-inner {
-                @extend .icon-pencil;
-            }
-        }
+    .x-form-invalid-field {
+      background-color: inherit !important;
+      border: 1px solid $invalid-color !important;
+      padding: 0 3px !important;
     }
 
-    .card-header-inner .title {
-        padding: 10px 0;
-        font-size: $scan-font-size + 4;
-        font-weight: normal;
-
-        .title-add {
-            color: $invalid-color;
-            font-weight: normal;
-        }
+    &.x-form-invalid .x-form-trigger-wrap {
+      border: 1px solid $invalid-color !important;
     }
+
+    &.x-item-disabled .x-form-trigger-wrap {
+      padding: 1px 0;
+    }
+  }
+
+  .step-hint {
+    padding: 10px 0;
+    font-size: $scan-font-size + 2;
+
+    &.error {
+      color: $invalid-color
+    }
+
+    &.success {
+      color: $green
+    }
+  }
+
+  .print-frame {
+    background: url($img_dir + '/loader/loading_white.gif') no-repeat 50% 50%;
+  }
+
+  .tool-column {
+    &.edit {
+      .x-grid-cell-inner {
+        @extend .icon-pencil;
+      }
+    }
+
+  }
+
+  .card-header-inner .title {
+    padding: 10px 0;
+    font-size: $scan-font-size + 4;
+    font-weight: normal;
+
+    .title-add {
+      color: $invalid-color;
+      font-weight: normal;
+    }
+  }
 }
 

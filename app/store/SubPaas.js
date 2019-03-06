@@ -14,7 +14,7 @@ Ext.define('NavixyPanel.store.SubPaas', {
     },
     sorters: [
         {
-            property: 'id',
+            property: 'subpaas_id',
             direction: 'ASC'
         }
     ],

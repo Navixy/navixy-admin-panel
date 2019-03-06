@@ -10,7 +10,6 @@ Ext.define('NavixyPanel.controller.SubPaas', {
 
     views: [
         'widgets.ToolColumn',
-        'components.MessageBoxWithAlert',
         'subpaas.ChangePassword',
         'subpaas.SubPaasNotice',
         'subpaas.List',
@@ -57,6 +56,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 returntomaster: this.returnToMaster
             },
             'subpaaslist': {
+                viewclick: this.handleSubpaasView,
                 actionclick: this.handleListAction,
                 editclick: this.handleSubpaasEditAction
             },
@@ -75,7 +75,10 @@ Ext.define('NavixyPanel.controller.SubPaas', {
 
             'subpaascard': {
                 subpaasedit: this.handleSubpaasEditAction,
-                subpaaspanellogin: this.createSubpaasSessionAndLogin
+                subpaaspanellogin: this.createSubpaasSessionAndLogin,
+                avangate_pay: this.handleAvangatePay,
+                invoice_request: this.handleInvoiceRequest,
+                invoice_view: this.viewInvoice
             }
         })
 
@@ -166,14 +169,12 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         })
     },
 
-    handleListAction: function (record) {
+    handleSubpaasView: function (record) {
         var subpaasId = record.getId()
         Ext.Nav.shift('subpaas/' + subpaasId)
     },
-
     handleSubpaasEditAction: function (record) {
         var subpaasId = record.getId()
-        console.log(record)
         Ext.Nav.shift('subpaas/' + subpaasId + '/edit')
     },
 
@@ -201,8 +202,8 @@ Ext.define('NavixyPanel.controller.SubPaas', {
 
     afterSubPaasCreate: function (subpaasId, record) {
         this.getSubpaasCreate().afterSave(subpaasId)
-        this.getSubpaassList().store.load()
-        Ext.getStore('Subpaass').load()
+        this.getSubpaasList().store.load()
+        Ext.getStore('SubPaas').load()
     },
 
     afterSubPaasCreateFailure: function (response) {
@@ -295,6 +296,26 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         this.getSubpaasChangePassword().showSubmitErrors(errCode, errors, errDescription)
     },
 
+    handleListAction: function (subpaas) {
+        if (subpaas.isInitialBlock()) {
+            var paymentStore = Ext.getStore('PaymentSystems')
+
+            if (Ext.getStore('Dealer').first().get('seller_currency') !== 'RUB' &&
+                Ext.getStore('PaymentSystems').findRecord('type', 'avangate')) {
+                return this.handleAvangatePay(subpaas.getId())
+            }
+
+            if (Ext.getStore('Dealer').first().get('seller_currency') === 'RUB' &&
+                Ext.getStore('PaymentSystems').findRecord('type', 'bill')) {
+                return this.viewInvoice(subpaas.getId())
+            }
+        }
+
+        if (subpaas.isActive()) {
+            return this.createSubpaasSessionAndLogin(subpaas.getId())
+        }
+    },
+
     createSubpaasSessionAndLogin: function (subpaasId) {
         Ext.API.createSubPaasSession({
             params: {
@@ -321,5 +342,54 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         Ext.util.Cookies.set('panel_session_key', masterHash)
         window.location.reload()
         window.location.href = location.href.split('#')[0] + '#subpaas_list'
+    },
+
+    viewInvoice: function (subpaas_id) {
+        var win = window.open(Ext.id(), '_blank')
+        win.document.write('<h2 style="font-family:Helvetica">' + _l.get('loading') + '</h2>')
+
+        Ext.API.pay({
+            payment_system: 'bill',
+            params: {
+                payment_type: 'subpaas_activation',
+                subpaas_id: subpaas_id
+            },
+            callback: function (data) {
+                win.location.href = data.url
+            }
+        })
+    },
+
+    handleAvangatePay: function (subpaas_id) {
+        Ext.API.pay({
+            payment_system: 'avangate',
+            params: {
+                payment_type: 'subpaas_activation',
+                subpaas_id: subpaas_id,
+                back_ref: window.location.href
+            },
+            callback: function (data) {
+                window.location.href = data.url
+            }
+        })
+    },
+
+    handleInvoiceRequest: function (subpaas_id) {
+        Ext.API.pay({
+            payment_system: 'bill',
+            params: {
+                payment_type: 'subpaas_activation',
+                subpaas_id: subpaas_id,
+                send_to_email: true
+            },
+            callback: function () {
+                Ext.MessageBox.show({
+                    title: _l.get('subpaas.bill.title'),
+                    msg: _l.get('subpaas.bill.msg'),
+                    width: 200,
+                    buttons: Ext.MessageBox.OK
+                })
+            }
+        })
     }
 })

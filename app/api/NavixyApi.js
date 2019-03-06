@@ -647,5 +647,23 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             root: 'hash',
             handler: 'subpaas/session'
         })
+    },
+
+    getPaySystems: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            root: 'list',
+            action: 'list',
+            handler: 'payment_system',
+            scope: scope
+        })
+    },
+
+    pay: function (config) {
+        this.requestWithOptions(config, {
+            action: 'pay',
+            handler: 'payment_system/' + config.payment_system
+        })
     }
 })

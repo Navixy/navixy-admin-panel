@@ -48,11 +48,15 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 }
             ],
             recordData = this.getRecordData()
-        console.log(recordData.block_type)
+
+        var initialBlock = this.record.isInitialBlock()
+        var active = this.record.isActive()
+
         if (Ext.checkPermission('subpaas', 'read')) {
-            if (recordData.block_type === 'NOT_BLOCKED') {
+            if (active) {
                 result.push({
                     html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
+                    margin: '0 0 16 0',
                     listeners: {
                         click: {
                             fn: me.fireSubpaasSessionCreate,
@@ -69,10 +73,53 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
             }
         }
 
+
+        var paymentStore = Ext.getStore('PaymentSystems')
+        if (initialBlock) {
+            if (paymentStore.findExact('type', 'avangate') >= 0) {
+                result.push({
+                    html: '<a>' + _l.get('subpaas.card.links.avangate_pay') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--avanage',
+                    listeners: {
+                        click: {
+                            fn: me.fireSubpaasPay,
+                            scope: me
+                        }
+                    }
+                })
+            }
+
+            if (paymentStore.findExact('type', 'bill') >= 0) {
+                result.push({
+                    html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                    listeners: {
+                        click: {
+                            fn: me.fireInvoiceRequest,
+                            scope: me
+                        }
+                    }
+                }, {
+                    html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                    listeners: {
+                        click: {
+                            fn: me.fireInvoiceView,
+                            scope: me
+                        }
+                    }
+                })
+            }
+        }
+
+
         if (Ext.checkPermission('subpaas', 'update')) {
             result.unshift({
-                html: '<a>' + _l.get('subpaas.card.links.subpaas_change_password') + '</a>',
-                listeners: {
+                html: ['<a',
+                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
+                    ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
+                    '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>'].join(''),
+                listeners: initialBlock ? null : {
                     click: {
                         fn: me.fireSubPaasChangePassword,
                         scope: me
@@ -82,8 +129,11 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
 
             result.unshift({
-                html: '<a>' + _l.get('subpaas.card.links.subpaas_edit') + '</a>',
-                listeners: {
+                html: ['<a',
+                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
+                    ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
+                    '">', _l.get('subpaas.card.links.subpaas_edit'), '</a>'],
+                listeners: initialBlock ? null : {
                     click: {
                         fn: me.fireSubPaasEdit,
                         scope: me
@@ -158,27 +208,6 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
     },
 
 
-    getPanelItemsConfig: function () {
-        var items = this.callParent(arguments)
-
-        var recordData = this.getRecordData()
-        // if (recordData.block_type === 'INITIAL_BLOCK') {
-        console.warn('REMOVE THIS ASAP')
-        if (recordData.block_type === 'NOT_BLOCKED') {
-            items.splice(1, 0, {
-                xtype: 'container',
-                padding: 10,
-                items: [{
-                    xtype: 'button',
-                    minWidth: 150,
-                    text: 'PAY'
-                }]
-            })
-        }
-
-        return items
-    },
-
     prepareBodyLeftData: function () {
         var recordData = this.getRecordData()
 
@@ -227,6 +256,18 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
     toggleActivationPanel: function () {
         this.fireEvent('toggleactivationpanel')
+    },
+
+    fireSubpaasPay: function () {
+        this.fireEvent('avangate_pay', this.getSubPaasId())
+    },
+
+    fireInvoiceView: function () {
+        this.fireEvent('invoice_view', this.getSubPaasId())
+    },
+
+    fireInvoiceRequest: function () {
+        this.fireEvent('invoice_request', this.getSubPaasId())
     }
 })
 
