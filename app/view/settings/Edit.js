@@ -296,6 +296,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     values[field.name] = field.getValue();
                 }
             });
+            values.app_color_theme = this.down('settings-themes').getColorName();
         }
 
         return values;
