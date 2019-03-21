@@ -78,13 +78,14 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 type: 'vbox',
                 align: 'streach'
             },
-            width: 320,
+            width: 380,
             items: [
                 {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.main_title'),
-                    width: 300,
-                    padding: '30 0 10 0'
+                    width: 360,
+                    padding: '45 0 12 0',
+                    margin: '0 0 25 0'
                 },
                 {
                     xtype: 'combobox',
@@ -109,11 +110,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.mobile_app'),
-                    width: 300,
-                    padding: '30 0 10 0'
+                    width: 360,
+                    padding: '40 0 12 0',
+                    margin: '0 0 25 0'
                 },
                 {
                     xtype: 'settings-themes-mobile-color-picker',
+                    margin: '0 0 0 2',
                     colorCodes: this.colorCodes,
                     activeColor: this.currentIphoneColor,
                     listeners: {
@@ -141,7 +144,8 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     xtype: 'blockheader',
                     html: _l.get('settings.themes.preview_title'),
                     width: '100%',
-                    padding: '30 0 10 0'
+                    padding: '45 0 12 0',
+                    margin: '0 0 25 0'
                 },
                 {
                     xtype: 'container',
