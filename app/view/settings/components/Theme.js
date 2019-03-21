@@ -27,6 +27,11 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     afterLayout: function () {
         if (this.oldColor !== this.iphoneColor) {
             this.fillColor(this.iphoneColor);
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    this.fillColor(this.iphoneColor)
+                }.bind(this), 250);
+            }.bind(this))
             this.oldColor = this.iphoneColor;
         }
         this.callParent(arguments);
