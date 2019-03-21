@@ -53,7 +53,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                 cls: 'test-test',
                 layout: {
                     type: 'hbox',
-                    align: 'streach'
+                    align: 'top'
                 },
                 items: [
                     {
