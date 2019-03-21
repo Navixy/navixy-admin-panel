@@ -19,11 +19,25 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     record: null,
 
     defaultPreviewsPathTpl: 'images/themes/{0}/{1}.jpg',
+    oldColor: null,
     initComponent: function () {
         this.items = this.getItems();
         this.callParent(arguments);
     },
-    afterLayout: function() {
+    afterLayout: function () {
+        if (this.oldColor !== this.iphoneColor) {
+            this.fillColor(this.iphoneColor);
+            window.addEventListener('resize', function () {
+                setTimeout(function () {
+                    this.fillColor(this.iphoneColor)
+                }.bind(this), 250);
+            }.bind(this))
+            this.oldColor = this.iphoneColor;
+        }
+        this.callParent(arguments);
+    },
+
+    fillColor: function (color) {
         var iphoneImg = document.querySelector('.theme-image-iphone__object');
         if (iphoneImg) {
             try {
@@ -32,14 +46,13 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                 }, function () {
                     var needChangeColor = iphoneImg.contentDocument.getElementsByClassName('theme-color');
                     for (var i = 0; i < needChangeColor.length; i++) {
-                        needChangeColor[i].setAttribute('fill', this.iphoneColor);
+                        needChangeColor[i].setAttribute('fill', color);
                     }
                 }, this);
             } catch (e) {
                 console.log(e.stack);
             }
         }
-        this.callParent(arguments);
     },
 
     getItems: function (pathTpl) {
@@ -53,7 +66,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                 cls: 'test-test',
                 layout: {
                     type: 'hbox',
-                    align: 'streach'
+                    align: 'top'
                 },
                 items: [
                     {

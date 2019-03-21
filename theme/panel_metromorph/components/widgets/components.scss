@@ -179,7 +179,7 @@
 .mobile-color-picker-button {
     width: 80px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
     margin: 8px;
     cursor: pointer;
     display: flex;
@@ -206,11 +206,12 @@
 
 .theme-image-iphone {
     position: static !important;
-    margin-left: 40px !important;
+    margin-left: 18px !important;
     display: inline-block;
 }
+
 .theme-image-iphone__object {
-    height: 395px;
+    height: 399px;
 }
 
 .theme-image-iphone__object .theme-color {
