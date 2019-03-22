@@ -92,6 +92,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                     {
                         xtype: 'component',
                         width: 195,
+                        role: 'iphone-image',
                         cls: 'theme-image-iphone',
                         html: '<object type="image/svg+xml" data="images/themes/iphone.svg" class="theme-image-iphone__object" />'
                     }

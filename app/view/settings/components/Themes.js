@@ -28,6 +28,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         blue_4: '#29ACDF'
     },
     defaultColorName: 'blue_2',
+    uniqueIphoneColor: false,
     initComponent: function () {
         this.title = _l.get('settings.themes.title');
         this.store = Ext.getStore('Themes');
@@ -43,6 +44,8 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
         this.items = this.getItems();
         this.callParent(arguments);
+
+        this.colorPicker = this.down('settings-themes-mobile-color-picker')
     },
 
     getItems: function () {
@@ -56,6 +59,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             {
                 xtype: 'container',
                 disabled: !this.allowBranding,
+                name: 'themes_container',
                 layout: {
                     type: 'hbox',
                     align: 'streach'
@@ -213,13 +217,21 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (!this.allowBranding) {
             color = this.defaultColorName;
         }
-        var colorCode = this.colorCodes[color] || this.colorCodes[this.defaultColorName];
+        var colorCode = this.colorCodes[color]
+        if (!colorCode) {
+            colorCode = this.colorCodes[this.defaultColorName];
+            this.disablePhone();
+            this.uniqueIphoneColor = color;
+        }
 
         this.currentIphoneColor = colorCode;
-        this.down('settings-themes-mobile-color-picker').setActiveColor(colorCode);
+        this.colorPicker.setActiveColor(colorCode);
         this.onSelect();
     },
     getColorName: function () {
+        if (this.uniqueIphoneColor) {
+            return this.uniqueIphoneColor;
+        }
         var result = this.defaultColorName;
         Ext.iterate(this.colorCodes, function(key, value) {
             if (value === this.currentIphoneColor) {
@@ -227,5 +239,18 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             }
         }.bind(this))
         return result;
+    },
+
+    disablePhone: function () {
+        this.colorPicker.disable();
+        try {
+            Ext.waitFor(function () {
+                return document.getElementsByClassName('theme-image-iphone').length > 0;
+            }, function () {
+               this.down('[role="iphone-image"]').disable();
+            }, this);
+        } catch (e) {
+            console.log(e.stack);
+        }
     }
 });
