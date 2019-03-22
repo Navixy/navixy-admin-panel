@@ -625,9 +625,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getImgsCustom: function () {
-        var dealerStore = Ext.getStore('Dealer');
-        var dealer = dealerStore && dealerStore.first();
-        var allowBranding = dealer && dealer.get('allow_branding');
         return [
             {
                 xtype: 'container',
@@ -698,19 +695,32 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }, {
                         xtype: 'container',
                         padding: '20 0 0 0',
-                        disabled: !allowBranding,
-                        items: [{
-                            xtype: 'component',
-                            cls: 'block_header',
-                            html: _l.get('settings.edit_form.app_logo_title') + this.getHintSymbol(_l.get('settings.fields.app_logo_hint')),
-                            padding: '0 0 5 0'
-                        },
-                        this.getImgConfig('app_logo'),
-                        this.getImgButtonConfig('app_logo')]
+                        items: this.appLogoItems()
                     }]
             }
 
         ];
+    },
+
+    appLogoItems: function () {
+        var dealerStore = Ext.getStore('Dealer');
+        var dealer = dealerStore && dealerStore.first();
+        var allowBranding = dealer && dealer.get('allow_branding');
+        var img = this.getImgConfig('app_logo');
+        img.disabled = !allowBranding;
+        var buttons = this.getImgButtonConfig('app_logo');
+        buttons.disabled = !allowBranding;
+        var hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
+        return [
+            {
+                xtype: 'component',
+                cls: 'block_header',
+                html: _l.get('settings.edit_form.app_logo_title') + hint,
+                padding: '0 0 5 0'
+            },
+            img,
+            buttons
+        ]
     },
 
     getServiceItemsLeft: function () {
@@ -1186,9 +1196,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         img.getEl().on('load', function () {
                             img.ownerCt.doLayout();
                         });
-                        img.getEl().on('click', function (e, node) {
-                            window.open(Ext.get(node).getAttribute('src'), '_blank');
-                        });
+                        if (!img.disabled) {
+                            img.getEl().on('click', function (e, node) {
+                                window.open(Ext.get(node).getAttribute('src'), '_blank');
+                            });
+                        }
                     }
                 }
             },
