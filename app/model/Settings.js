@@ -218,6 +218,13 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         },
         {
+            name: 'app_color_theme',
+            type: 'string',
+            convert: function (value, record) {
+                return Ext.isEmpty(value) ? 'blue_2' : value;
+            }
+        },
+        {
             name: 'geocoders',
             type: 'auto'
         },
