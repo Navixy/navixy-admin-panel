@@ -45,7 +45,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         this.items = this.getItems();
         this.callParent(arguments);
 
-        this.colorPicker = this.down('settings-themes-mobile-color-picker')
+        this.colorPicker = this.down('settings-themes-mobile-color-picker');
     },
 
     getItems: function () {
@@ -58,7 +58,6 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             },
             {
                 xtype: 'container',
-                disabled: !this.allowBranding,
                 name: 'themes_container',
                 layout: {
                     type: 'hbox',
@@ -99,7 +98,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     ui: 'light',
                     width: 270,
                     margin: '5 10',
-
+                    disabled: !this.allowBranding,
                     store: this.store,
                     queryMode: 'local',
                     displayField: 'title',
@@ -120,6 +119,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 },
                 {
                     xtype: 'settings-themes-mobile-color-picker',
+                    disabled: !this.allowBranding,
                     margin: '0 0 0 2',
                     colorCodes: this.colorCodes,
                     activeColor: this.currentIphoneColor,
@@ -155,7 +155,8 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     xtype: 'container',
                     height: 420,
                     margin: '0 0 0 -30px',
-                    role: 'preview-container'
+                    role: 'preview-container',
+                    disabled: !this.allowBranding
                 }
             ]
         }
