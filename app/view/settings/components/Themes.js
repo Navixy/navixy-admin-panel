@@ -92,6 +92,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 },
                 {
                     xtype: 'combobox',
+                    cls: this.allowBranding ? null : 'theme-image-combobox--disabled',
                     fieldLabel: '',
                     editable: false,
                     labelAlign: 'top',

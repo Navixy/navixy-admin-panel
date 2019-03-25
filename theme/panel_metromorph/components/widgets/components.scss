@@ -217,3 +217,9 @@
 .theme-image-iphone__object .theme-color {
     fill: #ccc !important;
 }
+
+.theme-image-combobox--disabled {
+    .x-form-text {
+        color: #ccc;
+    }
+}
