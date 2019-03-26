@@ -85,7 +85,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         return this.getImgUrl('favicon') || false
     },
 
-    isSubpaas: function () {
+    isSubPaas: function () {
         return this.first().get('subpaas')
     }
 })
