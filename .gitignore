@@ -5,7 +5,9 @@ ext
 
 build
 node_modules
-theme/
+theme/panel_metromorph.css
+theme/panel_metromorph_ie.css
+theme/panel_metromorph_id-blessed1.css
 PConfig.js
 Config.js
 
