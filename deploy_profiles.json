@@ -3,6 +3,11 @@
         "host": "192.168.88.8",
         "remotePath": "/var/www/panel/"
     },
+    "test-9-floor": {
+        "host": "85.12.194.90",
+        "p": "8022",
+        "remotePath": "/var/www/panel/"
+    },
 
     "standalone": {
         "host": "ubertest.gdemoi",
