@@ -1719,7 +1719,9 @@ Ext.define('Locale.locale-en', {
             title: 'Active devices',
             count_label: 'Devices',
             month: 'Date',
-            open_tracker: 'Go to device'
+            open_tracker: 'Go to device',
+            own_devices: 'Your devices',
+            subpaas_devices: 'Dealers devices'
         },
         menu_text: 'Reports'
     },

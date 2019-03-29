@@ -87,5 +87,10 @@ Ext.define('NavixyPanel.store.Dealer', {
 
     isSubPaas: function () {
         return this.first().get('subpaas')
+    },
+
+    isSubPaasAvailable: function () {
+        var dealer = this.first().getData()
+        return !dealer.subpaas && dealer.tariff.allow_subpaas && Ext.checkPermission('subpaas', 'read')
     }
 })

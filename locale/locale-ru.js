@@ -1697,7 +1697,9 @@ Ext.define('Locale.locale-ru', {
             title: 'Активные устройства за период',
             count_label: 'Активных',
             month: 'Отчетный месяц',
-            open_tracker: 'Перейти к карточке устройства'
+            open_tracker: 'Перейти к карточке устройства',
+            own_devices: 'Устройства ваших клиентов',
+            subpaas_devices: 'Устройства ваших дилеров'
         },
         menu_text: 'Отчеты'
     },
