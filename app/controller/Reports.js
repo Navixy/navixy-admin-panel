@@ -60,4 +60,4 @@ Ext.define('NavixyPanel.controller.Reports', {
             xtype: 'reports-panel'
         })
     }
-})
+});
