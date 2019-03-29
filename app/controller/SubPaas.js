@@ -117,10 +117,8 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     registerMenu: function (config) {
-        var dealer = Ext.getStore('Dealer').first().getData()
 
-        if (!dealer.subpaas && dealer.tariff.allow_subpaas && Ext.checkPermission('subpaas', 'read') && this.menuConfig && this.menuConfig.target) {
-
+        if (Ext.getStore('Dealer').isSubPaasAvailable() && this.menuConfig && this.menuConfig.target) {
             this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target)
 
             var menuText = this.menuConfig.text || this.getModuleName(),

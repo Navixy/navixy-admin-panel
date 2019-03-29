@@ -362,7 +362,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getTabs: function () {
-
         var lp = _l.get('settings.edit_form'),
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
