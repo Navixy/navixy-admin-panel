@@ -25,6 +25,12 @@ Ext.define('NavixyPanel.store.Dealer', {
         "store_period",
         "allow_branding",
         {
+            name: 'active_amount_own',
+            type: 'number'
+        }, {
+            name: 'active_amount_subpaas',
+            type: 'number'
+        }, {
             name: 'paas_activation_date',
             type: 'date',
             format: 'Y-m-d'

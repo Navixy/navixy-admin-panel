@@ -409,7 +409,9 @@ Ext.define('Locale.locale-en', {
     },
     'dealer_info': {
         'first': 'total',
-        'last': 'of'
+        'last': 'of',
+        clients: 'Clients',
+        subpaas: 'Dealers'
     },
     'index': {
         'menu_text': 'Home'

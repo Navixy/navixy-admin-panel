@@ -407,7 +407,10 @@ Ext.define('Locale.locale-ru', {
     },
     'dealer_info': {
         'first': 'вcего',
-        'last': 'из'
+        'last': 'из',
+        clients: 'Клиенты',
+        subpaas: 'Дилеры'
+
     },
     'index': { 'menu_text': 'Главная' },
     'users': {

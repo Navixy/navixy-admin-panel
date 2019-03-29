@@ -22,9 +22,31 @@ Ext.define('NavixyPanel.view.desktop.Header', {
         var hasOld = false,
             dealerStore = Ext.getStore('Dealer'),
             headerLogo = dealerStore.getLogo(),
-            pageFavicon = dealerStore.getFavicon();
+            pageFavicon = dealerStore.getFavicon(),
+            infoTpl = [
+                '<tpl if="legal_name">',
+                '{legal_name}',
+                '</tpl>',
+                '<div class="devices-info ">',
+                '{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} ',
+                '<tpl if="active_limit">',
+                ' {[_l.get("dealer_info.last")]} {active_limit}',
+                '</tpl>',
+                '</div>'
+            ],
+            isSubPaasAvailable = dealerStore.isSubPaasAvailable()
 
-        Ext.Nav.setPageFavicon(pageFavicon);
+
+        if (isSubPaasAvailable) {
+            infoTpl.push('<div class="devices-info devices-info--subpaas-stat">',
+                '- {[_l.get("dealer_info.clients")]} {active_amount_own}',
+                '</div>',
+                '<div class="devices-info devices-info--subpaas-stat">',
+                '- {[_l.get("dealer_info.subpaas")]} {active_amount_subpaas}',
+                '</div>')
+        }
+        console.log(dealerStore.first().getData())
+        Ext.Nav.setPageFavicon(pageFavicon)
 
         this.items = [
             {
@@ -47,19 +69,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                     {
                         xtype: 'component',
                         cls: 'dealer-info',
-                        padding: '28 0 0 29',
+                        padding: isSubPaasAvailable ? '10 0 0 29' : '28 0 0 29',
                         height: 78,
-                        tpl: [
-                            '<tpl if="legal_name">',
-                            '{legal_name}',
-                            '</tpl>',
-                            '<div class="devices-info">',
-                            '{[_l.get("dealer_info.first")]} {active_amount:devicesEncode} ',
-                            '<tpl if="active_limit">',
-                            ' {[_l.get("dealer_info.last")]} {active_limit}',
-                            '</tpl>',
-                            '</div>'
-                        ],
+                        tpl: infoTpl,
                         data: dealerStore.first().getData()
                     },
                     {
@@ -83,13 +95,6 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                             pack: 'end'
                         },
                         items: [
-                            //{
-                            //    xtype: 'localecombo',
-                            //    ui: 'light',
-                            //    fieldLabel: false,
-                            //    width: 170,
-                            //    margin: '0 10 0 0'
-                            //},
                             {
                                 xtype: 'button',
                                 text: _l.get('old_version'),
@@ -115,8 +120,8 @@ Ext.define('NavixyPanel.view.desktop.Header', {
             {
                 xtype: 'mainmenu'
             }
-        ];
+        ]
 
-        this.callParent(arguments);
+        this.callParent(arguments)
     }
-});
+})

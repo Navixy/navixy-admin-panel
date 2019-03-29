@@ -3,32 +3,35 @@ $dealer-info-font-color: $baseFontColor;
 
 .main-header {
 
-    .header-logo {
-        background-image: url($img_dir + '/navixy-logo.png');
-        background-size: contain;
-        background-repeat: no-repeat;
+  .header-logo {
+    background-image: url($img_dir + '/navixy-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .dealer-info {
+    font-size: $dealer-info-font-size;
+    color: $dealer-info-font-color;
+
+    .devices-info {
+      font-size: $dealer-info-font-size - 4;
+      color: lighten($dealer-info-font-color, 25%);
+
+      &--subpaas-stat {
+        padding-left: 6px;
+      }
     }
+  }
 
-    .dealer-info {
-        font-size: $dealer-info-font-size;
-        color: $dealer-info-font-color;
+  .dealer-warnings {
+    font-size: $dealer-info-font-size;
+    color: $invalid-color;
 
-        .devices-info {
-            font-size: $dealer-info-font-size - 4;
-            color: lighten($dealer-info-font-color, 25%);
-            text-align: right;
-        }
+    div {
+      span {
+        @extend .icon-coin;
+        margin-right: 10px;
+      }
     }
-
-    .dealer-warnings {
-        font-size: $dealer-info-font-size;
-        color: $invalid-color;
-
-        div {
-            span {
-                @extend .icon-coin;
-                margin-right: 10px;
-            }
-        }
-    }
+  }
 }

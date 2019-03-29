@@ -740,10 +740,9 @@ Ext.define('NavixyPanel.controller.Main', {
 
             try {
                 var storeInstance = Ext.getStore(store),
-                    list = Ext.isArray(results[action]) ? results[action] : [results[action]]
-
+                    data = Ext.isArray(results[action]) ? results[action] : [results[action]]
                 storeInstance.storeLoaded = true
-                storeInstance.loadData(list)
+                storeInstance.loadData(data)
             } catch (e) {
                 Ext.log('result handler error', e.stack)
             }
