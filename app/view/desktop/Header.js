@@ -45,7 +45,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                 '- {[_l.get("dealer_info.subpaas")]} {active_amount_subpaas}',
                 '</div>')
         }
-        console.log(dealerStore.first().getData())
+
         Ext.Nav.setPageFavicon(pageFavicon)
 
         this.items = [
