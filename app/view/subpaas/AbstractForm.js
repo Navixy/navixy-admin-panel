@@ -56,7 +56,10 @@ Ext.define('NavixyPanel.view.subpaas.AbstractForm', {
                 minLength: 2,
                 maxLength: 100,
                 labelSeparator: Util.getRequiredSeparator(),
-                allowBlank: false
+                allowBlank: false,
+                validator: function (domain) {
+                    return Util.validateDomain(domain) || _l.get('errors.7.errors.domain')
+                }
             }, {
                 xtype: 'component',
                 hidden: !Ext.getStore('Dealer').isPremiumGis(),

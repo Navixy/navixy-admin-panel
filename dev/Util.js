@@ -1,14 +1,15 @@
 Ext.define('Dev.Util', {
     alternateClassName: 'Util',
     singleton: true,
-    dependencies: ['NavixyPermissions'],
+    dependencies: ['NavixyPermissions', 'Lib.punycode'
+    ],
 
     getRequiredSeparator: function () {
         return '<span style="color:red">*</span>:';
     },
 
     formatDate: function (date) {
-      return date ? Ext.Date.formatISO(date, Ext.util.Format.dateFormat) : ''
+        return date ? Ext.Date.formatISO(date, Ext.util.Format.dateFormat) : ''
     },
 
     navixyPermissions: function (action, feature) {
@@ -21,4 +22,12 @@ Ext.define('Dev.Util', {
         }
         return permissionStore.can(roles, action, feature);
     },
+
+    validateDomain: function (domain) {
+        var regexp = /\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/;
+        var normalDomain = punycode.toASCII(domain)
+        var valid = regexp.test(normalDomain)
+
+        return valid
+    }
 });
