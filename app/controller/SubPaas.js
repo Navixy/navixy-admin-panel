@@ -239,7 +239,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         if (success) {
             record.set(formValues)
             this.getSubpaasEdit().afterSave()
-            this.getSubpaasList().store.load()
+            Ext.getStore('SubPaas').load()
         }
     },
 
