@@ -118,7 +118,8 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 html: ['<a',
                     ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
-                    '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>'].join(''),
+                    '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>',
+                    Ext.getHintSymbol(_l.get('subpaas.fields.password_change_tip'))].join(''),
                 listeners: initialBlock ? null : {
                     click: {
                         fn: me.fireSubPaasChangePassword,

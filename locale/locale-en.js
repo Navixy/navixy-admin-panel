@@ -1790,7 +1790,8 @@ Ext.define('Locale.locale-en', {
             contact_phone: 'Phone',
             contact_post: 'Post',
             password: 'Password',
-            password_repeat: 'Repeat password'
+            password_repeat: 'Repeat password',
+            password_change_tip: 'Create a new password for Reseller’s access to the Admin Panel.'
         },
 
         block_status: {

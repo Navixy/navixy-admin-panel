@@ -1770,7 +1770,8 @@ Ext.define('Locale.locale-ru', {
             contact_phone: 'Телефон',
             contact_post: 'Почтовый адрес',
             password: 'Пароль',
-            password_repeat: 'Повторите пароль'
+            password_repeat: 'Повторите пароль',
+            password_change_tip: 'Вы можете создать новый пароль для доступа дилера в панель администрирования'
         },
 
         block_status: {
