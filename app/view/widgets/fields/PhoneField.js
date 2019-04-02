@@ -16,7 +16,7 @@ Ext.define('NavixyPanel.view.widgets.fields.PhoneField', {
             ptype: 'phoneinputmask'
         }
     ],
-    minLength: 10,
+    minLength: 9,
     maxLength: 15,
 
     // removing mask form value
