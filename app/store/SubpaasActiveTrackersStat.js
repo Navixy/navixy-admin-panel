@@ -21,7 +21,7 @@ Ext.define('NavixyPanel.store.SubpaasActiveTrackersStat', {
             Ext.each(subpaas.list, function (group, key) {
                 Ext.each(group.trackers, function (item, key) {
                     flatResult.push(Ext.apply(item, {
-                        dealer_id: subpaas.dealer_id,
+                        subpaas_id: subpaas.subpaas_id,
                         dealer_title: subpaas.title,
                         month: group.month,
                         amount: group.amount

@@ -13,7 +13,7 @@ Ext.define('NavixyPanel.model.SubpaasActiveTrackersStatItem', {
         { name: 'label' },
         { name: 'tracker_id' },
         { name: 'user_id' },
-        { name: 'dealer_id' },
+        { name: 'subpaas_id' },
         { name: 'dealer_title' },
         { name: 'amount' }
     ]
