@@ -1724,7 +1724,7 @@ Ext.define('Locale.locale-ru', {
             links: {
                 session_text: 'Войти в панель управления',
                 subpaas_edit: 'Редактировать',
-                subpaas_change_password: 'Сменить пароль',
+                subpaas_change_password: 'Изменить пароль',
                 invoice_view: 'Посмотреть счет',
                 invoice_request: 'Отправить счет по email',
                 avangate_pay: 'Оплатить через Avangate'
