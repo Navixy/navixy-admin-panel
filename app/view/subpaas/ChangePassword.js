@@ -38,14 +38,14 @@ Ext.define('NavixyPanel.view.subpaas.ChangePassword', {
                 padding: '10 0 30 0'
             },
             {
-                fieldLabel: _l.get('subpaas.fields.password'),
+                fieldLabel: _l.get('subpaas.password_form.password'),
                 name: 'new_password',
                 inputType: 'password',
                 minLength: 6,
                 maxLength: 20
             },
             {
-                fieldLabel: _l.get('subpaas.fields.password_repeat'),
+                fieldLabel: _l.get('subpaas.password_form.password_repeat'),
                 inputType: 'password',
                 minLength: 6,
                 maxLength: 20,
