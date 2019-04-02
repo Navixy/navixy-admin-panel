@@ -1737,7 +1737,9 @@ Ext.define('Locale.locale-ru', {
         },
         password_form: {
             title: 'Смена пароля',
-            'save_btn': 'Задать пароль',
+            password: 'Новый пароль',
+            password_repeat: 'Повторите новый пароль',
+            'save_btn': 'Изменить пароль',
             'return_btn': 'Отмена',
             'success_msg': 'Пароль успешно изменен'
         },
@@ -1766,7 +1768,7 @@ Ext.define('Locale.locale-ru', {
             jur_country: 'Страна',
             contact_fio: 'Контактное лицо',
             contact_phone: 'Телефон',
-            contact_post: 'Почта',
+            contact_post: 'Почтовый адрес',
             password: 'Пароль',
             password_repeat: 'Повторите пароль'
         },
