@@ -54,6 +54,15 @@
 
 
 .subpaas-list {
+  .subpaas-row-INITIAL_BLOCK {
+    .tool-column.edit {
+      .x-grid-cell-inner {
+        visibility: hidden;
+      }
+      pointer-events: none;
+    }
+  }
+
   .x-grid-row {
     .x-grid-cell-inner {
       padding: 8px 0 8px 8px;

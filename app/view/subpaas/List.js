@@ -21,6 +21,12 @@ Ext.define('NavixyPanel.view.subpaas.List', {
     disableCreateBtn: function () {
         this.down('button[role=create-btn]').disable()
     },
+    initComponent: function () {
+        this.viewConfig.getRowClass = function (record) {
+            return 'subpaas-row-' + record.get('block_type')
+        }
+        this.callParent(arguments)
+    },
 
     getToolsColumns: function () {
         var toolTpl = new Ext.XTemplate(
