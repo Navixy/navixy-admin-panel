@@ -1757,7 +1757,9 @@ Ext.define('Locale.locale-en', {
         },
         password_form: {
             title: 'Change password',
-            save_btn: 'Set Password',
+            password: 'New password',
+            password_repeat: 'Repeat new password',
+            save_btn: 'Change password',
             return_btn: 'Cancel',
             success_msg: 'Password successfully changed'
         },

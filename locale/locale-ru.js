@@ -1724,7 +1724,7 @@ Ext.define('Locale.locale-ru', {
             links: {
                 session_text: 'Войти в панель управления',
                 subpaas_edit: 'Редактировать',
-                subpaas_change_password: 'Сменить пароль',
+                subpaas_change_password: 'Изменить пароль',
                 invoice_view: 'Посмотреть счет',
                 invoice_request: 'Отправить счет по email',
                 avangate_pay: 'Оплатить через Avangate'
@@ -1737,7 +1737,9 @@ Ext.define('Locale.locale-ru', {
         },
         password_form: {
             title: 'Смена пароля',
-            'save_btn': 'Задать пароль',
+            password: 'Новый пароль',
+            password_repeat: 'Повторите новый пароль',
+            'save_btn': 'Изменить пароль',
             'return_btn': 'Отмена',
             'success_msg': 'Пароль успешно изменен'
         },
@@ -1766,7 +1768,7 @@ Ext.define('Locale.locale-ru', {
             jur_country: 'Страна',
             contact_fio: 'Контактное лицо',
             contact_phone: 'Телефон',
-            contact_post: 'Почта',
+            contact_post: 'Почтовый адрес',
             password: 'Пароль',
             password_repeat: 'Повторите пароль'
         },
