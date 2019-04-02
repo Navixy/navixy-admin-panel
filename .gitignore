@@ -23,3 +23,5 @@ syntax: regexp
 
 *.sublime-*
 
+
+theme/panel_metromorph_ie-blessed1\.css

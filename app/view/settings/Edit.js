@@ -721,6 +721,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: domain,
                 value: domain,
                 allowBlank: false,
+
                 disabled: isSubPaas,
                 minLength: 2,
                 maxLength: 100,
