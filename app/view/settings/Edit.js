@@ -367,7 +367,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var lp = _l.get('settings.edit_form'),
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
-            seller_currency = dealer && dealer.get('seller_currency');
+            seller_currency = dealer && dealer.get('seller_currency'),
+            isSubpaas = dealer.get('subpaas')
 
         return [
 
@@ -619,7 +620,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }, {
                     xtype: 'checkbox',
                     role: 'checkbox',
-                    boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
+                    boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== '' && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ''),
                     name: 'monitoring_logo_clickable'
                 }]
             }
@@ -731,7 +732,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             domain = Ext.getStore('Dealer').first().get('id') + domainPh,
             labelHint = this.getHintSymbol(_l.get('settings.fields').get(isNavixy ? 'domain_hint' : 'paas_domain_hint')),
             labelLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '',
-            locale = Locale.Manager.getLocale();
+            locale = Locale.Manager.getLocale(),
+            isSubPaas = Ext.getStore('Dealer').isSubPaas()
 
         return [
             {
@@ -744,7 +746,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: domain,
                 value: domain,
                 allowBlank: false,
-
+                disabled: isSubPaas,
                 minLength: 2,
                 maxLength: 100,
                 listeners: {
@@ -863,10 +865,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 {
                     xtype: 'checkbox',
                     role: 'checkbox',
-                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
+                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== '' && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ''),
                     name: 'show_call_notifications'
                 },
-           {
+            {
                 xtype: 'checkbox',
                 role: 'checkbox',
                 boxLabel: _l.get('settings.fields.do_not_apply_default_seetings_during_activation') + this.getHintSymbol(_l.get('settings.fields.do_not_apply_default_seetings_during_activation_hint')),
@@ -1018,7 +1020,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     queryMode: 'local',
                     displayField: 'name',
                     valueField: 'type',
-                    value: "navixy",
+                    value: 'navixy',
                     margin: 0,
                     labelAlign: 'top',
                     labelSeparator: '',
@@ -1099,7 +1101,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
             {
-                name: "m2m_sms_originator",
+                name: 'm2m_sms_originator',
                 fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.sms_sender_id_ph'),
                 allowBlank: true,
