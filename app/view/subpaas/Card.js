@@ -41,12 +41,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
     getLinks: function () {
         var me = this,
-            result = [
-                {
-                    xtype: 'component',
-                    height: 10
-                }
-            ],
+            result = [],
             recordData = this.getRecordData()
 
         var initialBlock = this.record.isInitialBlock()
@@ -56,7 +51,6 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
             if (active) {
                 result.push({
                     html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
-                    margin: '0 0 16 0',
                     listeners: {
                         click: {
                             fn: me.fireSubpaasSessionCreate,
