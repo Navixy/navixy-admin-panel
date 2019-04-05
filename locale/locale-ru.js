@@ -380,7 +380,8 @@ Ext.define('Locale.locale-ru', {
         "aoa": "Ангольская кванза",
         "kwd": "Кувейтский динар",
         "bdt": "Бангладешская така",
-        "kes": "Кенийский шиллинг"
+        "kes": "Кенийский шиллинг",
+        "xpf": "Тихоокеанский франк"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -1627,7 +1628,8 @@ Ext.define('Locale.locale-ru', {
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
-        "KES": "{0} KSh"
+        "KES": "{0} KSh",
+        "XPF": "{0} ₣"
     },
     "features": {
         "api": "API",
