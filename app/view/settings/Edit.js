@@ -51,12 +51,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getHintSymbol: function (hint, cls) {
         return ['<span class="icon-help ',
-                cls || '',
-                '" style="color:#f89406;font-size:12px; padding: 10px" ',
-                'data-qtip="', Ext.String.htmlEncode(hint), '"',
-                'data-qclass="settings-tip"',
-                'data-qwidth="300"',
-                '></span>'].join('');
+            cls || '',
+            '" style="color:#f89406;font-size:12px; padding: 10px" ',
+            'data-qtip="', Ext.String.htmlEncode(hint), '"',
+            'data-qclass="settings-tip"',
+            'data-qwidth="300"',
+            '></span>'].join('');
     },
 
     changeSaveBtn: function (tabpanel, tab) {
@@ -363,10 +363,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getTabs: function () {
+
         var lp = _l.get('settings.edit_form'),
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
-            seller_currency = dealer && dealer.get('seller_currency');
+            seller_currency = dealer && dealer.get('seller_currency'),
+            isSubpaas = dealer.get('subpaas')
 
         return [
 
@@ -514,7 +516,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
                 : null,
 
-            Ext.checkPermission('paas_payments', 'create') && seller_currency === this.paymentCurrency
+            Ext.checkPermission('paas_payments', 'create') &&
+            seller_currency === this.paymentCurrency &&
+            !isSubpaas
                 ? {
                     xtype: 'avangate-panel',
                     layout: {
@@ -616,7 +620,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }, {
                     xtype: 'checkbox',
                     role: 'checkbox',
-                    boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== "" && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ""),
+                    boxLabel: _l.get('settings.fields.monitoring_logo_clickable') + (_l.get('settings.fields.monitoring_logo_clickable_hint') !== '' && _l.get('settings.fields.monitoring_logo_clickable_hint') !== 'settings.fields.monitoring_logo_clickable_hint' ? this.getHintSymbol(_l.get('settings.fields.monitoring_logo_clickable_hint')) : ''),
                     name: 'monitoring_logo_clickable'
                 }]
             }
@@ -728,7 +732,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             domain = Ext.getStore('Dealer').first().get('id') + domainPh,
             labelHint = this.getHintSymbol(_l.get('settings.fields').get(isNavixy ? 'domain_hint' : 'paas_domain_hint')),
             labelLink = isNavixy ? '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>' : '',
-            locale = Locale.Manager.getLocale();
+            locale = Locale.Manager.getLocale(),
+            isSubPaas = Ext.getStore('Dealer').isSubPaas()
 
         return [
             {
@@ -741,7 +746,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 emptyText: domain,
                 value: domain,
                 allowBlank: false,
-
+                disabled: isSubPaas,
                 minLength: 2,
                 maxLength: 100,
                 listeners: {
@@ -860,10 +865,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 {
                     xtype: 'checkbox',
                     role: 'checkbox',
-                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
+                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== '' && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ''),
                     name: 'show_call_notifications'
                 },
-           {
+            {
                 xtype: 'checkbox',
                 role: 'checkbox',
                 boxLabel: _l.get('settings.fields.do_not_apply_default_seetings_during_activation') + this.getHintSymbol(_l.get('settings.fields.do_not_apply_default_seetings_during_activation_hint')),
@@ -932,8 +937,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     renderGeocoderField: function (defaultValue) {
         var defaultSetting = this.record.get('default_user_settings').geocoder;
-        var geocoders = this.record.get('geocoders').filter(function (item) { return !!item })
-        var label =  _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
+        var geocoders = this.record.get('geocoders').filter(function (item) {
+            return !!item
+        })
+        var label = _l.get('settings.fields.default_geocoder') + this.getHintSymbol(_l.get('settings.fields.geocoder_hint'));
         if (Util.navixyPermissions('manage', 'geocoder') && geocoders.length > 0) {
             return {
                 name: 'geocoder',
@@ -956,8 +963,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     renderRouteProviderField: function (defaultValue) {
         var defaultSetting = this.record.get('default_user_settings').route_provider;
-        var providers = this.record.get('route_providers').filter(function (item) { return !!item })
-        var label =  _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
+        var providers = this.record.get('route_providers').filter(function (item) {
+            return !!item
+        })
+        var label = _l.get('settings.fields.route_provider') + this.getHintSymbol(_l.get('settings.fields.route_provider_hint'));
         if (Util.navixyPermissions('manage', 'route_provider') && providers.length > 0) {
             return {
                 name: 'route_provider',
@@ -1011,7 +1020,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     queryMode: 'local',
                     displayField: 'name',
                     valueField: 'type',
-                    value: "navixy",
+                    value: 'navixy',
                     margin: 0,
                     labelAlign: 'top',
                     labelSeparator: '',
@@ -1081,8 +1090,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     change: function (cmp, type) {
                         var originator = this.down('[name=m2m_sms_originator]');
 
-                        if (type === "navixy") {
-                            originator.setValue(Config.navixyInboundNumber || "79037976362");
+                        if (type === 'navixy') {
+                            originator.setValue(Config.navixyInboundNumber || '79037976362');
                             originator.setReadOnly(true);
                         } else {
                             originator.setReadOnly(false);
@@ -1092,7 +1101,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 }
             },
             {
-                name: "m2m_sms_originator",
+                name: 'm2m_sms_originator',
                 fieldLabel: _l.get('settings.fields.sms_sender_id') + this.getHintSymbol(_l.get('settings.fields.sms_sender_id_hint')),
                 emptyText: _l.get('settings.fields.sms_sender_id_ph'),
                 allowBlank: true,
@@ -1145,8 +1154,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     change: function (cmp, type) {
                         var originator = this.down('[name=sms_originator]');
 
-                        if (type === "navixy") {
-                            originator.setValue(Config.navixyInboundNumber || "79037976362");
+                        if (type === 'navixy') {
+                            originator.setValue(Config.navixyInboundNumber || '79037976362');
                             originator.setReadOnly(true);
                         } else {
                             originator.setReadOnly(false);
@@ -1212,12 +1221,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             : this.getRecordData(),
             value = data[type],
             isUrl = new RegExp('http://|https://', 'i').test(value),
-            aCache = "?" + new Date().getTime();
+            aCache = '?' + new Date().getTime();
 
         return value
             ? isUrl
-                   ? value + aCache
-                   : [Ext.API.getGlobalApiUrl({action: value}), aCache].join('')
+                ? value + aCache
+                : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
             : null;
     },
 

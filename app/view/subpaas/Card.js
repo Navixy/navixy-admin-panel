@@ -41,12 +41,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
     getLinks: function () {
         var me = this,
-            result = [
-                {
-                    xtype: 'component',
-                    height: 10
-                }
-            ],
+            result = [],
             recordData = this.getRecordData()
 
         var initialBlock = this.record.isInitialBlock()
@@ -56,7 +51,6 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
             if (active) {
                 result.push({
                     html: '<a>' + _l.get('subpaas.card.links.session_text') + '</a>',
-                    margin: '0 0 16 0',
                     listeners: {
                         click: {
                             fn: me.fireSubpaasSessionCreate,
@@ -118,7 +112,8 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 html: ['<a',
                     ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
-                    '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>'].join(''),
+                    '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>',
+                    Ext.getHintSymbol(_l.get('subpaas.fields.password_change_tip'))].join(''),
                 listeners: initialBlock ? null : {
                     click: {
                         fn: me.fireSubPaasChangePassword,

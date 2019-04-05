@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
     createTarget: 'tariff/',
 
     settings: null,
-
+    componentCls: 'tariff-create-form',
     initComponent: function () {
         Ext.apply(this.modeVisibleTable.card, {
             'edit-btn': Ext.checkPermission('tariffs', 'update'),
@@ -197,7 +197,9 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     'name': _l.get('devices.tracker')
                 }
             ],
-            tariffPrices = Ext.getStore('TariffPrices').getPrices();
+            tariffPrices = Ext.getStore('TariffPrices').getPrices(),
+            isSubpaas = dealer.get('subpaas')
+
 
         function getPriceConfig (dontShowButton) {
             return {
@@ -492,38 +494,53 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 html: [_l.get('tariffs.fields.client_costs'),
                     Ext.isNavixy() ? this.getHintSymbol(_l.get('tariffs.card.hints.13')) : ''
                 ].join(''),
-                cellCls: 'sub_title'
+                cellCls: 'sub_title ' + (isSubpaas ? 'hidden' : '')
             },
 
             // 6 --------------------------------------------------------------------- //
             { html: _l.get('tariffs.fields.outgoing_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.2')) },
             {},
             Ext.apply({ name: 'outgoing_sms' }, getPriceConfig()),
-            { html: this.getTariffPriceText('outgoing_sms', tariffPrices, seller_currency) },
+            {
+                html: this.getTariffPriceText('outgoing_sms', tariffPrices, seller_currency),
+                cellCls: isSubpaas ? 'hidden' : ''
+            },
 
             // 7 --------------------------------------------------------------------- //
             { html: _l.get('tariffs.fields.service_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.3')) },
             {},
             Ext.apply({ name: 'service_sms' }, getPriceConfig()),
-            { html: this.getTariffPriceText('service_sms', tariffPrices, seller_currency) },
+            {
+                html: this.getTariffPriceText('service_sms', tariffPrices, seller_currency),
+                cellCls: isSubpaas ? 'hidden' : ''
+            },
 
             // 8 --------------------------------------------------------------------- //
             { html: _l.get('tariffs.fields.incoming_sms') + this.getHintSymbol(_l.get('tariffs.card.hints.4')) },
             {},
             Ext.apply({ name: 'incoming_sms' }, getPriceConfig(true)),
-            { html: this.getTariffPriceText('incoming_sms', tariffPrices, seller_currency) },
+            {
+                html: this.getTariffPriceText('incoming_sms', tariffPrices, seller_currency),
+                cellCls: isSubpaas ? 'hidden' : ''
+            },
 
             // 9 --------------------------------------------------------------------- //
             { html: _l.get('tariffs.fields.traffic') + this.getHintSymbol(_l.get('tariffs.card.hints.5')) },
             {},
             Ext.apply({ name: 'traffic' }, getPriceConfig(true)),
-            { html: this.getTariffPriceText('traffic', tariffPrices, seller_currency) },
+            {
+                html: this.getTariffPriceText('traffic', tariffPrices, seller_currency),
+                cellCls: isSubpaas ? 'hidden' : ''
+            },
 
             // 10 -------------------------------------------------------------------- //
             { html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6')) },
             {},
             Ext.apply({ name: 'phone_call' }, getPriceConfig()),
-            { html: this.getTariffPriceText('phone_call', tariffPrices, seller_currency) }
+            {
+                html: this.getTariffPriceText('phone_call', tariffPrices, seller_currency),
+                cellCls: isSubpaas ? 'hidden' : ''
+            }
         ];
     },
 
