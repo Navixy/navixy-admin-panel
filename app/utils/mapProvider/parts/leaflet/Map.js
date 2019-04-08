@@ -30,14 +30,17 @@ Ext.define('NavixyPanel.utils.mapProvider.parts.leaflet.Map', {
      */
     initMapTypes: function (map) {
         var me = this,
-            type;
+            canGoogle = Util.navixyPermissions('use', 'google-services');
 
         this.initTypesStore(map);
         this.store.each(function (mapTypeRecord) {
             try {
+                var mapConfig = Ext.apply({}, mapTypeRecord.getData());
 
-                type = me.createMapType(map, Ext.apply({}, mapTypeRecord.getData()));
-
+                if (mapConfig.projection === 'GoogleMapType' && !canGoogle) {
+                    return;
+                }
+                var type = me.createMapType(map, mapConfig);
                 map.typesStore.add({
                     mapTypeId: type.getName(),
                     type: type.getType(),
