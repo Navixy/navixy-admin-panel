@@ -23,19 +23,7 @@
 
         // Possible types: satellite, roadmap, hybrid, terrain
         initialize: function (type, options) {
-            var scriptElt = document.createElement('script');
-            scriptElt.type = 'text/javascript';
-            scriptElt.src = 'https://www.google.com/jsapi';
-            document.body.appendChild(scriptElt);
 
-            Ext.waitFor(function () {
-                return window.google && window.google.maps
-            }, function () {
-                this._ready = window.google.maps && window.google.maps.Map != undefined;
-                if (!this._ready) {
-                    L.Google.asyncWait.push(this);
-                }
-            }, this)
 
             L.Util.setOptions(this, options);
             this._type = type || 'satellite';
@@ -69,11 +57,26 @@
         },
 
         onAdd: function (map, insertAtTheBottom) {
+            var scriptElt = document.createElement('script');
+            scriptElt.type = 'text/javascript';
+            scriptElt.src = 'https://www.google.com/jsapi';
+            document.body.appendChild(scriptElt);
+
+            Ext.waitFor(function () {
+                return window.google && window.google.maps
+            }, function () {
+                this._ready = window.google.maps && window.google.maps.Map != undefined;
+                if (!this._ready) {
+                    L.Google.asyncWait.push(this);
+                }
+            }, this);
+
             Ext.waitFor(function () {
                 return window.google && typeof window.google.load === 'function'
             }, function () {
                 this.loadAPI();
             }, this);
+
             this._map = map;
             this._insertAtTheBottom = insertAtTheBottom;
 
