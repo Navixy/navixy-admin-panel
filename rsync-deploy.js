@@ -8,7 +8,7 @@ if (profile) {
     var profileObject = config[profile];
 
     if (profileObject) {
-        var command = "rsync -rvzc --exclude='PConfig.js' --include='/PConfig.example.js' ./build/panel/ " + username + '@' + profileObject.host + ':' + profileObject.remotePath;
+        var command = "rsync -rvzc --exclude='PConfig.js' --include='/PConfig.example.js' ./build/panel/ " + username + '@' + profileObject.host + ':' + profileObject.remotePath + (profileObject.p ? ' -e "ssh -p ' + profileObject.p + '" ' : '');
         console.log(command);
 
         exec(command, function (error, stdout, stderr) {

@@ -123,7 +123,15 @@ Ext.define('Locale.Manager', {
             text: 'Nederlands',
             alias: ['nl', 'nl_NL', 'Nederlands'],
             rtl: false
-        }, {
+        },
+        {
+            id: 'fa',
+            name: 'fa',
+            text: 'فارسی',
+            alias: ['fa', 'فارسی'],
+            rtl: false
+        },
+        {
             id: 'fr_FR',
             name: 'fr',
             text: 'Français',
