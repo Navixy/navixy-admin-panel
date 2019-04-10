@@ -1,7 +1,7 @@
 /*
  * Google layer using Google Maps API
  */
-(function (google, L) {
+(function (L) {
 
     L.Google = L.Class.extend({
         includes: L.Mixin.Events,
@@ -23,16 +23,10 @@
 
         // Possible types: satellite, roadmap, hybrid, terrain
         initialize: function (type, options) {
+
+
             L.Util.setOptions(this, options);
-
-            this._ready = google.maps && google.maps.Map != undefined;
-            if (!this._ready) {
-                L.Google.asyncWait.push(this);
-
-            }
-
             this._type = type || 'satellite';
-
         },
 
         loadAPI: function () {
@@ -58,13 +52,31 @@
                         'other_params': Ext.urlEncode(params),
                         'callback': L.Google.asyncInitialize
                     });
-
                 }
             }, this);
         },
 
         onAdd: function (map, insertAtTheBottom) {
-            this.loadAPI();
+            var scriptElt = document.createElement('script');
+            scriptElt.type = 'text/javascript';
+            scriptElt.src = 'https://www.google.com/jsapi';
+            document.body.appendChild(scriptElt);
+
+            Ext.waitFor(function () {
+                return window.google && window.google.maps
+            }, function () {
+                this._ready = window.google.maps && window.google.maps.Map != undefined;
+                if (!this._ready) {
+                    L.Google.asyncWait.push(this);
+                }
+            }, this);
+
+            Ext.waitFor(function () {
+                return window.google && typeof window.google.load === 'function'
+            }, function () {
+                this.loadAPI();
+            }, this);
+
             this._map = map;
             this._insertAtTheBottom = insertAtTheBottom;
 
@@ -261,4 +273,4 @@
         L.Google.asyncWait = [];
     };
 
-})(window.google, L);
+})(L);
