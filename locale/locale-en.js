@@ -1669,7 +1669,7 @@ Ext.define('Locale.locale-en', {
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
         "KES": "{0} KSh",
-        "XPF": "{0} ₣"
+        "XPF": "{0} CFP"
     },
     "features": {
         "api": "API",
