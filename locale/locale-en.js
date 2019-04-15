@@ -894,7 +894,7 @@ Ext.define('Locale.locale-en', {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "main_info": "You can change color UI color theme",
+            "main_info": "Select a color theme for the user interface of your web platform.",
             "main_title": "Web Interface",
             "preview_title": "Preview",
             "preview_btn": "Preview in monitoring",
