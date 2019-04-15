@@ -709,7 +709,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var img = this.getImgConfig('app_logo');
         img.disabled = !allowBranding;
         var buttons = this.getImgButtonConfig('app_logo');
-        buttons.disabled = !allowBranding;
+        for (var i = 0; i < buttons.items.length; i++) {
+            buttons.items[i].disabled = !allowBranding;
+        }
         var hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
         return [
             {
