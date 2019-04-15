@@ -27,6 +27,10 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         green_3: '#97C33C',
         blue_4: '#29ACDF'
     },
+    avaliableColors: [
+        'orange_1', 'pink_1', 'violet_1', 'violet_2', 'blue_1', 'blue_2',
+        'blue_3', 'green_1', 'green_2', 'orange_2', 'orange_3', 'grey_1'
+    ],
     defaultColorName: 'blue_2',
     uniqueIphoneColor: false,
     initComponent: function () {
@@ -228,6 +232,9 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
         this.currentIphoneColor = colorCode;
         this.colorPicker.setActiveColor(colorCode);
+        if (this.avaliableColors.indexOf(color) === -1) {
+            this.colorPicker.disable()
+        }
         this.onSelect();
     },
     getColorName: function () {
