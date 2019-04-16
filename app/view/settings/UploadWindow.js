@@ -122,7 +122,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         xtype: "filefield",
                         name: "file",
                         allowBlank: false,
-                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 10),
+                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 16),
                         msgTarget: "under",
                         labelAlign: "top",
                         buttonText: _l.get('settings.upload_form.upload_btn'),
