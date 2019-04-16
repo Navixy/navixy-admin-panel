@@ -73,7 +73,7 @@ Ext.define('NavixyPanel.view.payments.ImportSberBank', {
                 xtype: "filefield",
                 name: "file",
                 allowBlank: false,
-                fieldLabel: Ext.String.format(_l.get('payments.import_sberbank.fields.file_title'), 'CSV', Config.uploadLimit || 10),
+                fieldLabel: Ext.String.format(_l.get('payments.import_sberbank.fields.file_title'), 'CSV', Config.uploadLimit || 16),
                 msgTarget: "under",
                 labelAlign: "top",
                 buttonText: _l.get('payments.import_sberbank.upload_btn'),
