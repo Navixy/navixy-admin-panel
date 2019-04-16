@@ -233,7 +233,9 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         this.currentIphoneColor = colorCode;
         this.colorPicker.setActiveColor(colorCode);
         if (this.avaliableColors.indexOf(color) === -1) {
-            this.colorPicker.disable()
+            this.getField().disable();
+            this.getPreviewsContainer().disable();
+            this.colorPicker.disable();
         }
         this.onSelect();
     },
