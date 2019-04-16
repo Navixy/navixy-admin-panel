@@ -48,7 +48,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
         if (iphoneImg) {
             try {
                 Ext.waitFor(function () {
-                    return iphoneImg.contentDocument.getElementsByClassName('theme-color').length > 0;
+                    return iphoneImg.contentDocument && iphoneImg.contentDocument.getElementsByClassName('theme-color').length > 0;
                 }, function () {
                     var needChangeColor = iphoneImg.contentDocument.getElementsByClassName('theme-color');
                     for (var i = 0; i < needChangeColor.length; i++) {
