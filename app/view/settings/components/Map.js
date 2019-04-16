@@ -178,7 +178,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                     ['google', 'Google'],
                     ['yandex', 'Yandex'],
                     ['progorod', 'Progorod'],
-                    ['osm', 'OpenStreetMap']
+                    ['osm', 'OpenStreetMap'],
+                    ['locationiq', 'LocationIQ']
                 ]),
                 listeners: {
                     change: this.onGisFieldsChange,
