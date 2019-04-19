@@ -27,17 +27,18 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     afterLayout: function () {
         if (this.oldColor !== this.iphoneColor) {
             this.fillColor(this.iphoneColor);
-            window.removeEventListener('resize', this.resizeEvent.bind(this), false)
-            window.addEventListener('resize', this.resizeEvent.bind(this), false)
+            window.removeEventListener('resize', this.fillIphoneAgain.bind(this), false)
+            window.addEventListener('resize', this.fillIphoneAgain.bind(this), false)
             this.oldColor = this.iphoneColor;
         }
         this.callParent(arguments);
+        this.fillIphoneAgain();
     },
     onBeforeDestroy: function (field) {
-        window.removeEventListener('resize', this.resizeEvent.bind(this), false)
+        window.removeEventListener('resize', this.fillIphoneAgain.bind(this), false)
     },
 
-    resizeEvent: function () {
+    fillIphoneAgain: function (timeout) {
         setTimeout(function () {
             this.fillColor(this.iphoneColor)
         }.bind(this), 250);
