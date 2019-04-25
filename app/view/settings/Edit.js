@@ -896,7 +896,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             'google': 'Google',
             'yandex': 'Yandex',
             'progorod': 'Progorod',
-            'osm': 'OpenStreetMap'
+            'osm': 'OpenStreetMap',
+            'locationiq': 'LocationIQ'
         });
     },
 
