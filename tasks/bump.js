@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                             var packageJSONFile = grunt.file.readJSON('package.json'),
                                 version = packageJSONFile.version,
                                 msg = [new Date().toISOString(), stdout.substr(0, stdout.length - 2),
-                                       packageJSONFile.name, 'realese',
+                                       packageJSONFile.name, 'release',
                                        version].join(' ');
 
                             fs.writeSync(fd, msg);
