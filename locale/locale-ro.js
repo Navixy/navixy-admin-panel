@@ -388,7 +388,7 @@ Ext.define('Locale.locale-ro',{
             "activated_t": "User active",
             "legal_type": "Legal status",
             "tin": "TIN",
-            "legal_name": "Legal Name",
+            "legal_name": "Legal name",
             "iec": "IEC",
             "phone": "Phone number",
             "post_country": "Country",

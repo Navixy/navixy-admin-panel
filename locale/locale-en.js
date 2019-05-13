@@ -453,7 +453,7 @@ Ext.define("Locale.locale-en", {
             "tin": "Tax number",
             "state_reg_num": "OGRN",
             "state_reg_num_sole": "OGRNIP",
-            "legal_name": "Legal Name",
+            "legal_name": "Legal name",
             "iec": "IEC",
             "phone": "Phone number",
             "post_country": "Country",
@@ -1721,7 +1721,7 @@ Ext.define("Locale.locale-en", {
         menu_text: "Reports"
     },
     subpaas: {
-        notice_text: "Current reseller account: {0}. <a>Return to the administrator account</a>",
+        notice_text: "Current reseller admin panel: {0}  <a>Go back to the admin panel</a>",
         list: {
             empty_text: "Dealers not found",
             create_btn_text: "Create a reseller",
@@ -1732,14 +1732,14 @@ Ext.define("Locale.locale-en", {
             trackers_count: "Registered",
             active_trackers_count: "Active"
         },
-        menu_text: "Reselers",
+        menu_text: "Resellers",
         card: {
             links: {
-                session_text: "Reseller control panel",
+                session_text: "Access admin panel",
                 subpaas_edit: "Edit reseller",
                 subpaas_change_password: "Change password",
                 invoice_view: "View Invoice",
-                invoice_request: "Send invoice by email",
+                invoice_request: "Get invoice by email",
                 avangate_pay: "Pay"
 
             }
@@ -1777,7 +1777,7 @@ Ext.define("Locale.locale-en", {
             active_trackers_count: "Active devices",
             link_monitoring: "Domain",
             email: "Email",
-            jur_name: "Legal Name",
+            jur_name: "Legal name",
             jur_country: "Country",
             contact_fio: "Contact person",
             contact_phone: "Phone",
