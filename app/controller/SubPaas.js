@@ -329,17 +329,17 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     addSubPaasNotice: function () {
-        Ext.getFirst('mainviewport').add({
+        Ext.getFirst('mainviewport').insert(0, [{
             xtype: 'subpaasnotice'
-        })
+        }])
     },
 
     returnToMaster: function () {
         var masterHash = Ext.util.Cookies.get('master_panel_session_key')
         Ext.util.Cookies.clear('master_panel_session_key')
         Ext.util.Cookies.set('panel_session_key', masterHash)
+        window.location.href = location.href.split('#')[0] + '#subpaas/' + Ext.getStore('Dealer').first().get('id')
         window.location.reload()
-        window.location.href = location.href.split('#')[0] + '#subpaas_list'
     },
 
     viewInvoice: function (subpaas_id) {

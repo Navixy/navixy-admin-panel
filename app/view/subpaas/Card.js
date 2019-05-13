@@ -70,21 +70,17 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
         var paymentStore = Ext.getStore('PaymentSystems')
         if (initialBlock) {
-            if (paymentStore.findExact('type', 'avangate') >= 0) {
+            if (paymentStore.findExact('type', 'bill') >= 0) {
                 result.push({
-                    html: '<a>' + _l.get('subpaas.card.links.avangate_pay') + '</a>',
-                    cls: 'subpaas-pay-action subpaas-pay-action--avanage',
+                    html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
                     listeners: {
                         click: {
-                            fn: me.fireSubpaasPay,
+                            fn: me.fireInvoiceView,
                             scope: me
                         }
                     }
-                })
-            }
-
-            if (paymentStore.findExact('type', 'bill') >= 0) {
-                result.push({
+                }, {
                     html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
                     cls: 'subpaas-pay-action subpaas-pay-action--invoice',
                     listeners: {
@@ -93,12 +89,16 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                             scope: me
                         }
                     }
-                }, {
-                    html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
-                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                })
+            }
+
+            if (paymentStore.findExact('type', 'avangate') >= 0) {
+                result.push({
+                    html: '<a>' + _l.get('subpaas.card.links.avangate_pay') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--avanage',
                     listeners: {
                         click: {
-                            fn: me.fireInvoiceView,
+                            fn: me.fireSubpaasPay,
                             scope: me
                         }
                     }
