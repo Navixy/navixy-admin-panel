@@ -1730,7 +1730,7 @@ Ext.define("Locale.locale-en", {
         menu_text: "Reports"
     },
     subpaas: {
-        notice_text: "Current reseller admin panel: {0}  <a>Go back to the admin panel</a>",
+        notice_text: "Current reseller admin panel: {0}  <a>Go back to the main admin panel</a>",
         list: {
             empty_text: "Dealers not found",
             create_btn_text: "Create a reseller",
@@ -1747,9 +1747,9 @@ Ext.define("Locale.locale-en", {
                 session_text: "Access admin panel",
                 subpaas_edit: "Edit reseller",
                 subpaas_change_password: "Change password",
-                invoice_view: "View Invoice",
+                invoice_view: "View invoice",
                 invoice_request: "Get invoice by email",
-                avangate_pay: "Pay"
+                avangate_pay: "Pay online"
 
             }
         },
@@ -1777,7 +1777,7 @@ Ext.define("Locale.locale-en", {
         fields: {
             subpaas_id: "ID",
             block_type: "Status",
-            creation_date: "Created on",
+            creation_date: "Created",
             title: "Name",
             login: "Login",
             users_count: "Registered users",
