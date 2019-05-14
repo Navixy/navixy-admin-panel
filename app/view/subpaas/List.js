@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
     store: 'SubPaas',
     stateId: 'SubPaasList',
     cls: 'subpaas-list',
-
+    hasFilter: false,
     afterRender: function () {
         this.callParent(arguments)
         this.disableCreateBtn()
@@ -48,6 +48,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         return [{
             xtype: 'toolcolumn',
             width: 30,
+            sortable: false,
             hideable: false,
             draggable: false,
             menuDisabled: true,
@@ -57,6 +58,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         }, {
             xtype: 'templatecolumn',
             width: 30,
+            sortable: false,
             resizable: false,
             hideable: false,
             draggable: false,
@@ -128,12 +130,12 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             '</span>'
         ]
 
-        return [
+        var columns = [
             {
                 text: _l.get('subpaas.fields.subpaas_id'),
                 dataIndex: 'subpaas_id',
                 align: 'center',
-                width: 60
+                width: 100
             },
             {
                 text: _l.get('subpaas.fields.title'),
@@ -170,9 +172,11 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             {
                 text: _l.get('subpaas.list.users'),
                 sortable: false,
+                hideable:false,
                 columns: [{
                     text: _l.get('subpaas.list.users_count'),
                     dataIndex: 'users_count',
+                    menuDisabled: true,
                     align: 'center',
                     sortable: false,
                     width: 80
@@ -180,11 +184,13 @@ Ext.define('NavixyPanel.view.subpaas.List', {
                     text: _l.get('subpaas.list.active_users_count'),
                     dataIndex: 'active_users_count',
                     sortable: false,
+                    menuDisabled: true,
                     align: 'center',
                     width: 80
                 }]
             }, {
                 text: _l.get('subpaas.list.trackers'),
+                hideable:false,
                 sortable: false,
                 columns: [{
                     text: _l.get('subpaas.list.trackers_count'),
@@ -199,7 +205,15 @@ Ext.define('NavixyPanel.view.subpaas.List', {
                     align: 'center',
                     width: 80
                 }]
+
             }
         ]
+
+
+        return columns.map(function (col) {
+            col.draggable = false
+            col.menuDisabled = true
+            return col
+        })
     }
 })
