@@ -359,6 +359,8 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleAvangatePay: function (subpaas_id) {
+        var win = window.open(Ext.id(), '_blank')
+
         Ext.API.pay({
             payment_system: 'avangate',
             params: {
@@ -367,7 +369,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 back_ref: window.location.href
             },
             callback: function (data) {
-                window.location.href = data.url
+                win.location.href = data.url
             }
         })
     },
