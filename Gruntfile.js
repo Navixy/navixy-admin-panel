@@ -43,6 +43,7 @@ module.exports = function (grunt) {
                         'stickers/*',
                         //Theme files
                         'favicon.ico',
+                        'navixy.ico',
                         'theme/panel_metromorph/images/**',
                         'theme/panel_metromorph/thumbs/*',
                         'theme/panel_metromorph/icons/fonts/*',
