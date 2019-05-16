@@ -11,14 +11,6 @@ module.exports = function (grunt) {
                     excludeClasses: [
                         'Config'
                     ],
-                    godBlessIE: [
-                        {
-                            name: 'ie-theme',
-                            root: 'theme',
-                            src: 'panel_metromorph.css',
-                            dest: 'panel_metromorph_ie.css'
-                        }
-                    ],
                     copyFiles: [
                         {
                             from: 'productionFiles/index.html',
