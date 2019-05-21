@@ -98,5 +98,30 @@ Ext.define('NavixyPanel.store.Dealer', {
     isSubPaasAvailable: function () {
         var dealer = this.first().getData()
         return !dealer.subpaas && dealer.tariff.allow_subpaas && Ext.checkPermission('subpaas', 'read')
+    },
+
+
+    isSubpaasReportsAvailable: function (callback, scope) {
+        if (this.subpaasReporsAvailable) {
+            callback.call(scope || this, true)
+            return
+        }
+        this.subpaasReporsAvailable = false
+        Ext.API.getSubPaasList({
+            params: {
+                order_by: 'block_type',
+                ascending: false
+            },
+            callback: function (result) {
+                if (result.count) {
+                    var subpaases = result.list
+                    if (subpaases[0].block_type !== 'INITIAL_BLOCK') {
+                        this.subpaasReporsAvailable = true
+                    }
+                }
+                callback.call(scope || this, this.subpaasReporsAvailable)
+            },
+            scope: this
+        })
     }
 })

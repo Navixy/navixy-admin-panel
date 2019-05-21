@@ -7,11 +7,9 @@
 Ext.define('NavixyPanel.view.subpaas.List', {
     extend: 'NavixyPanel.view.components.AbstractList',
     alias: 'widget.subpaaslist',
-
     store: 'SubPaas',
     stateId: 'SubPaasList',
     cls: 'subpaas-list',
-    hasFilter: false,
     afterRender: function () {
         this.callParent(arguments)
         this.disableCreateBtn()
