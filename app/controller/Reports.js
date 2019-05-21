@@ -56,8 +56,30 @@ Ext.define('NavixyPanel.controller.Reports', {
     },
 
     handleReports: function () {
-        this.fireContent({
-            xtype: 'reports-panel'
+        Ext.API.getSubPaasList({
+            params: {
+                order_by: 'block_type',
+                ascending: false
+            },
+            callback: function (result) {
+                var newReportsView = false
+
+                if (result.count) {
+                    var subpaases = result.list
+                    if (subpaases[0].block_type !== 'INITIAL_BLOCK') {
+                        newReportsView = true
+                    }
+                }
+
+                Ext.getStore('Dealer').newReports = newReportsView
+
+                this.fireContent({
+                    xtype: 'reports-panel'
+                })
+            },
+            scope: this
         })
+
+
     }
 });

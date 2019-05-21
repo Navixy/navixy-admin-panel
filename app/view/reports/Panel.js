@@ -10,8 +10,8 @@ Ext.define('NavixyPanel.view.reports.Panel', {
     ui: 'light',
     required: ['NavixyPanel.view.reports.active_trackers.SubpaasActiveList'],
     initComponent: function () {
-        var isSubpaasAvailable = Ext.getStore('Dealer').isSubPaasAvailable()
-        if (isSubpaasAvailable) {
+        var newReports = Ext.getStore('Dealer').newReports
+        if (newReports) {
             this.layout = 'accordion'
         } else {
             this.layout = 'fit'
@@ -21,11 +21,11 @@ Ext.define('NavixyPanel.view.reports.Panel', {
         this.tbar = this.getTopBar()
         this.items = [{
             xtype: 'active-trackers-grid',
-            title: isSubpaasAvailable ? _l.get('reports.active_trackers.own_devices') : undefined
+            title: newReports ? _l.get('reports.active_trackers.own_devices') : undefined
         }]
 
 
-        if (isSubpaasAvailable) {
+        if (newReports) {
             this.items.push({
                 xtype: 'active-trackers-grid',
                 store: 'SubpaasActiveTrackersStat',
