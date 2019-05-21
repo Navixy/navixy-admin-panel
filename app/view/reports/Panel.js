@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.view.reports.Panel', {
     ui: 'light',
     required: ['NavixyPanel.view.reports.active_trackers.SubpaasActiveList'],
     initComponent: function () {
-        var newReports = Ext.getStore('Dealer').newReports
+        var newReports = Ext.getStore('Dealer').subpaasReporsAvailable
         if (newReports) {
             this.layout = 'accordion'
         } else {
