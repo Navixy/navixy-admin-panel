@@ -69,14 +69,13 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         var tdEl = Ext.get(td),
             isTool = tdEl.hasCls('tool-column'),
             isEdit = isTool && tdEl.hasCls('edit'),
-            isView = window.event.target.tagName === 'A',
             isAction = isTool && tdEl.hasCls('action')
 
         if (isAction) {
             this.fireEvent('actionclick', record)
         } else if (isEdit) {
             this.fireEvent('editclick', record)
-        } else if (isView) {
+        } else {
             this.fireEvent('viewclick', record)
         }
     },
