@@ -688,6 +688,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
     removeAuthKey: function (hash) {
         Ext.util.Cookies.clear(Ext.API.authKeyName)
+        Ext.util.Cookies.clear('master_panel_session_key')
     },
 
     getAppRoot: function () {
