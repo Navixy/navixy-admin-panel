@@ -62,7 +62,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 afterrender: this.handleCreateBtnAvailability
 
             },
-            'subpaaslist button[role="create-btn"]': {
+            'subpaaslist button[role="create-subpaas-btn"]': {
                 click: this.handleSubpaasCreateAction
             },
             'subpaascreate': {
@@ -180,6 +180,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleSubpaasCreateAction: function () {
+        console.log('asdasd')
         Ext.Nav.shift('subpaas/create')
     },
 
@@ -408,7 +409,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                     data.list[0].block_type == 'INITIAL_BLOCK') {
                     callback.call(this, false)
                 } else {
-                    callback.call(this, false)
+                    callback.call(this, true)
                 }
             },
             scope: scope || this

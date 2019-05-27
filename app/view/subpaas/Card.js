@@ -69,18 +69,23 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
 
         var paymentStore = Ext.getStore('PaymentSystems')
+
+        if (paymentStore.findExact('type', 'bill') >= 0) {
+            result.push({
+                html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
+                cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                listeners: {
+                    click: {
+                        fn: me.fireInvoiceView,
+                        scope: me
+                    }
+                }
+            })
+        }
+
         if (initialBlock) {
             if (paymentStore.findExact('type', 'bill') >= 0) {
                 result.push({
-                    html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
-                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
-                    listeners: {
-                        click: {
-                            fn: me.fireInvoiceView,
-                            scope: me
-                        }
-                    }
-                }, {
                     html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
                     cls: 'subpaas-pay-action subpaas-pay-action--invoice',
                     listeners: {
