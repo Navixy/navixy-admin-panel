@@ -13,11 +13,10 @@ Ext.define('NavixyPanel.view.subpaas.List', {
     afterRender: function () {
         this.callParent(arguments)
         this.disableCreateBtn()
-        this.checkCreateAvailability()
     },
 
     disableCreateBtn: function () {
-        this.down('button[role=create-btn]').disable()
+        this.down('button[role=create-subpaas-btn]').disable()
     },
     initComponent: function () {
         this.viewConfig.getRowClass = function (record) {
@@ -82,33 +81,10 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         }
     },
 
-    checkCreateAvailability: function () {
-        Ext.API.getSubPaasList({
-            params: {
-                order_by: 'block_type',
-                page: 1,
-                offset: 0,
-                limit: 1,
-                ascending: true
-            },
-            callback: function (data) {
-                if (data.list.length) {
-                    var dealer = data.list[0]
-                    if (dealer.block_type !== 'INITIAL_BLOCK') {
-                        this.down('button[role=create-btn]').enable()
-                    } else {
-                        this.down('button[role=create-btn]').setTooltip(_l.get('subpaas.block_status.INITIAL_BLOCK'))
-                    }
-                } else {
-                    this.down('button[role=create-btn]').enable()
-                }
-            },
-            scope: this
-        })
-    },
 
     getTexts: function () {
         return {
+            createBtnRole: 'create-subpaas-btn',
             createBtnText: _l.get('subpaas.list.create_btn_text'),
             emptyData: _l.get('subpaas.list.empty_text')
         }
@@ -170,7 +146,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             {
                 text: _l.get('subpaas.list.users'),
                 sortable: false,
-                hideable:false,
+                hideable: false,
                 columns: [{
                     text: _l.get('subpaas.list.users_count'),
                     dataIndex: 'users_count',
@@ -188,7 +164,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
                 }]
             }, {
                 text: _l.get('subpaas.list.trackers'),
-                hideable:false,
+                hideable: false,
                 sortable: false,
                 columns: [{
                     text: _l.get('subpaas.list.trackers_count'),

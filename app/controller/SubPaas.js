@@ -58,7 +58,9 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             'subpaaslist': {
                 viewclick: this.handleSubpaasView,
                 actionclick: this.handleListAction,
-                editclick: this.handleSubpaasEditAction
+                editclick: this.handleSubpaasEditAction,
+                afterrender: this.handleCreateBtnAvailability
+
             },
             'subpaaslist button[role="create-btn"]': {
                 click: this.handleSubpaasCreateAction
@@ -133,6 +135,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleSubpaasList: function () {
+        this.handleCreateBtnAvailability()
         this.fireContent({
             xtype: 'subpaaslist',
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
@@ -299,12 +302,12 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             var paymentStore = Ext.getStore('PaymentSystems')
 
             if (Ext.getStore('Dealer').first().get('seller_currency') !== 'RUB' &&
-                Ext.getStore('PaymentSystems').findRecord('type', 'avangate')) {
+                paymentStore.findRecord('type', 'avangate')) {
                 return this.handleAvangatePay(subpaas.getId())
             }
 
             if (Ext.getStore('Dealer').first().get('seller_currency') === 'RUB' &&
-                Ext.getStore('PaymentSystems').findRecord('type', 'bill')) {
+                paymentStore.findRecord('type', 'bill')) {
                 return this.viewInvoice(subpaas.getId())
             }
         }
@@ -391,5 +394,39 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 })
             }
         })
+    },
+
+    checkCreateAvailability: function (callback, scope) {
+        Ext.API.getSubPaasList({
+            params: {
+                order_by: 'block_type',
+                limit: 1,
+                ascending: true
+            },
+            callback: function (data) {
+                if (data.list.length &&
+                    data.list[0].block_type == 'INITIAL_BLOCK') {
+                    callback.call(this, false)
+                } else {
+                    callback.call(this, false)
+                }
+            },
+            scope: scope || this
+        })
+    },
+
+    handleCreateBtnAvailability: function () {
+        var createBtn = Ext.getFirst('button[role=create-subpaas-btn]')
+
+        if (createBtn) {
+            createBtn.disable()
+            this.checkCreateAvailability(function (available) {
+                if (available) {
+                    createBtn.enable()
+                } else {
+                    createBtn.setTooltip(_l.get('subpaas.block_status.INITIAL_BLOCK'))
+                }
+            })
+        }
     }
 })
