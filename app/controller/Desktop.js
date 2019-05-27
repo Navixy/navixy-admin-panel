@@ -141,7 +141,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onSearch: function (searchString) {
-        if (Ext.checkPermissons(['users', 'trackers', 'tariffs'])) {
+        if (Ext.checkPermissons(['users', 'trackers', 'tariffs','subpaas'])) {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
                 xtype: 'searchform',
