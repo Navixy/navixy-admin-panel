@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.store.SubpaasActiveTrackersStat', {
     extend: 'Ext.data.Store',
     model: 'NavixyPanel.model.SubpaasActiveTrackersStatItem',
     storeId: 'SubpaasActiveTrackersStat',
-    groupers: ['dealer_title', 'month', 'user_id'],
+    groupers: ['month', 'dealer_title', 'user_id'],
 
     loadStatData: function (data) {
         this.loadData(this.flatterize(data))
