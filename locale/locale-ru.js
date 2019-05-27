@@ -1729,7 +1729,7 @@ Ext.define("Locale.locale-ru", {
             save_btn: "Сохранить"
         },
         password_form: {
-            title: "Смена пароля",
+            title: "Изменение пароля дилера",
             password: "Новый пароль",
             password_repeat: "Повторите новый пароль",
             "save_btn": "Изменить пароль",

@@ -1749,7 +1749,7 @@ Ext.define("Locale.locale-en", {
             save_btn: "Save"
         },
         password_form: {
-            title: "Change password",
+            title: "Change Reseller’s password",
             password: "New password",
             password_repeat: "Repeat new password",
             save_btn: "Change password",
