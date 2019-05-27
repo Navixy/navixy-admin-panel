@@ -101,23 +101,35 @@ Ext.define('NavixyPanel.store.Dealer', {
 
 
     isSubpaasReportsAvailable: function (callback, scope) {
-        if (this.subpaasReporsAvailable) {
-            callback.call(scope || this, true)
+        if (!this.isSubPaasAvailable()) {
+            this.subpaasReporsAvailable = false
+            callback.call(scope || this, this.subpaasReporsAvailable)
             return
         }
+
+        if (this.subpaasReporsAvailable) {
+            callback.call(scope || this, this.subpaasReporsAvailable)
+            return
+        }
+
         this.subpaasReporsAvailable = false
+
         Ext.API.getSubPaasList({
             params: {
                 order_by: 'block_type',
-                ascending: false
+                limit: 1,
+                ascending: true
             },
             callback: function (result) {
-                if (result.count) {
+                if (result.count > 1) {
+                    this.subpaasReporsAvailable = true
+                } else if (result.count) {
                     var subpaases = result.list
                     if (subpaases[0].block_type !== 'INITIAL_BLOCK') {
                         this.subpaasReporsAvailable = true
                     }
                 }
+
                 callback.call(scope || this, this.subpaasReporsAvailable)
             },
             scope: this
