@@ -22,7 +22,8 @@ Ext.define('NavixyPanel.view.desktop.Search', {
     modulesForSearch: {
         'users': 'userslist',
         'trackers': 'trackerslist',
-        'tariffs': 'tariffslist'
+        'tariffs': 'tariffslist',
+        'subpaas': 'subpaaslist'
     },
 
     searchStr: null,

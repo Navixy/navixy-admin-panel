@@ -16,7 +16,10 @@ Ext.define('NavixyPanel.view.subpaas.List', {
     },
 
     disableCreateBtn: function () {
-        this.down('button[role=create-subpaas-btn]').disable()
+        var btn = this.down('button[role=create-subpaas-btn]');
+        if (btn) {
+            this.down('button[role=create-subpaas-btn]').disable()
+        }
     },
     initComponent: function () {
         this.viewConfig.getRowClass = function (record) {
