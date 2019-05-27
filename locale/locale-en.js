@@ -1762,7 +1762,8 @@ Ext.define("Locale.locale-en", {
             main_fields: "Main information:",
             misc_fields: "Additional:",
             premium_gis_hint: "To activate the “Premium GIS” package from a reseller, please contact technical support.",
-            save_btn: "Create"
+            save_btn: "Create",
+            "password_mismatched": "Passwords do not match"
         },
 
         fields: {
@@ -1784,7 +1785,8 @@ Ext.define("Locale.locale-en", {
             contact_post: "Post",
             password: "Password",
             password_repeat: "Repeat password",
-            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel."
+            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel.",
+            "password_mismatched": "Passwords do not match"
         },
 
         block_status: {

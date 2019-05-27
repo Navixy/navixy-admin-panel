@@ -40,7 +40,7 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
                 fieldLabel: _l.get('subpaas.fields.contact_post'),
                 name: 'contact_post',
                 minLength: 2,
-                maxLength: 100,
+                maxLength: 50,
                 allowBlank: true
             },
 

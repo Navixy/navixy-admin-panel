@@ -1742,7 +1742,8 @@ Ext.define("Locale.locale-ru", {
             main_fields: "Основная информация:",
             misc_fields: "Дополнительно:",
             premium_gis_hint: "Для активации пакета “Premium GIS” у дилера обратитесь, пожалуйста, в техническую поддержку.",
-            save_btn: "Добавить"
+            save_btn: "Добавить",
+            "password_mismatched": "Пароли не совпадают"
         },
 
         fields: {
@@ -1764,7 +1765,8 @@ Ext.define("Locale.locale-ru", {
             contact_post: "Почтовый адрес",
             password: "Пароль",
             password_repeat: "Повторите пароль",
-            password_change_tip: "Вы можете создать новый пароль для доступа дилера в панель администрирования"
+            password_change_tip: "Вы можете создать новый пароль для доступа дилера в панель администрирования",
+            "password_mismatched": "Пароли не совпадают"
         },
 
         block_status: {

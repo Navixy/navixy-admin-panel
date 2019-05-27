@@ -37,7 +37,7 @@ Ext.define('NavixyPanel.view.subpaas.AbstractForm', {
                 fieldLabel: _l.get('subpaas.fields.title'),
                 name: 'title',
                 minLength: 2,
-                maxLength: 100,
+                maxLength: 50,
                 labelSeparator: Util.getRequiredSeparator(),
                 allowBlank: false
             },
