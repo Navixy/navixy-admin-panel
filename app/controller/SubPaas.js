@@ -347,7 +347,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     viewInvoice: function (subpaas_id) {
-        var win = window.open(Ext.id(), '_blank')
+        var win = window.open('', '_blank')
         win.document.write('<h2 style="font-family:Helvetica">' + _l.get('loading') + '</h2>')
 
         Ext.API.pay({
@@ -363,7 +363,8 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleAvangatePay: function (subpaas_id) {
-        var win = window.open(Ext.id(), '_blank')
+        var win = window.open('', '_blank')
+        win.document.write('<h2 style="font-family:Helvetica">' + _l.get('loading') + '</h2>')
 
         Ext.API.pay({
             payment_system: 'avangate',
