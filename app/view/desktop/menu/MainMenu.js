@@ -6,7 +6,8 @@
 
 Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     extend: 'Ext.Container',
-    requires: ['NavixyPanel.view.widgets.SearchField'],
+    requires: ['NavixyPanel.view.widgets.SearchField',
+        'NavixyPanel.plugins.ContainerScroller'],
     alias: 'widget.mainmenu',
 
     cls: 'main-menu',
@@ -56,6 +57,9 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
                     pack: 'start',
                     align: 'middle'
                 },
+                plugins: [{
+                    ptype: 'containerscroller'
+                }],
                 flex: 1,
                 hidden: true,
                 defaults: this.getDefaults(),
@@ -97,17 +101,17 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
     getSearcher: function () {
         return this.hasSearch
             ? [
-            {
-                xtype: 'searchfield',
-                margin: '0 5 0 0',
-                listeners: {
-                    'search': {
-                        fn: this.fireSearch,
-                        scope: this
+                {
+                    xtype: 'searchfield',
+                    margin: '0 5 0 0',
+                    listeners: {
+                        'search': {
+                            fn: this.fireSearch,
+                            scope: this
+                        }
                     }
                 }
-            }
-        ]
+            ]
             : false;
     },
 
