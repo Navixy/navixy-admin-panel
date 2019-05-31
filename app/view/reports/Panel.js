@@ -8,7 +8,6 @@ Ext.define('NavixyPanel.view.reports.Panel', {
     extend: 'Ext.Panel',
     alias: 'widget.reports-panel',
     ui: 'light',
-    required: ['NavixyPanel.view.reports.active_trackers.SubpaasActiveList'],
     initComponent: function () {
         var newReports = Ext.getStore('Dealer').subpaasReporsAvailable
         if (newReports) {
