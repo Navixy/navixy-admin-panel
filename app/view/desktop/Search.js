@@ -81,13 +81,13 @@ Ext.define('NavixyPanel.view.desktop.Search', {
 
                     flex: 1,
 
-                    listeners:{
+                    listeners: {
                         afterrender: {
                             fn: function (field) {
-                                if(field.el) {
+                                if (field.el) {
                                     var nav = new Ext.util.KeyNav(field.el, {
-                                        "enter" : this.searchAction,
-                                        scope : this
+                                        "enter": this.searchAction,
+                                        scope: this
                                     });
                                 }
                             },
@@ -159,7 +159,9 @@ Ext.define('NavixyPanel.view.desktop.Search', {
         if (searchReq.length) {
             this.clearResults();
             Ext.iterate(this.modulesForSearch, function (moduleName, moduleWidget) {
-
+                if (moduleName === 'subpaas' && !Ext.getStore('Dealer').isSubPaasAvailable()) {
+                    return
+                }
                 if (Ext.checkPermission(moduleName, 'read')) {
                     this.getResultsContainer().add(Ext.widget(
                         moduleWidget,
@@ -168,7 +170,7 @@ Ext.define('NavixyPanel.view.desktop.Search', {
                                 searchTitle: _l[moduleName].menu_text
                             },
                             widgetConfig)
-                    )
+                        )
                     );
                 }
             }, this);
