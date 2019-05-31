@@ -41,6 +41,10 @@
 .subpaas-pay-action {
   font-weight: bold;
 
+  &--normal {
+    font-weight: 400;
+  }
+
   &--invoice {
     color: forestgreen;
   }

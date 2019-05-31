@@ -26,12 +26,12 @@ Ext.define("Locale.locale-en", {
     "index_title": "Welcome to Admin Panel",
     "index_blocked": {
         "inital_block": "Initial blocking.",
-        "block_login": "Control panel features are not available. It is necessary to replenish balance.",
+        "block_login": "Access to your admin panel suspended. Please top up the balance.",
         "clients_blocked": "Access to your admin panel and tracking platform suspended. Please top up the balance."
     },
     "header_blocked": {
         "inital_block": "Initial blocking",
-        "block_login": "Control panel blocked",
+        "block_login": "Access to admin panel is blocked",
         "clients_blocked": "Access to the tracking platform and admin panel is blocked"
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
@@ -229,7 +229,7 @@ Ext.define("Locale.locale-en", {
         "btn": "Find"
     },
     "list": {
-        "edit_tool": "edit",
+        "edit_tool": "Edit",
         "create_btn_text": "Create",
         "empty_text": "No data",
         "search_title_tpl": "{0}: found {1}",
@@ -1761,7 +1761,7 @@ Ext.define("Locale.locale-en", {
             title: "New reseller",
             main_fields: "Main information:",
             misc_fields: "Additional:",
-            premium_gis_hint: "To activate the “Premium GIS” package from a reseller, please contact technical support.",
+            premium_gis_hint: "To activate the Premium GIS package for the reseller, please contact your technical support.",
             save_btn: "Create",
             "password_mismatched": "Passwords do not match"
         },

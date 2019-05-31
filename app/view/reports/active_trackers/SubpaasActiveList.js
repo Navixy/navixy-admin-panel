@@ -55,22 +55,6 @@ Ext.define('NavixyPanel.view.reports.active_trackers.SubpaasActiveList', {
             },
 
             items: [{
-                xtype: 'divactioncolumn',
-                width: 70,
-                hideable: false,
-                draggable: false,
-                groupable: false,
-                menuDisabled: true,
-                items: [{
-                    iconCls: 'open_tracker_tool icon-location',
-                    glyph: 1,
-                    tooltip: _l.get('reports.active_trackers.open_tracker'),
-                    handler: function (grid, rowIndex, colIndex) {
-                        var rec = grid.getStore().getAt(rowIndex)
-                        Ext.Nav.shift('tracker/' + rec.get('tracker_id'))
-                    }
-                }]
-            }, {
                 header: _l.get('reports.active_trackers.month'),
                 width: 143,
                 groupHeaderTpl: new Ext.XTemplate('{name} (',
