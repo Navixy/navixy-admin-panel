@@ -29,6 +29,7 @@ Ext.define('NavixyPanel.view.reports.Panel', {
             this.items.push({
                 xtype: 'active-trackers-grid',
                 store: 'SubpaasActiveTrackersStat',
+                showTrackerLink: false,
                 title: _l.get('reports.active_trackers.subpaas_devices')
             })
         }

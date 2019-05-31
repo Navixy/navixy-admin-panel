@@ -73,7 +73,8 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
         if (paymentStore.findExact('type', 'bill') >= 0) {
             result.push({
                 html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
-                cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                cls: ['subpaas-pay-action subpaas-pay-action--invoice',
+                    !initialBlock ? 'subpaas-pay-action--normal' : ''],
                 listeners: {
                     click: {
                         fn: me.fireInvoiceView,
@@ -115,11 +116,10 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
         if (Ext.checkPermission('subpaas', 'update')) {
             result.unshift({
                 html: ['<a',
-                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
                     '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>',
                     Ext.getHintSymbol(_l.get('subpaas.fields.password_change_tip'))].join(''),
-                listeners: initialBlock ? null : {
+                listeners: {
                     click: {
                         fn: me.fireSubPaasChangePassword,
                         scope: me
@@ -130,10 +130,9 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
             result.unshift({
                 html: ['<a',
-                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
                     '">', _l.get('subpaas.card.links.subpaas_edit'), '</a>'],
-                listeners: initialBlock ? null : {
+                listeners: {
                     click: {
                         fn: me.fireSubPaasEdit,
                         scope: me
