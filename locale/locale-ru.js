@@ -228,7 +228,7 @@ Ext.define("Locale.locale-ru", {
         "btn": "Найти"
     },
     "list": {
-        "edit_tool": "изменить",
+        "edit_tool": "Изменить",
         "create_btn_text": "Создать",
         "empty_text": "Нет данных",
         "search_title_tpl": "{0}: найдено {1}",
