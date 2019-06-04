@@ -25,6 +25,10 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
         successProperty: 'success',
         totalProperty: 'count'
     },
+    constructor: function () {
+        this.doRequest = Ext.Function.createBuffered(this.doRequest, 10, this)
+        this.callParent(arguments)
+    },
 
     doRequest: function (operation, callback, scope) {
         var writer = this.getWriter(),
@@ -93,7 +97,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
             i = 0,
             result = null;
 
-        for (; i < length ; i++) {
+        for (; i < length; i++) {
             if (filters[i].property === this.apiFilterProperty) {
                 return filters[i].value;
             }
@@ -107,7 +111,7 @@ Ext.define('NavixyPanel.utils.store.NavixyApiProxy', {
             i = 0,
             result = {};
 
-        for (; i < length ; i++) {
+        for (; i < length; i++) {
             if (Ext.Array.indexOf(this.apiFilters, filters[i].property) > -1) {
                 result[filters[i].property] = filters[i].value;
             }
