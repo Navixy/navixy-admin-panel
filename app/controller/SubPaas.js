@@ -205,7 +205,6 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     afterSubPaasCreate: function (subpaasId, record) {
         this.getSubpaasCreate().afterSave(subpaasId)
         this.getSubpaasList().store.load()
-        Ext.getStore('SubPaas').load()
     },
 
     afterSubPaasCreateFailure: function (response) {
@@ -243,7 +242,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         if (success) {
             record.set(formValues)
             this.getSubpaasEdit().afterSave()
-            Ext.getStore('SubPaas').load()
+            this.getSubpaasList().store.load()
         }
     },
 
