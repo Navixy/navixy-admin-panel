@@ -71,9 +71,21 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
             {
                 xtype: 'combobox',
                 editable: false,
+                tpl: Ext.create('Ext.XTemplate',
+                    '<tpl for=".">',
+                    '<tpl if="values.type==\'INITIAL_BLOCK\'">',
+                    '<div class="x-boundlist-item" style="position: absolute;width: 0;"></div>',
+                    '<tpl else>',
+                    '<div class="x-boundlist-item">{label}</div>',
+                    '</tpl>',
+                    '</tpl>'
+                ),
                 store: Ext.create('Ext.data.Store', {
                     fields: ['type', 'label'],
                     data: [{
+                        type: 'INITIAL_BLOCK',
+                        label: _l.get('subpaas.block_status.INITIAL_BLOCK')
+                    }, {
                         type: 'NOT_BLOCKED',
                         label: _l.get('subpaas.block_status.NOT_BLOCKED')
                     }, {
@@ -88,7 +100,16 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
                 name: 'block_type',
                 valueField: 'type',
                 displayField: 'label',
-                allowBlank: true
+                allowBlank: true,
+                listeners: {
+                    change: function (cbx, status) {
+                        var readonly = status === 'INITIAL_BLOCK'
+                        if (readonly) {
+                            cbx.setReadOnly(readonly)
+                            cbx.el.addCls('x-item-disabled')
+                        }
+                    }
+                }
             }
         ]
     }

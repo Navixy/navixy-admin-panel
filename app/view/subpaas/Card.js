@@ -234,7 +234,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 },
                 {
                     title: _l.get('subpaas.fields.contact_post'),
-                    value: recordData.contact_post
+                    value: recordData.contact_post || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.contact_phone'),

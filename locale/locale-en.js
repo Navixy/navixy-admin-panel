@@ -88,6 +88,8 @@ Ext.define("Locale.locale-en", {
             "errors": {
                 "login": "Must be a valid email address",
                 "domain": "Incorrect domain name",
+                "link_monitoring": "Incorrect domain name",
+                "subpaas.link_monitoring": "Incorrect domain name. Maybe it is already in use.",
                 "user.post_index": "Post index must match \"[-a-zA-Z0-9 ]{0,30}\"",
                 "user._i_e_c": "IEC: Length must be between 0 and 255"
             }
