@@ -103,7 +103,6 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
                 allowBlank: true,
                 listeners: {
                     change: function (cbx, status) {
-                        console.log(status)
                         cbx.setReadOnly(status === 'INITIAL_BLOCK')
                         cbx.el.addCls('x-item-disabled')
                     }
