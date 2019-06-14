@@ -324,6 +324,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             },
             callback: function (session_key) {
                 Ext.util.Cookies.set('master_panel_session_key', Ext.API.authKey)
+                Ext.util.Cookies.set('master_panel_return_path', location.href)
                 Ext.util.Cookies.set('panel_session_key', session_key)
                 window.location = location.href.split('#')[0]
             },
@@ -339,11 +340,13 @@ Ext.define('NavixyPanel.controller.SubPaas', {
 
     returnToMaster: function () {
         var masterHash = Ext.util.Cookies.get('master_panel_session_key')
+        var returnPath = Ext.util.Cookies.get('master_panel_return_path')
         Ext.util.Cookies.clear('master_panel_session_key')
+        Ext.util.Cookies.clear('master_panel_return_path')
         Ext.util.Cookies.set('panel_session_key', masterHash)
         Ext.API.sendRequest = Ext.emptyFn()
         document.body.style.opacity = 0;
-        window.location.href = location.href.split('#')[0] + '#subpaas/' + Ext.getStore('Dealer').first().get('id')
+        window.location.href = returnPath
         window.location.reload()
     },
 
