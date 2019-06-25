@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.store.SubpaasActiveTrackersStat', {
     extend: 'Ext.data.Store',
     model: 'NavixyPanel.model.SubpaasActiveTrackersStatItem',
     storeId: 'SubpaasActiveTrackersStat',
-    groupers: ['dealer_title', 'month', 'user_id'],
+    groupers: ['month', 'dealer_title', 'user_id'],
 
     loadStatData: function (data) {
         this.loadData(this.flatterize(data))
@@ -16,18 +16,26 @@ Ext.define('NavixyPanel.store.SubpaasActiveTrackersStat', {
 
     flatterize: function (results) {
         var flatResult = []
+        var monthAmount = {}
 
         Ext.each(results.subpaases, function (subpaas) {
-            Ext.each(subpaas.list, function (group, key) {
-                Ext.each(group.trackers, function (item, key) {
+            Ext.each(subpaas.list, function (monthStat) {
+                if (!monthAmount[monthStat.month]) {
+                    monthAmount[monthStat.month] = 0
+                }
+                monthAmount[monthStat.month] += monthStat.amount
+                Ext.each(monthStat.trackers, function (item) {
                     flatResult.push(Ext.apply(item, {
                         subpaas_id: subpaas.subpaas_id,
                         dealer_title: subpaas.title,
-                        month: group.month,
-                        amount: group.amount
+                        month: monthStat.month
                     }))
                 })
             })
+        })
+
+        flatResult.forEach(function (item) {
+            item.amount = monthAmount[item.month]
         })
 
         return flatResult

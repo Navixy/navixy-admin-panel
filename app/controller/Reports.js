@@ -56,8 +56,10 @@ Ext.define('NavixyPanel.controller.Reports', {
     },
 
     handleReports: function () {
-        this.fireContent({
-            xtype: 'reports-panel'
-        })
+        Ext.getStore('Dealer').isSubpaasReportsAvailable(function () {
+            this.fireContent({
+                xtype: 'reports-panel'
+            })
+        }, this)
     }
 });

@@ -7,19 +7,19 @@
 Ext.define('NavixyPanel.view.subpaas.List', {
     extend: 'NavixyPanel.view.components.AbstractList',
     alias: 'widget.subpaaslist',
-
     store: 'SubPaas',
     stateId: 'SubPaasList',
     cls: 'subpaas-list',
-
     afterRender: function () {
         this.callParent(arguments)
         this.disableCreateBtn()
-        this.checkCreateAvailability()
     },
 
     disableCreateBtn: function () {
-        this.down('button[role=create-btn]').disable()
+        var btn = this.down('button[role=create-subpaas-btn]');
+        if (btn) {
+            this.down('button[role=create-subpaas-btn]').disable()
+        }
     },
     initComponent: function () {
         this.viewConfig.getRowClass = function (record) {
@@ -48,6 +48,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         return [{
             xtype: 'toolcolumn',
             width: 30,
+            sortable: false,
             hideable: false,
             draggable: false,
             menuDisabled: true,
@@ -57,6 +58,7 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         }, {
             xtype: 'templatecolumn',
             width: 30,
+            sortable: false,
             resizable: false,
             hideable: false,
             draggable: false,
@@ -70,45 +72,21 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         var tdEl = Ext.get(td),
             isTool = tdEl.hasCls('tool-column'),
             isEdit = isTool && tdEl.hasCls('edit'),
-            isView = window.event.target.tagName === 'A',
             isAction = isTool && tdEl.hasCls('action')
 
         if (isAction) {
             this.fireEvent('actionclick', record)
         } else if (isEdit) {
             this.fireEvent('editclick', record)
-        } else if (isView) {
+        } else {
             this.fireEvent('viewclick', record)
         }
     },
 
-    checkCreateAvailability: function () {
-        Ext.API.getSubPaasList({
-            params: {
-                order_by: 'block_type',
-                page: 1,
-                offset: 0,
-                limit: 1,
-                ascending: true
-            },
-            callback: function (data) {
-                if (data.list.length) {
-                    var dealer = data.list[0]
-                    if (dealer.block_type !== 'INITIAL_BLOCK') {
-                        this.down('button[role=create-btn]').enable()
-                    } else {
-                        this.down('button[role=create-btn]').setTooltip(_l.get('subpaas.block_status.INITIAL_BLOCK'))
-                    }
-                } else {
-                    this.down('button[role=create-btn]').enable()
-                }
-            },
-            scope: this
-        })
-    },
 
     getTexts: function () {
         return {
+            createBtnRole: 'create-subpaas-btn',
             createBtnText: _l.get('subpaas.list.create_btn_text'),
             emptyData: _l.get('subpaas.list.empty_text')
         }
@@ -128,12 +106,12 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             '</span>'
         ]
 
-        return [
+        var columns = [
             {
                 text: _l.get('subpaas.fields.subpaas_id'),
                 dataIndex: 'subpaas_id',
                 align: 'center',
-                width: 60
+                width: 100
             },
             {
                 text: _l.get('subpaas.fields.title'),
@@ -170,9 +148,11 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             {
                 text: _l.get('subpaas.list.users'),
                 sortable: false,
+                hideable: false,
                 columns: [{
                     text: _l.get('subpaas.list.users_count'),
                     dataIndex: 'users_count',
+                    menuDisabled: true,
                     align: 'center',
                     sortable: false,
                     width: 80
@@ -180,11 +160,13 @@ Ext.define('NavixyPanel.view.subpaas.List', {
                     text: _l.get('subpaas.list.active_users_count'),
                     dataIndex: 'active_users_count',
                     sortable: false,
+                    menuDisabled: true,
                     align: 'center',
                     width: 80
                 }]
             }, {
                 text: _l.get('subpaas.list.trackers'),
+                hideable: false,
                 sortable: false,
                 columns: [{
                     text: _l.get('subpaas.list.trackers_count'),
@@ -199,7 +181,15 @@ Ext.define('NavixyPanel.view.subpaas.List', {
                     align: 'center',
                     width: 80
                 }]
+
             }
         ]
+
+
+        return columns.map(function (col) {
+            col.draggable = false
+            col.menuDisabled = true
+            return col
+        })
     }
 })

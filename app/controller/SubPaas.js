@@ -58,9 +58,11 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             'subpaaslist': {
                 viewclick: this.handleSubpaasView,
                 actionclick: this.handleListAction,
-                editclick: this.handleSubpaasEditAction
+                editclick: this.handleSubpaasEditAction,
+                afterrender: this.handleCreateBtnAvailability
+
             },
-            'subpaaslist button[role="create-btn"]': {
+            'subpaaslist button[role="create-subpaas-btn"]': {
                 click: this.handleSubpaasCreateAction
             },
             'subpaascreate': {
@@ -133,6 +135,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleSubpaasList: function () {
+        this.handleCreateBtnAvailability()
         this.fireContent({
             xtype: 'subpaaslist',
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
@@ -177,6 +180,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleSubpaasCreateAction: function () {
+        console.log('asdasd')
         Ext.Nav.shift('subpaas/create')
     },
 
@@ -201,7 +205,6 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     afterSubPaasCreate: function (subpaasId, record) {
         this.getSubpaasCreate().afterSave(subpaasId)
         this.getSubpaasList().store.load()
-        Ext.getStore('SubPaas').load()
     },
 
     afterSubPaasCreateFailure: function (response) {
@@ -239,7 +242,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
         if (success) {
             record.set(formValues)
             this.getSubpaasEdit().afterSave()
-            Ext.getStore('SubPaas').load()
+            this.getSubpaasList().store.load()
         }
     },
 
@@ -299,12 +302,12 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             var paymentStore = Ext.getStore('PaymentSystems')
 
             if (Ext.getStore('Dealer').first().get('seller_currency') !== 'RUB' &&
-                Ext.getStore('PaymentSystems').findRecord('type', 'avangate')) {
+                paymentStore.findRecord('type', 'avangate')) {
                 return this.handleAvangatePay(subpaas.getId())
             }
 
             if (Ext.getStore('Dealer').first().get('seller_currency') === 'RUB' &&
-                Ext.getStore('PaymentSystems').findRecord('type', 'bill')) {
+                paymentStore.findRecord('type', 'bill')) {
                 return this.viewInvoice(subpaas.getId())
             }
         }
@@ -321,6 +324,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
             },
             callback: function (session_key) {
                 Ext.util.Cookies.set('master_panel_session_key', Ext.API.authKey)
+                Ext.util.Cookies.set('master_panel_return_path', location.href)
                 Ext.util.Cookies.set('panel_session_key', session_key)
                 window.location = location.href.split('#')[0]
             },
@@ -329,21 +333,25 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     addSubPaasNotice: function () {
-        Ext.getFirst('mainviewport').add({
+        Ext.getFirst('mainviewport').insert(0, [{
             xtype: 'subpaasnotice'
-        })
+        }])
     },
 
     returnToMaster: function () {
         var masterHash = Ext.util.Cookies.get('master_panel_session_key')
+        var returnPath = Ext.util.Cookies.get('master_panel_return_path')
         Ext.util.Cookies.clear('master_panel_session_key')
+        Ext.util.Cookies.clear('master_panel_return_path')
         Ext.util.Cookies.set('panel_session_key', masterHash)
+        Ext.API.sendRequest = Ext.emptyFn()
+        document.body.style.opacity = 0;
+        window.location.href = returnPath
         window.location.reload()
-        window.location.href = location.href.split('#')[0] + '#subpaas_list'
     },
 
     viewInvoice: function (subpaas_id) {
-        var win = window.open(Ext.id(), '_blank')
+        var win = window.open('', '_blank')
         win.document.write('<h2 style="font-family:Helvetica">' + _l.get('loading') + '</h2>')
 
         Ext.API.pay({
@@ -359,6 +367,9 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleAvangatePay: function (subpaas_id) {
+        var win = window.open('', '_blank')
+        win.document.write('<h2 style="font-family:Helvetica">' + _l.get('loading') + '</h2>')
+
         Ext.API.pay({
             payment_system: 'avangate',
             params: {
@@ -367,7 +378,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 back_ref: window.location.href
             },
             callback: function (data) {
-                window.location.href = data.url
+                win.location.href = data.url
             }
         })
     },
@@ -389,5 +400,39 @@ Ext.define('NavixyPanel.controller.SubPaas', {
                 })
             }
         })
+    },
+
+    checkCreateAvailability: function (callback, scope) {
+        Ext.API.getSubPaasList({
+            params: {
+                order_by: 'block_type',
+                limit: 1,
+                ascending: true
+            },
+            callback: function (data) {
+                if (data.list.length &&
+                    data.list[0].block_type == 'INITIAL_BLOCK') {
+                    callback.call(this, false)
+                } else {
+                    callback.call(this, true)
+                }
+            },
+            scope: scope || this
+        })
+    },
+
+    handleCreateBtnAvailability: function () {
+        var createBtn = Ext.getFirst('button[role=create-subpaas-btn]')
+
+        if (createBtn) {
+            createBtn.disable()
+            this.checkCreateAvailability(function (available) {
+                if (available) {
+                    createBtn.enable()
+                } else {
+                    createBtn.setTooltip(_l.get('subpaas.block_status.INITIAL_BLOCK'))
+                }
+            })
+        }
     }
 })

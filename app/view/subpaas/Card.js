@@ -69,7 +69,35 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
 
         var paymentStore = Ext.getStore('PaymentSystems')
+
+        if (paymentStore.findExact('type', 'bill') >= 0) {
+            result.push({
+                html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
+                cls: ['subpaas-pay-action subpaas-pay-action--invoice',
+                    !initialBlock ? 'subpaas-pay-action--normal' : ''],
+                listeners: {
+                    click: {
+                        fn: me.fireInvoiceView,
+                        scope: me
+                    }
+                }
+            })
+        }
+
         if (initialBlock) {
+            if (paymentStore.findExact('type', 'bill') >= 0) {
+                result.push({
+                    html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
+                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
+                    listeners: {
+                        click: {
+                            fn: me.fireInvoiceRequest,
+                            scope: me
+                        }
+                    }
+                })
+            }
+
             if (paymentStore.findExact('type', 'avangate') >= 0) {
                 result.push({
                     html: '<a>' + _l.get('subpaas.card.links.avangate_pay') + '</a>',
@@ -82,39 +110,16 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                     }
                 })
             }
-
-            if (paymentStore.findExact('type', 'bill') >= 0) {
-                result.push({
-                    html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
-                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
-                    listeners: {
-                        click: {
-                            fn: me.fireInvoiceRequest,
-                            scope: me
-                        }
-                    }
-                }, {
-                    html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
-                    cls: 'subpaas-pay-action subpaas-pay-action--invoice',
-                    listeners: {
-                        click: {
-                            fn: me.fireInvoiceView,
-                            scope: me
-                        }
-                    }
-                })
-            }
         }
 
 
         if (Ext.checkPermission('subpaas', 'update')) {
             result.unshift({
                 html: ['<a',
-                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
                     '">', _l.get('subpaas.card.links.subpaas_change_password'), '</a>',
                     Ext.getHintSymbol(_l.get('subpaas.fields.password_change_tip'))].join(''),
-                listeners: initialBlock ? null : {
+                listeners: {
                     click: {
                         fn: me.fireSubPaasChangePassword,
                         scope: me
@@ -125,10 +130,9 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
             result.unshift({
                 html: ['<a',
-                    ' class="', initialBlock ? 'x-item-disabled' : '', '"',
                     ' data-qtip="', initialBlock ? _l.get('subpaas.block_status')[recordData.block_type] : '',
                     '">', _l.get('subpaas.card.links.subpaas_edit'), '</a>'],
-                listeners: initialBlock ? null : {
+                listeners: {
                     click: {
                         fn: me.fireSubPaasEdit,
                         scope: me
@@ -230,7 +234,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
                 },
                 {
                     title: _l.get('subpaas.fields.contact_post'),
-                    value: recordData.contact_post
+                    value: recordData.contact_post || '—'
                 },
                 {
                     title: _l.get('subpaas.fields.contact_phone'),

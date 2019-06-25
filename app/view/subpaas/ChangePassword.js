@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.view.subpaas.ChangePassword', {
     getTitle: function () {
         var titleTpl = new Ext.XTemplate(
             _l.get('subpaas.password_form.title'),
-            ' #{subpaas}: {title}'
+            ' #{subpaas_id}: {title}'
         )
         return titleTpl.apply(this.getRecordData())
     },

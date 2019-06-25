@@ -26,12 +26,12 @@ Ext.define("Locale.locale-en", {
     "index_title": "Welcome to Admin Panel",
     "index_blocked": {
         "inital_block": "Initial blocking.",
-        "block_login": "Control panel features are not available. It is necessary to replenish balance.",
+        "block_login": "Access to your admin panel suspended. Please top up the balance.",
         "clients_blocked": "Access to your admin panel and tracking platform suspended. Please top up the balance."
     },
     "header_blocked": {
         "inital_block": "Initial blocking",
-        "block_login": "Control panel blocked",
+        "block_login": "Access to admin panel is blocked",
         "clients_blocked": "Access to the tracking platform and admin panel is blocked"
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
@@ -88,6 +88,8 @@ Ext.define("Locale.locale-en", {
             "errors": {
                 "login": "Must be a valid email address",
                 "domain": "Incorrect domain name",
+                "link_monitoring": "Incorrect domain name",
+                "subpaas.link_monitoring": "Incorrect domain name. Maybe it is already in use.",
                 "user.post_index": "Post index must match \"[-a-zA-Z0-9 ]{0,30}\"",
                 "user._i_e_c": "IEC: Length must be between 0 and 255"
             }
@@ -230,7 +232,7 @@ Ext.define("Locale.locale-en", {
         "btn": "Find"
     },
     "list": {
-        "edit_tool": "edit",
+        "edit_tool": "Edit",
         "create_btn_text": "Create",
         "empty_text": "No data",
         "search_title_tpl": "{0}: found {1}",
@@ -457,7 +459,7 @@ Ext.define("Locale.locale-en", {
             "tin": "Tax number",
             "state_reg_num": "OGRN",
             "state_reg_num_sole": "OGRNIP",
-            "legal_name": "Legal Name",
+            "legal_name": "Legal name",
             "iec": "IEC",
             "phone": "Phone number",
             "post_country": "Country",
@@ -1734,7 +1736,7 @@ Ext.define("Locale.locale-en", {
         menu_text: "Reports"
     },
     subpaas: {
-        notice_text: "Current reseller account: {0}. <a>Return to the administrator account</a>",
+        notice_text: "Current reseller admin panel: {0}  <a>Go back to the main admin panel</a>",
         list: {
             empty_text: "Dealers not found",
             create_btn_text: "Create a reseller",
@@ -1745,15 +1747,15 @@ Ext.define("Locale.locale-en", {
             trackers_count: "Registered",
             active_trackers_count: "Active"
         },
-        menu_text: "Reselers",
+        menu_text: "Resellers",
         card: {
             links: {
-                session_text: "Reseller control panel",
+                session_text: "Access admin panel",
                 subpaas_edit: "Edit reseller",
                 subpaas_change_password: "Change password",
-                invoice_view: "View Invoice",
-                invoice_request: "Send invoice by email",
-                avangate_pay: "Pay"
+                invoice_view: "View invoice",
+                invoice_request: "Get invoice by email",
+                avangate_pay: "Pay online"
 
             }
         },
@@ -1762,7 +1764,7 @@ Ext.define("Locale.locale-en", {
             save_btn: "Save"
         },
         password_form: {
-            title: "Change password",
+            title: "Change Reseller’s password",
             password: "New password",
             password_repeat: "Repeat new password",
             save_btn: "Change password",
@@ -1774,14 +1776,15 @@ Ext.define("Locale.locale-en", {
             title: "New reseller",
             main_fields: "Main information:",
             misc_fields: "Additional:",
-            premium_gis_hint: "To activate the “Premium GIS” package from a reseller, please contact technical support.",
-            save_btn: "Create"
+            premium_gis_hint: "To activate the Premium GIS package for the reseller, please contact your technical support.",
+            save_btn: "Create",
+            "password_mismatched": "Passwords do not match"
         },
 
         fields: {
             subpaas_id: "ID",
             block_type: "Status",
-            creation_date: "Created on",
+            creation_date: "Created",
             title: "Name",
             login: "Login",
             users_count: "Registered users",
@@ -1790,14 +1793,15 @@ Ext.define("Locale.locale-en", {
             active_trackers_count: "Active devices",
             link_monitoring: "Domain",
             email: "Email",
-            jur_name: "Legal Name",
+            jur_name: "Legal name",
             jur_country: "Country",
             contact_fio: "Contact person",
             contact_phone: "Phone",
             contact_post: "Post",
             password: "Password",
             password_repeat: "Repeat password",
-            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel."
+            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel.",
+            "password_mismatched": "Passwords do not match"
         },
 
         block_status: {

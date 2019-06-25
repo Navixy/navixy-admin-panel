@@ -119,7 +119,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                         selected = me.selected;
                         hdSelectStatus = true;
 
-                        for (i = 0, len = selected.getCount() ; i < len ; ++i) {
+                        for (i = 0, len = selected.getCount(); i < len; ++i) {
                             if (!me.storeHasSelected(selected.getAt(i))) {
                                 break;
                             }
@@ -171,10 +171,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 filterConfig = Ext.isObject(value)
                     ? value
                     : {
-                    property: name,
-                    value: value,
-                    root: root
-                };
+                        property: name,
+                        value: value,
+                        root: root
+                    };
 
                 filters.push(
                     Ext.create('Ext.util.Filter',
@@ -205,16 +205,16 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     getToolsColumns: function () {
         return this.hasEdit
             ? [
-            {
-                xtype: 'toolcolumn',
-                width: 40,
-                hideable: false,
-                draggable: false,
-                menuDisabled: true,
-                action: 'edit',
-                tip: this.texts.editToolTip
-            }
-        ]
+                {
+                    xtype: 'toolcolumn',
+                    width: 40,
+                    hideable: false,
+                    draggable: false,
+                    menuDisabled: true,
+                    action: 'edit',
+                    tip: this.texts.editToolTip
+                }
+            ]
             : [];
     },
 
@@ -236,6 +236,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 text: this.texts.createBtnText
             });
         }
+        barConfig.items.push('->')
 
         if (this.hasFilter) {
             barConfig.items.push('->', {
@@ -317,7 +318,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 if (resultsCnt) {
                     this.expand(false);
                 }
-            }, this, {single: true});
+            }, this, { single: true });
         }
     },
 
