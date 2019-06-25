@@ -108,52 +108,60 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 })
             }, hintCmp];
         } else {
-            var pendingAmount = dealerData.tariff.min_license_pay ? dealerData.tariff.min_license_pay : 100,
-                balanceText = Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2)));
+            var balance = dealerData.license_balance
+            var pendingAmount;
 
-                items = [{
-                    xtype: 'component',
-                    padding: '10 0',
-                    html: localePart.get('monthly_fee_hint')
-                }, {
-                    xtype: 'component',
-                    padding: '10 0',
-                    html: balanceText
-                },
-                    {
-                        xtype: 'container',
-                        layout: {
-                            type: 'hbox'
-                        },
-                        items: [
-                            {
-                                xtype: 'numberfield',
-                                name: 'qty',
-                                minValue: this.minPaymentSum,
-                                step: 100,
-                                decimalPrecision: 0,
-                                value: pendingAmount,
-                                cls: 'x-field-light',
-                                allowDecimals: false,
-                                maxWidth: 150,
-                                fixPrecision: function (value) {
-                                    return Math.ceil(value);
-                                },
-                                skipFormValidation: true,
-                                margin: '0 5 0 0',
-                                plugins: this.resolveFieldPlugin(currencyTpl)
+            if (balance < 0) {
+                pendingAmount = Math.ceil(-1 * balance)
+            } else {
+                pendingAmount = dealerData.tariff.min_license_pay ? dealerData.tariff.min_license_pay : 100
+            }
+
+            var balanceText = Ext.String.format(localePart.get('current_balance'), Ext.String.format(currencyTpl, dealerData.license_balance.toFixed(2)));
+
+            items = [{
+                xtype: 'component',
+                padding: '10 0',
+                html: localePart.get('monthly_fee_hint')
+            }, {
+                xtype: 'component',
+                padding: '10 0',
+                html: balanceText
+            },
+                {
+                    xtype: 'container',
+                    layout: {
+                        type: 'hbox'
+                    },
+                    items: [
+                        {
+                            xtype: 'numberfield',
+                            name: 'qty',
+                            minValue: this.minPaymentSum,
+                            step: 100,
+                            decimalPrecision: 0,
+                            value: pendingAmount,
+                            cls: 'x-field-light',
+                            allowDecimals: false,
+                            maxWidth: 150,
+                            fixPrecision: function (value) {
+                                return Math.ceil(value);
                             },
-                            {
-                                xtype: 'button',
-                                maxWidth: 120,
-                                padding: 3,
-                                text: localePart.get('monthly_fee_btn_text'),
-                                handler: this.redirectToPayForm,
-                                scope: this
-                            }
-                        ]
+                            skipFormValidation: true,
+                            margin: '0 5 0 0',
+                            plugins: this.resolveFieldPlugin(currencyTpl)
+                        },
+                        {
+                            xtype: 'button',
+                            maxWidth: 120,
+                            padding: 3,
+                            text: localePart.get('monthly_fee_btn_text'),
+                            handler: this.redirectToPayForm,
+                            scope: this
+                        }
+                    ]
 
-                    }, hintCmp];
+                }, hintCmp];
         }
 
         return items;
@@ -175,9 +183,9 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
         if (qtyField.isValid()) {
             window.open(this.constructAvangateLink('monthlyFee', {
-                        qty: qtyField.getValue(),
-                        dealer_id: Ext.getStore('Dealer').getAt(0).getId()
-                    }
+                    qty: qtyField.getValue(),
+                    dealer_id: Ext.getStore('Dealer').getAt(0).getId()
+                }
                 ),
                 '_blank')
         }
