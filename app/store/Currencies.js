@@ -653,6 +653,16 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "XPF",
                 name: _l.get('currency.xpf'),
                 priority: 5
+            },
+            {
+                type: "MMK",
+                name: _l.get('currency.mmk'),
+                priority: 5
+            },
+            {
+                type: "VUV",
+                name: _l.get('currency.vuv'),
+                priority: 5
             }
         ];
 
