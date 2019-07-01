@@ -387,7 +387,11 @@ Ext.define("Locale.locale-en", {
         "kes": "Kenyan shilling",
         "xpf": "Pacific franc",
         "vuv": "Vanuatu vatu",
-        "mmk": "Burmese kyat"
+        "mmk": "Burmese kyat",
+        "SSP": "South Sudanese pound",
+        "VES": "Venezuelan bolívar",
+        "STN": "São Tomé and Príncipe dobra",
+        "MRU": "Mauritanian ouguiya"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1683,7 +1687,11 @@ Ext.define("Locale.locale-en", {
         "KES": "{0} KSh",
         "XPF": "{0} CFP",
         "VUV": "{0} VT",
-        "MMK": "K {0}"
+        "MMK": "K {0}",
+        "SSP": "{0} SS£",
+        "VES": "{0} Bs.",
+        "STN": "{0} Db",
+        "MRU": "{0} UM"
     },
     "features": {
         "api": "API",
