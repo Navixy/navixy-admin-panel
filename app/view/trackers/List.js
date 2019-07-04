@@ -12,6 +12,17 @@ Ext.define('NavixyPanel.view.trackers.List', {
     hasSelection: false,
     showStatus: true,
     stateId: 'TrackersList',
+
+    displayClones: {
+        modes: ['all', 'clones', 'trackers'],
+        current: 'all'
+    },
+
+    initComponent: function () {
+        this.callParent(arguments);
+        window.TEST = this
+    },
+
     getTexts: function () {
         return {
             emptyData: _l.get('trackers.list.empty_text'),
@@ -124,12 +135,42 @@ Ext.define('NavixyPanel.view.trackers.List', {
                     }
                 });
             }
-
-
-
         }
 
         return !this.noTBar && barConfig;
+    },
+
+    getRightTopBarItems: function () {
+        var me = this;
+
+        return [{
+            xtype: 'button',
+            role: 'clones_filter',
+            text: this.getDisplayClonesModeTitle(),
+            margin: '0 5 0 0',
+            menu: this.displayClones.modes.map(function (modeId) {
+                return {
+                    text: _l.get('trackers.clones_filter.' + modeId),
+                    handler: function () {
+                        me.displayClones.current = modeId;
+                        me.store.filterBy(function (tracker) {
+                            if (modeId === 'all') { return true }
+                            var isClone = tracker.get('clone');
+                            if (modeId === 'trackers') {
+                                return !isClone
+                            }
+                            if (modeId === 'clones') {
+                                return isClone
+                            }
+                        });
+                    }
+                }
+            })
+        }];
+    },
+
+    getDisplayClonesModeTitle: function () {
+        return _l.get("trackers.clones_filter." + this.displayClones.current)
     },
 
     getColumnsConfig: function () {

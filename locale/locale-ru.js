@@ -582,6 +582,11 @@ Ext.define('Locale.locale-ru', {
     },
     "trackers": {
         "menu_text": "Трекеры",
+        "clones_filter": {
+          "all": "Все",
+          "clones": "Клоны",
+          "trackers": "Трекеры"
+        },
         "fields": {
             "tracker_id": "ID",
             "label": "Название",
