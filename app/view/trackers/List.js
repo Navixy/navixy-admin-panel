@@ -125,7 +125,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
             if (canEdit) {
                 barConfig.items.unshift({
                     xtype: 'button',
-                    iconCls: 'edit-button',
+                    iconCls: 'owner-button',
                     disabled: true,
                     margin: '0 10 0 0',
                     role: this.texts.ownerBtnRole,
