@@ -594,6 +594,11 @@ Ext.define('Locale.locale-en', {
     },
     "trackers": {
         "menu_text": "Trackers",
+        "clones_filter": {
+            "all": "All",
+            "clones": "Clones",
+            "trackers": "Trackers"
+        },
         "fields": {
             "tracker_id": "ID",
             "label": "Title",
