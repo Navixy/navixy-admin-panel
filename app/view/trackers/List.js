@@ -20,7 +20,6 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     initComponent: function () {
         this.callParent(arguments);
-        window.TEST = this
     },
 
     getTexts: function () {
@@ -153,16 +152,9 @@ Ext.define('NavixyPanel.view.trackers.List', {
                     text: _l.get('trackers.clones_filter.' + modeId),
                     handler: function () {
                         me.displayClones.current = modeId;
-                        me.store.filterBy(function (tracker) {
-                            if (modeId === 'all') { return true }
-                            var isClone = tracker.get('clone');
-                            if (modeId === 'trackers') {
-                                return !isClone
-                            }
-                            if (modeId === 'clones') {
-                                return isClone
-                            }
-                        });
+                        Ext.state.Manager.set('TrackersListDisplayClones', modeId);
+                        me.fireEvent('clonefilterchange', modeId);
+                        me.updateDisplayClonesButtonTitle();
                     }
                 }
             })
@@ -171,6 +163,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     getDisplayClonesModeTitle: function () {
         return _l.get("trackers.clones_filter." + this.displayClones.current)
+    },
+
+    updateDisplayClonesButtonTitle: function () {
+      this.down('button[role=clones_filter]').setText(this.getDisplayClonesModeTitle())
     },
 
     getColumnsConfig: function () {

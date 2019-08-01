@@ -62,7 +62,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 actionclick: this.handleListAction,
                 editclick: this.handleTrackerEditAction,
                 clonetrackers: this.handleGroupClone,
-                ownertrackers: this.handleGroupOwner
+                ownertrackers: this.handleGroupOwner,
+                clonefilterchange: this.onClonesFilterChange
             },
             'trackersgroupclone' : {
                 formsubmit: this.onGroupCloneSubmit,
@@ -636,5 +637,14 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.getTrackerGroupOwner().afterSave();
         this.getTrackersList().store.load();
         this.getTrackersList().afterOwner(assigned, successCount);
-    }
+    },
+
+    onClonesFilterChange: function (modeId) {
+        Ext.state.Manager.set('TrackersCloneFilter', modeId)
+        this.refreshTrackersStore()
+    },
+
+    refreshTrackersStore: function () {
+        this.getTrackersList().store.loadPage(1);
+    },
 });
