@@ -665,6 +665,7 @@ Ext.define('Locale.locale-en', {
             "create_btn_text": "Create new tracker",
             "owner_btn": "Change owner",
             "clone_btn": "Clone",
+            "delete_clone_btn": "Delete",
             "edit_btn": "Edit selected",
             "empty_text": "No trackers found",
             "after_clone_success": "Cloned: {0}",

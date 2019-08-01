@@ -653,6 +653,7 @@ Ext.define('Locale.locale-ru', {
             "create_btn_text": "Новый трекер",
             "owner_btn": "Изменить владельца",
             "clone_btn": "Клонировать",
+            "delete_clone_btn": "Удалить",
             "empty_text": "Трекеров не найдено",
             "after_clone_success": "Клонированно: {0}",
             "after_clone_failure": "Клонировано: {0}, {1} клонировать не удалось",
