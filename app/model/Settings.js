@@ -256,10 +256,7 @@ Ext.define('NavixyPanel.model.Settings', {
         route_provider: 'route_provider',
         translit: 'translit'
     },
-    constructor: function (data) {
-        Ext.getStore('Dealer').setGoogleClientId(data.google_client_id);
-        this.callParent(arguments);
-    },
+
     defaultUserConverter: function (field, value) {
         return value !== '' ? value : this.get('default_user_settings')[this.defaultUserSettingsMap[field.name]] || 0;
     },

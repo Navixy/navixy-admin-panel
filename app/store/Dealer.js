@@ -43,12 +43,8 @@ Ext.define('NavixyPanel.store.Dealer', {
         }
     ],
 
-    setGoogleClientId: function (google_client_id) {
-        this.google_client_id = google_client_id;
-    },
-
     isPremiumGis: function () {
-        return this.hasPremiumGis() || !!this.google_client_id;
+        return this.hasPremiumGis()
     },
 
     getGisPackage: function () {
