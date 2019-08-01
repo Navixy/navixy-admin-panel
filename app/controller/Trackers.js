@@ -62,6 +62,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 actionclick: this.handleListAction,
                 editclick: this.handleTrackerEditAction,
                 clonetrackers: this.handleGroupClone,
+                deleteclonetrackers: this.handleDeleteClones,
                 ownertrackers: this.handleGroupOwner,
                 clonefilterchange: this.onClonesFilterChange
             },
@@ -186,6 +187,20 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.fireContent({
             xtype: 'trackersgroupclone',
             record: records || false
+        });
+    },
+
+    handleDeleteClones: function (records) {
+        var me = this
+        Ext.MessageBox.show({
+            msg: _l.get('trackers.confirm_delete_clones'),
+            buttons: Ext.MessageBox.YESNO,
+            closable: false,
+            fn: function(res) {
+                if (res === 'yes') {
+                    me.trackerRemoveClones(records);
+                }
+            }
         });
     },
 
@@ -432,6 +447,65 @@ Ext.define('NavixyPanel.controller.Trackers', {
         Ext.MessageBox.alert(_l.get('error'), errDescription);
     },
 
+    trackerRemoveClones: function (records) {
+        Ext.API.removeTrackerClones({
+            params: {
+                trackers: JSON.stringify(records.map(function (rec) { return rec.get('id') }))
+            },
+            callback: function (response) {
+                this.afterTrackerRemoveClones(response, records);
+            },
+            failure: function (response) {
+                this.afterTrackerRemoveClonesFailure(response, record);
+            },
+            scope: this
+        });
+    },
+
+    /**
+     {
+       "success": true,
+       "deleted_count": 0,
+       "not_deleted_count": 1,
+       "not_deleted_trackers": [
+          {
+             "id": 57,
+             "error": "Already deleted"
+          }
+       ]
+     }
+
+    */
+
+    afterTrackerRemoveClones: function (response, records) {
+        var deleted = response.deleted_count,
+            notDeleted = response.not_deleted_count,
+            message = [];
+        this.refreshTrackersStore();
+
+        if (deleted > 0) {
+            message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'), deleted))
+        }
+        if (notDeleted > 0 ) {
+            message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'), notDeleted))
+        }
+        Ext.MessageBox.show({
+            msg: message.join('<br />'),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+    },
+
+    afterTrackerRemoveClonesFailure: function (response, records) {
+        var undeleted =
+        Ext.MessageBox.show({
+            msg: Ext.String.format(_l.get('trackers.clones_delete_success_msg'), records.length),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+        this.refreshTrackersStore();
+    },
+
     handleTrackerTariffSubmit: function (cmp, formValues, record) {
 
         record.set({tariff_id: formValues.tariff_id});
@@ -645,6 +719,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     refreshTrackersStore: function () {
-        this.getTrackersList().store.loadPage(1);
+        this.getTrackersList().store.load();
     },
 });
