@@ -62,7 +62,9 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 actionclick: this.handleListAction,
                 editclick: this.handleTrackerEditAction,
                 clonetrackers: this.handleGroupClone,
-                ownertrackers: this.handleGroupOwner
+                deleteclonetrackers: this.handleDeleteClones,
+                ownertrackers: this.handleGroupOwner,
+                clonefilterchange: this.onClonesFilterChange
             },
             'trackersgroupclone' : {
                 formsubmit: this.onGroupCloneSubmit,
@@ -185,6 +187,23 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.fireContent({
             xtype: 'trackersgroupclone',
             record: records || false
+        });
+    },
+
+    handleDeleteClones: function (records) {
+        var me = this
+        Ext.MessageBox.show({
+            msg: Ext.String.format(
+                _l.get('trackers.confirm_delete_clones'),
+                Ext.util.Format.units(records.length, 'clones', true)
+            ),
+            buttons: Ext.MessageBox.YESNO,
+            closable: false,
+            fn: function(res) {
+                if (res === 'yes') {
+                    me.trackerRemoveClones(records);
+                }
+            }
         });
     },
 
@@ -431,6 +450,108 @@ Ext.define('NavixyPanel.controller.Trackers', {
         Ext.MessageBox.alert(_l.get('error'), errDescription);
     },
 
+    trackerRemoveClones: function (records) {
+        var lastTimeout = setTimeout(this.showProgressBar.bind(this), 4000);
+
+        var resetTimeout = function () {
+            clearTimeout(lastTimeout);
+            this.hideProgressBar();
+        }.bind(this);
+
+        Ext.API.removeTrackerClones({
+            params: {
+                trackers: JSON.stringify(records.map(function (rec) { return rec.get('id') }))
+            },
+            callback: function (response) {
+                resetTimeout();
+                this.afterTrackerRemoveClones(response, records);
+            },
+            failure: function (response) {
+                resetTimeout();
+                this.afterTrackerRemoveClonesFailure(response, record);
+            },
+            scope: this
+        });
+    },
+
+    showProgressBar: function () {
+        this.progressMsgBox = Ext.Msg.show({
+            msg : Ext.util.Format.htmlDecode(
+                '<div class="progress-bar stripes animated slower">' +
+                '    <span class="progress-bar-inner"></span>' +
+                '</div>'),
+            closable: false
+        });
+    },
+
+    hideProgressBar: function () {
+        if (this.progressMsgBox) {
+            this.progressMsgBox.close()
+            this.progressMsgBox = null
+        }
+    },
+
+    /**
+     {
+       "success": true,
+       "deleted_count": 0,
+       "not_deleted_count": 1,
+       "not_deleted_trackers": [
+          {
+             "id": 57,
+             "error": "Already deleted"
+          }
+       ]
+     }
+    */
+
+    afterTrackerRemoveClones: function (response, records) {
+        var deleted = response.deleted_count,
+            notDeleted = response.not_deleted_count,
+            message = [];
+        this.getTrackersList().clearSelection();
+        this.refreshTrackersStore();
+
+        if (deleted === 0 && notDeleted === 1 && response.not_deleted_trackers.length > 0) {
+            // Если маячок 1 и он не был удален, показываем сообщение об ошибке
+            var details = response.not_deleted_trackers[0].error
+            Ext.MessageBox.show({
+                msg: Ext.String.format(_l.get('trackers.clones_delete_failure_details_msg'), details),
+                closable: false,
+                buttons: Ext.MessageBox.OK
+            });
+        } else {
+            // А если была попытка удалить несколько маячков - то тока общую стату удалено/не удалено.
+            if (deleted > 0) {
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'),
+                    Ext.util.Format.units(deleted, 'deleted', false),
+                    Ext.util.Format.units(deleted, 'clones', true)
+                ))
+            }
+            if (notDeleted > 0 ) {
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'),
+                    Ext.util.Format.units(notDeleted, 'deleted', false),
+                    Ext.util.Format.units(notDeleted, 'clones', true)
+                ))
+            }
+            Ext.MessageBox.show({
+                msg: message.join('<br />'),
+                closable: false,
+                buttons: Ext.MessageBox.OK
+            });
+        }
+    },
+
+    afterTrackerRemoveClonesFailure: function (response, records) {
+        Ext.MessageBox.show({
+            msg: Ext.String.format(_l.get('trackers.clones_delete_success_msg'), records.length),
+            closable: false,
+            buttons: Ext.MessageBox.OK
+        });
+        this.getTrackersList().clearSelection();
+        this.refreshTrackersStore();
+    },
+
     handleTrackerTariffSubmit: function (cmp, formValues, record) {
 
         record.set({tariff_id: formValues.tariff_id});
@@ -636,5 +757,14 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.getTrackerGroupOwner().afterSave();
         this.getTrackersList().store.load();
         this.getTrackersList().afterOwner(assigned, successCount);
-    }
+    },
+
+    onClonesFilterChange: function (modeId) {
+        Ext.state.Manager.set('TrackersCloneFilter', modeId)
+        this.refreshTrackersStore()
+    },
+
+    refreshTrackersStore: function () {
+        this.getTrackersList().store.load();
+    },
 });

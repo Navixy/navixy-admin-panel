@@ -12,11 +12,22 @@ Ext.define('NavixyPanel.view.trackers.List', {
     hasSelection: false,
     showStatus: true,
     stateId: 'TrackersList',
+
+    displayClones: {
+        modes: ['all', 'clones', 'trackers']
+    },
+
+    initComponent: function () {
+        this.callParent(arguments);
+    },
+
     getTexts: function () {
         return {
             emptyData: _l.get('trackers.list.empty_text'),
             cloneBtnRole: 'clone-button',
             cloneBtnText: _l.get('trackers.list.clone_btn'),
+            deleteCloneBtnRole: 'delete-clone-button',
+            deleteCloneBtnText: _l.get('trackers.list.delete_clone_btn'),
             ownerBtnRole: 'owner-button',
             ownerBtnText: _l.get('trackers.list.owner_btn')
         };
@@ -28,28 +39,44 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     afterCellSelect: function (grid, records, eOpts) {
         var cloneCmp = this.getCloneBnt(),
+            deleteCloneCmp = this.getDeleteCloneBtn(),
             ownerCmp = this.getOwnerBnt(),
             btnTip = this.getEditBntTip(),
             text = _l.get('trackers.list.select_req'),
+            hasClonesInSelection = false,
+            allClonesInSelection = true,
             canClone = true;
 
         Ext.iterate(records, function (record) {
             if (record.get('clone')) {
-                canClone = false;
-                return false;
+                hasClonesInSelection = true;
+            } else {
+                allClonesInSelection = false;
             }
         }, this);
 
-        if (records.length && !canClone) {
+        if (records.length === 0) {
+            deleteCloneCmp.hide();
             ownerCmp.disable();
-            cloneCmp.disable();
-            btnTip.update(_l.get('trackers.list.select_clone_req'));
-        }
-
-        if (records.length && canClone) {
-            cloneCmp.enable();
-            ownerCmp.enable();
+            cloneCmp.hide();
             btnTip.update('');
+        } else {
+            if (hasClonesInSelection && !allClonesInSelection) {
+                deleteCloneCmp.hide();
+                ownerCmp.disable();
+                cloneCmp.hide();
+                btnTip.update(_l.get('trackers.list.select_clone_req'));
+            } else if (allClonesInSelection) {
+                deleteCloneCmp.show();
+                ownerCmp.disable();
+                cloneCmp.hide();
+                btnTip.update('');
+            } else {
+                deleteCloneCmp.hide();
+                ownerCmp.enable();
+                cloneCmp.show();
+                btnTip.update('');
+            }
         }
     },
 
@@ -58,6 +85,13 @@ Ext.define('NavixyPanel.view.trackers.List', {
             selected = sm.getSelection();
 
         this.fireEvent('clonetrackers', selected);
+    },
+
+    fireDeleteCloneAction: function () {
+        var sm = this.getSelectionModel(),
+            selected = sm.getSelection();
+
+        this.fireEvent('deleteclonetrackers', selected);
     },
 
     fireOwnerAction: function () {
@@ -71,6 +105,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
         return this.down('[role="' + this.texts.cloneBtnRole + '"]');
     },
 
+    getDeleteCloneBtn: function () {
+        return this.down('[role="' + this.texts.deleteCloneBtnRole + '"]');
+    },
+
     getOwnerBnt: function () {
         return this.down('[role="' + this.texts.ownerBtnRole + '"]');
     },
@@ -81,6 +119,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
     getEditBntTip: function () {
         return this.down('[role="edit-btn-tip"]');
+    },
+
+    clearSelection: function () {
+        this.getSelectionModel().deselectAll();
     },
 
     getTopBar: function () {
@@ -102,19 +144,29 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 barConfig.items.unshift({
                     xtype: 'button',
                     iconCls: 'edit-button',
-                    disabled: true,
+                    hidden: true,
                     role: this.texts.cloneBtnRole,
                     text: this.texts.cloneBtnText,
                     handler: function () {
                         me.fireCloneAction();
                     }
                 });
+                barConfig.items.unshift({
+                    xtype: 'button',
+                    iconCls: 'remove-button',
+                    hidden: true,
+                    role: this.texts.deleteCloneBtnRole,
+                    text: this.texts.deleteCloneBtnText,
+                    handler: function () {
+                        me.fireDeleteCloneAction();
+                    }
+                })
             }
 
             if (canEdit) {
                 barConfig.items.unshift({
                     xtype: 'button',
-                    iconCls: 'edit-button',
+                    iconCls: 'owner-button',
                     disabled: true,
                     margin: '0 10 0 0',
                     role: this.texts.ownerBtnRole,
@@ -124,12 +176,38 @@ Ext.define('NavixyPanel.view.trackers.List', {
                     }
                 });
             }
-
-
-
         }
 
         return !this.noTBar && barConfig;
+    },
+
+    getRightTopBarItems: function () {
+        var me = this;
+
+        return [{
+            xtype: 'button',
+            role: 'clones_filter',
+            text: this.getDisplayClonesModeTitle(),
+            margin: '0 5 0 0',
+            menu: this.displayClones.modes.map(function (modeId) {
+                return {
+                    text: _l.get('trackers.clones_filter.' + modeId),
+                    handler: function () {
+                        Ext.state.Manager.set('TrackersListDisplayClones', modeId);
+                        me.fireEvent('clonefilterchange', modeId);
+                        me.updateDisplayClonesButtonTitle();
+                    }
+                }
+            })
+        }];
+    },
+
+    getDisplayClonesModeTitle: function () {
+        return _l.get("trackers.clones_filter." + Ext.state.Manager.get('TrackersListDisplayClones'))
+    },
+
+    updateDisplayClonesButtonTitle: function () {
+      this.down('button[role=clones_filter]').setText(this.getDisplayClonesModeTitle())
     },
 
     getColumnsConfig: function () {

@@ -171,10 +171,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 filterConfig = Ext.isObject(value)
                     ? value
                     : {
-                        property: name,
-                        value: value,
-                        root: root
-                    };
+                    property: name,
+                    value: value,
+                    root: root
+                };
 
                 filters.push(
                     Ext.create('Ext.util.Filter',
@@ -236,10 +236,14 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 text: this.texts.createBtnText
             });
         }
-        barConfig.items.push('->')
+        barConfig.items.push('->');
+
+        this.getRightTopBarItems().forEach(function (item) {
+            barConfig.items.push(item);
+        });
 
         if (this.hasFilter) {
-            barConfig.items.push('->', {
+            barConfig.items.push({
                 xtype: 'navixylistfilter',
                 margin: '0 -2 0 0',
                 width: 200,
@@ -252,6 +256,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         }
 
         return !this.noTBar && barConfig;
+    },
+
+    getRightTopBarItems: function () {
+      return []
     },
 
     getBottomBar: function () {
