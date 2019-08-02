@@ -193,7 +193,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
     handleDeleteClones: function (records) {
         var me = this
         Ext.MessageBox.show({
-            msg: _l.get('trackers.confirm_delete_clones'),
+            msg: Ext.String.format(
+                _l.get('trackers.confirm_delete_clones'),
+                Ext.util.Format.units(records.length, 'clones', true)
+            ),
             buttons: Ext.MessageBox.YESNO,
             closable: false,
             fn: function(res) {
@@ -519,10 +522,16 @@ Ext.define('NavixyPanel.controller.Trackers', {
         } else {
             // А если была попытка удалить несколько маячков - то тока общую стату удалено/не удалено.
             if (deleted > 0) {
-                message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'), deleted))
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'),
+                    Ext.util.Format.units(deleted, 'deleted', false),
+                    Ext.util.Format.units(deleted, 'clones', true)
+                ))
             }
             if (notDeleted > 0 ) {
-                message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'), notDeleted))
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'),
+                    Ext.util.Format.units(notDeleted, 'deleted', false),
+                    Ext.util.Format.units(notDeleted, 'clones', true)
+                ))
             }
             Ext.MessageBox.show({
                 msg: message.join('<br />'),

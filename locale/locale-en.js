@@ -207,7 +207,9 @@ Ext.define('Locale.locale-en', {
         "trackers": "trackers|tracker|trackers",
         "devices": "devices|device|devices",
         "entries": "matches|match|matches",
-        "assets": "assets|asset|assets"
+        "assets": "assets|asset|assets",
+        "clones": "clones|clone|clones|clones|clones|clones",
+        "deleted": "deleted|deleted|deleted|deleted|deleted|deleted"
     },
     "units_short": {
         "kilometer": "km",
@@ -594,6 +596,10 @@ Ext.define('Locale.locale-en', {
     },
     "trackers": {
         "menu_text": "Trackers",
+        "confirm_delete_clones": "Delete {0}?",
+        "clones_delete_success_msg": "{1} successfully deleted.",
+        "clones_delete_failure_msg": "{1} not deleted due to an error.",
+        "clones_delete_failure_details_msg": "The clone was not deleted. An error occured while deleting. {0}.",
         "clones_filter": {
             "all": "All",
             "clones": "Clones",
@@ -673,7 +679,7 @@ Ext.define('Locale.locale-en', {
             "after_owner_success": "Changed: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
-            "select_clone_req": "Clones selected, group operations can not be performed"
+            "select_clone_req": "There are clones and trackers selected. Grouping operations not available."
         },
         "card": {
             "links": {
