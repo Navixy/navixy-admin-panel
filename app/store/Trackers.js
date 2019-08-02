@@ -53,6 +53,10 @@ Ext.define('NavixyPanel.store.Trackers', {
                         params.clones_filter = 'exclude_clones'
                     }
 
+                    if (cloneFilterMode === 'all') {
+                        delete params.clones_filter
+                    }
+
                     return params;
                 },
 

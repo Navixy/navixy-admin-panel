@@ -448,18 +448,44 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     trackerRemoveClones: function (records) {
+        var lastTimeout = setTimeout(this.showProgressBar.bind(this), 4000);
+
+        var resetTimeout = function () {
+            clearTimeout(lastTimeout);
+            this.hideProgressBar();
+        }.bind(this);
+
         Ext.API.removeTrackerClones({
             params: {
                 trackers: JSON.stringify(records.map(function (rec) { return rec.get('id') }))
             },
             callback: function (response) {
+                resetTimeout();
                 this.afterTrackerRemoveClones(response, records);
             },
             failure: function (response) {
+                resetTimeout();
                 this.afterTrackerRemoveClonesFailure(response, record);
             },
             scope: this
         });
+    },
+
+    showProgressBar: function () {
+        this.progressMsgBox = Ext.Msg.show({
+            msg : Ext.util.Format.htmlDecode(
+                '<div class="progress-bar stripes animated slower">' +
+                '    <span class="progress-bar-inner"></span>' +
+                '</div>'),
+            closable: false
+        });
+    },
+
+    hideProgressBar: function () {
+        if (this.progressMsgBox) {
+            this.progressMsgBox.close()
+            this.progressMsgBox = null
+        }
     },
 
     /**
@@ -474,7 +500,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
           }
        ]
      }
-
     */
 
     afterTrackerRemoveClones: function (response, records) {
@@ -483,17 +508,28 @@ Ext.define('NavixyPanel.controller.Trackers', {
             message = [];
         this.refreshTrackersStore();
 
-        if (deleted > 0) {
-            message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'), deleted))
+        if (deleted === 0 && notDeleted === 1 && response.not_deleted_trackers.length > 0) {
+            // Если маячок 1 и он не был удален, показываем сообщение об ошибке
+            var details = response.not_deleted_trackers[0].error
+            Ext.MessageBox.show({
+                msg: Ext.String.format(_l.get('trackers.clones_delete_failure_details_msg'), details),
+                closable: false,
+                buttons: Ext.MessageBox.OK
+            });
+        } else {
+            // А если была попытка удалить несколько маячков - то тока общую стату удалено/не удалено.
+            if (deleted > 0) {
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_success_msg'), deleted))
+            }
+            if (notDeleted > 0 ) {
+                message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'), notDeleted))
+            }
+            Ext.MessageBox.show({
+                msg: message.join('<br />'),
+                closable: false,
+                buttons: Ext.MessageBox.OK
+            });
         }
-        if (notDeleted > 0 ) {
-            message.push(Ext.String.format(_l.get('trackers.clones_delete_failure_msg'), notDeleted))
-        }
-        Ext.MessageBox.show({
-            msg: message.join('<br />'),
-            closable: false,
-            buttons: Ext.MessageBox.OK
-        });
     },
 
     afterTrackerRemoveClonesFailure: function (response, records) {

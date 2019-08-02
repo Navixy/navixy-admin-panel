@@ -14,8 +14,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
     stateId: 'TrackersList',
 
     displayClones: {
-        modes: ['all', 'clones', 'trackers'],
-        current: 'all'
+        modes: ['all', 'clones', 'trackers']
     },
 
     initComponent: function () {
@@ -190,7 +189,6 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 return {
                     text: _l.get('trackers.clones_filter.' + modeId),
                     handler: function () {
-                        me.displayClones.current = modeId;
                         Ext.state.Manager.set('TrackersListDisplayClones', modeId);
                         me.fireEvent('clonefilterchange', modeId);
                         me.updateDisplayClonesButtonTitle();
@@ -201,7 +199,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
     },
 
     getDisplayClonesModeTitle: function () {
-        return _l.get("trackers.clones_filter." + this.displayClones.current)
+        return _l.get("trackers.clones_filter." + Ext.state.Manager.get('TrackersListDisplayClones'))
     },
 
     updateDisplayClonesButtonTitle: function () {

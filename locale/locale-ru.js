@@ -585,6 +585,7 @@ Ext.define('Locale.locale-ru', {
         "confirm_delete_clones": "Удалить клоны/клон?",
         "clones_delete_success_msg": "Успешно удалено {0} клонов/клона.",
         "clones_delete_failure_msg": "Не было удалено/удален {0} клонов/клона/клон из-за возникновения ошибок.",
+        "clones_delete_failure_details_msg": "Клон не был удален. При удалении возникла ошибка: {0}.",
         "clones_filter": {
           "all": "Все",
           "clones": "Клоны",
