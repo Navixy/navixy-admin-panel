@@ -509,6 +509,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var deleted = response.deleted_count,
             notDeleted = response.not_deleted_count,
             message = [];
+        this.getTrackersList().clearSelection();
         this.refreshTrackersStore();
 
         if (deleted === 0 && notDeleted === 1 && response.not_deleted_trackers.length > 0) {
@@ -542,12 +543,12 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     afterTrackerRemoveClonesFailure: function (response, records) {
-        var undeleted =
         Ext.MessageBox.show({
             msg: Ext.String.format(_l.get('trackers.clones_delete_success_msg'), records.length),
             closable: false,
             buttons: Ext.MessageBox.OK
         });
+        this.getTrackersList().clearSelection();
         this.refreshTrackersStore();
     },
 

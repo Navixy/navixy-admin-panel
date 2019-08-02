@@ -121,6 +121,10 @@ Ext.define('NavixyPanel.view.trackers.List', {
         return this.down('[role="edit-btn-tip"]');
     },
 
+    clearSelection: function () {
+        this.getSelectionModel().deselectAll();
+    },
+
     getTopBar: function () {
 
         var me = this,
