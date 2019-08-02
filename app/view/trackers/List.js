@@ -203,7 +203,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
     },
 
     getDisplayClonesModeTitle: function () {
-        return _l.get("trackers.clones_filter." + Ext.state.Manager.get('TrackersListDisplayClones'))
+        return _l.get("trackers.clones_filter." + Ext.state.Manager.get('TrackersListDisplayClones') || 'all')
     },
 
     updateDisplayClonesButtonTitle: function () {
