@@ -252,16 +252,12 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.tin'),
                     name: 'tin',
                     maxLength: 255,
-                    maskRe: /[0-9]/,
-                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.iec'),
                     name: 'iec',
                     maxLength: 255,
-                    maskRe: /[0-9]/,
-                    regex: /[0-9]/,
                     allowBlank: true
                 },
                 {
@@ -355,7 +351,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
             legal_container.items.each(function (item) {
                 if (Ext.isString(item.name)) {
-                    if (Ext.Array.indexOf(['state_reg_num', 'okpo_code'], item.name) < 0) {
+                    if (Ext.Array.indexOf(['state_reg_num', 'okpo_code', 'tin', 'iec'], item.name) < 0) {
                         item.allowBlank = soleStatus;
                         item.labelSeparator = labelSeparator;
                         item.setFieldLabel(item.getFieldLabel());
@@ -369,14 +365,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                         this.updateMaxLength(item, isSoleTrader ? 10 : 8);
                         this.updateMinLength(item, isSoleTrader ? 10 : 8);
                     }
-                    if (item.name === 'tin') {
-                        this.updateMaxLength(item, isSoleTrader ? 12 : 10);
-                        this.updateMinLength(item, isSoleTrader ? 12 : 10);
-                    }
-                    if (item.name === 'iec') {
-                        this.updateMaxLength(item, 9);
-                        this.updateMinLength(item, 9);
-                    }
                 }
             }, this);
         }
@@ -389,7 +377,6 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
 
         if (!soleStatus) {
             var iecField = this.down('[name="iec"]'),
-                tinField = this.down('[name="tin"]'),
                 nameField = this.down('[name="legal_name"]');
 
             nameField[soleState === "legal_entity" ? "show" : "hide"]();
@@ -443,7 +430,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
             maskRe: /[0-9]/,
             regex: /[0-9]/,
             name: 'okpo_code',
-            allowBlank: true,
+            allowBlank: true
         } : null;
     },
 
