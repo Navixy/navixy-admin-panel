@@ -761,10 +761,14 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     onClonesFilterChange: function (modeId) {
         Ext.state.Manager.set('TrackersCloneFilter', modeId)
-        this.refreshTrackersStore()
+        this.refreshTrackersStore(true)
     },
 
-    refreshTrackersStore: function () {
-        this.getTrackersList().store.load();
+    refreshTrackersStore: function (resetPaging) {
+        if (resetPaging) {
+            this.getTrackersList().store.loadPage(1);
+        } else {
+            this.getTrackersList().store.load();
+        }
     },
 });
