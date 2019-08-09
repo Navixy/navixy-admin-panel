@@ -143,7 +143,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
             if (canClone) {
                 barConfig.items.unshift({
                     xtype: 'button',
-                    iconCls: 'edit-button',
+                    iconCls: null,
                     hidden: true,
                     role: this.texts.cloneBtnRole,
                     text: this.texts.cloneBtnText,
