@@ -765,6 +765,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     refreshTrackersStore: function () {
-        this.getTrackersList().store.load();
+        this.getTrackersList().store.loadPage(1);
     },
 });
