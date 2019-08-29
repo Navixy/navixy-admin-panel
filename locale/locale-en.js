@@ -618,14 +618,14 @@ Ext.define('Locale.locale-en', {
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
             "tariff": "Tracker plan",
-            "deleted": "Tracker deleted",
+            "deleted": "Hidden",
             "blocked": "Service suspended",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
             "options": {
                 "clone": "clone",
-                "deleted": "deleted",
+                "deleted": "Hidden",
                 "blocked": "blocked"
             },
             "statuses": {

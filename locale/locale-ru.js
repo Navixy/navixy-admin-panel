@@ -606,14 +606,14 @@ Ext.define('Locale.locale-ru', {
             "phone_exp": "Номер телефона",
             "owner": "Владелец трекера",
             "tariff": "Тариф трекера",
-            "deleted": "Отмечен удаленным",
+            "deleted": "Скрыт",
             "blocked": "Услуги приостановлены",
             "user_id": "ID владельца",
             "clone": "Клон",
             "clone_owner": "Владелец клона",
             "options": {
                 "clone": "клон",
-                "deleted": "удален",
+                "deleted": "Скрыт",
                 "blocked": "заблокирован"
             },
             "statuses": {
