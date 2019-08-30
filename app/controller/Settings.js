@@ -15,7 +15,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         'widgets.map.Map',
         'settings.components.MapWindow',
         'settings.components.Themes',
-        'settings.components.Theme'
+        'settings.components.Theme',
+        'settings.components.ThemeField'
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',

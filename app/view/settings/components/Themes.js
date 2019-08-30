@@ -38,15 +38,32 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             {
                 xtype: 'container',
                 layout: {
-                    type: 'hbox',
+                    type: 'vbox',
                     align: 'streach'
                 },
                 defaults: {
                     xtype: 'container'
                 },
                 items: [
-                    this.getWItems(),
-                    this.getEItems()
+                    {
+                        xtype: 'blockheader',
+                        html: _l.get('settings.themes.web_title'),
+                        width: "100%",
+                        padding: '30 0 10 0'
+                    },
+                    {
+                        layout: {
+                            type: 'hbox',
+                            align: 'streach'
+                        },
+                        defaults: {
+                            xtype: 'container'
+                        },
+                        items: [
+                            this.getWItems(),
+                            this.getEItems()
+                        ]
+                    }
                 ]
             }
         ]
@@ -59,46 +76,51 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                 type: 'vbox',
                 align: 'streach'
             },
-            width: 380,
+            margin: '10 0 0 0',
+            width: 300,
             items: [
                 {
-                    xtype: 'blockheader',
-                    html: _l.get('settings.themes.main_title'),
-                    width: 360,
-                    padding: '30 0 10 0'
-                },
-                {
-                    xtype: 'combobox',
-                    fieldLabel: '',
-                    editable: false,
-                    labelAlign: 'top',
-                    ui: 'light',
+                    xtype: 'settings-theme-field',
                     width: 260,
-                    margin: '5 10',
-
                     store: this.store,
-                    queryMode: 'local',
-                    displayField: 'title',
-                    valueField: 'name',
                     name: 'color_theme',
                     listeners: {
-                        change: this.onSelect,
+                        select: this.onSelect,
                         scope: this
                     }
                 },
+                //{
+                //    xtype: 'combobox',
+                //    fieldLabel: '',
+                //    editable: false,
+                //    labelAlign: 'top',
+                //    ui: 'light',
+                //    width: 260,
+                //    margin: '5 10',
+                //
+                //    store: this.store,
+                //    queryMode: 'local',
+                //    displayField: 'title',
+                //    valueField: 'name',
+                //    name: 'color_theme',
+                //    listeners: {
+                //        change: this.onSelect,
+                //        scope: this
+                //    }
+                //},
                 {
-                    xtype: 'button',
-                    iconCls: 'eye-button',
-                    text: _l.get('settings.themes.preview_btn'),
-                    ui: 'default',
-                    scale: 'medium',
-                    width: 260,
-                    margin: '5 10',
-                    role: 'preview-btn',
-
-                    handler: this.previewLogin,
-                    scope: this
-                }, {
+                //    xtype: 'button',
+                //    iconCls: 'eye-button',
+                //    text: _l.get('settings.themes.preview_btn'),
+                //    ui: 'default',
+                //    scale: 'medium',
+                //    width: 260,
+                //    margin: '5 10',
+                //    role: 'preview-btn',
+                //
+                //    handler: this.previewLogin,
+                //    scope: this
+                //}, {
                     xtype: 'component',
                     cls: 'block_hint',
                     margin: '15 10 5',
@@ -122,14 +144,8 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
             items: [
                 {
-                    xtype: 'blockheader',
-                    html: _l.get('settings.themes.preview_title'),
-                    width: '100%',
-                    padding: '30 0 10 0'
-                },
-                {
                     xtype: 'container',
-                    height: 420,
+                    //height: 420,
                     role: 'preview-container'
                 }
             ]
@@ -187,7 +203,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     },
 
     getField: function () {
-        return this.down('[name=color_theme]');
+        return this.down('settings-theme-field').down('[name=color_theme]');
     },
 
     getValue: function () {

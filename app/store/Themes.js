@@ -15,7 +15,8 @@ Ext.define('NavixyPanel.store.Themes', {
         },
         'title',
         'description',
-        'images'
+        'images',
+        'colors'
     ],
     constructor: function () {
         var lp = _l.get('settings.themes.list');
@@ -25,37 +26,43 @@ Ext.define('NavixyPanel.store.Themes', {
                 login: true,
                 title: lp.get('metromorph.title'),
                 description: lp.get('metromorph.description'),
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['1E96dC', '505A64']
             },
             {
                 name: 'corp',
                 login: true,
                 title: 'Corp',
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['1E96dC', 'FFFFFF']
             },
             {
                 name: 'flat',
                 login: true,
                 title: 'Flat',
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['1E96dC', '283C50']
             },
             {
                 name: 'vine',
                 login: true,
                 title: 'Vine',
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['75B08A', '6D637F']
             },
             {
                 name: 'dark_blue',
                 login: true,
                 title: 'Dark Blue',
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['144682', '3B424D']
             },
             {
                 name: 'warm',
                 login: true,
                 title: 'Warm',
-                images: ['1', '0', '2', '3']
+                images: ['0', '1'],
+                colors: ['DC7828', '403D3C']
             }
         ];
 

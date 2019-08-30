@@ -222,19 +222,53 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
 .form-img, .form-img-preview {
     padding: 5px;
-    border-width: 1px;
-    border-style: solid;
+    //border-width: 1px;
+    //border-style: solid;
     color: $grayLight;
     cursor: pointer;
     background: url($img_dir + '/util/transparent.png') repeat 0 0 transparent;
 
     &:hover {
-        border-color: $main-color;
+        //border-color: $main-color;
     }
 }
 
 .form-img-preview {
     background: none;
+}
+
+.form-img-preview-bg-holder {
+    background: none;
+    background: url($img_dir + '/background/ThemeSelectMac.png') no-repeat 0 0 transparent;
+    background-size: 548px auto;
+}
+
+.form-img-preview-big {
+    width: 500px;
+    height: auto;
+    padding: 0;
+
+    margin: 23px 24px 24px 24px;
+    cursor: default;
+}
+
+.form-img-preview-small {
+    width: 265px;
+    height: auto;
+    padding: 10px;
+    margin: 0 0 20px 30px;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 5px;
+
+    &:hover {
+        border-color: $main-color;
+    }
+    &.selected {
+        border-color: $main-color;
+    }
 }
 
 .shadow-disabled {
