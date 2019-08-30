@@ -23,6 +23,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "demo_tariff",
         "store_period",
         "allow_branding",
+        "features",
         {
             name: "paas_activation_date",
             type: 'date',
@@ -71,8 +72,8 @@ Ext.define('NavixyPanel.store.Dealer', {
 
         return value
             ? isUrl
-                   ? value
-                   : Ext.API.getGlobalApiUrl({action: value})
+            ? value
+            : Ext.API.getGlobalApiUrl({action: value})
             : null
     },
 
@@ -82,5 +83,12 @@ Ext.define('NavixyPanel.store.Dealer', {
 
     getFavicon: function () {
         return this.getImgUrl('favicon') || false;
+    },
+
+    getFeature: function (feature_name) {
+        var record = this.first(),
+            features = record && record.get("features");
+
+        return Ext.Array.contains(features, feature_name);
     }
 });

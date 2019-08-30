@@ -21,8 +21,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
     initComponent: function () {
         var hasOld = false,
             dealerStore = Ext.getStore('Dealer'),
-            headerLogo = dealerStore.getLogo(),
-            pageFavicon = dealerStore.getFavicon();
+            hasBranding = dealerStore.getFeature('branding_web'),
+            headerLogo = hasBranding ? dealerStore.getLogo() : false,
+            pageFavicon = hasBranding ? dealerStore.getFavicon(): false;
 
         Ext.Nav.setPageFavicon(pageFavicon);
 
