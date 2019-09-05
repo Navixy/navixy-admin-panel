@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                         fn: function (event, element) {
                             var el = Ext.get(element);
 
-                            if (el && el.hasCls('form-img-preview')) {
+                            if (el && el.hasCls('form-img-preview-small')) {
                                 this.down("[role=big-picture]").setSrc(el.getAttribute('src'));
 
                                 this.down("[role=small-picture-container]").items.each(function (el) {

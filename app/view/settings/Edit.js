@@ -433,7 +433,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
 
             {
-                xtype: 'settings-themes'
+                xtype: 'settings-themes',
+                editable: this.isBrandingWeb()
             },
 
             {

@@ -97,6 +97,10 @@ Ext.define('NavixyPanel.view.settings.components.ThemePicker', {
             value = me.value,
             el;
 
+        if (suppressEvent !== true) {
+            me.fireEvent('select', me, theme);
+        }
+
         if (!me.rendered) {
             me.value = theme;
             return;
@@ -110,9 +114,6 @@ Ext.define('NavixyPanel.view.settings.components.ThemePicker', {
             }
             el.down('a.theme-' + theme).addCls(selectedCls);
             me.value = theme;
-            if (suppressEvent !== true) {
-                me.fireEvent('select', me, theme);
-            }
         }
     },
 

@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
     padding: '40 40 0 45',
 
     record: null,
+    editable: true,
     defaultTheme: 'metromorph',
 
     initComponent: function () {
@@ -21,7 +22,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         if (customTheme) {
             this.store.add(customTheme)
         }
-        
+
         this.items = this.getItems();
 
         this.callParent(arguments);
@@ -84,43 +85,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     width: 260,
                     store: this.store,
                     name: 'color_theme',
+                    disabled: !this.editable,
                     listeners: {
                         select: this.onSelect,
                         scope: this
                     }
                 },
-                //{
-                //    xtype: 'combobox',
-                //    fieldLabel: '',
-                //    editable: false,
-                //    labelAlign: 'top',
-                //    ui: 'light',
-                //    width: 260,
-                //    margin: '5 10',
-                //
-                //    store: this.store,
-                //    queryMode: 'local',
-                //    displayField: 'title',
-                //    valueField: 'name',
-                //    name: 'color_theme',
-                //    listeners: {
-                //        change: this.onSelect,
-                //        scope: this
-                //    }
-                //},
                 {
-                //    xtype: 'button',
-                //    iconCls: 'eye-button',
-                //    text: _l.get('settings.themes.preview_btn'),
-                //    ui: 'default',
-                //    scale: 'medium',
-                //    width: 260,
-                //    margin: '5 10',
-                //    role: 'preview-btn',
-                //
-                //    handler: this.previewLogin,
-                //    scope: this
-                //}, {
                     xtype: 'component',
                     cls: 'block_hint',
                     margin: '15 10 5',
@@ -145,7 +116,6 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             items: [
                 {
                     xtype: 'container',
-                    //height: 420,
                     role: 'preview-container'
                 }
             ]

@@ -901,13 +901,14 @@ Ext.define('Locale.locale-en', {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "main_info": "You can change color UI color theme",
+            "web_title": "Web interface",
+            "main_info": "Choose a color theme for the UI of your monitoring system",
             "main_title": "Select theme",
             "preview_title": "Theme screenshots",
             "preview_btn": "Preview in monitoring",
             "list": {
                 "metromorph": {
-                    "title": "Default",
+                    "title": "Metromorph",
                     "description": "Default UI theme"
                 }
             }
