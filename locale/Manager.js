@@ -98,8 +98,8 @@ Ext.define('Locale.Manager', {
         }, {
             id: 'hy_AM',
             name: 'hy_AM',
-            text: 'Հայոց լեզու',
-            alias: ['hy', 'hy_AM', 'Հայոց լեզու'],
+            text: 'Հայերեն',
+            alias: ['hy', 'hy_AM', 'Հայերեն'],
             rtl: false
         },
         {

@@ -258,6 +258,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    removeTrackerClones: function (config) {
+        this.requestWithOptions(config, {
+            action: 'batch_delete_clones',
+            handler: 'tracker'
+        });
+    },
+
     getTrackerConnect: function (config) {
         this.requestWithOptions(config, {
             action: 'connect',
