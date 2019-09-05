@@ -22,8 +22,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
         try {
             var hasOld = false,
                 dealerStore = Ext.getStore('Dealer'),
-                headerLogo = dealerStore.getLogo(),
-                pageFavicon = dealerStore.getFavicon(),
+                hasBranding = dealerStore.getFeature('branding_web'),
+                headerLogo = hasBranding ? dealerStore.getLogo() : false,
+                pageFavicon = hasBranding ? dealerStore.getFavicon(): false,
                 infoTpl = [
                     '<div class="dealer-info__inner {[values.subpaasStat ? \'dealer-info__inner--with-stat\' : \'\']}">',
                     '<tpl if="legal_name">',
@@ -43,9 +44,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                     '</div>',
                     '</tpl>',
                     '</div>'
-                ]
+                ];
 
-            Ext.Nav.setPageFavicon(pageFavicon)
+            Ext.Nav.setPageFavicon(pageFavicon);
 
             this.items = [
                 {

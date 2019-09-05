@@ -11,22 +11,14 @@ module.exports = function (grunt) {
                     excludeClasses: [
                         'Config'
                     ],
-                    godBlessIE: [
-                        {
-                            name: 'ie-theme',
-                            root: 'theme',
-                            src: 'panel_metromorph.css',
-                            dest: 'panel_metromorph_ie.css'
-                        }
-                    ],
                     copyFiles: [
                         {
                             from: 'productionFiles/index.html',
                             to: 'index.html'
                         },
                         'VERSION',
-                        'PConfig.js',
                         'PConfig.example.js',
+                        'PConfig.example.sa.js',
                         'locale/**',
                         'images/**',
                         'redirector/**',
@@ -43,6 +35,7 @@ module.exports = function (grunt) {
                         'stickers/*',
                         //Theme files
                         'favicon.ico',
+                        'navixy.ico',
                         'theme/panel_metromorph/images/**',
                         'theme/panel_metromorph/thumbs/*',
                         'theme/panel_metromorph/icons/fonts/*',

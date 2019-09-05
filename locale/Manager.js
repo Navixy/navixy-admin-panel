@@ -39,7 +39,7 @@ Ext.define('Locale.Manager', {
             name: 'ru',
             text: 'Russian - Русский',
             alias: ['ru', 'ru_RU', 'Русский']
-        },
+        }
         //{
         //    id: 'uk_UA',
         //    name: 'uk',
@@ -57,7 +57,7 @@ Ext.define('Locale.Manager', {
     ],
 
     ru_locales: ['ru', 'ru-RU', 'ru-ru', 'hy', 'AM', 'az', 'AZ', 'be', 'BY', 'ka', 'GE', 'kk', 'KZ', 'ky', 'KG', 'mo',
-                 'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
+        'MD', 'tg', 'TJ', 'tk', 'TM', 'uk', 'UA', 'uz', 'UZ'],
 
     other_locales: ['en', 'tr'],
 
@@ -95,6 +95,12 @@ Ext.define('Locale.Manager', {
             text: 'Hrvatski',
             alias: ['hr', 'hr_HR', 'Hrvatski'],
             rtl: false
+        }, {
+            id: 'hy_AM',
+            name: 'hy_AM',
+            text: 'Հայերեն',
+            alias: ['hy', 'hy_AM', 'Հայերեն'],
+            rtl: false
         },
         {
             id: 'id_ID',
@@ -123,7 +129,15 @@ Ext.define('Locale.Manager', {
             text: 'Nederlands',
             alias: ['nl', 'nl_NL', 'Nederlands'],
             rtl: false
-        }, {
+        },
+        {
+            id: 'fa',
+            name: 'fa',
+            text: 'فارسی',
+            alias: ['fa', 'فارسی'],
+            rtl: false
+        },
+        {
             id: 'fr_FR',
             name: 'fr',
             text: 'Français',
@@ -309,7 +323,7 @@ Ext.define('Locale.Manager', {
             return defaultText;
         }
 
-        for (; k < kNum ; k++) {
+        for (; k < kNum; k++) {
             key = keys[k];
 
             if (locale) {
@@ -387,7 +401,7 @@ Ext.define('Locale.Manager', {
 
     _fromBrowser: function () {
 
-        function androidLocale() {
+        function androidLocale () {
             var androidAgent = navigator.userAgent.match(/Android \d+(?:\.\d+){1,2}; [a-z]{2}-[a-z]{2}/),
                 localeMath = androidAgent ? androidAgent.toString().match(/[a-z]{2}-[a-z]{2}/) : false;
 
@@ -399,10 +413,10 @@ Ext.define('Locale.Manager', {
 
         return browserLocale
             ? Ext.Array.indexOf(this.ru_locales, browserLocale) > -1
-                   ? "ru"
-                   : Ext.Array.indexOf(this.other_locales, browserLocale) > -1
-                  ? browserLocale
-                  : "en"
+                ? "ru"
+                : Ext.Array.indexOf(this.other_locales, browserLocale) > -1
+                    ? browserLocale
+                    : "en"
             : "en";
     },
 

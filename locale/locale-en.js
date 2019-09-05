@@ -209,7 +209,9 @@ Ext.define("Locale.locale-en", {
         "trackers": "trackers|tracker|trackers",
         "devices": "devices|device|devices",
         "entries": "matches|match|matches",
-        "assets": "assets|asset|assets"
+        "assets": "assets|asset|assets",
+        "clones": "clones|clone|clones|clones|clones|clones",
+        "deleted": "deleted|deleted|deleted|deleted|deleted|deleted"
     },
     "units_short": {
         "kilometer": "km",
@@ -383,7 +385,14 @@ Ext.define("Locale.locale-en", {
         "aoa": "Angolan  kwanza",
         "kwd": "Kuwaiti dinar",
         "bdt": "Bangladeshi taka",
-        "kes": "Kenyan shilling"
+        "kes": "Kenyan shilling",
+        "xpf": "Pacific franc",
+        "vuv": "Vanuatu vatu",
+        "mmk": "Burmese kyat",
+        "SSP": "South Sudanese pound",
+        "VES": "Venezuelan bolívar",
+        "STN": "São Tomé and Príncipe dobra",
+        "MRU": "Mauritanian ouguiya"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -591,6 +600,15 @@ Ext.define("Locale.locale-en", {
     },
     "trackers": {
         "menu_text": "Trackers",
+        "confirm_delete_clones": "Delete {0}?",
+        "clones_delete_success_msg": "{1} successfully deleted.",
+        "clones_delete_failure_msg": "{1} not deleted due to an error.",
+        "clones_delete_failure_details_msg": "The clone was not deleted. An error occured while deleting. {0}.",
+        "clones_filter": {
+            "all": "All",
+            "clones": "Clones",
+            "trackers": "Trackers"
+        },
         "fields": {
             "tracker_id": "ID",
             "label": "Title",
@@ -604,14 +622,14 @@ Ext.define("Locale.locale-en", {
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
             "tariff": "Tracker plan",
-            "deleted": "Tracker deleted",
+            "deleted": "Hidden",
             "blocked": "Service suspended",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
             "options": {
                 "clone": "clone",
-                "deleted": "deleted",
+                "deleted": "Hidden",
                 "blocked": "blocked"
             },
             "statuses": {
@@ -657,6 +675,7 @@ Ext.define("Locale.locale-en", {
             "create_btn_text": "Create new tracker",
             "owner_btn": "Change owner",
             "clone_btn": "Clone",
+            "delete_clone_btn": "Delete",
             "edit_btn": "Edit selected",
             "empty_text": "No trackers found",
             "after_clone_success": "Cloned: {0}",
@@ -664,7 +683,7 @@ Ext.define("Locale.locale-en", {
             "after_owner_success": "Changed: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
-            "select_clone_req": "Clones selected, group operations can not be performed"
+            "select_clone_req": "There are clones and trackers selected. Grouping operations not available."
         },
         "card": {
             "links": {
@@ -898,13 +917,14 @@ Ext.define("Locale.locale-en", {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "main_info": "You can change color UI color theme",
+            "web_title": "Web interface",
+            "main_info": "Choose a color theme for the UI of your monitoring system",
             "main_title": "Select theme",
             "preview_title": "Theme screenshots",
             "preview_btn": "Preview in monitoring",
             "list": {
                 "metromorph": {
-                    "title": "Default",
+                    "title": "Metromorph",
                     "description": "Default UI theme"
                 }
             }
@@ -1013,6 +1033,7 @@ Ext.define("Locale.locale-en", {
             "domain_google_key_help": "How domain name affects the use of Google Maps",
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information",
             "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
+            "domain_mismatched": "Domain must end in <b>{0}</b>",
             "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
@@ -1230,6 +1251,13 @@ Ext.define("Locale.locale-en", {
             "sms_user_title": "User notifications",
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+            "branding_main_info_first_condition": "To configure the appearance of your service, active the branding option with your personal manager.",
+            "branding_main_info_first_condition_hint": "In the current version you are not available:<br /> - display your own logos in the web version and mobile app;<br /> - select a color scheme for the web version and mobile app; <br /> - set up a personal domain name.",
+            "branding_main_info_second_condition": "To configure the appearance of your web-service, active the branding option with your personal manager.",
+            "branding_main_info_second_condition_hint": "In the current version you are not available:<br /> - display your own logos in the web version and mobile app;<br /> - select a color scheme for the web version; <br /> - set up a personal domain name.",
+            "branding_main_info_third_condition": "To configure the appearance of your mobile app, active the branding option with your personal manager.",
+            "branding_main_info_third_condition_hint": "In the current version you are not available:<br /> - loading your own logos into a mobile app; <br /> - choosing a color scheme for the mobile app.",
+
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
@@ -1671,7 +1699,14 @@ Ext.define("Locale.locale-en", {
         "AOA": "{0} Kz",
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
-        "KES": "{0} KSh"
+        "KES": "{0} KSh",
+        "XPF": "{0} CFP",
+        "VUV": "{0} VT",
+        "MMK": "K {0}",
+        "SSP": "{0} SS£",
+        "VES": "{0} Bs.",
+        "STN": "{0} Db",
+        "MRU": "{0} UM"
     },
     "features": {
         "api": "API",
@@ -1698,7 +1733,8 @@ Ext.define("Locale.locale-en", {
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
-        "chat": "Chat"
+        "chat": "Chat",
+        "checkins": "Check-ins on the map"
     },
     "map": {
         "zoom_in": "Zoom in",

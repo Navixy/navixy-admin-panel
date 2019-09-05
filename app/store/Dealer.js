@@ -8,21 +8,22 @@ Ext.define('NavixyPanel.store.Dealer', {
     extend: 'Ext.data.Store',
     storeId: 'Dealer',
     fields: [
-        'parent_dealer_id',
-        'contract_type',
-        'effective_dealer_id',
-        'title',
-        'legal_name',
-        'active_amount',
-        'active_limit',
-        'locale',
-        'domain',
-        'favicon',
-        'logo',
-        'subpaas',
-        'seller_currency',
-        'demo_tariff',
-        'store_period',
+        "parent_dealer_id",
+        "contract_type",
+        "effective_dealer_id",
+        "title",
+        "legal_name",
+        "active_amount",
+        "active_limit",
+        "locale",
+        "domain",
+        "favicon",
+        "logo",
+        "seller_currency",
+        "demo_tariff",
+        "store_period",
+        "allow_branding",
+        "features",
         {
             name: 'active_amount_own',
             type: 'number'
@@ -134,5 +135,12 @@ Ext.define('NavixyPanel.store.Dealer', {
             },
             scope: this
         })
+    },
+
+    getFeature: function (feature_name) {
+            features = record && record.get("features");
+        var record = this.first(),
+
+        return Ext.Array.contains(features, feature_name);
     }
 })
