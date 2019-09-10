@@ -194,8 +194,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     applyRecordData: function () {
+
         this.applyEmptyTheme();
+        this.checkMobileAppTheme();
         this.callParent(arguments);
+
         this.mapSettingsReady = true;
 
         var geocoder = this.down('[name=geocoder]');
@@ -226,6 +229,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 title: theme,
                 login: true
             });
+        }
+    },
+
+    checkMobileAppTheme: function () {
+        var data = this.getRecordData(),
+            store = Ext.getStore('MobileThemes'),
+            theme = this.record.get('app_color_theme'),
+            check = store.checkThemeAvailability(theme);
+
+        if (theme != check) {
+            this.record.set('app_color_theme', check);
         }
     },
 
@@ -318,7 +332,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     values[field.name] = field.getValue();
                 }
             });
-            values.app_color_theme = this.down('settings-themes').getColorName();
         }
 
         return values;
@@ -390,7 +403,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
             seller_currency = dealer && dealer.get('seller_currency'),
-            isSubpaas = dealer.get('subpaas')
+            isSubpaas = dealer.get('subpaas');
 
         return [
             {
@@ -436,7 +449,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
             {
                 xtype: 'settings-themes',
-                editable: this.isBrandingWeb()
+                brandingWeb: this.isBrandingWeb(),
+                brandingMobile: this.isBrandingMobile()
             },
 
             {

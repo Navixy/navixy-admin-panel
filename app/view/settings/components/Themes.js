@@ -11,19 +11,33 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
     record: null,
     editable: true,
+    brandingWeb: true,
+    brandingMobile: true,
     defaultTheme: 'metromorph',
 
     initComponent: function () {
         this.title = _l.get('settings.themes.title');
         this.store = Ext.getStore('Themes');
+        this.mobile_store = Ext.getStore('MobileThemes');
 
-        var customTheme = Config.customThemes && Config.customThemes[Ext.getStore('Dealer').first().getId()]
+        var customTheme = Config.customThemes && Config.customThemes[Ext.getStore('Dealer').first().getId()];
 
         if (customTheme) {
             this.store.add(customTheme)
         }
 
         this.items = this.getItems();
+
+        // scroll jumps on update layout fix
+        this.on({
+            afterlayout: {
+                fn: function () {
+                    this.height = this.getHeight();
+                },
+                single: true,
+                scope: this
+            }
+        });
 
         this.callParent(arguments);
     },
@@ -64,10 +78,74 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                             this.getWItems(),
                             this.getEItems()
                         ]
+                    },
+                    {
+                        xtype: 'blockheader',
+                        html: _l.get('settings.themes.mobile_title'),
+                        width: "100%",
+                        padding: '30 0 10 0'
+                    },
+                    {
+                        layout: {
+                            type: 'hbox',
+                            align: 'streach'
+                        },
+                        defaults: {
+                            xtype: 'container'
+                        },
+                        items: [
+                            this.getAWItems(),
+                            this.getAEItems()
+                        ]
                     }
                 ]
             }
         ]
+    },
+
+    getAWItems: function () {
+
+        return {
+            layout: {
+                type: 'vbox',
+                align: 'streach'
+            },
+            margin: '10 0 0 0',
+            width: 300,
+            items: [
+                {
+                    xtype: 'settings-mobile-theme-field',
+                    width: 300,
+                    store: this.mobile_store,
+                    name: 'app_color_theme',
+                    disabled: !this.brandingMobile,
+                    listeners: {
+                        select: this.onMobileSelect,
+                        scope: this
+                    }
+                }
+            ]
+        }
+    },
+
+    getAEItems: function () {
+
+        return {
+            layout: {
+                type: 'vbox',
+                align: 'streach'
+            },
+            flex: 1,
+
+            items: [
+                {
+                    xtype: 'settings-mobile-theme',
+                    height: 460,
+                    disabled: !this.brandingMobile
+                }
+            ]
+        }
+
     },
 
     getWItems: function () {
@@ -85,7 +163,7 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
                     width: 260,
                     store: this.store,
                     name: 'color_theme',
-                    disabled: !this.editable,
+                    disabled: !this.brandingWeb,
                     listeners: {
                         select: this.onSelect,
                         scope: this
@@ -116,6 +194,8 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             items: [
                 {
                     xtype: 'container',
+                    height: 460,
+                    disabled: !this.brandingWeb,
                     role: 'preview-container'
                 }
             ]
@@ -133,6 +213,13 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
         }
     },
 
+    onMobileSelect: function () {
+        var preview = this.getMobilePreviewsContainer(),
+            record = this.getMobileSelectedRecord();
+
+        preview.updateData(record);
+    },
+
     onSelect: function () {
         var preview = this.getPreviewsContainer(),
             description = this.getDescriptionContainer(),
@@ -140,12 +227,25 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
             record = this.getSelectedRecord();
 
         if (preview) {
-            preview.removeAll(true);
-            preview.add({
+            preview.insert(0, {
                 xtype: 'settings-theme',
-                padding: '5 0 20 10',
-                record: this.getSelectedRecord()
-            })
+                padding: '5 0 20 12',
+                record: this.getSelectedRecord(),
+                // image blinking fix
+                hidden: true,
+                listeners: {
+                    render: {
+                        fn: function () {
+                            this.show();
+                            if (preview.items.length > 1) {
+                                preview.remove(preview.items.last(), true);
+                            }
+                        },
+                        single: true,
+                        delay: 100
+                    }
+                }
+            });
         }
 
         if (description && record.get('description')) {
@@ -162,6 +262,22 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
     getPreviewsContainer: function () {
         return this.down('[role=preview-container]');
+    },
+
+    getMobilePreviewsContainer: function () {
+        return this.down('settings-mobile-theme');
+    },
+
+    getMobileSelectedRecord: function () {
+        return this.mobile_store.findRecord('name', this.getMobileValue());
+    },
+
+    getMobileValue: function () {
+        return this.getMobileField().getValue() || this.defaultTheme;
+    },
+
+    getMobileField: function () {
+        return this.down('settings-mobile-theme-field').down('[name=app_color_theme]');
     },
 
     getPreviewsButton: function () {

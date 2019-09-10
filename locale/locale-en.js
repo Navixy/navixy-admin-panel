@@ -918,6 +918,7 @@ Ext.define("Locale.locale-en", {
         "themes": {
             "title": "UI themes",
             "web_title": "Web interface",
+            "mobile_title": "Mobile app",
             "main_info": "Choose a color theme for the UI of your monitoring system",
             "main_title": "Select theme",
             "preview_title": "Theme screenshots",

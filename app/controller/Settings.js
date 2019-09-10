@@ -16,7 +16,9 @@ Ext.define('NavixyPanel.controller.Settings', {
         'settings.components.MapWindow',
         'settings.components.Themes',
         'settings.components.Theme',
-        'settings.components.ThemeField'
+        'settings.components.ThemeField',
+        'settings.components.MobileTheme',
+        'settings.components.MobileThemeField'
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
@@ -31,7 +33,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',

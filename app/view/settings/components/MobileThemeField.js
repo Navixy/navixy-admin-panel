@@ -1,12 +1,12 @@
 /**
- * @class NavixyPanel.view.settings.components.ThemeField
+ * @class NavixyPanel.view.settings.components.MobileThemeField
  * @extends Ext.Container
  * Description
  */
-Ext.define('NavixyPanel.view.settings.components.ThemeField', {
+Ext.define('NavixyPanel.view.settings.components.MobileThemeField', {
     extend: 'Ext.Container',
-    requires: 'NavixyPanel.view.settings.components.ThemePicker',
-    xtype: 'settings-theme-field',
+    requires: 'NavixyPanel.view.settings.components.MobileThemePicker',
+    xtype: 'settings-mobile-theme-field',
 
     store: null,
 
@@ -26,8 +26,8 @@ Ext.define('NavixyPanel.view.settings.components.ThemeField', {
     getItems: function () {
         return [
             {
-                xtype: 'settings-theme-picker',
-                themes: this.getColorSet(),
+                xtype: 'settings-mobile-theme-picker',
+                store: this.store,
                 listeners: {
                     select: this.onSelect,
                     scope: this
@@ -45,27 +45,6 @@ Ext.define('NavixyPanel.view.settings.components.ThemeField', {
         ]
     },
 
-    getColorSet: function () {
-        var result = [],
-            defaultTheme = this.store.findRecord('name', 'metromorph'),
-            defaultColors = defaultTheme && defaultTheme.get('colors');
-
-        this.store.each(function(record) {
-            var colors = record.get('colors');
-            if (Ext.isEmpty(colors) && colors.length != 2) {
-                colors = defaultColors
-            }
-            result.push({
-                name    : record.get('name'),
-                title   : record.get('title'),
-                left    : colors[0],
-                right   : colors[1]
-            })
-        });
-
-        return result;
-    },
-
     onSelect: function (cmd, theme) {
         this.getField().setValue(theme);
         this.fireEvent('select', this, theme);
@@ -76,7 +55,7 @@ Ext.define('NavixyPanel.view.settings.components.ThemeField', {
     },
 
     getPicker: function () {
-        return this.down('settings-theme-picker');
+        return this.down('settings-mobile-theme-picker');
     },
 
     getField: function () {

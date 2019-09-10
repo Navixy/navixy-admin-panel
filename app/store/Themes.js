@@ -22,19 +22,18 @@ Ext.define('NavixyPanel.store.Themes', {
         var lp = _l.get('settings.themes.list');
         this.data = [
             {
-                name: 'metromorph',
-                login: true,
-                title: lp.get('metromorph.title'),
-                description: lp.get('metromorph.description'),
-                images: ['0', '1'],
-                colors: ['1E96dC', '505A64']
-            },
-            {
                 name: 'corp',
                 login: true,
                 title: 'Corp',
                 images: ['0', '1'],
                 colors: ['1E96dC', 'FFFFFF']
+            },
+            {
+                name: 'dark_blue',
+                login: true,
+                title: 'Dark Blue',
+                images: ['0', '1'],
+                colors: ['144682', '3B424D']
             },
             {
                 name: 'flat',
@@ -44,18 +43,19 @@ Ext.define('NavixyPanel.store.Themes', {
                 colors: ['1E96dC', '283C50']
             },
             {
+                name: 'metromorph',
+                login: true,
+                title: lp.get('metromorph.title'),
+                //description: lp.get('metromorph.description'),
+                images: ['0', '1'],
+                colors: ['1E96dC', '505A64']
+            },
+            {
                 name: 'vine',
                 login: true,
                 title: 'Vine',
                 images: ['0', '1'],
                 colors: ['75B08A', '6D637F']
-            },
-            {
-                name: 'dark_blue',
-                login: true,
-                title: 'Dark Blue',
-                images: ['0', '1'],
-                colors: ['144682', '3B424D']
             },
             {
                 name: 'warm',

@@ -97,7 +97,7 @@ Ext.define('NavixyPanel.view.settings.components.ThemePicker', {
             value = me.value,
             el;
 
-        if (suppressEvent !== true) {
+        if (suppressEvent !== true && theme != value) {
             me.fireEvent('select', me, theme);
         }
 

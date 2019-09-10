@@ -176,23 +176,66 @@
     }
 }
 
+$theme-item-width: 133px;
+$theme-app-item-width: 79px;
+$theme-item-height: 40px;
+$theme-item-border-width: 2px;
+$theme-item-border-radius: 3px;
+$theme-item-padding: 6px;
+$theme-selected-color: #E0E0E0;
+$theme-hover-color: $main-color;
+
+.x-mobile-theme-picker {
+
+    .x-color-picker-item {
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+        width: $theme-app-item-width + $theme-item-padding * 2 + $theme-item-border-width * 2;
+
+        box-sizing: border-box;
+        display: inline-block;
+        float: left;
+
+        background-color: transparent;
+        cursor: pointer;
+        padding: $theme-item-padding;
+
+        border-width: $theme-item-border-width;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: $theme-item-border-radius;
+
+        .x-color-picker-item-inner {
+            height: $theme-item-height;
+            width: $theme-app-item-width;
+            display: block;
+
+            border-style: solid;
+            border-color: transparent;
+            border-radius: $theme-item-border-radius;
+        }
+
+        &.x-color-picker-selected {
+            border-color: $theme-selected-color;
+        }
+
+        &:hover {
+            border-color: $theme-hover-color;
+            background-color: transparent;
+        }
+    }
+}
+
 .x-theme-picker {
-    $item-width: 150px;
-    $item-height: 35px;
-    $item-border-width: 2px;
-    $item-border-radius: 3px;
-    $item-padding: 5px;
 
     .x-theme-picker-item-container {
-        display: inline-block;
-        height: $item-height + $item-padding * 2 + $item-border-width * 2;
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
 
         .x-theme-picker-item-label {
             display: inline-block;
             float: left;
-            padding: 5px 0 0 10px;
+            padding: 5px 0 0 24px;
 
-            height: $item-height + $item-padding * 2 + $item-border-width * 2;
+            height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
         }
 
         .x-theme-picker-item {
@@ -200,35 +243,35 @@
             display: inline-block;
             float: left;
 
-            height: $item-height;
+            height: $theme-item-height;
             background-color: transparent;
             cursor: pointer;
-            padding: $item-padding;
+            padding: $theme-item-padding;
 
-            border-width: $item-border-width;
+            border-width: $theme-item-border-width;
             border-style: solid;
             border-color: transparent;
-            border-radius: $item-border-radius;
+            border-radius: $theme-item-border-radius;
 
             &.x-theme-picker-selected {
-                border-color: #E0E0E0;
+                border-color: $theme-selected-color;
             }
 
             &:hover {
-                border-color: $main-color;
+                border-color: $theme-hover-color;
             }
 
             .x-theme-picker-item-inner {
-                width: $item-width / 2;
-                height: $item-height;
+                width: $theme-item-width / 2;
+                height: $theme-item-height;
                 display: inline-block;
 
                 &:first-child {
-                    border-radius:  $item-border-radius 0 0 $item-border-radius;
+                    border-radius:  $theme-item-border-radius 0 0 $theme-item-border-radius;
                 }
 
                 &:last-child {
-                    border-radius: 0 $item-border-radius $item-border-radius 0;
+                    border-radius: 0 $theme-item-border-radius $theme-item-border-radius 0;
                 }
             }
 
@@ -236,8 +279,7 @@
                 .x-theme-picker-item-inner{
 
                     &:last-child {
-                        border-width: 2px;
-                        border-left-width: 0;
+                        border-width: 1px;
                         border-style: solid;
                         border-color: #E0E0E0;
                     }

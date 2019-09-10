@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                 role: 'previews-container',
                 xtype: 'container',
                 cls: 'form-img-preview-bg-holder',
-                margin: '10 0 0 0',
+                margin: '15 0 0 0',
                 height: 420,
                 layout: {
                     type: 'hbox',
@@ -89,8 +89,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                             align: 'stretch'
                         },
                         defaults: {
-                            xtype: 'image',
-                            height: 150
+                            xtype: 'image'
                         },
                         role: 'small-picture-container',
                         height: 420,
