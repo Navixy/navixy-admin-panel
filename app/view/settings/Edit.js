@@ -18,7 +18,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.plugins.ComboGoogleFilter'
     ],
 
-    default_paas_domain: '.navixy.ru',
+    default_paas_domain: '.navixy.com',
     singleCmp: false,
     rights: null,
     bodyPadding: '0 0 60 0',
@@ -28,14 +28,33 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     mapSettingsReady: false,
 
+    brandingWeb: null,
+    brandingMobile: null,
+    brandingSubPaas: null,
+    brandingNavixy: null,
+
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
         this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
     },
 
+    isBrandingWeb: function () {
+        if (this.brandingWeb === null) {
+            this.brandingWeb = Ext.getStore('Dealer').getFeature('branding_web');
+        }
+        return this.brandingWeb;
+    },
+
+    isBrandingMobile: function () {
+        if (this.brandingMobile === null) {
+            this.brandingMobile = Ext.getStore('Dealer').getFeature('branding_mobile');
+        }
+        return this.brandingMobile;
+    },
+
     renderGisFields: function () {
-        var me = this
+        var me = this;
         // Без этого таймаута экст ломается и перестает сохранять
         setTimeout(function () {
             var gisFields = me.down('component[role="gis_fields"]');
@@ -175,17 +194,23 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     applyRecordData: function () {
+
         this.applyEmptyTheme();
+        this.checkMobileAppTheme();
         this.callParent(arguments);
+
         this.mapSettingsReady = true;
-        var geocoder = this.down('[name=geocoder]')
+
+        var geocoder = this.down('[name=geocoder]');
         if (geocoder) {
             geocoder.bindStore(this.getGeocodersStore());
         }
-        var routeProvider = this.down('[name=route_provider]')
+
+        var routeProvider = this.down('[name=route_provider]');
         if (routeProvider) {
             routeProvider.bindStore(this.getRouteProvidersStore());
         }
+
         var lbs = this.down('[name=lbs_display_field]');
         if (lbs) {
             var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue());
@@ -204,6 +229,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 title: theme,
                 login: true
             });
+        }
+    },
+
+    checkMobileAppTheme: function () {
+        var data = this.getRecordData(),
+            store = Ext.getStore('MobileThemes'),
+            theme = this.record.get('app_color_theme'),
+            check = store.checkThemeAvailability(theme);
+
+        if (theme != check) {
+            this.record.set('app_color_theme', check);
         }
     },
 
@@ -296,7 +332,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     values[field.name] = field.getValue();
                 }
             });
-            values.app_color_theme = this.down('settings-themes').getColorName();
         }
 
         return values;
@@ -368,10 +403,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
             seller_currency = dealer && dealer.get('seller_currency'),
-            isSubpaas = dealer.get('subpaas')
+            isSubpaas = dealer.get('subpaas');
 
         return [
-
             {
                 title: lp.get('branding_fields'),
                 role: 'tab',
@@ -381,7 +415,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         xtype: 'component',
                         cls: 'block_hint',
                         margin: '40 20 0 25',
-                        html: lp.get('branding_main_info')
+                        html: this.getBrandingMainInfo()
                     },
                     {
                         layout: 'anchor',
@@ -414,7 +448,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
 
             {
-                xtype: 'settings-themes'
+                xtype: 'settings-themes',
+                brandingWeb: this.isBrandingWeb(),
+                brandingMobile: this.isBrandingMobile()
             },
 
             {
@@ -497,36 +533,55 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                    title: lp.get('password_fields'),
-                    role: 'pass_tab',
-                    items: [
-                        {
-                            margin: '30 0 0 20',
-                            items: [
-                                {
-                                    items: this.getPasswordItems()
-                                },
-                                {
-                                    padding: this.formRowPadding,
-                                    items: this.getPassHint()
-                                }
-                            ]
-                        }
-                    ]
-                }
+                title: lp.get('password_fields'),
+                role: 'pass_tab',
+                items: [
+                    {
+                        margin: '30 0 0 20',
+                        items: [
+                            {
+                                items: this.getPasswordItems()
+                            },
+                            {
+                                padding: this.formRowPadding,
+                                items: this.getPassHint()
+                            }
+                        ]
+                    }
+                ]
+            }
                 : null,
 
             Ext.checkPermission('paas_payments', 'create') &&
             seller_currency === this.paymentCurrency &&
             !isSubpaas
                 ? {
-                    xtype: 'avangate-panel',
-                    layout: {
-                        type: 'auto'
-                    },
-                    role: 'not-settings-tab'
-                } : null
+                xtype: 'avangate-panel',
+                layout: {
+                    type: 'auto'
+                },
+                role: 'not-settings-tab'
+            } : null
         ];
+    },
+
+    getBrandingMainInfo: function () {
+        var lp = _l.get('settings.edit_form'),
+            text = lp.get('branding_main_info');
+
+        if (!this.isBrandingWeb() && !this.isBrandingMobile()) {
+            text = lp.get('branding_main_info_first_condition') + this.getHintSymbol(lp.get('branding_main_info_first_condition_hint'))
+        }
+
+        if (!this.isBrandingWeb() && this.isBrandingMobile()) {
+            text = lp.get('branding_main_info_second_condition') + this.getHintSymbol(lp.get('branding_main_info_second_condition_hint'))
+        }
+
+        if (this.isBrandingWeb() && !this.isBrandingMobile()) {
+            text = lp.get('branding_main_info_third_condition') + this.getHintSymbol(lp.get('branding_main_info_third_condition_hint'))
+        }
+
+        return text;
     },
 
     getBrandingItems: function () {
@@ -641,17 +696,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         margin: 10
                     }
                 },
-                items: [{
-                    xtype: 'container',
-                    items: [{
-                        xtype: 'component',
-                        cls: 'block_header',
-                        html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
-                        padding: '20 0 5 0'
+                items: [
+                    {
+                        xtype: 'container',
+                        items: [
+                            {
+                                xtype: 'component',
+                                cls: 'block_header',
+                                html: _l.get('settings.edit_form.logo_title') + this.getHintSymbol(_l.get('settings.fields.logo_hint')),
+                                padding: '20 0 5 0'
+                            },
+                            this.getImgConfig('logo'),
+                            this.getImgButtonConfig('logo')
+                        ]
                     },
-                        this.getImgConfig('logo'),
-                        this.getImgButtonConfig('logo')]
-                },
                     {
                         xtype: 'container',
                         items: [{
@@ -729,7 +787,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getServiceItemsLeft: function () {
-        var isNavixy = Ext.isNavixy(),
+        var me = this,
+            isNavixy = Ext.isNavixy(),
             domainPh = _l.get('settings.fields').get(isNavixy ? 'domain_ph' : 'paas_domain_ph'),
             domain = Ext.getStore('Dealer').first().get('id') + domainPh,
             labelHint = this.getHintSymbol(_l.get('settings.fields').get(isNavixy ? 'domain_hint' : 'paas_domain_hint')),
@@ -751,6 +810,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 disabled: isSubPaas,
                 minLength: 2,
                 maxLength: 100,
+
+                validator: function (value) {
+                    return me.isBrandingWeb()
+                        ? true
+                        : value.indexOf(me.default_paas_domain) > -1 || Ext.String.format(_l.get("settings.fields.domain_mismatched"), me.default_paas_domain);
+                },
+
                 listeners: {
                     change: this.changeDealerMapsAvailability,
                     scope: this
@@ -864,12 +930,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             locale === 'en'
                 ? null
                 :
-                {
-                    xtype: 'checkbox',
-                    role: 'checkbox',
-                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== '' && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ''),
-                    name: 'show_call_notifications'
-                },
+            {
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
+                name: 'show_call_notifications'
+            },
             {
                 xtype: 'checkbox',
                 role: 'checkbox',
@@ -1220,8 +1286,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     getImgUrl: function (type, record) {
         var data = record
-            ? record.getData()
-            : this.getRecordData(),
+                ? record.getData()
+                : this.getRecordData(),
             value = data[type],
             isUrl = new RegExp('http://|https://', 'i').test(value),
             aCache = '?' + new Date().getTime();
@@ -1242,42 +1308,44 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
-                xtype: 'container',
-                layout: 'hbox',
-                items: [
-                    {
-                        role: role,
-                        xtype: 'button',
-                        text: text,
-                        margin: '5 0 10 0',
-                        ui: 'default',
-                        scale: 'medium',
-                        width: 100,
-                        handler: function () {
-                            Ext.widget('uploadwindow', {
-                                fileType: type,
-                                listeners: {
-                                    fileupload: me.afterUpload,
-                                    scope: me
-                                }
-                            });
-                        }
-                    },
-                    {
-                        role: delRole,
-                        xtype: 'button',
-                        text: _l.get('settings.edit_form.remove_btn'),
-                        margin: '5 0 10 10',
-                        hidden: hidden,
-                        ui: 'gray',
-                        scale: 'medium',
-                        width: 100,
-                        handler: function () {
-                            me.removeImgCall(type);
-                        }
+            xtype: 'container',
+            layout: 'hbox',
+            items: [
+                {
+                    role: role,
+                    xtype: 'button',
+                    text: text,
+                    margin: '5 0 10 0',
+                    ui: 'default',
+                    scale: 'medium',
+                    width: 100,
+                    disabled: !me.isBrandingWeb(),
+                    handler: function () {
+                        Ext.widget('uploadwindow', {
+                            fileType: type,
+                            listeners: {
+                                fileupload: me.afterUpload,
+                                scope: me
+                            }
+                        });
                     }
-                ]
-            }
+                },
+                {
+                    role: delRole,
+                    xtype: 'button',
+                    text: _l.get('settings.edit_form.remove_btn'),
+                    margin: '5 0 10 10',
+                    hidden: hidden,
+                    ui: 'gray',
+                    scale: 'medium',
+                    width: 100,
+                    disabled: !me.isBrandingWeb(),
+                    handler: function () {
+                        me.removeImgCall(type);
+                    }
+                }
+            ]
+        }
             : null;
     },
 

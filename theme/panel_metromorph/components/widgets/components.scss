@@ -176,50 +176,115 @@
     }
 }
 
-.mobile-color-picker-button {
-    width: 80px;
-    height: 40px;
-    border-radius: 3px;
-    margin: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.mobile-color-picker-button__active-icon {
-    width: 18px;
-    height: 18px;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAqUlEQVR4AZTSIRKBQRjH4S8YlYbOPb6oKHALjeYA7oEZquZA3GGTx5g32Fkb+OUnvLP/bf5OX2ttrdWvg6GzvItBSSbuyu4mORl5qPUw+qCT764WkmMT6XlWSMdU8tQLNFd2EwRWgTZIZq4I0hUENoG2SFodNyVhG2iJYF37grDMDg/WNAV5Hx45iJKdJO/wy2Pm0xhXZxmX6w1c6gPXvspruUAISiqkAgBpUGp1d7jYpgAAAABJRU5ErkJggg==')
-}
-.mobile-color-picker-button:hover {
-    box-shadow: 0px 0px 2px 2px #ccc;
+$theme-item-width: 133px;
+$theme-app-item-width: 79px;
+$theme-item-height: 40px;
+$theme-item-border-width: 2px;
+$theme-item-border-radius: 3px;
+$theme-item-padding: 6px;
+$theme-selected-color: #E0E0E0;
+$theme-hover-color: $main-color;
+
+.x-mobile-theme-picker {
+
+    .x-color-picker-item {
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+        width: $theme-app-item-width + $theme-item-padding * 2 + $theme-item-border-width * 2;
+
+        box-sizing: border-box;
+        display: inline-block;
+        float: left;
+
+        background-color: transparent;
+        cursor: pointer;
+        padding: $theme-item-padding;
+
+        border-width: $theme-item-border-width;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: $theme-item-border-radius;
+
+        .x-color-picker-item-inner {
+            height: $theme-item-height;
+            width: $theme-app-item-width;
+            display: block;
+
+            border-style: solid;
+            border-color: transparent;
+            border-radius: $theme-item-border-radius;
+        }
+
+        &.x-color-picker-selected {
+            border-color: $theme-selected-color;
+        }
+
+        &:hover {
+            border-color: $theme-hover-color;
+            background-color: transparent;
+        }
+    }
 }
 
-.theme-image-monitor {
-    position: static !important;
-}
+.x-theme-picker {
 
-.theme-image-monitor__content {
-    left: 55px !important;
-    top: 23px !important;
-}
+    .x-theme-picker-item-container {
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
 
-.theme-image-iphone {
-    position: static !important;
-    margin-left: 18px !important;
-    display: inline-block;
-}
+        .x-theme-picker-item-label {
+            display: inline-block;
+            float: left;
+            padding: 5px 0 0 24px;
 
-.theme-image-iphone__object {
-    height: 399px;
-}
+            height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+        }
 
-.theme-image-iphone__object .theme-color {
-    fill: #ccc !important;
-}
+        .x-theme-picker-item {
+            box-sizing: content-box;
+            display: inline-block;
+            float: left;
 
-.theme-image-combobox--disabled {
-    .x-form-text {
-        color: #ccc;
+            height: $theme-item-height;
+            background-color: transparent;
+            cursor: pointer;
+            padding: $theme-item-padding;
+
+            border-width: $theme-item-border-width;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: $theme-item-border-radius;
+
+            &.x-theme-picker-selected {
+                border-color: $theme-selected-color;
+            }
+
+            &:hover {
+                border-color: $theme-hover-color;
+            }
+
+            .x-theme-picker-item-inner {
+                width: $theme-item-width / 2;
+                height: $theme-item-height;
+                display: inline-block;
+
+                &:first-child {
+                    border-radius:  $theme-item-border-radius 0 0 $theme-item-border-radius;
+                }
+
+                &:last-child {
+                    border-radius: 0 $theme-item-border-radius $theme-item-border-radius 0;
+                }
+            }
+
+            &.theme-corp {
+                .x-theme-picker-item-inner{
+
+                    &:last-child {
+                        border-width: 1px;
+                        border-style: solid;
+                        border-color: #E0E0E0;
+                    }
+                }
+            }
+        }
     }
 }

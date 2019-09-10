@@ -24,6 +24,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "demo_tariff",
         "store_period",
         "allow_branding",
+        "features",
         {
             name: 'active_amount_own',
             type: 'number'
@@ -131,5 +132,12 @@ Ext.define('NavixyPanel.store.Dealer', {
             },
             scope: this
         })
+    },
+
+    getFeature: function (feature_name) {
+        var record = this.first(),
+            features = record && record.get("features");
+        
+        return Ext.Array.contains(features, feature_name);
     }
 })

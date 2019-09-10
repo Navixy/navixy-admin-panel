@@ -222,14 +222,14 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
 .form-img, .form-img-preview {
     padding: 5px;
-    border-width: 1px;
-    border-style: solid;
+    //border-width: 1px;
+    //border-style: solid;
     color: $grayLight;
     cursor: pointer;
     background: url($img_dir + '/util/transparent.png') repeat 0 0 transparent;
 
     &:hover {
-        border-color: $main-color;
+        //border-color: $main-color;
     }
 }
 
@@ -237,9 +237,50 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
     background: none;
 }
 
-.form-img-preview.big {
-    padding: 6px 5px;
+.form-img-preview-bg-holder {
     background: none;
+    background: url($img_dir + '/background/ThemeSelectMac.png') no-repeat 0 0 transparent;
+    background-size: 538px auto;
+}
+
+.form-img-preview-phone-bg-holder {
+    background: none;
+    background: url($img_dir + '/background/ThemeSelectPhone.png') no-repeat 0 0 transparent;
+    background-size: 203px auto;
+}
+
+.form-img-preview-tablet-bg-holder {
+    background: none;
+    background: url($img_dir + '/background/ThemeSelectTablet.png') no-repeat 0 0 transparent;
+    background-size: 612px auto;
+}
+
+.form-img-preview-big {
+    width: 490px;
+    height: auto;
+    padding: 0;
+
+    margin: 23px 24px;
+    cursor: default;
+}
+
+.form-img-preview-small {
+    width: 285px;
+    min-height: 170px;
+    padding: 6px;
+    margin: 0 0 15px 30px;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 5px;
+
+    &:hover {
+        border-color: $main-color;
+    }
+    &.selected {
+        border-color: $main-color;
+    }
 }
 
 .shadow-disabled {

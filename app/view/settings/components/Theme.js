@@ -66,40 +66,74 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
         var tpl = pathTpl || this.defaultPreviewsPathTpl,
             previews = Ext.Array.clone(this.record.get('images')),
             themeName = this.record.get('name'),
-            default_src = previews && previews.length && Ext.String.format(tpl, themeName, previews.shift()),
+            subItems = [],
+            default_src = previews && previews.length && Ext.String.format(tpl, themeName, previews[0]),
             result = default_src ? {
                 role: 'previews-container',
                 xtype: 'container',
-                cls: 'test-test',
+                cls: 'form-img-preview-bg-holder',
+                margin: '15 0 0 0',
+                height: 420,
                 layout: {
                     type: 'hbox',
                     align: 'top'
+                },
+                listeners: {
+                    'click': {
+                        fn: function (event, element) {
+                            var el = Ext.get(element);
+
+                            if (el && el.hasCls('form-img-preview-small')) {
+                                this.down("[role=big-picture]").setSrc(el.getAttribute('src'));
+
+                                this.down("[role=small-picture-container]").items.each(function (el) {
+                                    el.removeCls('selected');
+                                }, this);
+
+                                el.addCls('selected');
+                            }
+                        },
+                        element: 'el',
+                        scope: this
+                    }
                 },
                 items: [
                     {
                         xtype: 'image',
                         src: default_src,
-                        width: 490,
-                        height: 276,
-                        cls: 'theme-image-monitor__content'
-                    },
-                    {
-                        xtype: 'image',
-                        src: 'images/themes/monitor.svg',
-                        cls: 'theme-image-monitor',
-                        width: 600,
-                        height: 400
-                    },
-                    {
-                        xtype: 'component',
-                        width: 195,
-                        role: 'iphone-image',
-                        cls: 'theme-image-iphone',
-                        html: '<object type="image/svg+xml" data="images/themes/iphone.svg" class="theme-image-iphone__object" />'
+                        cls: 'form-img-preview form-img-preview-big',
+                        role: 'big-picture'
                     }
                 ]
             }
                 : null;
+
+        if (result) {
+            Ext.iterate(previews, function (img_path, index) {
+                subItems.push({
+                    cls: index == 0 ? 'form-img-preview form-img-preview-small selected' : 'form-img-preview form-img-preview-small',
+                    src: Ext.String.format(tpl, themeName, img_path)
+                });
+            }, this);
+
+            if (subItems.length) {
+                result.items.push(
+                    {
+                        xtype: 'container',
+                        layout: {
+                            type: 'vbox',
+                            align: 'stretch'
+                        },
+                        defaults: {
+                            xtype: 'image'
+                        },
+                        role: 'small-picture-container',
+                        height: 420,
+                        items: subItems
+                    }
+                )
+            }
+        }
 
         return result;
     }
