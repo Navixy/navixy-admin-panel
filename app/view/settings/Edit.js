@@ -770,9 +770,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         var img = this.getImgConfig('app_logo');
         img.disabled = !allowBranding;
         var buttons = this.getImgButtonConfig('app_logo');
-        for (var i = 0; i < buttons.items.length; i++) {
-            buttons.items[i].disabled = !allowBranding;
-        }
+        buttons.disabled = !allowBranding;
         var hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
         return [
             {
@@ -1294,8 +1292,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return value
             ? isUrl
-                ? value + aCache
-                : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
+            ? value + aCache
+            : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
             : null;
     },
 
