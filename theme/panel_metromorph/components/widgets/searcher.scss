@@ -92,6 +92,23 @@ $searcherTriggerIconSize: 12px;
         }
     }
 
+    &.darken {
+        .x-form-trigger-wrap {
+            border-color: $baseElementActiveColor;
+        }
+
+        .x-form-trigger-wrap-focus {
+            .x-form-trigger-wrap {
+                @extend .main-color-border-color;
+            }
+
+            .x-form-trigger.clear {
+                color: $white;
+                @extend .main-color-bg;
+            }
+        }
+    }
+
     &.small {
         .clear {
             line-height: $searcherTriggerIconSize + 12;
