@@ -18,6 +18,8 @@ Ext.define('NavixyPanel.view.desktop.Header', {
 
     cls: 'main-header',
 
+    hasSearch: true,
+
     initComponent: function () {
         try {
             var hasOld = false,
@@ -107,6 +109,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                     ui: 'gray',
                                     role: 'old-version'
                                 },
+                                Ext.checkPermissons(['users', 'trackers', 'tariffs'])
+                                ? this.getSearcher()
+                                : null,
                                 {
                                     xtype: 'button',
                                     text: _l.get('auth.logout'),
@@ -129,8 +134,46 @@ Ext.define('NavixyPanel.view.desktop.Header', {
         this.callParent(arguments)
     },
 
+    getSearchBox: function () {
+        return this.down('[role="menu-box"]');
+    },
+
+    getSearcher: function () {
+        return this.hasSearch
+            ? {
+            xtype: 'searchfield',
+            margin: '0 10 0 0',
+            ui: 'dark',
+            componentCls: 'search-field darken',
+            padding: '0 10 0 10',
+
+            listeners: {
+                'search': {
+                    fn: this.fireSearch,
+                    scope: this
+                }
+            }
+        } : false;
+    },
+
+    unToggleAllMenu: function () {
+        Ext.iterate(Ext.ComponentQuery.query('mainmenu button'), function (button) {
+            button.toggle(false, true);
+        }, this);
+    },
+
+    fireSearch: function (searchString) {
+
+        try {
+            this.unToggleAllMenu();
+            Ext.Nav.shift(Ext.Nav.getSearch(searchString));
+        } catch (e) {
+            Ext.log(e.stack);
+        }
+    },
+
     afterRender: function () {
-        var dealerStore = Ext.getStore('Dealer')
+        var dealerStore = Ext.getStore('Dealer');
         dealerStore.isSubpaasReportsAvailable(function (reportsAvailable) {
             this.down('component[role=dealer-info]').update(Ext.apply({
                 subpaasStat: reportsAvailable

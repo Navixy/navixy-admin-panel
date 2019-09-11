@@ -12,8 +12,6 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
 
     cls: 'main-menu',
 
-    hasSearch: true,
-
     layout: {
         type: 'hbox',
         pack: 'start',
@@ -72,57 +70,11 @@ Ext.define('NavixyPanel.view.desktop.menu.MainMenu', {
             }
         ];
 
-        if (Ext.checkPermissons(['users', 'trackers', 'tariffs'])) {
-            result.push(
-                {
-                    xtype: 'container',
-                    role: 'search-box',
-                    layout: {
-                        type: 'hbox',
-                        pack: 'start',
-                        align: 'middle'
-                    },
-                    items: this.getSearcher()
-                }
-            );
-        }
-
         return result;
     },
 
     getMenuBox: function () {
         return this.down('[role="menu-box"]');
-    },
-
-    getSearchBox: function () {
-        return this.down('[role="menu-box"]');
-    },
-
-    getSearcher: function () {
-        return this.hasSearch
-            ? [
-                {
-                    xtype: 'searchfield',
-                    margin: '0 5 0 0',
-                    listeners: {
-                        'search': {
-                            fn: this.fireSearch,
-                            scope: this
-                        }
-                    }
-                }
-            ]
-            : false;
-    },
-
-    fireSearch: function (searchString) {
-
-        try {
-            this.unToggleAll();
-            Ext.Nav.shift(Ext.Nav.getSearch(searchString));
-        } catch (e) {
-            Ext.log(e.stack);
-        }
     },
 
     addSection: function (sectionConfig) {
