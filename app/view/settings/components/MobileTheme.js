@@ -80,7 +80,6 @@ Ext.define('NavixyPanel.view.settings.components.MobileTheme', {
                 {
                     role: 'mobile-previews-container',
                     xtype: 'container',
-                    cls: 'form-img-preview-phone-bg-holder',
                     margin: '17 0 0 0',
                     height: 460,
                     width: 203,
@@ -102,7 +101,6 @@ Ext.define('NavixyPanel.view.settings.components.MobileTheme', {
                 {
                     role: 'tablet-previews-container',
                     xtype: 'container',
-                    cls: 'form-img-preview-tablet-bg-holder',
                     margin: '17 0 0 35',
                     height: 460,
                     width: 612,
