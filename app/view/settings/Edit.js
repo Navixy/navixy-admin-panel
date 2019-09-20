@@ -812,7 +812,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 validator: function (value) {
                     return me.isBrandingWeb()
                         ? true
-                        : value.indexOf(me.default_paas_domain) > -1 || Ext.String.format(_l.get("settings.fields.domain_mismatched"), me.default_paas_domain);
+                        : !Ext.isEmpty(value.match(new RegExp('(?:^.+?)(\\' + me.default_paas_domain + ')$', 'g'))) || Ext.String.format(_l.get("settings.fields.domain_mismatched"), me.default_paas_domain);
                 },
 
                 listeners: {
