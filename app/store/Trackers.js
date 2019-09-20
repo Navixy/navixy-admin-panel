@@ -18,6 +18,9 @@ Ext.define('NavixyPanel.store.Trackers', {
             direction: 'ASC'
         }
     ],
+
+
+
     constructor: function () {
         var me = this;
 
@@ -27,14 +30,36 @@ Ext.define('NavixyPanel.store.Trackers', {
                 enablePaging: true,
                 apiCalls: this.api,
                 responseEncodeFn: this.getProxyEncoder(),
+
                 writer: {
                     type: 'json',
                     root: this.writerRoot,
                     encode: this.writerEncode
                 },
+
                 listeners: {
                     exception: Ext.bind(me.onException, me)
                 },
+
+                buildParams: function (request) {
+
+                    var params = request.jsonData || request.params,
+                        cloneFilterMode = Ext.state.Manager.get('TrackersCloneFilter');
+
+                    if (cloneFilterMode === 'clones') {
+                        params.clones_filter = 'include_clones_only';
+                    }
+                    if (cloneFilterMode === 'trackers') {
+                        params.clones_filter = 'exclude_clones'
+                    }
+
+                    if (cloneFilterMode === 'all') {
+                        delete params.clones_filter
+                    }
+
+                    return params;
+                },
+
                 doRequest: function(operation, callback, scope) {
                     var writer  = this.getWriter(),
                         request = this.buildRequest(operation),

@@ -53,13 +53,14 @@ Ext.define('NavixyPanel.store.leMaps', {
                 httpsReady: false,
                 maxZoom: 17,
                 minZoom: 2,
-                urlTpl: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
+                urlTpl: '//{s}.tiles.x-gpsmail.com/styles/squaregps-basic/{z}/{x}/{y}.png',
 //            urlTpl: '//mtile0{serv}.mqcdn.com/tiles/1.0.0/vx/map/{z}/{x}/{y}.png',
 //                urlTpl: '//otile{serv}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
                 attribution: "<a href=\"http://openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
                 tplFns: {
                     serv: function (data) {
-                        return Math.ceil(Math.random() * 4);
+                        var servers = ['a', 'b', 'c'];
+                        return servers[Math.floor(Math.random() * 3)];
                     }
                 }
             },

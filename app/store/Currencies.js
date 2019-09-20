@@ -663,6 +663,26 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "VUV",
                 name: _l.get('currency.vuv'),
                 priority: 5
+            },
+            {
+                type: "SSP",
+                name: _l.get('currency.ssp'),
+                priority: 5
+            },
+            {
+                type: "VES",
+                name: _l.get('currency.ves'),
+                priority: 5
+            },
+            {
+                type: "STN",
+                name: _l.get('currency.stn'),
+                priority: 5
+            },
+            {
+                type: "MRU",
+                name: _l.get('currency.mru'),
+                priority: 5
             }
         ];
 

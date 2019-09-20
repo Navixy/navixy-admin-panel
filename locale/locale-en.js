@@ -207,7 +207,9 @@ Ext.define('Locale.locale-en', {
         "trackers": "trackers|tracker|trackers",
         "devices": "devices|device|devices",
         "entries": "matches|match|matches",
-        "assets": "assets|asset|assets"
+        "assets": "assets|asset|assets",
+        "clones": "clones|clone|clones|clones|clones|clones",
+        "deleted": "deleted|deleted|deleted|deleted|deleted|deleted"
     },
     "units_short": {
         "kilometer": "km",
@@ -384,7 +386,11 @@ Ext.define('Locale.locale-en', {
         "kes": "Kenyan shilling",
         "xpf": "Pacific franc",
         "vuv": "Vanuatu vatu",
-        "mmk": "Burmese kyat"
+        "mmk": "Burmese kyat",
+        "SSP": "South Sudanese pound",
+        "VES": "Venezuelan bolívar",
+        "STN": "São Tomé and Príncipe dobra",
+        "MRU": "Mauritanian ouguiya"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -590,6 +596,15 @@ Ext.define('Locale.locale-en', {
     },
     "trackers": {
         "menu_text": "Trackers",
+        "confirm_delete_clones": "Delete {0}?",
+        "clones_delete_success_msg": "{1} successfully deleted.",
+        "clones_delete_failure_msg": "{1} not deleted due to an error.",
+        "clones_delete_failure_details_msg": "The clone was not deleted. An error occured while deleting. {0}.",
+        "clones_filter": {
+            "all": "All",
+            "clones": "Clones",
+            "trackers": "Trackers"
+        },
         "fields": {
             "tracker_id": "ID",
             "label": "Title",
@@ -603,14 +618,14 @@ Ext.define('Locale.locale-en', {
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
             "tariff": "Tracker plan",
-            "deleted": "Tracker deleted",
+            "deleted": "Hidden",
             "blocked": "Service suspended",
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
             "options": {
                 "clone": "clone",
-                "deleted": "deleted",
+                "deleted": "Hidden",
                 "blocked": "blocked"
             },
             "statuses": {
@@ -656,6 +671,7 @@ Ext.define('Locale.locale-en', {
             "create_btn_text": "Create new tracker",
             "owner_btn": "Change owner",
             "clone_btn": "Clone",
+            "delete_clone_btn": "Delete",
             "edit_btn": "Edit selected",
             "empty_text": "No trackers found",
             "after_clone_success": "Cloned: {0}",
@@ -663,7 +679,7 @@ Ext.define('Locale.locale-en', {
             "after_owner_success": "Changed: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
-            "select_clone_req": "Clones selected, group operations can not be performed"
+            "select_clone_req": "There are clones and trackers selected. Grouping operations not available."
         },
         "card": {
             "links": {
@@ -1673,7 +1689,11 @@ Ext.define('Locale.locale-en', {
         "KES": "{0} KSh",
         "XPF": "{0} CFP",
         "VUV": "{0} VT",
-        "MMK": "K {0}"
+        "MMK": "K {0}",
+        "SSP": "{0} SS£",
+        "VES": "{0} Bs.",
+        "STN": "{0} Db",
+        "MRU": "{0} UM"
     },
     "features": {
         "api": "API",
