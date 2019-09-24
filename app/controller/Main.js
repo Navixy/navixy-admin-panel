@@ -337,7 +337,7 @@ Ext.define('NavixyPanel.controller.Main', {
                 }, this)
                 return valid
             },
-            multiemailText: 'This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format "user@domain.com,test@test.com"',
+            multiemailText: _l.get('invalid_multi_email'),
             numericMask: /[\-\+0-9.]/,
             multiemailMask: /[a-z0-9_\.\-@\,]/i
         })
