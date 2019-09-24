@@ -1760,6 +1760,7 @@ Ext.define("Locale.locale-en", {
     },
     subpaas: {
         notice_text: "Current reseller admin panel: {0}  <a>Go back to the main admin panel</a>",
+        payment_wait_text: "Your personal Navixy manager will contact you soon to send the invoice.",
         list: {
             empty_text: "Dealers not found",
             create_btn_text: "Create a reseller",

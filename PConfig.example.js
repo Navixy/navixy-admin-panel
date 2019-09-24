@@ -31,6 +31,9 @@ Config = {
     // Номер приема входящих сообщений для sms-шлюза navixy
     navixyInboundNumber: "79037976362",
 
+    // Если true - дает доступ суб-паасам к самостоятельной оплате через avangate и по счету
+    subpaasPay: false,
+
     avangateLinks: {
         avangate_payment_page: 'https://secure.avangate.com/order/checkout.php',
         linkTpls: {

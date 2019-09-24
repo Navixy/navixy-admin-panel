@@ -42,10 +42,11 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
     getLinks: function () {
         var me = this,
             result = [],
-            recordData = this.getRecordData()
+            recordData = this.getRecordData();
 
-        var initialBlock = this.record.isInitialBlock()
-        var active = this.record.isActive()
+        var initialBlock = this.record.isInitialBlock(),
+            active = this.record.isActive(),
+            canPay = Config.subpaasPay || false;
 
         if (Ext.checkPermission('subpaas', 'read')) {
             if (active) {
@@ -70,7 +71,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
 
         var paymentStore = Ext.getStore('PaymentSystems')
 
-        if (paymentStore.findExact('type', 'bill') >= 0) {
+        if (paymentStore.findExact('type', 'bill') >= 0 && canPay) {
             result.push({
                 html: '<a>' + _l.get('subpaas.card.links.invoice_view') + '</a>',
                 cls: ['subpaas-pay-action subpaas-pay-action--invoice',
@@ -84,7 +85,7 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
             })
         }
 
-        if (initialBlock) {
+        if (initialBlock  && canPay) {
             if (paymentStore.findExact('type', 'bill') >= 0) {
                 result.push({
                     html: '<a>' + _l.get('subpaas.card.links.invoice_request') + '</a>',
@@ -154,11 +155,12 @@ Ext.define('NavixyPanel.view.subpaas.Card', {
     },
 
     prepareHeaderData: function () {
-        var recordData = this.getRecordData()
+        var recordData = this.getRecordData(),
+            initialBlock = this.record.isInitialBlock();
 
         return {
-            title: recordData.name,
-            title_add: recordData.login,
+            title: initialBlock ? _l.get('subpaas.payment_wait_text') : recordData.name,
+            title_add: initialBlock ? '' : recordData.login,
             main_cls: 'card-header-inner',
             table_cls: 'header-table',
             fields: [
