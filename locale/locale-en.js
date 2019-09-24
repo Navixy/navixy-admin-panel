@@ -75,6 +75,7 @@ Ext.define("Locale.locale-en", {
     "required_fields": "<span style=\"color:red\">*</span> - required fields or sections",
     "invalid_tab": "Invalid filled fields",
     "page_size": "Page size",
+    "invalid_multi_email": "This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format \"user@domain.com,test@test.com\"",
     "errors": {
         "1": "Database connection error (001). Please contact support or try again later.",
         "2": "Authorization system error (002).  Please contact support or try again later.",
@@ -1766,6 +1767,7 @@ Ext.define("Locale.locale-en", {
     },
     subpaas: {
         notice_text: "Current reseller admin panel: {0}  <a>Go back to the main admin panel</a>",
+        payment_wait_text: "Your personal Navixy manager will contact you soon to send the invoice.",
         list: {
             empty_text: "Dealers not found",
             create_btn_text: "Create a reseller",

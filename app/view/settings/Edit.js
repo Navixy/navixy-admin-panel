@@ -898,6 +898,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'email_special',
                 fieldLabel: _l.get('settings.fields.daily_reports') + this.getHintSymbol(_l.get('settings.fields.daily_reports_hint')),
                 emptyText: _l.get('settings.fields.daily_reports_ph'),
+                vtype: 'multiemail',
                 minLength: 2,
                 maxLength: 100,
                 role: 'permission-field',
