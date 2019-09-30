@@ -235,6 +235,10 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'lbs_providers',
             type: 'auto'
+        },
+        {
+            name: 'app_logo',
+            type: 'string'
         }
     ],
 

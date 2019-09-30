@@ -26,6 +26,10 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
     fileType: null,
 
     typesMap: {
+        app_logo: {
+            format: 'PNG',
+            accept: 'image/png'
+        },
         logo: {
             format: 'PNG',
             accept: 'image/png'
