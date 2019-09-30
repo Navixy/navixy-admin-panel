@@ -764,14 +764,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     appLogoItems: function () {
-        var dealerStore = Ext.getStore('Dealer');
-        var dealer = dealerStore && dealerStore.first();
-        var allowBranding = dealer && dealer.get('allow_branding');
-        var img = this.getImgConfig('app_logo');
-        img.disabled = !allowBranding;
-        var buttons = this.getImgButtonConfig('app_logo');
-        buttons.disabled = !allowBranding;
-        var hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
+        var img = this.getImgConfig('app_logo', {disabled: !this.isBrandingMobile()}),
+            buttons = this.getImgButtonConfig('app_logo', !this.isBrandingMobile()),
+            hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
+
         return [
             {
                 xtype: 'component',
@@ -1280,7 +1276,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 }
             },
-            config || {});
+            config || {disabled : !this.isBrandingWeb()});
     },
 
     getImgUrl: function (type, record) {
@@ -1298,12 +1294,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             : null;
     },
 
-    getImgButtonConfig: function (type) {
+    getImgButtonConfig: function (type, is_disabled) {
         var me = this,
             role = type + '_upload_btn',
             text = this.getRecordData()[type] ? _l.get('settings.edit_form.update_btn') : _l.get('settings.edit_form.upload_btn'),
             delRole = type + '_delete_btn',
-            hidden = !this.getRecordData()[type];
+            hidden = !this.getRecordData()[type],
+            disabled = typeof is_disabled !== "undefined" ? is_disabled : !this.isBrandingWeb();
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
@@ -1318,7 +1315,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     ui: 'default',
                     scale: 'medium',
                     width: 100,
-                    disabled: !me.isBrandingWeb(),
+                    disabled: disabled,
                     handler: function () {
                         Ext.widget('uploadwindow', {
                             fileType: type,
@@ -1338,7 +1335,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     ui: 'gray',
                     scale: 'medium',
                     width: 100,
-                    disabled: !me.isBrandingWeb(),
+                    disabled: disabled,
                     handler: function () {
                         me.removeImgCall(type);
                     }

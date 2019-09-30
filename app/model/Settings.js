@@ -239,6 +239,10 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'lbs_providers',
             type: 'auto'
+        },
+        {
+            name: 'app_logo',
+            type: 'string'
         }
     ],
 
@@ -431,6 +435,14 @@ Ext.define('NavixyPanel.model.Settings', {
         var hasLbsProviders = lbsProviders && (lbsProviders.getValue() !== 'disabled')
         data.lbs_providers = Ext.encode(hasLbsProviders ? [lbsProviders.getValue()] : []);
         data.default_user_settings = Ext.encode(data.default_user_settings);
+
+        if (!Ext.getStore('Dealer').getFeature('branding_web')) {
+            delete data['color_theme'];
+        }
+
+        if (!Ext.getStore('Dealer').getFeature('app_color_theme')) {
+            delete data['app_color_theme'];
+        }
         return data;
     },
 
