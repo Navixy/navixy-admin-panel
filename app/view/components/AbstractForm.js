@@ -106,10 +106,6 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
                     field.setValue(fieldValue);
                 }
             });
-            // мой кастомный компонент не попадает в итератор по полям
-            if (recordData.app_color_theme) {
-                this.down('settings-themes').setCurrentIphoneColor(recordData.app_color_theme);
-            }
         }
 
         this.getForm().isValid();
