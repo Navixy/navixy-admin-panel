@@ -142,11 +142,12 @@ Ext.define("Locale.locale-en", {
         "238": "Changin plan is not allowed",
         "240": "Not allowed to change plan too frequently",
         "242": "Validation error",
-        "246": "User is incorrect",
+        "246": 'User is incorrect',
         "251": "Insufficient funds",
         "252": "Device already corrupted",
         "254": "Cannot save file",
         "264": "Timeout to perform reoperation has not expired",
+        "268": "Object creation limit has been exceeded",
         "upload_exeption": "File upload error",
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
@@ -515,7 +516,7 @@ Ext.define("Locale.locale-en", {
             "empty_text": "No users found"
         },
         "session_alert": {
-            "error": "Can\"t create user session",
+            "error": "Can't create user session",
             "title": "Your session code"
         },
         "session_hash": {
@@ -918,9 +919,9 @@ Ext.define("Locale.locale-en", {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "web_title": "Web interface",
+            "main_info": "Select a color theme for the user interface of your web platform.",
             "mobile_title": "Mobile app",
-            "main_info": "Choose a color theme for the UI of your monitoring system",
+            "web_title": "Web interface",
             "main_title": "Select theme",
             "preview_title": "Theme screenshots",
             "preview_btn": "Preview in monitoring",
@@ -929,7 +930,8 @@ Ext.define("Locale.locale-en", {
                     "title": "Metromorph",
                     "description": "Default UI theme"
                 }
-            }
+            },
+            'mobile_app': "Mobile app"
         },
         "subscription": {
             "title": "Subscription",
@@ -1021,11 +1023,12 @@ Ext.define("Locale.locale-en", {
             "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and mailto: will be active. Use plain text only, HTML tags are not supported.",
             "promo_url_ph": "http://www.company.com",
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
-            "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
-            "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
-            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
-            "document_logo_hint": "Additional logo that is shown in the email notifications and reports",
-            "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
+            "favicon_hint": "Displayed on the browser tab. Important: not supported by Internet Explorer.",
+            "logo_hint": "Displayed on the login page and in the Admin Panel.",
+            "app_logo_hint": "Displayed on the mobile app login screen.",
+            "monitoring_logo_hint": "Displayed in the user web interface menu.",
+            "document_logo_hint": "Displayed in reports and email notifications.",
+            "login_wallpaper_hint": "Upload a background image displayed on the login page.",
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
@@ -1093,11 +1096,11 @@ Ext.define("Locale.locale-en", {
             "privacy_policy_hint": "Please insert a link to Privacy Policy. The link should begin with http: or https.",
             "tos_title": "Terms of Use",
             "tos_hint": "Insert random text with links. Users will see this text when clicking on the “Terms of Use” link in a pop-up window. Links starting with http:,https: and mailto: will be converted into active hyperlinks. Please, use plain text only, html marking is not allowed.",
-            premium_gis: "Activate \"Premium GIS\" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}",
-            paas_premium_gis: "Activate \"Premium GIS\" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}",
-            premium_gis_link: " <a href=\"{0}\"  target=\"_blank\">Read more</a>",
-            paas_maps_is_unavailable: "This map type is not available on these domains: {0}",
-            "unavaliable": "Not available"
+            premium_gis: 'Activate "Premium GIS" package from Navixy which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
+            paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
+            premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
+            paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
+            'unavaliable': 'Not available'
         },
         "sms_gateway": {
             "navixy": {
@@ -1202,6 +1205,7 @@ Ext.define("Locale.locale-en", {
             "main_texts_title": "Main texts",
             "footer_texts_title": "Text in the basement of the login page",
             "logo_title": "Logo",
+            "app_logo_title": "Logo in mobile app",
             "monitoring_logo_title": "User interface logo",
             "document_logo_title": "Documents and notifications logo",
             "document_logo": "Documents and notifications logo",
@@ -1262,8 +1266,8 @@ Ext.define("Locale.locale-en", {
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
-            "google_maps_alert": "Requires Google Maps client credentials or activation of \"Premium GIS\" package from Navixy.",
-            "paas_google_maps_alert": "Requires Google Maps client credentials or activation of \"Premium GIS\" package.",
+            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy.',
+            "paas_google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package.',
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
@@ -1287,14 +1291,16 @@ Ext.define("Locale.locale-en", {
                 "document_logo": "Document logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
-                "desktop_wallpaper": "Service page wallpaper"
+                "desktop_wallpaper": "Service page wallpaper",
+                "app_logo": "Logo in mobile app"
             },
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "document_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
-                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
+                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format.",
+                "app_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
@@ -1420,8 +1426,8 @@ Ext.define("Locale.locale-en", {
                 "imei_order_set": "Attention! Set your phone\"s IMEI code \"{0}\" is already assigned to the order number \"{1}\".",
                 "imei_reset_q": "Do you want perinatality set on the current order?",
                 "imei_reset_btn": "Reassign",
-                "bundle_asssigned": "Set your phone\"s IMEI code \"{0}\" was successfully added to the order of \"{1}\".",
-                "bundle_asssign_failure": "Error. Set your phone\"s IMEI code \"{0}\" could not be added to the order \"{1}\"."
+                "bundle_asssigned": "Set your phone's IMEI code \"{0}\" was successfully added to the order of \"{1}\".",
+                "bundle_asssign_failure": "Error. Set your phone's IMEI code \"{0}\" could not be added to the order \"{1}\"."
             },
             "fields": {
                 "id": "The order number",
@@ -1473,7 +1479,7 @@ Ext.define("Locale.locale-en", {
                 "imei_ready": "Attach the scanner to the bar code IMEI",
                 "imei_invalid": "You entered an incorrect value<br>scan Again",
                 "imei_focus_lose": "Scanning is not ready<br>Set the focus on the field",
-                "imei_not_found": "Sets your phone\"s IMEI code<br><b>{0}</b> not found",
+                "imei_not_found": "Sets your phone's IMEI code<br><b>{0}</b> not found",
                 "auto_print": "Automatically print and start again"
             },
             "iccid_hints": {
@@ -1712,10 +1718,10 @@ Ext.define("Locale.locale-en", {
     "features": {
         "api": "API",
         "app_tasks": "Tasks",
-        "app_tasks_link": "<a href=\"https://www.navixy.com/docs/user/web-interface-docs/tasks/\" target=\"_blank\">{0}</a>",
+        "app_tasks_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>{0}</a>",
         "app_fleet": "Fleet",
         "app_reports": "Reports",
-        "app_reports_link": "<a href=\"https://www.navixy.com/docs/user/web-interface-docs/reports-docs/\" target=\"_blank\">{0}</a>",
+        "app_reports_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/' target='_blank'>{0}</a>",
         "batch_operations": "Batch operations",
         "statuses": "Work statuses",
         "custom_maps": "Custom maps",
@@ -1729,7 +1735,7 @@ Ext.define("Locale.locale-en", {
         "retranslation": "Retranslation",
         "report_xls": "Reports to file",
         "report_scheduled": "Scheduled reports",
-        "report_scheduled_link": "<a href=\"https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/\" target=\"_blank\">{0}</a>",
+        "report_scheduled_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/reports-docs/scheduled-reports/' target='_blank'>{0}</a>",
         "routing": "Routing",
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
@@ -1842,4 +1848,4 @@ Ext.define("Locale.locale-en", {
             msg: "Invoice was sent on your email"
         }
     }
-})
+});

@@ -34,6 +34,10 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
             format: 'PNG',
             accept: 'image/png'
         },
+        app_logo: {
+            format: 'PNG',
+            accept: 'image/png'
+        },
         monitoring_logo: {
             format: 'PNG',
             accept: 'image/png'
@@ -122,7 +126,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         xtype: "filefield",
                         name: "file",
                         allowBlank: false,
-                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 10),
+                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 16),
                         msgTarget: "under",
                         labelAlign: "top",
                         buttonText: _l.get('settings.upload_form.upload_btn'),
@@ -186,16 +190,21 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
     },
 
     afterFileUpdateFailure: function (type, response) {
-        var status = response.status,
-            errors = response.errors || [],
-            errCode = status.code,
-            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        this.down("container[role=form]").down("filefield").fileInputEl.set({
-            accept: this.typesMap[this.fileType].accept
-        });
+        try {
+            var status = response.status,
+                errors = response.errors || [],
+                errCode = status.code,
+                errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
-        this.showUploadError(errDescription);
+            this.down("container[role=form]").down("filefield").fileInputEl.set({
+                accept: this.typesMap[this.fileType].accept
+            });
+
+            this.showUploadError(errDescription);
+        } catch (e) {
+            Ext.API.errorsManager.fireError('upload_exeption', false, false);
+        }
     },
 
     showUploadError: function (errDescription) {

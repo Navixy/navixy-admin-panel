@@ -94,17 +94,22 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
     applyRecordData: function () {
         var recordData = this.getRecordData(),
             fieldName, fieldValue, fieldType;
-
         if (recordData) {
             this.iterateFields(function(field) {
                 fieldName = field.name;
                 fieldType = field.getXType();
                 fieldValue = recordData[fieldName];
 
-                if (fieldValue !== undefined) {
+                if (field.forceValue) {
+                    field.setValue(field.forceValue);
+                } else if (fieldValue !== undefined) {
                     field.setValue(fieldValue);
                 }
             });
+            // мой кастомный компонент не попадает в итератор по полям
+            if (recordData.app_color_theme) {
+                this.down('settings-themes').setCurrentIphoneColor(recordData.app_color_theme);
+            }
         }
 
         this.getForm().isValid();

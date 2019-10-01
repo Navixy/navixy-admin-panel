@@ -1289,8 +1289,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return value
             ? isUrl
-                ? value + aCache
-                : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
+            ? value + aCache
+            : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
             : null;
     },
 

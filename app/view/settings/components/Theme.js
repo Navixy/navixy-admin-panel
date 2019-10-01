@@ -19,11 +19,47 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     record: null,
 
     defaultPreviewsPathTpl: 'images/themes/{0}/{1}.jpg',
-
+    oldColor: null,
     initComponent: function () {
         this.items = this.getItems();
-
         this.callParent(arguments);
+    },
+    afterLayout: function () {
+        if (this.oldColor !== this.iphoneColor) {
+            this.fillColor(this.iphoneColor);
+            window.removeEventListener('resize', this.fillIphoneAgain.bind(this), false)
+            window.addEventListener('resize', this.fillIphoneAgain.bind(this), false)
+            this.oldColor = this.iphoneColor;
+        }
+        this.callParent(arguments);
+        this.fillIphoneAgain();
+    },
+    onBeforeDestroy: function (field) {
+        window.removeEventListener('resize', this.fillIphoneAgain.bind(this), false)
+    },
+
+    fillIphoneAgain: function (timeout) {
+        setTimeout(function () {
+            this.fillColor(this.iphoneColor)
+        }.bind(this), 250);
+    },
+
+    fillColor: function (color) {
+        var iphoneImg = document.querySelector('.theme-image-iphone__object');
+        if (iphoneImg) {
+            try {
+                Ext.waitFor(function () {
+                    return iphoneImg.contentDocument && iphoneImg.contentDocument.getElementsByClassName('theme-color').length > 0;
+                }, function () {
+                    var needChangeColor = iphoneImg.contentDocument.getElementsByClassName('theme-color');
+                    for (var i = 0; i < needChangeColor.length; i++) {
+                        needChangeColor[i].setAttribute('fill', color);
+                    }
+                }, this);
+            } catch (e) {
+                console.log(e.stack);
+            }
+        }
     },
 
     getItems: function (pathTpl) {
@@ -40,7 +76,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                 height: 420,
                 layout: {
                     type: 'hbox',
-                    align: 'streach'
+                    align: 'top'
                 },
                 listeners: {
                     'click': {
