@@ -298,7 +298,7 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleListAction: function (subpaas) {
-        if (subpaas.isInitialBlock()) {
+        if (subpaas.isInitialBlock() && (Config.subpaasPay || false)) {
             var paymentStore = Ext.getStore('PaymentSystems')
 
             if (Ext.getStore('Dealer').first().get('seller_currency') !== 'RUB' &&

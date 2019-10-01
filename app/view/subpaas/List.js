@@ -25,12 +25,13 @@ Ext.define('NavixyPanel.view.subpaas.List', {
         this.viewConfig.getRowClass = function (record) {
             return 'subpaas-row-' + record.get('block_type')
         }
+        this
         this.callParent(arguments)
     },
 
     getToolsColumns: function () {
         var toolTpl = new Ext.XTemplate(
-            '<tpl if="block_type === \'INITIAL_BLOCK\'">',
+            '<tpl if="block_type === \'INITIAL_BLOCK\' && this.canPay">',
             '<span class="pay-tool" data-qtip="{[this.resolveTooltip(values)]}"></span>',
             '</tpl>',
 
@@ -41,7 +42,8 @@ Ext.define('NavixyPanel.view.subpaas.List', {
             '</tpl>', {
                 resolveTooltip: function () {
                     return Ext.getStore('Dealer').first().get('seller_currency') === 'RUB' ? _l.get('subpaas.card.links.invoice_view') : _l.get('subpaas.card.links.avangate_pay')
-                }
+                },
+                canPay: (Config.subpaasPay || false)
             })
 
 
