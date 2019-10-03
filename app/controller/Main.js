@@ -339,7 +339,7 @@ Ext.define('NavixyPanel.controller.Main', {
             },
             multiemailText: _l.get('invalid_multi_email'),
             numericMask: /[\-\+0-9.]/,
-            multiemailMask: /[ a-z0-9_\.\-@\,]/i
+            multiemailMask: /[ a-z0-9_\+\.\-@\,]/i
         })
 
         Ext.apply(Ext.form.field.VTypes, {
