@@ -440,7 +440,7 @@ Ext.define('NavixyPanel.model.Settings', {
             delete data['color_theme'];
         }
 
-        if (!Ext.getStore('Dealer').getFeature('app_color_theme')) {
+        if (!Ext.getStore('Dealer').getFeature('branding_mobile')) {
             delete data['app_color_theme'];
         }
         return data;
