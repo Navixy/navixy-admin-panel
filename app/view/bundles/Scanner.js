@@ -453,7 +453,7 @@ Ext.define('NavixyPanel.view.bundles.Scanner', {
         this.getPrintButton().enable();
         if (this.shouldBePrinted) {
             this.printBundle();
-            this.resetScanner();
+            Ext.defer(this.resetScanner, 200, this);
         }
         this.shouldBePrinted = false;
     },
