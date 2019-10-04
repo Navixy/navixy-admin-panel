@@ -239,7 +239,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             check = store.checkThemeAvailability(theme);
 
         if (theme != check) {
-            this.record.set('app_color_theme', check);
+            this.down('settings-mobile-theme').disable();
+            this.down('settings-mobile-theme-field').disable();
         }
     },
 

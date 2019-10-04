@@ -49,7 +49,8 @@ Ext.define('NavixyPanel.view.settings.components.MobileThemePicker', {
         var me = this,
             selectedCls = me.selectedCls,
             value = me.value,
-            el;
+            el,
+            selected;
 
         if (suppressEvent !== true && theme != value) {
             me.fireEvent('select', me, theme);
@@ -68,7 +69,12 @@ Ext.define('NavixyPanel.view.settings.components.MobileThemePicker', {
                 el.down('a.theme-' + value).removeCls(selectedCls);
             }
 
-            el.down('a.theme-' + theme).addCls(selectedCls);
+            selected = el.down('a.theme-' + theme);
+
+            if (selected) {
+                selected.addCls(selectedCls);
+            }
+
             me.value = theme;
             if (suppressEvent !== true) {
                 me.fireEvent('select', me, theme);
