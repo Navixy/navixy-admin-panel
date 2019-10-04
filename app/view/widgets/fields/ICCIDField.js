@@ -138,16 +138,19 @@ Ext.define('NavixyPanel.view.widgets.fields.ICCIDField', {
 
         this.fireEvent('boundle-before-changed', this.bundle, this.getStatus());
 
-        Ext.API.assignBundle({
-            params: params,
-            callback: function (response) {
-                this.afterServerAction(response, processedValue);
-            },
-            failure: function (response) {
-                this.afterServerActionFailure(response, processedValue);
-            },
-            scope: this
-        });
+        this.afterServerAction({value: processedValue}, processedValue);
+
+        //DEBUG
+        //Ext.API.assignBundle({
+        //    params: params,
+        //    callback: function (response) {
+        //        this.afterServerAction(response, processedValue);
+        //    },
+        //    failure: function (response) {
+        //        this.afterServerActionFailure(response, processedValue);
+        //    },
+        //    scope: this
+        //});
     },
 
     afterServerAction: function (response, value) {

@@ -90,7 +90,9 @@ Ext.define('NavixyPanel.view.bundles.Printer', {
             win = this.getWin();
 
         if (win) {
-            win.print();
+            setTimeout(function () {
+                win.print();
+            }, 100);
         }
     }
 });
