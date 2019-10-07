@@ -10,28 +10,22 @@ Ext.define('NavixyPanel.store.ActiveTrackersStat', {
     storeId: 'ActiveTrackersStat',
     groupers: ['month', 'user_id'],
 
-    loadStat: function (period) {
-        Ext.API.getActiveTrackersStat({
-            params: period,
-            callback: function (response) {
-                this.loadData(this.flatterize(response));
-            },
-            scope: this
-        });
+    loadStatData: function (data) {
+        this.loadData(this.flatterize(data))
     },
 
     flatterize: function (results) {
-        var flatResult = [];
+        var flatResult = []
 
         Ext.each(results.list, function (group) {
             Ext.each(group.trackers, function (item, key) {
                 flatResult.push(Ext.apply(item, {
                     month: group.month,
                     amount: group.amount
-                }));
-            });
-        });
+                }))
+            })
+        })
 
-        return flatResult;
+        return flatResult
     }
-});
+})

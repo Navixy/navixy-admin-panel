@@ -41,7 +41,7 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                         216, 217, 218, 219, 220, 221, 222,
                         223, 224, 225, 226, 227, 228, 229,
                         230, 231, 232, 233, 234, 235, 236,
-                        238, 240,
+                        238, 240, 268,
                         "upload_exeption"],
                 callback: this.showErrorMessage
             },

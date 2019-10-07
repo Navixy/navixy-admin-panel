@@ -20,15 +20,15 @@ Ext.define('NavixyPanel.controller.Reports', {
         }
     ],
 
-    stores: ['ActiveTrackersStat'],
-    models: ['ActiveTrackersStatItem'],
+    stores: ['ActiveTrackersStat', 'SubpaasActiveTrackersStat'],
+    models: ['ActiveTrackersStatItem', 'SubpaasActiveTrackersStatItem'],
 
     init: function () {
-        this.callParent(arguments);
+        this.callParent(arguments)
         this.menuConfig = {
             text: _l.get('reports.menu_text'),
             target: 'reports'
-        };
+        }
 
         this.handle({
             'reports': {
@@ -36,28 +36,30 @@ Ext.define('NavixyPanel.controller.Reports', {
                 entity: 'trackers',
                 access: 'report'
             }
-        });
+        })
     },
 
     registerMenu: function () {
         if (Ext.checkPermission('trackers', 'report')) {
 
-            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
+            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target)
 
             var menuText = this.menuConfig.text || this.getModuleName(),
-                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target))
 
             this.application.fireEvent('menuregister', {
                 name: this.getModuleName(),
                 text: menuText,
                 target: menuTarget
-            });
+            })
         }
     },
 
     handleReports: function () {
-        this.fireContent({
-            xtype: 'reports-panel'
-        });
+        Ext.getStore('Dealer').isSubpaasReportsAvailable(function () {
+            this.fireContent({
+                xtype: 'reports-panel'
+            })
+        }, this)
     }
 });

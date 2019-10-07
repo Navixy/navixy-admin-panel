@@ -19,10 +19,9 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
     record: null,
 
     defaultPreviewsPathTpl: 'images/themes/{0}/{1}.jpg',
-
+    oldColor: null,
     initComponent: function () {
         this.items = this.getItems();
-
         this.callParent(arguments);
     },
 
@@ -31,31 +30,30 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
             previews = Ext.Array.clone(this.record.get('images')),
             themeName = this.record.get('name'),
             subItems = [],
-            default_src = previews && previews.length && Ext.String.format(tpl, themeName, previews.shift()),
+            default_src = previews && previews.length && Ext.String.format(tpl, themeName, previews[0]),
             result = default_src ? {
                 role: 'previews-container',
                 xtype: 'container',
-                cls: 'test-test',
+                cls: 'form-img-preview-bg-holder',
+                margin: '15 0 0 0',
+                height: 420,
                 layout: {
                     type: 'hbox',
-                    align: 'streach'
+                    align: 'top'
                 },
                 listeners: {
-                    'mouseover': {
+                    'click': {
                         fn: function (event, element) {
                             var el = Ext.get(element);
 
-                            if (el && el.hasCls('form-img-preview')) {
+                            if (el && el.hasCls('form-img-preview-small')) {
                                 this.down("[role=big-picture]").setSrc(el.getAttribute('src'));
-                            }
-                        },
-                        element: 'el',
-                        scope: this
-                    },
-                    'mouseout': {
-                        fn: function () {
-                            if (default_src) {
-                                this.down("[role=big-picture]").setSrc(default_src);
+
+                                this.down("[role=small-picture-container]").items.each(function (el) {
+                                    el.removeCls('selected');
+                                }, this);
+
+                                el.addCls('selected');
                             }
                         },
                         element: 'el',
@@ -66,10 +64,8 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                     {
                         xtype: 'image',
                         src: default_src,
-                        cls: 'form-img-preview',
-                        role: 'big-picture',
-                        width: 575,
-                        maxHeight: 374
+                        cls: 'form-img-preview form-img-preview-big',
+                        role: 'big-picture'
                     }
                 ]
             }
@@ -78,7 +74,7 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
         if (result) {
             Ext.iterate(previews, function (img_path, index) {
                 subItems.push({
-                    margin: index ? '2 0 1 2' : '0 0 0 2',
+                    cls: index == 0 ? 'form-img-preview form-img-preview-small selected' : 'form-img-preview form-img-preview-small',
                     src: Ext.String.format(tpl, themeName, img_path)
                 });
             }, this);
@@ -92,11 +88,10 @@ Ext.define('NavixyPanel.view.settings.components.Theme', {
                             align: 'stretch'
                         },
                         defaults: {
-                            xtype: 'image',
-                            cls: 'form-img-preview',
-                            width: 191,
-                            height: 108
+                            xtype: 'image'
                         },
+                        role: 'small-picture-container',
+                        height: 420,
                         items: subItems
                     }
                 )

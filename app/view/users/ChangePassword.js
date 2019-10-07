@@ -74,4 +74,11 @@ Ext.define('NavixyPanel.view.users.ChangePassword', {
         return [];
     },
 
+    afterFirstLayout: function () {
+        this.callParent(arguments)
+        this.query('textfield').map(function (field) {
+            field.clearInvalid()
+        })
+    }
+
 });

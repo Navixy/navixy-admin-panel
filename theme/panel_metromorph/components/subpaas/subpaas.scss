@@ -1,0 +1,74 @@
+.subpaas-hint {
+  background-color: rgba(69, 173, 245, 0.14);
+}
+
+.subpaas-status--NOT_BLOCKED {
+  color: #66C011;
+}
+
+.subpaas-status--INITIAL_BLOCK {
+  color: #c86100;
+}
+
+.subpaas-status--BLOCK_LOGIN {
+  color: #c8009b;
+}
+
+.subpaas-status--CLIENTS_BLOCKED {
+  color: #c81d1d;
+}
+
+.subpaas-status--DELETED {
+  color: #777;
+}
+
+.subpaas-notice {
+  padding: 8px 16px;
+  background-color: #27a9e3;
+  color: #fff;
+  width: 100%;
+  opacity: 0.8;
+  z-index: 1000;
+
+  a {
+    background-color: #fff;
+    padding: 3px 6px;
+    border-radius: 5px;
+  }
+}
+
+
+.subpaas-pay-action {
+  font-weight: bold;
+
+  &--normal {
+    font-weight: 400;
+  }
+
+  &--invoice {
+    color: forestgreen;
+  }
+
+  &--avangate {
+    color: forestgreen;
+  }
+}
+
+
+.subpaas-list {
+  .x-grid-row {
+    .x-grid-cell-inner {
+      padding: 8px 0 8px 8px;
+    }
+
+    .pay-tool {
+      @extend .icon-coin
+    }
+
+    .login-tool {
+      @extend .icon-user;
+      font-size: 16px;
+    }
+  }
+
+}

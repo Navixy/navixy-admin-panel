@@ -89,6 +89,10 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'string'
         },
         {
+            name: 'email_special',
+            type: 'string'
+        },
+        {
             name: 'sms_originator',
             type: 'string'
         },
@@ -107,6 +111,10 @@ Ext.define('NavixyPanel.model.Settings', {
         },
         {
             name: 'login_wallpaper',
+            type: 'string'
+        },
+        {
+            name: 'app_logo',
             type: 'string'
         },
         {
@@ -214,6 +222,13 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         },
         {
+            name: 'app_color_theme',
+            type: 'string',
+            convert: function (value, record) {
+                return Ext.isEmpty(value) ? 'blue_2' : value;
+            }
+        },
+        {
             name: 'geocoders',
             type: 'auto'
         },
@@ -224,6 +239,10 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'lbs_providers',
             type: 'auto'
+        },
+        {
+            name: 'app_logo',
+            type: 'string'
         }
     ],
 
@@ -245,7 +264,6 @@ Ext.define('NavixyPanel.model.Settings', {
     notificationMap: {
         email_from: 'email_from',
         email_footer: 'email_footer',
-        email_special: 'email_special',
         sms_originator: 'sms_originator',
         caller_id: 'caller_id'
     },
@@ -256,10 +274,7 @@ Ext.define('NavixyPanel.model.Settings', {
         route_provider: 'route_provider',
         translit: 'translit'
     },
-    constructor: function (data) {
-        Ext.getStore('Dealer').setGoogleClientId(data.google_client_id);
-        this.callParent(arguments);
-    },
+
     defaultUserConverter: function (field, value) {
         return value !== '' ? value : this.get('default_user_settings')[this.defaultUserSettingsMap[field.name]] || 0;
     },
@@ -420,6 +435,14 @@ Ext.define('NavixyPanel.model.Settings', {
         var hasLbsProviders = lbsProviders && (lbsProviders.getValue() !== 'disabled')
         data.lbs_providers = Ext.encode(hasLbsProviders ? [lbsProviders.getValue()] : []);
         data.default_user_settings = Ext.encode(data.default_user_settings);
+
+        if (!Ext.getStore('Dealer').getFeature('branding_web')) {
+            delete data['color_theme'];
+        }
+
+        if (!Ext.getStore('Dealer').getFeature('branding_mobile')) {
+            delete data['app_color_theme'];
+        }
         return data;
     },
 

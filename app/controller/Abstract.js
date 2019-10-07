@@ -10,7 +10,7 @@ Ext.define('NavixyPanel.controller.Abstract', {
     waitStores: null,
 
     init: function () {
-        this.callParent(arguments);
+        this.callParent(arguments)
 
         this.control({
             'mainviewport': {
@@ -19,166 +19,166 @@ Ext.define('NavixyPanel.controller.Abstract', {
                     single: true
                 }
             }
-        });
+        })
     },
 
     waitConnectionReady: function (fn, args, scope) {
         if (this.application.connectionReady) {
-            fn.apply(scope || this, args);
+            fn.apply(scope || this, args)
         } else {
-            this.application.on('connectionset', Ext.bind(fn, scope || this, args));
+            this.application.on('connectionset', Ext.bind(fn, scope || this, args))
         }
     },
 
     registerMenu: function (config) {
         if (Ext.checkPermission(this.getModuleName()) && this.menuConfig && this.menuConfig.target) {
 
-            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target);
+            this.menuConfig.eventName = this.getHandlerEventConfig(this.menuConfig.target)
 
             var menuText = this.menuConfig.text || this.getModuleName(),
-                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target));
+                menuTarget = Ext.Nav.makeToken(this.getHandlerEventPath(this.menuConfig.target))
 
             this.application.fireEvent('menuregister', {
                 name: this.getModuleName(),
                 text: menuText,
                 target: menuTarget
-            });
+            })
         }
     },
 
     handle: function () {
         // Wait application permissions load
-        this.waitConnectionReady(this.bindHandlers, arguments);
+        this.waitConnectionReady(this.bindHandlers, arguments)
     },
 
     bindHandlers: function (handlers) {
-        var controls = {};
+        var controls = {}
 
         Ext.iterate(handlers, function (name, eventConfig) {
             var eventName = this.getHandlerEventConfig(name), // Get event navigation key
                 eventAccess = Ext.checkPermission(eventConfig.entity || this.getModuleName(), eventConfig.access || false), // Check user permissions for handle access
-                caller, handleCaller, callConfig;
+                caller, handleCaller, callConfig
 
             if (eventName && name !== 'scope') {
 
-                callConfig = eventConfig;
+                callConfig = eventConfig
 
                 // Set callback to access denied error, if permission not granted
                 handleCaller = eventAccess
                     ? eventConfig.fn || eventConfig
-                    : this.handleAccessDenied;
+                    : this.handleAccessDenied
 
                 // Make config object for handle caller
                 caller = Ext.bind(this.callHandle, handlers.scope || this, {
                     fn: handleCaller,
                     controllerParent: this,
                     eventName: eventName
-                }, true);
+                }, true)
 
                 if (eventConfig.fn) {
-                    callConfig.fn = caller;
+                    callConfig.fn = caller
                 } else {
-                    callConfig = caller;
+                    callConfig = caller
                 }
 
                 // Add config to controls events set
-                controls[eventName] = callConfig;//Ext.bind(this.callHandle, this, eventConfig, true);
+                controls[eventName] = callConfig//Ext.bind(this.callHandle, this, eventConfig, true);
             }
-        }, this);
+        }, this)
 
         // Register module on application global events
-        this.application.on(controls);
+        this.application.on(controls)
     },
 
     callHandle: function (args, origin, callerConfig) {
         var controller = callerConfig.controllerParent,
             eventName = callerConfig.eventName,
-            mainStore,  recordId,
-            handleCall;
+            mainStore, recordId,
+            handleCall
 
         if (args && !Ext.isArray(args)) {
-            args = [args];
+            args = [args]
 
-            recordId = origin.loadRecord && args[0];
+            recordId = origin.loadRecord && args[0]
         }
 
         handleCall = function () {
 
             // TODO: CallHandle delay for loaded record
-            controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']();
+            controller[origin.ignoreMenu ? 'callUnHandleMenu' : 'callHandleMenu']()
             // Get record for result
             if (origin.loadRecord && arguments[0].isModel) {
                 if (!Ext.isArray(args)) {
-                    args = [];
+                    args = []
                 }
-                args[0] = arguments[0];
+                args[0] = arguments[0]
             }
 
-            callerConfig.fn.apply(this, args);
-        };
+            callerConfig.fn.apply(this, args)
+        }
 
-        controller.callHandleFound(eventName);
+        controller.callHandleFound(eventName)
 
         if (origin.loadRecord && controller.mainStore) {
-            Ext.waitRecordReady(recordId, controller.mainStore, handleCall, this, origin.loadAssociations);
+            Ext.waitRecordReady(recordId, controller.mainStore, handleCall, this, origin.loadAssociations)
         } else {
-            handleCall.call(this);
+            handleCall.call(this)
         }
     },
 
     callUnHandleMenu: function () {
-        this.application.fireEvent('menudeselect', this.getModuleName());
+        this.application.fireEvent('menudeselect', this.getModuleName())
     },
 
     callHandleMenu: function () {
-        this.application.fireEvent('menuselect', this.getModuleName());
+        this.application.fireEvent('menuselect', this.getModuleName())
     },
 
     callHandleFound: function (eventName) {
-        this.application.fireEvent('handlefound');
+        this.application.fireEvent('handlefound')
     },
 
     getHandlerEventConfig: function (name) {
 
         var path = this.getHandlerEventPath(name),
-            config = Ext.Nav.genEventConfig(path);
+            config = Ext.Nav.genEventConfig(path)
 
         return config && config.name
             ? config.name
-            : null;
+            : null
     },
 
     getHandlerEventPath: function (name) {
-        var eventPath = name.replace(/\s+/g," ").split(this.handleDelimiter),
+        var eventPath = name.replace(/\s+/g, ' ').split(this.handleDelimiter),
             path = {},
-            config;
+            config
 
         if (eventPath[0]) {
-            path.handler = eventPath[0];
+            path.handler = eventPath[0]
         }
 
         if (eventPath[1]) {
-            path.action = eventPath[1];
+            path.action = eventPath[1]
         }
 
-        return path;
+        return path
     },
 
     handleAccessDenied: function () {
         this.fireContent({
             xtype: 'accessdenied'
-        });
+        })
     },
 
     getModuleName: function () {
         var clsName = this.id || this.$className,
-            path = clsName.split('.');
+            path = clsName.split('.')
 
-        return Ext.String.uncapitalize(path.pop());
+        return path.pop().toLocaleLowerCase()
     },
 
     fireContent: function (config) {
-        this.application.fireEvent('contentchange', config);
+        this.application.fireEvent('contentchange', config)
     }
-});
+})
 

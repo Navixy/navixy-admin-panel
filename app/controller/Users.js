@@ -329,7 +329,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var status = response.status,
             errors = response.errors || [],
             errCode = status.code,
-            errDescription = status.description || false;
+            errDescription = _l.get('errors.user')[errCode] || _l.get('errors')[errCode] || status.description || false;
 
         this.getUserCreate().showSubmitErrors(errCode, errors, errDescription);
     },
@@ -526,6 +526,6 @@ Ext.define('NavixyPanel.controller.Users', {
             format: format
         };
 
-        window.open(Ext.API.getUsersListDownloadLink({params: params}), 'Download');
+        window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
     }
 });

@@ -222,6 +222,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.post_index'),
                 allowBlank: true,
                 name: 'post_index',
+                maxLength: 30,
                 minLength: 1
             }
 
@@ -321,6 +322,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 {
                     fieldLabel: _l.get('users.fields.registered_index'),
                     name: 'registered_index',
+                    maxLength: 30,
                     minLength: 1,
                     maxLength: 30,
                     allowBlank: true
