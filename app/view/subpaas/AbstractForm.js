@@ -65,7 +65,7 @@ Ext.define('NavixyPanel.view.subpaas.AbstractForm', {
                 padding: '6 12',
                 margin: '0 0 10 0',
                 cls: 'subpaas-hint',
-                html: _l.get('settings.fields.domain_hint')
+                html: _l.get('settings.fields.domain_hint') + '<br> <a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>'
             },
             {
                 fieldLabel: _l.get('subpaas.fields.password'),
