@@ -98,11 +98,12 @@ Ext.define('NavixyPanel.store.Features', {
                 "name": _l.get('features.checkins'),
                 group: "features"
             },
-            {
-                type: "api",
-                "name": _l.get('features.api'),
-                group: "misc"
-            },
+            // #COR-97
+            //{
+            //    type: "api",
+            //    "name": _l.get('features.api'),
+            //    group: "misc"
+            //},
             {
                 type: "custom_maps",
                 "name": _l.get('features.custom_maps'),
