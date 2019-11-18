@@ -1,61 +1,65 @@
 .open_tracker_tool {
-    visibility: hidden;
-    padding: 5px;
-    color: $smoke;
-    cursor: pointer;
+  visibility: hidden;
+  padding: 5px;
+  color: $smoke;
+  cursor: pointer;
 }
 
 .x-grid-row-over {
-    .open_tracker_tool {
-        visibility: visible;
-    }
+  .open_tracker_tool {
+    visibility: visible;
+  }
 }
 
 .x-grid-row-selected {
-    .open_tracker_tool {
-        color: $white;
-    }
+  .open_tracker_tool {
+    color: $white;
+  }
 }
 
 .x-grid .filter-bar-ct .x-column-header {
-    background-color: $lightSmoke;
+  background-color: $lightSmoke;
+
+  input {
+    padding-left: 9px;
+  }
 }
 
 .x-operator-button {
-    width: 16px;
-    height: 16px;
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    -moz-user-focus: ignore; /* https://developer.mozilla.org/en/CSS/-moz-user-focus */
-    cursor: pointer;
-    position: absolute;
-    overflow: hidden; /* IE 6 :-( */
-    margin-top: 6px;
-    background-color: white;
+  width: 16px;
+  height: 16px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -moz-user-focus: ignore; /* https://developer.mozilla.org/en/CSS/-moz-user-focus */
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden; /* IE 6 :-( */
+  margin-top: 6px;
+  background-color: white;
 }
 
 .x-operator-button-equal {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-equal.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-equal.gif);
 }
 
 .x-operator-button-not-equal {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-not-equal.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-not-equal.gif);
 }
 
 .x-operator-button-great-than {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-great-than.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-great-than.gif);
 }
 
 .x-operator-button-less-than {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-less-than.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-less-than.gif);
 }
 
 .x-operator-button-great-than-equal {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-great-than-equal.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-great-than-equal.gif);
 }
 
 .x-operator-button-less-than-equal {
-    background-image: url(#{$img_dir}/ux/grid/filter/operator-less-than-equal.gif);
+  background-image: url(#{$img_dir}/ux/grid/filter/operator-less-than-equal.gif);
 }
 
 /*.ext-ux-operatorbutton-mouse-over-input {
@@ -72,65 +76,64 @@
 */
 
 .x-grid-header-ct .x-column-filtered .x-column-header-inner .x-column-header-text {
-    font-weight: bold;
-    font-style: italic;
-    color: white;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
 }
 
 .ext-ux-clearbutton {
-    width: 12px;
-    height: 12px;
-    background-image: url(#{$img_dir}/ux/grid/filter/clear-text-icon.gif);
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    -moz-user-focus: ignore; /* https://developer.mozilla.org/en/CSS/-moz-user-focus */
-    cursor: pointer;
-    position: absolute;
-    overflow: hidden; /* IE 6 :-( */
-    margin-top: 6px;
-    background-color: white;
+  width: 12px;
+  height: 12px;
+  background-image: url(#{$img_dir}/ux/grid/filter/clear-text-icon.gif);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -moz-user-focus: ignore; /* https://developer.mozilla.org/en/CSS/-moz-user-focus */
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden; /* IE 6 :-( */
+  margin-top: 6px;
+  background-color: white;
 }
 
 .ext-ux-clearbutton-mouse-over-input {
-    background-position: 0 -12px;
+  background-position: 0 -12px;
 }
 
 .ext-ux-clearbutton-mouse-over-button {
-    background-position: 0 -24px;
+  background-position: 0 -24px;
 }
 
 .ext-ux-clearbutton-mouse-down {
-    background-position: 0 -36px;
+  background-position: 0 -36px;
 }
 
 .ext-ux-clearbutton-on {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity .35s linear;
-    -webkit-transition: opacity .35s linear;
-    -moz-transition: opacity .35s linear;
-    -o-transition: opacity .35s linear;
-    -ms-transition: opacity .35s linear;
-    -khtml-transition: opacity .35s linear;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .35s linear;
+  -webkit-transition: opacity .35s linear;
+  -moz-transition: opacity .35s linear;
+  -o-transition: opacity .35s linear;
+  -ms-transition: opacity .35s linear;
+  -khtml-transition: opacity .35s linear;
 }
 
 .ext-ux-clearbutton-off {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .35s linear, visibility .0s linear .35s;
-    -webkit-transition: opacity .35s linear, visibility .0s linear .35s;
-    -moz-transition: opacity .35s linear, visibility .0s linear .35s;
-    -o-transition: opacity .35s linear, visibility .0s linear .35s;
-    -ms-transition: opacity .35s linear, visibility .0s linear .35s;
-    -khtml-transition: opacity .35s linear, visibility .0s linear .35s;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s linear, visibility .0s linear .35s;
+  -webkit-transition: opacity .35s linear, visibility .0s linear .35s;
+  -moz-transition: opacity .35s linear, visibility .0s linear .35s;
+  -o-transition: opacity .35s linear, visibility .0s linear .35s;
+  -ms-transition: opacity .35s linear, visibility .0s linear .35s;
+  -khtml-transition: opacity .35s linear, visibility .0s linear .35s;
 }
 
 
-
 .filter-bar-ct {
-    padding-bottom: 1px;
+  padding-bottom: 1px;
 
-    .x-form-focus{
-        border-color: $white;;
-    }
+  .x-form-focus {
+    border-color: $white;;
+  }
 }

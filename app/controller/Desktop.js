@@ -7,7 +7,6 @@
 Ext.define('NavixyPanel.controller.Desktop', {
     extend: 'NavixyPanel.controller.Abstract',
     id: 'MainDesktopController',
-
     alternateTokens: [
         'login'
     ],
@@ -84,7 +83,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     showContent: function (cmpConfig) {
 
-        cmpConfig = typeof cmpConfig === 'string' ? {xtype: cmpConfig} : cmpConfig;
+        cmpConfig = typeof cmpConfig === 'string' ? { xtype: cmpConfig } : cmpConfig;
 
         var cardContainer = this.getDesktop(),
             xtype = cmpConfig.xtype,
@@ -127,7 +126,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
         var cardContainer = this.getDesktop(),
             xtype = cmpConfig.xtype,
             menu_text = cmpConfig.name || xtype,
-            config = Ext.apply(cmpConfig, {role: xtype});
+            config = Ext.apply(cmpConfig, { role: xtype });
 
         return cardContainer.add(config);
     },
@@ -141,7 +140,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     onSearch: function (searchString) {
-        if (Ext.checkPermissons(['users', 'trackers', 'tariffs'])) {
+        if (Ext.checkPermissons(['users', 'trackers', 'tariffs', 'subpaas'])) {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
                 xtype: 'searchform',
@@ -155,7 +154,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
             dealer = dealer_store && dealer_store.first(),
             seller_currency = dealer && dealer.get('seller_currency');
 
-        if (Ext.checkPermission("paas_payments", "create") && seller_currency === "USD") {
+        if (Ext.checkPermission('paas_payments', 'create') && seller_currency === 'USD') {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
                 xtype: 'avangate-panel'
@@ -175,9 +174,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     registerSearch: function () {
         this.addMainMenuItem({
-            name: "index",
+            name: 'index',
             text: _l.get('index.menu_text'),
-            target: ""
+            target: ''
         });
 
         this.registerPayments();
@@ -188,11 +187,11 @@ Ext.define('NavixyPanel.controller.Desktop', {
             dealer = dealer_store && dealer_store.first(),
             seller_currency = dealer && dealer.get('seller_currency');
 
-        if (Ext.checkPermission("paas_payments", "create") && !Ext.checkPermission("service_settings", "read") && seller_currency === "USD") {
+        if (Ext.checkPermission('paas_payments', 'create') && !Ext.checkPermission('service_settings', 'read') && seller_currency === 'USD') {
             this.addMainMenuItem({
-                name: "payment",
+                name: 'payment',
                 text: _l.get('settings.subscription.title'),
-                target: "payment"
+                target: 'payment'
             });
         }
     }

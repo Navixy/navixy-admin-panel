@@ -2,7 +2,7 @@
  * @class Locale.locale-en
  * @extends Locale.AbstractLocale
  */
-Ext.define('Locale.locale-en', {
+Ext.define("Locale.locale-en", {
     "extend": "Locale.AbstractLocale",
     "dependencies": [
         {
@@ -26,15 +26,15 @@ Ext.define('Locale.locale-en', {
     "index_title": "Welcome to Admin Panel",
     "index_blocked": {
         "inital_block": "Initial blocking.",
-        "block_login": "Control panel features are not available. It is necessary to replenish balance.",
-        "clients_blocked": "Client access to service and control panel functions are not available. It is necessary to replenish the balance."
+        "block_login": "Access to your admin panel suspended. Please top up the balance.",
+        "clients_blocked": "Access to your admin panel and tracking platform suspended. Please top up the balance."
     },
     "header_blocked": {
         "inital_block": "Initial blocking",
-        "block_login": "Control panel blocked",
-        "clients_blocked": "Client access to service and control panel blocked"
+        "block_login": "Access to admin panel is blocked",
+        "clients_blocked": "Access to the tracking platform and admin panel is blocked"
     },
-    "index_blocked_payment": "You can refill balance in \"Subscription\" partition",
+    "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
     "auth": {
         "login": "Login",
@@ -75,6 +75,7 @@ Ext.define('Locale.locale-en', {
     "required_fields": "<span style=\"color:red\">*</span> - required fields or sections",
     "invalid_tab": "Invalid filled fields",
     "page_size": "Page size",
+    "invalid_multi_email": "This field should be an e-mail address, or a list of email addresses separated by commas(,) in the format \"user@domain.com,test@test.com\"",
     "errors": {
         "1": "Database connection error (001). Please contact support or try again later.",
         "2": "Authorization system error (002).  Please contact support or try again later.",
@@ -88,6 +89,8 @@ Ext.define('Locale.locale-en', {
             "errors": {
                 "login": "Must be a valid email address",
                 "domain": "Incorrect domain name",
+                "link_monitoring": "Incorrect domain name",
+                "subpaas.link_monitoring": "Incorrect domain name. Maybe it is already in use.",
                 "user.post_index": "Post index must match \"[-a-zA-Z0-9 ]{0,30}\"",
                 "user._i_e_c": "IEC: Length must be between 0 and 255"
             }
@@ -144,6 +147,7 @@ Ext.define('Locale.locale-en', {
         "252": "Device already corrupted",
         "254": "Cannot save file",
         "264": "Timeout to perform reoperation has not expired",
+        "268": "Object creation limit has been exceeded",
         "upload_exeption": "File upload error",
         "no_hash": "The session key is not found",
         "service_not_respond": "The service is temporarily unavailable",
@@ -231,7 +235,7 @@ Ext.define('Locale.locale-en', {
         "btn": "Find"
     },
     "list": {
-        "edit_tool": "edit",
+        "edit_tool": "Edit",
         "create_btn_text": "Create",
         "empty_text": "No data",
         "search_title_tpl": "{0}: found {1}",
@@ -398,7 +402,7 @@ Ext.define('Locale.locale-en', {
         "hybrid": "Google hybrid",
         "yandex": "Yandex Maps",
         "yandex_satellite": "Yandex Satellite",
-        yandex_hybrid: 'Yandex Satellite with streets',
+        yandex_hybrid: "Yandex Satellite with streets",
         "yandexpublic": "Yandex Crowdsourcing",
         "cdcom": "ProGorod Maps",
         "osm": "OpenStreet Maps",
@@ -412,12 +416,14 @@ Ext.define('Locale.locale-en', {
         "here": "HERE Maps",
         "bing": "Bing Maps",
         "bing_satellite": "Bing Satellite",
-        bing_hybrid: 'Bing Satellite with streets'
+        bing_hybrid: "Bing Satellite with streets"
 
     },
     "dealer_info": {
         "first": "total",
-        "last": "of"
+        "last": "of",
+        clients: "Clients",
+        subpaas: "Dealers"
     },
     "index": {
         "menu_text": "Home"
@@ -425,7 +431,7 @@ Ext.define('Locale.locale-en', {
     "users": {
         "menu_text": "Users",
         "create_btn": "New user",
-        show_only_active_users: 'Show only active users',
+        show_only_active_users: "Show only active users",
         "create_form": {
             "title": "New user",
             "main_fields": "General information",
@@ -460,7 +466,7 @@ Ext.define('Locale.locale-en', {
             "tin": "Tax number",
             "state_reg_num": "OGRN",
             "state_reg_num_sole": "OGRNIP",
-            "legal_name": "Legal Name",
+            "legal_name": "Legal name",
             "iec": "IEC",
             "phone": "Phone number",
             "post_country": "Country",
@@ -492,11 +498,11 @@ Ext.define('Locale.locale-en', {
             "password_repeat": "Repeat new password",
             "password_mismatched": "Passwords do not match",
             discount: {
-                value: 'Discount',
-                min_trackers: 'Device limit',
-                end_date: 'End date',
-                permanent: 'Permanent',
-                set_permanent: 'Set permanent'
+                value: "Discount",
+                min_trackers: "Device limit",
+                end_date: "End date",
+                permanent: "Permanent",
+                set_permanent: "Set permanent"
             }
         },
         "password_form": {
@@ -913,16 +919,19 @@ Ext.define('Locale.locale-en', {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "main_info": "You can change color UI color theme",
+            "main_info": "Select a color theme for the user interface of your web platform.",
+            "mobile_title": "Mobile app",
+            "web_title": "Web interface",
             "main_title": "Select theme",
             "preview_title": "Theme screenshots",
             "preview_btn": "Preview in monitoring",
             "list": {
                 "metromorph": {
-                    "title": "Default",
+                    "title": "Metromorph",
                     "description": "Default UI theme"
                 }
-            }
+            },
+            'mobile_app': "Mobile app"
         },
         "subscription": {
             "title": "Subscription",
@@ -1014,11 +1023,12 @@ Ext.define('Locale.locale-en', {
             "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and mailto: will be active. Use plain text only, HTML tags are not supported.",
             "promo_url_ph": "http://www.company.com",
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
-            "favicon_hint": "Icon will be shown in browser’s tab. (The feature is not supported in Internet Explorer.)",
-            "logo_hint": "The logo is shown at the login page, in PDF-reports and Email notifications to users.",
-            "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
-            "document_logo_hint": "Additional logo that is shown in the email notifications and reports",
-            "login_wallpaper_hint": "Upload attractive background image at the login page of your service",
+            "favicon_hint": "Displayed on the browser tab. Important: not supported by Internet Explorer.",
+            "logo_hint": "Displayed on the login page and in the Admin Panel.",
+            "app_logo_hint": "Displayed on the mobile app login screen.",
+            "monitoring_logo_hint": "Displayed in the user web interface menu.",
+            "document_logo_hint": "Displayed in reports and email notifications.",
+            "login_wallpaper_hint": "Upload a background image displayed on the login page.",
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
@@ -1028,6 +1038,7 @@ Ext.define('Locale.locale-en', {
             "domain_google_key_help": "How domain name affects the use of Google Maps",
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information",
             "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
+            "domain_mismatched": "Domain name must include <b>{0}</b>",
             "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
             "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
@@ -1089,7 +1100,7 @@ Ext.define('Locale.locale-en', {
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
-            "unavaliable": "Not available"
+            'unavaliable': 'Not available'
         },
         "sms_gateway": {
             "navixy": {
@@ -1114,7 +1125,7 @@ Ext.define('Locale.locale-en', {
             },
             "smstraffic": {
                 "name": "SMSTraffic",
-                "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"blank\">www.smstraffic.ru</a>)",
+                "desc": "The service provided by SMSTraffic company (<a href=\"http://www.smstraffic.ru\" target=\"_blank\">www.smstraffic.ru</a>)",
                 "credentials": {
                     "login": "Login",
                     "password": "Password"
@@ -1122,7 +1133,7 @@ Ext.define('Locale.locale-en', {
             },
             "yaestar": {
                 "name": "Yaestar NeoGate",
-                "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"blank\">www.yeastar.com</a>)",
+                "desc": "Hardware gateway, which you can purchase and install locally (<a href=\"http://www.yeastar.com\" target=\"_blank\">www.yeastar.com</a>)",
                 "credentials": {
                     "ip": "Server IP",
                     "port": "Port",
@@ -1132,7 +1143,7 @@ Ext.define('Locale.locale-en', {
             },
             "smpp": {
                 "name": "SMPP v.3.4",
-                "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"blank\">Wikipedia</a>)",
+                "desc": "Common industrial standard for communication with SMS Gateways (<a href=\"https://en.wikipedia.org/wiki/Short_Message_Peer-to-Peer\" target=\"_blank\">Wikipedia</a>)",
                 "credentials": {
                     "ip": "Server IP",
                     "port": "Port",
@@ -1194,6 +1205,7 @@ Ext.define('Locale.locale-en', {
             "main_texts_title": "Main texts",
             "footer_texts_title": "Text in the basement of the login page",
             "logo_title": "Logo",
+            "app_logo_title": "Logo in mobile app",
             "monitoring_logo_title": "User interface logo",
             "document_logo_title": "Documents and notifications logo",
             "document_logo": "Documents and notifications logo",
@@ -1245,6 +1257,12 @@ Ext.define('Locale.locale-en', {
             "sms_user_title": "User notifications",
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
             "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+            "branding_main_info_first_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your tracking service.",
+            "branding_main_info_first_condition_hint": "The current version does not allow you to:<br /> - Upload your own logos to the web interface and mobile app.<br /> - Choose a color scheme for the web interface and mobile app.<br /> - Set up a custom domain name.",
+            "branding_main_info_second_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your platform interface.",
+            "branding_main_info_second_condition_hint": "The current version does not allow you to:<br /> - Upload your own logos to the web interface.<br /> - Choose a color scheme for the web interface.<br /> - Set up a custom domain name.",
+            "branding_main_info_third_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of the X-GPS Monitor mobile app.",
+            "branding_main_info_third_condition_hint": "The current version does not allow you to:<br /> - Upload your own logo to the mobile app.<br /> - Choose a color scheme for the mobile app.",
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
@@ -1273,14 +1291,16 @@ Ext.define('Locale.locale-en', {
                 "document_logo": "Document logo",
                 "favicon": "Favicon",
                 "login_wallpaper": "Wallpaper for login page",
-                "desktop_wallpaper": "Service page wallpaper"
+                "desktop_wallpaper": "Service page wallpaper",
+                "app_logo": "Logo in mobile app"
             },
             "tips": {
                 "logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "monitoring_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "document_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
-                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format."
+                "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format.",
+                "app_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
@@ -1402,8 +1422,8 @@ Ext.define('Locale.locale-en', {
                 "ready_for_search": "Please enter the order number.",
                 "order_search_failure": "Error. Order number \"{0}\" not found.",
                 "order_found": "Order number \"{0}\" was found.",
-                "imei_same_order": "Error. Set your phone's IMEI code \"{0}\" is already attached to the current order.",
-                "imei_order_set": "Attention! Set your phone's IMEI code \"{0}\" is already assigned to the order number \"{1}\".",
+                "imei_same_order": "Error. Set your phone\"s IMEI code \"{0}\" is already attached to the current order.",
+                "imei_order_set": "Attention! Set your phone\"s IMEI code \"{0}\" is already assigned to the order number \"{1}\".",
                 "imei_reset_q": "Do you want perinatality set on the current order?",
                 "imei_reset_btn": "Reassign",
                 "bundle_asssigned": "Set your phone's IMEI code \"{0}\" was successfully added to the order of \"{1}\".",
@@ -1735,12 +1755,97 @@ Ext.define('Locale.locale-en', {
 
     reports: {
         active_trackers: {
-            empty: 'There are no active trackers',
-            title: 'Active devices',
-            count_label: 'Devices',
-            month: 'Date',
-            open_tracker: 'Go to device'
+            empty: "There are no active trackers",
+            title: "Active devices",
+            count_label: "Devices",
+            month: "Date",
+            open_tracker: "Go to device",
+            own_devices: "Your devices",
+            subpaas_devices: "Dealers devices"
         },
-        menu_text: 'Reports'
+        menu_text: "Reports"
+    },
+    subpaas: {
+        notice_text: "Current reseller admin panel: {0}  <a>Go back to the main admin panel</a>",
+        payment_wait_text: "Your personal Navixy manager will contact you soon to send the invoice.",
+        list: {
+            empty_text: "Dealers not found",
+            create_btn_text: "Create a reseller",
+            users: "Users",
+            users_count: "Registered",
+            active_users_count: "Active",
+            trackers: "Devices",
+            trackers_count: "Registered",
+            active_trackers_count: "Active"
+        },
+        menu_text: "Resellers",
+        card: {
+            links: {
+                session_text: "Access admin panel",
+                subpaas_edit: "Edit reseller",
+                subpaas_change_password: "Change password",
+                invoice_view: "View invoice",
+                invoice_request: "Get invoice by email",
+                avangate_pay: "Pay online"
+
+            }
+        },
+        edit_form: {
+            title: "Edit reseller",
+            save_btn: "Save"
+        },
+        password_form: {
+            title: "Change Reseller’s password",
+            password: "New password",
+            password_repeat: "Repeat new password",
+            save_btn: "Change password",
+            return_btn: "Cancel",
+            success_msg: "Password successfully changed"
+        },
+
+        create_form: {
+            title: "New reseller",
+            main_fields: "Main information:",
+            misc_fields: "Additional:",
+            premium_gis_hint: "To activate the Premium GIS package for the reseller, please contact your technical support.",
+            save_btn: "Create",
+            "password_mismatched": "Passwords do not match"
+        },
+
+        fields: {
+            subpaas_id: "ID",
+            block_type: "Status",
+            creation_date: "Created",
+            title: "Name",
+            login: "Login",
+            users_count: "Registered users",
+            active_users_count: "Active users",
+            trackers_count: "Registered devices",
+            active_trackers_count: "Active devices",
+            link_monitoring: "Domain",
+            email: "Email",
+            jur_name: "Legal name",
+            jur_country: "Country",
+            contact_fio: "Contact person",
+            contact_phone: "Phone",
+            contact_post: "Post",
+            password: "Password",
+            password_repeat: "Repeat password",
+            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel.",
+            "password_mismatched": "Passwords do not match"
+        },
+
+        block_status: {
+            NOT_BLOCKED: "Active",
+            INITIAL_BLOCK: "Not paid",
+            BLOCK_LOGIN: "Admin Panel suspended",
+            CLIENTS_BLOCKED: "Service fully suspended",
+            DELETED: "Removed"
+        },
+
+        bill: {
+            title: "Invoice",
+            msg: "Invoice was sent on your email"
+        }
     }
 });

@@ -15,7 +15,10 @@ Ext.define('NavixyPanel.controller.Settings', {
         'widgets.map.Map',
         'settings.components.MapWindow',
         'settings.components.Themes',
-        'settings.components.Theme'
+        'settings.components.Theme',
+        'settings.components.ThemeField',
+        'settings.components.MobileTheme',
+        'settings.components.MobileThemeField'
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
@@ -30,7 +33,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',
@@ -167,7 +170,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     afterPasswordEdit: function (success, record) {
         if (success) {
             this.getSettingsEdit().afterPasswordSave();
-        } else {
         }
     },
 
@@ -211,7 +213,6 @@ Ext.define('NavixyPanel.controller.Settings', {
     onEditSubmit: function (cmp, formValues, record) {
         var serviceChanges = record.getServiceChanges(),
             notificationChanges = record.getNotificationChanges(),
-            settingsData = record.getData(),
             requestsCnt = 0;
 
         if (serviceChanges && Ext.checkPermission('service_settings', 'update')) {

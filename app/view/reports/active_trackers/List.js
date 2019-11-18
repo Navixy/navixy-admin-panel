@@ -9,6 +9,7 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
     ui: 'light',
     alias: 'widget.active-trackers-grid',
     store: 'ActiveTrackersStat',
+    showTrackerLink: true,
     requires: [
         'NavixyPanel.plugins.grid.ColumnAutoResizer',
         'NavixyPanel.plugins.grid.filter.GridFilterBar',
@@ -26,12 +27,6 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
         }
     ],
 
-    features: [Ext.create('NavixyPanel.plugins.grid.feature.MultiGrouping', {
-        id: 'multi-group',
-        groupHeaderTpl: '{name}',
-        enableGroupingMenu: false,
-        startCollapsed: true
-    })],
 
     viewConfig: {
         autoScroll: false,
@@ -42,85 +37,28 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
 
     columnLines: true,
 
-    getTopBar: function () {
-        return {
-            xtype: 'form',
-            bodyStyle: 'background-color: transparent',
-            layout: {
-                type: 'hbox'
-            },
-            border: 0,
-            height: 40,
-            ui: 'light',
-            padding: '5 0',
-            defaults: {
-                xtype: 'monthfield',
-                submitFormat: 'Y-m',
-                editable: false,
-                format: 'F Y',
-                margin: '0 5 0 0',
-                allowBlank: false
-            },
-            items: [{
-                name: 'from',
-                listeners: {
-                    'change': function (field, value) {
-                        var toField = this.up().down('monthfield[name=to]');
-                        toField.setMinValue(value);
-                        toField.isValid();
-                        this.isValid();
-                        this.up().getForm().checkValidity();
-                    }
-                },
-                value: moment().toDate()
-            }, {
-                xtype: 'component',
-                html: '—',
-                padding: '3 7'
-            }, {
-                name: 'to',
-                listeners: {
-                    'change': function (field, value) {
-                        var fromField = this.up().down('monthfield[name=from]');
-                        fromField.setMaxValue(value);
-                        fromField.isValid();
-                        this.isValid();
-                        this.up().getForm().checkValidity();
-
-                    }
-                },
-                value: moment().toDate()
-            }, {
-                xtype: 'button',
-                height: 28,
-                text: _l.get('show_btn'),
-                margins: '0 0 0 10',
-                role: 'period-show',
-                formBind: true,
-                handler: this.applyFilterAndLoad,
-                scope: this
-            }]
-        };
-    },
-
-    applyFilterAndLoad: function (btn) {
-        var from = this.down('monthfield[name=from]'),
-            to = this.down('monthfield[name=to]');
-
-        this.getStore().loadStat({
-            from: from.getSubmitValue(),
-            to: to.getSubmitValue()
-        });
-
-        btn.disable();
-        Ext.defer(function () {
-            btn.enable();
-        }, 1000);
-    },
-
     addColumnsMenuButton: Ext.emptyFn,
 
     getColumnsConfig: function () {
+        var actionColItems = this.showTrackerLink ? [{
+            xtype: 'divactioncolumn',
+            width: 70,
+            hideable: false,
+            draggable: false,
+            groupable: false,
+            menuDisabled: true,
+            items: [{
+                iconCls: 'open_tracker_tool icon-location',
+                glyph: 1,
+                tooltip: _l.get('reports.active_trackers.open_tracker'),
+                handler: function (grid, rowIndex, colIndex) {
+                    var rec = grid.getStore().getAt(rowIndex)
+                    Ext.Nav.shift('tracker/' + rec.get('tracker_id'))
+                }
+            }]
+        }] : []
+
+
         return {
             plugins: [{
                 ptype: 'gridautoresizer'
@@ -129,30 +67,14 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                 filter: 'disabled'
             },
 
-            items: [{
-                xtype: 'divactioncolumn',
-                width: 70,
-                hideable: false,
-                draggable: false,
-                groupable: false,
-                menuDisabled: true,
-                items: [{
-                    iconCls: 'open_tracker_tool icon-location',
-                    glyph: 1,
-                    tooltip: _l.get('reports.active_trackers.open_tracker'),
-                    handler: function (grid, rowIndex, colIndex) {
-                        var rec = grid.getStore().getAt(rowIndex);
-                        Ext.Nav.shift('tracker/' + rec.get('tracker_id'));
-                    }
-                }]
-            }, {
+            items: actionColItems.concat([{
                 header: _l.get('reports.active_trackers.month'),
                 width: 143,
                 groupHeaderTpl: new Ext.XTemplate('{name} (',
                     _l.get('reports.active_trackers.count_label'),
                     ' {[this.getRealActiveCount(values)]})', {
                         getRealActiveCount: function (values) {
-                            return values.children.length ? values.children[0].get('amount') : 0;
+                            return values.children.length ? values.children[0].get('amount') : 0
                         }
                     }
                 ),
@@ -169,8 +91,8 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                 header: _l.get('trackers.fields.user_id'),
                 width: 150,
                 groupHeaderTpl: ['{columnName}: {name} (',
-                                 _l.get('reports.active_trackers.count_label'),
-                                 ' {[values.children.length]})'],
+                    _l.get('reports.active_trackers.count_label'),
+                    ' {[values.children.length]})'],
 
                 dataIndex: 'user_id',
                 filter: {
@@ -209,28 +131,31 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                         type: 'string',
                         emptyText: _l.get('trackers.fields.device_id')
                     }
+                },
+                {
+                    header: _l.get('trackers.fields.dealer_title'),
+                    flex: 1,
+                    dataIndex: 'dealer_title',
+                    hidden: true,
+                    filter: {
+                        type: 'string',
+                        emptyText: _l.get('trackers.fields.device_id')
+                    }
                 }
-            ]
-        };
+            ])
+        }
     },
 
     initComponent: function () {
-        this.emptyText = _l.get('reports.active_trackers.empty');
-
-        this.title = _l.get('reports.active_trackers.title');
-        this.tbar = this.getTopBar();
-        this.height = Ext.getBody().getHeight() - 100;
-
-        this.columns = this.getColumnsConfig();
-
-        this.callParent(arguments);
-    },
-
-    afterRender: function () {
-        this.getStore().loadStat({
-            from: moment().format('YYYY-MM'),
-            to: moment().format('YYYY-MM')
-        });
-        this.callParent(arguments);
+        this.features = [Ext.create('NavixyPanel.plugins.grid.feature.MultiGrouping', {
+            id: Ext.id(),
+            groupHeaderTpl: '{name}',
+            enableGroupingMenu: false,
+            startCollapsed: true
+        })]
+        this.emptyText = _l.get('reports.active_trackers.empty')
+        this.columns = this.getColumnsConfig()
+        this.minHeight = 300
+        this.callParent(arguments)
     }
-});
+})

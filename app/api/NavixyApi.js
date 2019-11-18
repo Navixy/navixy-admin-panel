@@ -602,7 +602,75 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'payments',
             action: 'avangate/ignored/list',
             root: 'list'
-        });
-    }
+        })
+    },
 
+    getSubPaasList: function (config) {
+        this.requestWithOptions(config, {
+            action: 'list',
+            handler: 'subpaas'
+        })
+    },
+
+    createSubPaas: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            handler: 'subpaas',
+            root: 'id'
+        })
+    },
+
+    updateSubPaas: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'subpaas'
+        })
+    },
+
+    updateSubpaasPassword: function (config) {
+        this.requestWithOptions(config, {
+            action: 'change',
+            handler: 'subpaas/password'
+        })
+    },
+
+    getSubPaas: function (subPaasId, callback, failure, scope) {
+        this.sendRequest({
+            params: {
+                subpaas_id: subPaasId
+            },
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'subpaas',
+            root: 'value',
+            scope: scope
+        })
+    },
+
+    createSubPaasSession: function (config) {
+        this.requestWithOptions(config, {
+            action: 'create',
+            root: 'hash',
+            handler: 'subpaas/session'
+        })
+    },
+
+    getPaySystems: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            root: 'list',
+            action: 'list',
+            handler: 'payment_system',
+            scope: scope
+        })
+    },
+
+    pay: function (config) {
+        this.requestWithOptions(config, {
+            action: 'pay',
+            handler: 'payment_system/' + config.payment_system
+        })
+    }
 });

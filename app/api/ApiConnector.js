@@ -12,68 +12,68 @@ Ext.define('NavixyPanel.api.ApiConnector', {
 
     initApiProfiles: function () {
 
-        var configProfiles = Config.apiProfiles;
+        var configProfiles = Config.apiProfiles
 
         this.apiProfiles = Ext.merge(configProfiles, {
             japi: {
                 wrapProperty: false,
                 isSuccess: function (res) {
-                    return res.success;
+                    return res.success
                 }
             },
 
             phpapi: {
                 wrapProperty: 'Response',
                 isSuccess: function (res) {
-                    return res.status.id === 'done';
+                    return res.status.id === 'done'
                 }
             }
-        });
+        })
     },
 
     constructor: function (config) {
-        this.isDebugMode = Ext.util.Cookies.get('debug');
+        this.isDebugMode = Ext.util.Cookies.get('debug')
 
-        Ext.apply(this, config);
+        Ext.apply(this, config)
 
         this.errorsManager = Ext.create('NavixyPanel.store.ErrorsManager', {
             authKeyName: this.authKeyName
-        });
+        })
 
-        this.initAuthKey();
+        this.initAuthKey()
 
         Ext.apply(Ext.Ajax,
             {
                 useDefaultXhrHeader: false,
                 cors: true
-            });
+            })
 
-        this.scope = this;
+        this.scope = this
     },
 
     checkCode: function (response, requestConfig) {
         try {
             if (requestConfig.errorHandler) {
-                requestConfig.errorHandler(response, requestConfig.params);
+                requestConfig.errorHandler(response, requestConfig.params)
             } else if (requestConfig.errorHandler !== false) {
-                this.fatalError = this.errorsManager.fireError(response.status.code, requestConfig.params, response);
+                this.fatalError = this.errorsManager.fireError(response.status.code, requestConfig.params, response)
             }
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.log(e.stack)
         }
     },
 
     hasAuthKey: function () {
-        return !!this.authKey;
+        return !!this.authKey
     },
 
     initAuthKey: function () {
-        var authKey = Ext.util.Cookies.get(this.authKeyName);
+        var authKey = Ext.util.Cookies.get(this.authKeyName)
 
         if (authKey) {
-            this.authKey = authKey;
+            this.authKey = authKey
         } else if (!this.isDebugMode) {
-            this.errorsManager.fireError('no_hash');
+            this.errorsManager.fireError('no_hash')
         }
     },
 
@@ -81,21 +81,21 @@ Ext.define('NavixyPanel.api.ApiConnector', {
         var stopCondition = config.stopCondition,
             callback = config.callback,
             args = config.args || [],
-            scope = config.scope || this;
+            scope = config.scope || this
 
 
         var interval = setInterval(function () {
             try {
                 if (stopCondition()) {
-                    clearInterval(interval);
+                    clearInterval(interval)
                     if (callback) {
-                        callback.apply(scope, args);
+                        callback.apply(scope, args)
                     }
                 }
             } catch (e) {
-                clearInterval(interval);
+                clearInterval(interval)
             }
-        }, 50);
+        }, 50)
     },
 
     batch: function (methods, config) {
@@ -105,46 +105,46 @@ Ext.define('NavixyPanel.api.ApiConnector', {
             callback = config.callback,
             stepCallback = config.stepCallback,
             scope = config.scope || this,
-            failureFn = config.failure;
+            failureFn = config.failure
 
         Ext.each(methods, function (method) {
 
             var success = function (res, params) {
                     if (stepCallback) {
-                        stepCallback.apply(scope, arguments);
+                        stepCallback.apply(scope, arguments)
                     }
-                    requestLen--;
-                    result[method] = res;
+                    requestLen--
+                    result[method] = res
                 },
                 failure = function () {
-                    requestLen--;
-                    result[method] = false;
+                    requestLen--
+                    result[method] = false
                     if (failureFn) {
-                        failureFn.apply(scope, arguments);
+                        failureFn.apply(scope, arguments)
                     }
 
-                };
+                }
 
             if (typeof method === 'string') {
-                me[method](success, failure);
+                me[method](success, failure)
             } else {
                 me[method.method]({
                     params: method.params,
                     callback: success,
                     scope: scope,
                     failure: failure
-                });
+                })
             }
-        });
+        })
 
         me.initCheckInterval({
             stopCondition: function () {
-                return !requestLen;
+                return !requestLen
             },
             callback: callback,
             args: [result],
             scope: me
-        });
+        })
 
     },
 
@@ -152,30 +152,31 @@ Ext.define('NavixyPanel.api.ApiConnector', {
         var apiProfiles = this.apiProfiles,
             api = config.api || this.defaultApiProfile,
             apiUrlTpl = apiProfiles[api].apiUrlTpl,
-            apiRoot = localStorage.getItem('debug_api') || apiProfiles[api].apiRoot;
+            apiRoot = localStorage.getItem('debug_api') || apiProfiles[api].apiRoot
 
         return new Ext.Template(apiUrlTpl).apply({
             apiRoot: apiRoot,
             action: config.action,
             handler: config.handler
-        });
+        })
     },
 
     getGlobalApiUrl: function (config) {
         var apiProfiles = this.apiProfiles,
             api = config.api || this.defaultApiProfile,
             apiUrlTpl = apiProfiles[api].apiUrlTpl,
-            apiRoot = apiProfiles[api].apiRoot;
+            apiRoot = apiProfiles[api].apiRoot
 
         return new Ext.Template('{apiRoot}/../{action}').apply({
             apiRoot: apiRoot,
             action: config.action
-        });
+        })
     },
 
     sendRequest: function (config) {
+        this.fatalError = false
         if (!this.apiProfiles) {
-            this.initApiProfiles();
+            this.initApiProfiles()
         }
 
         var me = this,
@@ -193,7 +194,7 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                 hash: this.authKey
             }, requestParams),
 
-            scope = config.scope || this;
+            scope = config.scope || this
 
         try {
 
@@ -208,59 +209,59 @@ Ext.define('NavixyPanel.api.ApiConnector', {
                         var wrapProperty = me.apiProfiles[apiVersion].wrapProperty,
                             decodedResult = plain ? response.responseText : Ext.decode(response.responseText),
 
-                            result = wrapProperty ? decodedResult[wrapProperty] : decodedResult;
+                            result = wrapProperty ? decodedResult[wrapProperty] : decodedResult
 
                         if (successFn) {
 
-                            result.success = me.apiProfiles[apiVersion].isSuccess(result);
-                            successFn.call(scope, rootProperty ? result[rootProperty] : result, requestParams, response);
+                            result.success = me.apiProfiles[apiVersion].isSuccess(result)
+                            successFn.call(scope, rootProperty ? result[rootProperty] : result, requestParams, response)
                         }
 
                     } catch (e) {
                         if (onErrorFn) {
-                            onErrorFn.call(scoperequestParams);
+                            onErrorFn.call(scoperequestParams)
                         } else {
-                            Ext.log('success callback error', e.stack);
+                            Ext.log('success callback error', e.stack)
                         }
                     }
 
                     if (requiredAction) {
-                        requiredAction(response);
+                        requiredAction(response)
                     }
                 },
 
                 failure: function (response) {
                     if (!response.status) {
-                        me.errorsManager.fireError('service_not_respond');
+                        me.errorsManager.fireError('service_not_respond')
                     }
 
                     try {
-                        me.checkCode(Ext.decode(response.responseText), config);
+                        me.checkCode(Ext.decode(response.responseText), config)
                     } catch (e) {
-                        Ext.log(e.stack);
+                        Ext.log(e.stack)
                     }
 
                     if (requiredAction) {
-                        requiredAction.call(scope, response);
+                        requiredAction.call(scope, response)
                     }
                     if (failureFn) {
-                        failureFn.call(scope, Ext.decode(response.responseText), requestParams, response);
+                        failureFn.call(scope, Ext.decode(response.responseText), requestParams, response)
                     } else {
-                        Ext.log('request failure', config);
+                        Ext.log('request failure', config)
                     }
                 }
-            });
+            })
 
         } catch (e) {
-            Ext.log(e.stack);
+            Ext.log(e.stack)
         }
 
     },
 
     appendArguments: function (args, appendArgs) {
-        var argmts = Array.prototype.slice.call(arguments);
+        var argmts = Array.prototype.slice.call(arguments)
 
-        return appendArgs instanceof Array ? argmts.concat(appendArgs) : argmts.push(appendArgs);
+        return appendArgs instanceof Array ? argmts.concat(appendArgs) : argmts.push(appendArgs)
     },
 
     requestWithOptions: function (main, options) {
@@ -270,6 +271,6 @@ Ext.define('NavixyPanel.api.ApiConnector', {
             failure: main.failure,
             scope: main.scope,
             params: main.params
-        }, options));
+        }, options))
     }
-});
+})

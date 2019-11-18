@@ -176,3 +176,115 @@
     }
 }
 
+$theme-item-width: 133px;
+$theme-app-item-width: 79px;
+$theme-item-height: 40px;
+$theme-item-border-width: 2px;
+$theme-item-border-radius: 3px;
+$theme-item-padding: 6px;
+$theme-selected-color: #E0E0E0;
+$theme-hover-color: $main-color;
+
+.x-mobile-theme-picker {
+
+    .x-color-picker-item {
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+        width: $theme-app-item-width + $theme-item-padding * 2 + $theme-item-border-width * 2;
+
+        box-sizing: border-box;
+        display: inline-block;
+        float: left;
+
+        background-color: transparent;
+        cursor: pointer;
+        padding: $theme-item-padding;
+
+        border-width: $theme-item-border-width;
+        border-style: solid;
+        border-color: transparent;
+        border-radius: $theme-item-border-radius;
+
+        .x-color-picker-item-inner {
+            height: $theme-item-height;
+            width: $theme-app-item-width;
+            display: block;
+
+            border-style: solid;
+            border-color: transparent;
+            border-radius: $theme-item-border-radius;
+        }
+
+        &.x-color-picker-selected {
+            border-color: $theme-selected-color;
+        }
+
+        &:hover {
+            border-color: $theme-hover-color;
+            background-color: transparent;
+        }
+    }
+}
+
+.x-theme-picker {
+
+    .x-theme-picker-item-container {
+        height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+
+        .x-theme-picker-item-label {
+            display: inline-block;
+            float: left;
+            padding: 5px 0 0 24px;
+
+            height: $theme-item-height + $theme-item-padding * 2 + $theme-item-border-width * 2;
+        }
+
+        .x-theme-picker-item {
+            box-sizing: content-box;
+            display: inline-block;
+            float: left;
+
+            height: $theme-item-height;
+            background-color: transparent;
+            cursor: pointer;
+            padding: $theme-item-padding;
+
+            border-width: $theme-item-border-width;
+            border-style: solid;
+            border-color: transparent;
+            border-radius: $theme-item-border-radius;
+
+            &.x-theme-picker-selected {
+                border-color: $theme-selected-color;
+            }
+
+            &:hover {
+                border-color: $theme-hover-color;
+            }
+
+            .x-theme-picker-item-inner {
+                width: $theme-item-width / 2;
+                height: $theme-item-height;
+                display: inline-block;
+
+                &:first-child {
+                    border-radius:  $theme-item-border-radius 0 0 $theme-item-border-radius;
+                }
+
+                &:last-child {
+                    border-radius: 0 $theme-item-border-radius $theme-item-border-radius 0;
+                }
+            }
+
+            &.theme-corp {
+                .x-theme-picker-item-inner{
+
+                    &:last-child {
+                        border-width: 1px;
+                        border-style: solid;
+                        border-color: #E0E0E0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -171,10 +171,10 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 filterConfig = Ext.isObject(value)
                     ? value
                     : {
-                        property: name,
-                        value: value,
-                        root: root
-                    };
+                    property: name,
+                    value: value,
+                    root: root
+                };
 
                 filters.push(
                     Ext.create('Ext.util.Filter',
