@@ -56,7 +56,7 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
     isPremiumGis: function () {
-        return this.hasPremiumGis() || !!this.google_client_id
+        return this.hasPremiumGis() || (!!this.google_client_id && this.getGisPackage() === 'none')
     },
 
     getGisPackage: function () {
