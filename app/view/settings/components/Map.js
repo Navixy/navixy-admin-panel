@@ -78,12 +78,12 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 }).join(', ')
             );
 
-            if (checkbox.rendered) {
-                checkbox.getEl().set({
-                    'data-qtip': isPaidMapDisabledForPaas ? paasDisabledMapMsg : ''
-                });
-            } else {
-                checkbox.labelAttrTpl = 'data-qtip="' + ( isPaidMapDisabledForPaas ? paasDisabledMapMsg : '') + '"';
+            if (isPaidMapDisabledForPaas) {
+                if (checkbox.rendered) {
+                    checkbox.setBoxLabel(checkbox.getBoxLable() + Ext.getHintSymbol(paasDisabledMapMsg))
+                } else {
+                    checkbox.boxLabel = checkbox.boxLabel + Ext.getHintSymbol(paasDisabledMapMsg)
+                }
             }
         });
 
