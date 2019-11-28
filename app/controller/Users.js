@@ -521,10 +521,16 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     downloadUserList: function (userList, format) {
-        var params = {
-            columns: Ext.encode(['login', 'first_name', 'middle_name', 'last_name', 'phone']),
-            format: format
-        };
+        var columns = userList.columnManager
+            .getColumns()
+            .map(function (col) { return col.dataIndex })
+            .filter(function (colName) { return !!colName })
+
+        var params = { format: format };
+
+        if (columns) {
+            params.columns = Ext.encode(columns)
+        }
 
         window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
     }
