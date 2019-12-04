@@ -3,7 +3,7 @@ $dealer-info-font-color: $baseFontColor;
 
 .maintenance_warning {
   margin: 0 auto 30px;
-  background-color: lighten($red, 15%);
+  background-color: #1e96dc;
   font-size: 16px;
   font-weight: 400;
   color: $white;
@@ -13,7 +13,8 @@ $dealer-info-font-color: $baseFontColor;
   line-height: 50px;
   
   a {
-    color: $yellow;
+    color: $white;
+    font-weight: bold;
     text-decoration: underline;
   }
 }

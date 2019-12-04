@@ -35,7 +35,7 @@ Ext.define("Locale.locale-ru", {
     "index_blocked_payment": "Вы можете пополнить баланс в разделе \"Подписка\"",
     "index_tip": "",
     "old_version": "Старая версия",
-    "maintenance_warning": "8 Декабря в 10:00 МСК: плановые техническое обслуживание с ожидаемым перерывом в работе платформы до 40 минут. Ознакомьтесь с <a href=\"https://www.navixy.com/ru/server-maintenance/\" target=\"_blank\">важной информацией.</a>",
+    "maintenance_warning": "8 Декабря в 10:00 МСК: плановое техническое обслуживание с ожидаемым перерывом в работе платформы до 40 минут. Ознакомьтесь с <a href=\"https://www.navixy.com/ru/server-maintenance/\" target=\"_blank\">важной информацией.</a>",
     "auth": {
         "login": "Логин или адрес электронной почты",
         "password": "Пароль",
