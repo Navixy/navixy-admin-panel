@@ -1,6 +1,23 @@
 $dealer-info-font-size: 16px;
 $dealer-info-font-color: $baseFontColor;
 
+.maintenance_warning {
+  margin: 0 auto 30px;
+  background-color: lighten($red, 15%);
+  font-size: 16px;
+  font-weight: 400;
+  color: $white;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  
+  a {
+    color: $yellow;
+    text-decoration: underline;
+  }
+}
+
 .main-header {
 
   .header-logo {
