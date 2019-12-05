@@ -9,13 +9,6 @@ Ext.define('NavixyPanel.view.Viewport', {
 
         this.items = [
             {
-                xtype: 'component',
-                height: 50,
-                cls: 'maintenance_warning',
-                html: _l.get("maintenance_warning"),
-                width: '100%'
-            },
-            {
                 xtype: 'mainheader',
                 style: 'margin: 0 auto 30px',
                 width: this.innerWidth
