@@ -523,7 +523,12 @@ Ext.define('NavixyPanel.controller.Users', {
     downloadUserList: function (userList, format) {
         var columns = userList.columnManager
             .getColumns()
-            .map(function (col) { return col.dataIndex })
+            .reduce(function (columns, curr) {
+                if (curr.dataIndex === 'legal_name') {
+                    return columns.concat(['first_name', 'middle_name', 'last_name'])
+                }
+                return columns.concat([curr.dataIndex])
+            }, [])
             .filter(function (colName) { return !!colName })
 
         var params = { format: format };
