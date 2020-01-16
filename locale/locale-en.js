@@ -30,7 +30,7 @@ Ext.define("Locale.locale-en", {
         "clients_blocked": "Access to your admin panel and tracking platform suspended. Please top up the balance."
     },
     "header_blocked": {
-        "inital_block": "Initial blocking",
+        "initial_block": "Initial blocking",
         "block_login": "Access to admin panel is blocked",
         "clients_blocked": "Access to the tracking platform and admin panel is blocked"
     },
