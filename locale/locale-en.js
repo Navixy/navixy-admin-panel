@@ -36,7 +36,7 @@ Ext.define("Locale.locale-en", {
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
-    "maintenance_warning": "Maintenance works have been successfully finished. Please read <a href=\"https://www.navixy.com/server-maintenance/\" target=\"_blank\">important information</a> on changes",
+    "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
     "auth": {
         "login": "Login",
         "password": "Password",
