@@ -36,6 +36,7 @@ Ext.define("Locale.locale-en", {
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
+    "maintenance_warning": "Maintenance works have been successfully finished. Please read <a href=\"https://www.navixy.com/server-maintenance/\" target=\"_blank\">important information</a> on changes",
     "auth": {
         "login": "Login",
         "password": "Password",

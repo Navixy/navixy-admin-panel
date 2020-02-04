@@ -180,6 +180,25 @@ Ext.define('NavixyPanel.controller.Desktop', {
         });
 
         this.registerPayments();
+        
+        this.checkWarning();
+    },
+
+    checkWarning: function () {
+
+        var aws = document.location.host.indexOf('us.navixy.com') > -1,
+            time = Ext.Date.format(Ext.Date.parse("2019-12-12", 'Y-m-d'), 'U') * 1 > Ext.Date.format(new Date(), 'U') * 1;
+
+        if (!aws && time) {
+            Ext.getFirst('mainviewport').insert(0, {
+                    xtype: 'component',
+                    height: 50,
+                    cls: 'maintenance_warning',
+                    html: _l.get("maintenance_warning"),
+                    width: '100%'
+                }
+            )
+        }
     },
 
     registerPayments: function () {

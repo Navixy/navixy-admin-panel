@@ -35,6 +35,7 @@ Ext.define("Locale.locale-ru", {
     "index_blocked_payment": "Вы можете пополнить баланс в разделе \"Подписка\"",
     "index_tip": "",
     "old_version": "Старая версия",
+    "maintenance_warning": "Плановое техническое обслуживание успешно завершено. Пожалуйста, ознакомьтесь с <a href=\"https://www.navixy.com/ru/server-maintenance/\" target=\"_blank\">изменениями</a>",
     "auth": {
         "login": "Логин или адрес электронной почты",
         "password": "Пароль",
