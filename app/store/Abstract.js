@@ -30,7 +30,6 @@ Ext.define('NavixyPanel.store.Abstract', {
     recordAPI: null,
 
     onException: function (proxy, response) {
-        console.log(arguments);
         Ext.API.errorsManager.fireError(response.status.code, {}, response);
     },
 

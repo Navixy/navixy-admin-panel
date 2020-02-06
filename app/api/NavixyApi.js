@@ -667,6 +667,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         })
     },
 
+    getPaasPlugins: function (config) {
+        this.requestWithOptions(config, {
+            handler: 'paas',
+            action: 'plugins/list'
+        })
+    },
+
     pay: function (config) {
         this.requestWithOptions(config, {
             action: 'pay',

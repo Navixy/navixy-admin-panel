@@ -1,6 +1,6 @@
 /**
  * @class NavixyPanel.store.Users
- * @extends NavixyPanel.utils.pagination.Store
+ * @extends Ext.data.Store
  * Description
  */
 

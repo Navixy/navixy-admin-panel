@@ -187,9 +187,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
     checkWarning: function () {
 
         var aws = document.location.host.indexOf('us.navixy.com') > -1,
-            time = Ext.Date.format(Ext.Date.parse("2020-01-21", 'Y-m-d'), 'U') * 1 > Ext.Date.format(new Date(), 'U') * 1;
+            time = Ext.Date.format(Ext.Date.parse("2020-01-19", 'Y-m-d'), 'U') * 1 > Ext.Date.format(new Date(), 'U') * 1;
 
-        if (!aws && time) {
+        if (aws && time) {
             Ext.getFirst('mainviewport').insert(0, {
                     xtype: 'component',
                     height: 50,
