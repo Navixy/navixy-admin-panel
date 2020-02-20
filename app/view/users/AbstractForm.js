@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
                 labelSeparator: Util.getRequiredSeparator(),
-                vtype: 'email',
+                vtype: 'tardemail',
                 minLength: 2,
                 maxLength: 100,
                 validateOnChange: true
