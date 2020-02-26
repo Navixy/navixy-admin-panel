@@ -18,7 +18,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.Footer',
         'desktop.AccessDenied',
         'desktop.Search',
-        'desktop.Index'
+        'desktop.Exponential',
+        'desktop.Index',
+        'desktop.IndexExp'
     ],
 
     refs: [
@@ -168,9 +170,18 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.application.fireEvent('menuselect', 'index');
 
         this.application.fireEvent('contentchange', {
-            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs']) ? 'searchform' : 'indexpage'
+            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs'])
+                ? this.checkExponential()
+                    ? 'indexexp'
+                    : 'searchform'
+                : 'indexpage'
         });
     },
+
+    checkExponential: function () {
+        return Ext.getStore('Dealer').isExponential();
+    },
+
 
     registerSearch: function () {
         this.addMainMenuItem({
