@@ -1852,6 +1852,9 @@ Ext.define("Locale.locale-en", {
     exponential: {
         "title": "Devices price",
         "xaxis": "Devices amount",
-        "yaxis": "Price"
+        "yaxis": "Price",
+        update_btn : "Refresh",
+        start: "Min amount",
+        end: "Max amount"
     }
 });
