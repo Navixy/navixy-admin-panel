@@ -1828,5 +1828,10 @@ Ext.define("Locale.locale-ru", {
             title: "Счет на оплату",
             msg: "Счет выслан на ваш Email"
         }
+    },
+    exponential: {
+        "title": "Стоимость маячка",
+        "xaxis": "Количество",
+        "yaxis": "Цена"
     }
 });

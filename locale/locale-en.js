@@ -1848,5 +1848,10 @@ Ext.define("Locale.locale-en", {
             title: "Invoice",
             msg: "Invoice was sent on your email"
         }
+    },
+    exponential: {
+        "title": "Devices price",
+        "xaxis": "Devices amount",
+        "yaxis": "Price"
     }
 });
