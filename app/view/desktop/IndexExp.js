@@ -7,7 +7,10 @@
 Ext.define('NavixyPanel.view.desktop.IndexExp', {
     extend: 'Ext.Container',
     alias: 'widget.indexexp',
-
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
     initComponent: function () {
 
         this.items = [

@@ -16,7 +16,8 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
         'Lib.flot.DrawSeries',
         'Lib.flot.UiConstants',
         'Lib.flot.Hover',
-        'Lib.flot.Axislabels'],
+        'Lib.flot.Axislabels'
+    ],
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -25,32 +26,121 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
     ui: 'light',
     bodyPadding: 20,
     buttonAlign: 'center',
-    height: 440,
-    cls: 'main-exponential',
+    cls: 'main-exponential main-search',
 
     prices: null,
     current: null,
     tipContainer: null,
+
+    currency: '',
 
     initComponent: function () {
 
         this.items = [
             {
                 xtype: 'container',
-                height: this.height - 90,
+                height: 300,
                 id: 'graph-holder'
+            },
+            {
+                xtype: 'form',
+                margin: '20 0 0 0',
+                ui: 'light',
+                layout: {
+                    type: 'hbox',
+                    pack: 'end'
+                },
+                items: [
+                    {
+                        role: 'exp-min',
+                        xtype: 'numberfield',
+                        hideTrigger: true,
+                        allowBlack: false,
+
+                        grow: true,
+                        growMax: 90,
+                        growMin: 90,
+
+                        margin: '0 20 0 0',
+                        height: 31,
+                        minWidth: 'auto',
+                        labelWidth: 'auto',
+
+                        ui: 'light',
+                        cls: 'search-field',
+                        labelAlign: 'right',
+                        labelStyle: 'white-space: nowrap; font-size: 16px; line-height: 33px',
+
+                        vtype: 'numeric',
+                        minValue: 0,
+
+                        fieldLabel: _l.get('exponential.start')
+                    },
+                    {
+                        role: 'exp-max',
+                        xtype: 'numberfield',
+                        hideTrigger: true,
+                        allowBlack: false,
+
+                        grow: true,
+                        growMax: 90,
+                        growMin: 90,
+
+                        margin: '0 10 0 0',
+                        height: 31,
+                        minWidth: 'auto',
+                        labelWidth: 'auto',
+
+                        ui: 'light',
+                        cls: 'search-field',
+                        labelAlign: 'right',
+                        labelStyle: 'white-space: nowrap; font-size: 16px; line-height: 33px',
+
+                        fieldLabel: _l.get('exponential.end')
+                    },
+                    {
+                        role: 'exp-submit',
+                        xtype: 'button',
+                        cls: 'search-btn',
+                        height: 33,
+
+                        text: _l.get('exponential.update_btn'),
+
+                        disabled: true,
+                        formBind: true,
+                        handler: this.getPrices,
+                        scope: this
+                    }
+                ]
             }
         ];
 
         this.title = _l.get('exponential.title');
 
+        this.currency = Ext.getStore('Dealer').first().get('seller_currency');
+
         this.getPrices();
         this.callParent(arguments);
     },
 
-    afterRender: function () {
-        this.callParent(arguments);
+    formatPrice: function (value) {
+        return Ext.String.format(_l.get('currencies_tpls')[this.currency], Ext.util.Format.number(value, '0.00'))
     },
+
+
+    getSubmitBtn: function () {
+        return this.down("[role=exp-submit]");
+    },
+
+
+    disableSubmit: function () {
+        this.getSubmitBtn().disable()
+    },
+
+    enableSubmit: function () {
+        this.getSubmitBtn().enable()
+    },
+
 
     getHolderDom: function () {
         var container = this.down("#graph-holder"),
@@ -61,15 +151,63 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
     },
 
     getPrices: function () {
+        if (this.rendered) {
+            this.disableSubmit();
+        }
+
         Ext.API.getDealerPrices({
+            params: this.getLimits(),
             callback: function (list) {
                 this.prices = list;
-                this.updateGraph();
+                this.updateData();
             },
             failure: this.hideOnFailure,
             scope: this
         })
     },
+
+    getLimits: function () {
+        return this.prices
+            ? {
+                start_amount: this.getMinField().getValue(),
+                end_amount: this.getMaxField().getValue()
+            }
+            : null
+    },
+
+
+    updateData: function () {
+        this.updateLimits();
+        this.enableSubmit();
+        this.updateGraph();
+    },
+
+    updateLimits: function () {
+        if (!this.prices) {
+            return;
+        }
+
+        var minField = this.getMinField(),
+            maxField = this.getMaxField(),
+            minValue = this.prices[0]['amount'],
+            maxValue = this.prices[this.prices.length - 1]['amount'];
+
+        minField.setValue(minValue);
+        minField.setMaxValue((maxValue - 100) > 0 ? (maxValue - 100): maxValue);
+
+        maxField.setValue(maxValue);
+        maxField.setMinValue(minValue + 100);
+        maxField.setMaxValue(maxValue * 5);
+    },
+
+    getMinField: function () {
+        return this.down("[role=exp-min]");
+    },
+
+    getMaxField: function () {
+        return this.down("[role=exp-max]");
+    },
+
 
     hideOnFailure: function () {
         this.hide()
@@ -104,13 +242,15 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
             this.current = null;
         }
 
+        var me = this;
+
         this.current = $.plot(this.getHolderDom(), this.collectGraphData(), {
             yaxis:{
                 alignTicksWithAxis: 1,
                 position: "left",
                 axisLabel: _l.get('exponential.yaxis'),
                 tickFormatter: function (val) {
-                    return val.toFixed()
+                    return me.formatPrice(val)
                 }
             },
             xaxis:
@@ -126,22 +266,30 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
         this.bindGraphEvents();
     },
 
-    bindGraphEvents: function () {
-        this.tipContainer = Ext.create('Ext.tip.ToolTip', {
-            target: 'body',
-            autoShow: true,
-            hidden: true,
-            floating: true,
-            shadow: false,
-            style: {
-                position: "absolute",
-                border: "1px solid #fdd",
-                "background-color": "#fee",
-                opacity: 0.80
-            }
-        });
+    getCurrencyName: function () {
+        var store = Ext.getStore('Dealer').first().get('seller_currency')
+    },
 
-        var yaxis_str = _l.get('exponential.yaxis'),
+
+    bindGraphEvents: function () {
+        if (!this.tipContainer) {
+            this.tipContainer = Ext.create('Ext.tip.ToolTip', {
+                target: 'body',
+                autoShow: true,
+                hidden: true,
+                floating: true,
+                shadow: false,
+                style: {
+                    position: "absolute",
+                    border: "1px solid #fdd",
+                    "background-color": "#fee",
+                    opacity: 1
+                }
+            });
+        }
+
+        var me = this,
+            yaxis_str = _l.get('exponential.yaxis'),
             xaxis_str = _l.get('exponential.xaxis'),
             tip = this.tipContainer;
 
@@ -157,7 +305,7 @@ Ext.define('NavixyPanel.view.desktop.Exponential', {
             tip.update(
                 xaxis_str + ": " + item.datapoint[0] +
                 "<br>" +
-                yaxis_str + ": " + item.datapoint[1]
+                yaxis_str + ": " + me.formatPrice(item.datapoint[1])
             );
             tip.showAt([item.pageX + 10, item.pageY + 10]);
         });
