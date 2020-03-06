@@ -15,11 +15,11 @@ Ext.define('NavixyPanel.view.desktop.IndexExp', {
 
         this.items = [
                 {
-                    xtype: 'exponential_grapth'
+                    xtype: 'searchform'
                 },
                 {
                     margin: '20 0 0 0',
-                    xtype: 'searchform'
+                    xtype: 'exponential_grapth'
                 }
             ];
 
