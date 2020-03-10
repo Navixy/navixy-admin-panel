@@ -92,6 +92,10 @@ Ext.define('NavixyPanel.store.Features', {
                 type: "street_view",
                 "name": _l.get('features.street_view'),
                 group: "features"
+            }, {
+                type: "custom_fields",
+                "name": _l.get('features.custom_fields'),
+                group: "features"
             },
             {
                 type: "checkin",
