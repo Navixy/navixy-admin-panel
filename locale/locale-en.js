@@ -395,7 +395,8 @@ Ext.define("Locale.locale-en", {
         "SSP": "South Sudanese pound",
         "VES": "Venezuelan bolívar",
         "STN": "São Tomé and Príncipe dobra",
-        "MRU": "Mauritanian ouguiya"
+        "MRU": "Mauritanian ouguiya",
+        "ugx": "Ugandan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
