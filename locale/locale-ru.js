@@ -395,7 +395,7 @@ Ext.define("Locale.locale-ru", {
         "ves": "Венесуэльский боливар",
         "stn": "Добра Сан-Томе и Принсипи",
         "mru": "Мавританская Угия",
-        "ugx": "Ганданский шиллинг"
+        "ugx": "Угандийский шиллинг"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -1676,7 +1676,8 @@ Ext.define("Locale.locale-ru", {
         "SSP": "{0} SS£",
         "VES": "{0} Bs.",
         "STN": "{0} Db",
-        "MRU": "{0} UM"
+        "MRU": "{0} UM",
+        "UGX": "{0} USh"
     },
     "features": {
         "api": "API",
