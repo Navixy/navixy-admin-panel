@@ -32,6 +32,7 @@ module.exports = function (grunt) {
                         'libs/momentjs/*',
                         'libs/leaflet/*',
                         'libs/pdf/*',
+                        'libs/flot/*',
                         'stickers/*',
                         //Theme files
                         'favicon.ico',

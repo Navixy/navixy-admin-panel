@@ -679,5 +679,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'pay',
             handler: 'payment_system/' + config.payment_system
         })
+    },
+
+    getDealerPrices: function (config) {
+        this.requestWithOptions(config, {
+            handler: 'dealer',
+            action: 'tariff/get_prices',
+            root: 'prices'
+        })
     }
 });

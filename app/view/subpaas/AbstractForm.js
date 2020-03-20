@@ -62,11 +62,11 @@ Ext.define('NavixyPanel.view.subpaas.AbstractForm', {
                 }
             }, {
                 xtype: 'component',
-                hidden: !Ext.getStore('Dealer').isPremiumGis(),
                 padding: '6 12',
-                margin: '0 0 10 0',
+                margin: '0 0 10 210',
                 cls: 'subpaas-hint',
-                html: _l.get('subpaas.create_form.premium_gis_hint')
+                width: 240,
+                html: '<a href="' + _l.get('settings.fields.domain_help_link') + '" target="_blank">' + _l.get('settings.fields.domain_help') + '</a>'
             },
             {
                 fieldLabel: _l.get('subpaas.fields.password'),
