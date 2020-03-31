@@ -13,6 +13,7 @@ Ext.define('NavixyPanel.view.settings.stripe.StripePaymentWindow', {
     height: 482,
     auto_payment_init_mode: false,
     payment_type: null,
+    successFn: Ext.emptyFn,
     initComponent: function () {
         this.optionsRecord = Ext.getStore('PaymentSystems').findRecord('type', 'stripe')
         this.localePart = _l.get('settings.payments')
@@ -97,7 +98,10 @@ Ext.define('NavixyPanel.view.settings.stripe.StripePaymentWindow', {
 
     addResetAndSuccessBtnHandler: function () {
         Ext.get('stripe-reset-btn').on('click', this.resetForm, this)
-        Ext.get('stripe-success-btn').on('click', this.close, this)
+        Ext.get('stripe-success-btn').on('click', function () {
+            this.successFn()
+            this.close()
+        }, this)
     },
 
     resetForm: function () {
@@ -286,6 +290,7 @@ Ext.define('NavixyPanel.view.settings.stripe.StripePaymentWindow', {
                             Ext.get('stripe-load-mask').replaceCls('pending', 'error')
                         } else {
                             Ext.get('stripe-load-mask').replaceCls('pending', 'success')
+
                         }
                         console.log(result)
                     })

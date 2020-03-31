@@ -1295,7 +1295,37 @@ Ext.define("Locale.locale-ru", {
         "payments": {
             "type": {
                 "avangate": "2Checkout",
-                "stripe": "Stripe",
+                "stripe": "Stripe"
+            },
+            "stripe": {
+                "header_text": "You can pay by Visa, MasterCard, Maestro, and others.<br><br>",
+                "payment_window_title": "Enter card details",
+                "short_name": "Credit cards",
+                "name": "Payment by credit card",
+                "amount": "Payment Amount",
+                "single_payment_submit": "Top up balance",
+                "auto_payment_submit": "Turn on AutoPay",
+                "card_holder": "Cardholder Name",
+                "card_holder_placeholder": "For ex., CHRIS VANAGS",
+                "card_number": "Card Number",
+                "cvc_hint": "3 or 4 digits",
+                "expiration": "Valid THRU",
+                "success_title": "Success!",
+                "success_msg": "The payment was successful. Your balance will be topped up in a short time",
+                "error_title": "An error occurred",
+                "error_msg": "An unexpected error occurred while making a payment. Please try again.",
+                "reset_btn": " Try again",
+                "success_btn": "OK",
+                "bind_card_message": "In order to turn on the AutoPay, please enter your credit card details",
+                "hint": "Secure payments powered by Stripe",
+                "errors": {
+                    "card_holder_required": "Card holder name is required"
+                },
+                "errors_descriptions": {
+                    "7": "The entered amount is too low. Please enter an amount higher than $0.5.",
+                    "215": "Error with Stripe operation",
+                    "251": "Not enough money on the card"
+                }
             }
         }
     },
