@@ -557,7 +557,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             seller_currency === this.paymentCurrency &&
             !isSubpaas
                 ? {
-                xtype: 'avangate-panel',
+                xtype: 'payments-panel',
                 layout: {
                     type: 'auto'
                 },

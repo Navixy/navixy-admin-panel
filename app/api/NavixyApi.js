@@ -86,7 +86,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     getTimeZones: function (callback, failure, scope) {
 
         this.sendRequest({
-            params: {locale: Locale.Manager.getLocale()},
+            params: { locale: Locale.Manager.getLocale() },
             success: callback,
             failure: failure,
             action: 'list',
@@ -686,6 +686,28 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'dealer',
             action: 'tariff/get_prices',
             root: 'prices'
+        })
+    },
+
+    stripeDirectPayment: function (config) {
+        return this.requestWithOptions(config, {
+            action: 'pay',
+            handler: 'payment_system/stripe'
+        })
+    },
+
+    stripeCreateIntent: function (config) {
+        return this.requestWithOptions(config, {
+            action: 'create',
+            root: 'value',
+            handler: 'payment_system/stripe/intent'
+        })
+    },
+
+    stripeBindCard: function (config) {
+        return this.requestWithOptions(config, {
+            action: 'bind',
+            handler: 'payment_system/stripe/token'
         })
     }
 });

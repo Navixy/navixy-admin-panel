@@ -1291,6 +1291,12 @@ Ext.define("Locale.locale-ru", {
             "domain_warning": "Доменное имя было изменено",
             "continue": "Продолжить",
             "domain_changed": "Смена домена может повлиять на использование Карт Google.</br><a target=\"_blank\" href=\"{0}\">Подробнее о лицензии Карт Google для домена.</a>"
+        },
+        "payments": {
+            "type": {
+                "avangate": "2Checkout",
+                "stripe": "Stripe",
+            }
         }
     },
     "accounting": {
@@ -1835,7 +1841,7 @@ Ext.define("Locale.locale-ru", {
         title: "Стоимость маячка",
         xaxis: "Количество",
         yaxis: "Цена",
-        update_btn : "Обновить",
+        update_btn: "Обновить",
         start: "Минимальное количество",
         end: "Максимальное количество"
     }
