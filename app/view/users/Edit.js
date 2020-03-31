@@ -38,7 +38,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
                 postfix: '%'
             },
             allowBlank: true,
-            decimalPrecision: 1,
+            decimalPrecision: 2,
             name: 'discount'
         }, {
             xtype: 'numberfield',
