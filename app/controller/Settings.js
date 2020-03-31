@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     views: [
         'settings.Edit',
         'settings.avangate.Subscription',
+        'settings.payments.PaymentsPanel',
         'settings.smtpgate.GatePanel',
         'widgets.map.Map',
         'settings.components.MapWindow',

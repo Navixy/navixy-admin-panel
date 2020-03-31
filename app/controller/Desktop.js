@@ -159,7 +159,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
         if (Ext.checkPermission('paas_payments', 'create') && seller_currency === 'USD') {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
-                xtype: 'avangate-panel'
+                xtype: 'payments-panel'
             });
         }
     },
@@ -191,7 +191,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
         });
 
         this.registerPayments();
-        
+
         this.checkWarning();
     },
 

@@ -1,0 +1,483 @@
+<style>
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    @keyframes void-animation-out {
+        0%,
+        to {
+            opacity: 1;
+        }
+    }
+
+    .stripe-card-front {
+        z-index: 1;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        background: #cfd8dc;
+        padding-top: 25px !important;
+    }
+
+    .stripe-card-back {
+        top: 40px;
+        margin-left: 92px;
+        z-index: 0;
+        background: #b0bec5;
+    }
+
+
+    .stripe-button {
+        background-color: #42a5f5;
+        color: #fff;
+        height: 36px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 16px;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .stripe-button:hover {
+        background-color: #64b5f6;
+    }
+
+    #stripe-card-button {
+        float: right;
+    }
+
+    .stripe-card-front,
+    .stripe-card-back {
+        position: absolute;
+        width: 350px;
+        height: 230px;
+        border-radius: 6px;
+        padding: 20px 25px 0;
+        box-sizing: border-box;
+        font-size: 12px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        color: #555;
+    }
+
+    .stripe-card-stripe {
+        width: 100%;
+        height: 55px;
+        background-color: #3d5266;
+        position: absolute;
+        right: 0;
+    }
+
+    .stripe-cardholder-container {
+        width: 180px;
+        display: inline-block;
+    }
+
+    .stripe-cvc-container {
+        position: absolute;
+        width: 80px;
+        margin-left: calc(90% + 5px);
+        bottom: -10px;
+        padding-left: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .stripe-cvc-container .card-input {
+        margin-bottom: 0;
+    }
+
+    .stripe-cvc-container label {
+        width: 100%;
+    }
+
+    .stripe-cvc-container p {
+        font-size: 7px;
+        text-transform: uppercase;
+        opacity: 0.6;
+        letter-spacing: .5px;
+        color: #555;
+        text-align: center;
+    }
+
+    .stripe-form-container {
+        width: 440px;
+        position: relative;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    .stripe-exp-container {
+        margin-left: 10px;
+        width: 32%;
+        display: inline-block;
+        float: right;
+    }
+
+    .card-input {
+        border: none;
+        outline: none;
+        background-color: #eceff1;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 8px;
+        margin: 0 0 22px;
+        color: #555;
+        font-size: 13px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        letter-spacing: .7px;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    input.card-input::-webkit-input-placeholder {
+        color: rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+        letter-spacing: 1px;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: none;
+    }
+
+    input.card-input:-moz-placeholder {
+        color: #fff;
+        opacity: 0.7;
+        letter-spacing: 1px;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: none;
+    }
+
+    input.card-input::-moz-placeholder {
+        color: #fff;
+        opacity: 0.7;
+        letter-spacing: 1px;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: none;
+    }
+
+    input:-ms-input-placeholder {
+        color: #fff;
+        opacity: 0.7;
+        letter-spacing: 1px;
+        font-weight: 300;
+        letter-spacing: 1px;
+    }
+
+    .StripeElement--invalid {
+        border: solid 1px #eb0000;
+    }
+
+    label.card-input-label {
+        display: block;
+        margin: 0 auto 7px;
+        white-space: nowrap;
+    }
+
+    .amount-block {
+        position: relative;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .stripe-card-bind-message {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .checkout-container {
+        padding: 32px;
+        height: 440px;
+        position: relative;
+        background: #fff
+    }
+
+    .checkout-container input[type="number"]::-webkit-outer-spin-button,
+    .checkout-container input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .checkout-container input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+
+    .secure-hint {
+        display: inline-block;
+        padding: 9px 16px;
+    }
+
+    .secure-hint .icon-lock {
+        font-size: 16px;
+    }
+
+    .stipe-errors-block {
+        visibility: hidden;
+        color: #F44336;
+    }
+
+    .stipe-errors-block svg {
+        fill: #F44336;
+    }
+
+    .stipe-errors-block.stripe-visible-error {
+        visibility: visible;
+    }
+
+    .stripe-load-mask .icon .border {
+        stroke: #64b5f6;
+    }
+
+    .stripe-load-mask .icon .checkmark {
+        stroke: #42a5f5;
+    }
+
+    .stripe-load-mask > :nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .stripe-load-mask > :nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .stripe-load-mask > :nth-child(4) {
+        transition-delay: 0.3s;
+    }
+
+    .stripe-load-mask.success .icon .border,
+    .stripe-load-mask.success .icon .checkmark {
+        opacity: 1;
+        stroke-dashoffset: 0 !important;
+    }
+
+
+    .stripe-load-mask > * {
+        transition-property: opacity, transform;
+        transition-duration: 0.35s;
+        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    .stripe-load-mask .icon {
+        margin: 15px 0;
+        transform: scale(0.75);
+        transform-origin: center;
+    }
+
+    .stripe-load-mask .icon svg {
+        will-change: transform;
+    }
+
+    .stripe-load-mask .icon .border {
+        stroke-dasharray: 251;
+        stroke-dashoffset: 62.75;
+        transform-origin: 50% 50%;
+        transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation: spin 1s linear infinite;
+    }
+
+    .stripe-load-mask .icon .checkmark {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        transition: stroke-dashoffset 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s;
+    }
+
+    .stripe-load-mask .title {
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .stripe-load-mask .message {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        line-height: 1.6em;
+    }
+
+    .stripe-load-mask .message span {
+        font-size: inherit;
+    }
+
+
+    .stripe-load-mask.pending,
+    .stripe-load-mask.error,
+    .stripe-load-mask.success {
+        pointer-events: all;
+    }
+
+    .stripe-load-mask.pending .icon {
+        opacity: 1;
+    }
+
+    .stripe-load-mask.success > * {
+        opacity: 1;
+        transform: none !important;
+    }
+
+    .stripe-load-mask.error > * {
+        opacity: 1;
+        transform: none !important;
+    }
+
+
+    .stripe-load-mask {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        text-align: center;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+        background: #fff;
+        visibility: hidden;
+    }
+
+    .stripe-load-mask.success, .stripe-load-mask.pending, .stripe-load-mask.error {
+        visibility: visible;
+    }
+
+    .stripe-load-mask.error > .stripe-load-mask__title, .stripe-load-mask.error > .stripe-success-btn, .stripe-load-mask.error > .icon, .stripe-load-mask.error > .stripe-load-mask__message {
+        display: none;
+    }
+
+    .stripe-load-mask.error .error-part {
+        display: block;
+    }
+
+    .stripe-load-mask.error .error-icon {
+        color: #F44336;
+        font-size: 64px;
+    }
+
+    .stripe-load-mask .error-part {
+        display: none;
+    }
+
+    .stripe-load-mask__title {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 6px;
+    }
+
+    .stripe-load-mask__message {
+        color: rgba(0, 0, 0, 0.5);
+        max-width: 300px;
+        margin-bottom: 12px;
+    }
+
+    .paysystems-placeholder--stripe {
+        display: inline-block;
+        padding: 8px 0;
+    }
+</style>
+<div class="checkout-container">
+    <tpl if="auto_payment_init_mode">
+        <div class="stripe-card-bind-message">{bind_card_message}</div>
+        <tpl else>
+            <div class="amount-block">
+                {amount}: <b> {sum} ({currency}) </b>
+            </div>
+        </tpl>
+
+
+        <div class="stripe-form-container">
+            <div class="stripe-card-front">
+                <label for="card-number" class="card-input-label">
+                    {card_number}
+                </label>
+                <div id="stripe-card-number" class="card-input"></div>
+                <div class="stripe-cardholder-container">
+                    <label for="card-holder" class="card-input-label">{card_holder} </label>
+                    <input type="text"
+                           id="card-holder"
+                           class="card-input"
+                           placeholder="{card_holder_placeholder}"
+                           length="100"/>
+                </div>
+                <div class="stripe-exp-container">
+                    <label for="stripe-card-exp" class="card-input-label">
+                        {expiration}
+                    </label>
+                    <div id="stripe-card-exp" class="card-input"></div>
+                </div>
+                <div id="stripe-errors" class="stipe-errors-block">
+                    <span class="icon-alert"></span>
+                    <span class="message"></span>
+                </div>
+                <div class="stripe-cvc-container">
+                    <label for="card-cvc" class="card-input-label"> CVC/CVV</label>
+                    <div id="stripe-card-cvc" class="card-input"></div>
+                    <p>{cvc_hint}</p>
+                </div>
+            </div>
+            <div class="stripe-card-back">
+                <div class="stripe-card-stripe"></div>
+            </div>
+        </div>
+
+        <div class="checkout-container__footer">
+            <div class="paysystems-placeholder paysystems-placeholder--stripe">
+                <div class="paysystems-placeholder__item paysystems-placeholder__item--stripe"></div>
+                <div class="paysystems-placeholder__item paysystems-placeholder__item--visa"></div>
+                <div class="paysystems-placeholder__item paysystems-placeholder__item--mastercard"></div>
+                <div class="paysystems-placeholder__item paysystems-placeholder__item--aexpress"></div>
+                <div class="paysystems-placeholder__item paysystems-placeholder__item--discover"></div>
+            </div>
+            <button type="button" id="stripe-card-button" class="stripe-button">{submit_payment}</button>
+        </div>
+</div>
+<div class="stripe-load-mask" id="stripe-load-mask">
+    <div class="icon">
+        <svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xlink="http://www.w3.org/1999/xlink">
+            <circle class="border" cx="42" cy="42" r="40" stroke-linecap="round" stroke-width="4" stroke="#000"
+                    fill="none"></circle>
+            <path class="checkmark" stroke-linecap="round" stroke-linejoin="round"
+                  d="M23.375 42.5488281 36.8840688 56.0578969 64.891932 28.0500338" stroke-width="4" stroke="#000"
+                  fill="none"></path>
+        </svg>
+    </div>
+    <div class="stripe-load-mask__title">{success_title}</div>
+    <div class="stripe-load-mask__message">{success_msg}</div>
+    <button type="button" class="stripe-button stripe-success-btn" id="stripe-success-btn">{success_btn}</button>
+
+    <div class="error-part">
+        <div class="error-icon"><span class="icon-alert"></span></div>
+        <div class="stripe-load-mask__title">{error_title}</div>
+        <div class="stripe-load-mask__message" id="stripe-error-message">{error_msg}</div>
+        <button type="button" class="stripe-button" id="stripe-reset-btn">{reset_btn}</button>
+    </div>
+</div>
