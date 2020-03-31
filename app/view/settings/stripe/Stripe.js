@@ -121,7 +121,7 @@ Ext.define('NavixyPanel.view.settings.stripe.Stripe', {
             Ext.widget('stripe-payment-window', {
                 sum: this.down('numberfield[name=qty]').getValue(),
                 payment_type: 'monthly_fee',
-                submit_btn_text: this.localePart.get('monthly_fee_btn_text'),
+                submit_btn_text: _l.get('settings.payments.stripe.single_payment_submit'),
                 successFn: function () {
                     var balance = Ext.getStore('Dealer').getAt(0).getData().license_balance
 
