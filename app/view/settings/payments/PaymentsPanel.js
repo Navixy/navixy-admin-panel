@@ -5,7 +5,7 @@ Ext.define('NavixyPanel.view.settings.payments.PaymentsPanel', {
     requires: ['NavixyPanel.view.components.AbstractMenu', 'NavixyPanel.view.settings.stripe.Stripe'],
     height: 500,
     initComponent: function () {
-        this.title = 'Payments';
+        this.title = 'Subscription';
 
         var dealerData = Ext.getStore('Dealer').getAt(0).getData()
 
