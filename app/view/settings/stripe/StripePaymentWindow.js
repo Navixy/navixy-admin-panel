@@ -246,7 +246,8 @@ Ext.define('NavixyPanel.view.settings.stripe.StripePaymentWindow', {
         Ext.API.stripeDirectPayment({
             params: {
                 amount: this.sum,
-                token: tokenObject.token.id
+                token: tokenObject.token.id,
+                payment_type: this.payment_type
             }
         }).then(function () {
             Ext.get('stripe-load-mask').replaceCls('pending', 'success')
