@@ -947,7 +947,9 @@ Ext.define("Locale.locale-en", {
             "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
-            "license_balance": "Pending amount {0}"
+            "license_balance": "Pending amount {0}",
+            "pay_with_avangate": "Pay with 2Checkout",
+            "pay_with_stripe": "Pay with Stripe"
         },
         "email_gateways": {
             "title": "Email Gateways",
@@ -1268,7 +1270,7 @@ Ext.define("Locale.locale-en", {
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
-            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy.',
+            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy',
             "paas_google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package.',
             "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time",
             "service_maps_preview": "Map default settings preview",
@@ -1311,6 +1313,42 @@ Ext.define("Locale.locale-en", {
             "domain_warning": "Domain name has been changed",
             "continue": "Continue",
             "domain_changed": "Domain name change may affect Google Maps availability.</br><a target=\"_blank\" href=\"{0}\">Read more about Google Maps for your domain.</a>"
+        },
+        "payments": {
+            "type": {
+                "avangate": "2Checkout",
+                "stripe": "Stripe"
+            },
+            "stripe": {
+                "header_text": "You can pay by Visa, MasterCard, Maestro, and others.<br><br>",
+                "payment_window_title": "Enter card details",
+                "short_name": "Credit cards",
+                "name": "Payment by credit card",
+                "amount": "Payment Amount",
+                "single_payment_submit": "Top up balance",
+                "auto_payment_submit": "Turn on AutoPay",
+                "card_holder": "Cardholder Name",
+                "card_holder_placeholder": "For ex., CHRIS VANAGS",
+                "card_number": "Card Number",
+                "cvc_hint": "3 or 4 digits",
+                "expiration": "Valid THRU",
+                "success_title": "Success!",
+                "success_msg": "The payment was successful. Your balance will be topped up in a short time",
+                "error_title": "An error occurred",
+                "error_msg": "An unexpected error occurred while making a payment. Please try again.",
+                "reset_btn": " Try again",
+                "success_btn": "OK",
+                "bind_card_message": "In order to turn on the AutoPay, please enter your credit card details",
+                "hint": "Secure payments powered by Stripe",
+                "errors": {
+                    "card_holder_required": "Card holder name is required"
+                },
+                "errors_descriptions": {
+                    "7": "The entered amount is too low. Please enter an amount higher than $0.5.",
+                    "215": "Error with Stripe operation",
+                    "251": "Not enough money on the card"
+                }
+            }
         }
     },
     "accounting": {
@@ -1835,7 +1873,7 @@ Ext.define("Locale.locale-en", {
             contact_post: "Post",
             password: "Password",
             password_repeat: "Repeat password",
-            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel.",
+            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel",
             "password_mismatched": "Passwords do not match"
         },
 
