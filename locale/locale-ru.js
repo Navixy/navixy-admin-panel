@@ -927,7 +927,9 @@ Ext.define("Locale.locale-ru", {
             "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
-            "license_balance": "Pending amount {0}"
+            "license_balance": "Pending amount {0}",
+            "pay_with_avangate": "Pay with 2Checkout",
+            "pay_with_stripe": "Pay with Stripe"
         },
         "email_gateways": {
             "title": "Email сообщения",
