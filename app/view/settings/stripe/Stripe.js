@@ -123,7 +123,7 @@ Ext.define('NavixyPanel.view.settings.stripe.Stripe', {
                 payment_type: 'monthly_fee',
                 submit_btn_text: this.localePart.get('monthly_fee_btn_text'),
                 successFn: function () {
-                    let balance = Ext.getStore('Dealer').getAt(0).getData().license_balance
+                    var balance = Ext.getStore('Dealer').getAt(0).getData().license_balance
 
                     if (balance < 0) {
                         window.location.reload()
