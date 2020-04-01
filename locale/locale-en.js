@@ -607,7 +607,7 @@ Ext.define("Locale.locale-en", {
         "confirm_delete_clones": "Delete {0}?",
         "clones_delete_success_msg": "{1} successfully deleted.",
         "clones_delete_failure_msg": "{1} not deleted due to an error.",
-        "clones_delete_failure_details_msg": "The clone was not deleted. An error occured while deleting. {0}.",
+        "clones_delete_failure_details_msg": "The clone was not deleted. An error occurred while deleting. {0}.",
         "clones_filter": {
             "all": "All",
             "clones": "Clones",
@@ -729,7 +729,7 @@ Ext.define("Locale.locale-en", {
         "corrupt": {
             "alert": {
                 "title": "Remove tracker?",
-                "text": "Device will be permanently removed from database. All retated data will be lost.<br><br>Are you to remove device?"
+                "text": "Device will be permanently removed from database. All related data will be lost.<br><br>Are you to remove device?"
             },
             "success_msg": "Device {0} successfully removed"
         },
@@ -818,7 +818,7 @@ Ext.define("Locale.locale-en", {
                 "groups": {
                     "apps": "Apps",
                     "features": "Features",
-                    "misc": "Miscellanous"
+                    "misc": "Miscellaneous"
                 }
             },
             "hints": {
@@ -1087,7 +1087,7 @@ Ext.define("Locale.locale-en", {
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or alpha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
             "do_not_apply_default_seetings_during_activation": "Do not apply default settings during device activation",
@@ -1162,7 +1162,7 @@ Ext.define("Locale.locale-en", {
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Auto"
                     },
                     "destination": "Destination TON/NPI",
@@ -1201,7 +1201,7 @@ Ext.define("Locale.locale-en", {
             "save_msg": "Settings successfully saved",
             "main_fields": "Basic Settings",
             "map_fields": "Maps settings",
-            "permission_fields": "Notification dettings",
+            "permission_fields": "Notification settings",
             "domain_sup": "* Map choice is limited for subdomains of *{0}",
             "custom_fields": "Customization",
             "main_buttons_title": "Displaying buttons",
@@ -1552,14 +1552,14 @@ Ext.define("Locale.locale-en", {
                 "last_scan_text": "The results of the previous scan:",
                 "unassign_q": "Detach the SIM card from the device?",
                 "unassign_success": "SIM card untethered from the device",
-                "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
+                "unassign_failure": "Error. Failed to detach the SIM card from device"
             }
         },
         "import": {
             "import_hints": {
                 "enter_list": "Enter or scan the list of IMEI-codes",
                 "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
-                "list_count": "Resposne codes: <b>{0}</b>",
+                "list_count": "Response codes: <b>{0}</b>",
                 "list_miss": "incorrect: <b>{0}</b>",
                 "list_rep": "introduced repetitions: <b>{0}</b>",
                 "import_success": "Successfully imported {0}",

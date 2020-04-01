@@ -1142,7 +1142,7 @@ Ext.define("Locale.locale-ru", {
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Auto"
                     },
                     "destination": "Destination TON/NPI",
@@ -1517,7 +1517,7 @@ Ext.define("Locale.locale-ru", {
                 "last_scan_text": "Результаты предыдущего сканирования:",
                 "unassign_q": "Отвязать SIM-карту от устройства?",
                 "unassign_success": "Сим-карта отвязана от устройства",
-                "unassign_failure": "Ошибка. Не удалось отвязать SIM-карту от сустройсва"
+                "unassign_failure": "Ошибка. Не удалось отвязать SIM-карту от устройсва"
             }
         },
         "import": {

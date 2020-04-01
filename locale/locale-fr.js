@@ -609,7 +609,7 @@ Ext.define('Locale.locale-fr',{
         "corrupt": {
             "alert": {
                 "title": "Supprimer le tracker ?",
-                "text": "Dispositif disparaît définitivement de la base de données. Retated toutes les données seront perdues. <br><br>Etes-vous pour supprimer le périphérique ?"
+                "text": "Dispositif disparaît définitivement de la base de données. Related toutes les données seront perdues. <br><br>Etes-vous pour supprimer le périphérique ?"
             },
             "success_msg": "{0} dispositif supprimé avec succès"
         }
@@ -871,7 +871,7 @@ Ext.define('Locale.locale-fr',{
             "sms_sender_id_hint": "Il est fortement recommandé d'utiliser le numéro de votre contrat de location pour les messages entrants comme un Sender ID. Dans ce cas, la plateforme de service sera capable de recevoir des SMS de réponses des dispositifs avec les confirmations de commande et d'autres données valorisées.",
             "sms_inbound": "Numéro pour les messages entrants",
             "sms_inbound_ph": "Exemple : 12162780905",
-            "sms_inbound_hint": "Nous ne recommandons pas, mais vous pouvez également utiliser un autre numérique ou numérique apha Sender ID. Toutefois, dans ce cas, il est probable de que cette plate-forme ne sera pas en mesure de recevoir des SMS de périphériques. Veuillez également noter que des exigences particulières peuvent être appliquées par les législations nationales et des règlements pour éviter le spam. Assurez-vous que l'ID de l'expéditeur vous entré répond à ces exigences, sinon les SMS service de messagerie peuvent ne pas fonctionner correctement.",
+            "sms_inbound_hint": "Nous ne recommandons pas, mais vous pouvez également utiliser un autre numérique ou numérique alpha Sender ID. Toutefois, dans ce cas, il est probable de que cette plate-forme ne sera pas en mesure de recevoir des SMS de périphériques. Veuillez également noter que des exigences particulières peuvent être appliquées par les législations nationales et des règlements pour éviter le spam. Assurez-vous que l'ID de l'expéditeur vous entré répond à ces exigences, sinon les SMS service de messagerie peuvent ne pas fonctionner correctement.",
             "user_sms_gateway": "SMS Gateway",
             "user_sms_gateway_ph": "Passerelle SMS ne pas sélectionné",
             "user_sms_gateway_hint": "Sélectionnez la passerelle SMS que vous utilisez. Vous devez avoir un compte approprié et fournir des informations d'identification pour la connexion sécurisée avec la passerelle.",
@@ -894,7 +894,7 @@ Ext.define('Locale.locale-fr',{
             "save_msg": "Paramètres enregistrés avec succès",
             "main_fields": "Réglages de base",
             "map_fields": "Maps settings",
-            "permission_fields": "Notification dettings",
+            "permission_fields": "Notification settings",
             "domain_sup": "* Carte choix est limité pour les sous-domaines de * {0}",
             "custom_fields": "Personnalisation",
             "main_buttons_title": "Affichage des boutons",
@@ -1045,7 +1045,7 @@ Ext.define('Locale.locale-fr',{
                         "4": "Numéro d'abonné",
                         "5": "En abrégé",
                         "6": "Alphanumérique",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Auto"
                     },
                     "destination": "Destination tonne / NPI",
@@ -1277,7 +1277,7 @@ Ext.define('Locale.locale-fr',{
                 "last_scan_text": "Les résultats de l'analyse précédente :",
                 "unassign_q": "Détachez la carte SIM de l'appareil ?",
                 "unassign_success": "Carte SIM non attaché de l'appareil",
-                "unassign_failure": "Erreur. Impossible de détacher la carte SIM d'ustroystva"
+                "unassign_failure": "Erreur. Impossible de détacher la carte SIM d'device"
             }
         },
         "import": {
