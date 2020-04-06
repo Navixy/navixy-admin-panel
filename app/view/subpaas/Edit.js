@@ -67,6 +67,7 @@ Ext.define('NavixyPanel.view.subpaas.Edit', {
             config[1],
             config[2],
             config[3],
+            config[4],
 
             {
                 xtype: 'combobox',

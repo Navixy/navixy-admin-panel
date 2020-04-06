@@ -343,6 +343,16 @@ Ext.define('NavixyPanel.controller.Main', {
         })
 
         Ext.apply(Ext.form.field.VTypes, {
+            tardemail: function (v) {
+                return this.tardemailRe.test(v);
+            },
+            tardemailText: Ext.form.field.VTypes.emailText,
+            tardemailMask: /[ a-z0-9_\+\.\-@\,]/,
+            tardemailRe: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9_]{2,14})+$/,
+
+        })
+
+        Ext.apply(Ext.form.field.VTypes, {
             amount: function (v) {
                 return Ext.form.VTypes['amountVal'].test(v)
             },

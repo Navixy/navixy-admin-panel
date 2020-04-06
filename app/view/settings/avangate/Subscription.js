@@ -7,13 +7,16 @@
 Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
     extend: 'Ext.Container',
     alias: 'widget.avangate-panel',
-    padding: '30 300',
+    padding: '30 600 30 40',
     requires: ['NavixyPanel.plugins.FieldPostfix', 'NavixyPanel.plugins.FieldPrefix'],
     cls: 'avangate-subscription-panel',
     minPaymentSum: 10,
+
     initComponent: function () {
         this.title = 'Subscription';
-
+        this.layout = {
+            type: 'auto'
+        }
         if (!localStorage.getItem('activation_payment_check_needed')) {
             this.items = this.resolveItems();
         } else {
@@ -86,6 +89,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 xtype: 'component',
                 cls: 'subscription_hint',
                 margin: '20 0 0 0',
+                padding: 0,
                 html: localePart.get(Ext.isNavixy() ? 'subscription_hint' : 'paas_subscription_hint')
             };
 
@@ -121,6 +125,10 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
             items = [{
                 xtype: 'component',
+                padding: '0',
+                html: '<h2>' + localePart.get('pay_with_avangate') + '</h2>'
+            }, {
+                xtype: 'component',
                 padding: '10 0',
                 html: localePart.get('monthly_fee_hint')
             }, {
@@ -130,6 +138,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
             },
                 {
                     xtype: 'container',
+                    padding: 0,
                     layout: {
                         type: 'hbox'
                     },
@@ -154,7 +163,10 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                         {
                             xtype: 'button',
                             maxWidth: 120,
-                            padding: 3,
+                            height: 29,
+                            margin: '-1 0 0 0',
+                            scale: 'small',
+                            cls: 'x-btn-default-small',
                             text: localePart.get('monthly_fee_btn_text'),
                             handler: this.redirectToPayForm,
                             scope: this

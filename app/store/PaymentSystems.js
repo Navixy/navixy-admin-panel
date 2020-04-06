@@ -6,6 +6,6 @@
 
 Ext.define('NavixyPanel.store.PaymentSystems', {
     extend: 'Ext.data.Store',
-    fields: ['type'],
+    fields: ['type', 'currency', 'methods', 'auto_payments_enabled', 'intent_required', 'create_customer', 'publishable_key'],
     storeId: 'PaymentSystems'
 })

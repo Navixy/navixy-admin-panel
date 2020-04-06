@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
                 labelSeparator: Util.getRequiredSeparator(),
-                vtype: 'email',
+                vtype: 'tardemail',
                 minLength: 2,
                 maxLength: 100,
                 validateOnChange: true
@@ -230,7 +230,8 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     getSWItems: function () {
-        var me = this;
+        var me = this,
+            validatePersonal = Ext.getStore('PaasPlugins').checkPlugin(57);
 
         return {
             role: 'legal_fields',
@@ -252,12 +253,16 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.tin'),
                     name: 'tin',
                     maxLength: 255,
+                    maskRe: validatePersonal ? /[0-9]/ : false,
+                    regex: validatePersonal ? /[0-9]/ : false,
                     allowBlank: true
                 },
                 {
                     fieldLabel: _l.get('users.fields.iec'),
                     name: 'iec',
                     maxLength: 255,
+                    maskRe: validatePersonal ? /[0-9]/ : false,
+                    regex: validatePersonal ? /[0-9]/ : false,
                     allowBlank: true
                 },
                 {

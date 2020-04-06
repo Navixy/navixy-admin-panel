@@ -881,7 +881,7 @@ Ext.define('Locale.locale-ar',{
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or alpha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
@@ -894,7 +894,7 @@ Ext.define('Locale.locale-ar',{
             "save_msg": "إعدادات تم حفظها بنجاح",
             "main_fields": "الإعدادات الأساسية",
             "map_fields": "إعدادات الخرائط",
-            "permission_fields": "Notification dettings",
+            "permission_fields": "Notification settings",
             "domain_sup": "* خيار خريطة محدودة بالنسبة للمجالات الفرعية من * {0}",
             "custom_fields": "Customization",
             "main_buttons_title": "Displaying buttons",
@@ -1277,14 +1277,14 @@ Ext.define('Locale.locale-ar',{
                 "last_scan_text": "The results of the previous scan:",
                 "unassign_q": "Detach the SIM card from the device?",
                 "unassign_success": "بطاقة SIM غير المربوطة من الجهاز",
-                "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
+                "unassign_failure": "Error. Failed to detach the SIM card from device"
             }
         },
         "import": {
             "import_hints": {
                 "enter_list": "Enter or scan the list of IMEI-codes",
                 "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
-                "list_count": "Resposne codes: <b>{0}</b>",
+                "list_count": "Response codes: <b>{0}</b>",
                 "list_miss": "incorrect: <b>{0}</b>",
                 "list_rep": "introduced repetitions: <b>{0}</b>",
                 "import_success": "Successfully imported {0}",
