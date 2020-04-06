@@ -232,14 +232,14 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
-            id: 'sr_CS',
+            id: 'sr',
             name: 'sr_CS',
             text: 'Srpski',
             alias: ['sr', 'sr_CS'],
             rtl: false
         },
         {
-            id: 'bg_BG',
+            id: 'bg',
             name: 'bg_BG',
             text: 'Български',
             alias: ['bg', 'bg_BG'],
