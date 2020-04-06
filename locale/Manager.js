@@ -230,6 +230,20 @@ Ext.define('Locale.Manager', {
             text: 'ไทย',
             alias: ['th', 'th_TH'],
             rtl: false
+        },
+        {
+            id: 'sr',
+            name: 'sr_CS',
+            text: 'Srpski',
+            alias: ['sr', 'sr_CS'],
+            rtl: false
+        },
+        {
+            id: 'bg',
+            name: 'bg_BG',
+            text: 'Български',
+            alias: ['bg', 'bg_BG'],
+            rtl: false
         }
     ],
 
