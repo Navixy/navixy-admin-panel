@@ -392,10 +392,10 @@ Ext.define("Locale.locale-en", {
         "xpf": "Pacific franc",
         "vuv": "Vanuatu vatu",
         "mmk": "Burmese kyat",
-        "SSP": "South Sudanese pound",
-        "VES": "Venezuelan bolívar",
-        "STN": "São Tomé and Príncipe dobra",
-        "MRU": "Mauritanian ouguiya"
+        "ssp": "South Sudanese pound",
+        "ves": "Venezuelan bolívar",
+        "stn": "São Tomé and Príncipe dobra",
+        "mru": "Mauritanian ouguiya"
     },
     "maps": {
         "roadmap": "Google roadmap",
