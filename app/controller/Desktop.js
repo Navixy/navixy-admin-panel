@@ -18,7 +18,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.Footer',
         'desktop.AccessDenied',
         'desktop.Search',
-        'desktop.Index'
+        'desktop.Exponential',
+        'desktop.Index',
+        'desktop.IndexExp'
     ],
 
     refs: [
@@ -157,7 +159,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
         if (Ext.checkPermission('paas_payments', 'create') && seller_currency === 'USD') {
             this.application.fireEvent('handlefound');
             this.application.fireEvent('contentchange', {
-                xtype: 'avangate-panel'
+                xtype: 'payments-panel'
             });
         }
     },
@@ -168,9 +170,18 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.application.fireEvent('menuselect', 'index');
 
         this.application.fireEvent('contentchange', {
-            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs']) ? 'searchform' : 'indexpage'
+            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs'])
+                ? this.checkExponential()
+                    ? 'indexexp'
+                    : 'searchform'
+                : 'indexpage'
         });
     },
+
+    checkExponential: function () {
+        return Ext.getStore('Dealer').isExponential();
+    },
+
 
     registerSearch: function () {
         this.addMainMenuItem({
@@ -180,16 +191,16 @@ Ext.define('NavixyPanel.controller.Desktop', {
         });
 
         this.registerPayments();
-        
+
         this.checkWarning();
     },
 
     checkWarning: function () {
 
         var aws = document.location.host.indexOf('us.navixy.com') > -1,
-            time = Ext.Date.format(Ext.Date.parse("2019-12-12", 'Y-m-d'), 'U') * 1 > Ext.Date.format(new Date(), 'U') * 1;
+            time = Ext.Date.format(Ext.Date.parse("2020-01-19", 'Y-m-d'), 'U') * 1 > Ext.Date.format(new Date(), 'U') * 1;
 
-        if (!aws && time) {
+        if (aws && time) {
             Ext.getFirst('mainviewport').insert(0, {
                     xtype: 'component',
                     height: 50,

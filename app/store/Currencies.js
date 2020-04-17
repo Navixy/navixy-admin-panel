@@ -683,6 +683,11 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "MRU",
                 name: _l.get('currency.mru'),
                 priority: 5
+            },
+            {
+                type: "UGX",
+                name: _l.get('currency.ugx'),
+                priority: 5
             }
         ];
 

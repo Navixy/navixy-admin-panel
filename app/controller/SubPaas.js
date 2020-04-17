@@ -180,7 +180,6 @@ Ext.define('NavixyPanel.controller.SubPaas', {
     },
 
     handleSubpaasCreateAction: function () {
-        console.log('asdasd')
         Ext.Nav.shift('subpaas/create')
     },
 

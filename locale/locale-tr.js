@@ -1081,7 +1081,7 @@ Ext.define('Locale.locale-tr',{
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Otomatik"
                     },
                     "destination": "Destination TON/NPI",
@@ -1399,14 +1399,14 @@ Ext.define('Locale.locale-tr',{
                 "last_scan_text": "The results of the previous scan:",
                 "unassign_q": "Detach the SIM card from the device?",
                 "unassign_success": "SIM card untethered from the device",
-                "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
+                "unassign_failure": "Error. Failed to detach the SIM card from device"
             }
         },
         "import": {
             "import_hints": {
                 "enter_list": "Enter or scan the list of IMEI-codes",
                 "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
-                "list_count": "Resposne codes: <b>{0}</b>",
+                "list_count": "Response codes: <b>{0}</b>",
                 "list_miss": "incorrect: <b>{0}</b>",
                 "list_rep": "introduced repetitions: <b>{0}</b>",
                 "import_success": "Successfully imported {0}",

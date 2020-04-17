@@ -1,0 +1,30 @@
+.payments-panel {
+  .x-panel-body-default {
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .x-panel-docked-left .x-panel-body-default {
+    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .menu_item {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    &.selected {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  h2 {
+    color: rgba(0, 0, 0, 0.87)
+  }
+}

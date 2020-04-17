@@ -30,13 +30,13 @@ Ext.define("Locale.locale-en", {
         "clients_blocked": "Access to your admin panel and tracking platform suspended. Please top up the balance."
     },
     "header_blocked": {
-        "inital_block": "Initial blocking",
+        "initial_block": "Initial blocking",
         "block_login": "Access to admin panel is blocked",
         "clients_blocked": "Access to the tracking platform and admin panel is blocked"
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
-    "maintenance_warning": "Maintenance works have been successfully finished. Please read <a href=\"https://www.navixy.com/server-maintenance/\" target=\"_blank\">important information</a> on changes",
+    "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
     "auth": {
         "login": "Login",
         "password": "Password",
@@ -395,7 +395,8 @@ Ext.define("Locale.locale-en", {
         "ssp": "South Sudanese pound",
         "ves": "Venezuelan bolívar",
         "stn": "São Tomé and Príncipe dobra",
-        "mru": "Mauritanian ouguiya"
+        "mru": "Mauritanian ouguiya",
+        "ugx": "Ugandan shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -606,7 +607,7 @@ Ext.define("Locale.locale-en", {
         "confirm_delete_clones": "Delete {0}?",
         "clones_delete_success_msg": "{1} successfully deleted.",
         "clones_delete_failure_msg": "{1} not deleted due to an error.",
-        "clones_delete_failure_details_msg": "The clone was not deleted. An error occured while deleting. {0}.",
+        "clones_delete_failure_details_msg": "The clone was not deleted. An error occurred while deleting. {0}.",
         "clones_filter": {
             "all": "All",
             "clones": "Clones",
@@ -728,7 +729,7 @@ Ext.define("Locale.locale-en", {
         "corrupt": {
             "alert": {
                 "title": "Remove tracker?",
-                "text": "Device will be permanently removed from database. All retated data will be lost.<br><br>Are you to remove device?"
+                "text": "Device will be permanently removed from database. All related data will be lost.<br><br>Are you to remove device?"
             },
             "success_msg": "Device {0} successfully removed"
         },
@@ -817,25 +818,25 @@ Ext.define("Locale.locale-en", {
                 "groups": {
                     "apps": "Apps",
                     "features": "Features",
-                    "misc": "Miscellanous"
+                    "misc": "Miscellaneous"
                 }
             },
             "hints": {
                 "2": "Messages sent with user’s consent or by his request. These SMS are sent from the service platform to users and devices through the SMS gateway you defined.<br /><br />Particular use cases:<br /> – Notifications about geo-based events your users want to stay aware of<br /> – M2M commands to those devices which can be configured over SMS channel only (e.g. device configuration, output change), as well as manual location request via SMS (for models which support such feature).",
                 "3": "Service and maintenance SMS commands which are sent from the platform to devices, normally without any special approvement from user. For example, they are used for automatic device activation – to deliver initialization SMS commands (APN, server address, etc.), or when your support team performs remote device diagnostics.",
-                "4": "If you use bundle SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands).",
-                "5": "If you use bundle SIM cards in devices, you can set up a fee for its usage based on traffic volume (traffic in both directions is billed).",
-                "6": "User notifications by automatic phone calls are currently supported for limited number of regions and limited number of languages.",
+                "4": "If you use bundle SIM cards in devices, you can additionally charge users for incoming SMS messages from these SIM cards (e.g. confirmations from devices about accomplishing the commands)",
+                "5": "If you use bundle SIM cards in devices, you can set up a fee for its usage based on traffic volume (traffic in both directions is billed)",
+                "6": "User notifications by automatic phone calls are currently supported for limited number of regions and limited number of languages",
                 "7": "If user reaches the limit, he will not be able to add or track more assets in his account. In case user has assets on different plans, the minimum value will be applied.",
                 "8": "The system logs and stores data (about trips, events, etc.) within set time span relative to the current date only. If you extend the time span, the older logs might not be available.",
                 "9": "Select maps available for user if he tracks assets on the current plan. The list of all available maps is defined by the preferences for your service.",
-                "10": "Select options which are available for users who have assets on this plan.",
-                "11": "Select options which are available for users who have assets on this plan.",
+                "10": "Select options which are available for users who have assets on this plan",
+                "11": "Select options which are available for users who have assets on this plan",
                 "12": "The price user pays to you as a service provider. The billing system uses the currency you defined in Account settings.<br /><br />If you see “N/A” instead of value, it means that service is not offered or cannot be billed by the billing system.",
                 "13": "The price you pay for services provided to you by Navixy. If you see “N/A” instead of value, it means that service is not offered (not ordered or unavailable).",
                 "14": "This plan will be used by default when user activates a new device. Note: this setting will be overridden by the plan defined in the activation code parameters.",
-                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to.",
-                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own.",
+                "15": "Integer number (0, 1, 2, …) of the group to which this plan belongs to",
+                "16": "Mark the checkbox if you allow users to switch their devices to this plan (from other plans within the same group) by their own",
                 "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
                 "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
@@ -946,7 +947,9 @@ Ext.define("Locale.locale-en", {
             "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
-            "license_balance": "Pending amount {0}"
+            "license_balance": "Pending amount {0}",
+            "pay_with_avangate": "Pay with 2Checkout",
+            "pay_with_stripe": "Pay with Stripe"
         },
         "email_gateways": {
             "title": "Email Gateways",
@@ -1025,11 +1028,11 @@ Ext.define("Locale.locale-en", {
             "promo_url_ph": "http://www.company.com",
             "promo_url_hint": "Your company’s website, starting with http://. If set, this link is used for \"About\" at the login page.",
             "favicon_hint": "Displayed on the browser tab. Important: not supported by Internet Explorer.",
-            "logo_hint": "Displayed on the login page and in the Admin Panel.",
-            "app_logo_hint": "Displayed on the mobile app login screen.",
-            "monitoring_logo_hint": "Displayed in the user web interface menu.",
-            "document_logo_hint": "Displayed in reports and email notifications.",
-            "login_wallpaper_hint": "Upload a background image displayed on the login page.",
+            "logo_hint": "Displayed on the login page and in the Admin Panel",
+            "app_logo_hint": "Displayed on the mobile app login screen",
+            "monitoring_logo_hint": "Displayed in the user web interface menu",
+            "document_logo_hint": "Displayed in reports and email notifications",
+            "login_wallpaper_hint": "Upload a background image displayed on the login page",
             "domain_ph": ".navixy.com",
             "paas_domain_ph": ".domain.com",
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
@@ -1037,7 +1040,7 @@ Ext.define("Locale.locale-en", {
             "domain_help": "How do I set up a CNAME-record",
             "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
-            "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information",
+            "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information.",
             "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
             "domain_mismatched": "Domain name must include <b>{0}</b>",
             "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
@@ -1046,13 +1049,13 @@ Ext.define("Locale.locale-en", {
             "allow_registration": "Allow users to create accounts",
             "allow_registration_hint": "By checking this checkbox you allow users to create user accounts on their own – from the login page and with mobile apps. If the checkbox is disabled, you will able to create new user accounts from this Admin Panel only (and with Admin Panel API).",
             "show_mobile_apps_hint": "When accessing a platform on smartphones or tablets, users will be offered to download mobile app or continue with mobile version of the web interface",
-            "measurement_system_hint": "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system.",
-            "time_zone_hint": "The most typical time zone for your users.",
-            "translit_hint": "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones.",
-            "geocoder_hint": "The service which transforms the address to coordinates and versa.",
-            "route_provider_hint": "The service for finding optimal directions between start place and destinations.",
+            "measurement_system_hint": "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system",
+            "time_zone_hint": "The most typical time zone for your users",
+            "translit_hint": "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones",
+            "geocoder_hint": "The service which transforms the address to coordinates and versa",
+            "route_provider_hint": "The service for finding optimal directions between start place and destinations",
             "geolocation": "Cell ID geolocation",
-            "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway).",
+            "geolocation_hint": "Backup geolocation via cellular base stations allows to acquire approximate location of the assets, when signals of satellite navigation systems can not be received (i.e. in the underground parking, in the subway)",
             "speed_restriction": "Speed limits",
             "speed_restriction_hint": "Service allows to detect speed limits violations according to traffic regulations and road signs. The speed limit data accuracy is not guaranteed, however; the data may be estimated, incomplete or outdated.",
             "roads_snap": "Snap to roads",
@@ -1084,7 +1087,7 @@ Ext.define("Locale.locale-en", {
             "not_editable": "not editable",
             "sms_inbound": "Number for inbound messages",
             "sms_inbound_ph": "Example: 12162780905",
-            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or apha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
+            "sms_inbound_hint": "We do not recommend, but you can also use another numeric or alpha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
             "do_not_apply_default_seetings_during_activation": "Do not apply default settings during device activation",
@@ -1159,7 +1162,7 @@ Ext.define("Locale.locale-en", {
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Auto"
                     },
                     "destination": "Destination TON/NPI",
@@ -1198,7 +1201,7 @@ Ext.define("Locale.locale-en", {
             "save_msg": "Settings successfully saved",
             "main_fields": "Basic Settings",
             "map_fields": "Maps settings",
-            "permission_fields": "Notification dettings",
+            "permission_fields": "Notification settings",
             "domain_sup": "* Map choice is limited for subdomains of *{0}",
             "custom_fields": "Customization",
             "main_buttons_title": "Displaying buttons",
@@ -1267,9 +1270,9 @@ Ext.define("Locale.locale-en", {
             "service_info": "Define the preferences of your service.",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
-            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy.',
+            "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy',
             "paas_google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package.',
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time.",
+            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time",
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
             "map_edit_btn": "Visual editor",
@@ -1310,6 +1313,42 @@ Ext.define("Locale.locale-en", {
             "domain_warning": "Domain name has been changed",
             "continue": "Continue",
             "domain_changed": "Domain name change may affect Google Maps availability.</br><a target=\"_blank\" href=\"{0}\">Read more about Google Maps for your domain.</a>"
+        },
+        "payments": {
+            "type": {
+                "avangate": "2Checkout",
+                "stripe": "Stripe"
+            },
+            "stripe": {
+                "header_text": "You can pay by Visa, MasterCard, Maestro, and others.<br><br>",
+                "payment_window_title": "Enter card details",
+                "short_name": "Credit cards",
+                "name": "Payment by credit card",
+                "amount": "Payment Amount",
+                "single_payment_submit": "Top up balance",
+                "auto_payment_submit": "Turn on AutoPay",
+                "card_holder": "Cardholder Name",
+                "card_holder_placeholder": "For ex., CHRIS VANAGS",
+                "card_number": "Card Number",
+                "cvc_hint": "3 or 4 digits",
+                "expiration": "Valid THRU",
+                "success_title": "Success!",
+                "success_msg": "The payment was successful. Your balance will be topped up in a short time",
+                "error_title": "An error occurred",
+                "error_msg": "An unexpected error occurred while making a payment. Please try again.",
+                "reset_btn": " Try again",
+                "success_btn": "OK",
+                "bind_card_message": "In order to turn on the AutoPay, please enter your credit card details",
+                "hint": "Secure payments powered by Stripe",
+                "errors": {
+                    "card_holder_required": "Card holder name is required"
+                },
+                "errors_descriptions": {
+                    "7": "The entered amount is too low. Please enter an amount higher than $0.5.",
+                    "215": "Error with Stripe operation",
+                    "251": "Not enough money on the card"
+                }
+            }
         }
     },
     "accounting": {
@@ -1513,14 +1552,14 @@ Ext.define("Locale.locale-en", {
                 "last_scan_text": "The results of the previous scan:",
                 "unassign_q": "Detach the SIM card from the device?",
                 "unassign_success": "SIM card untethered from the device",
-                "unassign_failure": "Error. Failed to detach the SIM card from ustroystva"
+                "unassign_failure": "Error. Failed to detach the SIM card from device"
             }
         },
         "import": {
             "import_hints": {
                 "enter_list": "Enter or scan the list of IMEI-codes",
                 "enter_list_no_focus": "Enter or scan the list of IMEI-codes<br>scanning not ready<br>Set the focus on the field",
-                "list_count": "Resposne codes: <b>{0}</b>",
+                "list_count": "Response codes: <b>{0}</b>",
                 "list_miss": "incorrect: <b>{0}</b>",
                 "list_rep": "introduced repetitions: <b>{0}</b>",
                 "import_success": "Successfully imported {0}",
@@ -1714,7 +1753,8 @@ Ext.define("Locale.locale-en", {
         "SSP": "{0} SS£",
         "VES": "{0} Bs.",
         "STN": "{0} Db",
-        "MRU": "{0} UM"
+        "MRU": "{0} UM",
+        "UGX": "{0} USh"
     },
     "features": {
         "api": "API",
@@ -1832,7 +1872,7 @@ Ext.define("Locale.locale-en", {
             contact_post: "Post",
             password: "Password",
             password_repeat: "Repeat password",
-            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel.",
+            password_change_tip: "Create a new password for Reseller’s access to the Admin Panel",
             "password_mismatched": "Passwords do not match"
         },
 
@@ -1848,5 +1888,13 @@ Ext.define("Locale.locale-en", {
             title: "Invoice",
             msg: "Invoice was sent on your email"
         }
+    },
+    exponential: {
+        "title": "Devices price",
+        "xaxis": "Devices amount",
+        "yaxis": "Price",
+        update_btn : "Refresh",
+        start: "Min amount",
+        end: "Max amount"
     }
 });
