@@ -51,8 +51,8 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
-    stores: ['Users'],
-    models: ['User', 'Transaction'],
+    stores: ['Users', 'PaasPlugins'],
+    models: ['User', 'Transaction', 'PaasPlugin'],
     mainStore: 'Users',
 
     init: function () {

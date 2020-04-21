@@ -28,14 +28,14 @@ Ext.define("Locale.locale-ru", {
         "clients_blocked": "Доступ к вашей панели администратора и сервису мониторинга заблокирован. Необходимо пополнить баланс."
     },
     "header_blocked": {
-        "inital_block": "Первичная блокировка",
+        "initial_block": "Первичная блокировка",
         "block_login": "Панель заблокирована",
         "clients_blocked": "Полная блокировка"
     },
     "index_blocked_payment": "Вы можете пополнить баланс в разделе \"Подписка\"",
     "index_tip": "",
     "old_version": "Старая версия",
-    "maintenance_warning": "Плановое техническое обслуживание успешно завершено. Пожалуйста, ознакомьтесь с <a href=\"https://www.navixy.com/ru/server-maintenance/\" target=\"_blank\">изменениями</a>",
+    "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
     "auth": {
         "login": "Логин или адрес электронной почты",
         "password": "Пароль",
@@ -394,7 +394,8 @@ Ext.define("Locale.locale-ru", {
         "ssp": "Южносуданский фунт",
         "ves": "Венесуэльский боливар",
         "stn": "Добра Сан-Томе и Принсипи",
-        "mru": "Мавританская Угия"
+        "mru": "Мавританская Угия",
+        "ugx": "Угандийский шиллинг"
     },
     "maps": {
         "roadmap": "Google дорожная карта",
@@ -926,7 +927,9 @@ Ext.define("Locale.locale-ru", {
             "paas_subscription_hint": "To complete the online payment you will be redirected to our payment gateway’s secure web page. You can use various payment options there. Once the payment is confirmed, your funds will be automatically added to your ServerMate account. For any questions please contact your billing department.",
             "payment_recieved_msg": "Your payment was successfully executed and will be processed shortly.",
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
-            "license_balance": "Pending amount {0}"
+            "license_balance": "Pending amount {0}",
+            "pay_with_avangate": "Pay with 2Checkout",
+            "pay_with_stripe": "Pay with Stripe"
         },
         "email_gateways": {
             "title": "Email сообщения",
@@ -1139,7 +1142,7 @@ Ext.define("Locale.locale-ru", {
                         "4": "Subscriber Number",
                         "5": "Abbreviated",
                         "6": "Alphanumeric",
-                        "7": "Reserverd",
+                        "7": "Reserved",
                         "-1": "Auto"
                     },
                     "destination": "Destination TON/NPI",
@@ -1247,7 +1250,7 @@ Ext.define("Locale.locale-ru", {
             "service_info": "Определите настройки сервиса.",
             "maps_hint": "Выберите карты, которые будут доступны на вашей сервис-платформе. Список карт, доступных отдельным пользователям, может быть дополнительно ограничен настройками их тарифных планов.<br><br>Использование выбранных картографических сервисов должно производиться вами в соответствии с условиями соглашений с их правообладателями. Компания Navixy не несет ответственности за нарушения условий лицензий на сервисы Web-картографии вами или вашими конечными пользователями.",
             "paas_maps_hint": "Выберите карты, которые будут доступны на вашей сервис-платформе. Список карт, доступных отдельным пользователям, может быть дополнительно ограничен настройками их тарифных планов.<br><br>Использование выбранных картографических сервисов должно производиться вами в соответствии с условиями соглашений с их правообладателями. Наша компания не несет ответственности за нарушения условий лицензий на сервисы Web-картографии вами или вашими конечными пользователями.",
-            "google_maps_alert": "Требуется предоставление идентификаторов Google или подключение пакета Премиум ГИС от Navixy.",
+            "google_maps_alert": "Требуется предоставление идентификаторов Google или подключение пакета Премиум ГИС от Navixy",
             "paas_google_maps_alert": "Требуется предоставление идентификаторов Google или подключение пакета Премиум ГИС",
             "maps_defaults_hint": "Определите карту и ее параметры, которые будут использованы при первом входе пользователя в Web-интерфейс",
             "service_maps_preview": "Просмотр параметров карты по умолчанию",
@@ -1290,6 +1293,42 @@ Ext.define("Locale.locale-ru", {
             "domain_warning": "Доменное имя было изменено",
             "continue": "Продолжить",
             "domain_changed": "Смена домена может повлиять на использование Карт Google.</br><a target=\"_blank\" href=\"{0}\">Подробнее о лицензии Карт Google для домена.</a>"
+        },
+        "payments": {
+            "type": {
+                "avangate": "2Checkout",
+                "stripe": "Stripe"
+            },
+            "stripe": {
+                "header_text": "You can pay by Visa, MasterCard, Maestro, and others.<br><br>",
+                "payment_window_title": "Enter card details",
+                "short_name": "Credit cards",
+                "name": "Payment by credit card",
+                "amount": "Payment Amount",
+                "single_payment_submit": "Top up balance",
+                "auto_payment_submit": "Turn on AutoPay",
+                "card_holder": "Cardholder Name",
+                "card_holder_placeholder": "For ex., CHRIS VANAGS",
+                "card_number": "Card Number",
+                "cvc_hint": "3 or 4 digits",
+                "expiration": "Valid THRU",
+                "success_title": "Success!",
+                "success_msg": "The payment was successful. Your balance will be topped up in a short time",
+                "error_title": "An error occurred",
+                "error_msg": "An unexpected error occurred while making a payment. Please try again.",
+                "reset_btn": " Try again",
+                "success_btn": "OK",
+                "bind_card_message": "In order to turn on the AutoPay, please enter your credit card details",
+                "hint": "Secure payments powered by Stripe",
+                "errors": {
+                    "card_holder_required": "Card holder name is required"
+                },
+                "errors_descriptions": {
+                    "7": "The entered amount is too low. Please enter an amount higher than $0.5.",
+                    "215": "Error with Stripe operation",
+                    "251": "Not enough money on the card"
+                }
+            }
         }
     },
     "accounting": {
@@ -1478,7 +1517,7 @@ Ext.define("Locale.locale-ru", {
                 "last_scan_text": "Результаты предыдущего сканирования:",
                 "unassign_q": "Отвязать SIM-карту от устройства?",
                 "unassign_success": "Сим-карта отвязана от устройства",
-                "unassign_failure": "Ошибка. Не удалось отвязать SIM-карту от сустройсва"
+                "unassign_failure": "Ошибка. Не удалось отвязать SIM-карту от устройсва"
             }
         },
         "import": {
@@ -1675,7 +1714,8 @@ Ext.define("Locale.locale-ru", {
         "SSP": "{0} SS£",
         "VES": "{0} Bs.",
         "STN": "{0} Db",
-        "MRU": "{0} UM"
+        "MRU": "{0} UM",
+        "UGX": "{0} USh"
     },
     "features": {
         "api": "API",
@@ -1828,5 +1868,13 @@ Ext.define("Locale.locale-ru", {
             title: "Счет на оплату",
             msg: "Счет выслан на ваш Email"
         }
+    },
+    exponential: {
+        title: "Стоимость маячка",
+        xaxis: "Количество",
+        yaxis: "Цена",
+        update_btn: "Обновить",
+        start: "Минимальное количество",
+        end: "Максимальное количество"
     }
 });

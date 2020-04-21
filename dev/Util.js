@@ -29,5 +29,20 @@ Ext.define('Dev.Util', {
         var valid = regexp.test(normalDomain)
 
         return valid
+    },
+
+    getRemoteTplRenderer: function (data) {
+        return function (loader, response) {
+
+            try {
+                var tpl = new Ext.XTemplate(response.responseText),
+                    target = loader.getTarget();
+                target.tpl = tpl;
+                target.update(data);
+                return true;
+            } catch (e) {
+                Ext.logger('remove tol loading failed: ' + loader.url, e);
+            }
+        };
     }
 });

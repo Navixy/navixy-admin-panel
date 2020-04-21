@@ -51,6 +51,14 @@ Ext.define('NavixyPanel.store.Dealer', {
         }
     ],
 
+    isExponential: function () {
+        var record = this.first(),
+            tariff = record && record.get('tariff');
+
+        return tariff && tariff.algorithm == "exponential" && !this.isSubPaas();
+    },
+
+
     setGoogleClientId: function (google_client_id) {
         this.google_client_id = google_client_id
     },
