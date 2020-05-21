@@ -30,7 +30,7 @@ Ext.define('NavixyPanel.view.settings.payments.PaymentsPanel', {
                 width: 200,
                 items: [{
                     xtype: 'abstract-menu',
-                    defaultPart: data[0].id,
+                    defaultPart: data[0] && data[0].id,
                     cls: 'payments-menu',
                     listeners: {
                         select: function (grid, item) {

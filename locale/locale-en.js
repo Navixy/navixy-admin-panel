@@ -1304,7 +1304,7 @@ Ext.define("Locale.locale-en", {
                 "document_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
                 "favicon": "It is recommended to use the logo image with the transparent background and size of 32x32 px.",
                 "login_wallpaper": "It is recommended to use horizontally oriented background images with a resolution of at least 1920x1080 pixels (FullHD) and in JPEG format.",
-                "app_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px.",
+                "app_logo": "It is recommended to use the logo image with the transparent background (PNG) and minimal width of 200px."
             },
             "img_title": "Image format {0} (max size {1} MB)",
             "error_text": "Failed to load image"
@@ -1771,6 +1771,7 @@ Ext.define("Locale.locale-en", {
         "lbs": "Location by Cell ID",
         "map_layers": "Map layers",
         "street_view": "Street view",
+        "custom_fields": "Custom fields",
         "multilevel_access": "Users and roles",
         "priority_support": "Priority support",
         "retranslation": "Retranslation",
@@ -1893,7 +1894,7 @@ Ext.define("Locale.locale-en", {
         "title": "Devices price",
         "xaxis": "Devices amount",
         "yaxis": "Price",
-        update_btn : "Refresh",
+        update_btn: "Refresh",
         start: "Min amount",
         end: "Max amount"
     }
