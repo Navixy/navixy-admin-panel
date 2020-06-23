@@ -52,11 +52,13 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         },
         login_wallpaper: {
             format: 'PNG, JPG',
-            accept: 'image/jpeg, image/png'
+            accept: 'image/jpeg, image/png',
+            limit: 16
         },
         desktop_wallpaper: {
             format: 'PNG, JPG',
-            accept: 'image/jpeg, image/png'
+            accept: 'image/jpeg, image/png',
+            limit: 16
         }
     },
 
@@ -82,7 +84,9 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         ];
 
         var fileFormat = this.typesMap[this.fileType].format,
-            fileAccept = this.typesMap[this.fileType].accept;
+            fileAccept = this.typesMap[this.fileType].accept,
+            fileSizeLimit = this.typesMap[this.fileType].limit || false,
+            fileFieldLabel = Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, fileSizeLimit ||Config.uploadLimit || 16);
 
         this.items = [
             {
@@ -126,7 +130,7 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
                         xtype: "filefield",
                         name: "file",
                         allowBlank: false,
-                        fieldLabel: Ext.String.format(_l.get('settings.upload_form.img_title'), fileFormat, Config.uploadLimit || 16),
+                        fieldLabel: fileFieldLabel,
                         msgTarget: "under",
                         labelAlign: "top",
                         buttonText: _l.get('settings.upload_form.upload_btn'),
