@@ -292,6 +292,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             },
             this.getFieldConfig({
                 name: 'type',
+                strictDisabled: 'edit',
                 xtype: 'combobox',
                 store: this.tariffTypesStore,
                 editable: false,
