@@ -1,0 +1,40 @@
+$tutorial-bg-color: #f89406;
+.x-tip-tutorial {
+    @extend .x-tip-default;
+    border: 0;
+    border-radius: $theme-item-border-radius * 2;
+    background-color: $tutorial-bg-color;
+
+    & .x-tip-anchor {
+        border-width: 10px;
+        width: 20px;
+        height: 20px;
+
+        &.x-tip-anchor-right {
+            border-left-color: $tutorial-bg-color;
+        }
+
+        &.x-tip-anchor-left {
+            border-right-color: $tutorial-bg-color;
+        }
+    }
+
+    & .x-tip-body {
+        padding: 0 15px 15px 18px;
+        color: white;
+    }
+
+    & .x-tip-header-top {
+
+        & .x-tool {
+
+            margin: 2px 0 0 -3px !important;
+
+            & .x-tool-img {
+                background: url($img_dir + '/tools/tool-close.png');
+                background-color: $tutorial-bg-color;
+            }
+        }
+    }
+
+}

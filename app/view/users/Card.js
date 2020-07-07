@@ -51,6 +51,7 @@ Ext.define('NavixyPanel.view.users.Card', {
 
         if (Ext.checkPermission('users', 'read') && Ext.checkPermission('user_sessions', 'create')) {
             result.push({
+                role: 'tracker-monitoring-link',
                 html: '<a>' + _l.get('users.card.links.session_text') + '</a>',
                 listeners: {
                     click: {
@@ -70,6 +71,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 xtype: 'component',
                 height: 10
             }, this.isAppLinkCorrect() ? {
+                role: 'tracker-activation-link',
                 html: '<a>' + _l.get('users.card.links.activate_tracker') + '</a>',
                 listeners: {
                     click: {
