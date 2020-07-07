@@ -192,7 +192,21 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         this.registerPayments();
 
-        this.checkWarning();
+        // this.checkWarning();
+
+        this.checkTutorial();
+    },
+
+    checkTutorial: function () {
+        if (Ext.getStore('Dealer').isTutorial()) {
+            this.showTutorial();
+        }
+    },
+
+    showTutorial: function () {
+        if (Ext.Nav.isIndex()) {
+            Ext.Nav.shift('users');
+        }
     },
 
     checkWarning: function () {
