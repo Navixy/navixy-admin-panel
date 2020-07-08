@@ -117,7 +117,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
     },
 
     isIndex: function () {
-        return Ext.History.getToken() == '';
+        return Ext.isEmpty(Ext.History.getToken());
     },
 
     getMonitoring: function (hash) {
