@@ -88,6 +88,9 @@ Ext.define('NavixyPanel.controller.Users', {
                 usercorrupt: this.handleUserCorruptAction,
                 toggleactivationpanel: this.toggleActivationPanel
             },
+            'usercard [role="tracker-monitoring-link"]': {
+                click: this.disableTracingTutorial
+            },
             'activationpanel': {
                 close: this.closeActivationPanel
             },
@@ -177,10 +180,7 @@ Ext.define('NavixyPanel.controller.Users', {
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update'),
             listeners: {
-                render: {
-                    fn: this.showListTutorial,
-                    delay: 50
-                },
+                firstload: this.showListTutorial,
                 show: this.showListTutorial,
                 hide: this.hideListTutorial,
                 resize: this.showListTutorial
@@ -189,22 +189,28 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     showListTutorial: function () {
+        if (!Ext.util.Cookies.get('user_tutorial_closed')) {
+            if (
+                Ext.isEmpty(this.tutorialTip)
+                && this.store.count() == 0
+                && this.store.isLoaded()
+            ) {
 
-        if (
-            Ext.isEmpty(this.tutorialTip)
-            && this.store.count() == 0
-            && !this.store.isLoading()
-        ) {
-
-            this.tutorialTip = Ext.widget('tutorialqtip', {
-                target: this.down('button[role="create-btn"]').el,
-                html: _l.get('tutorial.user'),
-                mouseOffset: [0,-3],
-            });
-        } else {
-            if (this.tutorialTip) {
-                this.tutorialTip.show()
-                this.tutorialTip.updateLayout()
+                this.tutorialTip = Ext.widget('tutorialqtip', {
+                    target: this.down('button[role="create-btn"]').el,
+                    html: _l.get('tutorial.user'),
+                    mouseOffset: [0, -3],
+                    listeners: {
+                        close: function () {
+                            Ext.util.Cookies.set('user_tutorial_closed', true)
+                        }
+                    }
+                });
+            } else {
+                if (this.tutorialTip) {
+                    this.tutorialTip.show()
+                    this.tutorialTip.updateLayout()
+                }
             }
         }
     },
@@ -272,12 +278,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 this.tutorialTip = Ext.widget('tutorialqtip', {
                     target: this.down('[role="tracker-monitoring-link"]').el,
                     html: _l.get('tutorial.tracking'),
-                    mouseOffset: [0, -9],
-                    listeners: {
-                        close: function () {
-                            localStorage.setItem('panel-UserMonitoringTutorial', true)
-                        }
-                    }
+                    mouseOffset: [0, -9]
                 });
             }
         } else {
@@ -293,6 +294,17 @@ Ext.define('NavixyPanel.controller.Users', {
             this.tutorialTip.hide();
         }
     },
+
+    disableTracingTutorial: function () {
+        localStorage.setItem('panel-UserMonitoringTutorial', true);
+        var card = Ext.getFirst('usercard'),
+            tutorialTip = card && card.tutorialTip;
+
+        if (tutorialTip) {
+            tutorialTip.hide();
+        }
+    },
+
 
     handleUserCreate: function () {
         this.fireContent({
