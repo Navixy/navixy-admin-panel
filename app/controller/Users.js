@@ -189,7 +189,7 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     showListTutorial: function () {
-        if (!Ext.util.Cookies.get('user_tutorial_closed')) {
+        if (!Ext.getStore('Dealer').first().get('user_tutorial_closed')) {
             if (
                 Ext.isEmpty(this.tutorialTip)
                 && this.store.count() == 0
@@ -202,7 +202,7 @@ Ext.define('NavixyPanel.controller.Users', {
                     mouseOffset: [0, -3],
                     listeners: {
                         close: function () {
-                            Ext.util.Cookies.set('user_tutorial_closed', true)
+                            Ext.getStore('Dealer').first().set('user_tutorial_closed', true);
                         }
                     }
                 });
@@ -274,7 +274,7 @@ Ext.define('NavixyPanel.controller.Users', {
                     html: _l.get('tutorial.tracker'),
                     mouseOffset: [0, -9]
                 });
-            } else if (!localStorage.getItem('panel-UserMonitoringTutorial')) {
+            } else if (!localStorage.getItem('panel-UserMonitoringTutorial') && this.record.get('trackers_count')) {
                 this.tutorialTip = Ext.widget('tutorialqtip', {
                     target: this.down('[role="tracker-monitoring-link"]').el,
                     html: _l.get('tutorial.tracking'),
