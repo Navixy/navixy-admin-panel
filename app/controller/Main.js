@@ -645,7 +645,6 @@ Ext.define('NavixyPanel.controller.Main', {
             Ext.destroy(this.getAuthWindow())
 
             this.setAuthKey(result.hash)
-            this.clearTutorialKeys()
             this.loadPermissions(result.permissions)
         } else {
             this.onUserAuthFailure()
@@ -700,10 +699,6 @@ Ext.define('NavixyPanel.controller.Main', {
     removeAuthKey: function (hash) {
         Ext.util.Cookies.clear(Ext.API.authKeyName)
         Ext.util.Cookies.clear('master_panel_session_key')
-    },
-
-    clearTutorialKeys: function () {
-        Ext.util.Cookies.clear('user_tutorial')
     },
 
     getAppRoot: function () {
