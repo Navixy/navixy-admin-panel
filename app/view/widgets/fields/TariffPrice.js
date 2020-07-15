@@ -22,8 +22,8 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
     currency: null,
     dontShowButton: false,
 
-    disabledValue: 999999.99,
-    disabledValue_alt: 999999,
+    disabledValue: 9999999999.99,
+    disabledValue_alt: 9999999999,
 
     na: false,
     lastPrice: null,
