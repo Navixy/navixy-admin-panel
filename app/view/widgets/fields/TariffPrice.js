@@ -23,6 +23,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
     dontShowButton: false,
 
     disabledValue: 9999999999.99,
+    disabledValue_min: 999999.99,
     disabledValue_alt: 9999999999,
 
     na: false,
@@ -130,7 +131,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
             text = this.getText();
 
         if (!this.na) {
-            if (!this.dontShowButton && (field.getValue() == this.disabledValue || field.getValue() == this.disabledValue_alt)) {
+            if (!this.dontShowButton && (field.getValue() >= this.disabledValue_min || field.getValue() == this.disabledValue_alt)) {
                 this.getEnableBtn().show();
                 this.getDisableBtn().hide();
 
@@ -171,7 +172,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffPrice', {
         var field = this.getField(),
             text = this.getText();
 
-        if (field.getValue() != this.disabledValue || field.getValue() != this.disabledValue_alt) {
+        if (field.getValue() < this.disabledValue_min || field.getValue() != this.disabledValue_alt) {
             text.update(Ext.String.format(_l.get('currencies_tpls')[this.currency], Ext.util.Format.number(field.getValue(), '0.00')));
         }
     }
