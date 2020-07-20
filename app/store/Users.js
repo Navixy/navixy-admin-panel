@@ -31,5 +31,12 @@ Ext.define('NavixyPanel.store.Users', {
 
             return params;
         }
+    },
+    listeners: {
+        load: {
+            fn: function () {
+                this.loaded = true
+            }
+        }
     }
 });

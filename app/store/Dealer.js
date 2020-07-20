@@ -48,8 +48,20 @@ Ext.define('NavixyPanel.store.Dealer', {
         }, {
             name: 'tariff',
             defaultValue: {}
+        }, {
+            name: 'tutorial',
+            defaultValue: false
         }
     ],
+
+    enableTutorial: function () {
+        this.first().set('tutorial', true);
+    },
+
+    isTutorial: function () {
+        return this.first().get('tutorial');
+    },
+
 
     isExponential: function () {
         var record = this.first(),

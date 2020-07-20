@@ -18,6 +18,20 @@ Ext.define('NavixyPanel.view.users.List', {
         };
     },
 
+    applyListeners: function () {
+        this.callParent(arguments);
+        this.store.on({
+            load: {
+                fn: function () {
+                    this.fireEvent('firstload', this);
+                },
+                single: true,
+                scope: this
+            }
+        })
+    },
+
+
     getTopBar: function () {
         var toolbar = this.callParent(arguments);
 

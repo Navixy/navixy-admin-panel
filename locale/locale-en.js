@@ -1897,5 +1897,10 @@ Ext.define("Locale.locale-en", {
         update_btn: "Refresh",
         start: "Min amount",
         end: "Max amount"
+    },
+    tutorial: {
+        user: 'To get started, please create a user',
+        tracker: 'In order to continue, please activate a tracker',
+        tracking: 'To start tracking, please go to the monitoring system'
     }
 });
