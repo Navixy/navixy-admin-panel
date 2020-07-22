@@ -52,13 +52,11 @@ Ext.define("NavixyPanel.view.settings.UploadWindow", {
         },
         login_wallpaper: {
             format: 'PNG, JPG',
-            accept: 'image/jpeg, image/png',
-            limit: 16
+            accept: 'image/jpeg, image/png'
         },
         desktop_wallpaper: {
             format: 'PNG, JPG',
-            accept: 'image/jpeg, image/png',
-            limit: 16
+            accept: 'image/jpeg, image/png'
         }
     },
 
