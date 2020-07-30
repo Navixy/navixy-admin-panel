@@ -193,6 +193,7 @@ Ext.define('NavixyPanel.controller.Users', {
             if (
                 Ext.isEmpty(this.tutorialTip)
                 && this.store.count() == 0
+                && Ext.isEmpty(this.store.filters.last())
                 && this.store.isLoaded()
             ) {
 

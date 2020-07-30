@@ -11,6 +11,7 @@ Ext.define('NavixyPanel.view.widgets.QtipTutorial', {
     trackMouse: false,
     autoShow: true,
     autoAnchor: true,
+    constrainPosition: true,
 
     autoDestroy: true,
     anchor: 'right',
@@ -18,9 +19,22 @@ Ext.define('NavixyPanel.view.widgets.QtipTutorial', {
     closable: true,
 
     anchorOffset: 4,
+    maxWidth: 180,
 
     ui: 'tutorial',
     renderTo: Ext.getBody(),
+
+    initComponent: function () {
+        var me = this;
+
+        Ext.EventManager.onWindowResize(function(w, h){
+            me.hide();
+            me.show();
+        });
+
+        this.callParent(arguments);
+    },
+
 
     setTarget: function(target) {
         var me = this;
