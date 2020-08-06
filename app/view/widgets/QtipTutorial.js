@@ -28,8 +28,10 @@ Ext.define('NavixyPanel.view.widgets.QtipTutorial', {
         var me = this;
 
         Ext.EventManager.onWindowResize(function(w, h){
-            me.hide();
-            me.show();
+            if (me.isVisible()) {
+                me.hide();
+                me.show();
+            }
         });
 
         this.callParent(arguments);
