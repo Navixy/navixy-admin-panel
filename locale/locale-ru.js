@@ -620,6 +620,7 @@ Ext.define("Locale.locale-ru", {
             "user_id": "ID владельца",
             "clone": "Клон",
             "clone_owner": "Владелец клона",
+            "comment": "Комментарий",
             "options": {
                 "clone": "клон",
                 "deleted": "Скрыт",

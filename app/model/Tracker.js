@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.model.Tracker', {
 
         {name: 'label', type: 'string'},
         {name: 'model_name', type: 'string'},
+        {name: 'comment', type: 'string'},
 
         {name: 'clone', type: 'boolean'},
         {name: 'deleted', type: 'boolean'},
