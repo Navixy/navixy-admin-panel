@@ -100,6 +100,15 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
                 fieldLabel: _l.get('trackers.fields.phone_exp'),
                 name: 'phone',
                 disabled: true
+            },
+            {
+                xtype: 'textarea',
+                height: 200,
+                width: 1000,
+                fieldLabel: _l.get('trackers.fields.comment'),
+                name: 'comment',
+                allowBlank: true,
+                maxLength: 3000
             }
         ];
     },

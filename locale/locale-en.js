@@ -631,6 +631,7 @@ Ext.define("Locale.locale-en", {
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
+            "comment": "Сomment",
             "options": {
                 "clone": "clone",
                 "deleted": "Hidden",
