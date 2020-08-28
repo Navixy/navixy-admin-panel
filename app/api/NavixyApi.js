@@ -96,6 +96,18 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
+    getUsersCnt: function (callback, failure, scope) {
+        this.sendRequest({
+            params: {limit: 1},
+            success: callback,
+            failure: failure,
+            action: 'list',
+            root: 'count',
+            handler: 'user',
+            scope: scope
+        });
+    },
+
     getUsersList: function (config) {
         this.requestWithOptions(config, {
             action: 'list',

@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     views: [
         'widgets.ToolColumn',
+        'widgets.QtipTutorial',
         'components.MessageBoxWithAlert',
 
         'users.TransactionsList',
@@ -86,6 +87,9 @@ Ext.define('NavixyPanel.controller.Users', {
                 useredit: this.handleUserEditAction,
                 usercorrupt: this.handleUserCorruptAction,
                 toggleactivationpanel: this.toggleActivationPanel
+            },
+            'usercard [role="tracker-monitoring-link"]': {
+                click: this.disableTracingTutorial
             },
             'activationpanel': {
                 close: this.closeActivationPanel
@@ -174,8 +178,48 @@ Ext.define('NavixyPanel.controller.Users', {
         this.fireContent({
             xtype: 'userslist',
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
-            hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
+            hasEdit: Ext.checkPermission(this.getModuleName(), 'update'),
+            listeners: {
+                firstload: this.showListTutorial,
+                show: this.showListTutorial,
+                hide: this.hideListTutorial,
+                resize: this.showListTutorial
+            }
         });
+    },
+
+    showListTutorial: function () {
+        if (!Ext.getStore('Dealer').first().get('user_tutorial_closed')) {
+            if (
+                Ext.isEmpty(this.tutorialTip)
+                && this.store.count() == 0
+                && Ext.isEmpty(this.store.filters.last())
+                && this.store.isLoaded()
+            ) {
+
+                this.tutorialTip = Ext.widget('tutorialqtip', {
+                    target: this.down('button[role="create-btn"]').el,
+                    html: _l.get('tutorial.user'),
+                    mouseOffset: [0, -3],
+                    listeners: {
+                        close: function () {
+                            Ext.getStore('Dealer').first().set('user_tutorial_closed', true);
+                        }
+                    }
+                });
+            } else {
+                if (this.tutorialTip) {
+                    this.tutorialTip.show()
+                    this.tutorialTip.updateLayout()
+                }
+            }
+        }
+    },
+
+    hideListTutorial: function () {
+        if (this.tutorialTip) {
+            this.tutorialTip.hide();
+        }
     },
 
     handleUserEdit: function (userRecord) {
@@ -209,9 +253,59 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserCard: function (userRecord) {
         this.fireContent({
             xtype: 'usercard',
-            record: userRecord
+            record: userRecord,
+            listeners: {
+                render: {
+                    fn: this.showUserTutorial,
+                    delay: 50
+                },
+                show: this.showUserTutorial,
+                hide: this.hideUserTutorial,
+                resize: this.showUserTutorial
+            }
         });
     },
+
+    showUserTutorial: function () {
+        if (Ext.isEmpty(this.tutorialTip)) {
+            if (!Ext.getStore('Dealer').first().get('active_amount_own') && !this.record.get('trackers_count')) {
+
+                this.tutorialTip = Ext.widget('tutorialqtip', {
+                    target: this.down('[role="tracker-activation-link"]').el,
+                    html: _l.get('tutorial.tracker'),
+                    mouseOffset: [0, -9]
+                });
+            } else if (!localStorage.getItem('panel-UserMonitoringTutorial') && this.record.get('trackers_count')) {
+                this.tutorialTip = Ext.widget('tutorialqtip', {
+                    target: this.down('[role="tracker-monitoring-link"]').el,
+                    html: _l.get('tutorial.tracking'),
+                    mouseOffset: [0, -9]
+                });
+            }
+        } else {
+            if (this.tutorialTip) {
+                this.tutorialTip.show()
+                this.tutorialTip.updateLayout()
+            }
+        }
+    },
+
+    hideUserTutorial: function () {
+        if (this.tutorialTip) {
+            this.tutorialTip.hide();
+        }
+    },
+
+    disableTracingTutorial: function () {
+        localStorage.setItem('panel-UserMonitoringTutorial', true);
+        var card = Ext.getFirst('usercard'),
+            tutorialTip = card && card.tutorialTip;
+
+        if (tutorialTip) {
+            tutorialTip.hide();
+        }
+    },
+
 
     handleUserCreate: function () {
         this.fireContent({

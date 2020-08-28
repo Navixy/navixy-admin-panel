@@ -723,7 +723,8 @@ Ext.define('NavixyPanel.controller.Main', {
             calls = [
                 'getDealerInfo',
                 'getTimeZones',
-                'getPaySystems'
+                'getPaySystems',
+                'getUsersCnt'
             ]
 
         Ext.getBody().mask(_l.get('conneting_loader'))
@@ -758,6 +759,10 @@ Ext.define('NavixyPanel.controller.Main', {
                 Ext.log('result handler error', e.stack)
             }
         })
+
+        if (!results['getUsersCnt']) {
+            Ext.getStore('Dealer').enableTutorial()
+        }
 
         if (!Ext.API.fatalError) {
             this.application.connectionReady = true
