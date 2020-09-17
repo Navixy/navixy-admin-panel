@@ -272,7 +272,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     params: {
                         tracker_id: trackerData.id,
                         label: trackerData.label,
-                        deleted: trackerData.deleted
+                        deleted: trackerData.deleted,
+                        comment: trackerData.comment
                     },
                     callback: resolve,
                     failure: reject

@@ -526,6 +526,7 @@ Ext.define('Locale.locale-es',{
             "user_id": "ID de usuario",
             "clone": "Clon",
             "clone_owner": "Propietario del clon",
+            "comment": "Сomentario",
             "options": {
                 "clone": "clon",
                 "deleted": "Borrado",

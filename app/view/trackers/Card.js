@@ -286,6 +286,11 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                     title: _l.get('trackers.fields.blocked'),
                     value: _l[recordData.blocked ? 'yes' : 'no'],
                     left_td_cls: !recordData.blocked ? 'status ok' : 'status no'
+                },
+                {
+                    title: _l.get('trackers.fields.comment'),
+                    value: recordData.comment,
+                    right_td_cls: "pre-wrap"
                 }
             ]
         };
