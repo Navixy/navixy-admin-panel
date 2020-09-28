@@ -103,12 +103,11 @@ Ext.define('NavixyPanel.view.trackers.AbstractForm', {
             },
             {
                 xtype: 'textarea',
-                height: 200,
-                width: 960,
+                height: 120,
                 fieldLabel: _l.get('trackers.fields.comment'),
                 name: 'comment',
                 allowBlank: true,
-                maxLength: 3000
+                maxLength: 512
             }
         ];
     },

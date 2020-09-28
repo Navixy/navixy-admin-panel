@@ -132,6 +132,11 @@ $grid-cell-empty-font-size: 14px;
   .x-grid-cell-inner {
     padding: $grid-cell-inner-padding;
 
+    &:hover {
+      overflow: visible;
+      white-space: normal;
+    }
+
     span {
       padding-left: 5px;
 
