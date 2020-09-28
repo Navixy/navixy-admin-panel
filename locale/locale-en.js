@@ -625,6 +625,7 @@ Ext.define("Locale.locale-en", {
             "tracker_id_exp": "Tracker number",
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
+            "owner_short": "Owner",
             "tariff": "Tracker plan",
             "deleted": "Hidden",
             "blocked": "Service suspended",
@@ -652,7 +653,7 @@ Ext.define("Locale.locale-en", {
             "return_btn": "Back"
         },
         "clone_form": {
-            "title": "Crate a clone for the tracker",
+            "title": "Create a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"
