@@ -300,7 +300,6 @@ Ext.define('NavixyPanel.view.trackers.List', {
                     return this.tpl.apply(data);
                 },
                 minWidth: 80,
-                sortable: false,
                 flex: 3
             },
             {
@@ -331,7 +330,6 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 minWidth: 140,
                 resizable: true,
                 hidden: true,
-                sortable: false,
                 flex: 1
             }
         ];
