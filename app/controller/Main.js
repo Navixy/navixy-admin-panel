@@ -347,7 +347,7 @@ Ext.define('NavixyPanel.controller.Main', {
                 return this.tardemailRe.test(v);
             },
             tardemailText: Ext.form.field.VTypes.emailText,
-            tardemailMask: /[ a-z0-9_\+\.\-@\,]/,
+            tardemailMask: /[a-z0-9_\+\.\-@\,]/,
             tardemailRe: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9_]{2,14})+$/,
 
         })
