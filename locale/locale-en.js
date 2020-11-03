@@ -631,6 +631,7 @@ Ext.define("Locale.locale-en", {
             "user_id": "User ID",
             "clone": "Clone",
             "clone_owner": "Clone owner",
+            "comment": "Сomment",
             "options": {
                 "clone": "clone",
                 "deleted": "Hidden",
@@ -651,7 +652,7 @@ Ext.define("Locale.locale-en", {
             "return_btn": "Back"
         },
         "clone_form": {
-            "title": "Crate a clone for the tracker",
+            "title": "Create a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"

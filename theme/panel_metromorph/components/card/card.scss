@@ -22,6 +22,19 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
 
     td:first-child {
         color: $card-header-table-title-font-color;
+        white-space: nowrap;
+
+        &.pre-wrap {
+            vertical-align: top;
+
+            & + td {
+                vertical-align: top;
+            }
+
+            & + td + td {
+                white-space: pre;
+            }
+        }
     }
 
     td:first-child + td {

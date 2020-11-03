@@ -128,7 +128,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 values[field.name] = field.getValue();
             }
         });
-        if (values.type != 'monthly') {
+
+        if (!Ext.isEmpty(values.type) ? (values.type != 'monthly') : !(this.record && this.record.get('type') == 'monthly')) {
             values.proportional_charge = false;
         }
 
@@ -299,7 +300,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type',
-                value: this.tariffTypesStore.first().get('type'),
+                value: 'monthly',
 
                 width: 250,
                 hidden: isCamera,
