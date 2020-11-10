@@ -137,7 +137,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('trackers.fields.comment'),
                 name: 'comment',
                 allowBlank: true,
-                maxLength: 512
+                maxLength: 255
             }
         ];
     },
