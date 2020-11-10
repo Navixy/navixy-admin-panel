@@ -74,6 +74,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
             config[0],
             config[1],
             config[4],
+            config[config.length - 2],
             config[config.length - 1]
         ];
     }
