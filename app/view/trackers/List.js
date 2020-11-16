@@ -210,6 +210,25 @@ Ext.define('NavixyPanel.view.trackers.List', {
       this.down('button[role=clones_filter]').setText(this.getDisplayClonesModeTitle())
     },
 
+    handleCellClick: function (table, td, cellIndex, record) {
+        var tdEl = Ext.get(td),
+            isUser = tdEl.hasCls('user'),
+            isTool = tdEl.hasCls('tool-column'),
+            isEdit = isTool && tdEl.hasCls('edit'),
+            isCheckbox = tdEl.down('.x-grid-row-checker');
+
+        if (isCheckbox) {
+            this.fireEvent('checkboxclick', record);
+        } else if (isEdit) {
+            this.fireEvent('editclick', record);
+        } else if (isUser) {
+            this.fireEvent('userclick', record);
+        } else {
+            this.fireEvent('actionclick', record);
+        }
+    },
+
+
     getColumnsConfig: function () {
 
         var trackerLabelTpl = [
@@ -224,6 +243,13 @@ Ext.define('NavixyPanel.view.trackers.List', {
             trackerStatusTpl = [
                 '<span class="{connection_status}">{[_l.get("trackers.fields.statuses")[values.connection_status]]}</span>',
             ],
+            trackerOwnerTpl = [
+                '<tpl if="{can_read}">',
+                    '<a href="#user/{user_id}">#{user_id}</a>',
+                '<tpl else>',
+                    '#{user_id}',
+                '</tpl>'
+            ],
             blockedStatusTpl = [
                 '<tpl if="blocked">',
                 '<span class="scaled red">{[_l.get("yes")]}</span>',
@@ -236,14 +262,14 @@ Ext.define('NavixyPanel.view.trackers.List', {
             {
                 text: _l.get('trackers.fields.tracker_id'),
                 dataIndex: 'id',
-                width: 60
+                width: 100
             },
             {
                 text: _l.get('trackers.fields.label'),
                 xtype: 'templatecolumn',
                 tpl: trackerLabelTpl,
                 dataIndex: 'label',
-                flex: 3
+                flex: 4
             },
             this.showStatus ? {
                 text: _l.get('trackers.fields.connection_status'),
@@ -258,6 +284,23 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 dataIndex: 'blocked',
                 sortable: false,
                 width: 180
+            },
+            {
+                text: _l.get('trackers.fields.owner_short'),
+                xtype: 'templatecolumn',
+                tpl: trackerOwnerTpl,
+                dataIndex: 'user_id',
+                tdCls: 'user',
+                defaultRenderer: function(value, meta, record) {
+                    var data = {
+                        can_read: Ext.checkPermission('users', 'read'),
+                        user_id: value,
+                    };
+
+                    return this.tpl.apply(data);
+                },
+                minWidth: 80,
+                flex: 3
             },
             {
                 text: _l.get('trackers.fields.model'),
@@ -275,11 +318,18 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 width: 140
             },
             {
-                text: _l.get('trackers.fields.creation_date_short'),
+                text: _l.get('trackers.fields.creation_date_short2'),
                 dataIndex: 'creation_date',
                 renderer: Util.formatDate,
+                minWidth: 100,
+                resizable: false
+            },
+            {
+                text: _l.get('trackers.fields.comment'),
+                dataIndex: 'comment',
                 minWidth: 140,
-                resizable: false,
+                resizable: true,
+                hidden: true,
                 flex: 1
             }
         ];

@@ -392,10 +392,10 @@ Ext.define("Locale.locale-en", {
         "xpf": "Pacific franc",
         "vuv": "Vanuatu vatu",
         "mmk": "Burmese kyat",
-        "SSP": "South Sudanese pound",
-        "VES": "Venezuelan bolívar",
-        "STN": "São Tomé and Príncipe dobra",
-        "MRU": "Mauritanian ouguiya",
+        "ssp": "South Sudanese pound",
+        "ves": "Venezuelan bolívar",
+        "stn": "São Tomé and Príncipe dobra",
+        "mru": "Mauritanian ouguiya",
         "ugx": "Ugandan shilling"
     },
     "maps": {
@@ -625,6 +625,7 @@ Ext.define("Locale.locale-en", {
             "tracker_id_exp": "Tracker number",
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
+            "owner_short": "Owner",
             "tariff": "Tracker plan",
             "deleted": "Hidden",
             "blocked": "Service suspended",
@@ -652,7 +653,7 @@ Ext.define("Locale.locale-en", {
             "return_btn": "Back"
         },
         "clone_form": {
-            "title": "Crate a clone for the tracker",
+            "title": "Create a clone for the tracker",
             "remove_failure_msg": "Removing clone failed",
             "failure_msg": "Creating clone failed",
             "remove_confirm": "Remove clone"

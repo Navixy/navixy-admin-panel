@@ -7,5 +7,13 @@
 Ext.define('NavixyPanel.store.PaymentSystems', {
     extend: 'Ext.data.Store',
     fields: ['type', 'currency', 'methods', 'auto_payments_enabled', 'intent_required', 'create_customer', 'publishable_key'],
-    storeId: 'PaymentSystems'
+    storeId: 'PaymentSystems',
+
+    hasSubscription: function () {
+        return this.count() > (this.find('type', 'bill') > -1 ? 1: 0);
+    },
+
+    hasAvangate: function () {
+        return this.find('type', 'avangate') > -1;
+    }
 })

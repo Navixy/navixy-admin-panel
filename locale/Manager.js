@@ -244,6 +244,13 @@ Ext.define('Locale.Manager', {
             text: 'Български',
             alias: ['bg', 'bg_BG'],
             rtl: false
+        },
+        {
+            id: 'sq_AL',
+            name: 'sq_AL',
+            text: 'Shqip',
+            alias: ['sq', 'sq_AL'],
+            rtl: false
         }
     ],
 

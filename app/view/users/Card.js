@@ -229,6 +229,10 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('users.fields.discount.min_trackers'),
                     value: recordData.discount_min_trackers
+                },
+                {
+                    title: _l.get('trackers.fields.comment'),
+                    value: recordData.comment
                 }
             ]
         };
