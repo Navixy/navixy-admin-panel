@@ -177,6 +177,15 @@ Ext.define('NavixyPanel.view.users.List', {
                 sortable: true,
                 resizable: false,
                 flex: 1
+            },
+            {
+                text: _l.get('trackers.fields.comment'),
+                dataIndex: 'comment',
+                minWidth: 140,
+                resizable: true,
+                hidden: true,
+                sortable: false,
+                flex: 1
             }
         ];
     },
