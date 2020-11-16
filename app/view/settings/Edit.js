@@ -555,6 +555,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
             Ext.checkPermission('paas_payments', 'create') &&
             seller_currency === this.paymentCurrency &&
+            Ext.getStore('PaymentSystems').hasSubscription() &&
             !isSubpaas
                 ? {
                 xtype: 'payments-panel',

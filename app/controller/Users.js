@@ -386,9 +386,11 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserCreateSubmit: function (cmp, formValues) {
         var record = Ext.create('NavixyPanel.model.User', formValues),
-            userData = Ext.apply({}, record.getData());
+            userData = Ext.apply({}, record.getData()),
+            comment = userData.comment;
 
         delete userData.id;
+        delete userData.comment;
         delete userData.dealer_id;
         delete userData.verified;
 
@@ -398,6 +400,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 locale: formValues.locale || Locale.Manager.getLocaleId(),
                 time_zone: formValues.time_zone,
                 password: formValues.password,
+                comment: comment,
                 discount: Ext.encode({
                     value: +userData.discount,
                     end_date: userData.discount_end_date || null,
@@ -443,6 +446,7 @@ Ext.define('NavixyPanel.controller.Users', {
             params: {
                 user: Ext.encode(userData),
                 discount: Ext.encode(discount),
+                comment: userData.comment
             },
             callback: function (response) {
                 this.afterUserEdit(response, formValues, record);
