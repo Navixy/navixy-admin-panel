@@ -77,7 +77,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             items: Ext.Array.merge(this.getToolsColumns(), this.getColumnsConfig())
         };
 
-        this.fixColumnsState();
+        // this.fixColumnsState();
 
         this.addSelection();
 
