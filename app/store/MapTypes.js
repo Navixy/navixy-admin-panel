@@ -78,10 +78,6 @@ Ext.define('NavixyPanel.store.MapTypes', {
             },
 
             {
-                type: "mailru",
-                "name": _l.get('maps.mailru')
-            },
-            {
                 type: "kosmosnimki",
                 "name": _l.get('maps.kosmosnimki'),
                 free: true

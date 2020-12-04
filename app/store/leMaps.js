@@ -139,14 +139,6 @@ Ext.define('NavixyPanel.store.leMaps', {
             },
 
             {
-                name: 'mailru',
-                httpsReady: true,
-                maxZoom: 18,
-                minZoom: 2,
-                urlTpl: '//tile.digimap.ru/rumap/{z}/{x}/{y}.png'
-            },
-
-            {
                 name: 'yandex',
                 httpsReady: true,
                 maxZoom: 17,
