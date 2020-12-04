@@ -411,7 +411,6 @@ Ext.define("Locale.locale-ru", {
         "wikimapia": "Wikimapia",
         "navitel": "Карты Navitel",
         "doublegis": "Карты DoubleGis",
-        "mailru": "Карты Mail.ru",
         "kosmosnimki": "Космоснимки",
         "sputnik": "Карты Спутник",
         "here": "Карты HERE",
