@@ -520,6 +520,7 @@ Ext.define('Locale.locale-es',{
             "tracker_id_exp": "Numero de tracker",
             "phone_exp": "Número de teléfono",
             "owner": "Propietario del tracker",
+            "owner_short": "Propietario",
             "tariff": "Tarifa del tracker",
             "deleted": "Marcado como eliminado",
             "blocked": "Servicio pausado",

@@ -61,6 +61,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
             'trackerslist': {
                 actionclick: this.handleListAction,
                 editclick: this.handleTrackerEditAction,
+                userclick: this.handleTrackerOwnerAction,
                 clonetrackers: this.handleGroupClone,
                 deleteclonetrackers: this.handleDeleteClones,
                 ownertrackers: this.handleGroupOwner,
@@ -229,6 +230,13 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.handleAction(record, function (record) {
             var trackerId = record.getId();
             Ext.Nav.shift('tracker/' + trackerId);
+        });
+    },
+
+    handleTrackerOwnerAction: function (record) {
+        this.handleAction(record, function (record) {
+            var userId = record.get('user_id');
+            Ext.Nav.shift('user/' + userId);
         });
     },
 

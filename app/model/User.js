@@ -134,6 +134,10 @@ Ext.define('NavixyPanel.model.User', {
         },
         {
             name: 'discount_strategy'
+        },
+        {
+            name: 'comment',
+            type: 'string'
         }
     ],
 

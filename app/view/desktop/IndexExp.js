@@ -26,4 +26,5 @@ Ext.define('NavixyPanel.view.desktop.IndexExp', {
 
         this.callParent(arguments);
     }
+    
 });

@@ -130,6 +130,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                         me.changeLegalStatus(this.getValue());
                     }
                 }
+            },
+            {
+                xtype: 'textarea',
+                height: 120,
+                fieldLabel: _l.get('trackers.fields.comment'),
+                name: 'comment',
+                allowBlank: true,
+                maxLength: 255
             }
         ];
     },

@@ -77,12 +77,23 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
             items: Ext.Array.merge(this.getToolsColumns(), this.getColumnsConfig())
         };
 
+        // this.fixColumnsState();
+
         this.addSelection();
 
         this.applyListeners();
 
         this.callParent(arguments);
     },
+
+    fixColumnsState: function () {
+        if (this.stateful && this.columns && this.columns.items && this.columns.items.length) {
+            Ext.each(this.columns.items, function (item) {
+                item.id = item.dataIndex + '_state';
+            }, this)
+        }
+    },
+
 
     addSelection: function () {
         if (this.hasSelection) {

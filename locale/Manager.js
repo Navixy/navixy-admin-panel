@@ -251,7 +251,14 @@ Ext.define('Locale.Manager', {
             text: 'Shqip',
             alias: ['sq', 'sq_AL'],
             rtl: false
-        }
+        },
+        {
+            id: 'kk',
+            name: 'kk',
+            text: 'Қазақ тілі',
+            alias: ['kk', 'kk_KK'],
+            rtl: false
+        },
     ],
 
     _tpl: 'locale-{locale}',
