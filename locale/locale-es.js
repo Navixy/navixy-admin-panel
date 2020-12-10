@@ -516,6 +516,7 @@ Ext.define('Locale.locale-es',{
             "device_id": "id de dispositivo",
             "creation_date": "Fecha de registro",
             "creation_date_short": "Registrado",
+            "creation_date_short2": "Registrado",
             "connection_status": "Status",
             "tracker_id_exp": "Numero de tracker",
             "phone_exp": "Número de teléfono",
