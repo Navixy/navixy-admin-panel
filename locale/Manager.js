@@ -259,6 +259,20 @@ Ext.define('Locale.Manager', {
             alias: ['kk', 'kk_KK'],
             rtl: false
         },
+        {
+            id: 'bs',
+            name: 'bs',
+            text: 'Bosanski jezik',
+            alias: ['bs', 'bs_BA'],
+            rtl: false
+        },
+        {
+            id: 'it',
+            name: 'it',
+            text: 'Italiano',
+            alias: ['it', 'it_IT'],
+            rtl: false
+        },
     ],
 
     _tpl: 'locale-{locale}',
