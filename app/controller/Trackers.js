@@ -265,6 +265,53 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
         record.set(formValues);
 
+        var me  = this,
+            trackerChanges = record.getTrackerChanges();
+
+        if (trackerChanges && trackerChanges.user_id) {
+            Ext.getStore('Users').loadRecord(record.get('user_id'),
+                function (userRecord) {
+                    var hasDefaultTariff = userRecord && userRecord.get('default_tariff_id'),
+                        userData = userRecord.getData(),
+                        tariffData = hasDefaultTariff && userRecord.getTariffsData()
+                        owner_tpl = Ext.checkPermission('users', 'read') ? '<a href="#user/' + userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id,
+                        tariff_tpl = (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' + tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
+                        msg_text = Ext.String.format(
+                            hasDefaultTariff ?
+                                _l.get('trackers.confirm_update_owner_1') :
+                                _l.get('trackers.confirm_update_owner_2'),
+                            owner_tpl,
+                            tariff_tpl);
+
+                    me.confirmTrackerEditSubmit(cmp, record, msg_text)
+                },
+                this,
+                true);
+        } else {
+            this.processTrackerEditSubmit(cmp, record);
+        }
+    },
+
+    confirmTrackerEditSubmit: function (cmp, record, text) {
+        var  me = this;
+
+        Ext.MessageBox.show({
+            msg: text,
+            width: 600,
+            buttons: Ext.MessageBox.OKCANCEL,
+            icon: Ext.MessageBox.QUESTION,
+            fn: function (result) {
+                if (result == "ok") {
+                    me.processTrackerEditSubmit(cmp, record);
+                }
+            },
+            scope: this
+        })
+    },
+
+
+    processTrackerEditSubmit: function (cmp, record) {
+
         var me = this,
             trackerChanges = record.getTrackerChanges(),
             sourceChanges = record.getSourceChanges(),

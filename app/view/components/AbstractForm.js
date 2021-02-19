@@ -42,6 +42,16 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         this.callParent(arguments);
     },
 
+    getHintSymbol: function (hint, cls) {
+        return ['<span class="icon-help ',
+            cls || '',
+            '" style="color:#f89406;font-size:12px; padding: 10px" ',
+            'data-qtip="', Ext.String.htmlEncode(hint), '"',
+            'data-qclass="settings-tip"',
+            'data-qwidth="300"',
+            '></span>'].join('');
+    },
+
     getRowDefaults: function () {
         return {
             xtype: 'container',
