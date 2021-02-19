@@ -387,12 +387,14 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserCreateSubmit: function (cmp, formValues) {
         var record = Ext.create('NavixyPanel.model.User', formValues),
             userData = Ext.apply({}, record.getData()),
-            comment = userData.comment;
+            comment = userData.comment,
+            default_tariff_id = userData.default_tariff_id;
 
         delete userData.id;
         delete userData.comment;
         delete userData.dealer_id;
         delete userData.verified;
+        delete userData.default_tariff_id;
 
         Ext.API.createUser({
             params: {
@@ -406,7 +408,8 @@ Ext.define('NavixyPanel.controller.Users', {
                     end_date: userData.discount_end_date || null,
                     strategy: 'no_summing',
                     min_trackers: +userData.discount_min_trackers
-                })
+                }),
+                default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
                 this.afterUserCreate(response);
@@ -438,14 +441,17 @@ Ext.define('NavixyPanel.controller.Users', {
                 end_date: userData.discount_end_date || null,
                 strategy: userData.discount_strategy,
                 min_trackers: +userData.discount_min_trackers
-            };
+            },
+            default_tariff_id = userData.default_tariff_id;
 
         delete userData.verified;
+        delete userData.default_tariff_id;
 
         Ext.API.updateUser({
             params: {
                 user: Ext.encode(userData),
                 discount: Ext.encode(discount),
+                default_tariff_id: Ext.encode(default_tariff_id),
                 comment: userData.comment
             },
             callback: function (response) {
@@ -459,8 +465,17 @@ Ext.define('NavixyPanel.controller.Users', {
     afterUserEdit: function (success, formValues, record) {
         if (success) {
             record.set(formValues);
-            this.getUserEdit().afterSave();
-            this.getUsersList().store.load();
+
+            var list = this.getUsersList(),
+                form = this.getUserEdit();
+
+            if (form) {
+                form.afterSave();
+            }
+            if (list) {
+                list.store.load();
+            }
+
         }
     },
 

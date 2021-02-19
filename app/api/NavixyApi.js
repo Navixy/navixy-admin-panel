@@ -137,7 +137,8 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                     discount: result.discount.value,
                     discount_min_trackers: result.discount.min_trackers,
                     discount_end_date: result.discount.end_date,
-                    discount_strategy: result.discount.strategy
+                    discount_strategy: result.discount.strategy,
+                    default_tariff_id: result.default_tariff_id
                 }), params, response)
             },
             failure: failure,
