@@ -26,20 +26,9 @@ Ext.define('NavixyPanel.view.users.Edit', {
     },
 
     getNEItems: function () {
-        var me= this,
-            items = this.callParent(arguments);
+        var items = this.callParent(arguments);
 
-        return items.concat([
-            {
-                fieldLabel: _l.get('users.fields.default_tariff') + this.getHintSymbol(_l.get('users.fields.default_tariff_hint')),
-                allowBlank: true,
-                name: 'default_tariff_id',
-                xtype: 'tariffselect',
-                emptyText: _l.get('users.fields.default_tariff_empty'),
-                deviceType: 'tracker',
-                trackerRecord: this.record
-            },
-            {
+        return items.concat([{
             xtype: 'numberfield',
             fieldLabel: _l.get('users.fields.discount.value'),
             minValue: 0,

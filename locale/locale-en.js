@@ -501,15 +501,11 @@ Ext.define("Locale.locale-en", {
             "password_mismatched": "Passwords do not match",
             discount: {
                 value: "Discount",
-                min_trackers: "Minimum number of trackers",
+                min_trackers: "Device limit",
                 end_date: "End date",
                 permanent: "Permanent",
                 set_permanent: "Set permanent"
-            },
-
-            "default_tariff": "Basic trackers tariff",
-            "default_tariff_hint": "The tariff plan will be applied by default once the user has added a new tracker",
-            "default_tariff_empty": "Not set up"
+            }
         },
         "password_form": {
             "title": "Changing password of user",
@@ -745,9 +741,7 @@ Ext.define("Locale.locale-en", {
                 "title": "Retry activation",
                 "text": "Send activation commands to the device?"
             }
-        },
-        "confirm_update_owner_1" : "The tracker will be moved to the following account {0} and will be assigned a new tariff {1}",
-        "confirm_update_owner_2" : "The tracker will be moved to the following account {0}, with no changes to its tariff ",
+        }
     },
     "tariffs": {
         "menu_text": "Plans",
