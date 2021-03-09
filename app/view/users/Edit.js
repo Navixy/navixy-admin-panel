@@ -36,6 +36,14 @@ Ext.define('NavixyPanel.view.users.Edit', {
                 name: 'default_tariff_id',
                 xtype: 'tariffselect',
                 emptyText: _l.get('users.fields.default_tariff_empty'),
+                emptyValue: {
+                    id: null,
+                    group_id: 0,
+                    name: _l.get('users.fields.default_tariff_empty'),
+                    device_type: 'tracker',
+                    type: 'monthly',
+                    price: 0
+                },
                 deviceType: 'tracker',
                 trackerRecord: this.record
             },

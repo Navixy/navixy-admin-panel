@@ -442,7 +442,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 strategy: userData.discount_strategy,
                 min_trackers: +userData.discount_min_trackers
             },
-            default_tariff_id = userData.default_tariff_id;
+            default_tariff_id = userData.default_tariff_id === 0 ? null : userData.default_tariff_id;
 
         delete userData.verified;
         delete userData.default_tariff_id;
