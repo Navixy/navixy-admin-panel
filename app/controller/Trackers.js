@@ -304,9 +304,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     confirmTrackerEditSubmit: function (cmp, record, text) {
-        var  me = this;
-
-        Ext.MessageBox.show({
+        var me = this,
+            msg = Ext.MessageBox.show({
             msg: text,
             width: 600,
             buttons: Ext.MessageBox.OKCANCEL,
@@ -318,6 +317,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             scope: this
         })
+
+        Ext.util.History.addListener('change', function () {
+                msg.close();
+            }, this, {single: true});
     },
 
 
