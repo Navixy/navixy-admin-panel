@@ -282,8 +282,12 @@ Ext.define('NavixyPanel.controller.Trackers', {
                                 userData = userRecord.getData(),
                                 tariffData = hasDefaultTariff && userRecord.getTariffsData()
 
-                            owner_tpl = Ext.checkPermission('users', 'read') ? '<a href="#user/' + userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + ' ' + userData.first_name + ' ' + userData.middle_name) + ')' : "#" + userData.id,
-                            tariff_tpl = (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' + tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
+                            owner_tpl = Ext.checkPermission('users', 'read')
+                                ? '<a href="#user/' + userData.id + '">#' + userData.id + '</a> (' + (userData.legal_name || userData.last_name + (userData.first_name ? ' ' + userData.first_name : '') + (userData.middle_name ? ' ' + userData.middle_name : '')) + ')'
+                                : "#" + userData.id,
+                            tariff_tpl = (Ext.checkPermission('tariffs', 'read')
+                                ? '<a href="#tariff/' + tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')'
+                                : "#" + tariffData.id)
                             msg_text = Ext.String.format(
                                 hasDefaultTariff ?
                                     _l.get('trackers.confirm_update_owner_1') :
