@@ -12,7 +12,6 @@ Ext.define('NavixyPanel.controller.Users', {
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
         'components.MessageBoxWithAlert',
-
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -328,21 +327,36 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.create('Ext.MessageBoxWithAlert', {
             title: _l.get('users.corrupt.alert.title'),
             msg: _l.get('users.corrupt.alert.text'),
+            inputs: [
+                {
+                    id: 'user_login_confirmation',
+                    type: 'textfield',
+                    label: _l.get('users.corrupt.alert.confirm_login_label'),
+                    required: true,
+                }
+            ],
             agreeAction: Ext.bind(function (window) {
-                Ext.API.removeUser({
-                    params: {
-                        user_id: record.getId(),
-                        login: record.get('login')
-                    },
-                    callback: function () {
-                        this.onUserRemoved(record);
-                    },
-                    failure: function () {
-                        this.onUserRemovedFailure(record, arguments[0]);
-                    },
-                    scope: this
-                });
-                window.close();
+
+                var confirmedLoginInput = Ext.getCmp('user_login_confirmation');
+                if(record.get('login') === confirmedLoginInput.getValue()) {
+                    // Ext.API.removeUser({
+                    //     params: {
+                    //         user_id: record.getId(),
+                    //         login: record.get('login')
+                    //     },
+                    //     callback: function () {
+                    //         // this.onUserRemoved(record);
+                    //         debugger
+                    //     },
+                    //     failure: function () {
+                    //         this.onUserRemovedFailure(record, arguments[0]);
+                    //     },
+                    //     scope: this
+                    // });
+                    window.close();
+                } else {
+                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'),)
+                }
             }, this)
         }).show();
     },
