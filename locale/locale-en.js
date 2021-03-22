@@ -549,8 +549,8 @@ Ext.define("Locale.locale-en", {
             "alert": {
                 "title": "Remove user?",
                 "text": "User will be permanently removed from the database. All related trackers, data and sub-users will be lost.",
-                "confirm_login_label": "Подтвердите логин пользователя",
-                "confirm_login_error": "Указанный логин не совпадает с логином пользователя"
+                "confirm_login_label": "Confirm user login",
+                "confirm_login_error": "Incorrect user login"
             },
             "success_msg": "User {0} successfully removed"
         },
