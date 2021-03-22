@@ -11,7 +11,7 @@ Ext.define('NavixyPanel.controller.Users', {
     views: [
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
-        'components.MessageBoxWithAlert',
+        'components.MessageBoxWithInputs',
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -324,7 +324,7 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCorruptAction: function (record) {
-        Ext.create('Ext.MessageBoxWithAlert', {
+        Ext.create('Ext.MessageBoxWithInputs', {
             title: _l.get('users.corrupt.alert.title'),
             msg: _l.get('users.corrupt.alert.text'),
             inputs: [
