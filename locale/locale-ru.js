@@ -37,7 +37,7 @@ Ext.define("Locale.locale-ru", {
     "old_version": "Старая версия",
     "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
     "auth": {
-        " ": "Логин или адрес электронной почты",
+        "login": "Логин или адрес электронной почты",
         "password": "Пароль",
         "login_btn": "Логин",
         "locale_title": "Язык интерфейса / Interface language",
