@@ -69,6 +69,7 @@
                 if (!this._ready) {
                     L.Google.asyncWait.push(this);
                 }
+                this.onInit(map, insertAtTheBottom);
             }, this);
 
             Ext.waitFor(function () {
@@ -76,7 +77,9 @@
             }, function () {
                 this.loadAPI();
             }, this);
+        },
 
+        onInit: function (map, insertAtTheBottom) {
             this._map = map;
             this._insertAtTheBottom = insertAtTheBottom;
 
