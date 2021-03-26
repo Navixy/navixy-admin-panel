@@ -1786,7 +1786,8 @@ Ext.define("Locale.locale-en", {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "checkins": "Check-ins on the map"
+        "checkins": "Check-ins on the map",
+        "route_import": "Import routes"
     },
     "map": {
         "zoom_in": "Zoom in",

@@ -51,6 +51,9 @@ Ext.define('NavixyPanel.store.Dealer', {
         }, {
             name: 'tutorial',
             defaultValue: false
+        }, {
+            name: 'fsm',
+            defaultValue: false
         }
     ],
 
@@ -156,6 +159,10 @@ Ext.define('NavixyPanel.store.Dealer', {
             },
             scope: this
         })
+    },
+
+    hasFsm: function () {
+        return this.getFeature('fsm');
     },
 
     getFeature: function (feature_name) {
