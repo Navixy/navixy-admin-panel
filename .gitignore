@@ -2,6 +2,7 @@
 app/api/_proxy/*
 theme/panel_metromorph/.sass-cache/*
 ext
+.DS_Store
 
 build
 node_modules

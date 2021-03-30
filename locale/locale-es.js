@@ -623,7 +623,9 @@ Ext.define('Locale.locale-es',{
         "corrupt": {
             "alert": {
                 "title": "¿Eliminar registro de tracker?",
-                "text": "El dispositivo se eliminará permanentemente de la base de datos, todos los datos - no disponibles! <br><br>Estás seguro que quieres eliminar registro?"
+                "text": "El dispositivo se eliminará permanentemente de la base de datos, todos los datos - no disponibles!",
+                "confirm_login_label": "Confirmar el inicio de sesión del usuario",
+                "confirm_login_error": "Inicio de sesión de usuario incorrecto"
             },
             "success_msg": "Dispositivo {0} quitado con éxito"
         }
