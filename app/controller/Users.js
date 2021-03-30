@@ -332,10 +332,10 @@ Ext.define('NavixyPanel.controller.Users', {
                     id: 'user_login_confirmation',
                     type: 'textfield',
                     label: _l.get('users.corrupt.alert.confirm_login_label'),
-                    required: true,
+                    required: true
                 }
             ],
-            agreeAction: Ext.bind(function (window) {
+            agreeAction: Ext.bind(function (win) {
                 var confirmedLoginInput = Ext.getCmp('user_login_confirmation');
                 if (record.get('login') === confirmedLoginInput.getValue()) {
                     Ext.API.removeUser({
@@ -351,9 +351,9 @@ Ext.define('NavixyPanel.controller.Users', {
                         },
                         scope: this
                     });
-                    window.close();
+                    win.close();
                 } else {
-                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'),)
+                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'))
                 }
             }, this)
         }).show();
