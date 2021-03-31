@@ -687,7 +687,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
 
         Ext.getStore('Features').each(function (featureRecord) {
 
-            if (featureRecord.get('type') === 'route_import' && !hasFsm) {
+            if (featureRecord.get('type') === 'task_route_import' && !hasFsm) {
                 return false
             }
 

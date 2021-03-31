@@ -103,8 +103,7 @@ Ext.define('NavixyPanel.store.Features', {
                 group: "features"
             },
             {
-                // TODO change route_import to label from api
-                type: "route_import",
+                type: "task_route_import",
                 "name": _l.get('features.route_import'),
                 group: "features"
             },
