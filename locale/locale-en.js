@@ -396,7 +396,8 @@ Ext.define("Locale.locale-en", {
         "ves": "Venezuelan bolívar",
         "stn": "São Tomé and Príncipe dobra",
         "mru": "Mauritanian ouguiya",
-        "ugx": "Ugandan shilling"
+        "ugx": "Ugandan shilling",
+        "pgk": "Papua New Guinean kina"
     },
     "maps": {
         "roadmap": "Google roadmap",

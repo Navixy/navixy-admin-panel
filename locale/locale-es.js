@@ -339,7 +339,8 @@ Ext.define('Locale.locale-es',{
         "kwd": "Kuwaiti dinar",
         "bdt": "Bangladeshi taka",
         "kes": "Kenyan shilling",
-        "ugx": "Ugandan shilling"
+        "ugx": "Ugandan shilling",
+        "pgk": "Papua New Guinean kina"
     },
     "maps": {
         "roadmap": "Google roadmap",
