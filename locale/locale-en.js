@@ -1760,7 +1760,8 @@ Ext.define("Locale.locale-en", {
         "VES": "{0} Bs.",
         "STN": "{0} Db",
         "MRU": "{0} UM",
-        "UGX": "{0} USh"
+        "UGX": "{0} USh",
+        "PGK": "{0} K"
     },
     "features": {
         "api": "API",

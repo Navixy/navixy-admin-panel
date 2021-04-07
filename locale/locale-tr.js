@@ -451,7 +451,8 @@ Ext.define('Locale.locale-tr',{
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "PGK": "{0} K"
     },
     "maps": {
         "roadmap": "Google yol haritası",
