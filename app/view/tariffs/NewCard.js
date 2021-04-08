@@ -104,8 +104,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         this.iterateFields(function (field) {
             if (field.is('checkboxgroup')) {
                 var value = field.getValue(),
-                    name = field.sRole || field.items.first().name,
-                    data = value[name];
+                    name = field.sRole || (field.items.first() && field.items.first().name),
+                    data = name && value[name];
 
                 if (data) {
                     if (!Ext.isArray(data) && !Ext.isEmpty(data)) {
