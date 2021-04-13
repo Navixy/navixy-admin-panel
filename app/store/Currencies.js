@@ -693,6 +693,11 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "PGK",
                 name: _l.get('currency.pgk'),
                 priority: 5
+            },
+            {
+                type: "TZS",
+                name: _l.get('currency.tzs'),
+                priority: 5
             }
         ];
 
