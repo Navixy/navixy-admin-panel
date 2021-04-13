@@ -1475,7 +1475,8 @@ Ext.define('Locale.locale-fr',{
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
-        "PGK": "{0} K"
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "features": {
         "api": "API",

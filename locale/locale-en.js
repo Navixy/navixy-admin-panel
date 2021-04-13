@@ -397,7 +397,8 @@ Ext.define("Locale.locale-en", {
         "stn": "São Tomé and Príncipe dobra",
         "mru": "Mauritanian ouguiya",
         "ugx": "Ugandan shilling",
-        "pgk": "Papua New Guinean kina"
+        "pgk": "Papua New Guinean kina",
+        "tzs": "Tanzanian Shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1761,7 +1762,8 @@ Ext.define("Locale.locale-en", {
         "STN": "{0} Db",
         "MRU": "{0} UM",
         "UGX": "{0} USh",
-        "PGK": "{0} K"
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "features": {
         "api": "API",

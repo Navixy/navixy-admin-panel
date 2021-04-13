@@ -340,7 +340,8 @@ Ext.define('Locale.locale-es',{
         "bdt": "Bangladeshi taka",
         "kes": "Kenyan shilling",
         "ugx": "Ugandan shilling",
-        "pgk": "Papua New Guinean kina"
+        "pgk": "Papua New Guinean kina",
+        "tzs": "Tanzanian Shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1485,7 +1486,8 @@ Ext.define('Locale.locale-es',{
         "BDT": "{0} ৳",
         "KES": "{0} KSh",
         "UGX": "{0} USh",
-        "PGK": "{0} K"
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "features": {
         "api": "API",

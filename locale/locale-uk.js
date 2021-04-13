@@ -1455,7 +1455,8 @@ Ext.define('Locale.locale-uk',{
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
-        "PGK": "{0} K"
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "geolocation": {
         "disabled": "Disabled",
