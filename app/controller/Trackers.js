@@ -270,6 +270,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var me  = this,
             trackerChanges = record.getTrackerChanges();
 
+
         if (trackerChanges && trackerChanges.user_id) {
             Ext.getStore('Users').loadRecord(old_user,
                 function (newUserRecord) {
@@ -278,7 +279,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                     Ext.getStore('Users').loadRecord(record.get('user_id'),
                         function (userRecord) {
 
-                            var hasDefaultTariff = userRecord && userRecord.get('default_tariff_id') && newDefaultTariff !== userRecord.get('default_tariff_id'),
+                            var hasDefaultTariff = userRecord && userRecord.get('default_tariff_id') && newDefaultTariff !== userRecord.get('default_tariff_id') && newDefaultTariff != record.get('tariff_id'),
                                 userData = userRecord.getData(),
                                 tariffData = hasDefaultTariff && userRecord.getTariffsData()
 
