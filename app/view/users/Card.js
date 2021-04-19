@@ -164,8 +164,7 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     prepareHeaderData: function () {
         var recordData = this.getRecordData(),
-            fio = recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
-            tariffData = recordData.default_tariff_id != 0 ? this.record.getTariffsData() : false;
+            fio = recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name;
 
         return {
             title: recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
@@ -217,14 +216,6 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('users.fields.phone'),
                     value: recordData.phone
-                },
-                {
-                    no_encode: true,
-                    no_empty: true,
-                    title: _l.get('users.fields.default_tariff'),
-                    value: tariffData
-                        ? (Ext.checkPermission('tariffs', 'read') ? '<a href="#tariff/' + tariffData.id + '">#' + tariffData.id + '</a> (' + (tariffData.name) + ')' : "#" + tariffData.id)
-                        : _l.get('users.fields.default_tariff_empty')
                 },
                 {
                     title: _l.get('users.fields.discount.value'),

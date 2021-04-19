@@ -26,8 +26,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
     },
 
     getNEItems: function () {
-        var me= this,
-            items = this.callParent(arguments);
+        var items = this.callParent(arguments);
 
         return items.concat([
             {

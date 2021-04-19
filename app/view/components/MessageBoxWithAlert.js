@@ -54,7 +54,7 @@ Ext.define('NavixyPanel.view.components.MessageBoxWithAlert', {
             xtype: 'component',
             tpl: [
                 '<div class="message-box">',
-                '<div class="x-message-box-warning"></div>',
+                '<div class="x-message-box-warning x-message-box-warning-yellow"></div>',
                 '<div class="x-message-warning">{msg}</div>',
                 '</div>'
             ],
