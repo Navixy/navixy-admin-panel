@@ -36,15 +36,6 @@ Ext.define('NavixyPanel.view.users.Edit', {
                 name: 'default_tariff_id',
                 xtype: 'tariffselect',
                 emptyText: _l.get('users.fields.default_tariff_empty'),
-                deviceType: 'tracker',
-                trackerRecord: this.record
-            },
-            {
-                fieldLabel: _l.get('users.fields.default_tariff') + this.getHintSymbol(_l.get('users.fields.default_tariff_hint')),
-                allowBlank: true,
-                name: 'default_tariff_id',
-                xtype: 'tariffselect',
-                emptyText: _l.get('users.fields.default_tariff_empty'),
                 emptyValue: {
                     id: null,
                     group_id: 0,
