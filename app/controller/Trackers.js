@@ -311,21 +311,21 @@ Ext.define('NavixyPanel.controller.Trackers', {
     confirmTrackerEditSubmit: function (cmp, record, text) {
         var me = this,
             msg = Ext.MessageBox.show({
-            msg: text,
-            width: 600,
-            buttons: Ext.MessageBox.OKCANCEL,
-            icon: Ext.MessageBox.QUESTION,
-            fn: function (result) {
-                if (result == "ok") {
-                    me.processTrackerEditSubmit(cmp, record);
-                }
-            },
-            scope: this
-        })
+                msg: text,
+                width: 600,
+                buttons: Ext.MessageBox.OKCANCEL,
+                icon: Ext.MessageBox.QUESTION,
+                fn: function (result) {
+                    if (result == "ok") {
+                        me.processTrackerEditSubmit(cmp, record);
+                    }
+                },
+                scope: this
+            })
 
         Ext.util.History.addListener('change', function () {
-                msg.close();
-            }, this, {single: true});
+            msg.close();
+        }, this, {single: true});
     },
 
 
