@@ -399,7 +399,8 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserCreateSubmit: function (cmp, formValues) {
         var record = Ext.create('NavixyPanel.model.User', formValues),
             userData = Ext.apply({}, record.getData()),
-            comment = userData.comment;
+            comment = userData.comment,
+            default_tariff_id = userData.default_tariff_id == 0 ? null : userData.default_tariff_id;
 
         delete userData.id;
         delete userData.comment;
@@ -450,7 +451,8 @@ Ext.define('NavixyPanel.controller.Users', {
                 end_date: userData.discount_end_date || null,
                 strategy: userData.discount_strategy,
                 min_trackers: +userData.discount_min_trackers
-            };
+            },
+            default_tariff_id = userData.default_tariff_id == 0 ? null : userData.default_tariff_id;
 
         delete userData.verified;
 

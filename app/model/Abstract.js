@@ -51,5 +51,11 @@ Ext.define('NavixyPanel.model.Abstract', {
 
     setAssociation: function (storeName, record) {
         this.associationsData[storeName] = record;
+    },
+
+    resetAssociations: function () {
+        Ext.iterate(this.associationsMap, function (association, associatedStore) {
+            this.associationsData[associatedStore] = null;
+        }, this);
     }
 });

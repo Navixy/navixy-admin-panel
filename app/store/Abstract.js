@@ -155,6 +155,9 @@ Ext.define('NavixyPanel.store.Abstract', {
                 }
             }, this);
         } else {
+            if (record.resetAssociations) {
+                record.resetAssociations()
+            }
             fn.call(scope, record);
         }
     },
