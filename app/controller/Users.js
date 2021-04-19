@@ -11,8 +11,7 @@ Ext.define('NavixyPanel.controller.Users', {
     views: [
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
-        'components.MessageBoxWithAlert',
-
+        'components.MessageBoxWithInputs',
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -325,24 +324,37 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCorruptAction: function (record) {
-        Ext.create('Ext.MessageBoxWithAlert', {
+        Ext.create('Ext.MessageBoxWithInputs', {
             title: _l.get('users.corrupt.alert.title'),
             msg: _l.get('users.corrupt.alert.text'),
-            agreeAction: Ext.bind(function (window) {
-                Ext.API.removeUser({
-                    params: {
-                        user_id: record.getId(),
-                        login: record.get('login')
-                    },
-                    callback: function () {
-                        this.onUserRemoved(record);
-                    },
-                    failure: function () {
-                        this.onUserRemovedFailure(record, arguments[0]);
-                    },
-                    scope: this
-                });
-                window.close();
+            inputs: [
+                {
+                    id: 'user_login_confirmation',
+                    type: 'textfield',
+                    label: _l.get('users.corrupt.alert.confirm_login_label'),
+                    required: true
+                }
+            ],
+            agreeAction: Ext.bind(function (win) {
+                var confirmedLoginInput = Ext.getCmp('user_login_confirmation');
+                if (record.get('login') === confirmedLoginInput.getValue()) {
+                    Ext.API.removeUser({
+                        params: {
+                            user_id: record.getId(),
+                            login: record.get('login')
+                        },
+                        callback: function () {
+                            this.onUserRemoved(record);
+                        },
+                        failure: function () {
+                            this.onUserRemovedFailure(record, arguments[0]);
+                        },
+                        scope: this
+                    });
+                    win.close();
+                } else {
+                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'))
+                }
             }, this)
         }).show();
     },
@@ -394,7 +406,6 @@ Ext.define('NavixyPanel.controller.Users', {
         delete userData.comment;
         delete userData.dealer_id;
         delete userData.verified;
-        delete userData.default_tariff_id;
 
         Ext.API.createUser({
             params: {
@@ -408,8 +419,7 @@ Ext.define('NavixyPanel.controller.Users', {
                     end_date: userData.discount_end_date || null,
                     strategy: 'no_summing',
                     min_trackers: +userData.discount_min_trackers
-                }),
-                default_tariff_id: Ext.encode(default_tariff_id)
+                })
             },
             callback: function (response) {
                 this.afterUserCreate(response);
@@ -445,13 +455,11 @@ Ext.define('NavixyPanel.controller.Users', {
             default_tariff_id = userData.default_tariff_id == 0 ? null : userData.default_tariff_id;
 
         delete userData.verified;
-        delete userData.default_tariff_id;
 
         Ext.API.updateUser({
             params: {
                 user: Ext.encode(userData),
                 discount: Ext.encode(discount),
-                default_tariff_id: Ext.encode(default_tariff_id),
                 comment: userData.comment
             },
             callback: function (response) {
@@ -465,17 +473,8 @@ Ext.define('NavixyPanel.controller.Users', {
     afterUserEdit: function (success, formValues, record) {
         if (success) {
             record.set(formValues);
-
-            var list = this.getUsersList(),
-                form = this.getUserEdit();
-
-            if (form) {
-                form.afterSave();
-            }
-            if (list) {
-                list.store.load();
-            }
-
+            this.getUserEdit().afterSave();
+            this.getUsersList().store.load();
         }
     },
 

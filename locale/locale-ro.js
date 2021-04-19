@@ -1454,7 +1454,9 @@ Ext.define('Locale.locale-ro',{
         "ZWD": "{0} Z$",
         "MAD": "{0} Dh",
         "KWD": "KD {0}",
-        "BDT": "{0} ৳"
+        "BDT": "{0} ৳",
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "geolocation": {
         "disabled": "Disabled",
