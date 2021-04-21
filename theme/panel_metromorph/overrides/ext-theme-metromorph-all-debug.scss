@@ -10720,8 +10720,12 @@ textarea.x-form-empty-field {
 }
 
 /* line 33, ../../packages/ext-theme-neutral/sass/src/window/MessageBox.scss */
-.x-message-box-warning {
-    background-image: url(#{$img_dir}/shared/icon-warning.png);
+.x-message-box-warning-yellow {
+    background-image: url(#{$img_dir}/shared/icon-warning-yellow.png);
+}
+
+.x-message-box-warning-red {
+    background-image: url(#{$img_dir}/shared/icon-warning-red.png);
 }
 
 /* line 37, ../../packages/ext-theme-neutral/sass/src/window/MessageBox.scss */
