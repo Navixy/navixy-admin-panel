@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.controller.Users', {
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
         'components.MessageBoxWithInputs',
+        'components.UsersImportWindow',
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -69,6 +70,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'userslist button[role="create-btn"]': {
                 click: this.handleUserCreateAction
+            },
+            'userslist button[role="import-btn"]': {
+                click: this.handleImportBtnClick
             },
             'usercreate': {
                 formsubmit: this.handleUserCreateSubmit
@@ -177,6 +181,7 @@ Ext.define('NavixyPanel.controller.Users', {
         this.fireContent({
             xtype: 'userslist',
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
+            importBtn: Ext.checkPermission(this.getModuleName(), 'create'),
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update'),
             listeners: {
                 firstload: this.showListTutorial,
@@ -392,8 +397,14 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCreateAction: function () {
-
         Ext.Nav.shift('user/create');
+    },
+
+    handleImportBtnClick: function () {
+        Ext.create('Ext.UsersImportWindow', {
+            title: _l.get('users_import_message_box.title'),
+            msg: _l.get("users_import_message_box.message"),
+        }).show();
     },
 
     handleUserCreateSubmit: function (cmp, formValues) {

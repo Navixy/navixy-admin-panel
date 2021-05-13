@@ -196,6 +196,7 @@ Ext.define("Locale.locale-en", {
         "no": "No",
         "argeement": "I read the warning and understand that the operation is irreversible"
     },
+    
     "units_combination_list": {
         "days": "days|day|days",
         "hours": "hours|hour|hours",
@@ -520,6 +521,7 @@ Ext.define("Locale.locale-en", {
         },
         "list": {
             "create_btn_text": "Create new user",
+            "import_btn_text": "Import users",
             "empty_text": "No users found"
         },
         "session_alert": {

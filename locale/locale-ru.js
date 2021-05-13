@@ -195,6 +195,15 @@ Ext.define("Locale.locale-ru", {
         "no": "Нет",
         "argeement": "Я прочитал(a) предупреждение и понимаю, что данная операция необратима"
     },
+    "users_import_message_box": {
+        title: "Импорт пользователей",
+        message: "Заполните шаблон файла и загрузите его",
+        file_input_label: "Обзор",
+        blank_input_label: "Выберите файл",
+        submit: "Загрузить",
+        cancel: "Отмена",
+        msg: "Соообщение с ссылкой и все такое"
+    },
     "units_combination_list": {
         "days": "дней|день|дня|дня|дня|дней",
         "hours": "часов|час|часа|часа|часа|часов",
@@ -516,6 +525,7 @@ Ext.define("Locale.locale-ru", {
         },
         "list": {
             "create_btn_text": "Добавить пользователя",
+            "import_btn_text": "Импорт пользователей",
             "empty_text": "Пользователей не найдено"
         },
         "session_alert": {

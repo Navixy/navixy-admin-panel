@@ -18,15 +18,15 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             hash: this.authKey,
             redirect_target: this.getUploadHandlerUrl()
         }, config.params || {});
-
+        debugger
         form.submit({
             url: url,
             waitMsg: config.waitMsg,
             scope: config.scope,
             params: params,
-
             success: config.success || Ext.emptyFn,
             failure: Ext.bind(function (form, action) {
+                debugger
                 try {
                     if (config.failure) {
                         config.failure.call(config.scope || this, form, action);
@@ -185,6 +185,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'corrupt',
             handler: 'user'
         });
+    },
+
+    uploadImportUsers: function (form, config) {
+        this.uploadFile(form, Ext.apply({
+            action: 'upload',
+            handler: 'user'
+        }, config));
     },
 
     createUserSession: function (config) {
