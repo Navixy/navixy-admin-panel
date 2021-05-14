@@ -319,7 +319,7 @@ Ext.define('NavixyPanel.view.trackers.List', {
             },
             {
                 text: _l.get('trackers.fields.last_connection_date'),
-                dataIndex: 'last_connection_date',
+                dataIndex: 'last_connection',
                 width: 180
             },
             {

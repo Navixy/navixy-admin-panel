@@ -20,7 +20,7 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'deleted', type: 'boolean'},
         {name: 'source', type: 'auto'},
         {name: 'creation_date', type: 'string'},
-        {name: 'last_connection_date', type: 'string'},
+        {name: 'last_connection', type: 'date', dateReadFormat: Ext.util.Format.dateFormatFull, convert: function (value, record) {return record.sourceConverter(this, value);}},
 
         {name: 'source_id', type: 'int', convert: function (value, record) {return record.sourceConverter(this, value);}},
         {name: 'device_id', type: 'int', convert: function (value, record) {return record.sourceConverter(this, value);}},
