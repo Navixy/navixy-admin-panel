@@ -196,7 +196,18 @@ Ext.define("Locale.locale-en", {
         "no": "No",
         "argeement": "I read the warning and understand that the operation is irreversible"
     },
-    
+    "users_import_message_box": {
+        title: "Import users",
+        message: "Fill out <a href=\"https://docs.google.com/spreadsheets/d/1w2P-KK6fj44URpbxPhp0RNFI7JabGl5MkCqF-f0F4cY/edit#gid=0\" target=\"blank\"> the template</a> and upload it",
+        file_input_label: "View",
+        blank_input_label: "Select file",
+        submit: "Upload",
+        cancel: "Cancel",
+        process_msg: "Loading",
+        success_msg: "File has been successfully imported",
+        error_msg: "File import error",
+        file_params: "XLSX, CSV file format; max size 10 Mb"
+    },
     "units_combination_list": {
         "days": "days|day|days",
         "hours": "hours|hour|hours",

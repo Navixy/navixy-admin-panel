@@ -197,12 +197,15 @@ Ext.define("Locale.locale-ru", {
     },
     "users_import_message_box": {
         title: "Импорт пользователей",
-        message: "Заполните шаблон файла и загрузите его",
+        message: "Заполните <a href=\"https://docs.google.com/spreadsheets/d/1N-1V5tPOwOaE9GtTXZUPqNnTYlaQOwIQggxDhi-js1c/edit#gid=0\" target=\"blank\">шаблон</a> файла и загрузите его",
         file_input_label: "Обзор",
         blank_input_label: "Выберите файл",
         submit: "Загрузить",
         cancel: "Отмена",
-        msg: "Соообщение с ссылкой и все такое"
+        process_msg: "Загрузка",
+        success_msg: "Файл пользователей успешно импортирован",
+        error_msg: "Ошибка импорта файла",
+        file_params: "Файл формата XLSX или CSV. Максимальный размер 10 Мб"
     },
     "units_combination_list": {
         "days": "дней|день|дня|дня|дня|дней",

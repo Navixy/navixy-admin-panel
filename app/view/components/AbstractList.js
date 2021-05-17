@@ -258,7 +258,8 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 xtype: 'button',
                 iconCls: 'add-button',
                 role: this.texts.importBtnRole,
-                text: this.texts.importBtnText
+                text: this.texts.importBtnText,
+                margin: '0 0 0 10'
             });
         }
         barConfig.items.push('->');
