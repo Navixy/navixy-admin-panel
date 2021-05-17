@@ -197,7 +197,7 @@ Ext.define("Locale.locale-ru", {
     },
     "users_import_message_box": {
         title: "Импорт пользователей",
-        message: "Заполните <a href=\"https://docs.google.com/spreadsheets/d/1N-1V5tPOwOaE9GtTXZUPqNnTYlaQOwIQggxDhi-js1c/edit#gid=0\" target=\"blank\">шаблон</a> файла и загрузите его",
+        message: "Заполните <a href=\"app/resources/users_import_template_ru.xlsx\" target=\"blank\">шаблон</a> файла и загрузите его",
         file_input_label: "Обзор",
         blank_input_label: "Выберите файл",
         submit: "Загрузить",

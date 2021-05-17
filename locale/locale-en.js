@@ -198,7 +198,7 @@ Ext.define("Locale.locale-en", {
     },
     "users_import_message_box": {
         title: "Import users",
-        message: "Fill out <a href=\"https://docs.google.com/spreadsheets/d/1w2P-KK6fj44URpbxPhp0RNFI7JabGl5MkCqF-f0F4cY/edit#gid=0\" target=\"blank\"> the template</a> and upload it",
+        message: "Fill out <a href=\"app/resources/users_import_template_en.xlsx\"> the template</a> and upload it",
         file_input_label: "View",
         blank_input_label: "Select file",
         submit: "Upload",
