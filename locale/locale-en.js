@@ -205,8 +205,15 @@ Ext.define("Locale.locale-en", {
         cancel: "Cancel",
         process_msg: "Loading",
         success_msg: "File has been successfully imported",
-        error_msg: "File import error",
-        file_params: "XLSX, CSV file format; max size 10 Mb"
+        file_params: "XLSX, CSV file format; max size 10 Mb",
+        errors: {
+            msg: "File import error.",
+            row_number: "At line ",
+            codes: {
+                7: "Please check that row has correct values.",
+                206: "This email already in use",
+            }
+        }
     },
     "units_combination_list": {
         "days": "days|day|days",

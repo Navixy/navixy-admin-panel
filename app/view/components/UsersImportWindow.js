@@ -109,6 +109,23 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
             },
             {
                 xtype: "container",
+                role: "success-message",
+                layout: {
+                    type: "vbox",
+                    align: "stretch"
+                },
+                hidden: true,
+                items: [
+                    {
+                        xtype: "component",
+                        baseCls: "green-text text-center",
+                        role: "success-text",
+                        margin: "0 0 3 0"
+                    }
+                ]
+            },
+            {
+                xtype: "container",
                 role: "upload-errors",
                 layout: {
                     type: "vbox",
@@ -156,25 +173,31 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                 }
             );
         } else {
-            Ext.getCmp('import_file').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'))
+            Ext.getCmp('import_file').markInvalid()
         }
     },
 
     onImportSuccess: function () {
-        this.close();
+        this.getSuccessContainer().show();
+        this.getSuccessContainer().down("component[role=success-text]").update(this.locale.get('success_msg'));
+    },
+
+    getSuccessContainer: function() {
+        return this.down("container[role=success-message]");
     },
 
     onImportFailure: function (response) {
-             var formats = this.acceptFormats
-                //  status = response.status,
-                // errors = response.errors || [],
-                // errCode = status.code,
-                // errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
-            
-            this.down("container[role=form]").down("filefield").fileInputEl.set({
-                accept: formats
-            });
-            this.showUploadError();
+        var formats = this.acceptFormats
+            rowError = response.row_number,
+            status_code = response.status.code,
+            errCode = response.status.code;
+        debugger
+        var errDescription = this.locale.get('errors.row_number') + rowError + ': ' + this.locale.get('errors.codes')[errCode];
+         
+        this.down("container[role=form]").down("filefield").fileInputEl.set({
+            accept: formats
+        });
+        this.showUploadError(errDescription);
         
     },
 
@@ -182,8 +205,8 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
         return this.down("container[role=upload-errors]");
     },
 
-    showUploadError: function () {
+    showUploadError: function (errDescription) {
         this.getErrorsContainer().show();
-        this.getErrorsContainer().down("component[role=error-text]").update(this.locale.get('error_msg'));
+        this.getErrorsContainer().down("component[role=error-text]").update(this.locale.get('errors.msg') + ' ' + errDescription);
     }
 });
