@@ -614,7 +614,7 @@ Ext.define("Locale.locale-ru", {
             "model": "Модель",
             "phone": "Телефон",
             "device_id": "Номер устройства",
-            "last_connection_date": "Последнее подключение",
+            "last_connection_date": "Последнее подключение (UTC)",
             "creation_date": "Дата регистрации",
             "creation_date_short": "Зарегистрирован",
             "creation_date_short2": "Дата регистрации",
