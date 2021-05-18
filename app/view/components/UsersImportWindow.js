@@ -191,7 +191,6 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
             rowError = response.row_number,
             status_code = response.status.code,
             errCode = response.status.code;
-        debugger
         var errDescription = this.locale.get('errors.row_number') + rowError + ': ' + this.locale.get('errors.codes')[errCode];
          
         this.down("container[role=form]").down("filefield").fileInputEl.set({
