@@ -626,6 +626,7 @@ Ext.define("Locale.locale-en", {
             "model": "Model",
             "phone": "Phone",
             "device_id": "Device ID",
+            "last_connection_date": "Last connection (UTC+0)",
             "creation_date": "Tracker activation date",
             "creation_date_short": "Activated",
             "creation_date_short2": "Activated",
