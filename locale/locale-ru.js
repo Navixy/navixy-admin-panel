@@ -1597,6 +1597,20 @@ Ext.define("Locale.locale-ru", {
         "imperial": "Английская",
         "us": "Английская (США)"
     },
+    "hour_modes": {
+        "twelve": "12-часовой формат даты (5:30 PM)",
+        "twentyfour": "24-часовой формат даты (17:30)",
+        "default": "По умолчанию"
+      },
+    "date_formats": {
+        "default": "По умолчанию",
+        "ddMMyyyy_dots": "01.12.2021 (DD.MM.YYYY)",
+        "ddMMyyyy_slashes": "01/12/2021(DD/MM/YYYY')",
+        "MMddyyyy_hyphens": "12-01-2021 (MM-DD-YYYY)",
+        "yyyyMMdd_hyphens": "2021-12-01 (YYYY-MM-DD)",
+        "dMMMy": "1 Дек 2021 (DD MMM YYYY)",
+        "dMMMMy": "1 Декабря 2021 (DD MMMM YYYY)"
+    },
     "route_providers": {
         "progorod": "Basic GIS (Прогород)",
         "google": "Premium GIS (Google)",
