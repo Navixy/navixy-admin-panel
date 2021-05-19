@@ -201,13 +201,6 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         },
         {
-            name: 'measurement_system',
-            type: 'string',
-            convert: function (value, record) {
-                return record.defaultUserConverter(this, value, 0);
-            }
-        },
-        {
             name: 'default_user_time_zone',
             type: 'string',
             convert: function (value, record) {
@@ -226,6 +219,13 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'string',
             convert: function (value, record) {
                 return record.defaultUserConverter(this, value, 'default');
+            }
+        },
+        {
+            name: 'measurement_system',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value, 0);
             }
         },
         {
