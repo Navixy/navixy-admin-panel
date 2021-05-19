@@ -397,8 +397,6 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }, this);
 
-<<<<<<< HEAD
-=======
         // Remove empty date and time formats. 
         if(result['default_user_settings']) {
             Ext.iterate(result['default_user_settings'], function(fieldName, fieldValue) {
@@ -407,7 +405,6 @@ Ext.define('NavixyPanel.model.Settings', {
                 }
             })
         }
->>>>>>> e8236ea (FR-6064: Fix default values converter.)
         return Ext.Object.getSize(result) ? result : null;
     },
 
