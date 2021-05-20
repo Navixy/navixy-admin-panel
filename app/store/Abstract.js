@@ -132,11 +132,10 @@ Ext.define('NavixyPanel.store.Abstract', {
     loadRecordDep: function (record, fn, scope, loadAssociations) {
         var associations = record.getAssociations && record.getAssociations(typeof loadAssociations !== "undefined" ? loadAssociations : true),
             aCnt = associations && Ext.Object.getSize(associations);
-
+        
         if (aCnt) {
             Ext.iterate(associations, function (storeName, depId) {
                 var associationStore = Ext.getStore(storeName);
-
                 if (associationStore && associationStore.loadRecord) {
                     associationStore.loadRecord(depId, function (aRecord) {
                         record.setAssociation(storeName, aRecord);
@@ -144,7 +143,7 @@ Ext.define('NavixyPanel.store.Abstract', {
                             fn.call(scope, record);
                         }
                     }, this, false, function () {
-                        if (--aCnt === 0) {
+                        if (--aCnt === 0) {  
                             fn.call(scope, record);
                         }
                     });
@@ -155,7 +154,7 @@ Ext.define('NavixyPanel.store.Abstract', {
                 }
             }, this);
         } else {
-            if (record.resetAssociations) {
+            if (record.resetAssociations && record.associationsData.length) {
                 record.resetAssociations()
             }
             fn.call(scope, record);
