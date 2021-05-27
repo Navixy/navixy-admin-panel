@@ -25,6 +25,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
         cancel: "cancel"
     },
     acceptFormats: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, .csv',
+    filesize: 10485760, //Bytes
 
     initComponent: function () {
         this.locale = _l.get('users_import_message_box');
@@ -114,7 +115,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                     type: "vbox",
                     align: "stretch"
                 },
-                hidden: true,
+                hidden: false,
                 items: [
                     {
                         xtype: "component",
@@ -135,7 +136,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                 items: [
                     {
                         xtype: "component",
-                        baseCls: "red-text text-center",
+                        baseCls: "orange-text text-center",
                         role: "error-text",
                         margin: "0 0 3 0"
                     }
@@ -147,9 +148,11 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     },
 
     validateFile: function(field, value) {
-        var hasErrors = false;
+        this.getSuccessContainer().hide();
+        this.getErrorsContainer().hide();
         var form = this.getForm();
-        form.isValid() && this.down('button[action=upload]').setDisabled(hasErrors);
+        // here will be additional validations.
+        form.isValid() && this.down('button[action=upload]').setDisabled(false);
     },
 
     getForm: function () {
@@ -180,6 +183,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     onImportSuccess: function () {
         this.getSuccessContainer().show();
         this.getSuccessContainer().down("component[role=success-text]").update(this.locale.get('success_msg'));
+        Ext.getStore('Users').load();
     },
 
     getSuccessContainer: function() {
@@ -189,16 +193,18 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     onImportFailure: function (response) {
         var formats = this.acceptFormats
             rowError = response.row_number,
-            status_code = response.status.code,
             errCode = response.status.code;
+
+        var errTitle = errCode ? this.locale.get('errors.codes')[errCode] : this.locale.get('errors.codes')[6]
         var errDescription = rowError ? 
-            this.locale.get('errors.row_number') + rowError + ': ' + this.locale.get('errors.codes')[errCode] 
+            ' (' +this.locale.get('errors.row_number') + rowError + ')'
             : '';
-        
+        var errMessage = errTitle + errDescription;
+
         this.down("container[role=form]").down("filefield").fileInputEl.set({
             accept: formats
         });
-        this.showUploadError(errDescription);
+        this.showUploadError(errMessage);
         
     },
 
@@ -206,8 +212,9 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
         return this.down("container[role=upload-errors]");
     },
 
-    showUploadError: function (errDescription) {
+    showUploadError: function (errMessage) {
         this.getErrorsContainer().show();
-        this.getErrorsContainer().down("component[role=error-text]").update(this.locale.get('errors.msg') + ' ' + errDescription);
+        this.getErrorsContainer().down("component[role=error-text]").update(this.locale.get('errors.msg') + ' ' + errMessage);
+        this.down('button[action=upload]').setDisabled(true);
     }
 });

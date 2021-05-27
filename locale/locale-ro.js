@@ -366,7 +366,7 @@ Ext.define('Locale.locale-ro',{
             "password_repeat": "Repetare parolă",
             "password_mismatched": "Passwords do not match",
             "language": "Default language",
-            "time_zone": "Time Zone",
+            "time_zone": "Time zone",
             "save_btn": "Create User",
             "clear_btn": "Clear form",
             "copy_address": "Copy from address"

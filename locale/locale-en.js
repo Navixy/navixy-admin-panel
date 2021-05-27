@@ -208,10 +208,13 @@ Ext.define("Locale.locale-en", {
         file_params: "XLSX, CSV file format; max size 10 Mb",
         errors: {
             msg: "File import error.",
-            row_number: "At line ",
+            row_number: "line ",
             codes: {
+                1: "Database error",
+                6: "Unexpected error",
                 7: "Please check that row has correct values.",
                 206: "This email already in use",
+                233: "Empty import file"
             }
         }
     },
@@ -465,7 +468,7 @@ Ext.define("Locale.locale-en", {
             "password_repeat": "Repeat password",
             "password_mismatched": "Passwords do not match",
             "language": "Default language",
-            "time_zone": "Time Zone",
+            "time_zone": "Time zone",
             "save_btn": "Create User",
             "clear_btn": "Reset form",
             "copy_address": "Copy from address"
