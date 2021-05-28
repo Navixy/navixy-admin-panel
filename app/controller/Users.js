@@ -148,8 +148,12 @@ Ext.define('NavixyPanel.controller.Users', {
         };
     },
 
-    refreshUsersStore: function () {
-        this.getUsersList().store.loadPage(1);
+    refreshUsersStore: function (resetPaging) {
+        if (resetPaging) {
+            this.getUsersList().store.loadPage(1);
+        } else {
+            this.getUsersList().store.load();
+        }
     },
 
     registerMenu: function (config) {
@@ -190,6 +194,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 resize: this.showListTutorial
             }
         });
+        this.refreshUsersStore();
     },
 
     showListTutorial: function () {
@@ -401,10 +406,16 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleImportBtnClick: function () {
-        Ext.create('Ext.UsersImportWindow', {
+        var importPopup = Ext.create('Ext.UsersImportWindow', {
             title: _l.get('users_import_message_box.title'),
             msg: _l.get("users_import_message_box.message"),
-        }).show();
+            
+        })
+        importPopup.show();
+        importPopup.on({
+            import_successful: this.refreshUsersStore,
+            scope: this,
+        })
     },
 
     handleUserCreateSubmit: function (cmp, formValues) {

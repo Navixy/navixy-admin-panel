@@ -154,6 +154,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
             hasSelection: true,
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
+        this.refreshTrackersStore();
     },
 
     handleTrackerEdit: function (trackerRecord) {
@@ -835,8 +836,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
     },
 
     onClonesFilterChange: function (modeId) {
-        Ext.state.Manager.set('TrackersCloneFilter', modeId)
-        this.refreshTrackersStore(true)
+        Ext.state.Manager.set('TrackersCloneFilter', modeId);
+        this.refreshTrackersStore(true);
     },
 
     refreshTrackersStore: function (resetPaging) {

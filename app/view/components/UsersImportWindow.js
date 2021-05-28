@@ -183,7 +183,8 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     onImportSuccess: function () {
         this.getSuccessContainer().show();
         this.getSuccessContainer().down("component[role=success-text]").update(this.locale.get('success_msg'));
-        Ext.getStore('Users').load();
+        this.down('button[action=upload]').setDisabled(true);
+        this.fireEvent('import_successful');
     },
 
     getSuccessContainer: function() {
@@ -194,8 +195,11 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
         var formats = this.acceptFormats
             rowError = response.row_number,
             errCode = response.status.code;
-
-        var errTitle = errCode ? this.locale.get('errors.codes')[errCode] : this.locale.get('errors.codes')[6]
+    
+        var errTitle = this.locale.get('errors.codes')[errCode] ?
+            this.locale.get('errors.codes')[errCode]
+            : this.locale.get('errors.codes')[6];
+        
         var errDescription = rowError ? 
             ' (' +this.locale.get('errors.row_number') + rowError + ')'
             : '';

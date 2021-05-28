@@ -214,7 +214,8 @@ Ext.define("Locale.locale-en", {
                 6: "Unexpected error",
                 7: "Please check that row has correct values.",
                 206: "This email already in use",
-                233: "Empty import file"
+                233: "Empty import file",
+                234: "Invalid data format"
             }
         }
     },
