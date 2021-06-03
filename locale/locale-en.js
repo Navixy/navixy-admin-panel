@@ -216,6 +216,7 @@ Ext.define("Locale.locale-en", {
                 206: "This email already in use",
                 233: "Empty import file",
                 234: "Invalid data format",
+                268: "Import is limited by 10,000 records max",
                 273: "Email is dublicated",
                 274: "Empty import file"
             }
