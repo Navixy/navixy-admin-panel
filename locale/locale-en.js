@@ -204,7 +204,7 @@ Ext.define("Locale.locale-en", {
         submit: "Upload",
         cancel: "Cancel",
         process_msg: "Loading",
-        success_msg: "File has been successfully imported",
+        success_msg: "File has been successfully uploaded. Total imported users: ",
         file_params: "XLSX, CSV file format; max size 10 Mb",
         errors: {
             msg: "File import error.",
@@ -215,7 +215,9 @@ Ext.define("Locale.locale-en", {
                 7: "Please check that row has correct values.",
                 206: "This email already in use",
                 233: "Empty import file",
-                234: "Invalid data format"
+                234: "Invalid data format",
+                273: "Email is dublicated",
+                274: "Empty import file"
             }
         }
     },

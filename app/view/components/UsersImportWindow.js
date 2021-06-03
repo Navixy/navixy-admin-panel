@@ -167,11 +167,11 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                 {
                     waitMsg: this.locale.get('process_msg'),
                     scope: this,
-                    success: function (a, actions) {
-                        this.onImportSuccess();
+                    success: function (a, response) {
+                        this.onImportSuccess(response.result);
                     },
-                    failure: function (a, actions) {
-                        this.onImportFailure(actions.result);
+                    failure: function (a, response) {
+                        this.onImportFailure(response.result);
                     }
                 }
             );
@@ -180,9 +180,10 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
         }
     },
 
-    onImportSuccess: function () {
+    onImportSuccess: function (result) {
+        var successMsg = this.locale.get('success_msg') + result.total;
         this.getSuccessContainer().show();
-        this.getSuccessContainer().down("component[role=success-text]").update(this.locale.get('success_msg'));
+        this.getSuccessContainer().down("component[role=success-text]").update(successMsg);
         this.down('button[action=upload]').setDisabled(true);
         this.fireEvent('import_successful');
     },

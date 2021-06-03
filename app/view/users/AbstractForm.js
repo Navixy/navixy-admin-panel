@@ -230,7 +230,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.post_index'),
                 allowBlank: true,
                 name: 'post_index',
-                maxLength: 30,
+                maxLength: 10,
                 minLength: 1
             }
 
