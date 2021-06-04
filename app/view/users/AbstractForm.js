@@ -224,13 +224,13 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 name: 'post_street_address',
                 allowBlank: true,
                 minLength: 1,
-                maxLength: 100
+                maxLength: 200
             },
             {
                 fieldLabel: _l.get('users.fields.post_index'),
                 allowBlank: true,
                 name: 'post_index',
-                maxLength: 30,
+                maxLength: 10,
                 minLength: 1
             }
 
@@ -255,7 +255,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.legal_name'),
                     name: 'legal_name',
                     minLength: 1,
-                    maxLength: 100
+                    maxLength: 255
                 },
                 {
                     fieldLabel: _l.get('users.fields.tin'),
@@ -330,14 +330,14 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                     fieldLabel: _l.get('users.fields.registered_street_address'),
                     name: 'registered_street_address',
                     minLength: 1,
-                    maxLength: 100
+                    maxLength: 200
                 },
                 {
                     fieldLabel: _l.get('users.fields.registered_index'),
                     name: 'registered_index',
                     maxLength: 30,
                     minLength: 1,
-                    maxLength: 30,
+                    maxLength: 10,
                     allowBlank: true
                 }
             ]

@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
             if (typeof this.store === 'string') {
                 this.store = Ext.getStore(this.store);
             }
-
+            this.value = Ext.getStore('Dealer').first().get('default_user_time_zone');
             this.callParent(arguments);
         }
     }

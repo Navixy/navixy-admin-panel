@@ -25,6 +25,7 @@ Ext.define('NavixyPanel.store.Dealer', {
         "store_period",
         "allow_branding",
         "features",
+        "default_user_time_zone",
         {
             name: 'active_amount_own',
             type: 'number'

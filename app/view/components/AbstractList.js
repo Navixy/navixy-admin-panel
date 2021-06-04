@@ -31,6 +31,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     disableSelection: true,
 
     createBtn: false,
+    importBtn: false,
     hasEdit: false,
     showEmpty: true,
     searchTitle: null,
@@ -50,8 +51,13 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
         var defaultTexts = {
             editToolTip: _l.get('list.edit_tool'),
+
             createBtnRole: 'create-btn',
             createBtnText: _l.get('list.create_btn_text'),
+
+            importBtnRole: 'import-btn',
+            importBtnText: _l.get('list.import_btn_text'),
+
             emptyData: _l.get('list.empty_text'),
             panelTitle: null,
 
@@ -245,6 +251,15 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 iconCls: 'add-button',
                 role: this.texts.createBtnRole,
                 text: this.texts.createBtnText
+            });
+        }
+        if (this.importBtn) {
+            barConfig.items.push({
+                xtype: 'button',
+                iconCls: 'add-button',
+                role: this.texts.importBtnRole,
+                text: this.texts.importBtnText,
+                margin: '0 0 0 10'
             });
         }
         barConfig.items.push('->');

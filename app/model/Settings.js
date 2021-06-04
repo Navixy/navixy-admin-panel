@@ -208,6 +208,13 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         },
         {
+            name: 'default_user_time_zone',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value);
+            }
+        },
+        {
             name: 'translit',
             type: 'string',
             convert: function (value, record) {
