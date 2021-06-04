@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.view.users.List', {
     getTexts: function () {
         return {
             createBtnText: _l.get('users.list.create_btn_text'),
+            importBtnText: _l.get('users.list.import_btn_text'),
             emptyData: _l.get('users.list.empty_text')
         };
     },
@@ -34,9 +35,8 @@ Ext.define('NavixyPanel.view.users.List', {
 
     getTopBar: function () {
         var toolbar = this.callParent(arguments);
-
         if (toolbar) {
-            Ext.Array.insert(toolbar.items, 1, [Ext.apply({
+            Ext.Array.insert(toolbar.items, 2, [Ext.apply({
                 xtype: 'checkbox',
                 boxLabel: _l.get('users.show_only_active_users'),
                 name: 'only_active',

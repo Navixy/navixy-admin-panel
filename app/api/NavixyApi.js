@@ -14,7 +14,8 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         var url = this.getRequestUrl({
             action: config.action,
             handler: config.handler
-        }), params = Ext.apply({
+        }), 
+        params = Ext.apply({
             hash: this.authKey,
             redirect_target: this.getUploadHandlerUrl()
         }, config.params || {});
@@ -24,7 +25,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             waitMsg: config.waitMsg,
             scope: config.scope,
             params: params,
-
             success: config.success || Ext.emptyFn,
             failure: Ext.bind(function (form, action) {
                 try {
@@ -46,7 +46,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     getUploadHandlerUrl: function () {
         var location = window.location.href.split('/');
         location.pop();
-
         location.push(Ext.Loader.getPath('Dev') + '/uploadHandler.html');
         return location.join('/');
     },
@@ -185,6 +184,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'corrupt',
             handler: 'user'
         });
+    },
+
+    uploadImportUsers: function (form, config) {
+        this.uploadFile(form, Ext.apply({
+            action: 'upload',
+            handler: 'user'
+        }, config));
     },
 
     createUserSession: function (config) {

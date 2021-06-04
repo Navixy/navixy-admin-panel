@@ -196,6 +196,32 @@ Ext.define("Locale.locale-en", {
         "no": "No",
         "argeement": "I read the warning and understand that the operation is irreversible"
     },
+    "users_import_message_box": {
+        title: "Import users",
+        message: "Fill out <a href=\"app/resources/users_import_template_en.xlsx\"> the template</a> and upload it",
+        file_input_label: "View",
+        blank_input_label: "Select file",
+        submit: "Upload",
+        cancel: "Cancel",
+        process_msg: "Loading",
+        success_msg: "File has been successfully uploaded. Total imported users: ",
+        file_params: "XLSX, CSV file format; max size 10 Mb",
+        errors: {
+            msg: "File import error.",
+            row_number: "line ",
+            codes: {
+                1: "Database error",
+                6: "Unexpected error",
+                7: "Please check that row has correct values.",
+                206: "This email already in use",
+                233: "Empty import file",
+                234: "Invalid data format",
+                268: "Import is limited by 10,000 records max",
+                273: "Email is dublicated",
+                274: "Empty import file"
+            }
+        }
+    },
     "units_combination_list": {
         "days": "days|day|days",
         "hours": "hours|hour|hours",
@@ -446,7 +472,7 @@ Ext.define("Locale.locale-en", {
             "password_repeat": "Repeat password",
             "password_mismatched": "Passwords do not match",
             "language": "Default language",
-            "time_zone": "Time Zone",
+            "time_zone": "Time zone",
             "save_btn": "Create User",
             "clear_btn": "Reset form",
             "copy_address": "Copy from address"
@@ -520,6 +546,7 @@ Ext.define("Locale.locale-en", {
         },
         "list": {
             "create_btn_text": "Create new user",
+            "import_btn_text": "Import users",
             "empty_text": "No users found"
         },
         "session_alert": {
