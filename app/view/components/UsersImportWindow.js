@@ -79,6 +79,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                         allowBlank: false,
                         anchor: '100%',
                         buttonText: this.locale.get('file_input_label'),
+                        buttonMargin: 10,
                         emptyText: this.locale.get('blank_input_label'),
                         listeners: {
                             afterrender: function (field) {
