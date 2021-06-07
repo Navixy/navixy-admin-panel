@@ -12,9 +12,9 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     modal: true,
     resizable: false,
     draggable: false,
-    width: 500,
+    width: 480,
     buttonAlign: 'center',
-    bodyPadding: '10 25 10',
+    bodyPadding: '10 45',
     msg: '',
     layout: {
         type: 'vbox',
