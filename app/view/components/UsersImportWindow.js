@@ -12,9 +12,9 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
     modal: true,
     resizable: false,
     draggable: false,
-    width: 480,
+    width: 500,
     buttonAlign: 'center',
-    bodyPadding: '10 45',
+    bodyPadding: '10 25',
     msg: '',
     layout: {
         type: 'vbox',
@@ -73,12 +73,13 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                     {
                         xtype: 'filefield',
                         name: 'file',
-                        labelWidth: 50,
-                        maxWidth: 400,
+                        labelWidth: 100,
+                        maxWidth: 500,
                         msgTarget: 'side',
                         allowBlank: false,
                         anchor: '100%',
                         buttonText: this.locale.get('file_input_label'),
+                        buttonMargin: 10,
                         emptyText: this.locale.get('blank_input_label'),
                         listeners: {
                             afterrender: function (field) {
@@ -100,7 +101,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
             {
                 xtype: 'component',
                 tpl: [
-                    '<div class="message-box">',
+                    '<div class="message-box no-btm-margin">',
                     '<div class="x-message">{msg}</div>',
                     '</div>'
                 ],
@@ -115,11 +116,11 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                     type: "vbox",
                     align: "stretch"
                 },
-                hidden: false,
+                hidden: true,
                 items: [
                     {
                         xtype: "component",
-                        baseCls: "green-text text-center",
+                        baseCls: "result-message green-text text-center",
                         role: "success-text",
                         margin: "0 0 3 0"
                     }
@@ -136,7 +137,7 @@ Ext.define('NavixyPanel.view.components.UsersImportWindow', {
                 items: [
                     {
                         xtype: "component",
-                        baseCls: "orange-text text-center",
+                        baseCls: "result-message orange-text text-center",
                         role: "error-text",
                         margin: "0 0 3 0"
                     }

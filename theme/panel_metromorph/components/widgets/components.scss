@@ -149,6 +149,10 @@
         font: normal 14px "Open Sans", helvetica, arial, verdana, sans-serif;
         color: white;
 
+        &.no-btm-margin {
+            margin-bottom: 0;
+        }
+
         .x-message-box-warning {
             float: left;
             background-repeat: no-repeat;
@@ -162,6 +166,10 @@
             text-align: center;
             margin-left: 30px;
         }
+    }
+
+    .result-message {
+        padding-top: 10px;
     }
 
     .x-form-item, .x-form-field {
