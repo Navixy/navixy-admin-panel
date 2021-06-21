@@ -542,7 +542,21 @@ Ext.define("Locale.locale-en", {
                 "transactions": "Transactions",
                 "create_transaction": "Change balance",
                 "wrong_config": "Check PConfig.js -> links -> appUrlTpl",
-                "corrupt": "Remove user"
+                "corrupt": "Remove user",
+                "unblock_user": "Unblock user",
+                "block_user": "Block user",
+            },
+            "user_blocked": "Blocked"
+        },
+        "unblock":{
+            "alert": {
+                "title": "Unblock user?"
+            }
+        },
+        "block":{
+            "alert": {
+                "title": "Block user",
+                "text": "For block user enter manager's phone number"
             }
         },
         "corrupt": {

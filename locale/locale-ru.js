@@ -428,7 +428,7 @@ Ext.define("Locale.locale-ru", {
     "index": { "menu_text": "Главная" },
     "users": {
         "menu_text": "Пользователи",
-        show_only_active_users: "Отображать только активных",
+        "show_only_active_users": "Отображать только активных",
         "create_form": {
             "title": "Новый пользователь",
             "main_fields": "Основные данные",
@@ -532,7 +532,21 @@ Ext.define("Locale.locale-ru", {
                 "transactions": "Транзакции",
                 "create_transaction": "Изменить баланс",
                 "wrong_config": "Проверьте PConfig.js -> links -> appUrlTpl",
-                "corrupt": "Удалить пользователя"
+                "corrupt": "Удалить пользователя",
+                "unblock_user": "Разблокировать пользователя",
+                "block_user": "Заблокировать пользователя",
+            },
+            "user_blocked": "Заблокирован"
+        },
+        "unblock":{
+            "alert": {
+                "title": "Разблокировать пользователя?"
+            }
+        },
+        "block":{
+            "alert": {
+                "title": "Заблокировать пользователя?",
+                "text": "Для блокировки пользователя укажите контактный телефон менеджера"
             }
         },
         "corrupt": {

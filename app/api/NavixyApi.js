@@ -133,11 +133,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             },
             success: function (result, params, response) {
                 //Hoook to extract discount
+                // Hook to extract block
                 callback.call(scope, Ext.apply(result.value, {
                     discount: result.discount.value,
                     discount_min_trackers: result.discount.min_trackers,
                     discount_end_date: result.discount.end_date,
-                    discount_strategy: result.discount.strategy
+                    discount_strategy: result.discount.strategy,
+                    block: (result.block_parameters && result.block_parameters.manager_phone) || false
                 }), params, response)
             },
             failure: failure,
@@ -182,6 +184,20 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     removeUser: function (config) {
         this.requestWithOptions(config, {
             action: 'corrupt',
+            handler: 'user'
+        });
+    },
+
+    blockUser: function (config) {
+        this.requestWithOptions(config, {
+            action: 'block',
+            handler: 'user'
+        });
+    },
+
+    unblockUser: function (config) {
+        this.requestWithOptions(config, {
+            action: 'unblock',
             handler: 'user'
         });
     },

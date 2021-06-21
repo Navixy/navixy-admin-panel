@@ -12,6 +12,7 @@ Ext.define('NavixyPanel.controller.Users', {
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
         'components.MessageBoxWithAlert',
+        'NavixyPanel.view.widgets.fields.PhoneField',
 
         'users.TransactionsList',
         'users.TransactionAdd',
@@ -86,6 +87,8 @@ Ext.define('NavixyPanel.controller.Users', {
             'usercard': {
                 useredit: this.handleUserEditAction,
                 usercorrupt: this.handleUserCorruptAction,
+                userblock: this.handleUserBlockAction,
+                userunblock: this.handleUserUnblockAction,
                 toggleactivationpanel: this.toggleActivationPanel
             },
             'usercard [role="tracker-monitoring-link"]': {
@@ -345,6 +348,64 @@ Ext.define('NavixyPanel.controller.Users', {
                 window.close();
             }, this)
         }).show();
+    },
+
+    handleUserBlockAction: function (record) {
+        Ext.Msg.show({
+            // title: _l.get('users.block.alert.title'),
+            msg: _l.get('users.block.alert.text'),
+            width: 300,
+            prompt: {
+                width: 300
+            },
+            closable: false,
+            fn: function (btn, value) {
+                if (btn === 'ok' && !Ext.isEmpty(value)) {
+                    Ext.API.blockUser({
+                        params: {
+                            user_id: record.getId(),
+                            manager_phone: value
+                        },
+                        callback: function () {
+                            Ext.Nav.shift('user/' + record.getId());
+                        },
+                        failure: function () {
+                            Ext.Nav.shift('user/' + record.getId());
+                        },
+                        scope: this
+                    })
+                }
+            },
+            scope: this,
+            buttons: Ext.Msg.OKCANCEL
+        });
+    },
+
+    handleUserUnblockAction: function (record) {
+        Ext.Msg.show({
+            // title: _l.get('users.unblock.alert.title'),
+            msg: _l.get('users.unblock.alert.title'),
+            closable: false,
+            fn: function (btn) {
+                if (btn === 'ok') {
+                    Ext.API.unblockUser({
+                        params: {
+                            user_id: record.getId()
+                        },
+                        callback: function () {
+                            console.log('user/' + record.getId())
+                            Ext.Nav.shift('user/' + record.getId());
+                        },
+                        failure: function () {
+                            Ext.Nav.shift('user/' + record.getId());
+                        },
+                        scope: this
+                    })
+                }
+            },
+            scope: this,
+            buttons: Ext.Msg.OKCANCEL
+        });
     },
 
     onUserRemoved: function (record) {

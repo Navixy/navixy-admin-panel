@@ -117,7 +117,6 @@ Ext.define('NavixyPanel.model.User', {
             name: 'verified',
             type: 'boolean'
         },
-
         {
             name: 'trackers_count',
             type: 'number'
@@ -138,6 +137,9 @@ Ext.define('NavixyPanel.model.User', {
         {
             name: 'comment',
             type: 'string'
+        },
+        {
+            name: 'block'
         }
     ],
 

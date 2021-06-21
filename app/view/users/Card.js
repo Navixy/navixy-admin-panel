@@ -134,6 +134,36 @@ Ext.define('NavixyPanel.view.users.Card', {
             });
         }
 
+        if (Ext.checkPermission('users', 'corrupt') && this.hasFsm()) {
+            var user = this.getRecordData(),
+                block = user.block;
+
+            result.unshift(
+                block !== false ? {
+                    html: '<a>' + _l.get('users.card.links.unblock_user') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireUnblockUser,
+                            scope: me
+                        }
+                    }
+                }
+                : {
+                    html: '<a>' + _l.get('users.card.links.block_user') + '</a>',
+                    listeners: {
+                        click: {
+                            fn: me.fireBlockUser,
+                            scope: me
+                        }
+                    }
+                },
+                {
+                    xtype: 'component',
+                    height: 10
+                }
+            );
+        }
+
         return result;
     },
 
@@ -168,7 +198,12 @@ Ext.define('NavixyPanel.view.users.Card', {
 
         return {
             title: recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
-            title_add: recordData.legal_name && fio,
+            title_error: this.hasFsm()
+                ? recordData.block !== false && _l.get('users.card.user_blocked')
+                : false,
+            title_add: this.hasFsm()
+                ? recordData.block !== false && recordData.block
+                : recordData.legal_name && fio,
             main_cls: 'card-header-inner',
             table_cls: 'header-table',
             fields: [
@@ -318,6 +353,14 @@ Ext.define('NavixyPanel.view.users.Card', {
         };
     },
 
+    hasFsm: function () {
+        var dealer_store = Ext.getStore('Dealer'),
+            dealer = dealer_store && dealer_store.first();
+
+        return dealer_store.hasFsm()
+    },
+
+
     getUserId: function () {
         return this.record.getId();
     },
@@ -340,6 +383,15 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     fireCorruptUser: function () {
         this.fireEvent('usercorrupt', this.record);
+    },
+
+
+    fireBlockUser: function () {
+        this.fireEvent('userblock', this.record);
+    },
+
+    fireUnblockUser: function () {
+        this.fireEvent('userunblock', this.record);
     },
 
     toggleActivationPanel: function () {
