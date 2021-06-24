@@ -266,6 +266,10 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                     value:  Util.formatDate(recordData.creation_date)
                 },
                 {
+                    title: _l.get('trackers.fields.last_connection_date'),
+                    value: Util.formatDateFull(recordData.last_connection),
+                },
+                {
                     title: _l.get('trackers.fields.model'),
                     value: recordData.model_name
                 },

@@ -22,6 +22,8 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffSelect', {
     deviceType: null,
     defaultValue: null,
     selectRecord: null,
+    emptyText: null,
+    emptyValue: null,
 
     valueField: 'id',
 
@@ -35,7 +37,9 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffSelect', {
 
     initComponent: function () {
 
-        this.emptyText = _l.get('tariffs.combo_empty');
+        if (!this.emptyText) {
+            this.emptyText = _l.get('tariffs.combo_empty');
+        }
 
         this.callParent(arguments);
     },
@@ -107,6 +111,7 @@ Ext.define('NavixyPanel.view.widgets.fields.TariffSelect', {
         if (!this.window) {
             this.window = Ext.widget('tariffselectwindow', {
                 deviceType: this.deviceType,
+                emptyValue: this.emptyValue,
                 listeners: {
                     select: this.onSelect,
                     destroy: function () {

@@ -11,9 +11,10 @@ Ext.define('NavixyPanel.controller.Users', {
     views: [
         'widgets.ToolColumn',
         'widgets.QtipTutorial',
+        'components.MessageBoxWithInputs',
+        'components.UsersImportWindow',
         'components.MessageBoxWithAlert',
         'NavixyPanel.view.widgets.fields.PhoneField',
-
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -71,6 +72,9 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             'userslist button[role="create-btn"]': {
                 click: this.handleUserCreateAction
+            },
+            'userslist button[role="import-btn"]': {
+                click: this.handleImportBtnClick
             },
             'usercreate': {
                 formsubmit: this.handleUserCreateSubmit
@@ -148,8 +152,12 @@ Ext.define('NavixyPanel.controller.Users', {
         };
     },
 
-    refreshUsersStore: function () {
-        this.getUsersList().store.loadPage(1);
+    refreshUsersStore: function (resetPaging) {
+        if (resetPaging) {
+            this.getUsersList().store.loadPage(1);
+        } else {
+            this.getUsersList().store.load();
+        }
     },
 
     registerMenu: function (config) {
@@ -181,6 +189,7 @@ Ext.define('NavixyPanel.controller.Users', {
         this.fireContent({
             xtype: 'userslist',
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
+            importBtn: Ext.checkPermission(this.getModuleName(), 'create'),
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update'),
             listeners: {
                 firstload: this.showListTutorial,
@@ -189,6 +198,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 resize: this.showListTutorial
             }
         });
+        this.refreshUsersStore();
     },
 
     showListTutorial: function () {
@@ -328,24 +338,37 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCorruptAction: function (record) {
-        Ext.create('Ext.MessageBoxWithAlert', {
+        Ext.create('Ext.MessageBoxWithInputs', {
             title: _l.get('users.corrupt.alert.title'),
             msg: _l.get('users.corrupt.alert.text'),
-            agreeAction: Ext.bind(function (window) {
-                Ext.API.removeUser({
-                    params: {
-                        user_id: record.getId(),
-                        login: record.get('login')
-                    },
-                    callback: function () {
-                        this.onUserRemoved(record);
-                    },
-                    failure: function () {
-                        this.onUserRemovedFailure(record, arguments[0]);
-                    },
-                    scope: this
-                });
-                window.close();
+            inputs: [
+                {
+                    id: 'user_login_confirmation',
+                    type: 'textfield',
+                    label: _l.get('users.corrupt.alert.confirm_login_label'),
+                    required: true
+                }
+            ],
+            agreeAction: Ext.bind(function (win) {
+                var confirmedLoginInput = Ext.getCmp('user_login_confirmation');
+                if (record.get('login') === confirmedLoginInput.getValue()) {
+                    Ext.API.removeUser({
+                        params: {
+                            user_id: record.getId(),
+                            login: record.get('login')
+                        },
+                        callback: function () {
+                            this.onUserRemoved(record);
+                        },
+                        failure: function () {
+                            this.onUserRemovedFailure(record, arguments[0]);
+                        },
+                        scope: this
+                    });
+                    win.close();
+                } else {
+                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('users.corrupt.alert.confirm_login_error'))
+                }
             }, this)
         }).show();
     },
@@ -441,19 +464,33 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCreateAction: function () {
-
         Ext.Nav.shift('user/create');
+    },
+
+    handleImportBtnClick: function () {
+        var importPopup = Ext.create('Ext.UsersImportWindow', {
+            title: _l.get('users_import_message_box.title'),
+            msg: _l.get("users_import_message_box.message"),
+            
+        })
+        importPopup.show();
+        importPopup.on({
+            import_successful: this.refreshUsersStore,
+            scope: this,
+        })
     },
 
     handleUserCreateSubmit: function (cmp, formValues) {
         var record = Ext.create('NavixyPanel.model.User', formValues),
             userData = Ext.apply({}, record.getData()),
-            comment = userData.comment;
+            comment = userData.comment,
+            default_tariff_id = userData.default_tariff_id == 0 ? null : userData.default_tariff_id;
 
         delete userData.id;
         delete userData.comment;
         delete userData.dealer_id;
         delete userData.verified;
+        delete userData.default_tariff_id;
 
         Ext.API.createUser({
             params: {
@@ -467,7 +504,8 @@ Ext.define('NavixyPanel.controller.Users', {
                     end_date: userData.discount_end_date || null,
                     strategy: 'no_summing',
                     min_trackers: +userData.discount_min_trackers
-                })
+                }),
+                default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
                 this.afterUserCreate(response);
@@ -499,14 +537,17 @@ Ext.define('NavixyPanel.controller.Users', {
                 end_date: userData.discount_end_date || null,
                 strategy: userData.discount_strategy,
                 min_trackers: +userData.discount_min_trackers
-            };
+            },
+            default_tariff_id = userData.default_tariff_id == 0 ? null : userData.default_tariff_id;
 
         delete userData.verified;
+        delete userData.default_tariff_id;
 
         Ext.API.updateUser({
             params: {
                 user: Ext.encode(userData),
                 discount: Ext.encode(discount),
+                default_tariff_id: Ext.encode(default_tariff_id),
                 comment: userData.comment
             },
             callback: function (response) {
@@ -520,8 +561,15 @@ Ext.define('NavixyPanel.controller.Users', {
     afterUserEdit: function (success, formValues, record) {
         if (success) {
             record.set(formValues);
-            this.getUserEdit().afterSave();
-            this.getUsersList().store.load();
+            var list = this.getUsersList(),
+                form = this.getUserEdit();
+
+            if (form) {
+                form.afterSave();
+            }
+            if (list) {
+                list.store.load();
+            }
         }
     },
 

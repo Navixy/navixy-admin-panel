@@ -318,11 +318,17 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 width: 140
             },
             {
+                text: _l.get('trackers.fields.last_connection_date'),
+                dataIndex: 'last_connection',
+                width: 220
+            },
+            {
                 text: _l.get('trackers.fields.creation_date_short2'),
                 dataIndex: 'creation_date',
                 renderer: Util.formatDate,
                 minWidth: 100,
-                resizable: false
+                resizable: false,
+                hidden: true,
             },
             {
                 text: _l.get('trackers.fields.comment'),

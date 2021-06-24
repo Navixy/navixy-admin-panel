@@ -196,6 +196,32 @@ Ext.define("Locale.locale-en", {
         "no": "No",
         "argeement": "I read the warning and understand that the operation is irreversible"
     },
+    "users_import_message_box": {
+        title: "Import users",
+        message: "Fill out <a href=\"app/resources/users_import_template_en.xlsx\"> the template</a> and upload it",
+        file_input_label: "View",
+        blank_input_label: "Select file",
+        submit: "Upload",
+        cancel: "Cancel",
+        process_msg: "Loading",
+        success_msg: "File has been successfully uploaded. Total imported users: ",
+        file_params: "XLSX, CSV file format; max size 10 Mb",
+        errors: {
+            msg: "File import error.",
+            row_number: "line ",
+            codes: {
+                1: "Database error",
+                6: "Unexpected error",
+                7: "Please check that row has correct values.",
+                206: "This email already in use",
+                233: "Empty import file",
+                234: "Invalid data format",
+                268: "Import is limited by 10,000 records max",
+                273: "Email is dublicated",
+                274: "Empty import file"
+            }
+        }
+    },
     "units_combination_list": {
         "days": "days|day|days",
         "hours": "hours|hour|hours",
@@ -396,7 +422,9 @@ Ext.define("Locale.locale-en", {
         "ves": "Venezuelan bolívar",
         "stn": "São Tomé and Príncipe dobra",
         "mru": "Mauritanian ouguiya",
-        "ugx": "Ugandan shilling"
+        "ugx": "Ugandan shilling",
+        "pgk": "Papua New Guinean kina",
+        "tzs": "Tanzanian Shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -444,7 +472,7 @@ Ext.define("Locale.locale-en", {
             "password_repeat": "Repeat password",
             "password_mismatched": "Passwords do not match",
             "language": "Default language",
-            "time_zone": "Time Zone",
+            "time_zone": "Time zone",
             "save_btn": "Create User",
             "clear_btn": "Reset form",
             "copy_address": "Copy from address"
@@ -501,11 +529,14 @@ Ext.define("Locale.locale-en", {
             "password_mismatched": "Passwords do not match",
             discount: {
                 value: "Discount",
-                min_trackers: "Device limit",
+                min_trackers: "Minimum number of trackers",
                 end_date: "End date",
                 permanent: "Permanent",
                 set_permanent: "Set permanent"
-            }
+            },
+            "default_tariff": "Basic trackers tariff",
+            "default_tariff_hint": "The tariff plan will be applied by default once the user has added a new tracker",
+            "default_tariff_empty": "Not set up"
         },
         "password_form": {
             "title": "Changing password of user",
@@ -515,6 +546,7 @@ Ext.define("Locale.locale-en", {
         },
         "list": {
             "create_btn_text": "Create new user",
+            "import_btn_text": "Import users",
             "empty_text": "No users found"
         },
         "session_alert": {
@@ -562,7 +594,9 @@ Ext.define("Locale.locale-en", {
         "corrupt": {
             "alert": {
                 "title": "Remove user?",
-                "text": "User will be permanently removed from the database. All related trackers, data and sub-users will be lost.<br><br>Are you sure to remove user?"
+                "text": "User will be permanently removed from the database. All related trackers, data and sub-users will be lost.",
+                "confirm_login_label": "Confirm user login",
+                "confirm_login_error": "Incorrect user login"
             },
             "success_msg": "User {0} successfully removed"
         },
@@ -633,6 +667,7 @@ Ext.define("Locale.locale-en", {
             "model": "Model",
             "phone": "Phone",
             "device_id": "Device ID",
+            "last_connection_date": "Last connection (UTC+0)",
             "creation_date": "Tracker activation date",
             "creation_date_short": "Activated",
             "creation_date_short2": "Activated",
@@ -755,7 +790,9 @@ Ext.define("Locale.locale-en", {
                 "title": "Retry activation",
                 "text": "Send activation commands to the device?"
             }
-        }
+        },
+        "confirm_update_owner_1" : "The tracker will be moved to the following account {0} and will be assigned a new tariff {1}",
+        "confirm_update_owner_2" : "The tracker will be moved to the following account {0}, with no changes to its tariff "
     },
     "tariffs": {
         "menu_text": "Plans",
@@ -1771,7 +1808,9 @@ Ext.define("Locale.locale-en", {
         "VES": "{0} Bs.",
         "STN": "{0} Db",
         "MRU": "{0} UM",
-        "UGX": "{0} USh"
+        "UGX": "{0} USh",
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "features": {
         "api": "API",

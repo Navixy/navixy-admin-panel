@@ -27,6 +27,7 @@ module.exports = function (grunt) {
                         'dev/stickerPrint.html',
                         'dev/iccid.png',
                         'app/view/settings/stripe/form.html',
+                        'app/resources/*',
                         'libs/jquery/*',
                         'libs/jquery/*',
                         'libs/inputmask/*',

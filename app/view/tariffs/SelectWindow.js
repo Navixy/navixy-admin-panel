@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectWindow', {
     extend: 'NavixyPanel.view.components.AbstractWindowSelect',
     requires: ['NavixyPanel.view.tariffs.SelectList'],
     alias: 'widget.tariffselectwindow',
-
+    emptyValue: null,
     deviceType: null,
 
     getItems: function () {
@@ -18,6 +18,7 @@ Ext.define('NavixyPanel.view.tariffs.SelectWindow', {
 
         return [{
             xtype: 'tariffselectlist',
+            emptyValue: this.emptyValue,
             filter: filter,
             listeners: {
                 close: this.destroy,

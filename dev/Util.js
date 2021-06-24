@@ -12,6 +12,10 @@ Ext.define('Dev.Util', {
         return date ? Ext.Date.formatISO(date, Ext.util.Format.dateFormat) : ''
     },
 
+    formatDateFull: function (date) {
+        return date ? Ext.Date.formatISO(date, Ext.util.Format.dateFormatFull) : ''
+    },
+
     navixyPermissions: function (action, feature) {
         var permissionStore = NavixyPermissions.default;
         var gisPackage = Ext.getStore('Dealer').getGisPackage();

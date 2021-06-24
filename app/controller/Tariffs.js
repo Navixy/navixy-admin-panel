@@ -138,6 +138,7 @@ Ext.define('NavixyPanel.controller.Tariffs', {
             createBtn: Ext.checkPermission(this.getModuleName(), 'create'),
             hasEdit: Ext.checkPermission(this.getModuleName(), 'update')
         });
+        this.getTariffsList().store.load();
     },
 
     handleTariffCardOld: function (tariffRecord) {
@@ -388,5 +389,6 @@ Ext.define('NavixyPanel.controller.Tariffs', {
         if (Ext.isFunction(callback)) {
             callback.apply(this, args)
         }
-    }
+    },
+
 });

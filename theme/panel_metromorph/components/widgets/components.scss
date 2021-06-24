@@ -149,10 +149,15 @@
         font: normal 14px "Open Sans", helvetica, arial, verdana, sans-serif;
         color: white;
 
+        &.no-btm-margin {
+            margin-bottom: 0;
+        }
+
         .x-message-box-warning {
             float: left;
             background-repeat: no-repeat;
             background-position: center;
+            background-size: 100%;
             width: 30px;
             height: 30px;
         }
@@ -161,6 +166,10 @@
             text-align: center;
             margin-left: 30px;
         }
+    }
+
+    .result-message {
+        padding-top: 10px;
     }
 
     .x-form-item, .x-form-field {
@@ -172,6 +181,36 @@
 
         .x-form-cb-label, .x-form-cb-wrap {
             line-height: 20px;
+        }
+    }
+
+    &.message-box-with-input {
+
+        .x-window-header-text-container {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .x-message-box-warning {
+            width: 40px;
+            height: 40px;
+        }
+
+        .x-message-warning {
+            text-align: left;
+            margin-left: 60px;
+        }
+
+        .x-form-item-label {
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+
+        .x-toolbar-footer {
+            .x-btn:not(.x-disabled):first-of-type {
+                background-color: $gray;
+            }
         }
     }
 }

@@ -139,9 +139,36 @@ Ext.define('NavixyPanel.model.User', {
             type: 'string'
         },
         {
+            name: 'default_tariff_id',
+            type: 'number'
+            }
+        },
+        {
             name: 'block'
         }
     ],
+
+    associationsMap: {
+        'default_tariff_id': 'Tariffs'
+    },
+
+    getAssociations: function (loadAssociations) {
+        var result = {};
+
+        Ext.iterate(this.associationsMap, function (association, associatedStore) {
+            if (!loadAssociations || (Ext.isArray(loadAssociations) && Ext.Array.indexOf(loadAssociations, associatedStore) < 0)) {
+                return true;
+            }
+
+            if (!Ext.isEmpty(this.get(association)) && this.get(association) !== 0) {
+                result[associatedStore] = this.get(association);
+            }
+        }, this);
+
+        return Ext.Object.getSize(result)
+            ? result
+            : null;
+    },
 
     hasTrackerClone: function (sourceId) {
         var trackers = this.getTrackers(),

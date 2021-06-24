@@ -31,6 +31,22 @@ Ext.define('NavixyPanel.view.tariffs.SelectList', {
         }, this);
     },
 
+    initStore: function () {
+
+        var storeName = Ext.isString(this.store)
+            ? this.store
+            : this.store.self.getName();
+
+        if (storeName) {
+            this.store = Ext.getStore(storeName).getClone(this.getStoreConfig());
+            if (this.emptyValue && typeof this.emptyValue == 'object') {
+                this.store.on('load', function () {
+                    this.store.add(this.emptyValue)
+                }, this, {single: true})
+            }
+        }
+    },
+
     getBottomBar: function () {
         var config = this.callParent(arguments);
 

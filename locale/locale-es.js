@@ -339,7 +339,9 @@ Ext.define('Locale.locale-es',{
         "kwd": "Kuwaiti dinar",
         "bdt": "Bangladeshi taka",
         "kes": "Kenyan shilling",
-        "ugx": "Ugandan shilling"
+        "ugx": "Ugandan shilling",
+        "pgk": "Papua New Guinean kina",
+        "tzs": "Tanzanian Shilling"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -514,6 +516,7 @@ Ext.define('Locale.locale-es',{
             "model": "Modelo",
             "phone": "Teléfono",
             "device_id": "id de dispositivo",
+            "last_connection_date": "Última conexión (UTC+0)",
             "creation_date": "Fecha de registro",
             "creation_date_short": "Registrado",
             "creation_date_short2": "Registrado",
@@ -623,7 +626,9 @@ Ext.define('Locale.locale-es',{
         "corrupt": {
             "alert": {
                 "title": "¿Eliminar registro de tracker?",
-                "text": "El dispositivo se eliminará permanentemente de la base de datos, todos los datos - no disponibles! <br><br>Estás seguro que quieres eliminar registro?"
+                "text": "El dispositivo se eliminará permanentemente de la base de datos, todos los datos - no disponibles!",
+                "confirm_login_label": "Confirmar el inicio de sesión del usuario",
+                "confirm_login_error": "Inicio de sesión de usuario incorrecto"
             },
             "success_msg": "Dispositivo {0} quitado con éxito"
         }
@@ -1481,7 +1486,9 @@ Ext.define('Locale.locale-es',{
         "KWD": "KD {0}",
         "BDT": "{0} ৳",
         "KES": "{0} KSh",
-        "UGX": "{0} USh"
+        "UGX": "{0} USh",
+        "PGK": "{0} K",
+        "TZS": "{0} TSh"
     },
     "features": {
         "api": "API",

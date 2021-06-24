@@ -959,6 +959,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'type'
             },
             {
+                xtype: 'timezoneselect',
+                fieldLabel: _l.get('users.create_form.time_zone'),
+                labelSeparator: Util.getRequiredSeparator(),
+                allowBlank: false,
+                name: 'default_user_time_zone'
+            },
+            {
                 name: 'translit',
                 xtype: 'checkbox',
                 role: 'checkbox',
