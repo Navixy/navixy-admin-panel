@@ -134,7 +134,7 @@ Ext.define('NavixyPanel.view.users.Card', {
             });
         }
 
-        if (Ext.checkPermission('users', 'corrupt') && this.hasFsm()) {
+        if (Ext.checkPermission('users', 'corrupt') && this.hasB2f()) {
             var user = this.getRecordData(),
                 block = user.block;
 
@@ -199,10 +199,10 @@ Ext.define('NavixyPanel.view.users.Card', {
 
         return {
             title: recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name,
-            title_error: this.hasFsm()
+            title_error: this.hasB2f()
                 ? recordData.block !== false && _l.get('users.card.user_blocked')
                 : false,
-            title_add: this.hasFsm()
+            title_add: this.hasB2f()
                 ? recordData.block !== false && recordData.block
                 : recordData.legal_name && fio,
             main_cls: 'card-header-inner',
@@ -362,11 +362,11 @@ Ext.define('NavixyPanel.view.users.Card', {
         };
     },
 
-    hasFsm: function () {
+    hasB2f: function () {
         var dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first();
 
-        return dealer_store.hasFsm()
+        return dealer_store.hasB2f()
     },
 
 

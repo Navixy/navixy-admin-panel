@@ -166,10 +166,14 @@ Ext.define('NavixyPanel.store.Dealer', {
         return this.getFeature('fsm');
     },
 
+    hasB2f: function () {
+        return this.getFeature('b2f');
+    },
+
     getFeature: function (feature_name) {
         var record = this.first(),
             features = record && record.get("features");
-        
+
         return Ext.Array.contains(features, feature_name);
     }
 })

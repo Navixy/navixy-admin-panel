@@ -582,13 +582,17 @@ Ext.define("Locale.locale-en", {
         },
         "unblock":{
             "alert": {
-                "title": "Unblock user?"
+                "title": "Unblock user # {0}: {1}",
+                "text": "After unlocking, the user will again have access to all the functions of the service. Unblock user?",
+                "btn_ok": "Unblock"
             }
         },
         "block":{
             "alert": {
-                "title": "Block user",
-                "text": "For block user enter manager's phone number"
+                "title": "Blocking user # {0}: {1}",
+                "text": "After blocking, the user will not be able to use the service. He will not be able to manage employees or create tasks for them. The tracks of his employees will not be recorded and they will not be able to complete tasks. The user will see a message offering to contact the manager. Block user?",
+                "label": "For block user enter manager's phone number",
+                "btn_ok": "Block"
             }
         },
         "corrupt": {

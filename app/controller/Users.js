@@ -22,7 +22,8 @@ Ext.define('NavixyPanel.controller.Users', {
         'users.Create',
         'users.Edit',
         'users.Card',
-        'users.SelectWindow'
+        'users.SelectWindow',
+        'NavixyPanel.view.components.CustomInputsPrompt'
     ],
 
     requires: ['NavixyPanel.view.users.ActivationPanel'],
@@ -374,40 +375,56 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserBlockAction: function (record) {
-        Ext.Msg.show({
-            // title: _l.get('users.block.alert.title'),
+        var recordData = record.getData(),
+            me = this;
+
+        Ext.create('NavixyPanel.view.components.CustomInputsPrompt', {
+            title: Ext.String.format(_l.get('users.block.alert.title'), recordData.id, recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name),
             msg: _l.get('users.block.alert.text'),
-            width: 300,
-            prompt: {
-                width: 300
+            buttonTextKeys: {
+                ok: _l.get('users.block.alert.btn_ok'),
+                cancel: "cancel"
             },
-            closable: false,
-            fn: function (btn, value) {
-                if (btn === 'ok' && !Ext.isEmpty(value)) {
+            inputs: [
+                {
+                    xtype: 'phonefield',
+                    name: 'phone',
+                    labelAlign: 'top',
+                    fieldLabel: _l.get('users.block.alert.label'),
+                    required: true
+                }
+            ],
+            action: function (values) {
+                if (!Ext.isEmpty(values.phone)) {
                     Ext.API.blockUser({
                         params: {
                             user_id: record.getId(),
-                            manager_phone: value
+                            manager_phone: values.phone
                         },
                         callback: function () {
-                            Ext.Nav.shift('user/' + record.getId());
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
                         },
                         failure: function () {
-                            Ext.Nav.shift('user/' + record.getId());
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
                         },
                         scope: this
                     })
                 }
-            },
-            scope: this,
-            buttons: Ext.Msg.OKCANCEL
-        });
+            }
+        }).show();
     },
 
     handleUserUnblockAction: function (record) {
+        var recordData = record.getData(),
+            me = this;
+
         Ext.Msg.show({
-            // title: _l.get('users.unblock.alert.title'),
-            msg: _l.get('users.unblock.alert.title'),
+            title: Ext.String.format(_l.get('users.unblock.alert.title'), recordData.id, recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name),
+            msg: _l.get('users.unblock.alert.text'),
             closable: false,
             fn: function (btn) {
                 if (btn === 'ok') {
@@ -416,11 +433,14 @@ Ext.define('NavixyPanel.controller.Users', {
                             user_id: record.getId()
                         },
                         callback: function () {
-                            console.log('user/' + record.getId())
-                            Ext.Nav.shift('user/' + record.getId());
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
                         },
                         failure: function () {
-                            Ext.Nav.shift('user/' + record.getId());
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
                         },
                         scope: this
                     })
@@ -471,7 +491,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var importPopup = Ext.create('Ext.UsersImportWindow', {
             title: _l.get('users_import_message_box.title'),
             msg: _l.get("users_import_message_box.message"),
-            
+
         })
         importPopup.show();
         importPopup.on({
