@@ -14,7 +14,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         var url = this.getRequestUrl({
             action: config.action,
             handler: config.handler
-        }), 
+        }),
         params = Ext.apply({
             hash: this.authKey,
             redirect_target: this.getUploadHandlerUrl()
@@ -138,7 +138,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
                     discount_min_trackers: result.discount.min_trackers,
                     discount_end_date: result.discount.end_date,
                     discount_strategy: result.discount.strategy,
-                    default_tariff_id: result.default_tariff_id
+                    default_tariff_id: result.default_tariff_id,
                     block: (result.block_parameters && result.block_parameters.manager_phone) || false
                 }), params, response)
             },

@@ -141,7 +141,6 @@ Ext.define('NavixyPanel.model.User', {
         {
             name: 'default_tariff_id',
             type: 'number'
-            }
         },
         {
             name: 'block'
