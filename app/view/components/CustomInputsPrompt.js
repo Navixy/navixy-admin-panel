@@ -67,7 +67,6 @@ Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
     },
 
     checkErrors: function() {
-        console.log(this, this.requiredFields)
         var hasErrors = false;
         Ext.iterate(this.requiredFields, function(field) {
             hasErrors = hasErrors || !this.items.get(field).isValid();
