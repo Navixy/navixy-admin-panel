@@ -9,7 +9,7 @@ Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
     alternateClassName: 'Ext.MessageBoxWithInputs',
     alias: 'widget.custom-items-prompt',
     action: Ext.emptyFn,
-
+    cls: 'message-box-with-alert',
     requiredFields: [],
 
     getButtons: function () {
@@ -32,7 +32,6 @@ Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
             xtype: 'component',
             tpl: [
                 '<div class="message-box">',
-                '<div class="x-message-box-warning x-message-box-warning-red"></div>',
                 '<div class="x-message-warning">{msg}</div>',
                 '</div>'
             ],
@@ -68,6 +67,7 @@ Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
     },
 
     checkErrors: function() {
+        console.log(this, this.requiredFields)
         var hasErrors = false;
         Ext.iterate(this.requiredFields, function(field) {
             hasErrors = hasErrors || !this.items.get(field).isValid();
