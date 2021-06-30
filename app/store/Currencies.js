@@ -698,7 +698,147 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "TZS",
                 name: _l.get('currency.tzs'),
                 priority: 5
-            }
+            },
+            {
+                type: "BHD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "BIF",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "BTN",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "CDF",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "CVE",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "DJF",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "DZD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "ERN",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "ETB",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "GMD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "GNF",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "HTG",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "IQD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "JOD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "LSL",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "LYD",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "MGA",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "MOP",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "MVR",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "MWK",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "RWF",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "SDG",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "SLL",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "SZL",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "TND",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "TOP",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "WST",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
+            {
+                type: "ZMW",
+                name: _l.get('currency.tzs'),
+                priority: 5
+            },
         ];
 
         this.callParent(arguments);
