@@ -82,12 +82,9 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.columns = {
             items: Ext.Array.merge(this.getToolsColumns(), this.getColumnsConfig())
         };
-
         this.fixColumnsState();
-
         this.addSelection();
         this.applyListeners();
-        this.fixColumnsState();
         this.callParent(arguments);
 
     },
@@ -109,7 +106,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
             this.selModel = Ext.create('Ext.selection.CheckboxModel', {
                 checkOnly: true,
-                injectCheckbox: this.hasEdit ? 0 : 0,
+                injectCheckbox: this.hasSelection ? 1 : 0,
 
                 renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
                     var baseCSSPrefix = Ext.baseCSSPrefix;
@@ -225,6 +222,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                 {
                     xtype: 'toolcolumn',
                     width: 40,
+                    dataIndex: 'edit-tool',
                     hideable: false,
                     draggable: false,
                     menuDisabled: true,
@@ -236,7 +234,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
     },
 
     getTopBar: function () {
-
         var barConfig = {
             padding: '0 0 10 0',
             border: 0,
