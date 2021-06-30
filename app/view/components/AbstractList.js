@@ -86,16 +86,18 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
         this.fixColumnsState();
 
         this.addSelection();
-
         this.applyListeners();
-
+        this.fixColumnsState();
         this.callParent(arguments);
+
     },
 
     fixColumnsState: function () {
         if (this.stateful && this.columns && this.columns.items && this.columns.items.length) {
             Ext.each(this.columns.items, function (item) {
-                item.id = item.dataIndex + '_state';
+                if(item.dataIndex) {
+                    item.stateId = item.dataIndex + '_state';
+                }
             }, this)
         }
     },
@@ -107,7 +109,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
             this.selModel = Ext.create('Ext.selection.CheckboxModel', {
                 checkOnly: true,
-                injectCheckbox: this.hasEdit ? 1 : 0,
+                injectCheckbox: this.hasEdit ? 0 : 0,
 
                 renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
                     var baseCSSPrefix = Ext.baseCSSPrefix;
@@ -117,7 +119,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
                 updateHeaderState: function () {
                     // check to see if all records are selected
-
                     var me = this,
                         store = me.store,
                         storeCount = store.getCount(),
@@ -144,7 +145,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
                         }
                         hdSelectStatus = storeCount === selectedCount;
                     }
-
                     if (views && views.length) {
                         me.toggleUiHeader(hdSelectStatus);
                     }
@@ -304,7 +304,6 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
     applyListeners: function () {
         this.on('cellclick', this.handleCellClick, this);
-
         if (this.hasSelection) {
             this.on('beforeselect', this.handleCellSelect, this);
             this.on('selectionchange', this.afterCellSelect, this);
