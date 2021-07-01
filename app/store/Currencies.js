@@ -838,7 +838,7 @@ Ext.define('NavixyPanel.store.Currencies', {
                 type: "ZMW",
                 name: _l.get('currency.tzs'),
                 priority: 5
-            },
+            }
         ];
 
         this.callParent(arguments);
