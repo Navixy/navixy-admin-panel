@@ -701,142 +701,142 @@ Ext.define('NavixyPanel.store.Currencies', {
             },
             {
                 type: "BHD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.bhd'),
                 priority: 5
             },
             {
                 type: "BIF",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.bif'),
                 priority: 5
             },
             {
                 type: "BTN",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.btn'),
                 priority: 5
             },
             {
                 type: "CDF",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.cdf'),
                 priority: 5
             },
             {
                 type: "CVE",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.cve'),
                 priority: 5
             },
             {
                 type: "DJF",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.djf'),
                 priority: 5
             },
             {
                 type: "DZD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.dzd'),
                 priority: 5
             },
             {
                 type: "ERN",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.ern'),
                 priority: 5
             },
             {
                 type: "ETB",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.etb'),
                 priority: 5
             },
             {
                 type: "GMD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.gmd'),
                 priority: 5
             },
             {
                 type: "GNF",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.gnf'),
                 priority: 5
             },
             {
                 type: "HTG",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.htg'),
                 priority: 5
             },
             {
                 type: "IQD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.iqd'),
                 priority: 5
             },
             {
                 type: "JOD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.jod'),
                 priority: 5
             },
             {
                 type: "LSL",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.lsl'),
                 priority: 5
             },
             {
                 type: "LYD",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.lyd'),
                 priority: 5
             },
             {
                 type: "MGA",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.mga'),
                 priority: 5
             },
             {
                 type: "MOP",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.mop'),
                 priority: 5
             },
             {
                 type: "MVR",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.mvr'),
                 priority: 5
             },
             {
                 type: "MWK",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.mwk'),
                 priority: 5
             },
             {
                 type: "RWF",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.rwf'),
                 priority: 5
             },
             {
                 type: "SDG",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.sdg'),
                 priority: 5
             },
             {
                 type: "SLL",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.sll'),
                 priority: 5
             },
             {
                 type: "SZL",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.szl'),
                 priority: 5
             },
             {
                 type: "TND",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.tnd'),
                 priority: 5
             },
             {
                 type: "TOP",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.top'),
                 priority: 5
             },
             {
                 type: "WST",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.wst'),
                 priority: 5
             },
             {
                 type: "ZMW",
-                name: _l.get('currency.tzs'),
+                name: _l.get('currency.zmw'),
                 priority: 5
             }
         ];
