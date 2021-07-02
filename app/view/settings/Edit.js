@@ -956,8 +956,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 name: 'default_user_time_zone'
             },
             {
-<<<<<<< HEAD
-=======
                 name: 'date_format',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.date_format'),
@@ -990,7 +988,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'type'
             },
             {
->>>>>>> 262e43a (FR-6064: Change items order in menu.)
                 name: 'translit',
                 xtype: 'checkbox',
                 role: 'checkbox',
