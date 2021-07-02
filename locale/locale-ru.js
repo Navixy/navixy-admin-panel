@@ -1036,6 +1036,8 @@ Ext.define("Locale.locale-ru", {
             "route_provider": "Провайдер маршрутов по умолчанию",
             "translit": "Транслитерация SMS",
             "measurement_system": "Система мер",
+            "date_format": "Формат даты",
+            "hour_mode": "Формат времени",
             "payment_description": "Методы и условия оплаты",
             "support_email": "Email службы поддержки",
             "alerts_email": "Email для важных оповещений и счетов",

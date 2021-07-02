@@ -1057,6 +1057,8 @@ Ext.define("Locale.locale-en", {
             "route_provider": "Default route provider",
             "translit": "Transliteration for SMS",
             "measurement_system": "Measurement system",
+            "date_format": "Date format",
+            "hour_mode": "Time format",
             "payment_description": "Payment options and terms",
             "support_email": "Email for customers support",
             "alerts_email": "Email for important alerts and invoices",
