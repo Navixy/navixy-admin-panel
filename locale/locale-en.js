@@ -1637,6 +1637,20 @@ Ext.define("Locale.locale-en", {
         "imperial": "Imperial",
         "us": "US"
     },
+    "hour_modes": {
+        "twelve": "12-hour clock (5:30 PM)",
+        "twentyfour": "24-hour clock (17:30)",
+        "default": "Default"
+      },
+    "date_formats": {
+        "default": "Defalut",
+        "ddMMyyyy_dots": "01.12.2021 (DD.MM.YYYY)",
+        "ddMMyyyy_slashes": "01/12/2021(DD/MM/YYYY')",
+        "MMddyyyy_hyphens": "12-01-2021 (MM-DD-YYYY)",
+        "yyyyMMdd_hyphens": "2021-12-01 (YYYY-MM-DD)",
+        "dMMMy": "1 Dec 2021 (DD MMM YYYY)",
+        "dMMMMy": "1 December 2021 (DD MMMM YYYY)"
+    },
     "route_providers": {
         "progorod": "Basic GIS (Progorod)",
         "google": "Premium GIS (Google)",
