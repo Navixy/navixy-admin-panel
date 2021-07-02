@@ -1600,8 +1600,8 @@ Ext.define("Locale.locale-ru", {
         "us": "Английская (США)"
     },
     "hour_modes": {
-        "twelve": "12-часовой формат даты (5:30 PM)",
-        "twentyfour": "24-часовой формат даты (17:30)",
+        "twelve": "12-часовой (5:30 PM)",
+        "twentyfour": "24-часовой (17:30)",
         "default": "По умолчанию"
       },
     "date_formats": {
