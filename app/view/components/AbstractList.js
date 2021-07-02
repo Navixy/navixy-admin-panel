@@ -106,7 +106,7 @@ Ext.define('NavixyPanel.view.components.AbstractList', {
 
             this.selModel = Ext.create('Ext.selection.CheckboxModel', {
                 checkOnly: true,
-                injectCheckbox: this.hasSelection ? 1 : 0,
+                injectCheckbox: this.hasEdit ? 1 : 0,
 
                 renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
                     var baseCSSPrefix = Ext.baseCSSPrefix;
