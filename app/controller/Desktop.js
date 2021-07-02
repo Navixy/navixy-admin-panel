@@ -179,7 +179,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
     },
 
     checkExponential: function () {
-        return Ext.getStore('Dealer').isExponential();
+        return Ext.getStore('Dealer').isExponentialAviliable();
     },
 
 

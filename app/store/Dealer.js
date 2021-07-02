@@ -64,11 +64,11 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
 
-    isExponential: function () {
+    isExponentialAviliable: function () {
         var record = this.first(),
             tariff = record && record.get('tariff');
-
-        return tariff && tariff.algorithm == "exponential" && !this.isSubPaas();
+        var tariffPermissions = Ext.checkPermission('paas_tariff', 'read')
+        return tariff && tariff.algorithm == "exponential" && tariffPermissions && !this.isSubPaas();
     },
 
 
@@ -114,6 +114,7 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
     isSubPaas: function () {
+        debugger
         return this.first().get('subpaas')
     },
 
