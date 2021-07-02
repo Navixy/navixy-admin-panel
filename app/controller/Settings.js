@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes'],
+             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',
