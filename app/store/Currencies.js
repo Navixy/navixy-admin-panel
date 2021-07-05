@@ -200,16 +200,6 @@ Ext.define('NavixyPanel.store.Currencies', {
                 priority: 4
             },
             {
-                type: "LTL",
-                name: _l.get('currency.ltl'),
-                priority: 5
-            },
-            {
-                type: "LVL",
-                name: _l.get('currency.lvl'),
-                priority: 5
-            },
-            {
                 type: "KGS",
                 name: _l.get('currency.kgs'),
                 priority: 5
