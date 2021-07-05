@@ -350,11 +350,6 @@ Ext.define('NavixyPanel.store.Currencies', {
                 priority: 5
             },
             {
-                type: "EEK",
-                name: _l.get('currency.eek'),
-                priority: 5
-            },
-            {
                 type: "FKP",
                 name: _l.get('currency.fkp'),
                 priority: 5
@@ -562,11 +557,6 @@ Ext.define('NavixyPanel.store.Currencies', {
             {
                 type: "TTD",
                 name: _l.get('currency.ttd'),
-                priority: 5
-            },
-            {
-                type: "TRL",
-                name: _l.get('currency.trl'),
                 priority: 5
             },
             {
