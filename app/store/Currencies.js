@@ -376,7 +376,7 @@ Ext.define('NavixyPanel.store.Currencies', {
             },
             {
                 type: "GHS",
-                name: _l.get('currency.ghc'),
+                name: _l.get('currency.ghc'), // FIXME: ghc - .ghs
                 priority: 5
             },
             {
@@ -837,6 +837,11 @@ Ext.define('NavixyPanel.store.Currencies', {
             {
                 type: "ZMW",
                 name: _l.get('currency.zmw'),
+                priority: 5
+            },
+            {
+                type: "KMF",
+                name: _l.get('currency.kmf'),
                 priority: 5
             }
         ];

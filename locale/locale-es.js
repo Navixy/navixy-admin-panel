@@ -253,8 +253,6 @@ Ext.define('Locale.locale-es',{
         "aud": "Dólar australiano",
         "tjs": "Somoni tayiko",
         "uah": "Grivna",
-        "ltl": "Litas lituana",
-        "lvl": "Lats letón",
         "kgs": "Som kirguís",
         "tmt": "Manat turcomano",
         "uzs": "Som uzbeko",
@@ -328,7 +326,7 @@ Ext.define('Locale.locale-es',{
         "srd": "Suriname Dollar",
         "syp": "Syria Pound",
         "ttd": "Trinidad and Tobago Dollar",
-        "trl": "Turkey Lira",
+        "trl": "First Turkey Lira",
         "tvd": "Tuvalu Dollar",
         "uyu": "Uruguay Peso",
         "vef": "Venezuela Bolivar",
@@ -369,7 +367,8 @@ Ext.define('Locale.locale-es',{
         "tnd": "Tunisian Dinar",
         "top": "Tongan paʻanga",
         "wst": "Samoan tālā",
-        "zmw": "Zambian Kwacha"
+        "zmw": "Zambian Kwacha",
+        "kmf": "Comorian franc"
     },
     "maps": {
         "roadmap": "Google roadmap",
@@ -1428,8 +1427,6 @@ Ext.define('Locale.locale-es',{
         "AUD": "A${0}",
         "TJS": "{0} som.",
         "UAH": "{0} ₴",
-        "LTL": "{0} Lt",
-        "LVL": "Ls {0}",
         "KGS": "{0} som",
         "TMT": "{0} man.",
         "UZS": "{0} som",
@@ -1544,7 +1541,8 @@ Ext.define('Locale.locale-es',{
         "TND": "{0} DT",
         "TOP": "{0} T$",
         "WST": "{0} WS$",
-        "ZMW": "{0} ZK"
+        "ZMW": "{0} ZK",
+        "KMF": "{0} CF"
     },
     "features": {
         "api": "API",
