@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
 
     views: [
         'components.MessageBoxWithAlert',
+        'components.MessageBoxWithInputs',
 
         'trackers.List',
         'trackers.Card',
@@ -18,7 +19,8 @@ Ext.define('NavixyPanel.controller.Trackers', {
         'trackers.Edit',
         'trackers.Tariff',
         'trackers.GroupClone',
-        'trackers.GroupOwner'
+        'trackers.GroupOwner',
+        'trackers.BatchCorrupt'
     ],
 
     refs: [
@@ -45,6 +47,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
         {
             ref: 'trackerGroupOwner',
             selector: 'trackersgroupowner'
+        },
+        {
+            ref: 'trackerBatchCorrupt',
+            selector: 'trackersbatchcorrupt'
         }
     ],
 
@@ -65,6 +71,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
                 clonetrackers: this.handleGroupClone,
                 deleteclonetrackers: this.handleDeleteClones,
                 ownertrackers: this.handleGroupOwner,
+                batchcorrupt: this.handleBatchCorrupt,
                 clonefilterchange: this.onClonesFilterChange
             },
             'trackersgroupclone' : {
@@ -73,6 +80,10 @@ Ext.define('NavixyPanel.controller.Trackers', {
             },
             'trackersgroupowner' : {
                 formsubmit: this.onGroupOwnerSubmit,
+                back: this.handleTrackers
+            },
+            'trackersbatchcorrupt' : {
+                formsubmit: this.onBatchCorruptSubmit,
                 back: this.handleTrackers
             },
             'trackeredit' : {
@@ -212,6 +223,13 @@ Ext.define('NavixyPanel.controller.Trackers', {
     handleGroupOwner: function (records) {
         this.fireContent({
             xtype: 'trackersgroupowner',
+            record: records || false
+        });
+    },
+
+    handleBatchCorrupt: function (records) {
+        this.fireContent({
+            xtype: 'trackersbatchcorrupt',
             record: records || false
         });
     },
@@ -833,6 +851,59 @@ Ext.define('NavixyPanel.controller.Trackers', {
         this.getTrackerGroupOwner().afterSave();
         this.getTrackersList().store.load();
         this.getTrackersList().afterOwner(assigned, successCount);
+    },
+
+    onBatchCorruptSubmit: function (cmp, formValues, recordsData) {
+
+        var requestsCnt = recordsData.length,
+            errCnt = 0;
+
+        Ext.create('Ext.MessageBoxWithInputs', {
+            title: _l.get('trackers.corrupt.alert.title'),
+            msg: _l.get('trackers.corrupt.alert.text'),
+            inputs: [
+                {
+                    id: 'user_login_confirmation',
+                    type: 'textfield',
+                    label: _l.get('trackers.batch_corrupt_form.alert.confirm_secret_label'),
+                    required: true
+                }
+            ],
+            agreeAction: Ext.bind(function (win) {
+                var confirmedLoginInput = Ext.getCmp('user_login_confirmation');
+                if (_l.get('trackers.batch_corrupt_form.alert.secret') === confirmedLoginInput.getValue()) {
+                    Ext.iterate(recordsData, function (record) {
+                        Ext.API.setTrackerCorrupt({
+                            params: {
+                                tracker_id: record.id
+                            },
+                            callback: function (response) {
+                                if (--requestsCnt === 0)  {
+                                    this.afterBatchCorruptSubmit(recordsData.length - errCnt, recordsData.length, response);
+                                }
+                            },
+                            failure: function (response) {
+                                errCnt++;
+                                if (--requestsCnt === 0)  {
+                                    this.afterBatchCorruptSubmit(recordsData.length - errCnt, recordsData.length, response);
+                                }
+                            },
+                            scope: this
+                        });
+
+                    }, this);
+                    win.close();
+                } else {
+                    Ext.getCmp('user_login_confirmation').markInvalid(_l.get('trackers.batch_corrupt_form.alert.confirm_secret_invalid'))
+                }
+            }, this)
+        }).show();
+    },
+
+    afterBatchCorruptSubmit: function (successCount, assigned, response) {
+        this.getTrackerBatchCorrupt().afterSave();
+        this.getTrackersList().store.load();
+        this.getTrackersList().afterBatchCorrupt(assigned, successCount);
     },
 
     onClonesFilterChange: function (modeId) {

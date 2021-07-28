@@ -750,7 +750,9 @@ Ext.define("Locale.locale-en", {
             "after_owner_success": "Changed: {0}",
             "after_owner_failure": "Changed: {0}, {1} change failed",
             "select_req": "Select trackers from list",
-            "select_clone_req": "There are clones and trackers selected. Grouping operations not available."
+            "select_clone_req": "There are clones and trackers selected. Grouping operations not available.",
+            "after_batch_corrupt_success": "Removed: {0}",
+            "after_batch_corrupt_failure": "Removed: {0}, {1} filed to remove"
         },
         "card": {
             "links": {
@@ -795,6 +797,16 @@ Ext.define("Locale.locale-en", {
                 "text": "Device will be permanently removed from database. All related data will be lost.<br><br>Are you to remove device?"
             },
             "success_msg": "Device {0} successfully removed"
+        },
+        "batch_corrupt_form": {
+            "title": "Mass removal of trackers from registration",
+            "save_btn": "Remove",
+            "grid_corrupt_label": "List to remove",
+            "alert": {
+                "confirm_secret_label": "Enter a secret word to confirm",
+                "confirm_secret_invalid": "Stay where the squad is sent",
+                "secret": "j0j0"
+            }
         },
         "retry_registraion": {
             "alert": {

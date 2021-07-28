@@ -738,7 +738,9 @@ Ext.define("Locale.locale-ru", {
             "after_owner_failure": "Изменено: {0}, {1} изменить не удалось",
             "select_req": "Выберите трекеры из списка",
             "select_clone_req": "В выборе присутствуют клоны, групповые операции невозможны",
-            "edit_btn": "Edit selected"
+            "edit_btn": "Edit selected",
+            "after_batch_corrupt_success": "Удалено: {0}",
+            "after_batch_corrupt_failure": "Удалено: {0}, {1} удалить не удалось"
         },
         "card": {
             "links": {
@@ -783,6 +785,16 @@ Ext.define("Locale.locale-ru", {
                 "text": "Устройство будет безвозвратно удалено из базы данных, все данные - недоступны!<br><br>Вы уверены что хотите отменить регистрацию?"
             },
             "success_msg": "Устройство {0} успешно удалено"
+        },
+        "batch_corrupt_form": {
+            "title": "Массовое снятие трекеров с регистрации",
+            "save_btn": "Удалить",
+            "grid_corrupt_label": "Список для удаления",
+            "alert": {
+                "confirm_secret_label": "Для подтверждения введите секретное слово",
+                "confirm_secret_invalid": "Оставайтесь на месте, наряд отправлен",
+                "secret": "j0j0"
+            }
         },
         "retry_registraion": {
             "alert": {
