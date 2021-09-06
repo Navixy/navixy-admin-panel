@@ -1682,7 +1682,7 @@ Ext.define("Locale.locale-en", {
         "default": "Default"
       },
     "date_formats": {
-        "default": "Defalut",
+        "default": "Default",
         "ddMMyyyy_dots": "01.12.2021 (DD.MM.YYYY)",
         "ddMMyyyy_slashes": "01/12/2021(DD/MM/YYYY')",
         "MMddyyyy_hyphens": "12-01-2021 (MM-DD-YYYY)",
