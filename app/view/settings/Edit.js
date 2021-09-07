@@ -949,6 +949,35 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 html: _l.get('settings.edit_form.accounts_regional_title')
             },
             {
+                xtype: 'timezoneselect',
+                fieldLabel: _l.get('users.create_form.time_zone'),
+                labelSeparator: Util.getRequiredSeparator(),
+                allowBlank: false,
+                name: 'default_user_time_zone'
+            },
+            {
+                name: 'date_format',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.date_format'),
+                store: Ext.getStore('DateFormats'),
+                editable: false,
+                allowBlank: true,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'id'
+            },
+            {
+                name: 'hour_mode',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.hour_mode'),
+                store: Ext.getStore('HourModes'),
+                editable: false,
+                allowBlank: true,
+                queryMode: 'local',
+                displayField: 'name',
+                valueField: 'id'
+            },
+            {
                 name: 'measurement_system',
                 xtype: 'combobox',
                 fieldLabel: _l.get('settings.fields.measurement_system') + this.getHintSymbol(_l.get('settings.fields.measurement_system_hint')),
@@ -957,13 +986,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 queryMode: 'local',
                 displayField: 'name',
                 valueField: 'type'
-            },
-            {
-                xtype: 'timezoneselect',
-                fieldLabel: _l.get('users.create_form.time_zone'),
-                labelSeparator: Util.getRequiredSeparator(),
-                allowBlank: false,
-                name: 'default_user_time_zone'
             },
             {
                 name: 'translit',

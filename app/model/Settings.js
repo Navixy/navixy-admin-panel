@@ -190,35 +190,49 @@ Ext.define('NavixyPanel.model.Settings', {
             name: 'geocoder',
             type: 'string',
             convert: function (value, record) {
-                return record.defaultUserConverter(this, value);
+                return record.defaultUserConverter(this, value, 0);
             }
         },
         {
             name: 'route_provider',
             type: 'string',
             convert: function (value, record) {
-                return record.defaultUserConverter(this, value);
-            }
-        },
-        {
-            name: 'measurement_system',
-            type: 'string',
-            convert: function (value, record) {
-                return record.defaultUserConverter(this, value);
+                return record.defaultUserConverter(this, value, 0);
             }
         },
         {
             name: 'default_user_time_zone',
             type: 'string',
             convert: function (value, record) {
-                return record.defaultUserConverter(this, value);
+                return record.defaultUserConverter(this, value, 0);
+            }
+        },
+        {
+            name: 'date_format',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value, 'default');
+            }
+        },
+        {
+            name: 'hour_mode',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value, 'default');
+            }
+        },
+        {
+            name: 'measurement_system',
+            type: 'string',
+            convert: function (value, record) {
+                return record.defaultUserConverter(this, value, 0);
             }
         },
         {
             name: 'translit',
             type: 'string',
             convert: function (value, record) {
-                return record.defaultUserConverter(this, value);
+                return record.defaultUserConverter(this, value, 0);
             }
         },
         {
@@ -287,8 +301,8 @@ Ext.define('NavixyPanel.model.Settings', {
         this.callParent(arguments);
     },
 
-    defaultUserConverter: function (field, value) {
-        return value !== '' ? value : this.get('default_user_settings')[this.defaultUserSettingsMap[field.name]] || 0;
+    defaultUserConverter: function (field, value, emptyValue) {
+        return value !== '' ? value : this.get('default_user_settings')[this.defaultUserSettingsMap[field.name]] || emptyValue;
     },
 
     defaultMapConverter: function (field, value) {
@@ -383,6 +397,14 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }, this);
 
+        // Remove empty date and time formats. 
+        if(result['default_user_settings']) {
+            Ext.iterate(result['default_user_settings'], function(fieldName, fieldValue) {
+                if(fieldValue === 'default') {
+                    delete result['default_user_settings'][fieldName];
+                }
+            })
+        }
         return Ext.Object.getSize(result) ? result : null;
     },
 

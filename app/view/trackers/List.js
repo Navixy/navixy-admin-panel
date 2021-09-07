@@ -101,6 +101,13 @@ Ext.define('NavixyPanel.view.trackers.List', {
         this.fireEvent('ownertrackers', selected);
     },
 
+    fireBatchCorruptAction: function () {
+        var sm = this.getSelectionModel(),
+            selected = sm.getSelection();
+
+        this.fireEvent('batchcorrupt', selected);
+    },
+
     getCloneBnt: function () {
         return this.down('[role="' + this.texts.cloneBtnRole + '"]');
     },
@@ -368,6 +375,21 @@ Ext.define('NavixyPanel.view.trackers.List', {
                 : assigned !== succesed
                           ? Ext.String.format(_l.get('trackers.list.after_owner_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
                           : Ext.String.format(_l.get('trackers.list.after_owner_success'), Ext.util.Format.units(succesed, 'trackers', true))
+        );
+    },
+
+    afterBatchCorrupt: function (assigned, succesed, noDeselect) {
+        var btnTip = this.getEditBntTip();
+
+        if (!noDeselect) {
+            this.getSelectionModel().deselectAll();
+        }
+
+        btnTip.update(!assigned
+                ? Ext.String.format(_l.get('trackers.list.after_batch_corrupt_success'), Ext.util.Format.units(succesed, 'trackers', true))
+                : assigned !== succesed
+                          ? Ext.String.format(_l.get('trackers.list.after_batch_corrupt_failure'), succesed, Ext.util.Format.units(assigned - succesed, 'trackers', true))
+                          : Ext.String.format(_l.get('trackers.list.after_batch_corrupt_success'), Ext.util.Format.units(succesed, 'trackers', true))
         );
     }
 });
