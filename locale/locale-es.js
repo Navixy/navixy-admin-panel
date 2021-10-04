@@ -1364,7 +1364,9 @@ Ext.define('Locale.locale-es',{
     "measurement_systems": {
         "metric": "Métrico",
         "imperial": "Imperial",
-        "us": "US"
+        "us": "US",
+        "metric_gal_us": "Métrico + Galón (US)",
+        "nautical": "Náutica"
     },
     "route_providers": {
         "progorod": "Progorod",
