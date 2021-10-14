@@ -114,7 +114,6 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
     isSubPaas: function () {
-        debugger
         return this.first().get('subpaas')
     },
 

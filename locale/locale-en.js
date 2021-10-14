@@ -1674,7 +1674,9 @@ Ext.define("Locale.locale-en", {
     "measurement_systems": {
         "metric": "Metric",
         "imperial": "Imperial",
-        "us": "US"
+        "us": "US",
+        "metric_gal_us": "Metric + Gallons (US)",
+        "nautical": "Nautical"
     },
     "hour_modes": {
         "twelve": "12-hour clock (5:30 PM)",

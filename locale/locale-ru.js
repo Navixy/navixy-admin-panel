@@ -1634,7 +1634,9 @@ Ext.define("Locale.locale-ru", {
     "measurement_systems": {
         "metric": "Метрическая",
         "imperial": "Английская",
-        "us": "Английская (США)"
+        "us": "Английская (США)",
+        "metric_gal_us": "Метрическая + Галлоны (US)",
+        "nautical": "Морская"
     },
     "hour_modes": {
         "twelve": "12-часовой (5:30 PM)",
