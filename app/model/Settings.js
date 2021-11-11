@@ -293,7 +293,9 @@ Ext.define('NavixyPanel.model.Settings', {
         geocoder: 'geocoder',
         measurement_system: 'measurement_system',
         route_provider: 'route_provider',
-        translit: 'translit'
+        translit: 'translit',
+        hour_mode: 'hour_mode',
+        date_format: 'date_format'
     },
 
     constructor: function (data) {
