@@ -90,12 +90,27 @@ Ext.define('Locale.Manager', {
             rtl: false
         },
         {
+            id: 'da_DK',
+            name: 'da',
+            text: 'Dansk',
+            alias: ['da', 'da_DK', 'Dansk'],
+            rtl: false
+        },
+        {
+            id: 'hu',
+            name: 'hu',
+            text: 'Magyar',
+            alias: ['hu', 'hu_HU', 'Magyar'],
+            rtl: false
+        },
+        {
             id: 'hr_HR',
             name: 'hr_HR',
             text: 'Hrvatski',
             alias: ['hr', 'hr_HR', 'Hrvatski'],
             rtl: false
-        }, {
+        },
+        {
             id: 'hy_AM',
             name: 'hy_AM',
             text: 'Հայերեն',
