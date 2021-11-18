@@ -109,8 +109,7 @@ Ext.define('Locale.Manager', {
             text: 'Hrvatski',
             alias: ['hr', 'hr_HR', 'Hrvatski'],
             rtl: false
-        },
-        {
+        }, {
             id: 'hy_AM',
             name: 'hy_AM',
             text: 'Հայերեն',
