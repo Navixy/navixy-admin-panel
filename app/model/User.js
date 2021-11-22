@@ -117,7 +117,6 @@ Ext.define('NavixyPanel.model.User', {
             name: 'verified',
             type: 'boolean'
         },
-
         {
             name: 'trackers_count',
             type: 'number'
@@ -142,7 +141,10 @@ Ext.define('NavixyPanel.model.User', {
         {
             name: 'default_tariff_id',
             type: 'number'
-            }
+        },
+        {
+            name: 'block'
+        }
     ],
 
     associationsMap: {

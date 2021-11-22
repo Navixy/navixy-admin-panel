@@ -13,6 +13,8 @@ Ext.define('NavixyPanel.controller.Users', {
         'widgets.QtipTutorial',
         'components.MessageBoxWithInputs',
         'components.UsersImportWindow',
+        'components.MessageBoxWithAlert',
+        'NavixyPanel.view.widgets.fields.PhoneField',
         'users.TransactionsList',
         'users.TransactionAdd',
         'users.ChangePassword',
@@ -20,7 +22,8 @@ Ext.define('NavixyPanel.controller.Users', {
         'users.Create',
         'users.Edit',
         'users.Card',
-        'users.SelectWindow'
+        'users.SelectWindow',
+        'NavixyPanel.view.components.CustomInputsPrompt'
     ],
 
     requires: ['NavixyPanel.view.users.ActivationPanel'],
@@ -89,6 +92,8 @@ Ext.define('NavixyPanel.controller.Users', {
             'usercard': {
                 useredit: this.handleUserEditAction,
                 usercorrupt: this.handleUserCorruptAction,
+                userblock: this.handleUserBlockAction,
+                userunblock: this.handleUserUnblockAction,
                 toggleactivationpanel: this.toggleActivationPanel
             },
             'usercard [role="tracker-monitoring-link"]': {
@@ -369,6 +374,83 @@ Ext.define('NavixyPanel.controller.Users', {
         }).show();
     },
 
+    handleUserBlockAction: function (record) {
+        var recordData = record.getData(),
+            me = this;
+
+        Ext.create('NavixyPanel.view.components.CustomInputsPrompt', {
+            title: Ext.String.format(_l.get('users.block.alert.title'), recordData.id, recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name),
+            msg: _l.get('users.block.alert.text'),
+            buttonTextKeys: {
+                ok: _l.get('users.block.alert.btn_ok'),
+                cancel: "cancel"
+            },
+            inputs: [
+                {
+                    xtype: 'phonefield',
+                    name: 'phone',
+                    labelAlign: 'top',
+                    fieldLabel: _l.get('users.block.alert.label'),
+                    required: true
+                }
+            ],
+            action: function (values) {
+                if (!Ext.isEmpty(values.phone)) {
+                    Ext.API.blockUser({
+                        params: {
+                            user_id: record.getId(),
+                            manager_phone: values.phone
+                        },
+                        callback: function () {
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
+                        },
+                        failure: function () {
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
+                        },
+                        scope: this
+                    })
+                }
+            }
+        }).show();
+    },
+
+    handleUserUnblockAction: function (record) {
+        var recordData = record.getData(),
+            me = this;
+
+        Ext.Msg.show({
+            title: Ext.String.format(_l.get('users.unblock.alert.title'), recordData.id, recordData.legal_name || recordData.last_name + ' ' + recordData.first_name + ' ' + recordData.middle_name),
+            msg: _l.get('users.unblock.alert.text'),
+            closable: false,
+            fn: function (btn) {
+                if (btn === 'ok') {
+                    Ext.API.unblockUser({
+                        params: {
+                            user_id: record.getId()
+                        },
+                        callback: function () {
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
+                        },
+                        failure: function () {
+                            Ext.getStore('Users').loadRecord(record.getId(), function (updatedRecord) {
+                                this.handleUserCard(updatedRecord)
+                            }, me)
+                        },
+                        scope: this
+                    })
+                }
+            },
+            scope: this,
+            buttons: Ext.Msg.OKCANCEL
+        });
+    },
+
     onUserRemoved: function (record) {
         var name = [record.get('first_name'), record.get('middle_name'), record.get('last_name')].join(' ');
 
@@ -409,7 +491,7 @@ Ext.define('NavixyPanel.controller.Users', {
         var importPopup = Ext.create('Ext.UsersImportWindow', {
             title: _l.get('users_import_message_box.title'),
             msg: _l.get("users_import_message_box.message"),
-            
+
         })
         importPopup.show();
         importPopup.on({

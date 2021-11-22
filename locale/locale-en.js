@@ -599,7 +599,25 @@ Ext.define("Locale.locale-en", {
                 "transactions": "Transactions",
                 "create_transaction": "Change balance",
                 "wrong_config": "Check PConfig.js -> links -> appUrlTpl",
-                "corrupt": "Remove user"
+                "corrupt": "Remove user",
+                "unblock_user": "Unblock user",
+                "block_user": "Block user",
+            },
+            "user_blocked": "Blocked"
+        },
+        "unblock":{
+            "alert": {
+                "title": "Unblock user # {0}: {1}",
+                "text": "After unlocking, the user will again have access to all the functions of the service. Unblock user?",
+                "btn_ok": "Unblock"
+            }
+        },
+        "block":{
+            "alert": {
+                "title": "Blocking user # {0}: {1}",
+                "text": "After blocking, the user will not be able to use the service. He will not be able to manage employees or create tasks for them. The tracks of his employees will not be recorded and they will not be able to complete tasks. The user will see a message offering to contact the manager. Block user?",
+                "label": "For block user enter manager's phone number",
+                "btn_ok": "Block"
             }
         },
         "corrupt": {
@@ -1905,7 +1923,8 @@ Ext.define("Locale.locale-en", {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "checkins": "Check-ins on the map"
+        "checkins": "Check-ins on the map",
+        "route_import": "Import routes"
     },
     "map": {
         "zoom_in": "Zoom in",
