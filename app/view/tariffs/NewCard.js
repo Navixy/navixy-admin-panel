@@ -104,8 +104,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         this.iterateFields(function (field) {
             if (field.is('checkboxgroup')) {
                 var value = field.getValue(),
-                    name = field.sRole || field.items.first().name,
-                    data = value[name];
+                    name = field.sRole || (field.items.first() && field.items.first().name),
+                    data = name && value[name];
 
                 if (data) {
                     if (!Ext.isArray(data) && !Ext.isEmpty(data)) {
@@ -660,7 +660,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             featuresList = [],
             listItem,
             dealer_store = Ext.getStore('Dealer'),
-            dealer = dealer_store && dealer_store.first();
+            dealer = dealer_store && dealer_store.first(),
+            hasFsm = dealer_store.hasFsm();
 
         var needToRemovePremiumGisMaps = !Ext.getStore('Dealer').isPremiumGis(),
             permittedTypes = ['hybrid',
@@ -685,6 +686,11 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         }, this);
 
         Ext.getStore('Features').each(function (featureRecord) {
+
+            if (featureRecord.get('type') === 'task_route_import' && !hasFsm) {
+                return false
+            }
+
             listItem = {
                 boxLabel: featureRecord.get('name'),
                 name: 'features',
