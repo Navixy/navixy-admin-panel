@@ -6,7 +6,7 @@
 
 Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
     extend: 'NavixyPanel.view.components.MessageBoxWithInputs',
-    alternateClassName: 'Ext.MessageBoxWithInputs',
+    alternateClassName: 'Ext.MessageBoxWithCustomInputsPrompt',
     alias: 'widget.custom-items-prompt',
     action: Ext.emptyFn,
     cls: 'message-box-with-alert',
@@ -73,5 +73,4 @@ Ext.define('NavixyPanel.view.components.CustomInputsPrompt', {
         }, this);
         this.down('button[action=remove]').setDisabled(hasErrors);
     }
-
 });
