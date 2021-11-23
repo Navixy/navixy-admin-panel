@@ -688,7 +688,7 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         Ext.getStore('Features').each(function (featureRecord) {
 
             if (featureRecord.get('type') === 'task_route_import' && !hasFsm) {
-                return false
+                return
             }
 
             listItem = {
@@ -720,7 +720,6 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                     break;
             }
         }, this);
-
         return [
             {
                 html: [_l.get('tariffs.fields.device_limit_exp'), this.getHintSymbol(_l.get('tariffs.card.hints.7')),
