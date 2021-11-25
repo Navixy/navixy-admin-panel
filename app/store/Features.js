@@ -102,6 +102,11 @@ Ext.define('NavixyPanel.store.Features', {
                 "name": _l.get('features.checkins'),
                 group: "features"
             },
+            {
+                type: "task_route_import",
+                "name": _l.get('features.route_import'),
+                group: "features"
+            },
             // #COR-97
             //{
             //    type: "api",

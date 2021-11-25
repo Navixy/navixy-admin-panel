@@ -14,13 +14,22 @@ Ext.define('NavixyPanel.store.MeasurementSystems', {
                 name: _l.get('measurement_systems.metric')
             },
             {
+                type: 'metric_gal_us',
+                name: _l.get('measurement_systems.metric_gal_us')
+            },
+            {
                 type: 'imperial',
                 name: _l.get('measurement_systems.imperial')
             },
             {
                 type: 'us',
                 name: _l.get('measurement_systems.us')
+            },
+            {
+                type: 'nautical',
+                name: _l.get('measurement_systems.nautical')
             }
+            
         ];
 
         this.callParent(arguments);

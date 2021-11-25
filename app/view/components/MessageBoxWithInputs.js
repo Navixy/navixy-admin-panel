@@ -57,8 +57,8 @@ Ext.define('NavixyPanel.view.components.MessageBoxWithInputs', {
             xtype: 'component',
             tpl: [
                 '<div class="message-box">',
-                '<div class="x-message-box-warning x-message-box-warning-red"></div>',
-                '<div class="x-message-warning">{msg}</div>',
+                    '<div class="x-message-box-warning x-message-box-warning-red"></div>',
+                    '<div class="x-message-warning">{msg}</div>',
                 '</div>'
             ],
             data: {
@@ -105,5 +105,4 @@ Ext.define('NavixyPanel.view.components.MessageBoxWithInputs', {
         hasErrors = hasErrors || !me.items.get('box_agreement').value
         me.down('button[action=remove]').setDisabled(hasErrors);
     }
-
 });

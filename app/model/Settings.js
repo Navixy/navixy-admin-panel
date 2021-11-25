@@ -262,7 +262,7 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'auto'
         },
         {
-            name: 'app_logo',
+            name: 'captcha_provider',
             type: 'string'
         }
     ],
@@ -293,7 +293,9 @@ Ext.define('NavixyPanel.model.Settings', {
         geocoder: 'geocoder',
         measurement_system: 'measurement_system',
         route_provider: 'route_provider',
-        translit: 'translit'
+        translit: 'translit',
+        hour_mode: 'hour_mode',
+        date_format: 'date_format'
     },
 
     constructor: function (data) {
@@ -397,7 +399,7 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }, this);
 
-        // Remove empty date and time formats. 
+        // Remove empty date and time formats.
         if(result['default_user_settings']) {
             Ext.iterate(result['default_user_settings'], function(fieldName, fieldValue) {
                 if(fieldValue === 'default') {

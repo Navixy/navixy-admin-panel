@@ -11,7 +11,6 @@ Ext.define('NavixyPanel.controller.Trackers', {
     views: [
         'components.MessageBoxWithAlert',
         'components.MessageBoxWithInputs',
-
         'trackers.List',
         'trackers.Card',
         'trackers.Clone',
@@ -858,7 +857,7 @@ Ext.define('NavixyPanel.controller.Trackers', {
         var requestsCnt = recordsData.length,
             errCnt = 0;
 
-        Ext.create('Ext.MessageBoxWithInputs', {
+        Ext.create('Ext.MessageBoxWithCustomInputsPrompt', {
             title: _l.get('trackers.corrupt.alert.title'),
             msg: _l.get('trackers.corrupt.alert.text'),
             inputs: [

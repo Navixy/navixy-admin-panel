@@ -599,7 +599,25 @@ Ext.define("Locale.locale-en", {
                 "transactions": "Transactions",
                 "create_transaction": "Change balance",
                 "wrong_config": "Check PConfig.js -> links -> appUrlTpl",
-                "corrupt": "Remove user"
+                "corrupt": "Remove user",
+                "unblock_user": "Unblock user",
+                "block_user": "Block user",
+            },
+            "user_blocked": "Blocked"
+        },
+        "unblock":{
+            "alert": {
+                "title": "Unblock user # {0}: {1}",
+                "text": "After unlocking, the user will again have access to all the functions of the service. Unblock user?",
+                "btn_ok": "Unblock"
+            }
+        },
+        "block":{
+            "alert": {
+                "title": "Blocking user # {0}: {1}",
+                "text": "After blocking, the user will not be able to use the service. He will not be able to manage employees or create tasks for them. The tracks of his employees will not be recorded and they will not be able to complete tasks. The user will see a message offering to contact the manager. Block user?",
+                "label": "For block user enter manager's phone number",
+                "btn_ok": "Block"
             }
         },
         "corrupt": {
@@ -998,7 +1016,7 @@ Ext.define("Locale.locale-en", {
         "menu_text": "Account management",
         "themes": {
             "title": "UI themes",
-            "main_info": "Select a color theme for the user interface of your web platform.",
+            "main_info": "Select a color theme for the user interface of your web platform",
             "mobile_title": "Mobile app",
             "web_title": "Web interface",
             "main_title": "Select theme",
@@ -1029,7 +1047,7 @@ Ext.define("Locale.locale-en", {
             "pay_with_stripe": "Pay with Stripe"
         },
         "email_gateways": {
-            "title": "Email Gateways",
+            "title": "Email gateways",
             "description": "To ensure the deliverability of emails from the platform to your users (notifications, alerts, invoices, etc.) and avoid anti-spam filters we offer several options on which email gateway to use.",
             "mandril_text": "If you want to use your customised email address in the ‘From’ field, please configure <b>SPF</b> and <b>DKIM</b> records for your domain as described in our <a href=\"https://www.navixy.com/docs/admin-panel-docs/settings/email/navixy-email-gateway/\" target=\"_blank\">manual</a> first, then send us your request to support@navixy.com with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request",
             "paas_mandril_text": "If you want to use your customised email address in the ‘From’ field, please configure <b>SPF</b> and <b>DKIM</b> records for your domain as described in the manual first, then send us your request with letting us know which email address you want to use. As soon as your records will be verified, we’ll accomplish your request",
@@ -1090,8 +1108,8 @@ Ext.define("Locale.locale-en", {
             "footer_site": "«About Us» Link",
             "footer_text": "The text at the bottom of page",
             "geocoder": "Geocoding",
-            "default_geocoder": "Geocoding by default",
-            "route_provider": "Default route provider",
+            "default_geocoder": "Geocoding",
+            "route_provider": "Route provider",
             "translit": "Transliteration for SMS",
             "measurement_system": "Measurement system",
             "date_format": "Date format",
@@ -1326,27 +1344,27 @@ Ext.define("Locale.locale-en", {
             "service_additional_title": "Email notifications",
             "accounts_fields": "User defaults",
             "accounts_regional_title": "Regional settings",
-            "accounts_geocoding_title": "Cartography and databases",
-            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves.",
+            "accounts_geocoding_title": "Cartography",
+            "account_info": "These user profile settings will be applied for every new user account. When it is required, users can change default settings in their accounts themselves",
             "account_roads_title": "Roads",
             "emails_fields": "Email messages",
             "emails_main_title": "Main settings",
             "emails_main_info": "Settings for sending Emails to users about geo based events, low balance warnings, etc.",
             "sms_fields": "SMS messages",
             "sms_main_title": "Main settings",
-            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices.<br>You can use same or different gateways to deliver messages to users and devices.",
+            "sms_main_info": "Configure SMS messages and SMS gateways which are used for bi-directional communication between service platform and users, service platform and devices<br>You can use same or different gateways to deliver messages to users and devices",
             "sms_m2m_title": "M2M messages",
             "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
             "sms_user_title": "User notifications",
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
-            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options.",
+            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options",
             "branding_main_info_first_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your tracking service.",
             "branding_main_info_first_condition_hint": "The current version does not allow you to:<br /> - Upload your own logos to the web interface and mobile app.<br /> - Choose a color scheme for the web interface and mobile app.<br /> - Set up a custom domain name.",
             "branding_main_info_second_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your platform interface.",
             "branding_main_info_second_condition_hint": "The current version does not allow you to:<br /> - Upload your own logos to the web interface.<br /> - Choose a color scheme for the web interface.<br /> - Set up a custom domain name.",
             "branding_main_info_third_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of the X-GPS Monitor mobile app.",
             "branding_main_info_third_condition_hint": "The current version does not allow you to:<br /> - Upload your own logo to the mobile app.<br /> - Choose a color scheme for the mobile app.",
-            "service_info": "Define the preferences of your service.",
+            "service_info": "Define the preferences of your service",
             "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
             "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
             "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy',
@@ -1674,7 +1692,9 @@ Ext.define("Locale.locale-en", {
     "measurement_systems": {
         "metric": "Metric",
         "imperial": "Imperial",
-        "us": "US"
+        "us": "US",
+        "metric_gal_us": "Metric + Gallons (US)",
+        "nautical": "Nautical"
     },
     "hour_modes": {
         "twelve": "12-hour clock (5:30 PM)",
@@ -1903,7 +1923,8 @@ Ext.define("Locale.locale-en", {
         "ui_mobile": "Mobile web interface",
         "weblocator": "Weblocator",
         "chat": "Chat",
-        "checkins": "Check-ins on the map"
+        "checkins": "Check-ins on the map",
+        "route_import": "Import routes"
     },
     "map": {
         "zoom_in": "Zoom in",
