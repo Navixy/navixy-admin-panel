@@ -93,7 +93,6 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                 groupHeaderTpl: ['{columnName}: {name} (',
                     _l.get('reports.active_trackers.count_label'),
                     ' {[values.children.length]})'],
-
                 dataIndex: 'user_id',
                 filter: {
                     type: 'string',
@@ -136,6 +135,14 @@ Ext.define('NavixyPanel.view.reports.active_trackers.List', {
                     header: _l.get('trackers.fields.dealer_title'),
                     flex: 1,
                     dataIndex: 'dealer_title',
+                    groupHeaderTpl: new Ext.XTemplate('{name} (',
+                        _l.get('reports.active_trackers.count_label'),
+                        ' {[this.getRealActiveCount(values)]})', {
+                            getRealActiveCount: function (values) {
+                                return values.children.length ? values.children[0].get('dealer_count') : 0
+                            }
+                        }
+                    ),
                     hidden: true,
                     filter: {
                         type: 'string',
