@@ -23,7 +23,6 @@ Ext.define('NavixyPanel.view.reports.Panel', {
             title: newReports ? _l.get('reports.active_trackers.own_devices') : undefined
         }]
 
-
         if (newReports) {
             this.items.push({
                 xtype: 'active-trackers-grid',
