@@ -20,7 +20,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.Search',
         'desktop.Exponential',
         'desktop.Index',
-        'desktop.IndexExp'
+        'desktop.IndexExp',
+        'desktop.IndexPlain',
+        'desktop.PlainPrices'
     ],
 
     refs: [
@@ -168,12 +170,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         this.application.fireEvent('handlefound');
         this.application.fireEvent('menuselect', 'index');
-
+        var desktopPricesBlock = this.checkExponential() ? 'indexexp' : 'indexplain';
         this.application.fireEvent('contentchange', {
             xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs'])
-                ? this.checkExponential()
-                    ? 'indexexp'
-                    : 'searchform'
+                ? desktopPricesBlock
                 : 'indexpage'
         });
     },
@@ -182,6 +182,9 @@ Ext.define('NavixyPanel.controller.Desktop', {
         return Ext.getStore('Dealer').isExponentialAviliable();
     },
 
+    checkIsStandalone: function () {
+        return Ext.getStore('Dealer').isStandalone();
+    },
 
     registerSearch: function () {
         this.addMainMenuItem({

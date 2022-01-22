@@ -66,7 +66,6 @@ Ext.define('NavixyPanel.store.Dealer', {
         return this.first().get('tutorial');
     },
 
-
     isExponentialAviliable: function () {
         var record = this.first(),
             tariff = record && record.get('tariff');
@@ -74,6 +73,20 @@ Ext.define('NavixyPanel.store.Dealer', {
         return tariff && tariff.algorithm == "exponential" && tariffPermissions && !this.isSubPaas();
     },
 
+    getPlainPrices: function () {
+        var record = this.first(),
+            tariff = record && record.get('tariff');
+        return {
+            currency: tariff.currency,
+            min_license_pay: tariff.min_license_pay,
+            license_price: tariff.license_price
+        }
+    },
+
+    isStandalone: function () {
+        // var record = this.first(),
+        //     tariff = record && record.get('tariff');
+    },
 
     setGoogleClientId: function (google_client_id) {
         this.google_client_id = google_client_id
