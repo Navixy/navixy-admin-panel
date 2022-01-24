@@ -172,7 +172,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
         this.application.fireEvent('menuselect', 'index');
         var desktopPricesBlock = this.checkExponential() ? 'indexexp' : 'indexplain';
         this.application.fireEvent('contentchange', {
-            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs'])
+            xtype: Ext.checkPermissons(['users', 'trackers', 'tariffs']) && !this.checkIsStandalone()
                 ? desktopPricesBlock
                 : 'indexpage'
         });
