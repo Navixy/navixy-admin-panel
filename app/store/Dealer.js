@@ -70,14 +70,16 @@ Ext.define('NavixyPanel.store.Dealer', {
         var record = this.first(),
             tariff = record && record.get('tariff');
         var tariffPermissions = Ext.checkPermission('paas_tariff', 'read')
-        return tariff && tariff.algorithm === "exponential" && tariffPermissions && !this.isSubPaas();
+        var isTrial = tariff.trial
+        return tariff && !isTrial && tariff.algorithm === "exponential" && tariffPermissions && !this.isSubPaas();
     },
 
     isPlainPricesAvailable: function () {
         var record = this.first(),
             tariff = record && record.get('tariff');
         var tariffPermissions = Ext.checkPermission('paas_tariff', 'read')
-        return tariff && tariff.algorithm === "plain" && tariffPermissions && !this.isSubPaas();
+        var isTrial = tariff.trial
+        return tariff && !isTrial && tariff.algorithm === "plain" && tariffPermissions && !this.isSubPaas();
     },
 
     getPlainPrices: function () {
