@@ -12,7 +12,9 @@ Ext.define('NavixyPanel.view.desktop.IndexPlain', {
         align: 'stretch'
     },
     initComponent: function () {
-        this.items = [
+        var prices = Ext.getStore('Dealer').getPlainPrices()
+        if (prices.min_license_pay || prices.license_price) {
+            this.items = [
                 {
                     xtype: 'searchform'
                 },
@@ -21,7 +23,13 @@ Ext.define('NavixyPanel.view.desktop.IndexPlain', {
                     xtype: 'plain_prices'
                 }
             ];
-
+        } else {
+            this.items = [
+                {
+                    xtype: 'searchform'
+                },
+            ]
+        }
 
         this.callParent(arguments);
     }

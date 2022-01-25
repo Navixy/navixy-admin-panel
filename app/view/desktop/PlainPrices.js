@@ -17,20 +17,23 @@ Ext.define('NavixyPanel.view.desktop.PlainPrices', {
     bodyPadding: 20,
 
     initComponent: function () {
-        var prices = Ext.getStore('Dealer').getPlainPrices();
-        var localePart = _l.get('plain_price');
-        var currencyTpl = _l.get('currencies_tpls')[prices.currency];
+        var prices = Ext.getStore('Dealer').getPlainPrices(),
+            localePart = _l.get('plain_price'),
+            currencyTpl = _l.get('currencies_tpls')[prices.currency];
+
+        var minLicencePayText = prices.min_license_pay ? '<div>' +
+            localePart.get('license_pay') + ': ' +
+            '<b>' +Ext.String.format(currencyTpl, prices.min_license_pay) + '</b>' +
+            '</div><br/>' : '';
+        var pricePerTrackerText = prices.license_price ? '<div>' +
+            localePart.get('license_price_per_tracker') + ': ' +
+        '<b>' + Ext.String.format(currencyTpl, prices.license_price) + '</b>' +
+        '</div>' : '';
         this.items = [
             {
                 xtype: 'container',
                 ui: 'light',
-                html: '<div>' +
-                    localePart.get('license_pay') + ': ' +
-                    '<b>' +Ext.String.format(currencyTpl, prices.min_license_pay) + '</b>' +
-                    '</div><br/><div>' +
-                    localePart.get('license_price_per_tracker') + ': ' +
-                    '<b>' + Ext.String.format(currencyTpl, prices.license_price) + '</b>' +
-                    '</div>'
+                html: minLicencePayText + pricePerTrackerText
             }
         ];
         this.title = _l.get('exponential.title');
