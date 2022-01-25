@@ -33,7 +33,7 @@ Ext.define('NavixyPanel.view.desktop.PlainPrices', {
                     '</div>'
             }
         ];
-
+        this.title = _l.get('exponential.title');
         this.callParent(arguments);
     }
 });

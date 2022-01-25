@@ -2011,7 +2011,7 @@ Ext.define("Locale.locale-ru", {
         }
     },
     exponential: {
-        title: "Стоимость маячка",
+        title: "Стоимость маячка с 01.03.2022",
         xaxis: "Количество",
         yaxis: "Цена",
         update_btn: "Обновить",

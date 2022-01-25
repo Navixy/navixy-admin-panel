@@ -2032,7 +2032,7 @@ Ext.define("Locale.locale-en", {
         }
     },
     exponential: {
-        "title": "Devices price",
+        "title": "Tracker price from March 1st, 2022",
         "xaxis": "Devices amount",
         "yaxis": "Price",
         update_btn: "Refresh",
