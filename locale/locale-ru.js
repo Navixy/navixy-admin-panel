@@ -2019,7 +2019,7 @@ Ext.define("Locale.locale-ru", {
         end: "Максимальное количество"
     },
     plain_price: {
-        license_pay: 'Минимальная стоимость лицензии',
+        license_pay: 'Минимальный месячный платеж',
         license_price_per_tracker: 'Стоимость за активный трекер в месяц'
     },
     tutorial: {

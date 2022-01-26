@@ -2040,7 +2040,7 @@ Ext.define("Locale.locale-en", {
         end: "Max amount"
     },
     plain_price: {
-        license_pay: 'Minimum license price',
+        license_pay: 'Minimum monthly fee',
         license_price_per_tracker: 'Monthly price per active tracker '
     },
     tutorial: {
