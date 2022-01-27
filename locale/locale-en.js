@@ -2041,7 +2041,8 @@ Ext.define("Locale.locale-en", {
     },
     plain_price: {
         license_pay: 'Minimum monthly fee',
-        license_price_per_tracker: 'Monthly price per active tracker '
+        price_per_tracker_month: 'Monthly price per active tracker ',
+        price_per_tracker_daily: ' Daily price per active tracker'
     },
     tutorial: {
         user: 'To get started, please create a user',

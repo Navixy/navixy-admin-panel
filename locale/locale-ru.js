@@ -2020,7 +2020,8 @@ Ext.define("Locale.locale-ru", {
     },
     plain_price: {
         license_pay: 'Минимальный месячный платеж',
-        license_price_per_tracker: 'Стоимость за активный трекер в месяц'
+        price_per_tracker_month: 'Стоимость за активный трекер в месяц',
+        price_per_tracker_daily: 'Стоимость за активный трекер в день'
     },
     tutorial: {
         user: 'Для начала работы создайте пользователя',

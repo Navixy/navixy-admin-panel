@@ -88,7 +88,8 @@ Ext.define('NavixyPanel.store.Dealer', {
         return {
             currency: tariff.currency,
             min_license_pay: tariff.min_license_pay,
-            license_price: tariff.license_price
+            license_price: tariff.license_price,
+            type: tariff.type
         }
     },
 
