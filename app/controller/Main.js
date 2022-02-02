@@ -776,7 +776,6 @@ Ext.define('NavixyPanel.controller.Main', {
     // Localization
 
     changeLocale: function (el, value) {
-
         Locale.Manager.updateLocale(value)
     },
 

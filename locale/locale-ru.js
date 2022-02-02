@@ -35,7 +35,7 @@ Ext.define("Locale.locale-ru", {
     "index_blocked_payment": "Вы можете пополнить баланс в разделе \"Подписка\"",
     "index_tip": "",
     "old_version": "Старая версия",
-    "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
+    "maintenance_warning": "Мы меняем цены с 1-го марта 2022. Смотрите <a target='_blank' href='https://www.navixy.com/ru/update-to-navixy-servermate-prices/'>официальное уведомление.",
     "auth": {
         "login": "Логин или адрес электронной почты",
         "password": "Пароль",
