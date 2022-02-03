@@ -16,12 +16,12 @@ Ext.define('Locale.Manager', {
             text: 'English',
             alias: ['en', 'en_US', 'English']
         },
-        {
-            id: 'tr_TR',
-            name: 'tr',
-            text: 'Türkçe',
-            alias: ['tr', 'tr_TR', 'Türkçe']
-        },
+        // {
+        //     id: 'tr_TR',
+        //     name: 'tr',
+        //     text: 'Türkçe',
+        //     alias: ['tr', 'tr_TR', 'Türkçe']
+        // },
         //{
         //    id: 'es_ES',
         //    name: 'es',
