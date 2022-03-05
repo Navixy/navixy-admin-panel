@@ -204,7 +204,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
         this.registerPayments();
 
-        this.checkWarning();
+        // this.checkWarning();
 
         this.checkTutorial();
     },
