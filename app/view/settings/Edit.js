@@ -33,6 +33,11 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     brandingSubPaas: null,
     brandingNavixy: null,
 
+    initComponent: function () {
+      this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
+      this.callParent(arguments);
+    },
+
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
