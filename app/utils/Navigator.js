@@ -133,7 +133,7 @@ Ext.define('NavixyPanel.utils.Navigator', {
         var domain = Ext.getStore('Dealer').first().get('domain'),
             paasDomain = Config.links.paasCompanyUrl,
             data = Ext.apply({
-                company_url:  paasDomain,
+                company_url:  Ext.isNavixy() ? paasDomain : domain || paasDomain,
                 hash: hash || '',
                 app: app
             }, params || {}),
