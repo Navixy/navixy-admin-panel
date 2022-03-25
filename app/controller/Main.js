@@ -344,11 +344,11 @@ Ext.define('NavixyPanel.controller.Main', {
 
         Ext.apply(Ext.form.field.VTypes, {
             tardemail: function (v) {
-                return this.tardemailRe.test(v);
+                return this.tardemailRe.test(v)
             },
             tardemailText: Ext.form.field.VTypes.emailText,
             tardemailMask: /[a-z0-9_\+\.\-@\,]/,
-            tardemailRe: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9_]{2,14})+$/,
+            tardemailRe: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9_]{2,14})+$/
 
         })
 
@@ -504,9 +504,7 @@ Ext.define('NavixyPanel.controller.Main', {
             },
 
             isNavixy: function () {
-                var isPanelOnNvxDomain = (Config.paas_domain || []).some(function(domain){ return location.host.includes(domain) })
-
-                return Config.hideNavixyLogo && isPanelOnNvxDomain || !Config.hideNavixyLogo
+                return Config.hideNavixyLogo && /[navixy\.]com|ru$/gi.test(location.hostname) || !Config.hideNavixyLogo
             },
 
             isIE11: !!navigator.userAgent.match(/Trident.*rv[ :]*11\./)
