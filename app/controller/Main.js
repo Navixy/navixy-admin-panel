@@ -504,7 +504,9 @@ Ext.define('NavixyPanel.controller.Main', {
             },
 
             isNavixy: function () {
-                return Config.hideNavixyLogo && /[navixy\.]com|ru$/gi.test(location.hostname) || !Config.hideNavixyLogo
+                var isPanelOnNvxDomain = (Config.paas_domain || []).some(function(domain){ return location.host.includes(domain) })
+
+                return Config.hideNavixyLogo && isPanelOnNvxDomain || !Config.hideNavixyLogo
             },
 
             isIE11: !!navigator.userAgent.match(/Trident.*rv[ :]*11\./)
