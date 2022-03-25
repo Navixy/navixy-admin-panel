@@ -13,8 +13,8 @@ if (profile) {
         console.log(command)
 
         exec(command, function (error, stdout, stderr) {
-            sys.print('stdout: ' + stdout)
-            sys.print('stderr: ' + stderr)
+            console.log('stdout: ' + stdout)
+            console.log('stderr: ' + stderr)
             if (error !== null) {
                 console.log('exec error: ' + error)
             }
