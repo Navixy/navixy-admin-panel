@@ -125,8 +125,8 @@ module.exports = function (grunt) {
                                 exec = require('child_process').exec;
 
                             exec('hg id -i', function (error, stdout, stderr) {
-                                console.log('stdout: ' + stdout);
-                                console.log('stderr: ' + stderr);
+                                sys.print('stdout: ' + stdout);
+                                sys.print('stderr: ' + stderr);
                                 var packageJSONFile = grunt.file.readJSON('package.json'),
                                     version = packageJSONFile.version,
                                     msg = [new Date().toISOString(), stdout.substr(0, stdout.length - 2),

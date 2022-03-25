@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         console.log(command);
 
         exec(command, function (error, stdout, stderr) {
-            console.log('stdout: ' + stdout);
+            sys.print('stdout: ' + stdout);
             if (error !== null) {
                 console.log('exec error: ' + error);
             } else {
