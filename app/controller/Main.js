@@ -504,8 +504,7 @@ Ext.define('NavixyPanel.controller.Main', {
             },
 
             isNavixy: function () {
-                var isPanelOnNvxDomain = (Config.paas_domain || []).some(function(domain){ return location.host.includes(domain) })
-
+                var isPanelOnNvxDomain =  (Config.paas_domain || []).reduce(function(isPanelOnNvxDomain,domain){ return isPanelOnNvxDomain || location.host.includes(domain) }, false)
                 return Config.hideNavixyLogo && isPanelOnNvxDomain || !Config.hideNavixyLogo
             },
 
