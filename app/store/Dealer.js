@@ -66,14 +66,37 @@ Ext.define('NavixyPanel.store.Dealer', {
         return this.first().get('tutorial');
     },
 
-
-    isExponentialAviliable: function () {
+    isExponentialAvailable: function () {
         var record = this.first(),
             tariff = record && record.get('tariff');
         var tariffPermissions = Ext.checkPermission('paas_tariff', 'read')
-        return tariff && tariff.algorithm == "exponential" && tariffPermissions && !this.isSubPaas();
+        var isTrial = tariff.trial
+        return tariff && !isTrial && tariff.algorithm === "exponential" && tariffPermissions && !this.isSubPaas();
     },
 
+    isPlainPricesAvailable: function () {
+        var record = this.first(),
+            tariff = record && record.get('tariff');
+        var tariffPermissions = Ext.checkPermission('paas_tariff', 'read')
+        var isTrial = tariff.trial
+        return tariff && !isTrial && tariff.algorithm === "plain" && tariffPermissions && !this.isSubPaas();
+    },
+
+    getPlainPrices: function () {
+        var record = this.first(),
+            tariff = record && record.get('tariff');
+        return {
+            currency: tariff.currency,
+            min_license_pay: tariff.min_license_pay,
+            license_price: tariff.license_price,
+            type: tariff.type
+        }
+    },
+
+    isStandalone: function () {
+        var record = this.first();
+        return record.get('id') === 1
+    },
 
     setGoogleClientId: function (google_client_id) {
         this.google_client_id = google_client_id

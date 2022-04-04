@@ -130,10 +130,6 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'string'
         },
         {
-            name: 'display_model_features_link',
-            type: 'boolean'
-        },
-        {
             name: 'show_call_notifications',
             type: 'boolean'
         },

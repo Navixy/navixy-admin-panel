@@ -36,7 +36,7 @@ Ext.define("Locale.locale-en", {
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
-    "maintenance_warning": "January 20, Monday at 2am EST: scheduled maintenance with expected downtime up to 30 minutes.",
+    "maintenance_warning": "We update our prices from March 1st, 2022. See the <a a target='_blank' href='https://www.navixy.com/update-to-navixy-servermate-prices/'>official announcement.",
     "auth": {
         "login": "Login",
         "password": "Password",
@@ -2032,12 +2032,17 @@ Ext.define("Locale.locale-en", {
         }
     },
     exponential: {
-        "title": "Devices price",
+        "title": "Tracker price from March 1st, 2022",
         "xaxis": "Devices amount",
         "yaxis": "Price",
         update_btn: "Refresh",
         start: "Min amount",
         end: "Max amount"
+    },
+    plain_price: {
+        license_pay: 'Minimum monthly fee',
+        price_per_tracker_month: 'Monthly price per active tracker ',
+        price_per_tracker_daily: ' Daily price per active tracker'
     },
     tutorial: {
         user: 'To get started, please create a user',
