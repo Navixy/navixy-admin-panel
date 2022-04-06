@@ -1187,8 +1187,12 @@ Ext.define("Locale.locale-en", {
             "sms_inbound_hint": "We do not recommend, but you can also use another numeric or alpha-numeric Sender ID. However, in this case it is likely that platform will not be able to receive any SMS from devices. Please also note that special requirements can be applied by national laws and regulations to avoid spam. Make sure that the Sender ID you entered meets these requirements, otherwise SMS messaging service might not work properly.",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
-            "do_not_apply_default_seetings_during_activation": "Do not apply default settings during device activation",
-            "do_not_apply_default_seetings_during_activation_hint": "If the checkbox is marked the platform will not send configurational SMS and GPRS commands with default settings. The device should be manually configured before its activation on the platform.",
+            "do_not_apply_default_seetings_during_activation": "Do not send default settings",
+            "do_not_apply_default_seetings_during_activation_hint": "If selected, the platform will not send configurational SMS and GPRS commands to the device with default settings. The device should be manually configured for its activation on the platform.",
+            "no_auto_create_rules": "Do not create default event rules\n",
+            "no_auto_create_rules_hint": "If selected, the platform will not create default event rules. You will need to create them manually.",
+            "no_auto_create_sensors": "Do not create default sensors",
+            "no_auto_create_sensors_hint": "If selected, the platform will not create default sensors. You will need to create them manually.",
             "show_call_notifications": "Allow configuration of voice notifications",
             "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
@@ -1379,6 +1383,7 @@ Ext.define("Locale.locale-en", {
                 "save_btn": "Choose"
             },
             "clear_btn": "Reset",
+            "device_activation": "Device activation",
             "misc_header": "Optional features"
         },
         "upload_form": {
