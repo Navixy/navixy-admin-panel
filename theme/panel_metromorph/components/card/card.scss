@@ -67,6 +67,17 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         cursor: pointer;
         border-bottom: 1px dashed $smoke;
     }
+    .tracker_comment_label {
+        vertical-align:top;
+
+        & ~ td {
+            vertical-align:top
+        }
+    }
+    .tracker_comment_text {
+        white-space: break-spaces;
+        word-break: break-all;
+    }
 }
 
 .content-table.body-table {
@@ -543,4 +554,3 @@ $card-body-right-td-bg-color: lighten($baseBackgroundColor, 2%);
         height: 48px
     }
 }
-

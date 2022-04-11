@@ -957,7 +957,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
                     name: 'show_call_notifications'
                 },
-
         ];
     },
 

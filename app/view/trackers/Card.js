@@ -294,7 +294,8 @@ Ext.define('NavixyPanel.view.trackers.Card', {
                 {
                     title: _l.get('trackers.fields.comment'),
                     value: recordData.comment,
-                    right_td_cls: "comment"
+                    right_td_cls: "tracker_comment_label",
+                    left_td_cls: "tracker_comment_text"
                 }
             ]
         };
