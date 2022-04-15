@@ -138,6 +138,14 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'boolean'
         },
         {
+            name: 'no_auto_create_rules',
+            type: 'boolean'
+        },
+        {
+            name: 'no_auto_create_sensors',
+            type: 'boolean'
+        },
+        {
             name: 'monitoring_logo_clickable',
             type: 'boolean'
         },

@@ -921,23 +921,42 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //}
             {
                 xtype: 'blockheader',
-                html: _l.get('settings.edit_form.misc_header')
-            },
-            locale === 'en'
-                ? null
-                :
-            {
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
-                name: 'show_call_notifications'
+                html: _l.get('settings.edit_form.device_activation')
             },
             {
                 xtype: 'checkbox',
                 role: 'checkbox',
                 boxLabel: _l.get('settings.fields.do_not_apply_default_seetings_during_activation') + this.getHintSymbol(_l.get('settings.fields.do_not_apply_default_seetings_during_activation_hint')),
                 name: 'no_register_commands'
-            }
+            },
+            {
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.fields.no_auto_create_rules') + this.getHintSymbol(_l.get('settings.fields.no_auto_create_rules_hint')),
+                name: 'no_auto_create_rules'
+            },
+            {
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.fields.no_auto_create_sensors') + this.getHintSymbol(_l.get('settings.fields.no_auto_create_sensors_hint')),
+                name: 'no_auto_create_sensors'
+            },
+            locale === 'en'
+                ? null
+                :
+                {
+                    xtype: 'blockheader',
+                    html: _l.get('settings.edit_form.misc_header')
+                },
+            locale === 'en'
+                ? null
+                :
+                {
+                    xtype: 'checkbox',
+                    role: 'checkbox',
+                    boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
+                    name: 'show_call_notifications'
+                },
         ];
     },
 
