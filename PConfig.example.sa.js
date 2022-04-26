@@ -1,36 +1,39 @@
 Config = {
-
-    // Шаблоны профилей API
+    // Profiles template API
     apiProfiles: {
-        // Настройки Java-API
+        // Java-API settings
         japi: {
             apiRoot: 'http://api.domain.com/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
         }
     },
 
-    // Шаблоны внешних ссылок
+    // Links templates
     links: {
-        // Используется в monUrlTpl вместо company_url для всех PaaS, не использующих собственный домен для панели. Нужно для обхода ошибки кроссдоменности.
+        // Used in monUrlTpl instead of company_url for all PaaS without own panel domain. Needed to fix crossdomain error.
         paasCompanyUrl: 'saas.navixy.com',
-        // Ссылка на "автоматичесую" авторизацию в мониторинге, с передачей хэша через GET. Испольхуется страница  прямого показа демонстрации мониторинга.
+        // Link to "automatic" authorization in monitoring with user hash in GET.
         monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
-        // Ссылка на "автоматичесую" авторизацию в указанном приложении, с передачей хэша через GET.
+        // Link to "automatic" authorization in selected app with user hash in GET.
         appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
-        // Ссылка на стандартную авторизацию в мониторинге.
+        // Link to standard authorization page
         loginUrlTpl: ['//{company_url}/login/']
     },
 
-    // Адарес подкючения к веб-сокету терминала для устройств
+    // web-socket connection address for devices terminal
     terminalHost: 'ws://api.domain.com:8383/',
-    // Доменное имя по умолчанию. Учатсвует в определении доступных типов карт и других настроек paas. Может принимать значением строку указаывающую домен i.e. "gdemoi.ru" или массив перечисляющий домены i.e.["gdemoi.ru", "gdemoi.com"]. В случае отсутствия занчения домен будет сравниваться с ".navixy.ru", чтобы игнорировать сравнение с ".navixy.ru" установите значение в false. Все выше перечисленные могут быть проигнорированы при получении команды (опции) от сервера.
+    // Default domain name. Use for determining map types and other settings.
+    // Can be string (i.e. "gdemoi.ru") or array of strings (i.e.["gdemoi.ru", "gdemoi.com"].)
+    // Default value is ".navixy.ru"
+    // TO ignore comparing with  ".navixy.ru" set value to false
+    // All above will be ignored if server sends own options
     paas_domain: '.domain.com',
 
-
-    // Номер приема входящих сообщений для sms-шлюза navixy
+    // Incoming sms-gateway phone number for navixy
     navixyInboundNumber: "79037976362",
 
-    useGoogleMapsTilesDirectly: false //use google maps whithout its js api
+    //use google maps whithout its js api
+    useGoogleMapsTilesDirectly: false
     //Extended locales for use in MONITORING not in Panel
     //extended_locales: {
     //    override: true,
