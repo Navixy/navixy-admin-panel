@@ -1889,7 +1889,8 @@ Ext.define("Locale.locale-ru", {
         "weblocator": "Веб-локатор",
         "chat": "Чат",
         "checkins": "Отметки на карте",
-        "route_import": "Импорт маршрутов"
+        "route_import": "Импорт маршрутов",
+        "customer_requests": "Заявки"
     },
     "map": {
         "zoom_in": "Увеличить масштаб",

@@ -107,6 +107,12 @@ Ext.define('NavixyPanel.store.Features', {
                 "name": _l.get('features.route_import'),
                 group: "features"
             },
+            // #FR-6972
+            {
+                type: "customer_requests",
+                "name": _l.get('features.customer_requests'),
+                group: "apps"
+            },
             // #COR-97
             //{
             //    type: "api",
