@@ -17,34 +17,34 @@ Ext.define('NavixyPanel.view.widgets.fields.TimeZoneCombo', {
     displayField: 'description',
     valueField: 'zone_id',
     forceSelection: true,
-    tpl: Ext.create('Ext.XTemplate',
+    tpl: new Ext.XTemplate(
         '<tpl for=".">',
-        '<div class="x-boundlist-item">{description} {[this.getOffsetStr(values.base_offset)]}</div>',
+        '<div class="x-boundlist-item">{description} {[this.getOffsetStr(values.base_offset, values.dst_offset)]}</div>',
         '</tpl>',
         {
-            getOffsetStr: function (offset) {
+            getOffsetStr: function (offset, dst) {
                 var int_offset = parseFloat(offset) || 0,
                     time = ("" + int_offset).split("."),
                     minutes = time[1] && time[1] / 100 * 60,
                     date_str = time[0] + (minutes ? ":" + minutes + (minutes < 10 ? "0" : "") : "");
 
-                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str;
+                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str + (dst ? ' (DST+1)' : '');
             }
         }
     ),
 
-    displayTpl: Ext.create('Ext.XTemplate',
+    displayTpl: new Ext.XTemplate(
         '<tpl for=".">',
-        '{description:htmlEncode} {[this.getOffsetStr(values.base_offset)]}',
+        '{description} {[this.getOffsetStr(values.base_offset, values.dst_offset)]}',
         '</tpl>',
         {
-            getOffsetStr: function (offset) {
+            getOffsetStr: function (offset, dst) {
                 var int_offset = parseFloat(offset) || 0,
                     time = ("" + int_offset).split("."),
                     minutes = time[1] && time[1] / 100 * 60,
                     date_str = time[0] + (minutes ? ":" + minutes + (minutes < 10 ? "0" : "") : "");
 
-                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str;
+                return 'UTC' + (int_offset >= 0 ? "+" : '') + date_str + (dst ? ' (DST+1)' : '');
             }
         }
     ),
