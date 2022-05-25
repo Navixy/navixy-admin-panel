@@ -5,7 +5,12 @@ Config = {
         japi: {
             apiRoot: 'http://api.domain.com/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
-        }
+        },
+        // B2Field Java-API settings
+        b2f_japi: {
+          apiRoot: '//panel.ci.test.gdemoi.ru/api-v2/b2f/panel',
+          apiUrlTpl: ['{apiRoot}/{handler}/{action}']
+        },
     },
 
     // Links templates
