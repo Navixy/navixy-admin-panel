@@ -10,12 +10,10 @@ Config = {
 
     // Links templates
     links: {
-        // Used in monUrlTpl instead of company_url for all PaaS without own panel domain. Needed to fix crossdomain error.
-        paasCompanyUrl: 'saas.navixy.com',
         // Link to "automatic" authorization in monitoring with user hash in GET.
         monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
         // Link to "automatic" authorization in selected app with user hash in GET.
-        appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
+        appUrlTpl: ['//saas.navixy.com/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
         // Link to standard authorization page
         loginUrlTpl: ['//{company_url}/login/']
     },
