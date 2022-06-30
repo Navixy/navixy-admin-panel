@@ -29,7 +29,7 @@ Ext.define('NavixyPanel.view.users.ActivationPanel', {
 
         this.beforeClosePanel = Ext.bind(this.beforeClosePanel, this);
 
-        window.addEventListener('message', this.beforeClosePanel);
+        window.addEventListener('message', this.beforeClosePanel,false);
         window[isIE ? 'onhashchange' : 'onpopstate'] = function () {
             me.fireEvent('close');
         };
@@ -44,11 +44,9 @@ Ext.define('NavixyPanel.view.users.ActivationPanel', {
     },
 
     beforeClosePanel: function (messageEvent) {
-        var domain = Ext.getStore('Dealer').first().get('domain'),
-            paasDomain = Config.links.paasCompanyUrl,
-            data = JSON.parse(messageEvent.data);
+        var data = JSON.parse(messageEvent.data);
 
-        if (data.action === 'closeregisterpanel' && data.host === (Ext.isNavixy() ? paasDomain : domain)) {
+        if (data.action === 'closeregisterpanel') {
             this.fireEvent('close');
         }
     }

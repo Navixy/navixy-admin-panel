@@ -197,6 +197,6 @@ Ext.define('NavixyPanel.store.Dealer', {
         var record = this.first(),
             features = record && record.get("features");
 
-        return Ext.Array.contains(features, feature_name);
+        return features && Ext.Array.contains(features, feature_name);
     }
 })

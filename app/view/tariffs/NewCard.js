@@ -661,7 +661,8 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
             listItem,
             dealer_store = Ext.getStore('Dealer'),
             dealer = dealer_store && dealer_store.first(),
-            hasFsm = dealer_store.hasFsm();
+            hasFsm = dealer_store.hasFsm(),
+            hasB2f = dealer_store.hasB2f();
 
         var needToRemovePremiumGisMaps = !Ext.getStore('Dealer').isPremiumGis(),
             permittedTypes = ['hybrid',
@@ -688,6 +689,10 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
         Ext.getStore('Features').each(function (featureRecord) {
 
             if (featureRecord.get('type') === 'task_route_import' && !hasFsm) {
+                return
+            }
+
+            if (featureRecord.get('type') === 'customer_requests' && !hasB2f) {
                 return
             }
 

@@ -148,9 +148,13 @@ Ext.define('NavixyPanel.api.ApiConnector', {
 
     },
 
+    b2fApiProfile: function () {
+      return Ext.getStore('Dealer').hasB2f() ? 'b2f_japi' : false
+    },
+
     getRequestUrl: function (config) {
         var apiProfiles = this.apiProfiles,
-            api = config.api || this.defaultApiProfile,
+            api = this.b2fApiProfile() || config.api || this.defaultApiProfile,
             apiUrlTpl = apiProfiles[api].apiUrlTpl,
             apiRoot = localStorage.getItem('debug_api') || apiProfiles[api].apiRoot
 
