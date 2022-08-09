@@ -10,7 +10,7 @@ Ext.define('Locale.locale-es',{
             "history": false
         }
     ],
-    "main_copyright": "© 2015 RusLink. Todos los derechos reservados.",
+    "main_copyright": "© SquareGPS Inc. Todos los derechos reservados.",
     "panel_title": "Panel de Administración Navixy",
     "error": "Error",
     "loading": "Cargando...",

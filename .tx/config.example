@@ -1,6 +1,6 @@
 [main]
 host = https://www.transifex.com
-login = a.ekimov@ruslink.pro
+login = a.ekimov@SquareGPS Inc.pro
 password = 5073236
 
 [navixy.panel-ui]
