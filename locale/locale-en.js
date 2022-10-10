@@ -2038,7 +2038,7 @@ Ext.define("Locale.locale-en", {
         }
     },
     exponential: {
-        "title": "Tracker price from March 1st, 2022",
+        "title": "Your current pricing",
         "xaxis": "Devices amount",
         "yaxis": "Price",
         update_btn: "Refresh",
