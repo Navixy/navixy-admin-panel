@@ -142,15 +142,6 @@ Ext.define('NavixyPanel.utils.Navigator', {
         return !!domain && !!app && Ext.String.urlAppend(link, 'locale=' + locale);
     },
 
-    getLogin: function () {
-        var domain = Ext.getStore('Dealer').first().get('domain'),
-            url = !!domain && new Ext.Template(Config.links.loginUrlTpl).apply({
-                company_url: domain
-            });
-
-        return url;
-    },
-
     getSearch: function (searchString) {
         return Ext.String.format('search/{0}', searchString);
     },

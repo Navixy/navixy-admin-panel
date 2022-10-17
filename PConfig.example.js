@@ -8,19 +8,17 @@ Config = {
         },
         // B2Field Java-API settings
         b2f_japi: {
-          apiRoot: '//panel.ci.test.gdemoi.ru/api-v2/b2f/panel',
-          apiUrlTpl: ['{apiRoot}/{handler}/{action}']
-        },
+            apiRoot: '//panel.ci.test.gdemoi.ru/api-v2/b2f/panel',
+            apiUrlTpl: ['{apiRoot}/{handler}/{action}']
+        }
     },
 
     // Links templates
     links: {
         // Link to "automatic" authorization in monitoring with user hash in GET.
-        monUrlTpl: ['http://{company_url}/pro/demo/?session_key={hash}'],
+        monUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}'],
         // Link to "automatic" authorization in selected app with user hash in GET.
-        appUrlTpl: ['//saas.navixy.com/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
-        // Link to standard authorization page
-        loginUrlTpl: ['http://{company_url}/login/']
+        appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}']
     },
 
     // web-socket connection address for devices terminal
