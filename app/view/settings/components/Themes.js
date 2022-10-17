@@ -203,16 +203,6 @@ Ext.define('NavixyPanel.view.settings.components.Themes', {
 
     },
 
-    previewLogin: function () {
-        var loginUrl = Ext.Nav.getLogin();
-
-        if (loginUrl) {
-            var win = window.open('', '_blank');
-            win.location = [loginUrl, '?theme=', this.getValue()].join("");
-
-        }
-    },
-
     onMobileSelect: function () {
         var preview = this.getMobilePreviewsContainer(),
             record = this.getMobileSelectedRecord();
