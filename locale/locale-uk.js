@@ -1124,7 +1124,7 @@ Ext.define('Locale.locale-uk',{
         },
         "report_success": "Email-newsletter successful"
     },
-    "main_copyright": "© 2015 RusLink. Всі права захищені.",
+    "main_copyright": "© SquareGPS Inc. Всі права захищені.",
     "payments": {
         "menu_text": "Payments",
         "import_sberbank": {
