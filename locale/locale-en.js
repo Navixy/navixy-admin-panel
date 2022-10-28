@@ -23,7 +23,7 @@ Ext.define("Locale.locale-en", {
     "conneting_loader": "Connecting to server",
     "access_denied": "Access denied",
     "access_denied_tip": "you do not have permission to access requested page",
-    "index_title": "Welcome to Admin Panel",
+    "index_title": "Welcome to the Admin Panel",
     "index_blocked": {
         "inital_block": "Initial blocking.",
         "block_login": "Access to your admin panel suspended. Please top up the balance.",
@@ -559,8 +559,8 @@ Ext.define("Locale.locale-en", {
                 permanent: "Permanent",
                 set_permanent: "Set permanent"
             },
-            "default_tariff": "Basic trackers tariff",
-            "default_tariff_hint": "The tariff plan will be applied by default once the user has added a new tracker",
+            "default_tariff": "Basic trackers plan",
+            "default_tariff_hint": "The plan will be applied by default once the user has added a new tracker",
             "default_tariff_empty": "Not set up"
         },
         "password_form": {
@@ -751,7 +751,7 @@ Ext.define("Locale.locale-en", {
         "tariff_form": {
             "title": "Change plan for tracker",
             "save_btn": "Save changes",
-            "repay": "Repay remainder of current tariff payment",
+            "repay": "Repay remainder of current plan payment",
             "charge": "Charge user now (according to the new plan)",
             "charge_sup": "only for monthly based plans",
             "tariff_invalid": "must be different from current"
@@ -832,8 +832,8 @@ Ext.define("Locale.locale-en", {
                 "text": "Send activation commands to the device?"
             }
         },
-        "confirm_update_owner_1" : "The tracker will be moved to the following account {0} and will be assigned a new tariff {1}",
-        "confirm_update_owner_2" : "The tracker will be moved to the following account {0}, with no changes to its tariff "
+        "confirm_update_owner_1" : "The tracker will be moved to the following account {0} and will be assigned a new plan {1}",
+        "confirm_update_owner_2" : "The tracker will be moved to the following account {0}, with no changes to its plan "
     },
     "tariffs": {
         "menu_text": "Plans",
@@ -935,9 +935,9 @@ Ext.define("Locale.locale-en", {
                 "17": "The plan will be set by default for all devices added by user, if no activation code used.<br /><br />When user enters an activation code its parameters are used as primary.",
                 "18": "Amount of complimentary days user gets after adding a device (including the day when device was added).",
                 "19": "Amount of money complimentary charged to user’s balance after he adds a new device.<br /><br />It can’t be used for general service fee payments, but only for additional services, e.g. SMS notifications.",
-                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up his balance on the 10th day, he will be charged for the full month anyway.",
-                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid such a collision by nesting similar plans into groups, thus making impossible for users to have devices on incompatible plans. We consider that is the only possible way to offer your flexible configuration of your plans and, at the same time, not giving your users the opportunity to cheat with your pricing.",
-                "plan_availability": "By combining plans into groups you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users are able to switch only to the plans that are marked with appropriate checkbox.",
+                "20": "If the checkbox is marked, user will be charged proportionally to the amount of days left from the date of last payment till the end of the current month.<br /><br />If the checkbox is cleared, user will be always charged a full monthly fee after the service for the device has been renewed. For example, if user failed to pay on time and filled up their balance on the 10th day, they will be charged for the full month.",
+                "plan_options": "<b>Notice about plans compatibility.</b> If there are assets on different plans within the same user account, some maps and options (which are not included into all plans) might become unavailable for that user. You can avoid this error by nesting similar plans into groups, thus making it impossible for users to have devices on incompatible plans. This is the only way to offer flexible configuration of your plans and not give users the ability to bypass the set pricing.",
+                "plan_availability": "By combining plans into groups, you can organize your plans better and allow your users to switch between plans on their own. While you can assign any plan for any asset in the Admin panel, your users will only be able to switch to the plans that are marked with appropriate checkbox.",
                 "free_days_device_limit": "If user reaches the limit, new assets will have no free period"
 
             }
@@ -1119,7 +1119,7 @@ Ext.define("Locale.locale-en", {
             "alerts_email": "Email for important alerts and invoices",
             "time_zone": "Time zone",
             "service_title_ph": "marketing name",
-            "service_title_hint": "Used at the login page, in browser tab and in other places",
+            "service_title_hint": "Your company name used on the login page and browser tabs",
             "footer_text_ph": "Some text you want to add into the footer of the login page",
             "footer_text_hint": "Custom text for the footer of the login page, links to privacy policy, etc. Links starting with http: and mailto: will be active. Use plain text only, HTML tags are not supported.",
             "promo_url_ph": "http://www.company.com",
@@ -1141,11 +1141,11 @@ Ext.define("Locale.locale-en", {
             "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
             "domain_mismatched": "Domain name must include <b>{0}</b>",
             "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
-            "locale_hint": "The language used by default for all new user accounts. User can also change the preferred language in his account settings.",
+            "locale_hint": "The language used by default for all new user accounts. Users can also change the preferred language in their account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
             "allow_registration_hint": "By checking this checkbox you allow users to create user accounts on their own – from the login page and with mobile apps. If the checkbox is disabled, you will able to create new user accounts from this Admin Panel only (and with Admin Panel API).",
-            "show_mobile_apps_hint": "When accessing a platform on smartphones or tablets, users will be offered to download mobile app or continue with mobile version of the web interface",
+            "show_mobile_apps_hint": "When accessing a platform on smartphones or tablets, users will be prompted to download the mobile app or continue with the mobile version of the web interface",
             "measurement_system_hint": "All physical quantities (length, weight, volume, etc.) will be represented in chosen measurement system",
             "time_zone_hint": "The most typical time zone for your users",
             "translit_hint": "Transliteration allow to reduce the amount of symbols in SMS by replacing the symbols of national alphabet with the closest latin ones",
@@ -1161,7 +1161,7 @@ Ext.define("Locale.locale-en", {
             "newsletters": "Newsletters",
             "newsletters_hint": "Emails for newsletters and important updates. Use comma to separate multiple addresses.",
             "daily_reports": "Daily reports",
-            "daily_reports_hint": "Emails for daily reports about the revenues. Use comma to separate multiple addresses.",
+            "daily_reports_hint": "Emails for daily reports on revenue. Use comma to separate multiple addresses.",
             "invoices": "Invoices",
             "invoices_hint": "Emails for invoices and accounting documents. Use comma to separate multiple addresses.",
             "demo_login_ph": "login",
@@ -1361,7 +1361,7 @@ Ext.define("Locale.locale-en", {
             "sms_m2m_info": "M2M message exchange between service platform and devices through SMS channel plays important role for simple device activation and remote management.<br /><br />            SMS channel is used for the following purposes:<br /><ul><li>initial automatic device configuration (APN, server address, etc.) of majority devices</li><li>receiving confirmations from devices about command accomplishing</li><li>as a backup channel to locate assets when GPRS is not available (low signal, international roaming, etc.)</li><li>for models which support such a feature</li></ul><br />.Furthermore, for those budget models which do not offer the possibility to control them remotely over GPRS/IP protocol, their settings change and output control is also performed via SMS channel.",
             "sms_user_title": "User notifications",
             "sms_user_info": "The service platform can deliver SMS notifications to users about geo-based events they want to stay aware of. Besides, the platform can also provide a special phone number, to which users can send SMS commands from their trusted phone numbers (command examples: ‘?’ – acquire location, ‘ON 1’ – enable device output).",
-            "branding_main_info": "Configure the appearance of your service, using your company’s brand names, marketing attributes and other customization options",
+            "branding_main_info": "Customize the appearance of your panel by using your brand name, logo, color scheme, and marketing attributes.",
             "branding_main_info_first_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your tracking service.",
             "branding_main_info_first_condition_hint": "The current version does not allow you to:<br /> - Upload your own logos to the web interface and mobile app.<br /> - Choose a color scheme for the web interface and mobile app.<br /> - Set up a custom domain name.",
             "branding_main_info_second_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of your platform interface.",
@@ -1369,11 +1369,11 @@ Ext.define("Locale.locale-en", {
             "branding_main_info_third_condition": "Upgrade to white label version by contacting your personal manager in order to customise the appearance of the X-GPS Monitor mobile app.",
             "branding_main_info_third_condition_hint": "The current version does not allow you to:<br /> - Upload your own logo to the mobile app.<br /> - Choose a color scheme for the mobile app.",
             "service_info": "Define the preferences of your service",
-            "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
-            "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their tariff plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
+            "maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Navixy is not responsible for any violation of the maps license terms by you or your end users.",
+            "paas_maps_hint": "Mark the maps which you want to be enabled for your service platform. You can also restrict particular users to access specific maps – by using the map option of their plans.<br /><br />Usage of selected maps must be granted to you by their rights owners. Our company is not responsible for any violation of the maps license terms by you or your end users.",
             "google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package from Navixy',
             "paas_google_maps_alert": 'Requires Google Maps client credentials or activation of "Premium GIS" package.',
-            "maps_defaults_hint": "Choose the map and its options, which will be used when user logins the Web-interface for the first time",
+            "maps_defaults_hint": "Select a default map and map center when your users log in for the first time",
             "service_maps_preview": "Map default settings preview",
             "service_maps_preview_info": "You an example of the initial display of the map view on the user interface. You can change center of the map by moving the marker and zoom by using tool or by using the mouse wheel on the map.",
             "map_edit_btn": "Visual editor",
@@ -1903,7 +1903,7 @@ Ext.define("Locale.locale-en", {
     },
     "features": {
         "api": "API",
-        "app_tasks": "Tasks",
+        "app_tasks": "Field service",
         "app_tasks_link": "<a href='https://www.navixy.com/docs/user/web-interface-docs/tasks/' target='_blank'>{0}</a>",
         "app_fleet": "Fleet",
         "app_reports": "Reports",
