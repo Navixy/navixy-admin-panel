@@ -136,6 +136,12 @@ Ext.define('Locale.Manager', {
             text: 'Монгол',
             alias: ['mn_MN', 'Монгол'],
             rtl: false
+        }, {
+            id: 'mk_MK',
+            name: 'mk_MK',
+            text: 'Македонски',
+            alias: ['mk', 'Македонски'],
+            rtl: false
         },
         {
             id: 'nl',
