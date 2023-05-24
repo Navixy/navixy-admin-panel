@@ -3,7 +3,7 @@ Config = {
     apiProfiles: {
         // Java-API settings
         japi: {
-            apiRoot: '/api-v2/panel',
+            apiRoot: '/api/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
         }
     },
