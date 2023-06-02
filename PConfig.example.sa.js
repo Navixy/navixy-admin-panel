@@ -21,9 +21,6 @@ Config = {
 
     paas_domain: false,
 
-    navixyInboundNumber: "unknown",
-
-    //use google maps whithout its js api
-    useGoogleMapsTilesDirectly: false
+    navixyInboundNumber: "unknown"
 
 };
