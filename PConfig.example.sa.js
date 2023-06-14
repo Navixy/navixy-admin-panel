@@ -3,7 +3,7 @@ Config = {
     apiProfiles: {
         // Java-API settings
         japi: {
-            apiRoot: 'http://api.domain.com/panel',
+            apiRoot: '/api/panel',
             apiUrlTpl: ['{apiRoot}/{handler}/{action}']
         }
     },
@@ -17,34 +17,10 @@ Config = {
     },
 
     // web-socket connection address for devices terminal
-    terminalHost: 'ws://api.domain.com:8383/',
-    // Default domain name. Use for determining map types and other settings.
-    // Can be string (i.e. "gdemoi.ru") or array of strings (i.e.["gdemoi.ru", "gdemoi.com"].)
-    // Default value is ".navixy.ru"
-    // TO ignore comparing with  ".navixy.ru" set value to false
-    // All above will be ignored if server sends own options
-    paas_domain: '.domain.com',
+    terminalHost: 'ws'+window.location.protocol.substring(4)+'//'+window.location.host+'/',
 
-    // Incoming sms-gateway phone number for navixy
-    navixyInboundNumber: "79037976362",
+    paas_domain: false,
 
-    //use google maps whithout its js api
-    useGoogleMapsTilesDirectly: false
-    //Extended locales for use in MONITORING not in Panel
-    //extended_locales: {
-    //    override: true,
-    //    items: [{
-    //        id: 'en_US',
-    //        name: 'en',
-    //        text: 'English',
-    //        alias: ['en', 'en_US'],
-    //        rtl: false
-    //    }, {
-    //        id: 'zh_CN',
-    //        name: 'zh',
-    //        text: 'Chineese',
-    //        alias: ['zh', 'zh_CN'],
-    //        rtl: false
-    //    }]
-    //}
+    navixyInboundNumber: "unknown"
+
 };
