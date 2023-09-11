@@ -34,8 +34,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     brandingNavixy: null,
 
     initComponent: function () {
-      this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
-      this.callParent(arguments);
+        this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
+        this.callParent(arguments);
     },
 
     afterRender: function () {
@@ -539,23 +539,23 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
             Ext.checkPermission('password', 'update')
                 ? {
-                title: lp.get('password_fields'),
-                role: 'pass_tab',
-                items: [
-                    {
-                        margin: '30 0 0 20',
-                        items: [
-                            {
-                                items: this.getPasswordItems()
-                            },
-                            {
-                                padding: this.formRowPadding,
-                                items: this.getPassHint()
-                            }
-                        ]
-                    }
-                ]
-            }
+                    title: lp.get('password_fields'),
+                    role: 'pass_tab',
+                    items: [
+                        {
+                            margin: '30 0 0 20',
+                            items: [
+                                {
+                                    items: this.getPasswordItems()
+                                },
+                                {
+                                    padding: this.formRowPadding,
+                                    items: this.getPassHint()
+                                }
+                            ]
+                        }
+                    ]
+                }
                 : null,
 
             Ext.checkPermission('paas_payments', 'create') &&
@@ -563,12 +563,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             Ext.getStore('PaymentSystems').hasSubscription() &&
             !isSubpaas
                 ? {
-                xtype: 'payments-panel',
-                layout: {
-                    type: 'auto'
-                },
-                role: 'not-settings-tab'
-            } : null
+                    xtype: 'payments-panel',
+                    layout: {
+                        type: 'auto'
+                    },
+                    role: 'not-settings-tab'
+                } : null
         ];
     },
 
@@ -771,7 +771,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     appLogoItems: function () {
-        var img = this.getImgConfig('app_logo', {disabled: !this.isBrandingMobile()}),
+        var img = this.getImgConfig('app_logo', { disabled: !this.isBrandingMobile() }),
             buttons = this.getImgButtonConfig('app_logo', !this.isBrandingMobile()),
             hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
 
@@ -956,7 +956,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     role: 'checkbox',
                     boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
                     name: 'show_call_notifications'
-                },
+                }
         ];
     },
 
@@ -1011,8 +1011,30 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'checkbox',
                 margin: '20 0 0 10',
                 boxLabel: _l.get('settings.fields.translit') + this.getHintSymbol(_l.get('settings.fields.translit_hint'))
+            },
+
+
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.ui_settings_header')
+            },
+
+            {
+                name: 'device_settings_visible',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                margin: '20 0 0 10',
+                inputValue: true,
+                listeners: {
+                    change: function (cbx, value) {
+                        this.record.set('device_settings_visible', value)
+                    },
+                    scope: this
+                },
+                boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
             }
         ];
+
     },
 
     getAvaliableComboboxItems: function (name, map) {
@@ -1325,7 +1347,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 }
             },
-            config || {disabled : !this.isBrandingWeb()});
+            config || { disabled: !this.isBrandingWeb() });
     },
 
     getImgUrl: function (type, record) {
@@ -1338,8 +1360,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return value
             ? isUrl
-            ? value + aCache
-            : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
+                ? value + aCache
+                : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
             : null;
     },
 
@@ -1353,44 +1375,44 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
-            xtype: 'container',
-            layout: 'hbox',
-            items: [
-                {
-                    role: role,
-                    xtype: 'button',
-                    text: text,
-                    margin: '5 0 10 0',
-                    ui: 'default',
-                    scale: 'medium',
-                    width: 100,
-                    disabled: disabled,
-                    handler: function () {
-                        Ext.widget('uploadwindow', {
-                            fileType: type,
-                            listeners: {
-                                fileupload: me.afterUpload,
-                                scope: me
-                            }
-                        });
+                xtype: 'container',
+                layout: 'hbox',
+                items: [
+                    {
+                        role: role,
+                        xtype: 'button',
+                        text: text,
+                        margin: '5 0 10 0',
+                        ui: 'default',
+                        scale: 'medium',
+                        width: 100,
+                        disabled: disabled,
+                        handler: function () {
+                            Ext.widget('uploadwindow', {
+                                fileType: type,
+                                listeners: {
+                                    fileupload: me.afterUpload,
+                                    scope: me
+                                }
+                            });
+                        }
+                    },
+                    {
+                        role: delRole,
+                        xtype: 'button',
+                        text: _l.get('settings.edit_form.remove_btn'),
+                        margin: '5 0 10 10',
+                        hidden: hidden,
+                        ui: 'gray',
+                        scale: 'medium',
+                        width: 100,
+                        disabled: disabled,
+                        handler: function () {
+                            me.removeImgCall(type);
+                        }
                     }
-                },
-                {
-                    role: delRole,
-                    xtype: 'button',
-                    text: _l.get('settings.edit_form.remove_btn'),
-                    margin: '5 0 10 10',
-                    hidden: hidden,
-                    ui: 'gray',
-                    scale: 'medium',
-                    width: 100,
-                    disabled: disabled,
-                    handler: function () {
-                        me.removeImgCall(type);
-                    }
-                }
-            ]
-        }
+                ]
+            }
             : null;
     },
 

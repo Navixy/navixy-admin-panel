@@ -12,13 +12,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     uploadFile: function (form, config) {
         var url = this.getRequestUrl({
-            action: config.action,
-            handler: config.handler
-        }),
-        params = Ext.apply({
-            hash: this.authKey,
-            redirect_target: this.getUploadHandlerUrl()
-        }, config.params || {});
+                action: config.action,
+                handler: config.handler
+            }),
+            params = Ext.apply({
+                hash: this.authKey,
+                redirect_target: this.getUploadHandlerUrl()
+            }, config.params || {});
 
         form.submit({
             url: url,
@@ -97,7 +97,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     getUsersCnt: function (callback, failure, scope) {
         this.sendRequest({
-            params: {limit: 1},
+            params: { limit: 1 },
             success: callback,
             failure: failure,
             action: 'list',
@@ -429,6 +429,28 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'dealer/settings/notification',
+            root: 'success'
+        });
+    },
+
+    getDefaultMenu: function (callback, failure, scope) {
+        this.sendRequest({
+            params: {
+                "application": "navixy_web"
+            },
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'user/menu/default',
+            root: 'value',
+            scope: scope
+        });
+    },
+
+    updateDefaultMenu: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'user/menu/default',
             root: 'success'
         });
     },

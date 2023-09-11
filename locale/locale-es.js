@@ -1099,7 +1099,11 @@ Ext.define('Locale.locale-es',{
             },
             "clear_btn": "Reset",
             "misc_header": "Optional features",
-            "monitoring_logo_title": "User interface logo"
+            "monitoring_logo_title": "User interface logo",
+
+            "ui_settings_header":"Configuración de la interfaz",
+            "device_settings_checkbox":"Mostrar el elemento del menú \"Configuración del dispositivo\"",
+            "device_settings_checkbox_hint":"La configuración se aplicará a todos los usuarios. Sin embargo, puede habilitar o deshabilitar esta opción para cada usuario individualmente en el perfil de usuario."
         },
         "upload_form": {
             "save_btn": "Subir",
