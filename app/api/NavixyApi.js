@@ -126,6 +126,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
     getUser: function (userId, callback, failure, scope) {
+        var me = this
         this.sendRequest({
             params: {
                 user_id: userId
@@ -133,14 +134,26 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             success: function (result, params, response) {
                 //Hoook to extract discount
                 // Hook to extract block
-                callback.call(scope, Ext.apply(result.value, {
-                    discount: result.discount.value,
-                    discount_min_trackers: result.discount.min_trackers,
-                    discount_end_date: result.discount.end_date,
-                    discount_strategy: result.discount.strategy,
-                    default_tariff_id: result.default_tariff_id,
-                    block: (result.block_parameters && result.block_parameters.manager_phone) || false
-                }), params, response)
+                me.sendRequest({
+                    params: {
+                        "application": "navixy_web",
+                        user_id: userId
+                    },
+                    action: 'read',
+                    handler: 'user/menu',
+                    root: 'value',
+                    success: function (menu) {
+                        callback.call(scope, Ext.apply(result.value, {
+                            discount: result.discount.value,
+                            discount_min_trackers: result.discount.min_trackers,
+                            discount_end_date: result.discount.end_date,
+                            discount_strategy: result.discount.strategy,
+                            default_tariff_id: result.default_tariff_id,
+                            block: (result.block_parameters && result.block_parameters.manager_phone) || false,
+                            menu: menu
+                        }), params, response)
+                    }
+                });
             },
             failure: failure,
             action: 'read',
@@ -153,6 +166,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'user',
+            root: 'success'
+        });
+    },
+
+    updateUserMenu: function (config) {
+        this.requestWithOptions(config, {
+            action: 'update',
+            handler: 'user/menu',
             root: 'success'
         });
     },

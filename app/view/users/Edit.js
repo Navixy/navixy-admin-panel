@@ -26,7 +26,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
     },
 
     getNEItems: function () {
-        var me= this,
+        var me = this,
             items = this.callParent(arguments);
 
         return items.concat([
@@ -48,42 +48,61 @@ Ext.define('NavixyPanel.view.users.Edit', {
                 trackerRecord: this.record
             },
             {
-            xtype: 'numberfield',
-            fieldLabel: _l.get('users.fields.discount.value'),
-            minValue: 0,
-            maxValue: 100,
-            plugins: {
-                ptype: 'fieldpostfix',
-                postfix: '%'
-            },
-            allowBlank: true,
-            decimalPrecision: 2,
-            name: 'discount'
-        }, {
-            xtype: 'numberfield',
-            fieldLabel: _l.get('users.fields.discount.min_trackers'),
-            allowBlank: true,
-            minValue: 0,
-            maxValue: 2147483647,
-            allowDecimals: false,
-            name: 'discount_min_trackers'
-        }, {
-            xtype: 'datefield',
-            fieldLabel: _l.get('users.fields.discount.end_date'),
-            emptyText: _l.get('users.fields.discount.permanent'),
-            allowBlank: true,
-            submitFormat: 'Y-m-d',
-            name: 'discount_end_date'
-        }, {
-            xtype: 'button',
-            baseCls: 'href-btn',
-            text: _l.get('users.fields.discount.set_permanent'),
-            maxWidth: 200,
-            margin: '0 0 0 205',
-            handler: function (btn) {
-                btn.up().down('datefield[name=discount_end_date]').setValue('');
+                xtype: 'numberfield',
+                fieldLabel: _l.get('users.fields.discount.value'),
+                minValue: 0,
+                maxValue: 100,
+                plugins: {
+                    ptype: 'fieldpostfix',
+                    postfix: '%'
+                },
+                allowBlank: true,
+                decimalPrecision: 2,
+                name: 'discount'
+            }, {
+                xtype: 'numberfield',
+                fieldLabel: _l.get('users.fields.discount.min_trackers'),
+                allowBlank: true,
+                minValue: 0,
+                maxValue: 2147483647,
+                allowDecimals: false,
+                name: 'discount_min_trackers'
+            }, {
+                xtype: 'datefield',
+                fieldLabel: _l.get('users.fields.discount.end_date'),
+                emptyText: _l.get('users.fields.discount.permanent'),
+                allowBlank: true,
+                submitFormat: 'Y-m-d',
+                name: 'discount_end_date'
+            }, {
+                xtype: 'button',
+                baseCls: 'href-btn',
+                text: _l.get('users.fields.discount.set_permanent'),
+                maxWidth: 200,
+                margin: '0 0 0 205',
+                handler: function (btn) {
+                    btn.up().down('datefield[name=discount_end_date]').setValue('');
+                }
+            }, {
+                xtype: 'container',
+                cls: 'block_header',
+                html: _l.get('settings.edit_form.ui_settings_header')
+            }, {
+                name: 'device_settings_visible',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                margin: '20 0 0 10',
+                inputValue: true,
+                listeners: {
+                    change: function (cbx, value) {
+                        this.record.set('device_settings_visible', value)
+                    },
+                    scope: this
+                },
+                boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
             }
-        }])
+
+        ])
     },
 
     getNWItems: function () {
