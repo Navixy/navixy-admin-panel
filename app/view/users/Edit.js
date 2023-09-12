@@ -99,7 +99,7 @@ Ext.define('NavixyPanel.view.users.Edit', {
                     },
                     scope: this
                 },
-                boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
+                boxLabel: _l.get('settings.edit_form.device_settings_checkbox')
             }
 
         ])
