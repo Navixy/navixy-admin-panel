@@ -1384,7 +1384,12 @@ Ext.define("Locale.locale-en", {
             },
             "clear_btn": "Reset",
             "device_activation": "Device activation",
-            "misc_header": "Optional features"
+            "misc_header": "Optional features",
+
+            "ui_settings_header":"UI Settings",
+            "device_settings_checkbox":"Show Devices and Settings menu item",
+            "device_settings_checkbox_hint":"The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile"
+
         },
         "upload_form": {
             "save_btn": "Upload",

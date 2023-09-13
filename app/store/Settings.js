@@ -11,9 +11,10 @@ Ext.define('NavixyPanel.store.Settings', {
 //    apiCall: 'getSettingsService,getSettingsNotification',
     api: {
         record: [
+            'getDefaultMenu',
             'getSettingsService',
             'getSettingsNotification'
-            ]
+        ]
     },
 
     loadRecord: function (recordId, callback, scope, loadAssociations, failure) {
@@ -30,10 +31,11 @@ Ext.define('NavixyPanel.store.Settings', {
 
     createLoadCallback: function (fn, scope) {
         var me = this;
-
-        return function(batchResult) {
+        return function (batchResult) {
             fn.call(scope, me.model
-                ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification))
+                ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification, {
+                    menu: batchResult.getDefaultMenu
+                }))
                 : batchResult
             );
         };

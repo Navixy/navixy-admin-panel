@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-             'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes'],
+        'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',
@@ -195,7 +195,7 @@ Ext.define('NavixyPanel.controller.Settings', {
                 title: _l.get("settings.domain_warnings.domain_warning"),
                 msg: Ext.String.format(_l.get("settings.domain_warnings.domain_changed"), hint),
                 buttons: Ext.Msg.OKCANCEL,
-                buttonText: {'ok': _l.get("settings.domain_warnings.continue")},
+                buttonText: { 'ok': _l.get("settings.domain_warnings.continue") },
                 fn: function (buttonId) {
                     if (buttonId == 'ok') {
                         this.onEditSubmit(cmp, formValues, record);
@@ -247,6 +247,25 @@ Ext.define('NavixyPanel.controller.Settings', {
                 scope: this
             });
         }
+
+
+        requestsCnt++
+
+        Ext.API.updateDefaultMenu({
+            params: {
+                value: Ext.encode(record.getDefaultMenu())
+            },
+            callback: function (response) {
+                if (--requestsCnt === 0) {
+                    this.afterSettingsEdit(response, record);
+                }
+            },
+            failure: function (response) {
+                this.afterSettingsEditFailure(response, record);
+            },
+            scope: this
+        });
+
     },
 
     afterSettingsEdit: function (success, record) {
