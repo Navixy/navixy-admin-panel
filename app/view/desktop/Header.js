@@ -112,18 +112,16 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                     padding: '0 10 0 10',
                                     iconCls: 'icon-user',
                                     menu: [
-                                        // dealer.id === 1 && dealer.tariff.algorithm === 'exponential' ?
                                         {
                                             text: _l.get('account-btn.sa_token'),
-                                            role: 'sa_token'
-                                            // } : null,
+                                            role: 'sa_token',
+                                            hidden: !(dealer.id === 1 && dealer.tariff.algorithm === 'exponential')
                                         },
-                                        Ext.checkPermission('password', 'update') ?
-                                            {
-                                                text: _l.get('account-btn.change_password'),
-                                                role: 'password-change'
-                                            } : null,
-
+                                        {
+                                            text: _l.get('account-btn.change_password'),
+                                            role: 'password-change',
+                                            hidden: !Ext.checkPermission('password', 'update')
+                                        },
                                         {
                                             text: _l.get('account-btn.logout'),
                                             role: 'auth-logout'
