@@ -491,7 +491,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }, config));
     },
 
-    removeSettingsPassword: function (config) {
+    removeSettingsImage: function (config) {
         this.requestWithOptions(config, {
             action: 'delete',
             handler: 'dealer/settings/image',

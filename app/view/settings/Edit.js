@@ -41,7 +41,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
-        this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
     },
 
     isBrandingWeb: function () {
@@ -83,31 +82,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             '></span>'].join('');
     },
 
-    changeSaveBtn: function (tabpanel, tab) {
-
-        this.getForm().isValid();
-
-        var save_btn = this.down('[action="form_submit"]'),
-            pass_btn = this.down('[action="pass_submit"]');
-
-        if (save_btn && pass_btn) {
-            if (this.isPassTab()) {
-                pass_btn.show();
-                save_btn.hide();
-            } else {
-                pass_btn.hide();
-                save_btn.show();
-            }
-        }
-        this.clearPasswords();
-
-        this.down('toolbar[dock=bottom]').setVisible(tab.role !== 'not-settings-tab');
-    },
-
     getButtons: function () {
 
-        var passSaveBtn = this.getPassBtnTitle(),
-            saveBtn = this.getSaveBtnTitle(),
+        var saveBtn = this.getSaveBtnTitle(),
             clearBtn = this.getClearBtnTitle(),
             backBtn = this.getBackBtnTitle(),
             result = [];
@@ -126,18 +103,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             );
         }
 
-        if (passSaveBtn) {
-            result.push(
-                {
-                    text: passSaveBtn,
-                    scale: 'medium',
-                    hidden: true,
-                    margin: '10 5',
-                    action: 'pass_submit',
-                    handler: Ext.bind(this.sendPassForm, this)
-                }
-            );
-        }
 
         if (clearBtn) {
             result.push(
@@ -166,24 +131,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return result;
     },
 
-    sendPassForm: function () {
-        var form = this.getForm();
-
-        if (form.isValid()) {
-            this.fireEvent('formsubmitpassword', this, this.getProcessedValues(), this.record);
-        }
-    },
-
     getTitle: function () {
         return _l.get('settings.edit_form.title');
     },
 
     getSaveBtnTitle: function () {
         return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('settings.edit_form.save_btn');
-    },
-
-    getPassBtnTitle: function () {
-        return Ext.checkPermission('password', 'update') && _l.get('settings.edit_form.pass_save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -199,7 +152,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     applyRecordData: function () {
-
         this.applyEmptyTheme();
         this.checkMobileAppTheme();
         this.callParent(arguments);
@@ -292,53 +244,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
-    afterPasswordSave: function () {
-        this.clearPasswords();
-        Ext.MessageBox.show({
-            msg: _l.get('settings.edit_form.pass_save_msg'),
-            closable: false,
-            buttons: Ext.MessageBox.OK
-        });
-    },
-
-    clearPasswords: function () {
-        var pField = this.down('[name="password"]'),
-            npField = this.down('[name="new_password"]'),
-            opField = this.down('[name="old_password"]');
-
-        if (pField && npField && opField) {
-            pField.setValue('');
-            npField.setValue('');
-            opField.setValue('');
-        }
-    },
-
     getProcessedValues: function () {
         var values = this.getValues();
 
-        if (this.isPassTab()) {
-            values = {
-                old_password: values.old_password,
-                new_password: values.new_password
-            };
-        } else {
-            this.iterateFields(function (field) {
-                if (field.isDisabled() && !field.shadowField) {
-                    delete values[field.name];
-                } else if (field.shadowField && !field.up('checkboxgroup')) {
-                    values[field.name] = field.getValue();
-                }
-                if (field.is('checkboxgroup')) {
-                    var value = field.getValue(),
-                        name = field.items.first().name,
-                        data = value[name];
-                    values[name] = Ext.isArray(data) ? data : [data];
-                }
-                if (field.role === 'checkbox') {
-                    values[field.name] = field.getValue();
-                }
-            });
-        }
+        this.iterateFields(function (field) {
+            if (field.isDisabled() && !field.shadowField) {
+                delete values[field.name];
+            } else if (field.shadowField && !field.up('checkboxgroup')) {
+                values[field.name] = field.getValue();
+            }
+            if (field.is('checkboxgroup')) {
+                var value = field.getValue(),
+                    name = field.items.first().name,
+                    data = value[name];
+                values[name] = Ext.isArray(data) ? data : [data];
+            }
+            if (field.role === 'checkbox') {
+                values[field.name] = field.getValue();
+            }
+        });
 
         return values;
     },
@@ -537,26 +461,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            Ext.checkPermission('password', 'update')
-                ? {
-                    title: lp.get('password_fields'),
-                    role: 'pass_tab',
-                    items: [
-                        {
-                            margin: '30 0 0 20',
-                            items: [
-                                {
-                                    items: this.getPasswordItems()
-                                },
-                                {
-                                    padding: this.formRowPadding,
-                                    items: this.getPassHint()
-                                }
-                            ]
-                        }
-                    ]
-                }
-                : null,
 
             Ext.checkPermission('paas_payments', 'create') &&
             seller_currency === this.paymentCurrency &&
@@ -1417,8 +1321,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     removeImgCall: function (type) {
-
-        Ext.API.removeSettingsPassword({
+        Ext.API.removeSettingsImage({
             params: {
                 type: type
             },
@@ -1483,54 +1386,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             closable: false,
             buttons: Ext.MessageBox.OK
         });
-    },
-
-    getPassHint: function () {
-        return [
-            {
-                xtype: 'component',
-                html: _l.get('settings.edit_form.pass_hint')
-            }
-        ];
-    },
-
-    getPasswordItems: function () {
-        var me = this;
-
-        return [
-            {
-                fieldLabel: _l.get('settings.fields.password'),
-                name: 'new_password',
-                inputType: 'password',
-
-                minLength: 6,
-                maxLength: 20
-            },
-            {
-                fieldLabel: _l.get('settings.fields.password_repeat'),
-                inputType: 'password',
-                name: 'password',
-                minLength: 6,
-                maxLength: 20,
-
-                validator: function (value) {
-                    var pass_val = me.down('textfield[name=new_password]').getValue();
-                    return value === pass_val || _l.get('settings.fields.password_mismatched');
-                }
-            },
-            {
-                fieldLabel: _l.get('settings.fields.password_old'),
-                name: 'old_password',
-                inputType: 'password'
-            }
-        ];
-    },
-
-    isPassTab: function () {
-        var tab = this.down('tabpanel').getActiveTab(),
-            role = tab && tab.role;
-
-        return role === 'pass_tab';
     },
 
     getServiceFields: function () {
