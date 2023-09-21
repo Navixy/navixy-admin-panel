@@ -23,7 +23,8 @@ Ext.define('NavixyPanel.controller.Desktop', {
         'desktop.IndexExp',
         'desktop.IndexPlain',
         'desktop.PlainPrices',
-        'desktop.password-change-dialog.PasswordChangeDialog'
+        'desktop.password-change-dialog.PasswordChangeDialog',
+        'desktop.sa-token.SaTokenDialog'
     ],
 
     refs: [
@@ -71,6 +72,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
                 click: this.showPasswordChangeDialog
             },
 
+            'menuitem[role=sa_token]': {
+                click: this.showSaTokenDialog
+            },
+
 
             'password-change-dialog': {
                 formsubmitpassword: this.onPasswordEditSubmit
@@ -80,6 +85,10 @@ Ext.define('NavixyPanel.controller.Desktop', {
 
     showPasswordChangeDialog: function () {
         Ext.widget('password-change-dialog').show();
+    },
+
+    showSaTokenDialog: function () {
+        Ext.widget('sa-token-dialog').show();
     },
 
     onPasswordEditSubmit: function (cmp, formValues, record) {

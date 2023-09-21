@@ -50,7 +50,7 @@ Ext.define("Locale.locale-en", {
     },
 
     "account-btn": {
-        "sa_token": "On-premise Token",
+        "sa_token": "On-premise license key",
         "change_password": "Change password",
         "logout": "Logout"
     },
@@ -2065,5 +2065,10 @@ Ext.define("Locale.locale-en", {
         user: 'To get started, please create a user',
         tracker: 'In order to continue, please activate a tracker',
         tracking: 'To start tracking, please go to the monitoring system'
+    },
+
+    "sa-token": {
+        "sa-token-title": "On-premise license key",
+        "field": "License key"
     }
 });

@@ -48,7 +48,7 @@ Ext.define('Locale.locale-ru', {
         'title': 'Панель администратора'
     },
     "account-btn": {
-        "sa_token": "On-premise ключ",
+        "sa_token": "Лицензионный ключ On-premise",
         "change_password": "Сменить пароль",
         "logout": "Выйти"
     },
@@ -2043,5 +2043,10 @@ Ext.define('Locale.locale-ru', {
         user: 'Для начала работы создайте пользователя',
         tracker: 'Для продолжения работы активируйте маячок',
         tracking: 'Для отслеживания маячка перейдите в систему мониторинга'
+    },
+
+    "sa-token": {
+        "sa-token-title": "Лицензионный ключ On-premise",
+        "field": "Лицензионный ключ"
     }
 })

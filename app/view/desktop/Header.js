@@ -50,6 +50,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
 
             Ext.Nav.setPageFavicon(pageFavicon);
 
+
+            var dealer = Ext.getStore('Dealer').first().getData()
+
             this.items = [
                 {
                     xtype: 'container',
@@ -108,15 +111,20 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                     height: 28,
                                     padding: '0 10 0 10',
                                     iconCls: 'icon-user',
-                                    menu: [{
-                                        text: _l.get('account-btn.sa_token')
-                                    },
-
+                                    menu: [
+                                        // dealer.id === 1 && dealer.tariff.algorithm === 'exponential' ?
+                                        {
+                                            text: _l.get('account-btn.sa_token'),
+                                            role: 'sa_token'
+                                            // } : null,
+                                        },
                                         Ext.checkPermission('password', 'update') ?
                                             {
                                                 text: _l.get('account-btn.change_password'),
                                                 role: 'password-change'
-                                            } : null, {
+                                            } : null,
+
+                                        {
                                             text: _l.get('account-btn.logout'),
                                             role: 'auth-logout'
                                         }]
