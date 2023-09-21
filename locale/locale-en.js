@@ -48,6 +48,12 @@ Ext.define("Locale.locale-en", {
         "logout": "Logout",
         "title": "Admin panel"
     },
+
+    "account-btn": {
+        "sa_token": "On-premise Token",
+        "change_password": "Change password",
+        "logout": "Logout"
+    },
     "no_path_found": "No page - wrong URL",
     "phone_invalid_msg": "Please enter a valid phone number",
     "invalid_numeric_msg": "Not a valid number",
@@ -601,18 +607,18 @@ Ext.define("Locale.locale-en", {
                 "wrong_config": "Check PConfig.js -> links -> appUrlTpl",
                 "corrupt": "Remove user",
                 "unblock_user": "Unblock user",
-                "block_user": "Block user",
+                "block_user": "Block user"
             },
             "user_blocked": "Blocked"
         },
-        "unblock":{
+        "unblock": {
             "alert": {
                 "title": "Unblock user # {0}: {1}",
                 "text": "After unlocking, the user will again have access to all the functions of the service. Unblock user?",
                 "btn_ok": "Unblock"
             }
         },
-        "block":{
+        "block": {
             "alert": {
                 "title": "Blocking user # {0}: {1}",
                 "text": "After blocking, the user will not be able to use the service. He will not be able to manage employees or create tasks for them. The tracks of his employees will not be recorded and they will not be able to complete tasks. The user will see a message offering to contact the manager. Block user?",
@@ -832,8 +838,8 @@ Ext.define("Locale.locale-en", {
                 "text": "Send activation commands to the device?"
             }
         },
-        "confirm_update_owner_1" : "The tracker will be moved to the following account {0} and will be assigned a new plan {1}",
-        "confirm_update_owner_2" : "The tracker will be moved to the following account {0}, with no changes to its plan "
+        "confirm_update_owner_1": "The tracker will be moved to the following account {0} and will be assigned a new plan {1}",
+        "confirm_update_owner_2": "The tracker will be moved to the following account {0}, with no changes to its plan "
     },
     "tariffs": {
         "menu_text": "Plans",
@@ -1386,9 +1392,9 @@ Ext.define("Locale.locale-en", {
             "device_activation": "Device activation",
             "misc_header": "Optional features",
 
-            "ui_settings_header":"UI Settings",
-            "device_settings_checkbox":"Show Devices and Settings menu item",
-            "device_settings_checkbox_hint":"The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile"
+            "ui_settings_header": "UI Settings",
+            "device_settings_checkbox": "Show Devices and Settings menu item",
+            "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile"
 
         },
         "upload_form": {
@@ -1710,7 +1716,7 @@ Ext.define("Locale.locale-en", {
         "twelve": "12-hour clock (5:30 PM)",
         "twentyfour": "24-hour clock (17:30)",
         "default": "Default"
-      },
+    },
     "date_formats": {
         "default": "Default",
         "ddMMyyyy_dots": "01.12.2021 (DD.MM.YYYY)",
