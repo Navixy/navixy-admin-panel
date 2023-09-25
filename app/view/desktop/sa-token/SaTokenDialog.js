@@ -20,22 +20,10 @@ Ext.define('NavixyPanel.view.desktop.sa-token.SaTokenDialog', {
     record: null,
     ui: 'default',
 
-    afterRender: function () {
-        this.callParent(arguments)
-        this.loadToken()
-    },
-
-    loadToken: function () {
-        Ext.API.getSaToken({
-            callback: function (token) {
-                this.down('textfield').setValue(token)
-            },
-            scope: this
-        })
-    },
-
     getItems: function () {
         var lp = _l.get('settings.edit_form')
+        var dealer = Ext.getStore('Dealer').first().getData()
+
         var me = this
         return [{
             xtype: 'container',
@@ -59,7 +47,8 @@ Ext.define('NavixyPanel.view.desktop.sa-token.SaTokenDialog', {
                 fieldLabel: 'On-premise token:',
                 labelAlign: 'top',
                 readOnly: true,
-                role: 'sa_token'
+                role: 'sa_token',
+                value: dealer.standalone_token
             }]
         }, this.getBottomBar()]
     },

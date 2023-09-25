@@ -115,7 +115,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                         {
                                             text: _l.get('account-btn.sa_token'),
                                             role: 'sa_token',
-                                            hidden: !(dealer.id === 1 && dealer.tariff.algorithm === 'exponential')
+                                            hidden: !dealer.standalone_token
                                         },
                                         {
                                             text: _l.get('account-btn.change_password'),
