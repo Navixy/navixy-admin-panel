@@ -34,14 +34,13 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     brandingNavixy: null,
 
     initComponent: function () {
-      this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
-      this.callParent(arguments);
+        this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
+        this.callParent(arguments);
     },
 
     afterRender: function () {
         this.applyRights();
         this.callParent(arguments);
-        this.down('tabpanel').on('tabchange', this.changeSaveBtn, this);
     },
 
     isBrandingWeb: function () {
@@ -83,31 +82,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             '></span>'].join('');
     },
 
-    changeSaveBtn: function (tabpanel, tab) {
-
-        this.getForm().isValid();
-
-        var save_btn = this.down('[action="form_submit"]'),
-            pass_btn = this.down('[action="pass_submit"]');
-
-        if (save_btn && pass_btn) {
-            if (this.isPassTab()) {
-                pass_btn.show();
-                save_btn.hide();
-            } else {
-                pass_btn.hide();
-                save_btn.show();
-            }
-        }
-        this.clearPasswords();
-
-        this.down('toolbar[dock=bottom]').setVisible(tab.role !== 'not-settings-tab');
-    },
-
     getButtons: function () {
 
-        var passSaveBtn = this.getPassBtnTitle(),
-            saveBtn = this.getSaveBtnTitle(),
+        var saveBtn = this.getSaveBtnTitle(),
             clearBtn = this.getClearBtnTitle(),
             backBtn = this.getBackBtnTitle(),
             result = [];
@@ -126,18 +103,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             );
         }
 
-        if (passSaveBtn) {
-            result.push(
-                {
-                    text: passSaveBtn,
-                    scale: 'medium',
-                    hidden: true,
-                    margin: '10 5',
-                    action: 'pass_submit',
-                    handler: Ext.bind(this.sendPassForm, this)
-                }
-            );
-        }
 
         if (clearBtn) {
             result.push(
@@ -166,24 +131,12 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         return result;
     },
 
-    sendPassForm: function () {
-        var form = this.getForm();
-
-        if (form.isValid()) {
-            this.fireEvent('formsubmitpassword', this, this.getProcessedValues(), this.record);
-        }
-    },
-
     getTitle: function () {
         return _l.get('settings.edit_form.title');
     },
 
     getSaveBtnTitle: function () {
         return (this.rights.serviceEdit || this.rights.notificationEdit) && _l.get('settings.edit_form.save_btn');
-    },
-
-    getPassBtnTitle: function () {
-        return Ext.checkPermission('password', 'update') && _l.get('settings.edit_form.pass_save_btn');
     },
 
     getClearBtnTitle: function () {
@@ -199,7 +152,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     applyRecordData: function () {
-
         this.applyEmptyTheme();
         this.checkMobileAppTheme();
         this.callParent(arguments);
@@ -292,53 +244,25 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
-    afterPasswordSave: function () {
-        this.clearPasswords();
-        Ext.MessageBox.show({
-            msg: _l.get('settings.edit_form.pass_save_msg'),
-            closable: false,
-            buttons: Ext.MessageBox.OK
-        });
-    },
-
-    clearPasswords: function () {
-        var pField = this.down('[name="password"]'),
-            npField = this.down('[name="new_password"]'),
-            opField = this.down('[name="old_password"]');
-
-        if (pField && npField && opField) {
-            pField.setValue('');
-            npField.setValue('');
-            opField.setValue('');
-        }
-    },
-
     getProcessedValues: function () {
         var values = this.getValues();
 
-        if (this.isPassTab()) {
-            values = {
-                old_password: values.old_password,
-                new_password: values.new_password
-            };
-        } else {
-            this.iterateFields(function (field) {
-                if (field.isDisabled() && !field.shadowField) {
-                    delete values[field.name];
-                } else if (field.shadowField && !field.up('checkboxgroup')) {
-                    values[field.name] = field.getValue();
-                }
-                if (field.is('checkboxgroup')) {
-                    var value = field.getValue(),
-                        name = field.items.first().name,
-                        data = value[name];
-                    values[name] = Ext.isArray(data) ? data : [data];
-                }
-                if (field.role === 'checkbox') {
-                    values[field.name] = field.getValue();
-                }
-            });
-        }
+        this.iterateFields(function (field) {
+            if (field.isDisabled() && !field.shadowField) {
+                delete values[field.name];
+            } else if (field.shadowField && !field.up('checkboxgroup')) {
+                values[field.name] = field.getValue();
+            }
+            if (field.is('checkboxgroup')) {
+                var value = field.getValue(),
+                    name = field.items.first().name,
+                    data = value[name];
+                values[name] = Ext.isArray(data) ? data : [data];
+            }
+            if (field.role === 'checkbox') {
+                values[field.name] = field.getValue();
+            }
+        });
 
         return values;
     },
@@ -537,38 +461,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 ]
             },
-            Ext.checkPermission('password', 'update')
-                ? {
-                title: lp.get('password_fields'),
-                role: 'pass_tab',
-                items: [
-                    {
-                        margin: '30 0 0 20',
-                        items: [
-                            {
-                                items: this.getPasswordItems()
-                            },
-                            {
-                                padding: this.formRowPadding,
-                                items: this.getPassHint()
-                            }
-                        ]
-                    }
-                ]
-            }
-                : null,
 
             Ext.checkPermission('paas_payments', 'create') &&
             seller_currency === this.paymentCurrency &&
             Ext.getStore('PaymentSystems').hasSubscription() &&
             !isSubpaas
                 ? {
-                xtype: 'payments-panel',
-                layout: {
-                    type: 'auto'
-                },
-                role: 'not-settings-tab'
-            } : null
+                    xtype: 'payments-panel',
+                    layout: {
+                        type: 'auto'
+                    },
+                    role: 'not-settings-tab'
+                } : null
         ];
     },
 
@@ -771,7 +675,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     appLogoItems: function () {
-        var img = this.getImgConfig('app_logo', {disabled: !this.isBrandingMobile()}),
+        var img = this.getImgConfig('app_logo', { disabled: !this.isBrandingMobile() }),
             buttons = this.getImgButtonConfig('app_logo', !this.isBrandingMobile()),
             hint = this.getHintSymbol(_l.get('settings.fields.app_logo_hint'));
 
@@ -956,7 +860,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     role: 'checkbox',
                     boxLabel: _l.get('settings.fields.show_call_notifications') + (_l.get('settings.fields.show_call_notifications_hint') !== "" && _l.get('settings.fields.show_call_notifications_hint') !== 'settings.fields.show_call_notifications_hint' ? this.getHintSymbol(_l.get('settings.fields.show_call_notifications_hint')) : ""),
                     name: 'show_call_notifications'
-                },
+                }
         ];
     },
 
@@ -1011,8 +915,30 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 role: 'checkbox',
                 margin: '20 0 0 10',
                 boxLabel: _l.get('settings.fields.translit') + this.getHintSymbol(_l.get('settings.fields.translit_hint'))
+            },
+
+
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.ui_settings_header')
+            },
+
+            {
+                name: 'device_settings_visible',
+                xtype: 'checkbox',
+                role: 'checkbox',
+                margin: '20 0 0 10',
+                inputValue: true,
+                listeners: {
+                    change: function (cbx, value) {
+                        this.record.set('device_settings_visible', value)
+                    },
+                    scope: this
+                },
+                boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
             }
         ];
+
     },
 
     getAvaliableComboboxItems: function (name, map) {
@@ -1325,7 +1251,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     }
                 }
             },
-            config || {disabled : !this.isBrandingWeb()});
+            config || { disabled: !this.isBrandingWeb() });
     },
 
     getImgUrl: function (type, record) {
@@ -1338,8 +1264,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return value
             ? isUrl
-            ? value + aCache
-            : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
+                ? value + aCache
+                : [Ext.API.getGlobalApiUrl({ action: value }), aCache].join('')
             : null;
     },
 
@@ -1353,50 +1279,49 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         return Ext.checkPermission('service_settings', 'update')
             ? {
-            xtype: 'container',
-            layout: 'hbox',
-            items: [
-                {
-                    role: role,
-                    xtype: 'button',
-                    text: text,
-                    margin: '5 0 10 0',
-                    ui: 'default',
-                    scale: 'medium',
-                    width: 100,
-                    disabled: disabled,
-                    handler: function () {
-                        Ext.widget('uploadwindow', {
-                            fileType: type,
-                            listeners: {
-                                fileupload: me.afterUpload,
-                                scope: me
-                            }
-                        });
+                xtype: 'container',
+                layout: 'hbox',
+                items: [
+                    {
+                        role: role,
+                        xtype: 'button',
+                        text: text,
+                        margin: '5 0 10 0',
+                        ui: 'default',
+                        scale: 'medium',
+                        width: 100,
+                        disabled: disabled,
+                        handler: function () {
+                            Ext.widget('uploadwindow', {
+                                fileType: type,
+                                listeners: {
+                                    fileupload: me.afterUpload,
+                                    scope: me
+                                }
+                            });
+                        }
+                    },
+                    {
+                        role: delRole,
+                        xtype: 'button',
+                        text: _l.get('settings.edit_form.remove_btn'),
+                        margin: '5 0 10 10',
+                        hidden: hidden,
+                        ui: 'gray',
+                        scale: 'medium',
+                        width: 100,
+                        disabled: disabled,
+                        handler: function () {
+                            me.removeImgCall(type);
+                        }
                     }
-                },
-                {
-                    role: delRole,
-                    xtype: 'button',
-                    text: _l.get('settings.edit_form.remove_btn'),
-                    margin: '5 0 10 10',
-                    hidden: hidden,
-                    ui: 'gray',
-                    scale: 'medium',
-                    width: 100,
-                    disabled: disabled,
-                    handler: function () {
-                        me.removeImgCall(type);
-                    }
-                }
-            ]
-        }
+                ]
+            }
             : null;
     },
 
     removeImgCall: function (type) {
-
-        Ext.API.removeSettingsPassword({
+        Ext.API.removeSettingsImage({
             params: {
                 type: type
             },
@@ -1461,54 +1386,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             closable: false,
             buttons: Ext.MessageBox.OK
         });
-    },
-
-    getPassHint: function () {
-        return [
-            {
-                xtype: 'component',
-                html: _l.get('settings.edit_form.pass_hint')
-            }
-        ];
-    },
-
-    getPasswordItems: function () {
-        var me = this;
-
-        return [
-            {
-                fieldLabel: _l.get('settings.fields.password'),
-                name: 'new_password',
-                inputType: 'password',
-
-                minLength: 6,
-                maxLength: 20
-            },
-            {
-                fieldLabel: _l.get('settings.fields.password_repeat'),
-                inputType: 'password',
-                name: 'password',
-                minLength: 6,
-                maxLength: 20,
-
-                validator: function (value) {
-                    var pass_val = me.down('textfield[name=new_password]').getValue();
-                    return value === pass_val || _l.get('settings.fields.password_mismatched');
-                }
-            },
-            {
-                fieldLabel: _l.get('settings.fields.password_old'),
-                name: 'old_password',
-                inputType: 'password'
-            }
-        ];
-    },
-
-    isPassTab: function () {
-        var tab = this.down('tabpanel').getActiveTab(),
-            role = tab && tab.role;
-
-        return role === 'pass_tab';
     },
 
     getServiceFields: function () {

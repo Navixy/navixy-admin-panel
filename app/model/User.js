@@ -144,6 +144,23 @@ Ext.define('NavixyPanel.model.User', {
         },
         {
             name: 'block'
+        },
+        {
+            name: 'menu',
+            type: 'auto'
+        },
+        {
+            name: 'device_settings_visible',
+            type: 'auto',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value
+                }
+
+                return record.get('menu') ? !!record.get('menu').footer_menu.find(function (item) {
+                    return item.name === 'configuration'
+                }) : false
+            }
         }
     ],
 
@@ -199,5 +216,31 @@ Ext.define('NavixyPanel.model.User', {
         }
 
         return result.length && result;
+    },
+
+    getUserMenu: function () {
+        var menu = this.get('menu')
+
+        var deviceSettingsIndex = menu.footer_menu.findIndex(function (item) {
+            return item.name === 'configuration'
+        })
+
+        if (this.get('device_settings_visible')) {
+            if (deviceSettingsIndex < 0) {
+                var notificationsIndex = menu.footer_menu.findIndex(function (item) {
+                    return item.name === 'notifications'
+                })
+                menu.footer_menu.splice(notificationsIndex, 1, {
+                    name: 'notifications'
+                }, {
+                    name: 'configuration'
+                })
+            }
+        } else {
+            if (deviceSettingsIndex >= 0) {
+                menu.footer_menu.splice(deviceSettingsIndex, 1)
+            }
+        }
+        return menu
     }
 });

@@ -49,7 +49,7 @@ Ext.define('NavixyPanel.controller.Main', {
             'authwindow form[role=auth-form]': {
                 submit: this.doAuth
             },
-            'button[role=auth-logout]': {
+            'menuitem[role=auth-logout]': {
                 click: this.doLogout
             },
             'button[role=old-version]': {
