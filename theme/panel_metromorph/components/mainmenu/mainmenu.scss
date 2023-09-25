@@ -6,35 +6,20 @@ $main-menu-btn-over-bg-color: lighten($main-menu-btn-pressed-bg-color, 10%);
 
 .main-menu {
 
-  background-color: $main-menu-bg-color;
+    background-color: $main-menu-bg-color;
 
-  .x-btn {
+    .x-btn {
 
-    background-color: $main-menu-btn-bg-color;
-    border-color: $main-menu-btn-bg-color;
+        background-color: $main-menu-btn-bg-color;
+        border-color: $main-menu-btn-bg-color;
 
-    &.x-pressed {
-      background-color: $main-menu-btn-pressed-bg-color !important;
-      border-color: $main-menu-btn-pressed-bg-color !important
+        &.x-pressed{
+            background-color: $main-menu-btn-pressed-bg-color !important;
+            border-color: $main-menu-btn-pressed-bg-color !important
+        }
+
+        &.x-over{
+            background-color: $main-menu-btn-over-bg-color;
+        }
     }
-
-    &.x-over {
-      background-color: $main-menu-btn-over-bg-color;
-    }
-  }
 }
-
-.account-btn {
-  .icon-user {
-    color: #fff;
-  }
-
-  .x-btn-wrap {
-    padding-right: 0;
-    height: 26px;
-    background: none;
-    padding-top: 2px;
-    font-size: 18px;
-  }
-}
-

@@ -12,13 +12,13 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     uploadFile: function (form, config) {
         var url = this.getRequestUrl({
-                action: config.action,
-                handler: config.handler
-            }),
-            params = Ext.apply({
-                hash: this.authKey,
-                redirect_target: this.getUploadHandlerUrl()
-            }, config.params || {});
+            action: config.action,
+            handler: config.handler
+        }),
+        params = Ext.apply({
+            hash: this.authKey,
+            redirect_target: this.getUploadHandlerUrl()
+        }, config.params || {});
 
         form.submit({
             url: url,
@@ -97,7 +97,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
 
     getUsersCnt: function (callback, failure, scope) {
         this.sendRequest({
-            params: { limit: 1 },
+            params: {limit: 1},
             success: callback,
             failure: failure,
             action: 'list',
@@ -126,7 +126,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
     },
 
     getUser: function (userId, callback, failure, scope) {
-        var me = this
         this.sendRequest({
             params: {
                 user_id: userId
@@ -134,26 +133,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             success: function (result, params, response) {
                 //Hoook to extract discount
                 // Hook to extract block
-                me.sendRequest({
-                    params: {
-                        "application": "navixy_web",
-                        user_id: userId
-                    },
-                    action: 'read',
-                    handler: 'user/menu',
-                    root: 'value',
-                    success: function (menu) {
-                        callback.call(scope, Ext.apply(result.value, {
-                            discount: result.discount.value,
-                            discount_min_trackers: result.discount.min_trackers,
-                            discount_end_date: result.discount.end_date,
-                            discount_strategy: result.discount.strategy,
-                            default_tariff_id: result.default_tariff_id,
-                            block: (result.block_parameters && result.block_parameters.manager_phone) || false,
-                            menu: menu
-                        }), params, response)
-                    }
-                });
+                callback.call(scope, Ext.apply(result.value, {
+                    discount: result.discount.value,
+                    discount_min_trackers: result.discount.min_trackers,
+                    discount_end_date: result.discount.end_date,
+                    discount_strategy: result.discount.strategy,
+                    default_tariff_id: result.default_tariff_id,
+                    block: (result.block_parameters && result.block_parameters.manager_phone) || false
+                }), params, response)
             },
             failure: failure,
             action: 'read',
@@ -166,14 +153,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         this.requestWithOptions(config, {
             action: 'update',
             handler: 'user',
-            root: 'success'
-        });
-    },
-
-    updateUserMenu: function (config) {
-        this.requestWithOptions(config, {
-            action: 'update',
-            handler: 'user/menu',
             root: 'success'
         });
     },
@@ -454,28 +433,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    getDefaultMenu: function (callback, failure, scope) {
-        this.sendRequest({
-            params: {
-                "application": "navixy_web"
-            },
-            success: callback,
-            failure: failure,
-            action: 'read',
-            handler: 'user/menu/default',
-            root: 'value',
-            scope: scope
-        });
-    },
-
-    updateDefaultMenu: function (config) {
-        this.requestWithOptions(config, {
-            action: 'update',
-            handler: 'user/menu/default',
-            root: 'success'
-        });
-    },
-
     updateSettingsPassword: function (config) {
         this.requestWithOptions(config, {
             action: 'update',
@@ -491,7 +448,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }, config));
     },
 
-    removeSettingsImage: function (config) {
+    removeSettingsPassword: function (config) {
         this.requestWithOptions(config, {
             action: 'delete',
             handler: 'dealer/settings/image',
@@ -786,14 +743,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         return this.requestWithOptions(config, {
             action: 'bind',
             handler: 'payment_system/stripe/token'
-        })
-    },
-
-    getSaToken: function (config) {
-        return this.requestWithOptions(config, {
-            action: 'get_standalone_token',
-            handler: 'account',
-            root: 'value'
         })
     }
 });
