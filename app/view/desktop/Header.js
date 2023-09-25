@@ -26,7 +26,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                 dealerStore = Ext.getStore('Dealer'),
                 hasBranding = dealerStore.getFeature('branding_web'),
                 headerLogo = hasBranding ? dealerStore.getLogo() : false,
-                pageFavicon = hasBranding ? dealerStore.getFavicon(): false,
+                pageFavicon = hasBranding ? dealerStore.getFavicon() : false,
                 infoTpl = [
                     '<div class="dealer-info__inner {[values.subpaasStat ? \'dealer-info__inner--with-stat\' : \'\']}">',
                     '<tpl if="legal_name">',
@@ -49,6 +49,9 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                 ];
 
             Ext.Nav.setPageFavicon(pageFavicon);
+
+
+            var dealer = Ext.getStore('Dealer').first().getData()
 
             this.items = [
                 {
@@ -99,26 +102,30 @@ Ext.define('NavixyPanel.view.desktop.Header', {
                                 pack: 'end'
                             },
                             items: [
-                                {
-                                    xtype: 'button',
-                                    text: _l.get('old_version'),
-                                    height: 28,
-                                    padding: '0 10 0 10',
-                                    margin: '0 10 0 0',
-                                    hidden: !hasOld,
-                                    ui: 'gray',
-                                    role: 'old-version'
-                                },
                                 Ext.checkPermissons(['users', 'trackers', 'tariffs'])
-                                ? this.getSearcher()
-                                : null,
+                                    ? this.getSearcher()
+                                    : null,
                                 {
                                     xtype: 'button',
-                                    text: _l.get('auth.logout'),
+                                    cls: 'account-btn',
                                     height: 28,
                                     padding: '0 10 0 10',
-                                    ui: 'gray',
-                                    role: 'auth-logout'
+                                    iconCls: 'icon-user',
+                                    menu: [
+                                        {
+                                            text: _l.get('account-btn.sa_token'),
+                                            role: 'sa_token',
+                                            hidden: !dealer.standalone_token
+                                        },
+                                        {
+                                            text: _l.get('account-btn.change_password'),
+                                            role: 'password-change',
+                                            hidden: !Ext.checkPermission('password', 'update')
+                                        },
+                                        {
+                                            text: _l.get('account-btn.logout'),
+                                            role: 'auth-logout'
+                                        }]
                                 }
                             ]
                         }
@@ -134,6 +141,7 @@ Ext.define('NavixyPanel.view.desktop.Header', {
         this.callParent(arguments)
     },
 
+
     getSearchBox: function () {
         return this.down('[role="menu-box"]');
     },
@@ -141,19 +149,19 @@ Ext.define('NavixyPanel.view.desktop.Header', {
     getSearcher: function () {
         return this.hasSearch
             ? {
-            xtype: 'searchfield',
-            margin: '0 10 0 0',
-            ui: 'dark',
-            componentCls: 'search-field darken',
-            padding: '0 10 0 10',
+                xtype: 'searchfield',
+                margin: '0 10 0 0',
+                ui: 'dark',
+                componentCls: 'search-field darken',
+                padding: '0 10 0 10',
 
-            listeners: {
-                'search': {
-                    fn: this.fireSearch,
-                    scope: this
+                listeners: {
+                    'search': {
+                        fn: this.fireSearch,
+                        scope: this
+                    }
                 }
-            }
-        } : false;
+            } : false;
     },
 
     unToggleAllMenu: function () {

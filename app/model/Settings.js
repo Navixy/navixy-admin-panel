@@ -268,6 +268,23 @@ Ext.define('NavixyPanel.model.Settings', {
         {
             name: 'captcha_provider',
             type: 'string'
+        },
+        {
+            name: 'menu',
+            type: 'auto'
+        },
+        {
+            name: 'device_settings_visible',
+            type: 'auto',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value
+                }
+
+                return record.get('menu') ? !!record.get('menu').footer_menu.find(function (item) {
+                    return item.name === 'configuration'
+                }) : false
+            }
         }
     ],
 
@@ -404,9 +421,9 @@ Ext.define('NavixyPanel.model.Settings', {
         }, this);
 
         // Remove empty date and time formats.
-        if(result['default_user_settings']) {
-            Ext.iterate(result['default_user_settings'], function(fieldName, fieldValue) {
-                if(fieldValue === 'default') {
+        if (result['default_user_settings']) {
+            Ext.iterate(result['default_user_settings'], function (fieldName, fieldValue) {
+                if (fieldValue === 'default') {
                     delete result['default_user_settings'][fieldName];
                 }
             })
@@ -463,12 +480,16 @@ Ext.define('NavixyPanel.model.Settings', {
             this.set('google_client_id', null);
         }
         var geocoderSelect = Ext.getFirst('[role=geocoder_select]');
-        var hasGeocoders = geocoderSelect && data.geocoders.filter(function (item) { return !!item }).length > 0
+        var hasGeocoders = geocoderSelect && data.geocoders.filter(function (item) {
+            return !!item
+        }).length > 0
         data.geocoders = Ext.encode(hasGeocoders ? data.geocoders : []);
 
 
         var routeProviderSelect = Ext.getFirst('[role=route_provider_select]');
-        var hasRouteProviders = routeProviderSelect && data.route_providers.filter(function (item) { return !!item }).length > 0
+        var hasRouteProviders = routeProviderSelect && data.route_providers.filter(function (item) {
+            return !!item
+        }).length > 0
         data.route_providers = Ext.encode(hasRouteProviders ? data.route_providers : []);
 
         var lbsProviders = Ext.getFirst('[role=lbs_select]');
@@ -505,5 +526,31 @@ Ext.define('NavixyPanel.model.Settings', {
         }, this);
 
         return data;
+    },
+
+    getDefaultMenu: function () {
+        var menu = this.get('menu')
+
+        var deviceSettingsIndex = menu.footer_menu.findIndex(function (item) {
+            return item.name === 'configuration'
+        })
+
+        if (this.get('device_settings_visible')) {
+            if (deviceSettingsIndex < 0) {
+                var notificationsIndex = menu.footer_menu.findIndex(function (item) {
+                    return item.name === 'notifications'
+                })
+                menu.footer_menu.splice(notificationsIndex, 1, {
+                    name: 'notifications'
+                }, {
+                    name: 'configuration'
+                })
+            }
+        } else {
+            if (deviceSettingsIndex >= 0) {
+                menu.footer_menu.splice(deviceSettingsIndex, 1)
+            }
+        }
+        return menu
     }
 });

@@ -64,7 +64,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
         this.control({
             'usertransactions': {
-                cellclick: this.handleTransactionsListAction,
+                cellclick: this.handleTransactionsListAction
             },
             'userslist': {
                 actionclick: this.handleListAction,
@@ -490,13 +490,13 @@ Ext.define('NavixyPanel.controller.Users', {
     handleImportBtnClick: function () {
         var importPopup = Ext.create('Ext.UsersImportWindow', {
             title: _l.get('users_import_message_box.title'),
-            msg: _l.get("users_import_message_box.message"),
+            msg: _l.get("users_import_message_box.message")
 
         })
         importPopup.show();
         importPopup.on({
             import_successful: this.refreshUsersStore,
-            scope: this,
+            scope: this
         })
     },
 
@@ -571,7 +571,19 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                this.afterUserEdit(response, formValues, record);
+                Ext.API.updateUserMenu({
+                    params: {
+                        user_id: record.getId(),
+                        "application": "navixy_web",
+                        value: Ext.encode(record.getUserMenu())
+                    },
+                    callback: function (response) {
+                        this.afterUserEdit(response, formValues, record);
+                    },
+                    failure: this.afterUserEditFailure,
+                    scope: this
+                });
+
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -756,7 +768,9 @@ Ext.define('NavixyPanel.controller.Users', {
                 }
                 return columns.concat([curr.dataIndex])
             }, [])
-            .filter(function (colName) { return !!colName })
+            .filter(function (colName) {
+                return !!colName
+            })
 
         var params = { format: format };
 
