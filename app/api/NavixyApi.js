@@ -491,7 +491,7 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         }, config));
     },
 
-    removeSettingsPassword: function (config) {
+    removeSettingsImage: function (config) {
         this.requestWithOptions(config, {
             action: 'delete',
             handler: 'dealer/settings/image',
@@ -786,6 +786,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         return this.requestWithOptions(config, {
             action: 'bind',
             handler: 'payment_system/stripe/token'
+        })
+    },
+
+    getSaToken: function (config) {
+        return this.requestWithOptions(config, {
+            action: 'get_standalone_token',
+            handler: 'account',
+            root: 'value'
         })
     }
 });

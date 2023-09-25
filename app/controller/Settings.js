@@ -46,9 +46,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.control({
             'settingsedit': {
                 formsubmit: this.mayBeEditSubmit,
-                formsubmitpassword: this.onPasswordEditSubmit,
-                mapchanged: this.onMapSettingsChange
             },
+
 
             'settings-map': {
                 'map-edit': this.showMapSettingsWindow
@@ -148,40 +147,6 @@ Ext.define('NavixyPanel.controller.Settings', {
                 notificationEdit: Ext.checkPermission('notification_settings', 'update')
             }
         });
-    },
-
-    onPasswordEditSubmit: function (cmp, formValues, record) {
-        if (formValues.new_password && formValues.old_password) {
-            Ext.API.updateSettingsPassword({
-                params: {
-                    old_password: formValues.old_password,
-                    new_password: formValues.new_password
-                },
-                callback: function (response) {
-                    this.afterPasswordEdit(response, record);
-                },
-                failure: function (response) {
-                    this.afterPasswordEditFailure(response, record);
-                },
-                scope: this
-            });
-        }
-    },
-
-    afterPasswordEdit: function (success, record) {
-        if (success) {
-            this.getSettingsEdit().afterPasswordSave();
-        }
-    },
-
-    afterPasswordEditFailure: function (response, record) {
-        record.reject(false);
-        var status = response.status,
-            errors = response.errors || [],
-            errCode = status.code,
-            errDescription = _l.get('errors.settings')[errCode] || _l.get('errors')[errCode] || status.description || false;
-
-        this.getSettingsEdit().showSubmitErrors(errCode, errors, errDescription);
     },
 
     mayBeEditSubmit: function (cmp, formValues, record) {
