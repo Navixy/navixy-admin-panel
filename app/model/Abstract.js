@@ -7,10 +7,10 @@
 Ext.define('NavixyPanel.model.Abstract', {
     extend: 'Ext.data.Model',
 
-    associationsData: [],
     associationsMap: null,
 
     constructor: function () {
+        this.associationsData = [];
         this.callParent(arguments);
         this.buildAssociationsCalls();
     },
