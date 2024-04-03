@@ -134,6 +134,10 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'boolean'
         },
         {
+            name: 'display_release_notes',
+            type: 'boolean'
+        },
+        {
             name: 'no_register_commands',
             type: 'boolean'
         },
