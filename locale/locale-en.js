@@ -1393,6 +1393,7 @@ Ext.define("Locale.locale-en", {
             "misc_header": "Optional features",
 
             "ui_settings_header": "UI Settings",
+            "support": "Support",
             "device_settings_checkbox": "Show Devices and Settings menu item",
             "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile",
             "display_release_notes": "Display release notes",

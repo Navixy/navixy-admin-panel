@@ -924,13 +924,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             },
 
             {
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.display_release_notes') + this.getHintSymbol(_l.get('settings.edit_form.display_release_notes_hint')),
-                name: 'display_release_notes'
-            },
-
-            {
                 name: 'device_settings_visible',
                 xtype: 'checkbox',
                 role: 'checkbox',

@@ -333,6 +333,16 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 text: _l.get('settings.edit_form.map_edit_btn'),
                 scope: this,
                 handler: this.fireEditMap
+            } ,  {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.support'),
+                margin: '0 0 0 5'
+            },
+            {
+                xtype: 'checkbox',
+                role: 'checkbox',
+                boxLabel: _l.get('settings.edit_form.display_release_notes') + Ext.getHintSymbol(_l.get('settings.edit_form.display_release_notes_hint')),
+                name: 'display_release_notes'
             }
         ];
     },
