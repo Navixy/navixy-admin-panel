@@ -1103,7 +1103,9 @@ Ext.define('Locale.locale-es',{
 
             "ui_settings_header":"Configuración de la interfaz",
             "device_settings_checkbox":"Mostrar el elemento del menú \"Configuración del dispositivo\"",
-            "device_settings_checkbox_hint":"La configuración se aplicará a todos los usuarios. Sin embargo, puede habilitar o deshabilitar esta opción para cada usuario individualmente en el perfil de usuario."
+            "device_settings_checkbox_hint":"La configuración se aplicará a todos los usuarios. Sin embargo, puede habilitar o deshabilitar esta opción para cada usuario individualmente en el perfil de usuario.",
+            "display_release_notes": "Mostrar feed de actualización",
+            "display_release_notes_hint": "Esta configuración permite que el historial de actualizaciones de Navixy se muestre en la interfaz de usuario. Se admiten los siguientes idiomas: inglés, español, francés y ruso."
         },
         "upload_form": {
             "save_btn": "Subir",
