@@ -1899,7 +1899,7 @@ Ext.define('Locale.locale-ru', {
         'routing': 'Поддержка маршрутов',
         'driver_journal': 'Журнал водителя',
         'ui_mobile': 'Мобильный интерфейс',
-        'weblocator': 'Веб-локатор',
+        'weblocator': 'Гео-ссылки',
         'chat': 'Чат',
         'checkins': 'Отметки на карте',
         'route_import': 'Импорт маршрутов',

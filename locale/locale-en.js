@@ -1939,7 +1939,7 @@ Ext.define("Locale.locale-en", {
         "routing": "Routing",
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
-        "weblocator": "Weblocator",
+        "weblocator": "Geo links",
         "chat": "Chat",
         "checkins": "Check-ins on the map",
         "route_import": "Import routes",
