@@ -4,7 +4,7 @@ $dealer-info-font-color: $baseFontColor;
 .maintenance_warning {
   margin: 0 auto;
   background-color: #1e96dc;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: $white;
   width: 100%;
@@ -12,7 +12,7 @@ $dealer-info-font-color: $baseFontColor;
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 16px;
+  line-height: 18px;
   div{
     width: 1246px;
   }
