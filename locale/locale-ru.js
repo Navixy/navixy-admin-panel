@@ -35,7 +35,7 @@ Ext.define('Locale.locale-ru', {
     'index_blocked_payment': 'Вы можете пополнить баланс в разделе "Подписка"',
     'index_tip': '',
     'old_version': 'Старая версия',
-    'maintenance_warning': 'Мы меняем цены с 1-го марта 2022. Смотрите <a target=\'_blank\' href=\'https://www.navixy.com/ru/update-to-navixy-servermate-prices/\'>официальное уведомление.',
+    'maintenance_warning': '<div>С 1 июня плагин Weblocator будет снят с поддержки и удалён из Navixy. Существующие ссылки weblocator будут работать до 1 июля, после этой даты все ссылки будут деактивированы. Пожалуйста, перейдите на использование нового модуля Гео Ссылки, который предлагает расширенные функциональные возможности и настройки. Подробнее о Гео Ссылках вы можете узнать <a href="https://www.navixy.ru/docs/user/web-interface-docs/geo-ssylki/" target="_blank">здесь.</a></div>',
     'auth': {
         'login': 'Логин или адрес электронной почты',
         'password': 'Пароль',

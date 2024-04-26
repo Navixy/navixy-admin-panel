@@ -36,7 +36,7 @@ Ext.define("Locale.locale-en", {
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
-    "maintenance_warning": "We update our prices from March 1st, 2022. See the <a a target='_blank' href='https://www.navixy.com/update-to-navixy-servermate-prices/'>official announcement.",
+    "maintenance_warning": '<div>Starting June 1, the Weblocator plugin will be deprecated and removed from Navixy. Existing weblocator links will function until July 1, after which all links will be deactivated. Please transition to the new Geo Links module, which offers enhanced functionality and customization features. You can learn more about Geo Links <a href="https://www.navixy.com/docs/user/web-interface-docs/geo-links/" target="_blank">here</a>.</div>',
     "auth": {
         "login": "Login",
         "password": "Password",
