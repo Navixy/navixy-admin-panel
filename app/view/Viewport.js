@@ -14,12 +14,14 @@ Ext.define('NavixyPanel.view.Viewport', {
                 cls: 'maintenance_warning',
                 html: _l.get("maintenance_warning") + '<div class="maintenance_warning__close">🗙</div>',
                 width: '100%',
+                hidden: !!localStorage.getItem('warningHidden'),
                 listeners: {
-                    click:{
-                        delegate:'.maintenance_warning__close',
+                    click: {
+                        delegate: '.maintenance_warning__close',
                         element: 'el',
-                        fn: function(){
-                            this.remove()
+                        fn: function () {
+                            this.hide()
+                            localStorage.setItem('warningHidden', 1)
                         }
                     }
                 }
@@ -47,7 +49,7 @@ Ext.define('NavixyPanel.view.Viewport', {
         this.callParent(arguments);
     },
 
-    afterFirstLayout: function() {
+    afterFirstLayout: function () {
         this.fireEvent('ready', this);
         this.callParent(arguments);
     }

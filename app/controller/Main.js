@@ -646,6 +646,8 @@ Ext.define('NavixyPanel.controller.Main', {
 
             this.setAuthKey(result.hash)
             this.loadPermissions(result.permissions)
+
+            localStorage.removeItem('warningHidden')
         } else {
             this.onUserAuthFailure()
         }
