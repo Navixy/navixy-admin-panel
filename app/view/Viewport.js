@@ -12,8 +12,17 @@ Ext.define('NavixyPanel.view.Viewport', {
                 xtype: 'component',
                 height: 50,
                 cls: 'maintenance_warning',
-                html: _l.get("maintenance_warning"),
-                width: '100%'
+                html: _l.get("maintenance_warning") + '<div class="maintenance_warning__close">🗙</div>',
+                width: '100%',
+                listeners: {
+                    click:{
+                        delegate:'.maintenance_warning__close',
+                        element: 'el',
+                        fn: function(){
+                            this.remove()
+                        }
+                    }
+                }
             },
             {
                 xtype: 'mainheader',
