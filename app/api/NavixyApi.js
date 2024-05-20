@@ -795,5 +795,32 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'account',
             root: 'value'
         })
+    },
+
+    getMenuPresetsList: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/menu/preset',
+            action: 'list',
+            root: 'list',
+        })
+    },
+
+    requestMenuPresetsList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'user/menu/preset',
+            root: 'list',
+            scope: scope
+        });
+    },
+
+    assignDefaultMenuPreset: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/menu/preset',
+            action: 'assign',
+
+        })
     }
 });
