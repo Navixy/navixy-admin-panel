@@ -936,6 +936,24 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     scope: this
                 },
                 boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
+            },
+
+            {
+                name: 'menu_preset_id',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.menu_preset'),
+                store: Ext.getStore('MenuPresets'),
+                displayField: 'title',
+                queryMode: 'local',
+                valueField: 'id',
+                listeners: {
+                    scope: this,
+                    change: function (cbx, value) {
+                        this.record.set('menu_preset_id', value);
+                    },
+                },
+            },
+
             }
         ];
 

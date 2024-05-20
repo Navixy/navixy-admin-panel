@@ -13,7 +13,8 @@ Ext.define('NavixyPanel.store.Settings', {
         record: [
             'getDefaultMenu',
             'getSettingsService',
-            'getSettingsNotification'
+            'getSettingsNotification',
+            'requestMenuPresetsList'
         ]
     },
 
@@ -32,9 +33,18 @@ Ext.define('NavixyPanel.store.Settings', {
     createLoadCallback: function (fn, scope) {
         var me = this;
         return function (batchResult) {
+            var menuPresetsStore = Ext.getStore('MenuPresets')
+            var menu_preset_id
+
+            if (menuPresetsStore) {
+                menuPresetsStore.loadRawData(batchResult.requestMenuPresetsList)
+                menu_preset_id = menuPresetsStore.getDefaultPreset().id || ''
+            }
+
             fn.call(scope, me.model
                 ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification, {
-                    menu: batchResult.getDefaultMenu
+                    menu: batchResult.getDefaultMenu,
+                    menu_preset_id: menu_preset_id
                 }))
                 : batchResult
             );

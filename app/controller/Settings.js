@@ -34,7 +34,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-        'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes'],
+        'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes', 'MenuPresets'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',
@@ -231,6 +231,21 @@ Ext.define('NavixyPanel.controller.Settings', {
             scope: this
         });
 
+        Ext.API.assignDefaultMenuPreset({
+            params: {
+                target: Ext.encode({ type: 'default' }),
+                preset_id: record.get('menu_preset_id'),
+            },
+            callback: function (response) {
+                if (--requestsCnt === 0) {
+                    this.afterSettingsEdit(response, record);
+                }
+            },
+            failure: function (response) {
+                this.afterSettingsEditFailure(response, record);
+            },
+            scope: this,
+        });
     },
 
     afterSettingsEdit: function (success, record) {
