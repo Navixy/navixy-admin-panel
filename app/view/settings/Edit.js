@@ -15,7 +15,9 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.view.settings.BlockHeader',
 
         'NavixyPanel.view.settings.components.Map',
-        'NavixyPanel.plugins.ComboGoogleFilter'
+        'NavixyPanel.plugins.ComboGoogleFilter',
+
+        'NavixyPanel.view.settings.components.MenuEditorWindow',
     ],
 
     default_paas_domain: '.navixy.com',
@@ -32,6 +34,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     brandingMobile: null,
     brandingSubPaas: null,
     brandingNavixy: null,
+
+    menuEditorWindowInstance: null,
 
     initComponent: function () {
         this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
@@ -954,6 +958,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 },
             },
 
+            {
+                xtype: 'button',
+                ui: 'default',
+                iconCls: 'edit-button',
+                role: 'button',
+                padding: 3,
+                width: 175,
+                margin: '20 0 0 10',
+                text: _l.get('settings.edit_form.menu_editor'),
+                scope: this,
+                handler: this.openMenuEditor
             }
         ];
 
@@ -1439,5 +1454,28 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
             field[!rights.notificationRead ? 'hide' : 'show']();
         }, this);
-    }
+    },
+
+    openMenuEditor: function () {
+        if (this.menuEditorWindowInstance) {
+            this.closeMenuEditor();
+        } else {
+            this.menuEditorWindowInstance = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
+                // hash: null, // todo
+                listeners: {
+                    destroy: function () {
+                        this.trackerSettingsWindow = null;
+                    },
+                    scope: this,
+                },
+            }).show();
+        }
+    },
+
+    closeMenuEditor () {
+        if (this.menuEditorWindowInstance) {
+            this.menuEditorWindowInstance.close();
+            this.menuEditorWindowInstance = null;
+        }
+    },
 });
