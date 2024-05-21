@@ -1461,7 +1461,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             this.closeMenuEditor();
         } else {
             this.menuEditorWindowInstance = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
-                // hash: null, // todo
                 listeners: {
                     destroy: function () {
                         this.trackerSettingsWindow = null;
