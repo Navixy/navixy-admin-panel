@@ -16,8 +16,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
         'NavixyPanel.view.settings.components.Map',
         'NavixyPanel.plugins.ComboGoogleFilter',
-
-        'NavixyPanel.view.settings.components.MenuEditorWindow',
     ],
 
     default_paas_domain: '.navixy.com',
@@ -34,8 +32,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     brandingMobile: null,
     brandingSubPaas: null,
     brandingNavixy: null,
-
-    menuEditorWindowInstance: null,
 
     initComponent: function () {
         this.default_paas_domain = Config.brandingPaasDomain || this.default_paas_domain;
@@ -942,34 +938,34 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
             },
 
-            {
-                name: 'menu_preset_id',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.menu_preset'),
-                store: Ext.getStore('MenuPresets'),
-                displayField: 'title',
-                queryMode: 'local',
-                valueField: 'id',
-                listeners: {
-                    scope: this,
-                    change: function (cbx, value) {
-                        this.record.set('menu_preset_id', value);
-                    },
-                },
-            },
+            // {
+            //     name: 'menu_preset_id',
+            //     xtype: 'combobox',
+            //     fieldLabel: _l.get('settings.fields.menu_preset'),
+            //     store: Ext.getStore('MenuPresets'),
+            //     displayField: 'title',
+            //     queryMode: 'local',
+            //     valueField: 'id',
+            //     listeners: {
+            //         scope: this,
+            //         change: function (cbx, value) {
+            //             this.record.set('menu_preset_id', value);
+            //         },
+            //     },
+            // },
 
-            {
-                xtype: 'button',
-                ui: 'default',
-                iconCls: 'edit-button',
-                role: 'button',
-                padding: 3,
-                width: 175,
-                margin: '20 0 0 10',
-                text: _l.get('settings.edit_form.menu_editor'),
-                scope: this,
-                handler: this.openMenuEditor
-            }
+            // {
+            //     xtype: 'button',
+            //     ui: 'default',
+            //     iconCls: 'edit-button',
+            //     role: 'button',
+            //     padding: 3,
+            //     width: 175,
+            //     margin: '20 0 0 10',
+            //     text: _l.get('settings.edit_form.menu_editor'),
+            //     scope: this,
+            //     handler: this.openMenuEditor
+            // }
         ];
 
     },
@@ -1456,25 +1452,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }, this);
     },
 
-    openMenuEditor: function () {
-        if (this.menuEditorWindowInstance) {
-            this.closeMenuEditor();
-        } else {
-            this.menuEditorWindowInstance = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
-                listeners: {
-                    destroy: function () {
-                        this.trackerSettingsWindow = null;
-                    },
-                    scope: this,
-                },
-            }).show();
-        }
-    },
-
-    closeMenuEditor () {
-        if (this.menuEditorWindowInstance) {
-            this.menuEditorWindowInstance.close();
-            this.menuEditorWindowInstance = null;
-        }
-    },
+    // openMenuEditor: function () {
+    //   this.fireEvent('openmenueditor', this);
+    // }
 });

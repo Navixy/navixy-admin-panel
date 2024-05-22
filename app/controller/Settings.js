@@ -23,7 +23,8 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
-        'NavixyPanel.utils.mapProvider.LeafletMapsProvider'
+        'NavixyPanel.utils.mapProvider.LeafletMapsProvider',
+        'NavixyPanel.view.settings.components.MenuEditorWindow'
     ],
 
     refs: [
@@ -46,6 +47,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.control({
             'settingsedit': {
                 formsubmit: this.mayBeEditSubmit,
+                openmenueditor: this.openMenuEditorWindow
             },
 
 
@@ -348,5 +350,28 @@ Ext.define('NavixyPanel.controller.Settings', {
             },
             scope: this
         });
-    }
+    },
+
+    openMenuEditorWindow: function() {
+      if (!this.menuEditorWindow) {
+        this.menuEditorWindow = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
+          listeners: {
+            destroy: function () {
+              this.trackerSettingsWindow = null;
+            },
+            scope: this,
+          },
+        }).show();
+
+        this.menuEditorWindow.mon(Ext.getFirst('viewport'), {
+          resize: function () {
+            this.updateLayout();
+          },
+          scope: this.trackerSettingsWindow
+        });
+      } else {
+        this.menuEditorWindow.close();
+        this.menuEditorWindow = null;
+      }
+    },
 });

@@ -5,14 +5,11 @@
 Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   extend: 'NavixyPanel.view.components.AbstractWindowSelect',
   alias: 'widget.menueditorwindow',
-  xtype: 'menu-editor-window',
   cls: 'menu-editor-window',
   closeAction: 'destroy',
-  hash: Ext.API.authKey,
   maximized: true,
   minimizable: false,
-  modal: true,
-  layout: 'fit',
+  modal: false,
 
   getTexts: function () {
     return {
@@ -27,7 +24,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
     return [
       {
         xtype: 'component',
-        layout: 'fit',
+        flex: 1,
         html: html,
       },
     ];
@@ -38,7 +35,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
     var domain = Ext.getStore('Dealer').first().get('domain');
     var data = Ext.apply({
       company_url: domain,
-      hash: this.hash,
+      hash: Ext.API.authKey,
       page: PAGE_NAME,
     });
     var locale = Locale.Manager.getLocale();
@@ -46,4 +43,22 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
 
     return !!domain && Ext.String.urlAppend(link, 'locale=' + locale);
   },
+
+  afterRender: function () {
+    this.callParent(arguments);
+
+    var me = this,
+      isIE = Ext.isIE || Ext.isIE11;
+
+    window[isIE ? 'onhashchange' : 'onpopstate'] = function () {
+      me.close();
+    };
+  },
+
+  destroy: function () {
+    window.onpopstate = null;
+    window.onhashchange = null;
+
+    this.callParent(arguments);
+  }
 });
