@@ -20,7 +20,7 @@ Config = {
         // Link to "automatic" authorization in selected app with user hash in GET.
         appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
         // Link to the "menu editor" application
-        panelUrlTpl: ['//{company_url}/wrapper?session_key={hash}&page={page}'],
+        panelUrlTpl: ['//{company_url}/panel/wrapper?session_key={hash}&page={page}'],
     },
 
     // web-socket connection address for devices terminal
