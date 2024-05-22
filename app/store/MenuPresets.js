@@ -39,10 +39,16 @@ Ext.define('NavixyPanel.store.MenuPresets', {
   getDefaultPreset () {
     var data = this.getData();
     var defaultPreset = data
-      .find((preset) => preset.assignments.some((assigment) => assigment.type === ASSIGNMENT_TYPE.DEFAULT));
+      .find(function (preset) {
+        return preset.assignments.some(function (assigment) {
+          return assigment.type === ASSIGNMENT_TYPE.DEFAULT;
+        });
+      });
 
     return defaultPreset
       ? defaultPreset
-      : data.find((preset) => preset.owner === PRESET_OWNER.PLATFORM);
+      : data.find(function (preset) {
+        return preset.owner === PRESET_OWNER.PLATFORM;
+      });
   },
 });
