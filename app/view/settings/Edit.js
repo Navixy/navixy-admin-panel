@@ -954,18 +954,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             //     },
             // },
 
-            // {
-            //     xtype: 'button',
-            //     ui: 'default',
-            //     iconCls: 'edit-button',
-            //     role: 'button',
-            //     padding: 3,
-            //     width: 175,
-            //     margin: '20 0 0 10',
-            //     text: _l.get('settings.edit_form.menu_editor'),
-            //     scope: this,
-            //     handler: this.openMenuEditor
-            // }
+            {
+                xtype: 'button',
+                ui: 'default',
+                iconCls: 'edit-button',
+                role: 'button',
+                padding: 3,
+                width: 175,
+                margin: '20 0 0 10',
+                text: _l.get('settings.edit_form.menu_editor'),
+                scope: this,
+                handler: this.openMenuEditor
+            }
         ];
 
     },
@@ -1452,7 +1452,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         }, this);
     },
 
-    // openMenuEditor: function () {
-    //   this.fireEvent('openmenueditor', this);
-    // }
+    openMenuEditor: function () {
+      this.fireEvent('openmenueditor', this);
+    }
 });
