@@ -31,10 +31,9 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   },
 
   getApplicationLink: function () {
-    var PAGE_NAME = 'MenuEditor';
+    var PAGE_NAME = 'menu-editor';
     var domain = Ext.getStore('Dealer').first().get('domain');
     var data = Ext.apply({
-      company_url: domain,
       hash: Ext.API.authKey,
       page: PAGE_NAME,
     });
