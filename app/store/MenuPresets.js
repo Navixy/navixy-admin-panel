@@ -38,17 +38,32 @@ Ext.define('NavixyPanel.store.MenuPresets', {
 
   getDefaultPreset: function () {
     var data = this.getData();
-    var defaultPreset = data
-      .find(function (preset) {
-        return preset.assignments.some(function (assigment) {
-          return assigment.type === ASSIGNMENT_TYPE.DEFAULT;
-        });
-      });
+    var defaultPreset = null;
 
-    return defaultPreset
-      ? defaultPreset
-      : data.find(function (preset) {
-        return preset.owner === PRESET_OWNER.PLATFORM;
-      });
+    for (var i = 0; i < data.length; i++) {
+      var preset = data[i];
+      for (var j = 0; j < preset.assignments.length; j++) {
+        var assignment = preset.assignments[j];
+
+        if (assignment.type === ASSIGNMENT_TYPE.DEFAULT) {
+          defaultPreset = preset;
+          break;
+        }
+      }
+
+      if (defaultPreset) {
+        break;
+      }
+    }
+
+    if (defaultPreset) {
+      return defaultPreset;
+    } else {
+      for (var k = 0; k < data.length; k++) {
+        if (data[k].owner === PRESET_OWNER.PLATFORM) {
+          return data[k];
+        }
+      }
+    }
   },
 });
