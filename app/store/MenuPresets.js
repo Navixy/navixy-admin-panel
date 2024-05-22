@@ -36,7 +36,7 @@ Ext.define('NavixyPanel.store.MenuPresets', {
     type: 'navixy',
   },
 
-  getDefaultPreset () {
+  getDefaultPreset: function () {
     var data = this.getData();
     var defaultPreset = data
       .find(function (preset) {
