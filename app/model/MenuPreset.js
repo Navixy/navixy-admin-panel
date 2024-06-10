@@ -19,7 +19,9 @@ Ext.define('NavixyPanel.model.MenuPreset', {
     {
       name: 'title',
       convert: function (me, record) {
-        return record.get('preset').title;
+        var title = record.get('preset').title;
+
+        return _l.get(title) || title;
       },
     },
   ],

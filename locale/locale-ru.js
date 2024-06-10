@@ -2053,5 +2053,9 @@ Ext.define('Locale.locale-ru', {
     "sa-token": {
         "sa-token-title": "Лицензионный ключ On-premise",
         "field": "Лицензионный ключ"
+    },
+
+    "menu-editor": {
+        "default-preset": "Шаблон меню по умолчанию"
     }
 })

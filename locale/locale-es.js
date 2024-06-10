@@ -1579,6 +1579,9 @@ Ext.define('Locale.locale-es',{
         "zoom_in": "Zoom in",
         "zoom_out": "Zoom out"
     },
-    "map_type_label": "Map"
+    "map_type_label": "Map",
 
+    "menu-editor": {
+        "default-preset": "Plantilla de menú predeterminada"
+    }
 });

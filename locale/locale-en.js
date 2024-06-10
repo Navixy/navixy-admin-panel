@@ -2074,5 +2074,9 @@ Ext.define("Locale.locale-en", {
     "sa-token": {
         "sa-token-title": "On-premise license key",
         "field": "License key"
+    },
+
+    "menu-editor": {
+        "default-preset": "Default menu preset"
     }
 });
