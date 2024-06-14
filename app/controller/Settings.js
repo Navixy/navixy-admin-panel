@@ -358,6 +358,7 @@ Ext.define('NavixyPanel.controller.Settings', {
           listeners: {
             destroy: function () {
               this.trackerSettingsWindow = null;
+              Ext.getStore('MenuPresets').reload()
             },
             scope: this,
           },
