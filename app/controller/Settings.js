@@ -352,27 +352,27 @@ Ext.define('NavixyPanel.controller.Settings', {
         });
     },
 
-    openMenuEditorWindow: function() {
-      if (!this.menuEditorWindow) {
-        this.menuEditorWindow = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
-          listeners: {
-            destroy: function () {
-              this.trackerSettingsWindow = null;
-              Ext.getStore('MenuPresets').reload()
-            },
-            scope: this,
-          },
-        }).show();
+    openMenuEditorWindow: function () {
+        if (!this.menuEditorWindow) {
+            this.menuEditorWindow = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
+                listeners: {
+                    destroy: function () {
+                        this.menuEditorWindow = null;
+                        Ext.getStore('MenuPresets').reload();
+                    },
+                    scope: this,
+                },
+            }).show();
 
-        this.menuEditorWindow.mon(Ext.getFirst('viewport'), {
-          resize: function () {
-            this.updateLayout();
-          },
-          scope: this.trackerSettingsWindow
-        });
-      } else {
-        this.menuEditorWindow.close();
-        this.menuEditorWindow = null;
-      }
+            this.menuEditorWindow.mon(Ext.getFirst('viewport'), {
+                resize: function () {
+                    this.updateLayout();
+                },
+                scope: this.menuEditorWindow,
+            });
+        } else {
+            this.menuEditorWindow.close();
+            this.menuEditorWindow = null;
+        }
     },
 });
