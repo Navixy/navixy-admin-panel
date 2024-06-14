@@ -357,8 +357,8 @@ Ext.define('NavixyPanel.controller.Settings', {
             this.menuEditorWindow = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
                 listeners: {
                     destroy: function () {
-                        this.menuEditorWindow = null;
                         Ext.getStore('MenuPresets').reload();
+                        this.menuEditorWindow = null;
                     },
                     scope: this,
                 },

@@ -948,6 +948,18 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 valueField: 'id',
                 listeners: {
                     scope: this,
+                    beforerender: function (cbox) {
+                        var settingsEdit = this;
+
+                        cbox.getStore().on('load', function (store) {
+                            var id = store.getDefaultPreset().id;
+
+                            if (cbox.getValue() !== id) {
+                                settingsEdit.record.set('menu_preset_id', id);
+                                cbox.setValue(id);
+                            }
+                        });
+                    },
                     change: function (cbx, value) {
                         this.record.set('menu_preset_id', value);
                     },
