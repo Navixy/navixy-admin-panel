@@ -923,20 +923,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 html: _l.get('settings.edit_form.ui_settings_header')
             },
 
-            {
-                name: 'device_settings_visible',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                margin: '20 0 0 10',
-                inputValue: true,
-                listeners: {
-                    change: function (cbx, value) {
-                        this.record.set('device_settings_visible', value)
-                    },
-                    scope: this
-                },
-                boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
-            },
+            // {
+            //     name: 'device_settings_visible',
+            //     xtype: 'checkbox',
+            //     role: 'checkbox',
+            //     margin: '20 0 0 10',
+            //     inputValue: true,
+            //     listeners: {
+            //         change: function (cbx, value) {
+            //             this.record.set('device_settings_visible', value)
+            //         },
+            //         scope: this
+            //     },
+            //     boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
+            // },
 
             {
                 name: 'menu_preset_id',
