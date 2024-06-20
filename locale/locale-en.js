@@ -1212,7 +1212,7 @@ Ext.define("Locale.locale-en", {
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
             'unavaliable': 'Not available',
-            'menu_preset': 'Menu presets',
+            'menu_preset': 'Default menu preset',
         },
         "sms_gateway": {
             "navixy": {
