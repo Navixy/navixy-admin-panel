@@ -1191,7 +1191,7 @@ Ext.define('Locale.locale-ru', {
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
             paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}',
             'unavaliable': 'Недоступно',
-            'menu_preset': 'Шаблон меню по умолчанию',
+            'menu_preset': 'Шаблон меню',
         },
         'sms_gateway': {
             'navixy': {
