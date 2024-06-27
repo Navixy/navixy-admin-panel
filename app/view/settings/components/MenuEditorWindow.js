@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   maximized: true,
   minimizable: false,
   modal: false,
+  hasChanges: false,
 
   getTexts: function () {
     return {
@@ -17,9 +18,15 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
     };
   },
 
+  getIframeElement: function () {
+    var el = Ext.getElementById('menu-editor');
+
+    return el ? el : null;
+  },
+
   getItems: function () {
     var appLink = this.getApplicationLink();
-    var html = appLink ? '<iframe src="' + appLink + '"></iframe>' : '';
+    var html = appLink ? '<iframe id="menu-editor" src="' + appLink + '"></iframe>' : '';
 
     return [
       {
@@ -44,20 +51,63 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   },
 
   afterRender: function () {
-    this.callParent(arguments);
-
     var me = this,
       isIE = Ext.isIE || Ext.isIE11;
 
     window[isIE ? 'onhashchange' : 'onpopstate'] = function () {
       me.close();
     };
+
+    window.onmessage = function (messageEvent) {
+      var data = JSON.parse(messageEvent.data);
+
+      me.hasChanges = data.hasChanges;
+
+      if (data.hasChanges) {
+        window.onbeforeunload = function (unloadEvent) {
+          unloadEvent.returnValue = '';
+          return '';
+        };
+
+        me.on('beforeclose', me.onBeforeClose, me);
+      } else {
+        window.onbeforeunload = null;
+        me.removeListener('beforeclose', me.onBeforeClose, me);
+      }
+    };
+
+    this.callParent(arguments);
   },
 
   destroy: function () {
     window.onpopstate = null;
     window.onhashchange = null;
+    window.onbeforeunload = null;
+    window.onmessage = null;
 
     this.callParent(arguments);
-  }
+  },
+
+  onBeforeClose: function () {
+    var me = this;
+
+    if (!me.hasChanges) {
+      return true;
+    }
+
+    var menuEditorIFrame = this.getIframeElement();
+
+    menuEditorIFrame.contentWindow.postMessage(JSON.stringify({ showDialog: true }), '*');
+
+    window.onmessage = function (messageEvent) {
+      var data = JSON.parse(messageEvent.data);
+
+      if (data.canClose) {
+        me.hasChanges = false;
+        me.close();
+      }
+    };
+
+    return false;
+  },
 });
