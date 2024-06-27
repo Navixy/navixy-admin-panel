@@ -173,12 +173,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue());
             lbs.setValue(lbsLabel);
         }
-
-        var menuPreset = this.down('[name=menu_preset_id]');
-
-        if (menuPreset) {
-            menuPreset.setValue(Ext.getStore('MenuPresets').getDefaultPreset().id)
-        }
     },
 
     applyEmptyTheme: function () {
@@ -965,9 +959,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                                 cbox.setValue(id);
                             }
                         });
-                    },
-                    change: function (cbx, value) {
-                        this.record.set('menu_preset_id', value);
                     },
                 },
             },
