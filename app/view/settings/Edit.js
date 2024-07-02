@@ -278,7 +278,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 ui: 'light',
                 cls: 'header-tabs',
                 defaults: this.getHintDefaults(),
-                items: this.getTabs()
+                items: this.getTabs(),
+                tabBar: {
+                    items: this.getTabBarItems(),
+                },
             }
         ];
     },
@@ -325,6 +328,20 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             labelAlign: 'top',
             labelSeparator: ''
         });
+    },
+
+    getTabBarItems: function () {
+        return [
+            {
+                xtype: 'button',
+                cls: 'tabbar-button',
+                role: 'button',
+                padding: '7 15',
+                text: _l.get('settings.edit_form.menu_editor'),
+                scope: this,
+                handler: this.openMenuEditor,
+            },
+        ];
     },
 
     getTabs: function () {
@@ -962,19 +979,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                     },
                 },
             },
-
-            {
-                xtype: 'button',
-                ui: 'default',
-                iconCls: 'edit-button',
-                role: 'button',
-                padding: 3,
-                width: 175,
-                margin: '20 0 0 10',
-                text: _l.get('settings.edit_form.menu_editor'),
-                scope: this,
-                handler: this.openMenuEditor
-            }
         ];
 
     },
