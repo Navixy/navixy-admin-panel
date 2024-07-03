@@ -69,6 +69,18 @@ Ext.define('NavixyPanel.store.MenuPresets', {
     }
   },
 
+  getPresetById: function (presetID) {
+    var presets = this.getData();
+
+    for (var i = 0; i < presets.length; i++) {
+      if (presetID === presets[i].id) {
+        return presets[i];
+      }
+    }
+
+    return null;
+  },
+
   getPresetOfUserId: function (userID) {
     var data = this.getData();
 
