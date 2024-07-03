@@ -411,6 +411,7 @@ Ext.define('Locale.locale-es',{
         },
         "edit_form": {
             "title": "Editar usuario",
+            "assigned_menu_preset": "Preajuste de menú asignado",
             "save_btn": "Guardar cambios",
             "return_btn": "regresar"
         },

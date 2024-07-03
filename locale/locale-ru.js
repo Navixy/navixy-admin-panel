@@ -505,6 +505,7 @@ Ext.define('Locale.locale-ru', {
         },
         'edit_form': {
             'title': 'Редактирование пользователя',
+            'assigned_menu_preset': 'Назначенный шаблон меню',
             'save_btn': 'Сохранить изменения',
             'return_btn': 'Назад'
         },

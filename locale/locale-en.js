@@ -510,6 +510,7 @@ Ext.define("Locale.locale-en", {
         },
         "edit_form": {
             "title": "Edit user",
+            "assigned_menu_preset": "Assigned menu preset",
             "save_btn": "Save changes",
             "return_btn": "Back"
         },
