@@ -816,10 +816,10 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    assignDefaultMenuPreset: function (config) {
+    assignMenuPreset: function (config) {
         return this.requestWithOptions(config, {
             handler: 'user/menu/preset',
             action: 'assign',
         })
-    }
+    },
 });
