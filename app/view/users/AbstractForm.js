@@ -450,5 +450,25 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     applyRecordData: function () {
         this.callParent(arguments);
         this.changeLegalStatus(this.down('[name=legal_type]').getValue());
-    }
+    },
+
+    getUISettingsItems: function () {
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                padding: '10 0 20 0',
+                html: _l.get('settings.edit_form.ui_settings_header')
+            },
+            {
+                name: 'menu_preset_id',
+                xtype: 'combobox',
+                fieldLabel: _l.get('users.edit_form.assigned_menu_preset'),
+                store: Ext.getStore('MenuPresets'),
+                displayField: 'title',
+                queryMode: 'local',
+                valueField: 'id',
+            },
+        ]
+    },
 });
