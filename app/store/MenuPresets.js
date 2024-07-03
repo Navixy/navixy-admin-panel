@@ -67,4 +67,26 @@ Ext.define('NavixyPanel.store.MenuPresets', {
       }
     }
   },
+
+  getPresetOfUserId: function (userID) {
+    var data = this.getData();
+
+    for (var i = 0; i < data.length; i++) {
+      var preset = data[i];
+
+      if (preset.assignments.length === 0) {
+        continue;
+      }
+
+      for (var j = 0; j < preset.assignments.length; j++) {
+        var assignment = preset.assignments[j];
+
+        if (ASSIGNMENT_TYPE.USERS === assignment.type && assignment.ids.indexOf(userID) >= 0) {
+          return preset;
+        }
+      }
+    }
+
+    return this.getDefaultPreset();
+  },
 });
