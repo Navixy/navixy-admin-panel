@@ -7,10 +7,19 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   alias: 'widget.menueditorwindow',
   cls: 'menu-editor-window',
   closeAction: 'destroy',
+  height: '100%',
+  width: '100%',
   maximized: true,
   minimizable: false,
+  fixed: true,
   modal: false,
   hasChanges: false,
+  margin: '0 0 0 0',
+
+  initComponent: function () {
+    this.addListeners();
+    this.callParent(arguments);
+  },
 
   getTexts: function () {
     return {
@@ -109,5 +118,16 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
     };
 
     return false;
+  },
+
+  addListeners: function () {
+    this.listeners = {
+      beforeadd: function () {
+        Ext.getBody().addCls('no-scroll');
+      },
+      beforedestroy: function () {
+        Ext.getBody().removeCls('no-scroll');
+      },
+    };
   },
 });
