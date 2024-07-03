@@ -529,14 +529,15 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
-                this.afterUserDataChange(
-                  response,
-                  userData.menu_preset_id,
-                  function () {
-                      this.afterUserCreate(response);
-                  }.bind(this),
-                  this.afterUserCreateFailure,
-                );
+                var callback = function (userId) {
+                    this.afterUserCreate(userId);
+                }.bind(this, response);
+
+                var failure = function (response) {
+                    this.afterUserCreateFailure(response);
+                }.bind(this, response);
+
+                this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -580,14 +581,15 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                this.afterUserDataChange(
-                  userData.id,
-                  userData.menu_preset_id,
-                  function () {
-                      this.afterUserEdit(response, formValues, record);
-                  }.bind(this),
-                  this.afterUserEditFailure,
-                );
+                var callback = function (response, formValues, record) {
+                    this.afterUserEdit(response, formValues, record);
+                }.bind(this, response, formValues, record);
+
+                var failure = function (response) {
+                    this.afterUserEditFailure(response);
+                }.bind(this, response);
+
+                this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
             },
             failure: this.afterUserEditFailure,
             scope: this
