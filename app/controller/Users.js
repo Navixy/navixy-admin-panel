@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
-    stores: ['Users', 'PaasPlugins'],
+    stores: ['Users', 'PaasPlugins', 'MenuPresets'],
     models: ['User', 'Transaction', 'PaasPlugin'],
     mainStore: 'Users',
 
@@ -81,6 +81,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 formsubmit: this.handleUserCreateSubmit
             },
             'useredit': {
+                beforeadd: this.onBeforeAddUserEditComponent,
                 formsubmit: this.handleUserEditSubmit
             },
             'userchangepassword': {
@@ -528,7 +529,13 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
-                this.afterUserCreate(response);
+                this.afterUserDataChange(
+                  response,
+                  userData.menu_preset_id,
+                  function () {
+                      this.afterUserCreate(response);
+                  }.bind(this),
+                );
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -571,19 +578,13 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                Ext.API.updateUserMenu({
-                    params: {
-                        user_id: record.getId(),
-                        "application": "navixy_web",
-                        value: Ext.encode(record.getUserMenu())
-                    },
-                    callback: function (response) {
-                        this.afterUserEdit(response, formValues, record);
-                    },
-                    failure: this.afterUserEditFailure,
-                    scope: this
-                });
-
+                this.afterUserDataChange(
+                  userData.id,
+                  userData.menu_preset_id,
+                  function () {
+                      this.afterUserEdit(response, formValues, record);
+                  }.bind(this),
+                );
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -779,5 +780,44 @@ Ext.define('NavixyPanel.controller.Users', {
         }
 
         window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
-    }
+    },
+
+    onBeforeAddUserEditComponent: function (cmp) {
+        var menuEditorStore = this.getStore('MenuPresets')
+
+        if (menuEditorStore && cmp.record) {
+            var id = cmp.record.get('id')
+            var preset = menuEditorStore.getPresetOfUserId(id)
+
+            cmp.record.set('menu_preset_id', preset.id)
+        }
+    },
+
+    afterUserDataChange: function (userID, presetID, callback) {
+        var menuPresetsStore = Ext.getStore('MenuPresets');
+        var preset = menuPresetsStore.getPresetById(presetID);
+
+        if (!preset) {
+            return;
+        }
+
+        var userAssignment = Ext.Array.findBy(preset.assignments, function (assignment) {
+            return assignment.type === 'users';
+        });
+        var ids = [userID];
+
+        if (userAssignment) {
+            ids = Ext.Array.merge(ids, userAssignment.ids);
+        }
+
+        Ext.API.assignMenuPreset({
+            params: {
+                target: Ext.encode({ type: 'users', ids: ids }),
+                preset_id: presetID,
+            },
+            callback: callback,
+            failure: this.afterUserCreateFailure,
+            scope: this,
+        });
+    },
 });
