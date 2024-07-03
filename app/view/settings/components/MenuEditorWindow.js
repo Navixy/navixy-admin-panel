@@ -121,13 +121,12 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   },
 
   addListeners: function () {
-    this.listeners = {
-      beforeadd: function () {
-        Ext.getBody().addCls('no-scroll');
-      },
-      beforedestroy: function () {
-        Ext.getBody().removeCls('no-scroll');
-      },
-    };
+    this.on('beforeadd', function () {
+      Ext.getBody().addCls('no-scroll');
+    }, this);
+
+    this.on('beforedestroy', function () {
+      Ext.getBody().removeCls('no-scroll');
+    }, this);
   },
 });
