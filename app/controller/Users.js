@@ -535,6 +535,7 @@ Ext.define('NavixyPanel.controller.Users', {
                   function () {
                       this.afterUserCreate(response);
                   }.bind(this),
+                  this.afterUserCreateFailure,
                 );
             },
             failure: this.afterUserCreateFailure,
@@ -546,6 +547,7 @@ Ext.define('NavixyPanel.controller.Users', {
         this.getUserCreate().afterSave(userId);
         this.getUsersList().store.load();
         Ext.getStore('Users').load();
+        this.getStore('MenuPresets').reload()
     },
 
     afterUserCreateFailure: function (response) {
@@ -584,6 +586,7 @@ Ext.define('NavixyPanel.controller.Users', {
                   function () {
                       this.afterUserEdit(response, formValues, record);
                   }.bind(this),
+                  this.afterUserEditFailure,
                 );
             },
             failure: this.afterUserEditFailure,
@@ -593,6 +596,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     afterUserEdit: function (success, formValues, record) {
         if (success) {
+            this.getStore('MenuPresets').reload()
             record.set(formValues);
             var list = this.getUsersList(),
                 form = this.getUserEdit();
@@ -793,7 +797,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     },
 
-    afterUserDataChange: function (userID, presetID, callback) {
+    afterUserDataChange: function (userID, presetID, callback, failure) {
         var menuPresetsStore = Ext.getStore('MenuPresets');
         var preset = menuPresetsStore.getPresetById(presetID);
 
@@ -816,7 +820,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 preset_id: presetID,
             },
             callback: callback,
-            failure: this.afterUserCreateFailure,
+            failure: failure,
             scope: this,
         });
     },
