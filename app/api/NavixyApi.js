@@ -820,7 +820,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         return this.requestWithOptions(config, {
             handler: 'user/menu/preset',
             action: 'assign',
-
         })
     }
 });
