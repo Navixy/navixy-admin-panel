@@ -19,6 +19,7 @@ var ASSIGNMENT_TYPE = {
 Ext.define('NavixyPanel.store.MenuPresets', {
   extend: 'NavixyPanel.store.Abstract',
   model: 'NavixyPanel.model.MenuPreset',
+  autoLoad: true,
   remoteFilter: false,
   remoteSort: false,
   batch: false,
