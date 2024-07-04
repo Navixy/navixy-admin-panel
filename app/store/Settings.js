@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.store.Settings', {
             'getDefaultMenu',
             'getSettingsService',
             'getSettingsNotification',
+            'requestMenuPresetsList',
         ]
     },
 
@@ -36,6 +37,7 @@ Ext.define('NavixyPanel.store.Settings', {
             var menu_preset_id = ''
 
             if (menuPresetsStore) {
+                menuPresetsStore.loadRawData(batchResult.requestMenuPresetsList)
                 menu_preset_id = menuPresetsStore.getDefaultPreset().id || ''
             }
 

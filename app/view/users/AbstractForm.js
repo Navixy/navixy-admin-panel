@@ -468,6 +468,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 displayField: 'title',
                 queryMode: 'local',
                 valueField: 'id',
+                value: 1,
             },
         ]
     },
