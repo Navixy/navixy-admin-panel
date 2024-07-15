@@ -25,10 +25,19 @@ Ext.define('NavixyPanel.store.MenuPresets', {
   batch: false,
   storeId: 'MenuPresets',
 
-  sorters: {
-    property: 'preset.id',
-    direction: 'ASC',
-  },
+  sorters: [
+    {
+      sorterFn: function (a, b) {
+        if (a.get('isDefault')) {
+          return -1;
+        } else if (b.get('isDefault')) {
+          return 1;
+        }
+
+        return b.get('id') - a.get('id');
+      },
+    },
+  ],
 
   api: {
     read: 'getMenuPresetsList',
@@ -40,31 +49,16 @@ Ext.define('NavixyPanel.store.MenuPresets', {
 
   getDefaultPreset: function () {
     var data = this.getData();
-    var defaultPreset = null;
 
     for (var i = 0; i < data.length; i++) {
-      var preset = data[i];
-      for (var j = 0; j < preset.assignments.length; j++) {
-        var assignment = preset.assignments[j];
-
-        if (assignment.type === ASSIGNMENT_TYPE.DEFAULT) {
-          defaultPreset = preset;
-          break;
-        }
-      }
-
-      if (defaultPreset) {
-        break;
+      if (data[i].isDefault) {
+        return data[i];
       }
     }
 
-    if (defaultPreset) {
-      return defaultPreset;
-    } else {
-      for (var k = 0; k < data.length; k++) {
-        if (data[k].owner === PRESET_OWNER.PLATFORM) {
-          return data[k];
-        }
+    for (var k = 0; k < data.length; k++) {
+      if (data[k].owner === PRESET_OWNER.PLATFORM) {
+        return data[k];
       }
     }
   },
