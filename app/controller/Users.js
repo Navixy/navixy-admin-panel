@@ -67,7 +67,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 cellclick: this.handleTransactionsListAction
             },
             'userslist': {
-                beforeadd: this.onBeforeAddUsersListComponent,
+                beforeadd: this.loadMenuPresets,
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction,
                 downloaduserlist: this.downloadUserList
@@ -79,7 +79,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 click: this.handleImportBtnClick
             },
             'usercreate': {
-                beforeadd: this.onBeforeAddUserCreateComponent,
+                beforeadd: this.loadMenuPresets,
                 formsubmit: this.handleUserCreateSubmit
             },
             'useredit': {
@@ -154,6 +154,7 @@ Ext.define('NavixyPanel.controller.Users', {
             text: _l.get('users.menu_text'),
             target: 'users'
         };
+        this.loadMenuPresets();
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -790,14 +791,8 @@ Ext.define('NavixyPanel.controller.Users', {
         window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
     },
 
-    onBeforeAddUsersListComponent: function () {
+    loadMenuPresets: function () {
         this.getStore('MenuPresets').load();
-    },
-
-    onBeforeAddUserCreateComponent: function (cmp) {
-        var menuEditorStore = this.getStore('MenuPresets');
-
-        menuEditorStore.load()
     },
 
     onBeforeAddUserEditComponent: function (cmp) {
