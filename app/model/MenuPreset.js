@@ -24,6 +24,20 @@ Ext.define('NavixyPanel.model.MenuPreset', {
         return _l.get(title) || title;
       },
     },
+    {
+      name: 'isDefault',
+      convert: function (me, record) {
+        var assignments = record.get('assignments');
+
+        for (var i = 0; i < assignments.length; i++) {
+          if ('default' === assignments[i].type) {
+            return true;
+          }
+        }
+
+        return false;
+      },
+    },
   ],
 });
 
