@@ -277,6 +277,10 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('trackers.fields.comment'),
                     value: recordData.comment
+                },
+                {
+                    title: _l.get('users.edit_form.assigned_menu_preset'),
+                    value: this.getPreset().title,
                 }
             ]
         };
@@ -405,5 +409,12 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     toggleActivationPanel: function () {
         this.fireEvent('toggleactivationpanel');
-    }
+    },
+
+    getPreset: function () {
+        var menuPresetsStore = Ext.getStore('MenuPresets');
+        var presetOfUser = menuPresetsStore.getPresetOfUserId(this.getRecordData().id);
+
+        return presetOfUser ? presetOfUser : menuPresetsStore.getDefaultPreset();
+    },
 });
