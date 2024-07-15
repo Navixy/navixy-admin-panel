@@ -798,7 +798,6 @@ Ext.define('NavixyPanel.controller.Users', {
         var menuEditorStore = this.getStore('MenuPresets');
 
         menuEditorStore.load()
-        console.log(cmp);
     },
 
     onBeforeAddUserEditComponent: function (cmp) {
