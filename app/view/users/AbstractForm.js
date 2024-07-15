@@ -468,7 +468,20 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 displayField: 'title',
                 queryMode: 'local',
                 valueField: 'id',
-                value: 1,
+                listeners: {
+                    scope: this,
+                    beforerender: function (cbox) {
+                        var PLATFORM_OWNED_PRESET_ID = 1;
+                        var store = cbox.getStore();
+                        var defaultPreset = store.getDefaultPreset();
+
+                        if (defaultPreset && defaultPreset.id !== undefined) {
+                            cbox.setValue(defaultPreset.id);
+                        } else {
+                            cbox.setValue(PLATFORM_OWNED_PRESET_ID);
+                        }
+                    },
+                },
             },
         ]
     },
