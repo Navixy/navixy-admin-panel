@@ -202,6 +202,13 @@ Ext.define('NavixyPanel.store.Dealer', {
     },
 
     isMenuPresetsAvailable: function () {
-        return !this.hasFsm() && !this.hasB2f();
+        return (
+          this.getFeature('tracking')
+          && this.getFeature('reports')
+          && this.getFeature('fleet')
+          && this.getFeature('field_service')
+          && !this.hasFsm()
+          && !this.hasB2f()
+        );
     },
 })
