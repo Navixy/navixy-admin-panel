@@ -331,6 +331,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getTabBarItems: function () {
+        if (!this.isMenuPresetsAvailable()) {
+            return [];
+        }
+
         return [
             {
                 xtype: 'button',
@@ -933,54 +937,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 margin: '20 0 0 10',
                 boxLabel: _l.get('settings.fields.translit') + this.getHintSymbol(_l.get('settings.fields.translit_hint'))
             },
-
-
-            {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.ui_settings_header')
-            },
-
-            // {
-            //     name: 'device_settings_visible',
-            //     xtype: 'checkbox',
-            //     role: 'checkbox',
-            //     margin: '20 0 0 10',
-            //     inputValue: true,
-            //     listeners: {
-            //         change: function (cbx, value) {
-            //             this.record.set('device_settings_visible', value)
-            //         },
-            //         scope: this
-            //     },
-            //     boxLabel: _l.get('settings.edit_form.device_settings_checkbox') + this.getHintSymbol(_l.get('settings.edit_form.device_settings_checkbox_hint'))
-            // },
-
-            {
-                name: 'menu_preset_id',
-                xtype: 'combobox',
-                fieldLabel: _l.get('settings.fields.menu_preset'),
-                store: Ext.getStore('MenuPresets'),
-                displayField: 'title',
-                queryMode: 'local',
-                valueField: 'id',
-                listeners: {
-                    scope: this,
-                    beforerender: function (cbox) {
-                        var settingsEdit = this;
-
-                        cbox.getStore().on('load', function (store) {
-                            var id = store.getDefaultPreset().id;
-
-                            if (cbox.getValue() !== id) {
-                                settingsEdit.record.set('menu_preset_id', id);
-                                cbox.setValue(id);
-                            }
-                        });
-                    },
-                },
-            },
-        ];
-
+        ].concat(this.getUISettings());
     },
 
     getAvaliableComboboxItems: function (name, map) {
@@ -1467,5 +1424,45 @@ Ext.define('NavixyPanel.view.settings.Edit', {
 
     openMenuEditor: function () {
       this.fireEvent('openmenueditor', this);
-    }
+    },
+
+    isMenuPresetsAvailable: function () {
+        return Ext.getStore('Dealer').isMenuPresetsAvailable();
+    },
+
+    getUISettings: function () {
+        if (!this.isMenuPresetsAvailable()) {
+            return null;
+        }
+
+        return [
+            {
+                xtype: 'blockheader',
+                html: _l.get('settings.edit_form.ui_settings_header'),
+            },
+            {
+                name: 'menu_preset_id',
+                xtype: 'combobox',
+                fieldLabel: _l.get('settings.fields.menu_preset'),
+                store: Ext.getStore('MenuPresets'),
+                displayField: 'title',
+                queryMode: 'local',
+                valueField: 'id',
+                listeners: {
+                    scope: this,
+                    beforerender: function (cbox) {
+                        var settingsEdit = this;
+
+                        cbox.getStore().on('load', function (store) {
+                            var id = store.getDefaultPreset().id;
+
+                            if (cbox.getValue() !== id) {
+                                settingsEdit.record.set('menu_preset_id', id);
+                                cbox.setValue(id);
+                            }
+                        });
+                    },
+                },
+            }];
+    },
 });

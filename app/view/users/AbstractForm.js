@@ -453,6 +453,10 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     },
 
     getUISettingsItems: function () {
+        if (!Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            return [];
+        }
+
         return [
             {
                 xtype: 'container',

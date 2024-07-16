@@ -199,5 +199,9 @@ Ext.define('NavixyPanel.store.Dealer', {
             features = record && record.get("features");
 
         return features && Ext.Array.contains(features, feature_name);
-    }
+    },
+
+    isMenuPresetsAvailable: function () {
+        return !this.hasFsm() && !this.hasB2f();
+    },
 })

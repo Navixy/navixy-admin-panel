@@ -233,21 +233,23 @@ Ext.define('NavixyPanel.controller.Settings', {
             scope: this
         });
 
-        Ext.API.assignMenuPreset({
-            params: {
-                target: Ext.encode({ type: 'default' }),
-                preset_id: record.get('menu_preset_id'),
-            },
-            callback: function (response) {
-                if (--requestsCnt === 0) {
-                    this.afterSettingsEdit(response, record);
-                }
-            },
-            failure: function (response) {
-                this.afterSettingsEditFailure(response, record);
-            },
-            scope: this,
-        });
+        if (Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            Ext.API.assignMenuPreset({
+                params: {
+                    target: Ext.encode({ type: 'default' }),
+                    preset_id: record.get('menu_preset_id'),
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0) {
+                        this.afterSettingsEdit(response, record);
+                    }
+                },
+                failure: function (response) {
+                    this.afterSettingsEditFailure(response, record);
+                },
+                scope: this,
+            });
+        }
     },
 
     afterSettingsEdit: function (success, record) {

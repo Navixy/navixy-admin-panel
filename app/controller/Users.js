@@ -154,7 +154,11 @@ Ext.define('NavixyPanel.controller.Users', {
             text: _l.get('users.menu_text'),
             target: 'users'
         };
+    },
+
+    onPanelRendered: function () {
         this.loadMenuPresets();
+        this.callParent(arguments);
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -532,15 +536,19 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
-                var callback = function (userId) {
-                    this.afterUserCreate(userId);
-                }.bind(this, response);
+                if (this.isMenuPresetsAvailable()) {
+                    var callback = function (userId) {
+                        this.afterUserCreate(userId);
+                    }.bind(this, response);
 
-                var failure = function (response) {
-                    this.afterUserCreateFailure(response);
-                }.bind(this, response);
+                    var failure = function (response) {
+                        this.afterUserCreateFailure(response);
+                    }.bind(this, response);
 
-                this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
+                    this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
+                } else {
+                    this.afterUserCreate(response);
+                }
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -584,15 +592,19 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                var callback = function (response, formValues, record) {
+                if (this.isMenuPresetsAvailable()) {
+                    var callback = function (response, formValues, record) {
+                        this.afterUserEdit(response, formValues, record);
+                    }.bind(this, response, formValues, record);
+
+                    var failure = function (response) {
+                        this.afterUserEditFailure(response);
+                    }.bind(this, response);
+
+                    this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
+                } else {
                     this.afterUserEdit(response, formValues, record);
-                }.bind(this, response, formValues, record);
-
-                var failure = function (response) {
-                    this.afterUserEditFailure(response);
-                }.bind(this, response);
-
-                this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
+                }
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -791,22 +803,36 @@ Ext.define('NavixyPanel.controller.Users', {
         window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
     },
 
+    isMenuPresetsAvailable: function () {
+        return Ext.getStore('Dealer').isMenuPresetsAvailable();
+    },
+
     loadMenuPresets: function () {
-        this.getStore('MenuPresets').load();
+        if (this.isMenuPresetsAvailable()) {
+            this.getStore('MenuPresets').load();
+        }
     },
 
     onBeforeAddUserEditComponent: function (cmp) {
-        var menuEditorStore = this.getStore('MenuPresets')
+        if (!this.isMenuPresetsAvailable()) {
+            return;
+        }
+
+        var menuEditorStore = this.getStore('MenuPresets');
 
         if (menuEditorStore && cmp.record) {
-            var id = cmp.record.get('id')
-            var preset = menuEditorStore.getPresetOfUserId(id)
+            var id = cmp.record.get('id');
+            var preset = menuEditorStore.getPresetOfUserId(id);
 
-            cmp.record.set('menu_preset_id', preset.id)
+            cmp.record.set('menu_preset_id', preset.id);
         }
     },
 
     afterUserDataChange: function (userID, presetID, callback, failure) {
+        if (!this.isMenuPresetsAvailable()) {
+            return;
+        }
+
         var menuPresetsStore = Ext.getStore('MenuPresets');
         var preset = menuPresetsStore.getPresetById(presetID);
 
