@@ -420,9 +420,15 @@ Ext.define('NavixyPanel.view.users.Card', {
             return null
         }
 
-        return {
-            title: _l.get('users.edit_form.assigned_menu_preset'),
-            value: this.getPreset().title,
+        var preset = this.getPreset();
+
+        if (preset) {
+            return {
+                title: _l.get('users.edit_form.assigned_menu_preset'),
+                value: preset.title,
+            };
+        } else {
+            return null;
         }
     },
 });
