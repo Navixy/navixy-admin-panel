@@ -154,11 +154,7 @@ Ext.define('NavixyPanel.controller.Users', {
             text: _l.get('users.menu_text'),
             target: 'users'
         };
-    },
-
-    onPanelRendered: function () {
         this.loadMenuPresets();
-        this.callParent(arguments);
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -808,9 +804,11 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     loadMenuPresets: function () {
-        if (this.isMenuPresetsAvailable()) {
-            this.getStore('MenuPresets').load();
-        }
+        Ext.getStore('Dealer').on('datachanged', function () {
+            if (this.isMenuPresetsAvailable()) {
+                this.getStore('MenuPresets').load();
+            }
+        }, this);
     },
 
     onBeforeAddUserEditComponent: function (cmp) {
