@@ -1006,7 +1006,7 @@ Ext.define("Locale.locale-en", {
             "select_req": "Select codes from list",
             "same_type_req": "You must specify one device type codes",
             "edited_tip": "changed",
-            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
+            "faq_link": "https://docs.navixy.com/admin-panel/activation-codes ",
             "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activated",

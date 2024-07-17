@@ -817,7 +817,7 @@ Ext.define('Locale.locale-es',{
             "select_req": "Seleccione los códigos de lista",
             "same_type_req": "Debes de especificar un codigo de tipo de dispositivo",
             "edited_tip": "cambiado",
-            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
+            "faq_link": "https://docs.navixy.com/admin-panel/activation-codes ",
             "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activado",
