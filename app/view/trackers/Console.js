@@ -440,10 +440,11 @@ Ext.define('NavixyPanel.view.trackers.Console', {
 
                 name = line[0];
                 value = line[1];
-                record = this.statusStore.findRecord('name', name);
+                record = this.statusStore.findRecord('name', name, 0, false, false, true);
 
                 if (record) {
                     record.set('value', value);
+                    record.commit();
                 } else {
                     this.statusStore.add({
                         name: name,
