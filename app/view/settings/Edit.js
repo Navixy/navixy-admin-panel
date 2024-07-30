@@ -268,6 +268,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     getItems: function () {
+        var XTYPE = { BUTTON: 'button' };
+
         return [
             {
                 xtype: 'tabpanel',
@@ -279,10 +281,21 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 cls: 'header-tabs',
                 defaults: this.getHintDefaults(),
                 items: this.getTabs(),
-                tabBar: {
-                    items: this.getTabBarItems(),
+                listeners: {
+                    scope: this,
+                    beforetabchange: function (_tabs, nextTab) {
+                        if (XTYPE.BUTTON === nextTab.xtype) {
+                            if (nextTab.callback) {
+                                nextTab.callback();
+                            }
+
+                            return false;
+                        }
+
+                        return true;
+                    },
                 },
-            }
+            },
         ];
     },
 
@@ -330,22 +343,22 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         });
     },
 
-    getTabBarItems: function () {
-        if (!this.isMenuPresetsAvailable()) {
-            return [];
-        }
-
-        return [
-            {
+    getMenuEditorTab: function () {
+        if (this.isMenuPresetsAvailable()) {
+            return {
                 xtype: 'button',
                 cls: 'tabbar-button',
                 role: 'button',
                 padding: '7 15',
-                text: _l.get('settings.edit_form.menu_editor'),
+                title: _l.get('settings.edit_form.menu_editor'),
                 scope: this,
-                handler: this.openMenuEditor,
-            },
-        ];
+                callback: function() {
+                    this.fireEvent('openmenueditor', this)
+                }.bind(this),
+            };
+        }
+
+        return null;
     },
 
     getTabs: function () {
@@ -403,6 +416,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                 brandingWeb: this.isBrandingWeb(),
                 brandingMobile: this.isBrandingMobile()
             },
+
+            this.getMenuEditorTab(),
 
             {
                 title: lp.get('service_fields'),
@@ -1420,10 +1435,6 @@ Ext.define('NavixyPanel.view.settings.Edit', {
             }
             field[!rights.notificationRead ? 'hide' : 'show']();
         }, this);
-    },
-
-    openMenuEditor: function () {
-      this.fireEvent('openmenueditor', this);
     },
 
     isMenuPresetsAvailable: function () {
