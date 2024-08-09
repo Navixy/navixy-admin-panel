@@ -822,4 +822,46 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'assign',
         })
     },
+
+    getDefaultMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings/default',
+            action: 'read',
+            root: 'value',
+        });
+    },
+
+    requestDefaultMfaSettings: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'user/mfa/settings/default',
+            root: 'value',
+            scope: scope,
+        });
+    },
+
+    updateDefaultMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings/default',
+            action: 'update',
+        });
+    },
+
+    updateUserMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings',
+            action: 'update',
+        });
+    },
+
+    getUserMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings',
+            action: 'read',
+            root: 'value',
+        });
+    },
+
 });
