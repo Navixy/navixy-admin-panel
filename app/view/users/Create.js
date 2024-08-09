@@ -57,18 +57,21 @@ Ext.define('NavixyPanel.view.users.Create', {
             },
         ],
             this.getUISettingsItems(),
-            {
-                xtype: 'container',
-                cls: 'block_header',
-                margin: '20 0 10 0',
-                html: _l.get('settings.security.title'),
-            },
-            {
-                xtype: 'checkbox',
-                name: 'is_mfa_enabled',
-                boxLabel: _l.get('settings.security.2fa.title'),
-                checked: this.isMfaEnabled,
-            },
+            [
+                {
+                    xtype: 'container',
+                    cls: 'block_header',
+                    margin: '20 0 10 0',
+                    html: _l.get('settings.security.title'),
+                },
+                {
+                    xtype: 'checkbox',
+                    name: 'is_mfa_enabled',
+                    boxLabel: _l.get('settings.security.2fa.title'),
+                    checked: this.isMfaEnabled,
+                    scope: this,
+                },
+            ]
         );
     }
 });
