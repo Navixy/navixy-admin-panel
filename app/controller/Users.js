@@ -894,6 +894,7 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     updateMfaSettings: function (userId, isActive) {
+        var me = this;
         var settings = this.getStore('Security').getMfaSettings(isActive);
 
         Ext.API.updateUserMfaSettings({
@@ -904,8 +905,10 @@ Ext.define('NavixyPanel.controller.Users', {
                 }),
                 settings: Ext.encode(settings),
             },
-            callback: Ext.emptyFn, // todo
-            failure: this.afterUserCreateFailure, // todo
+            callback: function () {
+                me.afterUserCreate(userId);
+            },
+            failure: this.afterUserCreateFailure,
         });
     },
 });

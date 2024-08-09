@@ -264,10 +264,10 @@ Ext.define('NavixyPanel.controller.Settings', {
                 if (--requestsCnt === 0) {
                     this.afterSettingsEdit(response, record);
                 }
-            };
+            }.bind(this);
             var failureCallback = function (response) {
                 this.afterSettingsEditFailure(response, record);
-            };
+            }.bind(this);
 
             this.handleMfaChanges(record, successCallback, failureCallback);
         }
