@@ -153,6 +153,10 @@ Ext.define('NavixyPanel.model.User', {
             name: 'menu_preset_id',
             type: 'auto',
         },
+        {
+            name: 'is_mfa_enabled',
+            type: 'boolean',
+        },
     ],
 
     associationsMap: {

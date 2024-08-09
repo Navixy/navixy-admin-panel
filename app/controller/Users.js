@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
-    stores: ['Users', 'PaasPlugins', 'MenuPresets'],
+    stores: ['Users', 'PaasPlugins', 'MenuPresets', 'Security'],
     models: ['User', 'Transaction', 'PaasPlugin'],
     mainStore: 'Users',
 
@@ -155,6 +155,7 @@ Ext.define('NavixyPanel.controller.Users', {
             target: 'users'
         };
         this.loadMenuPresets();
+        this.getStore('Security').load();
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -241,9 +242,24 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserEdit: function (userRecord) {
-        this.fireContent({
-            xtype: 'useredit',
-            record: userRecord
+        var fireContent = function () {
+            this.fireContent({
+                xtype: 'useredit',
+                record: userRecord,
+            });
+        }.bind(this);
+
+        Ext.API.getUserMfaSettings({
+            scope: this,
+            params: {
+                user_id: userRecord.get('id'),
+            },
+            callback: function (response) {
+                userRecord.set('is_mfa_enabled', response.type === 'allowed');
+
+                fireContent();
+            },
+            failure: fireContent,
         });
     },
 
@@ -269,18 +285,32 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCard: function (userRecord) {
-        this.fireContent({
-            xtype: 'usercard',
-            record: userRecord,
-            listeners: {
-                render: {
-                    fn: this.showUserTutorial,
-                    delay: 50
+        var fireContent = function () {
+            this.fireContent({
+                xtype: 'usercard',
+                record: userRecord,
+                listeners: {
+                    render: {
+                        fn: this.showUserTutorial,
+                        delay: 50,
+                    },
+                    show: this.showUserTutorial,
+                    hide: this.hideUserTutorial,
+                    resize: this.showUserTutorial,
                 },
-                show: this.showUserTutorial,
-                hide: this.hideUserTutorial,
-                resize: this.showUserTutorial
-            }
+            });
+        }.bind(this);
+
+        Ext.API.getUserMfaSettings({
+            scope: this,
+            params: {
+                user_id: userRecord.get('id'),
+            },
+            callback: function (response) {
+                userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                fireContent();
+            },
+            failure: fireContent,
         });
     },
 
@@ -327,7 +357,8 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserCreate: function () {
         this.fireContent({
-            xtype: 'usercreate'
+            xtype: 'usercreate',
+            isMfaEnabled: this.getStore('Security').isAllowedByDefault(),
         });
     },
 
@@ -545,6 +576,8 @@ Ext.define('NavixyPanel.controller.Users', {
                 } else {
                     this.afterUserCreate(response);
                 }
+
+                this.updateMfaSettings(response, record.get('is_mfa_enabled'));
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -601,6 +634,8 @@ Ext.define('NavixyPanel.controller.Users', {
                 } else {
                     this.afterUserEdit(response, formValues, record);
                 }
+
+                this.updateMfaSettings(record.getId(), record.get('is_mfa_enabled'));
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -855,6 +890,22 @@ Ext.define('NavixyPanel.controller.Users', {
             callback: callback,
             failure: failure,
             scope: this,
+        });
+    },
+
+    updateMfaSettings: function (userId, isActive) {
+        var settings = this.getStore('Security').getMfaSettings(isActive);
+
+        Ext.API.updateUserMfaSettings({
+            params: {
+                target: Ext.encode({
+                    type: 'selected',
+                    ids: [userId],
+                }),
+                settings: Ext.encode(settings),
+            },
+            callback: Ext.emptyFn, // todo
+            failure: this.afterUserCreateFailure, // todo
         });
     },
 });

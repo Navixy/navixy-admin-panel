@@ -84,7 +84,25 @@ Ext.define('NavixyPanel.view.users.Edit', {
                     btn.up().down('datefield[name=discount_end_date]').setValue('');
                 }
             }
-        ], this.getUISettingsItems())
+        ],
+            this.getUISettingsItems(),
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                margin: '20 0 10 0',
+                html: _l.get('settings.security.title'),
+            },
+            {
+                xtype: 'checkbox',
+                name: 'is_mfa_enabled',
+                boxLabel: _l.get('settings.security.2fa.title'),
+                checked: this.record.get('is_mfa_enabled'),
+                scope: this,
+                handler: function (_, value) {
+                    this.record.set('is_mfa_enabled', value);
+                },
+            },
+        )
     },
 
     getNWItems: function () {

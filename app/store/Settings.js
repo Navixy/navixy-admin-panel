@@ -14,6 +14,7 @@ Ext.define('NavixyPanel.store.Settings', {
             'getDefaultMenu',
             'getSettingsService',
             'getSettingsNotification',
+            'requestDefaultMfaSettings',
         ]
     },
 
@@ -52,10 +53,17 @@ Ext.define('NavixyPanel.store.Settings', {
             fn.call(scope, me.model
                 ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification, {
                     menu: batchResult.getDefaultMenu,
-                    menu_preset_id: menu_preset_id
+                    menu_preset_id: menu_preset_id,
+                    mfa_type: batchResult.requestDefaultMfaSettings.type,
+                    mfa_factor_types: batchResult.requestDefaultMfaSettings.factor_types,
                 }))
                 : batchResult
             );
+
+            Ext.getStore('Security').loadRawData([{
+                type: batchResult.requestDefaultMfaSettings.type,
+                factor_types: batchResult.requestDefaultMfaSettings.factor_types,
+            }]);
         };
     }
 });
