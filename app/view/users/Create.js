@@ -50,6 +50,7 @@ Ext.define('NavixyPanel.view.users.Create', {
                 minValue: 0,
                 allowDecimals: false,
                 name: 'discount_min_trackers'
-            }])
+            },
+        ], this.getUISettingsItems())
     }
 });

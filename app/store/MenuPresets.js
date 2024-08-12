@@ -1,0 +1,99 @@
+var PRESET_OWNER = {
+  DEALER: 'dealer',
+  PLATFORM: 'platform',
+  USER: 'user',
+};
+
+var ASSIGNMENT_TYPE = {
+  DEFAULT: 'default',
+  MASTER: 'master',
+  EVERYONE: 'everyone',
+  SECURITY_GROUP: 'security_group',
+  USERS: 'users',
+};
+
+/**
+ * @class NavixyPanel.store.SectionMenuPresets
+ * @extends Ext.data.Store
+ * */
+Ext.define('NavixyPanel.store.MenuPresets', {
+  extend: 'NavixyPanel.store.Abstract',
+  model: 'NavixyPanel.model.MenuPreset',
+  autoLoad: false,
+  remoteFilter: false,
+  remoteSort: false,
+  batch: false,
+  storeId: 'MenuPresets',
+
+  sorters: [
+    {
+      sorterFn: function (a, b) {
+        if (a.get('isDefault')) {
+          return -1;
+        } else if (b.get('isDefault')) {
+          return 1;
+        }
+
+        return b.get('id') - a.get('id');
+      },
+    },
+  ],
+
+  api: {
+    read: 'getMenuPresetsList',
+  },
+
+  proxy: {
+    type: 'navixy',
+  },
+
+  getDefaultPreset: function () {
+    var data = this.getData();
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].isDefault) {
+        return data[i];
+      }
+    }
+
+    for (var k = 0; k < data.length; k++) {
+      if (data[k].owner === PRESET_OWNER.PLATFORM) {
+        return data[k];
+      }
+    }
+  },
+
+  getPresetById: function (presetID) {
+    var presets = this.getData();
+
+    for (var i = 0; i < presets.length; i++) {
+      if (presetID === presets[i].id) {
+        return presets[i];
+      }
+    }
+
+    return null;
+  },
+
+  getPresetOfUserId: function (userID) {
+    var data = this.getData();
+
+    for (var i = 0; i < data.length; i++) {
+      var preset = data[i];
+
+      if (preset.assignments.length === 0) {
+        continue;
+      }
+
+      for (var j = 0; j < preset.assignments.length; j++) {
+        var assignment = preset.assignments[j];
+
+        if (ASSIGNMENT_TYPE.USERS === assignment.type && assignment.ids.indexOf(userID) >= 0) {
+          return preset;
+        }
+      }
+    }
+
+    return this.getDefaultPreset();
+  },
+});

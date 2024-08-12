@@ -289,7 +289,11 @@ Ext.define('NavixyPanel.model.Settings', {
                     return item.name === 'configuration'
                 }) : false
             }
-        }
+        },
+        {
+            name: 'menu_preset_id',
+            type: 'auto',
+        },
     ],
 
     imagesMap: {

@@ -510,6 +510,7 @@ Ext.define("Locale.locale-en", {
         },
         "edit_form": {
             "title": "Edit user",
+            "assigned_menu_preset": "Assigned menu preset",
             "save_btn": "Save changes",
             "return_btn": "Back"
         },
@@ -1211,7 +1212,8 @@ Ext.define("Locale.locale-en", {
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
-            'unavaliable': 'Not available'
+            'unavaliable': 'Not available',
+            'menu_preset': 'Select default menu preset',
         },
         "sms_gateway": {
             "navixy": {
@@ -1397,7 +1399,8 @@ Ext.define("Locale.locale-en", {
             "device_settings_checkbox": "Show Devices and Settings menu item",
             "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile",
             "display_release_notes": "Display release notes",
-            "display_release_notes_hint": "This option enables the display of release updates history within the user interface. Languages supported natively are English, Spanish, French, and Russian."
+            "display_release_notes_hint": "This option enables the display of release updates history within the user interface. Languages supported natively are English, Spanish, French, and Russian.",
+            "menu_editor": "Menu editor"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -2072,5 +2075,9 @@ Ext.define("Locale.locale-en", {
     "sa-token": {
         "sa-token-title": "On-premise license key",
         "field": "License key"
+    },
+
+    "menu-editor": {
+        "default-preset": "Default menu preset"
     }
 });

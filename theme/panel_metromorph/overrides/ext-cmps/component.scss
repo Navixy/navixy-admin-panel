@@ -7,6 +7,10 @@ body {
     overflow: visible !important;;
 }
 
+body.no-scroll {
+    overflow: hidden !important;
+}
+
 a, .link {
     color: $link;
     outline: none medium;

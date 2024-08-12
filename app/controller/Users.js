@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
-    stores: ['Users', 'PaasPlugins'],
+    stores: ['Users', 'PaasPlugins', 'MenuPresets'],
     models: ['User', 'Transaction', 'PaasPlugin'],
     mainStore: 'Users',
 
@@ -67,6 +67,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 cellclick: this.handleTransactionsListAction
             },
             'userslist': {
+                beforeadd: this.loadMenuPresets,
                 actionclick: this.handleListAction,
                 editclick: this.handleUserEditAction,
                 downloaduserlist: this.downloadUserList
@@ -78,9 +79,11 @@ Ext.define('NavixyPanel.controller.Users', {
                 click: this.handleImportBtnClick
             },
             'usercreate': {
+                beforeadd: this.loadMenuPresets,
                 formsubmit: this.handleUserCreateSubmit
             },
             'useredit': {
+                beforeadd: this.onBeforeAddUserEditComponent,
                 formsubmit: this.handleUserEditSubmit
             },
             'userchangepassword': {
@@ -151,6 +154,7 @@ Ext.define('NavixyPanel.controller.Users', {
             text: _l.get('users.menu_text'),
             target: 'users'
         };
+        this.loadMenuPresets();
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -528,7 +532,19 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
-                this.afterUserCreate(response);
+                if (this.isMenuPresetsAvailable()) {
+                    var callback = function (userId) {
+                        this.afterUserCreate(userId);
+                    }.bind(this, response);
+
+                    var failure = function (response) {
+                        this.afterUserCreateFailure(response);
+                    }.bind(this, response);
+
+                    this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
+                } else {
+                    this.afterUserCreate(response);
+                }
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -539,6 +555,7 @@ Ext.define('NavixyPanel.controller.Users', {
         this.getUserCreate().afterSave(userId);
         this.getUsersList().store.load();
         Ext.getStore('Users').load();
+        this.getStore('MenuPresets').reload()
     },
 
     afterUserCreateFailure: function (response) {
@@ -571,19 +588,19 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                Ext.API.updateUserMenu({
-                    params: {
-                        user_id: record.getId(),
-                        "application": "navixy_web",
-                        value: Ext.encode(record.getUserMenu())
-                    },
-                    callback: function (response) {
+                if (this.isMenuPresetsAvailable()) {
+                    var callback = function (response, formValues, record) {
                         this.afterUserEdit(response, formValues, record);
-                    },
-                    failure: this.afterUserEditFailure,
-                    scope: this
-                });
+                    }.bind(this, response, formValues, record);
 
+                    var failure = function (response) {
+                        this.afterUserEditFailure(response);
+                    }.bind(this, response);
+
+                    this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
+                } else {
+                    this.afterUserEdit(response, formValues, record);
+                }
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -592,6 +609,7 @@ Ext.define('NavixyPanel.controller.Users', {
 
     afterUserEdit: function (success, formValues, record) {
         if (success) {
+            this.getStore('MenuPresets').reload()
             record.set(formValues);
             var list = this.getUsersList(),
                 form = this.getUserEdit();
@@ -779,5 +797,64 @@ Ext.define('NavixyPanel.controller.Users', {
         }
 
         window.open(Ext.API.getUsersListDownloadLink({ params: params }), 'Download');
-    }
+    },
+
+    isMenuPresetsAvailable: function () {
+        return Ext.getStore('Dealer').isMenuPresetsAvailable();
+    },
+
+    loadMenuPresets: function () {
+        Ext.getStore('Dealer').on('datachanged', function () {
+            if (this.isMenuPresetsAvailable()) {
+                this.getStore('MenuPresets').load();
+            }
+        }, this);
+    },
+
+    onBeforeAddUserEditComponent: function (cmp) {
+        if (!this.isMenuPresetsAvailable()) {
+            return;
+        }
+
+        var menuEditorStore = this.getStore('MenuPresets');
+
+        if (menuEditorStore && cmp.record) {
+            var id = cmp.record.get('id');
+            var preset = menuEditorStore.getPresetOfUserId(id);
+
+            cmp.record.set('menu_preset_id', preset.id);
+        }
+    },
+
+    afterUserDataChange: function (userID, presetID, callback, failure) {
+        if (!this.isMenuPresetsAvailable()) {
+            return;
+        }
+
+        var menuPresetsStore = Ext.getStore('MenuPresets');
+        var preset = menuPresetsStore.getPresetById(presetID);
+
+        if (!preset) {
+            return;
+        }
+
+        var userAssignment = Ext.Array.findBy(preset.assignments, function (assignment) {
+            return assignment.type === 'users';
+        });
+        var ids = [userID];
+
+        if (userAssignment) {
+            ids = Ext.Array.merge(ids, userAssignment.ids);
+        }
+
+        Ext.API.assignMenuPreset({
+            params: {
+                target: Ext.encode({ type: 'users', ids: ids }),
+                preset_id: presetID,
+            },
+            callback: callback,
+            failure: failure,
+            scope: this,
+        });
+    },
 });

@@ -13,14 +13,20 @@ Ext.define('NavixyPanel.store.Settings', {
         record: [
             'getDefaultMenu',
             'getSettingsService',
-            'getSettingsNotification'
+            'getSettingsNotification',
         ]
     },
 
     loadRecord: function (recordId, callback, scope, loadAssociations, failure) {
-        if (this.api.record) {
+        var apiRecord = this.api.record;
+
+        if (Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            apiRecord.push('requestMenuPresetsList');
+        }
+
+        if (apiRecord) {
             var loadCallback = this.createLoadCallback(callback, scope, false);
-            Ext.API.batch(this.api.record, {
+            Ext.API.batch(apiRecord, {
                 callback: loadCallback,
                 failure: loadCallback
             });
@@ -32,9 +38,21 @@ Ext.define('NavixyPanel.store.Settings', {
     createLoadCallback: function (fn, scope) {
         var me = this;
         return function (batchResult) {
+            var menu_preset_id = '';
+
+            if (batchResult.requestMenuPresetsList) {
+                var menuPresetsStore = Ext.getStore('MenuPresets');
+
+                if (menuPresetsStore) {
+                    menuPresetsStore.loadRawData(batchResult.requestMenuPresetsList);
+                    menu_preset_id = menuPresetsStore.getDefaultPreset().id || '';
+                }
+            }
+
             fn.call(scope, me.model
                 ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification, {
-                    menu: batchResult.getDefaultMenu
+                    menu: batchResult.getDefaultMenu,
+                    menu_preset_id: menu_preset_id
                 }))
                 : batchResult
             );

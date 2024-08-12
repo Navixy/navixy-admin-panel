@@ -151,3 +151,15 @@ a{
         text-decoration: underline;
     }
 }
+
+.tabbar-button {
+    background: transparent;
+
+    .x-btn-inner {
+        color: $baseFontColor;
+    }
+
+    .x-btn-icon-el {
+        color: $baseFontColor;
+    }
+}

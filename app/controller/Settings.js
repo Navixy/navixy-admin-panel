@@ -23,7 +23,8 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
     requires: [
         'NavixyPanel.utils.mapProvider.NavixyMapsProvider',
-        'NavixyPanel.utils.mapProvider.LeafletMapsProvider'
+        'NavixyPanel.utils.mapProvider.LeafletMapsProvider',
+        'NavixyPanel.view.settings.components.MenuEditorWindow'
     ],
 
     refs: [
@@ -34,7 +35,7 @@ Ext.define('NavixyPanel.controller.Settings', {
     ],
 
     stores: ['Settings', 'Geocoders', 'MeasurementSystems', 'RouteProviders', 'MapTypes', 'Currencies', 'Geolocation',
-        'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes'],
+        'SpeedRestriction', 'RoadsSnap', 'leMaps', 'Themes', 'MobileThemes', 'DateFormats', 'HourModes', 'MenuPresets'],
 
     models: ['Settings', 'MapType'],
     mainStore: 'Settings',
@@ -46,6 +47,7 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.control({
             'settingsedit': {
                 formsubmit: this.mayBeEditSubmit,
+                openmenueditor: this.openMenuEditorWindow
             },
 
 
@@ -231,6 +233,23 @@ Ext.define('NavixyPanel.controller.Settings', {
             scope: this
         });
 
+        if (Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            Ext.API.assignMenuPreset({
+                params: {
+                    target: Ext.encode({ type: 'default' }),
+                    preset_id: record.get('menu_preset_id'),
+                },
+                callback: function (response) {
+                    if (--requestsCnt === 0) {
+                        this.afterSettingsEdit(response, record);
+                    }
+                },
+                failure: function (response) {
+                    this.afterSettingsEditFailure(response, record);
+                },
+                scope: this,
+            });
+        }
     },
 
     afterSettingsEdit: function (success, record) {
@@ -333,5 +352,29 @@ Ext.define('NavixyPanel.controller.Settings', {
             },
             scope: this
         });
-    }
+    },
+
+    openMenuEditorWindow: function () {
+        if (!this.menuEditorWindow) {
+            this.menuEditorWindow = Ext.create('NavixyPanel.view.settings.components.MenuEditorWindow', {
+                listeners: {
+                    destroy: function () {
+                        Ext.getStore('MenuPresets').reload();
+                        this.menuEditorWindow = null;
+                    },
+                    scope: this,
+                },
+            }).show();
+
+            this.menuEditorWindow.mon(Ext.getFirst('viewport'), {
+                resize: function () {
+                    this.updateLayout();
+                },
+                scope: this.menuEditorWindow,
+            });
+        } else {
+            this.menuEditorWindow.close();
+            this.menuEditorWindow = null;
+        }
+    },
 });

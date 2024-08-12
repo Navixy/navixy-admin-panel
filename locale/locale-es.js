@@ -411,6 +411,7 @@ Ext.define('Locale.locale-es',{
         },
         "edit_form": {
             "title": "Editar usuario",
+            "assigned_menu_preset": "Preajuste de menú asignado",
             "save_btn": "Guardar cambios",
             "return_btn": "regresar"
         },
@@ -933,7 +934,8 @@ Ext.define('Locale.locale-es',{
             "do_not_apply_default_seetings_during_activation_hint": "Al elegir esta opción la plataforma no va a enviar comandos SMS y GPRS con las configuraciones predeterminadas al dispositivo. Debe configurar el dispositivo de forma manual antes de activarlo en la plataforma",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
             "show_call_notifications": "Allow configuration of voice notifications",
-            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
+            "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
+            "menu_preset": "Preajustes de menú",
         },
         "sms_gateway": {
             "navixy": {
@@ -1105,7 +1107,8 @@ Ext.define('Locale.locale-es',{
             "device_settings_checkbox":"Mostrar el elemento del menú \"Configuración del dispositivo\"",
             "device_settings_checkbox_hint":"La configuración se aplicará a todos los usuarios. Sin embargo, puede habilitar o deshabilitar esta opción para cada usuario individualmente en el perfil de usuario.",
             "display_release_notes": "Mostrar feed de actualización",
-            "display_release_notes_hint": "Esta configuración permite que el historial de actualizaciones de Navixy se muestre en la interfaz de usuario. Se admiten los siguientes idiomas: inglés, español, francés y ruso."
+            "display_release_notes_hint": "Esta configuración permite que el historial de actualizaciones de Navixy se muestre en la interfaz de usuario. Se admiten los siguientes idiomas: inglés, español, francés y ruso.",
+            "menu_editor": "Editor de menú"
         },
         "upload_form": {
             "save_btn": "Subir",
@@ -1577,6 +1580,9 @@ Ext.define('Locale.locale-es',{
         "zoom_in": "Zoom in",
         "zoom_out": "Zoom out"
     },
-    "map_type_label": "Map"
+    "map_type_label": "Map",
 
+    "menu-editor": {
+        "default-preset": "Plantilla de menú predeterminada"
+    }
 });

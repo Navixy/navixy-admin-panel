@@ -83,26 +83,8 @@ Ext.define('NavixyPanel.view.users.Edit', {
                 handler: function (btn) {
                     btn.up().down('datefield[name=discount_end_date]').setValue('');
                 }
-            }, {
-                xtype: 'container',
-                cls: 'block_header',
-                html: _l.get('settings.edit_form.ui_settings_header')
-            }, {
-                name: 'device_settings_visible',
-                xtype: 'checkbox',
-                role: 'checkbox',
-                margin: '20 0 0 10',
-                inputValue: true,
-                listeners: {
-                    change: function (cbx, value) {
-                        this.record.set('device_settings_visible', value)
-                    },
-                    scope: this
-                },
-                boxLabel: _l.get('settings.edit_form.device_settings_checkbox')
             }
-
-        ])
+        ], this.getUISettingsItems())
     },
 
     getNWItems: function () {
