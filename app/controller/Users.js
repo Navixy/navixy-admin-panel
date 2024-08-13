@@ -255,7 +255,9 @@ Ext.define('NavixyPanel.controller.Users', {
                 user_id: userRecord.get('id'),
             },
             callback: function (response) {
-                userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                if (response) {
+                    userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                }
 
                 fireContent();
             },
@@ -307,7 +309,10 @@ Ext.define('NavixyPanel.controller.Users', {
                 user_id: userRecord.get('id'),
             },
             callback: function (response) {
-                userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                if (response) {
+                    userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                }
+
                 fireContent();
             },
             failure: fireContent,
@@ -563,21 +568,23 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
+                var requestsCount = 0;
+                var callback = function () {
+                    if (--requestsCount === 0) {
+                        this.afterUserCreate(response);
+                    }
+                }.bind(this, response);
+                var failure = function (response) {
+                    --requestsCount;
+                    this.afterUserCreateFailure(response);
+                }.bind(this, response);
+
                 if (this.isMenuPresetsAvailable()) {
-                    var callback = function (userId) {
-                        this.afterUserCreate(userId);
-                    }.bind(this, response);
-
-                    var failure = function (response) {
-                        this.afterUserCreateFailure(response);
-                    }.bind(this, response);
-
                     this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
-                } else {
-                    this.afterUserCreate(response);
                 }
 
-                this.updateMfaSettings(response, record.get('is_mfa_enabled'));
+                requestsCount++;
+                this.updateMfaSettings(response, record.get('is_mfa_enabled'), callback, failure);
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -621,21 +628,24 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                if (this.isMenuPresetsAvailable()) {
-                    var callback = function (response, formValues, record) {
+                var requestsCount = 0;
+                var callback = function () {
+                    if (--requestsCount === 0) {
                         this.afterUserEdit(response, formValues, record);
-                    }.bind(this, response, formValues, record);
+                    }
+                }.bind(this, response, formValues, record);
+                var failure = function (response) {
+                    --requestsCount;
+                    this.afterUserEditFailure(response);
+                }.bind(this, response);
 
-                    var failure = function (response) {
-                        this.afterUserEditFailure(response);
-                    }.bind(this, response);
-
+                if (this.isMenuPresetsAvailable()) {
+                    requestsCount++;
                     this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
-                } else {
-                    this.afterUserEdit(response, formValues, record);
                 }
 
-                this.updateMfaSettings(record.getId(), record.get('is_mfa_enabled'));
+                requestsCount++;
+                this.updateMfaSettings(record.getId(), record.get('is_mfa_enabled'), callback, failure);
             },
             failure: this.afterUserEditFailure,
             scope: this
@@ -893,8 +903,7 @@ Ext.define('NavixyPanel.controller.Users', {
         });
     },
 
-    updateMfaSettings: function (userId, isActive) {
-        var me = this;
+    updateMfaSettings: function (userId, isActive, callback, failure) {
         var settings = this.getStore('Security').getMfaSettings(isActive);
 
         Ext.API.updateUserMfaSettings({
@@ -905,10 +914,8 @@ Ext.define('NavixyPanel.controller.Users', {
                 }),
                 settings: Ext.encode(settings),
             },
-            callback: function () {
-                me.afterUserCreate(userId);
-            },
-            failure: this.afterUserCreateFailure,
+            callback: callback,
+            failure: failure,
         });
     },
 });
