@@ -157,6 +157,13 @@ Ext.define('NavixyPanel.model.User', {
             name: 'is_mfa_enabled',
             type: 'boolean',
         },
+        {
+            name: 'mfa_allowed',
+            type: 'auto',
+            convert: function (value) {
+                return value ? _l.get('settings.security.enabled') : _l.get('settings.security.disabled');
+            },
+        },
     ],
 
     associationsMap: {
