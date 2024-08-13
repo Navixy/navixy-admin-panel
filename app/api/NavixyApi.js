@@ -827,7 +827,6 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         return this.requestWithOptions(config, {
             handler: 'user/mfa/settings/default',
             action: 'read',
-            root: 'value',
         });
     },
 

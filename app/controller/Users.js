@@ -155,7 +155,7 @@ Ext.define('NavixyPanel.controller.Users', {
             target: 'users'
         };
         this.loadMenuPresets();
-        this.getStore('Security').load();
+        this.getStore('Security').loadDefaultSettings();
     },
 
     refreshUsersStore: function (resetPaging) {

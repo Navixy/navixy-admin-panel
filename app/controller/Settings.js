@@ -290,7 +290,7 @@ Ext.define('NavixyPanel.controller.Settings', {
                 this.getSettingsEdit().afterSave();
             }
 
-            Ext.getStore('Security').reload()
+            Ext.getStore('Security').loadDefaultSettings()
         } else {
             record.reject(false);
         }

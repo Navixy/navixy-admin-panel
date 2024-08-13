@@ -4,36 +4,30 @@
  * Description
  */
 Ext.define('NavixyPanel.store.Security', {
-    extend: 'NavixyPanel.store.Abstract',
+    extend: 'Ext.data.Store',
     id: 'Security',
-    fields: [
-        {
-            name: 'type',
-            type: 'string',
-        },
-        {
-            name: 'factor_types',
-            defaultValue: [],
-        },
-    ],
+    model: 'NavixyPanel.model.Security',
 
     autoLoad: false,
     remoteFilter: false,
     remoteSort: false,
     batch: false,
 
-    api: {
-        read: 'getDefaultMfaSettings',
-    },
-
-    proxy: {
-        type: 'navixy',
-    },
-
-    getProxyEncoder: function () {
-        return function (data) {
-            return [data];
-        };
+    loadDefaultSettings: function () {
+        Ext.API.getDefaultMfaSettings({
+            scope: this,
+            callback: function (response) {
+                if (response.value) {
+                    this.loadRawData([{
+                        type: response.value.type,
+                        factor_types: response.value.factor_types,
+                    }]);
+                }
+            },
+            failure: function (error) {
+                console.error(error)
+            },
+        });
     },
 
     isAllowedByDefault: function () {
