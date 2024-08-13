@@ -39,6 +39,7 @@ Ext.define('NavixyPanel.store.Settings', {
     createLoadCallback: function (fn, scope) {
         var me = this;
         return function (batchResult) {
+            var requestDefaultMfaSettings = batchResult.requestDefaultMfaSettings || {}
             var menu_preset_id = '';
 
             if (batchResult.requestMenuPresetsList) {
@@ -54,15 +55,15 @@ Ext.define('NavixyPanel.store.Settings', {
                 ? Ext.create(me.model, Ext.apply(batchResult.getSettingsService || {}, batchResult.getSettingsNotification, {
                     menu: batchResult.getDefaultMenu,
                     menu_preset_id: menu_preset_id,
-                    mfa_type: batchResult.requestDefaultMfaSettings.type,
-                    mfa_factor_types: batchResult.requestDefaultMfaSettings.factor_types,
+                    mfa_type: requestDefaultMfaSettings.type,
+                    mfa_factor_types: requestDefaultMfaSettings.factor_types,
                 }))
                 : batchResult
             );
 
             Ext.getStore('Security').loadRawData([{
-                type: batchResult.requestDefaultMfaSettings.type,
-                factor_types: batchResult.requestDefaultMfaSettings.factor_types,
+                type: requestDefaultMfaSettings.type || '',
+                factor_types: requestDefaultMfaSettings.factor_types || [],
             }]);
         };
     }
