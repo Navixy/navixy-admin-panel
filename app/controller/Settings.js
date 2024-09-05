@@ -406,10 +406,21 @@ Ext.define('NavixyPanel.controller.Settings', {
 
         this.securityChangesConfirmWindow = Ext.create('SecurityChangesConfirm', {
             onApply: function () {
+                var settings = record.getMfaChanges();
+
                 Ext.API.updateDefaultMfaSettings({
                     scope: me,
                     params: {
-                        settings: Ext.encode(record.getMfaChanges()),
+                        settings: Ext.encode(settings),
+                    },
+                    callback: onSuccess,
+                    failure: onFailure,
+                });
+
+                Ext.API.updateMfaSettings({
+                    params: {
+                        target: Ext.encode({ type: 'all' }),
+                        settings: Ext.encode(settings),
                     },
                     callback: onSuccess,
                     failure: onFailure,
