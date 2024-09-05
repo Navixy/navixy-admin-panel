@@ -249,7 +249,7 @@ Ext.define('NavixyPanel.controller.Users', {
             });
         }.bind(this);
 
-        Ext.API.getUserMfaSettings({
+        Ext.API.getMfaSettings({
             scope: this,
             params: {
                 user_id: userRecord.get('id'),
@@ -303,7 +303,7 @@ Ext.define('NavixyPanel.controller.Users', {
             });
         }.bind(this);
 
-        Ext.API.getUserMfaSettings({
+        Ext.API.getMfaSettings({
             scope: this,
             params: {
                 user_id: userRecord.get('id'),
@@ -906,7 +906,7 @@ Ext.define('NavixyPanel.controller.Users', {
     updateMfaSettings: function (userId, isActive, callback, failure) {
         var settings = this.getStore('Security').getMfaSettings(isActive);
 
-        Ext.API.updateUserMfaSettings({
+        Ext.API.updateMfaSettings({
             params: {
                 target: Ext.encode({
                     type: 'selected',

@@ -848,14 +848,14 @@ Ext.define('NavixyPanel.api.NavixyApi', {
         });
     },
 
-    updateUserMfaSettings: function (config) {
+    updateMfaSettings: function (config) {
         return this.requestWithOptions(config, {
             handler: 'user/mfa/settings',
             action: 'update',
         });
     },
 
-    getUserMfaSettings: function (config) {
+    getMfaSettings: function (config) {
         return this.requestWithOptions(config, {
             handler: 'user/mfa/settings',
             action: 'read',
