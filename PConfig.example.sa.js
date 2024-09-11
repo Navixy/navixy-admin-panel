@@ -23,6 +23,8 @@ Config = {
 
     paas_domain: false,
 
-    navixyInboundNumber: "unknown"
+    navixyInboundNumber: "unknown",
 
+    // Simplifies email validation, i.e. will validate email+tag@domain.com
+    enableSimpleEmailValidation: false,
 };
