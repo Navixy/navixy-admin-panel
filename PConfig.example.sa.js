@@ -25,4 +25,6 @@ Config = {
 
     navixyInboundNumber: "unknown"
 
+    // Simplifies email validation, i.e. will validate email+tag@domain.com
+    enableSimpleEmailValidation: false,
 };

@@ -60,4 +60,7 @@ Config = {
     //    allow: true,
     //    get_key_link: 'https://developers.google.com/maps/documentation/javascript/get-api-key'
     //}
+
+    // Simplifies email validation, i.e. will validate email+tag@domain.com
+    enableSimpleEmailValidation: false,
 };
