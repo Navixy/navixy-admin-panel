@@ -242,26 +242,9 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserEdit: function (userRecord) {
-        var fireContent = function () {
-            this.fireContent({
-                xtype: 'useredit',
-                record: userRecord,
-            });
-        }.bind(this);
-
-        Ext.API.getMfaSettings({
-            scope: this,
-            params: {
-                user_id: userRecord.get('id'),
-            },
-            callback: function (response) {
-                if (response) {
-                    userRecord.set('mfa_allowed', response.type === 'allowed');
-                }
-
-                fireContent();
-            },
-            failure: fireContent,
+        this.fireContent({
+            xtype: 'useredit',
+            record: userRecord,
         });
     },
 
@@ -287,35 +270,18 @@ Ext.define('NavixyPanel.controller.Users', {
     },
 
     handleUserCard: function (userRecord) {
-        var fireContent = function () {
-            this.fireContent({
-                xtype: 'usercard',
-                record: userRecord,
-                listeners: {
-                    render: {
-                        fn: this.showUserTutorial,
-                        delay: 50,
-                    },
-                    show: this.showUserTutorial,
-                    hide: this.hideUserTutorial,
-                    resize: this.showUserTutorial,
+        this.fireContent({
+            xtype: 'usercard',
+            record: userRecord,
+            listeners: {
+                render: {
+                    fn: this.showUserTutorial,
+                    delay: 50,
                 },
-            });
-        }.bind(this);
-
-        Ext.API.getMfaSettings({
-            scope: this,
-            params: {
-                user_id: userRecord.get('id'),
+                show: this.showUserTutorial,
+                hide: this.hideUserTutorial,
+                resize: this.showUserTutorial,
             },
-            callback: function (response) {
-                if (response) {
-                    userRecord.set('mfa_allowed', response.type === 'allowed');
-                }
-
-                fireContent();
-            },
-            failure: fireContent,
         });
     },
 
