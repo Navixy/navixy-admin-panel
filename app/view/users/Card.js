@@ -281,7 +281,7 @@ Ext.define('NavixyPanel.view.users.Card', {
                 this.getMenuPresetField(),
                 {
                     title: _l.get('settings.security.2fa.title'),
-                    value: recordData.is_mfa_enabled
+                    value: recordData.mfa_allowed
                         ? _l.get('settings.security.enabled')
                         : _l.get('settings.security.disabled'),
                 },

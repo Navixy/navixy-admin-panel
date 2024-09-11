@@ -256,7 +256,7 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             callback: function (response) {
                 if (response) {
-                    userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                    userRecord.set('mfa_allowed', response.type === 'allowed');
                 }
 
                 fireContent();
@@ -310,7 +310,7 @@ Ext.define('NavixyPanel.controller.Users', {
             },
             callback: function (response) {
                 if (response) {
-                    userRecord.set('is_mfa_enabled', response.type === 'allowed');
+                    userRecord.set('mfa_allowed', response.type === 'allowed');
                 }
 
                 fireContent();
@@ -584,7 +584,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 }
 
                 requestsCount++;
-                this.updateMfaSettings(response, record.get('is_mfa_enabled'), callback, failure);
+                this.updateMfaSettings(response, record.get('mfa_allowed'), callback, failure);
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -645,7 +645,7 @@ Ext.define('NavixyPanel.controller.Users', {
                 }
 
                 requestsCount++;
-                this.updateMfaSettings(record.getId(), record.get('is_mfa_enabled'), callback, failure);
+                this.updateMfaSettings(record.getId(), record.get('mfa_allowed'), callback, failure);
             },
             failure: this.afterUserEditFailure,
             scope: this

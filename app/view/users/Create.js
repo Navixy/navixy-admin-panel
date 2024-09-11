@@ -66,7 +66,7 @@ Ext.define('NavixyPanel.view.users.Create', {
                 },
                 {
                     xtype: 'checkbox',
-                    name: 'is_mfa_enabled',
+                    name: 'mfa_allowed',
                     boxLabel: _l.get('settings.security.2fa.title'),
                     checked: this.isMfaEnabled,
                     scope: this,
