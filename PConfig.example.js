@@ -54,7 +54,7 @@ Config = {
         styleParams: 'CLEAN_CART=ALL&CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
     },
     // use google maps whithout its js api ,
-    useGoogleMapsTilesDirectly: false
+    useGoogleMapsTilesDirectly: false,
 
     //google_key: {
     //    allow: true,
