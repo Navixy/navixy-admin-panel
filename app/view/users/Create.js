@@ -73,5 +73,13 @@ Ext.define('NavixyPanel.view.users.Create', {
                 },
             ]
         );
-    }
+    },
+
+    afterSave: function (value) {
+        this.on('hide', function () {
+            this.getForm().reset();
+        }, this);
+
+        this.backAfterSave(value);
+    },
 });
