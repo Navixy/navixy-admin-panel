@@ -98,10 +98,6 @@ Ext.define('NavixyPanel.view.users.Edit', {
                     name: 'mfa_allowed',
                     boxLabel: _l.get('settings.security.2fa.title'),
                     checked: this.record.get('mfa_allowed'),
-                    scope: this,
-                    handler: function (_, value) {
-                        this.record.set('mfa_allowed', value);
-                    },
                 },
             ]
         )
