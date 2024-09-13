@@ -14,6 +14,10 @@ Ext.define('NavixyPanel.store.Security', {
     batch: false,
 
     loadDefaultSettings: function () {
+        if (!Ext.API.authKey) {
+            return;
+        }
+
         Ext.API.getDefaultMfaSettings({
             scope: this,
             callback: function (response) {
