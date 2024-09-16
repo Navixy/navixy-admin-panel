@@ -549,10 +549,8 @@ Ext.define('NavixyPanel.controller.Users', {
                     this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
                 }
 
-                if (record.get('mfa_allowed') !== userData.mfa_allowed) {
-                    requestsCount++;
-                    this.updateMfaSettings(response, userData.mfa_allowed, callback, failure);
-                }
+                requestsCount++;
+                this.updateMfaSettings(response, userData.mfa_allowed, callback, failure);
             },
             failure: this.afterUserCreateFailure,
             scope: this
