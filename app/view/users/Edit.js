@@ -114,12 +114,4 @@ Ext.define('NavixyPanel.view.users.Edit', {
             config[config.length - 1]
         ];
     },
-
-    afterSave: function (value) {
-        this.on('hide', function () {
-            this.getForm().reset();
-        }, this);
-
-        this.backAfterSave(value);
-    },
 });
