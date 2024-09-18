@@ -1472,18 +1472,19 @@ Ext.define("Locale.locale-en", {
         'security': {
             'title': 'Security',
             'info': 'The security settings will be applied to all platform users, except the demo user.',
+            'note': 'Security settings will also be applied to all sub-users.',
             'enabled': 'Enabled',
             'disabled': 'Disabled',
             '2fa': {
-                'title': 'Two-factor authentication',
-                'title_short': '2-factor authentication',
-                'email': 'E-Mail',
-                'authenticator_app': 'Authenticator app (coming soon)',
+                'title': 'Two-Factor Authentication',
+                'title_short': 'Two-Factor Authentication',
+                'email': 'Email',
+                'authenticator_app': 'Authenticator apps (coming soon)',
                 'sms': 'SMS (coming soon)',
             },
             'confirm': {
                 'title': 'Apply security settings?',
-                'text': 'The security settings will be applied to all platform users, except the demo user.',
+                'text': 'Security settings will be applied to all platform users and sub-users, except of the demo user.',
                 'btn': {
                     'apply': 'Apply',
                     'cancel': 'Cancel',

@@ -65,6 +65,13 @@ Ext.define('NavixyPanel.view.users.Create', {
                     html: _l.get('settings.security.title'),
                 },
                 {
+                    xtype: 'container',
+                    cls: 'block_hint',
+                    margin: '0 0 10 0',
+                    html: _l.get('settings.security.note'),
+                    style: 'color: #999',
+                },
+                {
                     xtype: 'checkbox',
                     name: 'mfa_allowed',
                     boxLabel: _l.get('settings.security.2fa.title'),
