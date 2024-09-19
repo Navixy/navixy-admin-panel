@@ -1472,7 +1472,7 @@ Ext.define("Locale.locale-en", {
         'security': {
             'title': 'Security',
             'info': 'The security settings will be applied to all platform users, except the demo user.',
-            'note': 'Security settings will also be applied to all sub-users.',
+            'note': 'Security settings will also be applied to all sub-users',
             'enabled': 'Enabled',
             'disabled': 'Disabled',
             '2fa': {
