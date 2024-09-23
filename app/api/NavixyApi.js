@@ -854,13 +854,4 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             action: 'update',
         });
     },
-
-    getMfaSettings: function (config) {
-        return this.requestWithOptions(config, {
-            handler: 'user/mfa/settings',
-            action: 'read',
-            root: 'value',
-        });
-    },
-
 });
