@@ -13,7 +13,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.view.widgets.fields.SMSGateway',
         'NavixyPanel.view.settings.UploadWindow',
         'NavixyPanel.view.settings.BlockHeader',
-
+        'NavixyPanel.view.settings.components.Security',
+        'NavixyPanel.view.settings.components.SecurityChangesConfirm',
         'NavixyPanel.view.settings.components.Map',
         'NavixyPanel.plugins.ComboGoogleFilter',
     ],
@@ -148,7 +149,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     doFormReset: function () {
-        this.applyRecordData();
+        this.applyRecordData();;
+        this.resetMfaData();
     },
 
     applyRecordData: function () {
@@ -172,6 +174,16 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         if (lbs) {
             var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue());
             lbs.setValue(lbsLabel);
+        }
+    },
+
+    resetMfaData: function () {
+        var store = Ext.getStore('Security');
+
+        if (store.getData().length) {
+            var data = Ext.getStore('Security').getAt(0).getData();
+
+            this.down('[name=mfa_factor_type_email]').setValue(data.factor_types.indexOf('email') >= 0);
         }
     },
 
@@ -466,6 +478,10 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                         ]
                     }
                 ]
+            },
+            {
+                xtype: 'settings-security',
+                data: this.record,
             },
             Ext.checkPermission('email_gateways', 'create') ? {
                 xtype: 'smtp-gate-panel',

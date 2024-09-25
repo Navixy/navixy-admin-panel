@@ -55,7 +55,7 @@ Ext.define('NavixyPanel.controller.Users', {
         }
     ],
 
-    stores: ['Users', 'PaasPlugins', 'MenuPresets'],
+    stores: ['Users', 'PaasPlugins', 'MenuPresets', 'Security'],
     models: ['User', 'Transaction', 'PaasPlugin'],
     mainStore: 'Users',
 
@@ -155,6 +155,7 @@ Ext.define('NavixyPanel.controller.Users', {
             target: 'users'
         };
         this.loadMenuPresets();
+        this.getStore('Security').loadDefaultSettings();
     },
 
     refreshUsersStore: function (resetPaging) {
@@ -243,7 +244,7 @@ Ext.define('NavixyPanel.controller.Users', {
     handleUserEdit: function (userRecord) {
         this.fireContent({
             xtype: 'useredit',
-            record: userRecord
+            record: userRecord,
         });
     },
 
@@ -275,12 +276,12 @@ Ext.define('NavixyPanel.controller.Users', {
             listeners: {
                 render: {
                     fn: this.showUserTutorial,
-                    delay: 50
+                    delay: 50,
                 },
                 show: this.showUserTutorial,
                 hide: this.hideUserTutorial,
-                resize: this.showUserTutorial
-            }
+                resize: this.showUserTutorial,
+            },
         });
     },
 
@@ -327,7 +328,8 @@ Ext.define('NavixyPanel.controller.Users', {
 
     handleUserCreate: function () {
         this.fireContent({
-            xtype: 'usercreate'
+            xtype: 'usercreate',
+            isMfaEnabled: this.getStore('Security').isAllowedByDefault(),
         });
     },
 
@@ -532,19 +534,23 @@ Ext.define('NavixyPanel.controller.Users', {
                 default_tariff_id: Ext.encode(default_tariff_id)
             },
             callback: function (response) {
+                var requestsCount = 0;
+                var callback = function () {
+                    if (--requestsCount === 0) {
+                        this.afterUserCreate(response);
+                    }
+                }.bind(this, response);
+                var failure = function (response) {
+                    --requestsCount;
+                    this.afterUserCreateFailure(response);
+                }.bind(this, response);
+
                 if (this.isMenuPresetsAvailable()) {
-                    var callback = function (userId) {
-                        this.afterUserCreate(userId);
-                    }.bind(this, response);
-
-                    var failure = function (response) {
-                        this.afterUserCreateFailure(response);
-                    }.bind(this, response);
-
                     this.afterUserDataChange(response, userData.menu_preset_id, callback, failure);
-                } else {
-                    this.afterUserCreate(response);
                 }
+
+                requestsCount++;
+                this.updateMfaSettings(response, userData.mfa_allowed, callback, failure);
             },
             failure: this.afterUserCreateFailure,
             scope: this
@@ -588,18 +594,25 @@ Ext.define('NavixyPanel.controller.Users', {
                 comment: userData.comment
             },
             callback: function (response) {
-                if (this.isMenuPresetsAvailable()) {
-                    var callback = function (response, formValues, record) {
+                var requestsCount = 0;
+                var callback = function () {
+                    if (--requestsCount === 0) {
                         this.afterUserEdit(response, formValues, record);
-                    }.bind(this, response, formValues, record);
+                    }
+                }.bind(this, response, formValues, record);
+                var failure = function (response) {
+                    --requestsCount;
+                    this.afterUserEditFailure(response);
+                }.bind(this, response);
 
-                    var failure = function (response) {
-                        this.afterUserEditFailure(response);
-                    }.bind(this, response);
-
+                if (this.isMenuPresetsAvailable()) {
+                    requestsCount++;
                     this.afterUserDataChange(userData.id, userData.menu_preset_id, callback, failure);
-                } else {
-                    this.afterUserEdit(response, formValues, record);
+                }
+
+                if (record.get('mfa_allowed') !== userData.mfa_allowed) {
+                    requestsCount++;
+                    this.updateMfaSettings(record.getId(), userData.mfa_allowed, callback, failure);
                 }
             },
             failure: this.afterUserEditFailure,
@@ -855,6 +868,22 @@ Ext.define('NavixyPanel.controller.Users', {
             callback: callback,
             failure: failure,
             scope: this,
+        });
+    },
+
+    updateMfaSettings: function (userId, isActive, callback, failure) {
+        var settings = this.getStore('Security').getMfaSettings(isActive);
+
+        Ext.API.updateMfaSettings({
+            params: {
+                target: Ext.encode({
+                    type: 'selected',
+                    ids: [userId],
+                }),
+                settings: Ext.encode(settings),
+            },
+            callback: callback,
+            failure: failure,
         });
     },
 });

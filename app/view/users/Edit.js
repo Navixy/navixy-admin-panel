@@ -84,7 +84,30 @@ Ext.define('NavixyPanel.view.users.Edit', {
                     btn.up().down('datefield[name=discount_end_date]').setValue('');
                 }
             }
-        ], this.getUISettingsItems())
+        ],
+            this.getUISettingsItems(),
+            [
+                {
+                    xtype: 'container',
+                    cls: 'block_header',
+                    margin: '20 0 10 0',
+                    html: _l.get('settings.security.title'),
+                },
+                {
+                    xtype: 'container',
+                    cls: 'block_hint',
+                    margin: '0 0 10 0',
+                    html: _l.get('settings.security.note'),
+                    style: 'color: #999',
+                },
+                {
+                    xtype: 'checkbox',
+                    name: 'mfa_allowed',
+                    boxLabel: _l.get('settings.security.2fa.title'),
+                    checked: this.record.get('mfa_allowed'),
+                },
+            ]
+        )
     },
 
     getNWItems: function () {
@@ -97,5 +120,5 @@ Ext.define('NavixyPanel.view.users.Edit', {
             config[config.length - 2],
             config[config.length - 1]
         ];
-    }
+    },
 });

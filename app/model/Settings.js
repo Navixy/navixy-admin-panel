@@ -294,6 +294,16 @@ Ext.define('NavixyPanel.model.Settings', {
             name: 'menu_preset_id',
             type: 'auto',
         },
+        {
+            name: 'mfa_type',
+            type: 'string',
+            defaultValue: 'disallowed',
+        },
+        {
+            name: 'mfa_factor_types',
+            type: 'auto',
+            defaultValue: [],
+        }
     ],
 
     imagesMap: {
@@ -560,5 +570,14 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }
         return menu
-    }
+    },
+
+    getMfaChanges: function () {
+        var changes = this.getChanges();
+
+        return {
+            type: changes.mfa_type,
+            factor_types: changes.mfa_factor_types || [],
+        };
+    },
 });

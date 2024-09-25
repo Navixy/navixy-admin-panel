@@ -1348,6 +1348,7 @@ Ext.define("Locale.locale-en", {
             "branding_img_title": "Images and logo",
             "branding_contacts_title": "Contact information for users",
             "service_fields": "Service preferences",
+            "security": "Security",
             "service_links_title": "Domain and URLs",
             "service_regional_title": "Regional settings",
             "service_login_title": "Login page",
@@ -1467,7 +1468,29 @@ Ext.define("Locale.locale-en", {
                     "251": "Not enough money on the card"
                 }
             }
-        }
+        },
+        'security': {
+            'title': 'Security',
+            'info': 'The security settings will be applied to all platform users, except the demo user.',
+            'note': 'Security settings will also be applied to all sub-users',
+            'enabled': 'Enabled',
+            'disabled': 'Disabled',
+            '2fa': {
+                'title': 'Two-Factor Authentication',
+                'title_short': 'Two-Factor Authentication',
+                'email': 'Email',
+                'authenticator_app': 'Authenticator apps (coming soon)',
+                'sms': 'SMS (coming soon)',
+            },
+            'confirm': {
+                'title': 'Apply security settings?',
+                'text': 'Security settings will be applied to all platform users and sub-users, except of the demo user.',
+                'btn': {
+                    'apply': 'Apply',
+                    'cancel': 'Cancel',
+                }
+            },
+        },
     },
     "accounting": {
         "menu_text": "Accounting",

@@ -279,6 +279,12 @@ Ext.define('NavixyPanel.view.users.Card', {
                     value: recordData.comment
                 },
                 this.getMenuPresetField(),
+                {
+                    title: _l.get('settings.security.2fa.title'),
+                    value: recordData.mfa_allowed
+                        ? _l.get('settings.security.enabled')
+                        : _l.get('settings.security.disabled'),
+                },
             ]
         };
     },
