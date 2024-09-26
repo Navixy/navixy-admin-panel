@@ -35,7 +35,9 @@ Ext.define('NavixyPanel.store.Security', {
     },
 
     isAllowedByDefault: function () {
-        return this.getAt(0).getData().type === 'allowed';
+        var record = this.getAt(0);
+
+        return record && record.getData().type === 'allowed';
     },
 
     getMfaType: function (isActive) {
