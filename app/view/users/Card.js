@@ -277,7 +277,14 @@ Ext.define('NavixyPanel.view.users.Card', {
                 {
                     title: _l.get('trackers.fields.comment'),
                     value: recordData.comment
-                }
+                },
+                this.getMenuPresetField(),
+                {
+                    title: _l.get('settings.security.2fa.title'),
+                    value: recordData.mfa_allowed
+                        ? _l.get('settings.security.enabled')
+                        : _l.get('settings.security.disabled'),
+                },
             ]
         };
     },
@@ -405,5 +412,29 @@ Ext.define('NavixyPanel.view.users.Card', {
 
     toggleActivationPanel: function () {
         this.fireEvent('toggleactivationpanel');
-    }
+    },
+
+    getPreset: function () {
+        var menuPresetsStore = Ext.getStore('MenuPresets');
+        var presetOfUser = menuPresetsStore.getPresetOfUserId(this.getRecordData().id);
+
+        return presetOfUser ? presetOfUser : menuPresetsStore.getDefaultPreset();
+    },
+
+    getMenuPresetField: function () {
+        if (!Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            return null
+        }
+
+        var preset = this.getPreset();
+
+        if (preset) {
+            return {
+                title: _l.get('users.edit_form.assigned_menu_preset'),
+                value: preset.title,
+            };
+        } else {
+            return null;
+        }
+    },
 });

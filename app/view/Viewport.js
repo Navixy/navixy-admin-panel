@@ -8,6 +8,24 @@ Ext.define('NavixyPanel.view.Viewport', {
     initComponent: function () {
 
         this.items = [
+            // {
+            //     xtype: 'component',
+            //     height: 50,
+            //     cls: 'maintenance_warning',
+            //     html: _l.get("maintenance_warning") + '<div class="maintenance_warning__close">🗙</div>',
+            //     width: '100%',
+            //     hidden: !!localStorage.getItem('warningHidden'),
+            //     listeners: {
+            //         click: {
+            //             delegate: '.maintenance_warning__close',
+            //             element: 'el',
+            //             fn: function () {
+            //                 this.hide()
+            //                 localStorage.setItem('warningHidden', 1)
+            //             }
+            //         }
+            //     }
+            // },
             {
                 xtype: 'mainheader',
                 style: 'margin: 0 auto 30px',
@@ -31,7 +49,7 @@ Ext.define('NavixyPanel.view.Viewport', {
         this.callParent(arguments);
     },
 
-    afterFirstLayout: function() {
+    afterFirstLayout: function () {
         this.fireEvent('ready', this);
         this.callParent(arguments);
     }

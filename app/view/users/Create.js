@@ -7,10 +7,14 @@
 Ext.define('NavixyPanel.view.users.Create', {
     extend: 'NavixyPanel.view.users.AbstractForm',
     alias: 'widget.usercreate',
+
+    isMfaEnabled: false,
+
     getNEItems: function () {
         var items = this.callParent(arguments);
 
-        return items.concat([
+        return items.concat(
+        [
             {
                 fieldLabel: _l.get('users.fields.default_tariff') + this.getHintSymbol(_l.get('users.fields.default_tariff_hint')),
                 allowBlank: true,
@@ -50,6 +54,31 @@ Ext.define('NavixyPanel.view.users.Create', {
                 minValue: 0,
                 allowDecimals: false,
                 name: 'discount_min_trackers'
-            }])
-    }
+            },
+        ],
+            this.getUISettingsItems(),
+            [
+                {
+                    xtype: 'container',
+                    cls: 'block_header',
+                    margin: '20 0 10 0',
+                    html: _l.get('settings.security.title'),
+                },
+                {
+                    xtype: 'container',
+                    cls: 'block_hint',
+                    margin: '0 0 10 0',
+                    html: _l.get('settings.security.note'),
+                    style: 'color: #999',
+                },
+                {
+                    xtype: 'checkbox',
+                    name: 'mfa_allowed',
+                    boxLabel: _l.get('settings.security.2fa.title'),
+                    checked: this.isMfaEnabled,
+                    scope: this,
+                },
+            ]
+        );
+    },
 });

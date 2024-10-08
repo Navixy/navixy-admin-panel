@@ -35,7 +35,7 @@ Ext.define('Locale.locale-ru', {
     'index_blocked_payment': 'Вы можете пополнить баланс в разделе "Подписка"',
     'index_tip': '',
     'old_version': 'Старая версия',
-    'maintenance_warning': 'Мы меняем цены с 1-го марта 2022. Смотрите <a target=\'_blank\' href=\'https://www.navixy.com/ru/update-to-navixy-servermate-prices/\'>официальное уведомление.',
+    'maintenance_warning': '<div>С 1 июня плагин Веб-локатор будет снят с поддержки и удалён из Navixy. Существующие ссылки веб-локатора будут работать до 1 июля, после этой даты все ссылки будут деактивированы. Пожалуйста, перейдите на использование нового модуля Гео-cсылки, который предлагает расширенные функциональные возможности и настройки. Подробнее о Гео-ссылках вы можете узнать <a href="https://www.navixy.ru/docs/user/web-interface-docs/geo-ssylki/" target="_blank">здесь</a></div>',
     'auth': {
         'login': 'Логин или адрес электронной почты',
         'password': 'Пароль',
@@ -505,6 +505,7 @@ Ext.define('Locale.locale-ru', {
         },
         'edit_form': {
             'title': 'Редактирование пользователя',
+            'assigned_menu_preset': 'Назначенный шаблон меню',
             'save_btn': 'Сохранить изменения',
             'return_btn': 'Назад'
         },
@@ -1120,10 +1121,10 @@ Ext.define('Locale.locale-ru', {
             'domain_hint': 'Запустите и предоставляйте ваш сервис на собственном доменном имени (например: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо настроить CNAME-запись на вашем DNS-сервере, ссылающуюся на адрес saas.navixy.com.',
             'paas_domain_hint': 'Запустите и предоставляйте ваш сервис на собственном доменном имени (например: tracking.company.com). Перед тем, как задать свой домен здесь, вам необходимо соответствующим образом настроить DNS-сервер.',
             'domain_help': 'Как настроить CNAME-запись',
-            'domain_help_link': 'https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/',
+            'domain_help_link': 'https://docs.navixy.com/admin-panel/domain-name',
             'domain_google_key_help': 'Как карты Google зависят от домена',
             'domain_google_key_details': '<br>Подробности читайте в разделе "Как карты Google зависят от домена".',
-            'domain_google_key_link': 'https://www.navixy.com/ru/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/',
+            'domain_google_key_link': 'https://docs.navixy.com/admin-panel/maps',
             'domain_mismatched': 'Доменное имя должно включать <b>{0}</b>',
             'get_key_link': 'https://www.navixy.com/ru/docs/admin-panel-docs/settings/cartography/gis/premium-gis/',
             'locale_hint': 'Язык, назначаемый по умолчанию для новых учетных записей пользователей. Пользователи также могут изменять языковые предпочтения самостоятельно, в настройках своей учетной записи.',
@@ -1190,7 +1191,8 @@ Ext.define('Locale.locale-ru', {
             paas_premium_gis: 'Подключите пакет "Премиум ГИС", включающий использование лицензированных карт Google и улучшенные ГИС сервисы (геокодирование, прокладка маршрутов, LBS и пр.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
             paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}',
-            'unavaliable': 'Недоступно'
+            'unavaliable': 'Недоступно',
+            'menu_preset': 'Шаблон меню по умолчанию',
         },
         'sms_gateway': {
             'navixy': {
@@ -1325,6 +1327,7 @@ Ext.define('Locale.locale-ru', {
             'branding_img_title': 'Изображения и логотипы',
             'branding_contacts_title': 'Контактная информация для пользователей',
             'service_fields': 'Параметры сервиса',
+            'security': 'Безопасность',
             'service_links_title': 'Домен и ссылки',
             'service_regional_title': 'Региональные настройки',
             'service_login_title': 'Страница входа',
@@ -1372,8 +1375,12 @@ Ext.define('Locale.locale-ru', {
             'misc_header': 'Дополнительные функции',
 
             "ui_settings_header": "Настройки интерфейса",
+            "support": "Поддержка",
             "device_settings_checkbox": "Показывать пункт меню \"Настройки устройств\"",
-            "device_settings_checkbox_hint": "Эта настройка будет применена ко всем пользователям. Вы также можете настроить этот параметр для каждого пользователя индивидуально в профиле пользователя"
+            "device_settings_checkbox_hint": "Эта настройка будет применена ко всем пользователям. Вы также можете настроить этот параметр для каждого пользователя индивидуально в профиле пользователя",
+            "display_release_notes": "Показывать историю обновлений",
+            "display_release_notes_hint": "Эта настройка включает отображение истории обновлений Navixy в пользовательском интерфейсе. Поддерживаются следующие языки: Английский, Испанский, Французский и Русский.",
+            "menu_editor": "Редактор меню"
         },
         'upload_form': {
             'save_btn': 'Загрузить',
@@ -1440,7 +1447,29 @@ Ext.define('Locale.locale-ru', {
                     '251': 'Not enough money on the card'
                 }
             }
-        }
+        },
+        'security': {
+            'title': 'Безопасность',
+            'info': 'Настройки безопасности будут применены ко всем пользователям платформы, кроме демо-пользователя.',
+            'note': 'Настройки безопасности будут также применены ко всем суб-пользователям',
+            'enabled': 'Включена',
+            'disabled': 'Выключена',
+            '2fa': {
+                'title': 'Двухфакторная аутентификация',
+                'title_short': 'Двухфакторная аутентификация',
+                'email': 'Email',
+                'authenticator_app': 'Приложения аутентификаторы (скоро появятся)',
+                'sms': 'SMS (скоро появится)',
+            },
+            'confirm': {
+                'title': 'Применить настройки безопасности?',
+                'text': 'Настройки безопасности будут применены ко всем пользователям и суб-пользователям платформы, кроме демо-пользователя.',
+                'btn': {
+                    'apply': 'Применить',
+                    'cancel': 'Отмена',
+                }
+            },
+        },
     },
     'accounting': {
         'menu_text': 'Выгрузки',
@@ -1896,7 +1925,7 @@ Ext.define('Locale.locale-ru', {
         'routing': 'Поддержка маршрутов',
         'driver_journal': 'Журнал водителя',
         'ui_mobile': 'Мобильный интерфейс',
-        'weblocator': 'Веб-локатор',
+        'weblocator': 'Гео-ссылки',
         'chat': 'Чат',
         'checkins': 'Отметки на карте',
         'route_import': 'Импорт маршрутов',
@@ -2048,5 +2077,9 @@ Ext.define('Locale.locale-ru', {
     "sa-token": {
         "sa-token-title": "Лицензионный ключ On-premise",
         "field": "Лицензионный ключ"
+    },
+
+    "menu-editor": {
+        "default-preset": "Шаблон меню по умолчанию"
     }
 })

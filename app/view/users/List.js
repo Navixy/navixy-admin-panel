@@ -157,6 +157,14 @@ Ext.define('NavixyPanel.view.users.List', {
                 flex: 1
             },
             {
+                text: _l.get('settings.security.2fa.title_short'),
+                dataIndex: 'mfa_allowed',
+                flex: 1,
+                renderer: function (value) {
+                    return value ? _l.get('settings.security.enabled') : _l.get('settings.security.disabled');
+                },
+            },
+            {
                 text: _l.get('users.fields.phone'),
                 dataIndex: 'phone',
                 flex: 1

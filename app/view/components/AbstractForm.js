@@ -130,7 +130,6 @@ Ext.define('NavixyPanel.view.components.AbstractForm', {
         }
     },
 
-
     afterSave: function (value) {
         this.getForm().reset();
         this.backAfterSave(value);

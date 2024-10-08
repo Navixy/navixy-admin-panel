@@ -134,6 +134,10 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'boolean'
         },
         {
+            name: 'display_release_notes',
+            type: 'boolean'
+        },
+        {
             name: 'no_register_commands',
             type: 'boolean'
         },
@@ -285,6 +289,20 @@ Ext.define('NavixyPanel.model.Settings', {
                     return item.name === 'configuration'
                 }) : false
             }
+        },
+        {
+            name: 'menu_preset_id',
+            type: 'auto',
+        },
+        {
+            name: 'mfa_type',
+            type: 'string',
+            defaultValue: 'disallowed',
+        },
+        {
+            name: 'mfa_factor_types',
+            type: 'auto',
+            defaultValue: [],
         }
     ],
 
@@ -552,5 +570,14 @@ Ext.define('NavixyPanel.model.Settings', {
             }
         }
         return menu
-    }
+    },
+
+    getMfaChanges: function () {
+        var changes = this.getChanges();
+
+        return {
+            type: changes.mfa_type,
+            factor_types: changes.mfa_factor_types || [],
+        };
+    },
 });

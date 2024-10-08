@@ -61,7 +61,7 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
                 fieldLabel: _l.get('users.fields.login'),
                 name: 'login',
                 labelSeparator: Util.getRequiredSeparator(),
-                vtype: 'tardemail',
+                vtype: Config.enableSimpleEmailValidation ? 'tardemailplus' : 'tardemail',
                 minLength: 2,
                 maxLength: 100,
                 validateOnChange: true
@@ -450,5 +450,50 @@ Ext.define('NavixyPanel.view.users.AbstractForm', {
     applyRecordData: function () {
         this.callParent(arguments);
         this.changeLegalStatus(this.down('[name=legal_type]').getValue());
-    }
+    },
+
+    getUISettingsItems: function () {
+        if (!Ext.getStore('Dealer').isMenuPresetsAvailable()) {
+            return [];
+        }
+
+        return [
+            {
+                xtype: 'container',
+                cls: 'block_header',
+                padding: '10 0 20 0',
+                html: _l.get('settings.edit_form.ui_settings_header')
+            },
+            {
+                name: 'menu_preset_id',
+                xtype: 'combobox',
+                fieldLabel: _l.get('users.edit_form.assigned_menu_preset'),
+                store: Ext.getStore('MenuPresets'),
+                displayField: 'title',
+                queryMode: 'local',
+                valueField: 'id',
+                listeners: {
+                    scope: this,
+                    beforerender: function (cbox) {
+                        var PLATFORM_OWNED_PRESET_ID = 1;
+                        var store = cbox.getStore();
+                        var defaultPreset = store.getDefaultPreset();
+
+                        if (defaultPreset && defaultPreset.id !== undefined) {
+                            cbox.setValue(defaultPreset.id);
+                        } else {
+                            cbox.setValue(PLATFORM_OWNED_PRESET_ID);
+                        }
+                    },
+                },
+            },
+        ]
+    },
+
+    afterSave: function (value) {
+        this.on('hide', function () {
+            this.getForm().reset();
+        }, this);
+        this.backAfterSave(value);
+    },
 });

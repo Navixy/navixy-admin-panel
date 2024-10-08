@@ -795,5 +795,63 @@ Ext.define('NavixyPanel.api.NavixyApi', {
             handler: 'account',
             root: 'value'
         })
-    }
+    },
+
+    getMenuPresetsList: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/menu/preset',
+            action: 'list',
+            root: 'list',
+        })
+    },
+
+    requestMenuPresetsList: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'list',
+            handler: 'user/menu/preset',
+            root: 'list',
+            scope: scope
+        });
+    },
+
+    assignMenuPreset: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/menu/preset',
+            action: 'assign',
+        })
+    },
+
+    getDefaultMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings/default',
+            action: 'read',
+        });
+    },
+
+    requestDefaultMfaSettings: function (callback, failure, scope) {
+        this.sendRequest({
+            success: callback,
+            failure: failure,
+            action: 'read',
+            handler: 'user/mfa/settings/default',
+            root: 'value',
+            scope: scope,
+        });
+    },
+
+    updateDefaultMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings/default',
+            action: 'update',
+        });
+    },
+
+    updateMfaSettings: function (config) {
+        return this.requestWithOptions(config, {
+            handler: 'user/mfa/settings',
+            action: 'update',
+        });
+    },
 });

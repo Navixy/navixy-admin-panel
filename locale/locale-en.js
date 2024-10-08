@@ -36,7 +36,7 @@ Ext.define("Locale.locale-en", {
     },
     "index_blocked_payment": "You can refill your balance from \"Subscription\" tab",
     "old_version": "Old version",
-    "maintenance_warning": "We update our prices from March 1st, 2022. See the <a a target='_blank' href='https://www.navixy.com/update-to-navixy-servermate-prices/'>official announcement.",
+    "maintenance_warning": '<div>Starting June 1, the Weblocator plugin will be deprecated and removed from Navixy. Existing weblocator links will function until July 1, after which all links will be deactivated. Please transition to the new Geo Links module, which offers enhanced functionality and customization features. You can learn more about Geo Links <a href="https://www.navixy.com/docs/user/web-interface-docs/geo-links/" target="_blank">here</a></div>',
     "auth": {
         "login": "Login",
         "password": "Password",
@@ -510,6 +510,7 @@ Ext.define("Locale.locale-en", {
         },
         "edit_form": {
             "title": "Edit user",
+            "assigned_menu_preset": "Assigned menu preset",
             "save_btn": "Save changes",
             "return_btn": "Back"
         },
@@ -1006,7 +1007,7 @@ Ext.define("Locale.locale-en", {
             "select_req": "Select codes from list",
             "same_type_req": "You must specify one device type codes",
             "edited_tip": "changed",
-            "faq_link": "https://www.navixy.com/docs/admin-panel-docs/activation-codes/ ",
+            "faq_link": "https://docs.navixy.com/admin-panel/activation-codes ",
             "faq_text": "Activation codes FAQ",
             "filters": {
                 "activated": "Activated",
@@ -1141,10 +1142,10 @@ Ext.define("Locale.locale-en", {
             "domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup an appropriate CNAME-record on your DNS server and point it to saas.navixy.com.",
             "paas_domain_hint": "Launch and run your service on your own domain name (e.g.: tracking.company.com). Before configuring a custom domain here, you need to setup your DNS server accordingly.",
             "domain_help": "How do I set up a CNAME-record",
-            "domain_help_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/",
+            "domain_help_link": "https://docs.navixy.com/admin-panel/domain-name",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information.",
-            "domain_google_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/domain-name/domain-and-google-maps/",
+            "domain_google_key_link":  "https://docs.navixy.com/admin-panel/maps",
             "domain_mismatched": "Domain name must include <b>{0}</b>",
             "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
             "locale_hint": "The language used by default for all new user accounts. Users can also change the preferred language in their account settings.",
@@ -1211,7 +1212,8 @@ Ext.define("Locale.locale-en", {
             paas_premium_gis: 'Activate "Premium GIS" package which includes licensed Google Maps usage and improved geo-services (like geocoding, directions, LBS, etc.). {0}',
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
-            'unavaliable': 'Not available'
+            'unavaliable': 'Not available',
+            'menu_preset': 'Select default menu preset',
         },
         "sms_gateway": {
             "navixy": {
@@ -1346,6 +1348,7 @@ Ext.define("Locale.locale-en", {
             "branding_img_title": "Images and logo",
             "branding_contacts_title": "Contact information for users",
             "service_fields": "Service preferences",
+            "security": "Security",
             "service_links_title": "Domain and URLs",
             "service_regional_title": "Regional settings",
             "service_login_title": "Login page",
@@ -1393,9 +1396,12 @@ Ext.define("Locale.locale-en", {
             "misc_header": "Optional features",
 
             "ui_settings_header": "UI Settings",
+            "support": "Support",
             "device_settings_checkbox": "Show Devices and Settings menu item",
-            "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile"
-
+            "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile",
+            "display_release_notes": "Display release notes",
+            "display_release_notes_hint": "This option enables the display of release updates history within the user interface. Languages supported natively are English, Spanish, French, and Russian.",
+            "menu_editor": "Menu editor"
         },
         "upload_form": {
             "save_btn": "Upload",
@@ -1462,7 +1468,29 @@ Ext.define("Locale.locale-en", {
                     "251": "Not enough money on the card"
                 }
             }
-        }
+        },
+        'security': {
+            'title': 'Security',
+            'info': 'The security settings will be applied to all platform users, except the demo user.',
+            'note': 'Security settings will also be applied to all sub-users',
+            'enabled': 'Enabled',
+            'disabled': 'Disabled',
+            '2fa': {
+                'title': 'Two-Factor Authentication',
+                'title_short': 'Two-Factor Authentication',
+                'email': 'Email',
+                'authenticator_app': 'Authenticator apps (coming soon)',
+                'sms': 'SMS (coming soon)',
+            },
+            'confirm': {
+                'title': 'Apply security settings?',
+                'text': 'Security settings will be applied to all platform users and sub-users, except of the demo user.',
+                'btn': {
+                    'apply': 'Apply',
+                    'cancel': 'Cancel',
+                }
+            },
+        },
     },
     "accounting": {
         "menu_text": "Accounting",
@@ -1937,7 +1965,7 @@ Ext.define("Locale.locale-en", {
         "routing": "Routing",
         "driver_journal": "Driver Journal",
         "ui_mobile": "Mobile web interface",
-        "weblocator": "Weblocator",
+        "weblocator": "Geo links",
         "chat": "Chat",
         "checkins": "Check-ins on the map",
         "route_import": "Import routes",
@@ -2070,5 +2098,9 @@ Ext.define("Locale.locale-en", {
     "sa-token": {
         "sa-token-title": "On-premise license key",
         "field": "License key"
+    },
+
+    "menu-editor": {
+        "default-preset": "Default menu preset"
     }
 });

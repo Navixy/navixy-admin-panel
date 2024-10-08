@@ -18,7 +18,9 @@ Config = {
         // Link to "automatic" authorization in monitoring with user hash in GET.
         monUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}'],
         // Link to "automatic" authorization in selected app with user hash in GET.
-        appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}']
+        appUrlTpl: ['//{company_url}/pro/demo/?session_key={hash}&app={app}&tracker_id={tracker_id}'],
+        // Link to the "new panel" page
+        panelUrlTpl: '/new-panel/#/{page}?panel_session_key={hash}',
     },
 
     // web-socket connection address for devices terminal
@@ -52,10 +54,13 @@ Config = {
         styleParams: 'CLEAN_CART=ALL&CART=1&CARD=2&DESIGN_TYPE=1&CURRENCY=USD&SHORT_FORM=1&ORDERSTYLE=nLWo5ZTPiLk='
     },
     // use google maps whithout its js api ,
-    useGoogleMapsTilesDirectly: false
+    useGoogleMapsTilesDirectly: false,
 
     //google_key: {
     //    allow: true,
     //    get_key_link: 'https://developers.google.com/maps/documentation/javascript/get-api-key'
     //}
+
+    // Simplifies email validation, i.e. will validate email+tag@domain.com
+    enableSimpleEmailValidation: false,
 };
