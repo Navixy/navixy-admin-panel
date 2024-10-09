@@ -47,7 +47,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   },
 
   getApplicationLink: function () {
-    var appLink = Config.links.panelUrlTpl || './new-panel/#/{page}?panel_session_key={hash}'
+    var appLink = Config.links.panelUrlTpl || './new-panel/#/{page}?panel_session_key={hash}&showSidebar=false'
     var PAGE_NAME = 'menu-editor';
     var domain = Ext.getStore('Dealer').first().get('domain');
     var data = Ext.apply({
