@@ -47,6 +47,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
   },
 
   getApplicationLink: function () {
+    var appLink = Config.links.panelUrlTpl || './new-panel/#/{page}?panel_session_key={hash}'
     var PAGE_NAME = 'menu-editor';
     var domain = Ext.getStore('Dealer').first().get('domain');
     var data = Ext.apply({
@@ -54,7 +55,7 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
       page: PAGE_NAME,
     });
     var locale = Locale.Manager.getLocale();
-    var link = new Ext.Template(Config.links.panelUrlTpl).apply(data);
+    var link = new Ext.Template(appLink).apply(data);
 
     return !!domain && Ext.String.urlAppend(link, 'locale=' + locale);
   },
