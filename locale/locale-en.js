@@ -1147,7 +1147,7 @@ Ext.define("Locale.locale-en", {
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information.",
             "domain_google_key_link":  "https://docs.navixy.com/admin-panel/maps",
             "domain_mismatched": "Domain name must include <b>{0}</b>",
-            "get_key_link": "https://www.navixy.com/docs/admin-panel-docs/settings/cartography/gis/premium-gis/",
+            "get_key_link": "https://docs.navixy.com/admin-panel/navixy-gis-packages-compare",
             "locale_hint": "The language used by default for all new user accounts. Users can also change the preferred language in their account settings.",
             "currency_hint": "Choose the currency which is commonly used in your region. The system will bill your users in this currency and according to the service plans you set up.",
             "allow_registration": "Allow users to create accounts",
