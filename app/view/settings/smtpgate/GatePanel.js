@@ -175,7 +175,21 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
             },
             items = [];
 
+        var setEmailFieldDisabled = Ext.bind(function (isDisabled) {
+            var emailFromField = this.down('textfield[name=email_from]');
+
+            if (emailFromField) {
+                emailFromField.setDisabled(isDisabled);
+            }
+        }, this);
+
         Ext.each(data.leasable, function (item, key) {
+            var isChecked = item.id === data.bound_gateway
+
+            if (isChecked) {
+                setEmailFieldDisabled(isChecked);
+            }
+
             items.push({
                 boxLabel: ['<span><b>', item.label, '</b>',
                            '<span class="gate-deafult-from">&lt;', item.default_from_address, '&gt;</span>',
@@ -184,7 +198,12 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                 name: 'gate_id',
                 leasable: true,
                 checked: item.id === data.bound_gateway,
-                inputValue: item.id
+                inputValue: item.id,
+                listeners: {
+                    change: function (_radioCmp, value) {
+                        setEmailFieldDisabled(value);
+                    },
+                },
             });
         });
 
@@ -207,6 +226,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
 
         radiogroup.items = items;
 
+        this.down('container[role=gates-container]').add(radiogroup);
         this.down('container[role=gates-container]').add(radiogroup);
 
     }
