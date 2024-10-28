@@ -198,7 +198,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
                            '</span>'].join(''),
                 name: 'gate_id',
                 leasable: true,
-                checked: item.id === data.bound_gateway,
+                checked: isChecked,
                 inputValue: item.id,
                 listeners: {
                     change: function (_radioCmp, value) {
