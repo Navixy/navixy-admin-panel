@@ -57,7 +57,7 @@ $light-field-focus-border-color: $main-color;
 
     }
 
-    &.x-field-light.x-item-disabled {
+    &:not(.keep-original-disabled-field).x-field-light.x-item-disabled {
         opacity: 1;
 
         .x-form-text {
