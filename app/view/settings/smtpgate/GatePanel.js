@@ -48,6 +48,7 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
             role: 'email-settings',
             items: [{
                 xtype: 'textfield',
+                cls: 'keep-original-disabled-field',
                 name: 'email_from',
                 fieldLabel: _l.get('settings.fields.email_from'),
                 minLength: 2,
