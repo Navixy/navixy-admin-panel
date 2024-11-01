@@ -228,8 +228,5 @@ Ext.define('NavixyPanel.view.settings.smtpgate.GatePanel', {
         radiogroup.items = items;
 
         this.down('container[role=gates-container]').add(radiogroup);
-        this.down('container[role=gates-container]').add(radiogroup);
-
     }
-
 });
