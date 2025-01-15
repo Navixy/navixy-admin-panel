@@ -551,6 +551,8 @@ Ext.define('Locale.locale-es',{
             "phone_exp": "Número de teléfono",
             "owner": "Propietario del tracker",
             "owner_short": "Propietario",
+            "owner_name": "Nombre del propietario",
+            "owner_id": "ID del propietario",
             "tariff": "Tarifa del tracker",
             "deleted": "Marcado como eliminado",
             "blocked": "Servicio pausado",

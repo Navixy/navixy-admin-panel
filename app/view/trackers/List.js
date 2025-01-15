@@ -250,11 +250,18 @@ Ext.define('NavixyPanel.view.trackers.List', {
             trackerStatusTpl = [
                 '<span class="{connection_status}">{[_l.get("trackers.fields.statuses")[values.connection_status]]}</span>',
             ],
-            trackerOwnerTpl = [
+            trackerOwnerIdTpl = [
                 '<tpl if="{can_read}">',
                     '<a href="#user/{user_id}">#{user_id}</a>',
                 '<tpl else>',
                     '#{user_id}',
+                '</tpl>'
+            ],
+            trackerOwnerNameTpl = [
+                '<tpl if="{can_read}">',
+                    '<a href="#user/{user_id}">{owner_name}</a>',
+                '<tpl else>',
+                    '{owner_name}',
                 '</tpl>'
             ],
             blockedStatusTpl = [
@@ -269,33 +276,33 @@ Ext.define('NavixyPanel.view.trackers.List', {
             {
                 text: _l.get('trackers.fields.tracker_id'),
                 dataIndex: 'id',
-                width: 100
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.label'),
                 xtype: 'templatecolumn',
                 tpl: trackerLabelTpl,
                 dataIndex: 'label',
-                flex: 4
+                width: 140,
             },
             this.showStatus ? {
                 text: _l.get('trackers.fields.connection_status'),
                 xtype: 'templatecolumn',
                 tpl: trackerStatusTpl,
                 dataIndex: 'status',
-                width: 140
+                width: 140,
             } : {
                 text: _l.get('trackers.fields.blocked'),
                 xtype: 'templatecolumn',
                 tpl: blockedStatusTpl,
                 dataIndex: 'blocked',
                 sortable: false,
-                width: 180
+                width: 140,
             },
             {
-                text: _l.get('trackers.fields.owner_short'),
+                text: _l.get('trackers.fields.owner_id'),
                 xtype: 'templatecolumn',
-                tpl: trackerOwnerTpl,
+                tpl: trackerOwnerIdTpl,
                 dataIndex: 'user_id',
                 tdCls: 'user',
                 defaultRenderer: function(value, meta, record) {
@@ -306,44 +313,60 @@ Ext.define('NavixyPanel.view.trackers.List', {
 
                     return this.tpl.apply(data);
                 },
-                minWidth: 80,
-                flex: 3
+                width: 140,
+            },
+            {
+                text: _l.get('trackers.fields.owner_name'),
+                xtype: 'templatecolumn',
+                tpl: trackerOwnerNameTpl,
+                dataIndex: 'owner_name',
+                tdCls: 'user',
+                defaultRenderer: function(value, meta, record) {
+                    var data = {
+                        can_read: Ext.checkPermission('users', 'read'),
+                        user_id: record.get('user_id'),
+                        owner_name: value,
+                    };
+
+                    return this.tpl.apply(data);
+                },
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.model'),
                 dataIndex: 'model_name',
-                width: 180
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.device_id'),
                 dataIndex: 'device_id',
-                width: 160
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.phone'),
                 dataIndex: 'phone',
-                width: 140
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.last_connection_date'),
                 dataIndex: 'last_connection',
-                width: 220
+                width: 140,
             },
             {
                 text: _l.get('trackers.fields.creation_date_short2'),
                 dataIndex: 'creation_date',
                 renderer: Util.formatDate,
-                minWidth: 100,
                 resizable: false,
                 hidden: true,
+                minWidth: 140,
             },
             {
                 text: _l.get('trackers.fields.comment'),
                 dataIndex: 'comment',
-                minWidth: 140,
                 resizable: true,
                 hidden: true,
-                flex: 1
+                flex: 1,
+                minWidth: 140
             }
         ];
     },
