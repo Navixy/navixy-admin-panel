@@ -86,6 +86,16 @@ Ext.define('NavixyPanel.view.settings.components.MenuEditorWindow', {
       }
     };
 
+    var menuEditorIFrame = this.getIframeElement();
+
+    menuEditorIFrame.onload = function () {
+      var panelConfig = {
+        apiURL: Config.apiProfiles.japi.apiRoot,
+      };
+
+      menuEditorIFrame.contentWindow.postMessage(JSON.stringify(panelConfig), '*');
+    };
+
     this.callParent(arguments);
   },
 
