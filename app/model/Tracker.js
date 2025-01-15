@@ -10,6 +10,7 @@ Ext.define('NavixyPanel.model.Tracker', {
         {name: 'id', type: 'int'},
         {name: 'group_id', type: 'int'},
         {name: 'user_id', type: 'int'},
+        {name: 'owner_name', type: 'string'},
         {name: 'dealer_id', type: 'int'},
 
         {name: 'label', type: 'string'},

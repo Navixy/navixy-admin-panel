@@ -700,6 +700,8 @@ Ext.define('Locale.locale-ru', {
             'phone_exp': 'Номер телефона',
             'owner': 'Владелец трекера',
             'owner_short': 'Владелец',
+            'owner_name': 'Владелец трекера',
+            'owner_id': 'ID владельца',
             'tariff': 'Тариф трекера',
             'deleted': 'Скрыт',
             'blocked': 'Услуги приостановлены',

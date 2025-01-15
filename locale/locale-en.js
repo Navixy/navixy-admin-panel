@@ -712,6 +712,8 @@ Ext.define("Locale.locale-en", {
             "phone_exp": "Phone number",
             "owner": "Tracker owner",
             "owner_short": "Owner",
+            "owner_name": "Owner name",
+            "owner_id": "Owner ID",
             "tariff": "Tracker plan",
             "deleted": "Hidden",
             "blocked": "Service suspended",
