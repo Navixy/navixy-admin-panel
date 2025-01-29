@@ -291,7 +291,7 @@ Ext.define('NavixyPanel.controller.Desktop', {
             Ext.checkPermission('paas_payments', 'create')
             && !Ext.checkPermission('service_settings', 'read')
             && seller_currency === 'USD'
-            && Ext.getStore('PaymentSystems').hasAvangate()) {
+            && Ext.getStore('PaymentSystems').getData().length) {
             this.addMainMenuItem({
                 name: 'payment',
                 text: _l.get('settings.subscription.title'),

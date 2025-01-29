@@ -1053,7 +1053,8 @@ Ext.define("Locale.locale-en", {
             "waiting_activation_fee": "Your payment was successfully executed and will be processed shortly.",
             "license_balance": "Pending amount {0}",
             "pay_with_avangate": "Pay with 2Checkout",
-            "pay_with_stripe": "Pay with Stripe"
+            "pay_with_stripe": "Pay with Stripe",
+            "pay_with_bill": "Bank transfer"
         },
         "email_gateways": {
             "title": "Email gateways",
@@ -1147,7 +1148,7 @@ Ext.define("Locale.locale-en", {
             "domain_help_link": "https://docs.navixy.com/admin-panel/domain-name",
             "domain_google_key_help": "How domain name affects the use of Google Maps",
             "domain_google_key_details": "<br>Click on \"How domain name affects the use of Google Maps\" above to get more information.",
-            "domain_google_key_link":  "https://docs.navixy.com/admin-panel/maps",
+            "domain_google_key_link": "https://docs.navixy.com/admin-panel/maps",
             "domain_mismatched": "Domain name must include <b>{0}</b>",
             "get_key_link": "https://docs.navixy.com/admin-panel/navixy-gis-packages-compare",
             "locale_hint": "The language used by default for all new user accounts. Users can also change the preferred language in their account settings.",
@@ -1215,7 +1216,7 @@ Ext.define("Locale.locale-en", {
             premium_gis_link: ' <a href="{0}"  target="_blank">Read more</a>',
             paas_maps_is_unavailable: 'This map type is not available on these domains: {0}',
             'unavaliable': 'Not available',
-            'menu_preset': 'Select default menu preset',
+            'menu_preset': 'Select default menu preset'
         },
         "sms_gateway": {
             "navixy": {
@@ -1438,7 +1439,8 @@ Ext.define("Locale.locale-en", {
         "payments": {
             "type": {
                 "avangate": "2Checkout",
-                "stripe": "Stripe"
+                "stripe": "Stripe",
+                "bill": "Bank transfer"
             },
             "stripe": {
                 "header_text": "You can pay by Visa, MasterCard, Maestro, and others.<br><br>",
@@ -1482,17 +1484,17 @@ Ext.define("Locale.locale-en", {
                 'title_short': 'Two-Factor Authentication',
                 'email': 'Email',
                 'authenticator_app': 'Authenticator apps (coming soon)',
-                'sms': 'SMS (coming soon)',
+                'sms': 'SMS (coming soon)'
             },
             'confirm': {
                 'title': 'Apply security settings?',
                 'text': 'Security settings will be applied to all platform users and sub-users, except of the demo user.',
                 'btn': {
                     'apply': 'Apply',
-                    'cancel': 'Cancel',
+                    'cancel': 'Cancel'
                 }
-            },
-        },
+            }
+        }
     },
     "accounting": {
         "menu_text": "Accounting",
