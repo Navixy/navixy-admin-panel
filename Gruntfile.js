@@ -23,6 +23,7 @@ module.exports = function (grunt) {
                         'images/**',
                         'redirector/**',
                         'payment_gate/**',
+                        'payment_success/**',
                         'payment_link/**',
                         'dev/uploadHandler.html',
                         'dev/stickerPrint.html',
