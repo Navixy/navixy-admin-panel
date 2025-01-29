@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../PConfig.js"></script>
+    <script>
+        (async function getPaymentLink () {
+            const currentURL = new URL(location.href)
+            const apiEndpoint = 'payment_system/payment_link/create'
+            try {
+                const linkData = await fetch(`${Config.apiProfiles.japi.apiRoot}/${apiEndpoint}`, {
+                    method: 'POST',
+                    body: currentURL.searchParams
+                }).then(r => r.json())
+
+                if (linkData && linkData.success) {
+                    window.location = linkData.url
+                } else {
+                    throw new Error('Empty linkData')
+                }
+
+            } catch (e) {
+                alert('Payment link creation has failed')
+                console.log(e)
+            }
+        })()
+    </script>
+    <style>
+        .v-progress-circular {
+            position: relative;
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        .v-progress-circular--indeterminate svg {
+            -webkit-animation: progress-circular-rotate 1.4s linear infinite;
+            animation: progress-circular-rotate 1.4s linear infinite;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+            transition: all .2s ease-in-out;
+        }
+
+        .v-progress-circular svg {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .v-progress-circular--indeterminate .v-progress-circular__overlay {
+            -webkit-animation: progress-circular-dash 1.4s ease-in-out infinite;
+            animation: progress-circular-dash 1.4s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke-dasharray: 80, 200;
+            stroke-dashoffset: 0px;
+        }
+
+        .v-progress-circular__overlay {
+            stroke: currentColor;
+            z-index: 2;
+            transition: all .6s ease-in-out;
+        }
+
+        body {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .primary--text {
+            color: #1976d2 !important;
+            caret-color: #1976d2 !important;
+        }
+
+        @keyframes progress-circular-rotate {
+            100% {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn);
+            }
+        }
+
+        @keyframes progress-circular-dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0px;
+            }
+            50% {
+                stroke-dasharray: 100, 200;
+                stroke-dashoffset: -15px;
+            }
+            100% {
+                stroke-dasharray: 100, 200;
+                stroke-dashoffset: -125px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div role="progressbar" aria-valuemin="0" aria-valuemax="100"
+     class="v-progress-circular v-progress-circular--indeterminate primary--text" style="height: 100px; width: 100px;">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="20.833333333333336 20.833333333333336 41.66666666666667 41.66666666666667"
+         style="transform: rotate(0deg);">
+        <circle fill="transparent" cx="41.66666666666667" cy="41.66666666666667" r="20" stroke-width="1.666666666666667"
+                stroke-dasharray="125.664" stroke-dashoffset="125.66370614359172px"
+                class="v-progress-circular__overlay"></circle>
+    </svg>
+    <div class="v-progress-circular__info"></div>
+</div>
+</body>
+</html>
