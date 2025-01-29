@@ -1032,7 +1032,8 @@ Ext.define('Locale.locale-ru', {
             'waiting_activation_fee': 'Your payment was successfully executed and will be processed shortly.',
             'license_balance': 'Pending amount {0}',
             'pay_with_avangate': 'Pay with 2Checkout',
-            'pay_with_stripe': 'Pay with Stripe'
+            'pay_with_stripe': 'Pay with Stripe',
+            pay_with_bill: 'Банковский перевод'
         },
         'email_gateways': {
             'title': 'Email сообщения',
@@ -1194,7 +1195,7 @@ Ext.define('Locale.locale-ru', {
             premium_gis_link: ' <a href="{0}"  target="_blank">Подробнее</a>',
             paas_maps_is_unavailable: 'Данная карта недоступна на доменах {0}',
             'unavaliable': 'Недоступно',
-            'menu_preset': 'Шаблон меню по умолчанию',
+            'menu_preset': 'Шаблон меню по умолчанию'
         },
         'sms_gateway': {
             'navixy': {
@@ -1417,7 +1418,8 @@ Ext.define('Locale.locale-ru', {
         'payments': {
             'type': {
                 'avangate': '2Checkout',
-                'stripe': 'Stripe'
+                'stripe': 'Stripe',
+                bill: 'Банковский перевод'
             },
             'stripe': {
                 'header_text': 'You can pay by Visa, MasterCard, Maestro, and others.<br><br>',
@@ -1448,6 +1450,9 @@ Ext.define('Locale.locale-ru', {
                     '215': 'Error with Stripe operation',
                     '251': 'Not enough money on the card'
                 }
+            },
+            bill: {
+                text: 'Вы можете оплатить счет банковским переводом.'
             }
         },
         'security': {
@@ -1461,17 +1466,17 @@ Ext.define('Locale.locale-ru', {
                 'title_short': 'Двухфакторная аутентификация',
                 'email': 'Email',
                 'authenticator_app': 'Приложения аутентификаторы (скоро появятся)',
-                'sms': 'SMS (скоро появится)',
+                'sms': 'SMS (скоро появится)'
             },
             'confirm': {
                 'title': 'Применить настройки безопасности?',
                 'text': 'Настройки безопасности будут применены ко всем пользователям и суб-пользователям платформы, кроме демо-пользователя.',
                 'btn': {
                     'apply': 'Применить',
-                    'cancel': 'Отмена',
+                    'cancel': 'Отмена'
                 }
-            },
-        },
+            }
+        }
     },
     'accounting': {
         'menu_text': 'Выгрузки',

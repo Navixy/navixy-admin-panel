@@ -1471,6 +1471,9 @@ Ext.define("Locale.locale-en", {
                     "215": "Error with Stripe operation",
                     "251": "Not enough money on the card"
                 }
+            },
+            bill: {
+                text: 'You can make a bank transfer to cover your monthly payment.'
             }
         },
         'security': {

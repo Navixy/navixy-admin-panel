@@ -113,7 +113,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
             } : {
                 xtype: 'component',
                 padding: 24,
-                html: 'Please contact the manager for further instructions'
+                html: _l.get('settings.payments.bill.text')
             }, hintCmp];
         } else {
             var balance = dealerData.license_balance
