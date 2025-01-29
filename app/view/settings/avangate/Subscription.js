@@ -99,7 +99,7 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 xtype: 'component',
                 padding: '10 0',
                 html: Ext.String.format(localePart.get('activation_hint'), tracker_tariff_end_date)
-            }, {
+            }, Ext.getStore('PaymentSystems').hasAvangate() ? {
                 xtype: 'button',
                 height: 30,
                 scale: 'small',
@@ -110,6 +110,10 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
                 href: this.constructAvangateLink('activation', {
                     dealer_id: dealerData.id
                 })
+            } : {
+                xtype: 'component',
+                padding: 24,
+                html: 'Please contact the manager for further instructions'
             }, hintCmp];
         } else {
             var balance = dealerData.license_balance
@@ -195,9 +199,9 @@ Ext.define('NavixyPanel.view.settings.avangate.Subscription', {
 
         if (qtyField.isValid()) {
             window.open(this.constructAvangateLink('monthlyFee', {
-                    qty: qtyField.getValue(),
-                    dealer_id: Ext.getStore('Dealer').getAt(0).getId()
-                }
+                        qty: qtyField.getValue(),
+                        dealer_id: Ext.getStore('Dealer').getAt(0).getId()
+                    }
                 ),
                 '_blank')
         }

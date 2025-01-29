@@ -10,10 +10,10 @@ Ext.define('NavixyPanel.store.PaymentSystems', {
     storeId: 'PaymentSystems',
 
     hasSubscription: function () {
-        return this.getData().length
+        return !!this.count()
     },
 
     hasAvangate: function () {
-        return this.getData().length
+        return this.find('type', 'avangate') > -1;
     }
 })
