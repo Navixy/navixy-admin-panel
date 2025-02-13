@@ -31,7 +31,6 @@ Ext.define('NavixyPanel.model.Tariff', {
 
         {name: 'incoming_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'outgoing_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
-        {name: 'phone_call', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'service_sms', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
         {name: 'traffic', type: 'float', convert: function (value, record) {return record.pricesConverter(this, value);}},
 
@@ -46,7 +45,6 @@ Ext.define('NavixyPanel.model.Tariff', {
     pricesMap: {
         incoming_sms: 'incoming_sms',
         outgoing_sms: 'outgoing_sms',
-        phone_call: 'phone_call',
         service_sms: 'service_sms',
         traffic: 'traffic'
     },
@@ -71,7 +69,6 @@ Ext.define('NavixyPanel.model.Tariff', {
             'proportional_charge',
             'incoming_sms',
             'outgoing_sms',
-            'phone_call',
             'service_sms',
             'traffic',
             'features',
@@ -90,7 +87,6 @@ Ext.define('NavixyPanel.model.Tariff', {
             'proportional_charge',
             'incoming_sms',
             'outgoing_sms',
-            'phone_call',
             'service_sms',
             'traffic',
             'features',
@@ -112,7 +108,6 @@ Ext.define('NavixyPanel.model.Tariff', {
             'proportional_charge',
             'incoming_sms',
             'outgoing_sms',
-            'phone_call',
             'service_sms',
             'traffic',
             'features',

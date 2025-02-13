@@ -534,15 +534,6 @@ Ext.define('NavixyPanel.view.tariffs.NewCard', {
                 html: this.getTariffPriceText('traffic', tariffPrices, seller_currency),
                 cellCls: isSubpaas ? 'hidden' : ''
             },
-
-            // 10 -------------------------------------------------------------------- //
-            { html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6')) },
-            {},
-            Ext.apply({ name: 'phone_call' }, getPriceConfig()),
-            {
-                html: this.getTariffPriceText('phone_call', tariffPrices, seller_currency),
-                cellCls: isSubpaas ? 'hidden' : ''
-            }
         ];
     },
 

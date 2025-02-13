@@ -22,10 +22,6 @@ Ext.define('NavixyPanel.store.TariffPrices', {
             type: 'auto'
         },
         {
-            name: 'phone_call',
-            type: 'auto'
-        },
-        {
             name: 'traffic',
             type: 'auto'
         }

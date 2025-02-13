@@ -641,7 +641,6 @@ Ext.define('Locale.locale-fr',{
             "incoming_sms": "SMS entrants",
             "outgoing_sms": "SMS sortants",
             "service_sms": "Service SMS",
-            "phone_call": "Appels téléphoniques",
             "traffic": "GPRS rate (per Mb)",
             "default_tariff": "plan par défaut pour les périphériques avec le type « {0} »",
             "default_short": "par défaut",
@@ -881,7 +880,6 @@ Ext.define('Locale.locale-fr',{
             "display_model_features_link": "Afficher un lien vers un site Web avec des informations sur le modèle",
             "display_model_features_link_hint": "L'utilisateur peut être fourni avec des informations supplémentaires sur le modèle de l'appareil activé",
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
-            "show_call_notifications": "Permettre la configuration de la notification de la voix",
             "monitoring_logo_clickable": "Cliquez sur le logo de l'interface ouvre un site web promo"
         },
         "edit_form": {

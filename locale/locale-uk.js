@@ -640,7 +640,6 @@ Ext.define('Locale.locale-uk',{
             "incoming_sms": "Вхідні SMS",
             "outgoing_sms": "Вихідні SMS",
             "service_sms": "Послуга SMS",
-            "phone_call": "Телефонні дзвінки",
             "traffic": "GPRS rate (per Mb)",
             "default_tariff": "тариф за замовчуванням для пристроїв типу «{0}»",
             "default_short": "за замовчуванням",
@@ -880,7 +879,6 @@ Ext.define('Locale.locale-uk',{
             "monitoring_logo_hint": "Additional logo that is shown in the user web interface (above menu)",
             "display_model_features_link": "Show a link to a website with information about the model",
             "display_model_features_link_hint": "User can be provided with additional information about the model of the device activated",
-            "show_call_notifications": "Allow configuration of voice notifications",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site"
         },
         "edit_form": {

@@ -762,7 +762,6 @@ Ext.define('Locale.locale-tr',{
             "incoming_sms": "Gelen SMS",
             "outgoing_sms": "Giden SMS",
             "service_sms": "Servis SMS",
-            "phone_call": "Telefon aramaları",
             "traffic": "GPRS rate (per Mb)",
             "default_tariff": "«{0}» tip cihazlar için varsayılan tarife",
             "default_short": "varsayılan",
@@ -1014,8 +1013,6 @@ Ext.define('Locale.locale-tr',{
             "sms_inbound_hint": "Önermiyoruz fakat dilerseniz nümerik yada alfanümerik bir Gönderen ID belirtebilirsiniz, bu durumda sistem cihazlardan SMS mesajlarını alamayacaktır. Bu durum sms servisinin düzgün çalışmamasına sebebiyet verebilir.",
             "display_model_features_link": "Model hakkında bilgi içeren web bağlantısını göster",
             "display_model_features_link_hint": "Kullanıcı aktif ettiği cihaz ile ilgili ayrıntılı bilgi edinebilir",
-            "show_call_notifications": "Ses bildirimleri konfigürasyonuna izin",
-            "show_call_notifications_hint": "",
             "monitoring_logo_clickable": "Click on the logo in the interface opens a promo web-site",
             "monitoring_logo_clickable_hint": ""
         },

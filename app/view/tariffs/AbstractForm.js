@@ -258,20 +258,6 @@ Ext.define('NavixyPanel.view.tariffs.AbstractForm', {
                 padding: '0 0 5 0',
                 items: [
                     Ext.apply({
-                        fieldLabel: _l.get('tariffs.fields.phone_call'),
-                        name: 'phone_call'
-                    }, numericDefaults),
-                    Ext.apply({
-                        html: '+' + tariffPrices.phone_call
-                    }, priceDefaults)
-                ]
-            },
-            {
-                xtype: 'container',
-                layout: 'hbox',
-                padding: '0 0 5 0',
-                items: [
-                    Ext.apply({
                         fieldLabel: _l.get('tariffs.fields.traffic'),
                         name: 'traffic'
                     }, numericDefaults),
