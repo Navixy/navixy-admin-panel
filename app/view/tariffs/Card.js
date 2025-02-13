@@ -423,17 +423,6 @@ Ext.define('NavixyPanel.view.tariffs.Card', {
             {
                 html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.traffic, '0.000'))
             },
-
-            {
-                html: _l.get('tariffs.fields.phone_call') + this.getHintSymbol(_l.get('tariffs.card.hints.6'))
-            },
-            {},
-            {
-                html: '<span class="pre_note">' + Ext.String.format(_l.get('currencies_tpls')[currency], Ext.util.Format.number(recordData.phone_call, '0.000')) + '</span>'
-            },
-            {
-                html: '<span class="note" data-qtip="' + _l.get('tariffs.fields.service_price') + '">+' + Ext.String.format(_l.get('currencies_tpls')[seller_currency], Ext.util.Format.number(tariffPrices.phone_call, '0.000'))
-            }
         ]
     },
 
