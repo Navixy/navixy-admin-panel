@@ -47,6 +47,7 @@ $light-field-focus-border-color: $main-color;
 
     .x-form-invalid-field {
         border-color: $invalid-color !important;
+        outline: none;
     }
 
     .x-form-invalid-under {

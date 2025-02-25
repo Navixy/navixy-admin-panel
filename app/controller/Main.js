@@ -385,6 +385,14 @@ Ext.define('NavixyPanel.controller.Main', {
             rurlText: Ext.form.field.VTypes.urlText,
             rurlVal: /(((^https?)|(^ftp)):\/\/([\-а-яёa-z0-9]+\.)+[а-яёa-z0-9]{2,3}(\/[%\-а-яёa-z0-9]+(\.[а-яёa-z0-9]{2,})?)*(([а-яёa-z0-9\-\.\?\\\/+@&#;`~=%!]*)(\.[а-яёa-z0-9]{2,})?)*\/?)/i
         })
+
+        Ext.apply(Ext.form.field.VTypes, {
+            basicurl: function (v) {
+                return Ext.form.VTypes['basicurlVal'].test(v) || Ext.form.VTypes['rurlVal'].test(v)
+            },
+            basicurlText: Ext.form.field.VTypes.basicurlText,
+            basicurlVal: /^((https|http):\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:[0-9]{1,5})?(\/[^\s]*)?(\?[^\s]*)?(#[^\s]*)?$/i
+        })
     },
 
     // Special Overrides

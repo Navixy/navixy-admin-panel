@@ -357,7 +357,7 @@ Ext.define('Locale.Manager', {
     },
 
     getLocale: function () {
-        return this._locale;
+        return this._locale || 'en';
     },
 
     getLocaleId: function () {

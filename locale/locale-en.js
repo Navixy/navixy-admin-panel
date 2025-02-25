@@ -1398,9 +1398,19 @@ Ext.define("Locale.locale-en", {
             "support": "Support",
             "device_settings_checkbox": "Show Devices and Settings menu item",
             "device_settings_checkbox_hint": "The setting will be applied to all users. However, you can enable or disable this option for each user individually in the user profile",
-            "display_release_notes": "Display release notes",
-            "display_release_notes_hint": "This option enables the display of release updates history within the user interface. Languages supported natively are English, Spanish, French, and Russian.",
             "menu_editor": "Menu editor"
+        },
+        "custom_links": {
+            "user_guides": "Display Help",
+            "user_guides_hint": "This option enables the user documentation within the user interface. By default, the Navixy user guides will be displayed.",
+            "release_notes": "Display What’s new",
+            "release_notes_hint": "This option enables the release updates within the user interface. By default, the Navixy release notes will be displayed.",
+            "url_validation_error": "This field should be a URL in the format \"https://www.example.com\"",
+            "embedded": "Embedded",
+            "new_tab": "New Tab",
+            "restore_default_link": "Restore default link",
+            "preview_the_link": "Preview the link",
+            "confirm_action": "Confirm action",
         },
         "upload_form": {
             "save_btn": "Upload",

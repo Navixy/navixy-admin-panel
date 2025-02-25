@@ -188,7 +188,7 @@ Ext.define("Ext.locale.de.form.field.ComboBox", {
 Ext.define("Ext.locale.de.form.field.VTypes", {
     override: "Ext.form.field.VTypes",
     emailText: 'Dieses Feld sollte eine E-Mail-Adresse enthalten. Format: "user@example.com"',
-    urlText: 'Dieses Feld sollte eine URL enthalten. Format: "http:/' + '/www.example.com"',
+    urlText: 'Dieses Feld sollte eine URL enthalten. Format: "https:/' + '/www.example.com"',
     alphaText: 'Dieses Feld darf nur Buchstaben enthalten und _',
     alphanumText: 'Dieses Feld darf nur Buchstaben und Zahlen enthalten und _'
 });

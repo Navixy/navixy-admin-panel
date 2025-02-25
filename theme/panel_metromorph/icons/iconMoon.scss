@@ -10,7 +10,7 @@
 }
 
 [class^="icon-"], [class*=" icon-"],
-    .icon-close, .icon-search, .icon-cogs, .icon-save, .icon-cancel, .icon-gear, .icon-camera, .icon-help, .icon-bell, .icon-pencil, .icon-location-2, .icon-coin, .icon-globe, .icon-last-update, .icon-sorter-asc, .icon-sorter-group, .icon-remove, .icon-eye-open, .icon-plus, .icon-location, .icon-user, .icon-legal-entity, .icon-sole-trader, .icon-lightning, .icon-light, .icon-close2
+	.icon-reload, .icon-refresh, .icon-reset, .icon-close, .icon-search, .icon-cogs, .icon-save, .icon-cancel, .icon-gear, .icon-camera, .icon-help, .icon-bell, .icon-pencil, .icon-location-2, .icon-coin, .icon-globe, .icon-last-update, .icon-sorter-asc, .icon-sorter-group, .icon-remove, .icon-eye-open, .icon-plus, .icon-location, .icon-user, .icon-legal-entity, .icon-sole-trader, .icon-lightning, .icon-light, .icon-close2
     {
 	font-family: 'panel_metromorph';
 	speak: none;
@@ -25,6 +25,15 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-reload:before {
+	content: "\e900";
+}
+.icon-refresh:before {
+	content: "\e900";
+}
+.icon-reset:before {
+	content: "\e900";
+}
 .icon-close:before {
 	content: "\e601";
 }

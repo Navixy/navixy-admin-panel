@@ -144,7 +144,7 @@ Ext.define("Ext.locale.ukr.form.field.ComboBox", {
 Ext.define("Ext.locale.ukr.form.field.VTypes", {
     override: "Ext.form.field.VTypes",
     emailText: 'Це поле повинно містити адресу електронної пошти у форматі "user@example.com"',
-    urlText: 'Це поле повинно містити URL у форматі "http:/' + '/www.example.com"',
+    urlText: 'Це поле повинно містити URL у форматі "https:/' + '/www.example.com"',
     alphaText: 'Це поле повинно містити виключно латинські літери та символ підкреслення "_"',
     alphanumText: 'Це поле повинно містити виключно латинські літери, цифри та символ підкреслення "_"'
 });
