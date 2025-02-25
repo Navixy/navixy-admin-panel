@@ -16,6 +16,8 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         'NavixyPanel.view.settings.components.Security',
         'NavixyPanel.view.settings.components.SecurityChangesConfirm',
         'NavixyPanel.view.settings.components.Map',
+        'NavixyPanel.view.settings.components.InformationCenterSettings',
+        'NavixyPanel.constants.InformationCenterLinks',
         'NavixyPanel.plugins.ComboGoogleFilter',
     ],
 
@@ -149,7 +151,7 @@ Ext.define('NavixyPanel.view.settings.Edit', {
     },
 
     doFormReset: function () {
-        this.applyRecordData();;
+        this.applyRecordData();
         this.resetMfaData();
     },
 
@@ -174,6 +176,26 @@ Ext.define('NavixyPanel.view.settings.Edit', {
         if (lbs) {
             var lbsLabel = this.getLbsProvidersDisplayValue(this.down('[role=lbs_select]').getValue());
             lbs.setValue(lbsLabel);
+        }
+
+        var informationCenterData = this.record.get('information_center')
+
+        if (informationCenterData) {
+            var releaseNotesResetButton = this.down('[name=release_notes_reset_button]');
+            var releaseNotesLink = this.down('[name=release_notes_url]').getValue();
+            var defaultReleaseNotesLink = NavixyPanel.constants.InformationCenterLinks.getReleaseNotesLink();
+
+            if (releaseNotesResetButton.getEl()) {
+                releaseNotesResetButton.getEl().setVisible(defaultReleaseNotesLink.indexOf(releaseNotesLink) < 0);
+            }
+
+            var userGuidesResetButton = this.down('[name=user_guides_reset_button]');
+            var userGuidesTeLink = this.down('[name=user_guides_url]').getValue();
+            var defaultUserGuidesLink = NavixyPanel.constants.InformationCenterLinks.getDocsLink();
+
+            if (userGuidesResetButton.getEl()) {
+                userGuidesResetButton.getEl().setVisible(defaultUserGuidesLink.indexOf(userGuidesTeLink) < 0);
+            }
         }
     },
 
@@ -448,9 +470,17 @@ Ext.define('NavixyPanel.view.settings.Edit', {
                                 items: this.getServiceItemsLeft()
                             },
                             {
-                                xtype: 'settings-map',
-                                record: this.record
-                            }
+                                items: [
+                                    {
+                                        xtype: 'settings-map',
+                                        record: this.record
+                                    },
+                                    {
+                                        xtype: 'information-center-settings',
+                                        record: this.record
+                                    },
+                                ],
+                            },
                         ]
                     }
                 ]

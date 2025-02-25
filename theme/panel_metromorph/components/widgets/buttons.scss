@@ -68,6 +68,20 @@ $defaultSizeFormBtnIcon: 16px;
     @include glyph-button;
 }
 
+.reset-button {
+    @extend .icon-reset;
+    @include glyph-button;
+
+    left: 0;
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(-1, 1) translate(50%, -50%)
+    }
+}
+
 .select-all-button {
     .checkbox {
         &.x-btn-icon-el {
@@ -162,4 +176,10 @@ a{
     .x-btn-icon-el {
         color: $baseFontColor;
     }
+}
+
+.no-opacity-btn.x-item-disabled {
+    cursor: default !important;
+    opacity: 1;
+    background: #d1d1d1;
 }

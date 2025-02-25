@@ -138,6 +138,8 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 xtype: 'checkboxgroup',
                 role: 'map_types_select',
                 fieldLabel: _l.get('settings.fields.maps_title') + Ext.getHintSymbol(mapHint) + googleKeyLink,
+                labelAlign: 'top',
+                labelSeparator: '',
                 allowBlank: false,
                 columns: 1,
                 vertical: true,
@@ -329,20 +331,10 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
                 role: 'map-edit-button',
                 padding: 3,
                 width: 175,
-                margin: '20 0 0 10',
+                margin: '20 0 0 0',
                 text: _l.get('settings.edit_form.map_edit_btn'),
                 scope: this,
                 handler: this.fireEditMap
-            } ,  {
-                xtype: 'blockheader',
-                html: _l.get('settings.edit_form.support'),
-                margin: '0 0 0 5'
-            },
-            {
-                xtype: 'checkbox',
-                role: 'checkbox',
-                boxLabel: _l.get('settings.edit_form.display_release_notes') + Ext.getHintSymbol(_l.get('settings.edit_form.display_release_notes_hint')),
-                name: 'display_release_notes'
             }
         ];
     },
@@ -409,5 +401,5 @@ Ext.define('NavixyPanel.view.settings.components.Map', {
     onGisFieldsChange: function () {
         this.updatedRecord(this.getRecordChanges())
         Ext.getFirst('settingsedit').renderGisFields()
-    }
+    },
 });

@@ -130,9 +130,54 @@ Ext.define('NavixyPanel.model.Settings', {
             type: 'string'
         },
         {
-            name: 'display_release_notes',
+            name: 'show_call_notifications',
             type: 'boolean'
         },
+        {
+            name: 'release_notes',
+            type: 'boolean',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value;
+                }
+
+                return record.get('information_center').release_notes.visible;
+            },
+        },
+        {
+            name: 'release_notes_url',
+            type: 'string',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value;
+                }
+
+                return record.get('information_center').release_notes.content.source || NavixyPanel.constants.InformationCenterLinks.getReleaseNotesLink();
+            },
+        },
+        {
+            name: 'user_guides',
+            type: 'boolean',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value;
+                }
+
+                return record.get('information_center').user_guides.visible;
+            },
+        },
+        {
+            name: 'user_guides_url',
+            type: 'string',
+            convert: function (value, record) {
+                if (!Ext.isEmpty(value)) {
+                    return value;
+                }
+
+                return record.get('information_center').user_guides.content.source || NavixyPanel.constants.InformationCenterLinks.getDocsLink();
+            },
+        },
+        'information_center',
         {
             name: 'no_register_commands',
             type: 'boolean'
@@ -425,6 +470,20 @@ Ext.define('NavixyPanel.model.Settings', {
         var changes = this.getChanges(),
             result = {};
 
+        if (changes.release_notes !== undefined || changes.release_notes_url !== undefined) {
+            result = Ext.apply(
+                result,
+                this.getInformationCenterChanges('release_notes', changes.release_notes, changes.release_notes_url)
+            );
+        }
+
+        if (changes.user_guides !== undefined || changes.user_guides_url !== undefined) {
+            result = Ext.apply(
+                result,
+                this.getInformationCenterChanges('user_guides', changes.user_guides, changes.user_guides_url)
+            );
+        }
+
         Ext.iterate(changes, function (fieldName, fieldValue) {
             if (!this.notificationMap[fieldName]
                 && !this.defaultUserSettingsMap[fieldName]
@@ -518,6 +577,9 @@ Ext.define('NavixyPanel.model.Settings', {
         if (!Ext.getStore('Dealer').getFeature('branding_mobile')) {
             delete data['app_color_theme'];
         }
+
+        data.information_center = Ext.encode(data.information_center)
+
         return data;
     },
 
@@ -526,7 +588,8 @@ Ext.define('NavixyPanel.model.Settings', {
     },
 
     isDomainChanged: function () {
-        var changes = this.getServiceChanges();
+        var changes = this.getChanges()
+
         return !!(changes && changes.domain);
     },
 
@@ -575,5 +638,34 @@ Ext.define('NavixyPanel.model.Settings', {
             type: changes.mfa_type,
             factor_types: changes.mfa_factor_types || [],
         };
+    },
+
+    getInformationCenterChanges: function (key, isVisible, source) {
+        var DEFAULT_LINK = {
+            RELEASE_NOTES: NavixyPanel.constants.InformationCenterLinks.getReleaseNotesLink(),
+            USER_GUIDES: NavixyPanel.constants.InformationCenterLinks.getDocsLink(),
+        };
+
+        var changes = {};
+        var informationCenter = this.get('information_center');
+
+        if (informationCenter && informationCenter[key]) {
+            if (isVisible !== undefined) {
+                informationCenter[key].visible = isVisible;
+                Ext.apply(changes, { information_center: informationCenter });
+            }
+
+            if (source !== undefined) {
+                var defaultLink = DEFAULT_LINK[key.toUpperCase()];
+
+                informationCenter[key].content = defaultLink.indexOf(source) > -1
+                    ? { type: 'default' }
+                    : { type: 'custom', source: source };
+
+                Ext.apply(changes, { information_center: informationCenter });
+            }
+        }
+
+        return changes;
     },
 });
