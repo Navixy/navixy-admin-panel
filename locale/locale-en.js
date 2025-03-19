@@ -1952,7 +1952,7 @@ Ext.define("Locale.locale-en", {
     "features": {
         "api": "API",
         "app_tasks": "Field service",
-        "app_tasks_link": "<a href='https://en.docs.navixy.com/ud/tasks' target='_blank'>{0}</a>",
+        "app_tasks_link": "<a href='https://en.docs.navixy.com/ud/field-service' target='_blank'>{0}</a>",
         "app_fleet": "Fleet",
         "app_reports": "Reports",
         "app_reports_link": "<a href='https://en.docs.navixy.com/ud/reports-docs' target='_blank'>{0}</a>",

@@ -1912,7 +1912,7 @@ Ext.define('Locale.locale-ru', {
     'features': {
         'api': 'API',
         'app_tasks': 'Задания',
-        'app_tasks_link': '<a href=\'https://ru.docs.navixy.com/ud/tasks\' target=\'_blank\'>{0}</a>',
+        'app_tasks_link': '<a href=\'https://ru.docs.navixy.com/ud/field-service\' target=\'_blank\'>{0}</a>',
         'app_fleet': 'Автопарк',
         'app_reports': 'Отчеты',
         'app_reports_link': '<a href=\'https://ru.docs.navixy.com/ud/reports-docs\' target=\'_blank\'>{0}</a>',
