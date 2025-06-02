@@ -8,7 +8,7 @@ Ext.define('NavixyPanel.store.PaasPlugins', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.PaasPlugin',
     storeId: 'PaasPlugins',
-    autoLoad: true,
+    autoLoad: false,
     api: {
         read: 'getPaasPlugins'
     },
