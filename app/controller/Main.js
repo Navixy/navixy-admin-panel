@@ -606,7 +606,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
     handleHistory: function () {
         var eventConfig = Ext.Nav.getEventConfig()
-
+console.log(eventConfig)
         if (eventConfig) {
             this.checkHandlerLoad()
             this.application.fireEvent(eventConfig.name, eventConfig.params || null)

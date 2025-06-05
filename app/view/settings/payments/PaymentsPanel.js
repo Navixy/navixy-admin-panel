@@ -2,7 +2,7 @@ Ext.define('NavixyPanel.view.settings.payments.PaymentsPanel', {
     extend: 'Ext.Panel',
     alias: 'widget.payments-panel',
     cls: 'payments-panel',
-    requires: ['NavixyPanel.view.components.AbstractMenu', 'NavixyPanel.view.settings.stripe.Stripe'],
+    requires: ['NavixyPanel.view.components.AbstractMenu', 'NavixyPanel.view.settings.stripe.Stripe', 'NavixyPanel.view.settings.bill.Bill'],
     height: 500,
     initComponent: function () {
         this.title = 'Subscription';
@@ -48,13 +48,26 @@ Ext.define('NavixyPanel.view.settings.payments.PaymentsPanel', {
             }, {
                 xtype: 'stripe-panel',
                 itemId: 'stripe-part'
+            }, {
+                xtype: 'bill-panel',
+                itemId: 'bill-part'
             }]
         }
         this.callParent(arguments)
     },
 
     getMenuItems: function () {
-        return Ext.getStore('PaymentSystems').getData().reduce(function (items, record) {
+        var paymentSystems = Ext.getStore('PaymentSystems').getData()
+
+        if (paymentSystems.length === 1 && paymentSystems[0].type === 'bill') {
+            return [{
+                text: _l.get('settings.payments.type.bill'),
+                id: 'bill',
+                part: 'bill'
+            }]
+        }
+
+        return paymentSystems.reduce(function (items, record) {
             if (record.type !== 'bill') {
                 items.push({
                     text: _l.get('settings.payments.type.' + record.type),
