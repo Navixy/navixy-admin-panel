@@ -21,6 +21,8 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
         FATAL_ERROR: true
     },
 
+    _messageBox: null,
+
     maybeLoadErrors: function () {
         if (!this.getCount()) {
             this.loadData(this.getErrors());
@@ -172,10 +174,21 @@ Ext.define('NavixyPanel.store.ErrorsManager', {
                                                                         error.error].join(" "), '</p>');
         }, this);
 
-        Ext.MessageBox.show({
+        if (this._messageBox) {
+            this._messageBox.destroy();
+        }
+
+        this._messageBox = Ext.MessageBox.show({
+            cls: 'error-message-box',
             title: _l.get('error'),
             msg: [( msg.length ? msg.join('') : _l.get('errors')[code].default_msg) || _l.get('errors')[code] || desc].join('') || desc
         });
+    },
+
+    hideErrorMessage: function () {
+        if (this._messageBox) {
+            this._messageBox.hide();
+        }
     },
 
     showInvalidParameterMsg: function (code, parameters, response) {
