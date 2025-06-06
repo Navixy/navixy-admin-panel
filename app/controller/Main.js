@@ -649,6 +649,7 @@ Ext.define('NavixyPanel.controller.Main', {
 
         if (form && form.isValid()) {
             Ext.getBody().mask(_l.get('loading'))
+            Ext.getStore('ErrorsManager').hideErrorMessage();
             authWindow.hide()
             Ext.API.authUser(this.onUserAuth, this.onUserAuthFailure, values, this)
         }
