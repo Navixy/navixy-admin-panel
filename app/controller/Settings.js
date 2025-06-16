@@ -258,14 +258,16 @@ Ext.define('NavixyPanel.controller.Settings', {
         var mfaChanges = record.getMfaChanges();
 
         if (mfaChanges.type) {
-            requestsCnt++;
+            requestsCnt += 2; // this.handleMfaChanges has 2 requests
 
             var successCallback = function (response) {
                 if (--requestsCnt === 0) {
+                    Ext.getBody().unmask();
                     this.afterSettingsEdit(response, record);
                 }
             }.bind(this);
             var failureCallback = function (response) {
+                Ext.getBody().unmask();
                 this.afterSettingsEditFailure(response, record);
             }.bind(this);
 
@@ -407,6 +409,8 @@ Ext.define('NavixyPanel.controller.Settings', {
         this.securityChangesConfirmWindow = Ext.create('SecurityChangesConfirm', {
             onApply: function () {
                 var settings = record.getMfaChanges();
+
+                Ext.getBody().mask(_l.get('loading'))
 
                 Ext.API.updateDefaultMfaSettings({
                     scope: me,
