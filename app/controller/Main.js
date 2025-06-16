@@ -747,6 +747,8 @@ Ext.define('NavixyPanel.controller.Main', {
 
         Ext.getBody().mask(_l.get('conneting_loader'))
 
+        Ext.getStore('PaasPlugins').load()
+
         Ext.API.batch(calls, {
             callback: function (results) {
                 Ext.getBody().unmask()
