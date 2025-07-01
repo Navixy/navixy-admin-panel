@@ -463,7 +463,8 @@ Ext.define('NavixyPanel.controller.Users', {
         Ext.Msg.show({
             title: _l.get('success'),
             msg: Ext.String.format(_l.get('users.corrupt.success_msg'), name),
-            buttons: Ext.Msg.OK
+            buttons: Ext.Msg.OK,
+            width: 384,
         });
 
         Ext.Nav.shift('users');
