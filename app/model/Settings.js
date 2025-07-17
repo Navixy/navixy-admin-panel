@@ -141,7 +141,13 @@ Ext.define('NavixyPanel.model.Settings', {
                     return value;
                 }
 
-                return record.get('information_center').release_notes.visible;
+                var releaseNotes = record.get('information_center').release_notes;
+
+                if (releaseNotes && releaseNotes.visible !== undefined) {
+                    return releaseNotes.visible;
+                }
+
+                return false;
             },
         },
         {
@@ -152,7 +158,14 @@ Ext.define('NavixyPanel.model.Settings', {
                     return value;
                 }
 
-                return record.get('information_center').release_notes.content.source || NavixyPanel.constants.InformationCenterLinks.getReleaseNotesLink();
+                var releaseNotes = record.get('information_center').release_notes;
+                var defaultLink = NavixyPanel.constants.InformationCenterLinks.getReleaseNotesLink();
+
+                if (releaseNotes && releaseNotes.content && releaseNotes.content.source !== undefined) {
+                    return releaseNotes.content.source || defaultLink;
+                }
+
+                return defaultLink;
             },
         },
         {
@@ -163,7 +176,13 @@ Ext.define('NavixyPanel.model.Settings', {
                     return value;
                 }
 
-                return record.get('information_center').user_guides.visible;
+                var userGuides = record.get('information_center').user_guides;
+
+                if (userGuides && userGuides.visible !== undefined) {
+                    return userGuides.visible;
+                }
+
+                return false;
             },
         },
         {
@@ -174,7 +193,14 @@ Ext.define('NavixyPanel.model.Settings', {
                     return value;
                 }
 
-                return record.get('information_center').user_guides.content.source || NavixyPanel.constants.InformationCenterLinks.getDocsLink();
+                var userGuides = record.get('information_center').user_guides;
+                var defaultLink = NavixyPanel.constants.InformationCenterLinks.getDocsLink();
+
+                if (userGuides && userGuides.content && userGuides.content.source !== undefined) {
+                    return userGuides.content.source || defaultLink;
+                }
+
+                return defaultLink;
             },
         },
         'information_center',
