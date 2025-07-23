@@ -8,18 +8,23 @@ Ext.define('NavixyPanel.store.Settings', {
     extend: 'NavixyPanel.store.Abstract',
     model: 'NavixyPanel.model.Settings',
     storeId: 'Settings',
-//    apiCall: 'getSettingsService,getSettingsNotification',
     api: {
         record: [
             'getDefaultMenu',
-            'getSettingsService',
-            'getSettingsNotification',
             'requestDefaultMfaSettings',
         ]
     },
 
-    loadRecord: function (recordId, callback, scope, loadAssociations, failure) {
+    loadRecord: function (recordId, callback, scope) {
         var apiRecord = this.api.record;
+
+        if (Ext.checkPermission('service_settings', 'read')) {
+            apiRecord.push('getSettingsService');
+        }
+
+        if (Ext.checkPermission('notification_settings', 'read')) {
+            apiRecord.push('getSettingsNotification');
+        }
 
         if (Ext.getStore('Dealer').isMenuPresetsAvailable()) {
             apiRecord.push('requestMenuPresetsList');
