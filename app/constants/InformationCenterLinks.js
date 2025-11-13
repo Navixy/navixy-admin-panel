@@ -2,9 +2,12 @@ Ext.define('NavixyPanel.constants.InformationCenterLinks', {
     singleton: true,
 
     DOCS: {
-        DEFAULT: 'https://en.docs.navixy.com/ud/',
-        ES: 'https://es.docs.navixy.com/ud/',
-        RU: 'https://ru.docs.navixy.com/ud/',
+        DEFAULT: 'https://squaregps.gitbook.io/in-app/',
+        ES: 'https://squaregps.gitbook.io/in-app/',
+        RU: 'https://squaregps.gitbook.io/in-app/user-guide-ru',
+        FR: 'https://squaregps.gitbook.io/in-app/user-guide-fr',
+        PT_BR: 'https://squaregps.gitbook.io/in-app/user-guide-pt-br',
+        ID: 'https://squaregps.gitbook.io/in-app/user-guide-id',
     },
 
     RELEASE_NOTES: 'https://release.x-gps.app/',
