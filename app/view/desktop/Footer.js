@@ -30,14 +30,14 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
                 padding: 20,
                 style: { textAlign: 'center' },
                 layout: {
-                    type: 'hbox',
-                    align: 'center'
+                    type: 'hbox'
                 },
                 items: [{
                     xtype: 'component',
                     html: copyrightCmp + ' ' + privacyPolicy
                 }, {
                     xtype: 'clickable',
+                    width: 163,
                     html: '<a>About Navixy Admin Panel</a>',
                     listeners: {
                         click: this.showAboutPopup
@@ -51,7 +51,7 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
     isNavixy: function () {
         return Config.hideNavixyLogo && /navixy\.(com|ru)/gi.test(location.hostname) || !Config.hideNavixyLogo
     },
-    showAboutPopup: function  () {
+    showAboutPopup: function () {
         Ext.widget('about-popup')
     }
 
