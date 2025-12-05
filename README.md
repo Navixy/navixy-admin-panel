@@ -33,7 +33,7 @@ proprietary terms.
 The Navixy Admin Console front-end is licensed under the
 **GNU General Public License, version 3 (GPLv3)**.
 
-See the [`LICENSE`](./LICENSE) file in this repository for the full
+See the [`LICENSE`](./LICENSE.txt) file in this repository for the full
 license text.
 
 By using, modifying, or distributing this code, you agree to the terms
