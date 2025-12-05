@@ -636,9 +636,27 @@ Ext.define('NavixyPanel.controller.Main', {
     },
 
     showAuth: function () {
-
-        Ext.widget('authwindow', {
-            renderTo: Ext.getBody()
+        Ext.widget('container', {
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
+            width: '100vw',
+            height: '100vh',
+            renderTo: Ext.getBody(),
+            items: [{
+                xtype: 'container',
+                flex: 1,
+                items: [{
+                    xtype: 'authwindow'
+                }]
+            },
+                {
+                    xtype: 'mainfooter',
+                    height: 200,
+                    padding:'0 0 20 0',
+                    width: '100%'
+                }]
         })
     },
 

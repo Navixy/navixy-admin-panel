@@ -12,12 +12,13 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
         pack: 'end',
         align: 'center'
     },
+    requires: ['NavixyPanel.view.desktop.AboutPopup'],
 
     // TODO: Footer and copyright styles;
     // TODO: Return "terms of use" to the footer when the text is ready
     initComponent: function () {
-        var copyright = Ext.isNavixy() ? _l.get('main_copyright') : _l.get('paas_main_copyright')
-        var privacyPolicy = Ext.isNavixy() ? _l.get('privacy_policy') : ''
+        var copyright = this.isNavixy() ? _l.get('main_copyright') : _l.get('paas_main_copyright')
+        var privacyPolicy = this.isNavixy() ? _l.get('privacy_policy') : ''
         var copyrightCmp = '<span>' + copyright + '</span>'
         // var privacyPolicy = Ext.isNavixy() ? (_l.get('privacy_policy') + ' | ') : '';
         // var links = _l.get('terms_of_service');
@@ -28,11 +29,31 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
                 xtype: 'container',
                 padding: 20,
                 style: { textAlign: 'center' },
-                html: copyrightCmp + ' ' + privacyPolicy
-                // html: copyrightCmp + '<br />' + privacyPolicy + links
+                layout: {
+                    type: 'hbox',
+                    align: 'center'
+                },
+                items: [{
+                    xtype: 'component',
+                    html: copyrightCmp + ' ' + privacyPolicy
+                }, {
+                    xtype: 'clickable',
+                    html: '<a>About Navixy Admin Panel</a>',
+                    listeners: {
+                        click: this.showAboutPopup
+                    }
+                }]
             }
         ]
 
         this.callParent(arguments)
+    },
+    isNavixy: function () {
+        return Config.hideNavixyLogo && /navixy\.(com|ru)/gi.test(location.hostname) || !Config.hideNavixyLogo
+    },
+    showAboutPopup () {
+        console.log('asdasd')
+        Ext.widget('about-popup')
     }
+
 })
