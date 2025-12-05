@@ -51,8 +51,7 @@ Ext.define('NavixyPanel.view.desktop.Footer', {
     isNavixy: function () {
         return Config.hideNavixyLogo && /navixy\.(com|ru)/gi.test(location.hostname) || !Config.hideNavixyLogo
     },
-    showAboutPopup () {
-        console.log('asdasd')
+    showAboutPopup: function  () {
         Ext.widget('about-popup')
     }
 
