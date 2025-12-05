@@ -1,94 +1,76 @@
-Navixy Panel v2 — Open‑source client for the Navixy API
-=======================================================
+# Navixy Admin Console
 
-Overview
---------
-This repository contains the v2 web panel — an open‑source client for the Navixy API. It is a single‑page application (SPA) built with Ext JS and bundled with Grunt. The panel consumes Navixy server API endpoints to provide administration, billing, user management, trackers, reports, and related functionality for Navixy‑based platforms.
+Navixy Admin Console is a web-based administration interface used by
+authorized administrators to manage users, roles, and configuration
+for the Navixy telematics platform.
 
-The project is intended to be hosted as a static web app and configured to point at your Navixy (or compatible) API backend.
+This repository contains the **front-end source code** for the admin
+console only. It does not include the Navixy backend services or other
+Navixy applications.
 
+---
 
-Technology stack
-----------------
-- Language: JavaScript (browser)
-- Framework/UI: Ext JS (classic toolkit); custom components under `app/`
-- Build tool: Grunt (tasks in `tasks/`, config in `Gruntfile.js`)
-- Styles: Sass (compiled via `grunt-contrib-sass`)
-- Mapping: Leaflet (see `libs/leaflet/`) and optional Google tiles
-- Libraries: jQuery, Moment.js, Flot, PDF libs (see `libs/`)
-- i18n: custom locale classes under `locale/` with Transifex integration
-- Package manager: npm (see `package.json`)
+## Scope of this Repository
 
+This project comprises:
 
-Requirements
-------------
-- Node.js LTS (recommended 14+; older Grunt plugins may still work with Node 10–12)
-- npm (bundled with Node.js)
-- Grunt CLI: `npm i -g grunt-cli` or use `npx grunt`
-- Optional for i18n: Transifex client (`tx` CLI) if you plan to pull/push translations
-- Optional for versioning tasks: Mercurial (`hg`) is used by some tasks to generate a `VERSION` file
+- The client-side JavaScript, HTML, and CSS for the Navixy Admin Console
+- Build and configuration files needed to produce the admin console bundle
 
-Note: One dependency points to a private Git server (`navixy-permissions` via `git@gitlab.navixy.dev`). If you do not have access, installation may fail. See the TODOs below for alternatives.
+It **does not** contain:
 
+- Navixy backend/server code
+- Customer-facing web or mobile applications
+- Any other internal Navixy tools or services
 
-Getting started
----------------
-1. Install dependencies:
-   - `npm install`
-2. Configure the application:
-   - Copy one of the example configs to `PConfig.js`:
-     - `cp PConfig.example.js PConfig.js` (or on Windows: copy the file) 
-     - Alternatively, `PConfig.example.sa.js` for the SA profile.
-   - Edit `PConfig.js` to point to your API endpoints and domains. See Configuration.
-3. Build assets:
-   - `npx grunt sass:theme_build` — compile theme Sass to CSS
-   - `npx grunt build` — build the application into `build/panel`
-4. Serve the app:
-   - Host the repository (or the built `build/panel` folder) with any static HTTP server.
-   - Example (using `http-server`): `npx http-server -c-1 .` and open `http://localhost:8080/index.html`
+Those components are developed and licensed separately under Navixy’s
+proprietary terms.
 
-Entry points & runtime
-----------------------
-- Main HTML: `index.html` (a production variant exists at `productionFiles/index.html` and is copied during build)
-- Main application bootstrap: `app.js`
-- Ext Loader paths in `app.js` reference:
-  - `PConfig.js` (copied from example)
-  - `Locale/*` for localization
-  - `NavixyPermissions` from `node_modules/navixy-permissions/dist/navixy-permissions.js`
+---
 
+## License
 
-Configuration
--------------
-The application is configured via `PConfig.js`. Example fields from `PConfig.example.js`:
-- `apiProfiles` — API root(s) and URL templates, e.g. `apiRoot`, `apiUrlTpl`
-- `links` — templates for deep links (monitoring, apps, panel page)
-- `terminalHost` — WebSocket URL for devices terminal
-- `paas_domain` and `brandingPaasDomain` — default domains affecting branding and behavior
-- `uploadLimit` — image upload size limit (MB)
-- `navixyInboundNumber` — SMS gateway number
-- `subpaasPay` and `avangateLinks` — payment flow configuration
-- `useGoogleMapsTilesDirectly` — use Google tiles without JS API
-- `enableSimpleEmailValidation` — relaxed email parsing
+The Navixy Admin Console front-end is licensed under the
+**GNU General Public License, version 3 (GPLv3)**.
 
-Environment variables
----------------------
-The project primarily relies on the `PConfig.js` file for configuration rather than process environment variables.
+See the [`LICENSE`](./LICENSE) file in this repository for the full
+license text.
 
-TODO:
-- Document any additional env‑based overrides if introduced in your deployment pipeline.
+By using, modifying, or distributing this code, you agree to the terms
+of the GPLv3.
 
+---
 
-Build, run, and common tasks
-----------------------------
-Grunt tasks are defined in `Gruntfile.js` and `tasks/`.
+## Third-Party Components and Notices
 
-Core tasks:
-- `npx grunt build` — Build the panel into `build/panel`.
-  - Copies static assets defined in `Gruntfile.js` (images, libs, themes, `productionFiles/index.html`, etc.)
-  - Concatenates and (optionally) uglifies sources, generates `VERSION` (uses `hg id` if available)
-- `npx grunt sass:theme_build` — Compile theme Sass (`theme/panel_metromorph/app.scss`) to `theme/panel_metromorph.css`
-- `npx grunt bless` — Split large CSS for IE (`theme/panel_metromorph_ie.css`) if needed
+This project uses third-party open-source components, including:
 
-Version and release helpers:
-- `npx grunt buildbump` — Increment npm package version (patch) via `npm version`
-- `npx grunt bump` — Run Mercurial release (minor by default; use `--major` for major) and write `VERSION`
+### Sencha Ext JS 4.1
+
+Parts of the user interface are built with **Sencha Ext JS 4.1**, a
+JavaScript framework for building rich web applications.
+
+- Ext JS 4.1 is © 2006–2012 Sencha Inc.
+- Ext JS 4.1 is used in this project under the **GNU General Public
+  License version 3 (GPLv3)**, as published by the Free Software
+  Foundation.
+
+The Ext JS library itself is **not** included in this repository.
+To build or run the admin console, you must obtain Ext JS 4.1 from
+Sencha (under GPLv3 or an appropriate commercial license) and follow
+Sencha’s applicable license terms.
+
+“Sencha” and “Ext JS” are trademarks of Sencha Inc. Navixy and SquareGPS
+Inc. are not affiliated with Sencha Inc. and make no claims to any
+rights in those trademarks.
+
+---
+
+## Getting the Source Code
+
+This repository is intended to satisfy the “complete corresponding
+source code” requirement of GPLv3 for the Navixy Admin Console front-end.
+
+If you are using the Navixy Admin Console in a hosted or on-premise
+deployment and need the corresponding source code under GPLv3, this
+GitHub repository provides that source.
